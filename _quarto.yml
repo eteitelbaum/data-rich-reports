@@ -1,0 +1,109 @@
+project:
+  type: website
+
+website:
+  page-navigation: true
+  title: "PSC/DATS 2102--Summer Schedule"
+  description: "Homepage for PSC/DATS 2102, George Washington University."
+  site-url: "https://dataviz.rocks"
+  
+  repo-url: "https://github.com/dataviz-summer-2023"
+  repo-actions: [edit, issue]
+
+  open-graph: true
+  favicon: "images/logo-placeholder.png"
+  twitter-card: true
+
+  page-footer:
+    right: "This page is built with [Quarto](https://quarto.org/). 👷🛠️"
+    left: "&copy; Copyright 2023, [Emmanuel Teitelbaum](https://emmanuel.teitelbaum.com)"
+    background: "#A4DBF5"
+
+  sidebar:
+    background: "#A4DBF5"
+    logo: "images/logo-placeholder.png"
+    pinned: true
+    align: center
+    tools:
+      - icon: mortarboard-fill
+        text: "Blackboard"
+        href: https://blackboard.gwu.edu
+      - icon: github
+        href: https://classroom.github.com
+        text: "Github Classroom"
+      - icon: r-circle-fill
+        href: https://posit.co/download/rstudio-desktop
+        text: "R Studio Desktop"
+
+    style: "docked"
+    search: true
+    collapse-level: 1
+    contents:
+      - section: "Course information"
+        contents:
+          - href: course-description.qmd
+            text: Description
+          - href: course-syllabus.qmd
+            text: Syllabus
+          - href: course-support.qmd
+            text: Support
+          - href: instructor.qmd
+            text: Instructor
+          - href: index.qmd
+            text: Schedule
+          - href: course-links.qmd
+            text: Useful links
+          - href: faq.qmd
+            text: FAQ
+      - section: "Project"
+        contents:
+          - href: project-description.qmd
+            text: Description
+          - href: project/project-assignment-1.qmd
+            text: "Assignment 1"
+          - href: project/project-assignment-2.qmd
+            text: "Assignment 2"
+          - href: project/project-assignment-3.qmd
+            text: "Assignment 3"
+          - href: project/project-datasets.qmd
+            text: Datasets
+      - section: "Weekly materials"
+        contents:
+          - href: modules/module-1.1.qmd
+            text: "Module 1.1"
+          - href: modules/module-1.2.qmd
+            text: "Module 1.2"
+          - href: modules/module-2.1.qmd
+            text: "Module 2.1"
+          - href: modules/module-2.2.qmd
+            text: "Module 2.2"
+          - href: modules/module-3.1.qmd
+            text: "Module 3.1"
+          - href: modules/modules-3.2.qmd
+            text: "Module 3.2"
+          - href: modules/module-4.1.qmd
+            text: "Module 4.1"
+          - href: modules/module-4.2.qmd
+            text: "Module 4.2"
+          - href: modules/module-5.1.qmd
+            text: "Module 5.1"
+          - href: modules/module-5.2.qmd
+            text: "Module 5.2"
+          - href: modules/module-6.1.qmd
+            text: "Module 6.1"
+          - href: modules/module-6.2.qmd
+            text: "Module 6.2"
+            
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: cyborg
+    mainfont: "Atkinson Hyperlegible"
+    code-copy: true
+    code-overflow: wrap
+    toc: true
+    
+freeze: auto
+editor: source
+
