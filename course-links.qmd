@@ -1,0 +1,12 @@
+---
+title: "Useful links"
+editor: visual
+---
+
+|                           |                                                                                                                                                                                                                                                                                                           |
+|-----------------------------|-------------------------------------------|
+| Microsoft 365             | 🔗 on [GW IT's Microsoft 365 Page](https://it.gwu.edu/microsoft-365)                                                                                                                                                                                                                                      |
+| Tableau                   | 🔗 on [Tableau Trial](https://www.tableau.com/trial/tableau-software)                                                                                                                                                                                                                                     |
+| Lecture Recordings        | 🔗 on [Blackboard](https://blackboard.gwu.edu/webapps/blackboard/content/contentWrapper.jsp?course_id=_374099_1&displayName=GWU%20Lecture%20Capture&href=%2Fwebapps%2Fblackboard%2Fexecute%2Fblti%2FlaunchPlacement%3Fblti_placement_id%3D_35_1%26course_id%3D_374099_1%26mode%3Dcpview%26wrapped%3Dtrue) |
+| Prof T's Zoom Office      | 🔗 on [Zoom](https://gwu-edu.zoom.us/my/emmanuel.teitelbaum)                                                                                                                                                                                                                                              |
+| Office Hours Appointments | 🔗 on [Calendly](https://calendly.com/emmanuel-teitelbaum/15min)                                                                                                                                                                                                                                          |

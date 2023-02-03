@@ -4,7 +4,9 @@ tbl-colwidths: [5,15,30,5,5,5,25,5]
 editor: visual
 ---
 
-```{r setup, include = FALSE}
+```{r}
+#| label: setup
+#| include: false
 library(lubridate)
 
 mon <- as_date("2023-05-22")
@@ -21,43 +23,43 @@ advdate <- function(day, week) {
 } 
 ```
 
-This page displays an outline of the topics, content, and assignments for the term.
+This page displays an outline of the topics, content, and assignments for the term. Each module starts on a Monday. There are no assignments due on Sundays.
 
-| Module | Date               | Topic | Reading | Video | Slides | Skill | Assignment |
-|--------|--------------------|-------|---------|-------|--------|-------|------------|
-| 1.1    | r advdate(mon,0)   |       |         |       |        |       |            |
-|        | r advdate(tues,0)  |       |         |       |        |       |            |
-|        | r advdate(wed,0)   |       |         |       |        |       |            |
-| 1.2    | r advdate(thur,0)  |       |         |       |        |       |            |
-|        | r advdate(fri,0)   |       |         |       |        |       |            |
-|        | r advdate(sat,0)   |       |         |       |        |       |            |
-| 2.1    | r advdate(mon,1)   |       |         |       |        |       |            |
-|        | r advdate(tues, 1) |       |         |       |        |       |            |
-|        | r advdate(wed, 1)  |       |         |       |        |       |            |
-| 2.2    | r advdate(thur, 1) |       |         |       |        |       |            |
-|        | r advdate(fri, 1)  |       |         |       |        |       |            |
-|        | r advdate(sat, 1)  |       |         |       |        |       |            |
-| 3.1    | r advdate(mon, 2)  |       |         |       |        |       |            |
-|        | r advdate(tues, 2) |       |         |       |        |       |            |
-|        | r advdate(wed, 2)  |       |         |       |        |       |            |
-| 3.2    | r advdate(thur, 2) |       |         |       |        |       |            |
-|        | r advdate(fri, 2)  |       |         |       |        |       |            |
-|        | r advdate(sat, 2)  |       |         |       |        |       |            |
-| 4.1    | r advdate(mon, 3)  |       |         |       |        |       |            |
-|        | r advdate(tues, 3) |       |         |       |        |       |            |
-|        | r advdate(wed, 3)  |       |         |       |        |       |            |
-| 4.2    | r advdate(thur, 3) |       |         |       |        |       |            |
-|        | r advdate(fri, 3)  |       |         |       |        |       |            |
-|        | r advdate(sat, 3)  |       |         |       |        |       |            |
-| 5.1    | r advdate(mon, 4)  |       |         |       |        |       |            |
-|        | r advdate(tues, 4) |       |         |       |        |       |            |
-|        | r advdate(wed, 4)  |       |         |       |        |       |            |
-| 5.2    | r advdate(thur, 4) |       |         |       |        |       |            |
-|        | r advdate(fri, 4)  |       |         |       |        |       |            |
-|        | r advdate(sat, 4)  |       |         |       |        |       |            |
-| 6.1    | r advdate(mon, 5)  |       |         |       |        |       |            |
-|        | r advdate(tues, 5) |       |         |       |        |       |            |
-|        | r advdate(wed, 5)  |       |         |       |        |       |            |
-| 6.2    | r advdate(thur, 5) |       |         |       |        |       |            |
-|        | r advdate(fri, 5)  |       |         |       |        |       |            |
-|        | r advdate(sat, 5)  |       |         |       |        |       |            |
+| Module | Date                 | Topic | Skill | Reading | Video | Slides | Assignment |
+|---------|----------|---------|---------|---------|---------|---------|---------|
+| 1.1    | `r advdate(mon,0)`   |       |       |         |       |        |            |
+|        | `r advdate(tues,0)`  |       |       |         |       |        |            |
+|        | `r advdate(wed,0)`   |       |       |         |       |        |            |
+| 1.2    | `r advdate(thur,0)`  |       |       |         |       |        |            |
+|        | `r advdate(fri,0)`   |       |       |         |       |        |            |
+|        | `r advdate(sat,0)`   |       |       |         |       |        |            |
+| 2.1    | `r advdate(mon,1)`   |       |       |         |       |        |            |
+|        | `r advdate(tues, 1)` |       |       |         |       |        |            |
+|        | `r advdate(wed, 1)`  |       |       |         |       |        |            |
+| 2.2    | `r advdate(thur, 1)` |       |       |         |       |        |            |
+|        | `r advdate(fri, 1)`  |       |       |         |       |        |            |
+|        | `r advdate(sat, 1)`  |       |       |         |       |        |            |
+| 3.1    | `r advdate(mon, 2)`  |       |       |         |       |        |            |
+|        | `r advdate(tues, 2)` |       |       |         |       |        |            |
+|        | `r advdate(wed, 2)`  |       |       |         |       |        |            |
+| 3.2    | `r advdate(thur, 2)` |       |       |         |       |        |            |
+|        | `r advdate(fri, 2)`  |       |       |         |       |        |            |
+|        | `r advdate(sat, 2)`  |       |       |         |       |        |            |
+| 4.1    | `r advdate(mon, 3)`  |       |       |         |       |        |            |
+|        | `r advdate(tues, 3)` |       |       |         |       |        |            |
+|        | `r advdate(wed, 3)`  |       |       |         |       |        |            |
+| 4.2    | `r advdate(thur, 3)` |       |       |         |       |        |            |
+|        | `r advdate(fri, 3)`  |       |       |         |       |        |            |
+|        | `r advdate(sat, 3)`  |       |       |         |       |        |            |
+| 5.1    | `r advdate(mon, 4)`  |       |       |         |       |        |            |
+|        | `r advdate(tues, 4)` |       |       |         |       |        |            |
+|        | `r advdate(wed, 4)`  |       |       |         |       |        |            |
+| 5.2    | `r advdate(thur, 4)` |       |       |         |       |        |            |
+|        | `r advdate(fri, 4)`  |       |       |         |       |        |            |
+|        | `r advdate(sat, 4)`  |       |       |         |       |        |            |
+| 6.1    | `r advdate(mon, 5)`  |       |       |         |       |        |            |
+|        | `r advdate(tues, 5)` |       |       |         |       |        |            |
+|        | `r advdate(wed, 5)`  |       |       |         |       |        |            |
+| 6.2    | `r advdate(thur, 5)` |       |       |         |       |        |            |
+|        | `r advdate(fri, 5)`  |       |       |         |       |        |            |
+|        | `r advdate(sat, 5)`  |       |       |         |       |        |            |

@@ -1,0 +1,33 @@
+---
+title: "Instructor"
+editor: visual
+---
+
+![](images/teitelbaum2.jpg){style="float:left;padding: 10px 10px 10px 10px;"
+fig-alt="Headshot of Professor Teitelbaum" width="200"}
+
+[Emmanuel Teitelbaum](https://www.emmanuelteitelbaum.com/) is an
+associate professor of political science and international affairs at
+the [The George Washington University](https://www.gwu.edu/) His
+research and writing explore how class conflict and compromise intersect
+with democracy and development. He also has a strong interest in labor
+standards and understanding how labor unions, nonprofit organizations,
+consumers and corporations can help to promote them.
+
+At GW, Professor Teitelbaum teaches courses on comparative politics,
+comparative political economy and South Asia. He is on faculty in the
+[Department of Political
+Science](https://politicalscience.columbian.gwu.edu/) and the [Elliott
+School of International Affairs](https://elliott.gwu.edu/) and am
+affiliated with the [Sigur Center for Asian
+Studies](https://sigur.elliott.gwu.edu/) as well as the Institute for
+[International Economic Policy](https://iiep.gwu.edu/).
+
+## Office hours
+
+Professor Teitelbaum's office hours are on Tuesdays and Thursdays from
+4:00 p.m. to 5:00 p.m. Please sign up for a slot (or two) on his
+[Calendly](https://calendly.com/emmanuel-teitelbaum) page. He is
+available for consultation virtually on
+[Zoom](https://gwu-edu.zoom.us/my/emmanuel.teitelbaum) or in his office
+at 411 Monroe Hall (2115 G. ST NW).

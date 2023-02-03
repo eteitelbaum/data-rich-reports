@@ -1,0 +1,60 @@
+---
+title: "Datasets"
+editor: visual
+---
+
+Here are some datasets that you might consider using for your final
+project:
+
+-   [ILOSTAT](https://ilostat.ilo.org/) is the statistical database of
+    the International Labour Organisation. It has data pertaining to
+    labor, working conditions, industrial relations, poverty and
+    inequality.
+
+-   [Google Public Data
+    Explorer](https://www.google.com/publicdata/directory) contains
+    information about dozens of databases related to governance and the
+    economy. You cannot download the raw data from Google, but you can
+    use the site to visualize the data and then follow the link to the
+    original source.
+
+-   [OECD DATA](https://data.oecd.org/) provides data related to the
+    performance of high income countries.
+
+-   [Our World in Data](https://ourworldindata.org/) is a good general
+    resource for political economy data. The site is centered around
+    blog posts but you can also search for a topic, view a visualization
+    related to that topic and then download the data used to create it.
+
+-   [Statista](https://www-statista-com.proxygw.wrlc.org/) is a good
+    place to look for data on more niche topics.
+
+-   [UNCTADstat](http://unctadstat.unctad.org/EN/) is the United Nations
+    Conference on Trade and Development statistical database. It
+    provides harmonized data on a range of topics related to economic
+    performance, trade and statistics.
+
+-   The [UN Human Development
+    Reports](https://hdr.undp.org/data-center/documentation-and-downloads)
+    include a number of important indicators related to human
+    development, gender and sustainable development goals (SDGs).
+
+-   [Varieties of Democracy
+    (V-DEM)](https://www.v-dem.net/data/the-v-dem-dataset/) provides
+    original measures of the quality of democracy for every country
+    dating back to the 18th century.
+
+-   [World Bank Development Indicators
+    (WDI)](https://databank-worldbank-org.proxygw.wrlc.org/reports.aspx?source=world-development-indicators)
+    is the primary World Bank database for development data from
+    officially-recognized international sources.
+
+-   The [World Bank
+    DataBank](https://databank-worldbank-org.proxygw.wrlc.org/home)
+    provides access to dozens of additional World Bank databases on
+    topics such as regional development, governance, education, gender
+    and the environment.
+
+For information on more specific resources available, see [this
+page](https://libguides.gwu.edu/datasetsdatabases) on the Gelman Library
+website.
