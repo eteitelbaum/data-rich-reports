@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dataviz.rocks/index.html</loc>
-    <lastmod>2023-02-03T04:38:16.254Z</lastmod>
+    <lastmod>2023-02-03T19:23:40.922Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz.rocks/about.html</loc>
@@ -10,94 +10,106 @@
   </url>
   <url>
     <loc>https://dataviz.rocks/course-description.html</loc>
-    <lastmod>2023-02-03T04:19:45.638Z</lastmod>
+    <lastmod>2023-02-03T19:23:20.087Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz.rocks/course-links.html</loc>
-    <lastmod>2023-02-03T04:38:18.648Z</lastmod>
+    <lastmod>2023-02-03T19:23:17.789Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz.rocks/course-support.html</loc>
-    <lastmod>2023-02-03T04:15:57.811Z</lastmod>
+    <lastmod>2023-02-03T19:23:35.110Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz.rocks/course-syllabus.html</loc>
-    <lastmod>2023-02-03T04:19:48.262Z</lastmod>
+    <lastmod>2023-02-03T19:23:33.331Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz.rocks/faq.html</loc>
-    <lastmod>2023-02-03T04:18:29.564Z</lastmod>
+    <lastmod>2023-02-03T19:23:00.985Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz.rocks/instructor.html</loc>
-    <lastmod>2023-02-03T04:16:06.488Z</lastmod>
+    <lastmod>2023-02-03T19:23:38.717Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz.rocks/modules/module-1.1.html</loc>
-    <lastmod>2023-02-03T03:01:25.970Z</lastmod>
+    <lastmod>2023-02-03T19:23:03.628Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz.rocks/modules/module-1.2.html</loc>
-    <lastmod>2023-02-03T03:01:26.766Z</lastmod>
+    <lastmod>2023-02-03T19:23:04.163Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz.rocks/modules/module-2.1.html</loc>
-    <lastmod>2023-02-03T03:01:27.563Z</lastmod>
+    <lastmod>2023-02-03T19:23:04.761Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz.rocks/modules/module-2.2.html</loc>
-    <lastmod>2023-02-03T03:01:28.365Z</lastmod>
+    <lastmod>2023-02-03T19:23:05.330Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz.rocks/modules/module-3.1.html</loc>
-    <lastmod>2023-02-03T03:01:29.214Z</lastmod>
+    <lastmod>2023-02-03T19:23:05.898Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz.rocks/modules/module-3.2.html</loc>
-    <lastmod>2023-02-03T03:01:30.027Z</lastmod>
+    <lastmod>2023-02-03T19:23:06.457Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz.rocks/modules/module-4.1.html</loc>
-    <lastmod>2023-02-03T03:01:30.888Z</lastmod>
+    <lastmod>2023-02-03T19:23:07.031Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz.rocks/modules/module-4.2.html</loc>
-    <lastmod>2023-02-03T03:01:31.721Z</lastmod>
+    <lastmod>2023-02-03T19:23:07.579Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz.rocks/modules/module-5.1.html</loc>
-    <lastmod>2023-02-03T03:01:32.635Z</lastmod>
+    <lastmod>2023-02-03T19:23:08.111Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz.rocks/modules/module-5.2.html</loc>
-    <lastmod>2023-02-03T03:01:33.581Z</lastmod>
+    <lastmod>2023-02-03T19:23:08.715Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz.rocks/modules/module-6.1.html</loc>
-    <lastmod>2023-02-03T03:01:34.391Z</lastmod>
+    <lastmod>2023-02-03T19:23:09.223Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz.rocks/modules/module-6.2.html</loc>
-    <lastmod>2023-02-03T03:01:35.253Z</lastmod>
+    <lastmod>2023-02-03T19:23:09.792Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz.rocks/project/project-assignment-1.html</loc>
-    <lastmod>2023-02-03T03:01:36.053Z</lastmod>
+    <lastmod>2023-02-03T19:23:10.357Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz.rocks/project/project-assignment-2.html</loc>
-    <lastmod>2023-02-03T03:01:36.871Z</lastmod>
+    <lastmod>2023-02-03T19:23:10.871Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz.rocks/project/project-assignment-3.html</loc>
-    <lastmod>2023-02-03T03:01:37.703Z</lastmod>
+    <lastmod>2023-02-03T19:23:11.414Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz.rocks/project/project-datasets.html</loc>
-    <lastmod>2023-02-03T03:01:38.635Z</lastmod>
+    <lastmod>2023-02-03T19:23:11.995Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz.rocks/project/project-description.html</loc>
-    <lastmod>2023-02-03T03:52:11.160Z</lastmod>
+    <lastmod>2023-02-03T19:23:12.522Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dataviz.rocks/course-overview.html</loc>
+    <lastmod>2023-02-03T19:23:21.892Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dataviz.rocks/LICENSE.html</loc>
+    <lastmod>2023-02-03T19:23:02.476Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dataviz.rocks/modules/getting-started.html</loc>
+    <lastmod>2023-02-03T19:23:03.036Z</lastmod>
   </url>
 </urlset>

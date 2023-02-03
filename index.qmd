@@ -23,10 +23,10 @@ advdate <- function(day, week) {
 } 
 ```
 
-This page displays an outline of the topics, content, and assignments for the term. Each module starts on a Monday. There are no assignments due on Sundays.
+This page displays an outline of the topics, content, and assignments for the term. Each module starts on a Monday. There are no assignments due on Sundays. Test.
 
 | Module | Date                 | Topic | Skill | Reading | Video | Slides | Assignment |
-|---------|----------|---------|---------|---------|---------|---------|---------|
+|---------|---------|---------|---------|---------|---------|---------|---------|
 | 1.1    | `r advdate(mon,0)`   |       |       |         |       |        |            |
 |        | `r advdate(tues,0)`  |       |       |         |       |        |            |
 |        | `r advdate(wed,0)`   |       |       |         |       |        |            |
