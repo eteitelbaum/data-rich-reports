@@ -27,7 +27,7 @@ This page displays an outline of the topics, content, and assignments for the te
 
 ::: column-screen-inset-right
 | Module | Date                 | Topics                                | Skills                                                    | Readings | Videos | Slides | Assignments |
-|--------|----------------------|---------------------------------------|-----------------------------------------------------------|----------|--------|--------|-------------|
+|---------|---------|---------|---------------|---------|---------|---------|---------|
 | 1.1    | `r advdate(mon,0)`   | The `readr` package                   | Read .csv and excel files into R                          |          |        |        |             |
 |        | `r advdate(tues,0)`  | Downloading data from APIs            | Download data from `vdemdata` and store as an object      |          |        |        |             |
 |        | `r advdate(wed,0)`   | Exploring APIs                        | Download data from World Bank with `wbstats`              |          |        |        |             |
@@ -35,7 +35,7 @@ This page displays an outline of the topics, content, and assignments for the te
 |        | `r advdate(fri,0)`   | The `dplyr` package II                | Arrange, group and summarize data                         |          |        |        |             |
 |        | `r advdate(sat,0)`   |                                       |                                                           |          |        |        |             |
 | 2.1    | `r advdate(mon,1)`   | The grammar of graphics and `ggplot2` | Basics of `ggplot2` syntax                                |          |        |        |             |
-|        | `r advdate(tues, 1)` | Bar charts and histograms             |                                                           |          |        |        |             |
+|        | `r advdate(tues, 1)` | Bar charts and histograms             | test                                                      |          |        |        |             |
 |        | `r advdate(wed, 1)`  | Line charts                           |                                                           |          |        |        |             |
 | 2.2    | `r advdate(thur, 1)` | Scatter plots and linear models       |                                                           |          |        |        |             |
 |        | `r advdate(fri, 1)`  | Adding color                          |                                                           |          |        |        |             |
