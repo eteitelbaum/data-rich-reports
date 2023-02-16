@@ -27,7 +27,7 @@ This page displays an outline of the topics, content, and assignments for the te
 
 ::: column-screen-inset-right
 | Module | Date                 | Topics                                | Skills                                                             | Readings                          | Videos | Slides | Assignments |
-|---------|---------|---------|---------|---------|---------|---------|---------|
+|--------|----------------------|---------------------------------------|--------------------------------------------------------------------|-----------------------------------|--------|--------|-------------|
 | 1.1    | `r advdate(mon,0)`   | The `readr` package                   | Read .csv and excel files into R                                   |                                   |        |        |             |
 |        | `r advdate(tues,0)`  | Downloading data from APIs            | Download data from `vdemdata` and store as an object               |                                   |        |        |             |
 |        | `r advdate(wed,0)`   | Exploring APIs                        |                                                                    |                                   |        |        |             |
