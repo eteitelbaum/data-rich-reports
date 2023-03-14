@@ -6,19 +6,16 @@ website:
   title: "PSC/DATS 2102--Summer Schedule"
   description: "Homepage for PSC/DATS 2102, George Washington University."
   site-url: "https://dataviz.rocks"
-  
   repo-url: "https://github.com/dataviz-summer-2023"
   repo-actions: [edit, issue]
-
   open-graph: true
   favicon: "images/logo-placeholder.png"
   twitter-card: true
-
+  reader-mode: true
   page-footer:
     right: "This page is built with [Quarto](https://quarto.org/). 👷🛠️"
     left: "&copy; Copyright 2023, [Emmanuel Teitelbaum](https://emmanuel.teitelbaum.com)"
     background: "#227dd5"
-
   sidebar:
     background: "#227dd5"
     logo: "images/logo-placeholder.png"
@@ -34,7 +31,6 @@ website:
       - icon: bootstrap-reboot
         href: https://posit.co/download/rstudio-desktop
         text: "RStudio Desktop"
-
     style: "docked"
     search: true
     collapse-level: 1
@@ -97,7 +93,6 @@ website:
             text: "Module 6.1"
           - href: modules/module-6.2.qmd
             text: "Module 6.2"
-            
 format:
   html:
     theme:
@@ -107,7 +102,6 @@ format:
     code-copy: true
     code-overflow: wrap
     toc: true
-    
 freeze: auto
 editor: source
 
