@@ -67,7 +67,7 @@
     "href": "modules/getting-started.html",
     "title": "Getting Started",
     "section": "",
-    "text": "All of our work for this course will be done in the R language. Please download and install the most recent version of R from the Comprehensive R Archive Network (CRAN).\nRStudio is an integrated development environment (IDE) develop by a company named Posit. We will do all of our code editing for this course in RStudio. Please be sure to download and install the most recent version of R Studio RStudio."
+    "text": "All of our work for this course will be done in the R language. Please download and install the most recent version of R from the Comprehensive R Archive Network (CRAN).\nRStudio is an integrated development environment (IDE) develop by a company named Posit. We will do all of our code editing for this course in RStudio. Please be sure to download and install the most recent version of R Studio RStudio.\nWe are going to be using a number of R packages throughout the course. One essential set of packages are those that comprise the Tidyverse, but especially readr, dplyr, ggplot2 and tidyr. You can install the entire Tidyverse collection of packages by typing `install.packages(“tidyverse”) in your console. We will talk about these packages in detail as we go through the course, but have a look at this basic description now to gain some basic familiarity."
   },
   {
     "objectID": "modules/getting-started.html#rstudio",

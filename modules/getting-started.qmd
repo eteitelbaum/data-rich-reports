@@ -15,6 +15,8 @@ All of our work for this course will be done in the R language. Please download 
 
 RStudio is an integrated development environment (IDE) develop by a company named Posit. We will do all of our code editing for this course in RStudio. Please be sure to download and install the most recent version of R Studio [RStudio](https://posit.co/downloads/).
 
+We are going to be using a number of R packages throughout the course. One essential set of packages are those that comprise the [Tidyverse](https://www.tidyverse.org/), but especially `readr`, `dplyr`, `ggplot2` and `tidyr`. You can install the entire Tidyverse collection of packages by typing `install.packages("tidyverse") in your console. We will talk about these packages in detail as we go through the course, but have a look at this [basic description](https://www.tidyverse.org/packages/#import) now to gain some basic familiarity. 
+
 ## Quarto
 
 {{< video https://www.youtube.com/embed/wo9vZccmqwc title='Your First Quarto Document' >}}
