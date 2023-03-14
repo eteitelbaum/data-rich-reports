@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -65,10 +65,10 @@ ul.task-list li input[type="checkbox"] {
 
 
 <meta property="og:title" content="PSC/DATS 2102–Summer Schedule - Getting Started">
-<meta property="og:description" content="">
+<meta property="og:description" content="All of our work for this course will be done in the R language. Please download and install the most recent version of R from the Comprehensive R Archive Network (CRAN).">
 <meta property="og:site-name" content="PSC/DATS 2102--Summer Schedule">
 <meta name="twitter:title" content="PSC/DATS 2102–Summer Schedule - Getting Started">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="All of our work for this course will be done in the R language. Please download and install the most recent version of R from the Comprehensive R Archive Network (CRAN).">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -272,7 +272,16 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#r-and-r-studio" id="toc-r-and-r-studio" class="nav-link active" data-scroll-target="#r-and-r-studio">R and R Studio</a></li>
+  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
+  <li><a href="#github" id="toc-github" class="nav-link" data-scroll-target="#github">GitHub</a></li>
+  <li><a href="#github-classroom" id="toc-github-classroom" class="nav-link" data-scroll-target="#github-classroom">GitHub Classroom</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/dataviz-summer-2023/edit/main/modules/getting-started.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/dataviz-summer-2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -294,8 +303,39 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="r-and-r-studio" class="level2">
+<h2 class="anchored" data-anchor-id="r-and-r-studio">R and R Studio</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="Configuring R Studio" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>All of our work for this course will be done in the R language. Please download and install the most recent version of R from the Comprehensive R Archive Network <a href="https://cran.r-project.org/">(CRAN)</a>.</p>
+<p>RStudio is an integrated development environment (IDE) develop by a company named Posit. We will do all of our code editing for this course in RStudio. Please be sure to download and install the most recent version of R Studio <a href="https://posit.co/downloads/">RStudio</a>.</p>
+</section>
+<section id="quarto" class="level2">
+<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="Your First Quarto Document" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>This page was made with <a href="https://quarto.org/">Quarto</a>. Quarto is an open source publishing platform that enables you to integrate text with code. If you have used <a href="https://rmarkdown.rstudio.com/">R Markdown</a> before then Quarto will look familiar to you because Quarto is the next generation of R Markdown.</p>
+<p>RStudio comes with a version of Quarto already installed, but it can be useful to install the most recent version separately and because doing so will allow you to use Quarto with another IDE like VS Code. You can install the most recent version of Quarto by visiting <a href="https://quarto.org/docs/get-started/">this page</a> and selecting the version for your operating system.</p>
+<p>Once you have R, R Studio and Quarto installed, you are ready to start integrating text and code.</p>
+</section>
+<section id="github" class="level2">
+<h2 class="anchored" data-anchor-id="github">GitHub</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="Getting Started With GitHub" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>GitHub is a platform for hosting version control repositories. In this course we will learn to use GitHub to store, manage and collaborate on code.</p>
+<p>One central concept you want to be familiar with is a <em>repository</em> or “repo” for short. Repos are where you are going to store the code for individual projects. Repos are essentially folders where code can be stored and then managed by multiple users.</p>
+<p>Repos are managed using a version control system named Git. Git allows developers to make and track changes to code. Git also enables users to create branches to work on the code without affecting the main codebase and then merge those changes back into the main branch when they are ready.</p>
+<p>The first thing you are going to want to do is to <a href="https://happygitwithr.com/github-acct.html">register</a> a GitHub account. From there, you want to <a href="https://happygitwithr.com/install-git.html">install Git</a> and <a href="https://happygitwithr.com/hello-git.html">initiate Git</a> using the <code>usethis</code> package.</p>
+<p>Next, you need to generate a personal access token <a href="https://happygitwithr.com/https-pat.html">(PAT)</a> and set your credentials with the <code>gitcreds</code> package.</p>
+<p>Now, you can <a href="https://happygitwithr.com/rstudio-git-github.html">create a GitHub repo</a> and clone it to your computer in RStudio. There a number of ways to clone a repo, but the recommended method for this course involves creating a new project in RStudio and selecting “Version Control” for the method. From there, select “Git”, copy the URL from the green “Code” tab in the GitHub repo, and paste it into “Repository URL” field. Next, select the directory where you want the repository to be created and click “create project.”</p>
+<p>You will notice that in your new project folder there is a file with an .Rproj extension. The .Rproj file is what tells RStudio which files are associated with the project and it obviates the need to set the working directory. It also makes it possible to share the folder with anyone who is running R and RStudio and have them run your code without having to set a working directory. This is what we refer to as a <a href="https://www.tidyverse.org/blog/2017/12/workflow-vs-script/">project-based workflow</a> and we will use it for every assignment in this class.</p>
+</section>
+<section id="github-classroom" class="level2">
+<h2 class="anchored" data-anchor-id="github-classroom">GitHub Classroom</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="Getting Started With GitHub" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<ul>
+<li>Give a brief overview of GitHub Classroom and how to use it.</li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

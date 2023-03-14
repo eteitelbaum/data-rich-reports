@@ -1,5 +1,56 @@
 ---
 title: "Getting Started"
-subtitle: ""
-editor: visual
+format: html
+execute: 
+  echo: true
+  message: false
+  warning: false
 ---
+
+## R and R Studio
+
+{{< video https://www.youtube.com/embed/wo9vZccmqwc 
+    title='Configuring R Studio' >}}
+    
+All of our work for this course will be done in the R language. Please download and install the most recent version of R from the Comprehensive R Archive Network [(CRAN)](https://cran.r-project.org/). 
+
+RStudio is an integrated development environment (IDE) develop by a company named Posit. We will do all of our code editing for this course in RStudio. Please be sure to download and install the most recent version of R Studio [RStudio](https://posit.co/downloads/). 
+
+## Quarto
+
+{{< video https://www.youtube.com/embed/wo9vZccmqwc 
+    title='Your First Quarto Document' >}}
+
+This page was made with [Quarto](https://quarto.org/). Quarto is an open source publishing platform that enables you to integrate text with code. If you have used [R Markdown](https://rmarkdown.rstudio.com/) before then Quarto will look familiar to you because Quarto is the next generation of R Markdown. 
+
+RStudio comes with a version of Quarto already installed, but it can be useful to install the most recent version separately and because doing so will allow you to use Quarto with another IDE like VS Code. You can install the most recent version of Quarto by visiting [this page](https://quarto.org/docs/get-started/) and selecting the version for your operating system.
+
+Once you have R, R Studio and Quarto installed, you are ready to start integrating text and code. 
+
+## GitHub
+
+{{< video https://www.youtube.com/embed/wo9vZccmqwc 
+    title='Getting Started With GitHub' >}}
+
+GitHub is a platform for hosting version control repositories. In this course we will learn to use GitHub to store, manage and collaborate on code. 
+
+One central concept you want to be familiar with is a *repository* or "repo" for short. Repos are where you are going to store the code for individual projects. Repos are essentially folders where code can be stored and then managed by multiple users.
+
+Repos are managed using a version control system named Git. Git allows developers to make and track changes to code. Git also enables users to create branches to work on the code without affecting the main codebase and then merge those changes back into the main branch when they are ready. 
+
+The first thing you are going to want to do is to [register](https://happygitwithr.com/github-acct.html) a GitHub account. From there, you want to [install Git](https://happygitwithr.com/install-git.html) and [initiate Git](https://happygitwithr.com/hello-git.html) using the `usethis` package. 
+
+Next, you need to generate a personal access token [(PAT)](https://happygitwithr.com/https-pat.html) and set your credentials with the `gitcreds` package. 
+
+Now, you can [create a GitHub repo](https://happygitwithr.com/rstudio-git-github.html) and clone it to your computer in RStudio. There a number of ways to clone a repo, but the recommended method for this course involves creating a new project in RStudio and selecting "Version Control" for the method. From there, select "Git", copy the URL from the green "Code" tab in the GitHub repo, and paste it into "Repository URL" field. Next, select the directory where you want the repository to be created and click "create project."   
+
+You will notice that in your new project folder there is a file with an .Rproj extension. The .Rproj file is what tells RStudio which files are associated with the project and it obviates the need to set the working directory. It also makes it possible to share the folder with anyone who is running R and RStudio and have them run your code without having to set a working directory. This is what we refer to as a [project-based workflow](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/) and we will use it for every assignment in this class. 
+
+## GitHub Classroom 
+
+{{< video https://www.youtube.com/embed/wo9vZccmqwc 
+    title='Getting Started With GitHub' >}}
+
+- Give a brief overview of GitHub Classroom and how to use it. 
+
+
