@@ -8,4 +8,7 @@ execute:
   warning: false
 ---
 
-change module page
+## Uploading a .csv file
+
+{{< video https://www.youtube.com/embed/wo9vZccmqwc title='Configuring R Studio' >}}
+
