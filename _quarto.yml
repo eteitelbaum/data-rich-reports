@@ -7,7 +7,6 @@ website:
   description: "Homepage for PSC/DATS 2102, George Washington University."
   site-url: "https://dataviz-gwu.rocks"
   repo-url: "https://github.com/eteitelbaum/dataviz-summer-2023"
-  repo-branch: "master"
   repo-actions: [edit, issue]
   open-graph: true
   favicon: "images/logo-placeholder.png"
