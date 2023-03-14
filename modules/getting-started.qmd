@@ -7,7 +7,7 @@ execute:
   warning: false
 ---
 
-## R and R Studio
+## R and RStudio
 
 {{< video https://www.youtube.com/embed/wo9vZccmqwc 
     title='Configuring R Studio' >}}
