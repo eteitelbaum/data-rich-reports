@@ -9,51 +9,51 @@ execute:
 
 ## R and RStudio
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc 
-    title='Configuring R Studio' >}}
-    
-All of our work for this course will be done in the R language. Please download and install the most recent version of R from the Comprehensive R Archive Network [(CRAN)](https://cran.r-project.org/). 
+{{< video https://www.youtube.com/embed/wo9vZccmqwc title='Configuring R Studio' >}}
 
-RStudio is an integrated development environment (IDE) develop by a company named Posit. We will do all of our code editing for this course in RStudio. Please be sure to download and install the most recent version of R Studio [RStudio](https://posit.co/downloads/). 
+All of our work for this course will be done in the R language. Please download and install the most recent version of R from the Comprehensive R Archive Network [(CRAN)](https://cran.r-project.org/).
+
+RStudio is an integrated development environment (IDE) develop by a company named Posit. We will do all of our code editing for this course in RStudio. Please be sure to download and install the most recent version of R Studio [RStudio](https://posit.co/downloads/).
 
 ## Quarto
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc 
-    title='Your First Quarto Document' >}}
+{{< video https://www.youtube.com/embed/wo9vZccmqwc title='Your First Quarto Document' >}}
 
-This page was made with [Quarto](https://quarto.org/). Quarto is an open source publishing platform that enables you to integrate text with code. If you have used [R Markdown](https://rmarkdown.rstudio.com/) before then Quarto will look familiar to you because Quarto is the next generation of R Markdown. 
+Once you have R, R Studio and Quarto installed, you are ready to start integrating text and code with [Quarto](https://quarto.org/). Quarto is an open source publishing platform that enables you to integrate text with code. If you have used [R Markdown](https://rmarkdown.rstudio.com/) before then Quarto will look familiar to you because Quarto is the next generation of R Markdown.
 
 RStudio comes with a version of Quarto already installed, but it can be useful to install the most recent version separately and because doing so will allow you to use Quarto with another IDE like VS Code. You can install the most recent version of Quarto by visiting [this page](https://quarto.org/docs/get-started/) and selecting the version for your operating system.
 
-Once you have R, R Studio and Quarto installed, you are ready to start integrating text and code. Try opening a Quarto document, give it a title and render it as html (save it on your desktop for now). It should open up in a browser. Now try changing the format from `html` to `pdf` and render it again. A .pdf document should open up. 
+Now take a little time to create a Quarto project in R Studio and make sure everything is working properly. But before you get started, create a new folder(directory) for this course on your computer somewhere. Once that is done, go to **File** and select **New Project**. Then select **Quarto Project** and name the project something like "test-project" in the "Directory name:" field. Next, select **Browse** and navigate to the folder that you created for this course. Select **Create Project**. 
 
-If you like, you can take a few minutes and try changing some of the code in the YAML header or the R code chunks embedded in the document to see how things work. Next, take some time to get familiar with the [Guide](https://quarto.org/docs/guide/) and [Reference](https://quarto.org/docs/reference/) sections of the Quarto website. Then take a look at the [gallery](https://quarto.org/docs/gallery/) so that you can get an idea of the kinds of things you can produce with Quarto.
+You will notice that in your new project folder there is a file with an .Rproj extension. The .Rproj file is what tells RStudio which files are associated with the project and it obviates the need to set the working directory. It also makes it possible to share the folder with anyone who is running R and RStudio and have them run your code without having to set a working directory. This is what we refer to as a [project-based workflow](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/) and we will use it for every assignment in this class.
+
+Now try rendering the document with the **Render** toggle button. By default, Quarto renders an .html file that it will open in a browser and save to your project folder. Now try changing the format from `html` to `pdf` by inserting `format: pdf` in the YAML header and rendering it again. A .pdf document should open up.
+
+Now take a few minutes and try changing more of the code in the YAML header. You can try changing the title, adding a subtitle (`subtitle:`) or changing the [execution options](https://quarto.org/docs/computations/execution-options.html). By default, Quarto uses the [visual editor](https://quarto.org/docs/visual-editor/) but behind the scenes it is using Markdown. Try and edit some text using the toggle buttons available in the visual editor and then switch to **Source** to view the underlying **Markdown** code. Play with the R code chunks embedded in the document or try adding new code chunks.
+
+Hopefully you have some experience writing in Markdown, which is a lightweight markup language that enables you to format plaintext files. If you have not used Markdown, or if your memory is hazy, don't worry: it is really easy to learn. Have a look at this Markdown [cheat sheet](https://www.markdownguide.org/cheat-sheet/) and try to familiarize yourself with its basic syntax. 
+
+Finally, take some time to get familiar with the [Guide](https://quarto.org/docs/guide/) and [Reference](https://quarto.org/docs/reference/) sections of the Quarto website. Then take a look at the [gallery](https://quarto.org/docs/gallery/) so that you can get an idea of the kinds of things you can produce with Quarto. 
 
 ## GitHub
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc 
-    title='Getting Started With GitHub' >}}
+{{< video https://www.youtube.com/embed/wo9vZccmqwc title='Getting Started With GitHub' >}}
 
-GitHub is a platform for hosting version control repositories. In this course we will learn to use GitHub to store, manage and collaborate on code. 
+GitHub is a platform for hosting version control repositories. In this course we will learn to use GitHub to store, manage and collaborate on code.
 
-One central concept you want to be familiar with is a *repository* or "repo" for short. Repos are essentially folders where code can be stored and then accessed and changed by multiple users. All of the assignments for this course will be managed in repos. 
+One central concept you want to be familiar with is a *repository* or "repo" for short. Repos are essentially folders where code can be stored and then accessed and changed by multiple users. All of the assignments for this course will be managed in repos.
 
-GitHub repos are managed using a version control system named Git. Git allows developers to make and track changes to the code stored in the repo. Git also enables users to create branches to work on the code without affecting the main codebase and then merge those changes back into the main branch when they are ready. 
+GitHub repos are managed using a version control system named Git. Git allows developers to make and track changes to the code stored in the repo. Git also enables users to create branches to work on the code without affecting the main codebase and then merge those changes back into the main branch when they are ready.
 
-The first thing you are going to want to do is to [register](https://happygitwithr.com/github-acct.html) a GitHub account. From there, you want to [install Git](https://happygitwithr.com/install-git.html) and [initiate Git](https://happygitwithr.com/hello-git.html) using the `usethis` package. 
+The first thing you are going to want to do is to [register](https://happygitwithr.com/github-acct.html) a GitHub account. From there, you want to [install Git](https://happygitwithr.com/install-git.html) and [initiate Git](https://happygitwithr.com/hello-git.html) using the `usethis` package.
 
-Next, you need to generate a personal access token [(PAT)](https://happygitwithr.com/https-pat.html) and set your credentials with the `gitcreds` package. 
+Next, you need to generate a personal access token [(PAT)](https://happygitwithr.com/https-pat.html) and set your credentials with the `gitcreds` package.
 
-Now, you can [create a GitHub repo](https://happygitwithr.com/rstudio-git-github.html) and clone it to your computer in RStudio. There a number of ways to clone a repo, but the recommended method for this course involves creating a new project in RStudio and selecting "Version Control" for the method. From there, select "Git", copy the URL from the green "Code" tab in the GitHub repo, and paste it into "Repository URL" field. Next, select the directory where you want the repository to be created and click "create project."   
+Now, you can [create a GitHub repo](https://happygitwithr.com/rstudio-git-github.html) and clone it to your computer in RStudio. There a number of ways to clone a repo, but the recommended method for this course involves creating a new project in RStudio and selecting "Version Control" for the method (instead of "New Directory" as we did before). From there, select "Git", copy the URL from the green "Code" tab in the GitHub repo, and paste it into "Repository URL" field. Next, select the directory where you want the repository to be created and click "create project."
 
-You will notice that in your new project folder there is a file with an .Rproj extension. The .Rproj file is what tells RStudio which files are associated with the project and it obviates the need to set the working directory. It also makes it possible to share the folder with anyone who is running R and RStudio and have them run your code without having to set a working directory. This is what we refer to as a [project-based workflow](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/) and we will use it for every assignment in this class. 
+## GitHub Classroom
 
-## GitHub Classroom 
+{{< video https://www.youtube.com/embed/wo9vZccmqwc title='Getting Started With GitHub' >}}
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc 
-    title='Getting Started With GitHub' >}}
-
-- Give a brief overview of GitHub Classroom and how to use it. 
-- Perhaps have students download a mock assignment to illustrate how it works. 
-
-
+-   Give a brief overview of GitHub Classroom and how to use it.
+-   Perhaps have students download a mock assignment to illustrate how it works.
