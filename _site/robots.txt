@@ -1,1 +1,1 @@
-Sitemap: https://dataviz.rocks/sitemap.xml
+Sitemap: https://dataviz-gwu.rocks/sitemap.xml
