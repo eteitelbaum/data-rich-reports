@@ -15,9 +15,9 @@ website:
   page-footer:
     right: "This page is built with [Quarto](https://quarto.org/). 👷🛠️"
     left: "&copy; Copyright 2023, [Emmanuel Teitelbaum](https://emmanuel.teitelbaum.com)"
-    background: "#0002FF"
+    background: "#1F45FC"
   sidebar:
-    background: "#0002FF"
+    background: "#1F45FC"
     logo: "images/logo-placeholder.png"
     pinned: true
     align: center
