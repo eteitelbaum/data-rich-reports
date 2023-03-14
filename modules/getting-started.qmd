@@ -25,7 +25,9 @@ This page was made with [Quarto](https://quarto.org/). Quarto is an open source 
 
 RStudio comes with a version of Quarto already installed, but it can be useful to install the most recent version separately and because doing so will allow you to use Quarto with another IDE like VS Code. You can install the most recent version of Quarto by visiting [this page](https://quarto.org/docs/get-started/) and selecting the version for your operating system.
 
-Once you have R, R Studio and Quarto installed, you are ready to start integrating text and code. 
+Once you have R, R Studio and Quarto installed, you are ready to start integrating text and code. Try opening a Quarto document, give it a title and render it as html (save it on your desktop for now). It should open up in a browser. Now try changing the format from `html` to `pdf` and render it again. A .pdf document should open up. 
+
+If you like, you can take a few minutes and try changing some of the code in the YAML header or the R code chunks embedded in the document to see how things work. Next, take some time to get familiar with the [Guide](https://quarto.org/docs/guide/) and [Reference](https://quarto.org/docs/reference/) sections of the Quarto website. Then take a look at the [gallery](https://quarto.org/docs/gallery/) so that you can get an idea of the kinds of things you can produce with Quarto.
 
 ## GitHub
 
@@ -52,5 +54,6 @@ You will notice that in your new project folder there is a file with an .Rproj e
     title='Getting Started With GitHub' >}}
 
 - Give a brief overview of GitHub Classroom and how to use it. 
+- Perhaps have students download a mock assignment to illustrate how it works. 
 
 
