@@ -34,9 +34,9 @@ Once you have R, R Studio and Quarto installed, you are ready to start integrati
 
 GitHub is a platform for hosting version control repositories. In this course we will learn to use GitHub to store, manage and collaborate on code. 
 
-One central concept you want to be familiar with is a *repository* or "repo" for short. Repos are where you are going to store the code for individual projects. Repos are essentially folders where code can be stored and then managed by multiple users.
+One central concept you want to be familiar with is a *repository* or "repo" for short. Repos are essentially folders where code can be stored and then accessed and changed by multiple users. All of the assignments for this course will be managed in repos. 
 
-Repos are managed using a version control system named Git. Git allows developers to make and track changes to code. Git also enables users to create branches to work on the code without affecting the main codebase and then merge those changes back into the main branch when they are ready. 
+GitHub repos are managed using a version control system named Git. Git allows developers to make and track changes to the code stored in the repo. Git also enables users to create branches to work on the code without affecting the main codebase and then merge those changes back into the main branch when they are ready. 
 
 The first thing you are going to want to do is to [register](https://happygitwithr.com/github-acct.html) a GitHub account. From there, you want to [install Git](https://happygitwithr.com/install-git.html) and [initiate Git](https://happygitwithr.com/hello-git.html) using the `usethis` package. 
 
