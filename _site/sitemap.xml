@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dataviz.rocks/index.html</loc>
-    <lastmod>2023-03-14T14:17:45.151Z</lastmod>
+    <lastmod>2023-03-14T14:33:05.429Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz.rocks/about.html</loc>
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://dataviz.rocks/course-links.html</loc>
-    <lastmod>2023-03-14T14:17:47.186Z</lastmod>
+    <lastmod>2023-03-14T14:33:07.577Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz.rocks/course-support.html</loc>
@@ -34,11 +34,11 @@
   </url>
   <url>
     <loc>https://dataviz.rocks/modules/module-1.1.html</loc>
-    <lastmod>2023-03-14T14:20:15.908Z</lastmod>
+    <lastmod>2023-03-14T14:27:05.029Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz.rocks/modules/module-1.2.html</loc>
-    <lastmod>2023-02-03T19:23:04.163Z</lastmod>
+    <lastmod>2023-03-14T14:23:54.685Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz.rocks/modules/module-2.1.html</loc>
@@ -110,6 +110,6 @@
   </url>
   <url>
     <loc>https://dataviz.rocks/modules/getting-started.html</loc>
-    <lastmod>2023-03-14T14:20:13.117Z</lastmod>
+    <lastmod>2023-03-14T14:29:34.291Z</lastmod>
   </url>
 </urlset>

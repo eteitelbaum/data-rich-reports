@@ -6,6 +6,5 @@ execute:
   echo: true
   message: false
   warning: false
-  link-external-newwindow: true
 ---
 
