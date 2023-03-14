@@ -1,0 +1,14 @@
+{
+  "hash": "a1abfb9d32b5319e83738ed016915e11",
+  "result": {
+    "markdown": "---\ntitle: \"Module 1.1\"\nsubtitle: \"Working With Data\"\nformat: html\nexecute: \n  echo: true\n  message: false\n  warning: false\n---\n\n\n## Pre-work\n\nAt this point you should already have installed R, R Studio the Tidyverse collection of packages (see [getting started](/modules/getting-started.html)). In this module, we will be using the `readr`, `readxl` and `dplyr` from the Tidyverse.\n\nYou will also need to install the `vdemdta` package which we will use to interface with the V-Dem Institute's API. Because this package is not on the CRAN Network, you will have to do a couple of extra steps. First, install the devtools package by typing `install.packages(\"devtools\")` in your console. Next, use devtools to install the `vdemdata` package directly from GitHub. Type `devtools::install_github(\"vdeminstitute/vdemdata\")` in your console. \n\nNow clone [the repo]() for this module. Then open the **module-1.1.qmd** file and load the packages: \n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(vdemdata)\n```\n:::\n\n\n## Reading data from a .csv file\n\n\n{{< video https://www.youtube.com/embed/wo9vZccmqwc title='Reading Data from a .csv File' >}}\n\n\n::: {.cell}\n\n```{.r .cell-code}\ndemdata <- read_csv(data/\"demdata.csv\")\n```\n:::\n\n\n## Reading data from an excel file\n\n\n{{< video https://www.youtube.com/embed/wo9vZccmqwc title='Reading Data from an Excel File' >}}\n\n\n\n\n## Reading data from an API\n\n\n\n## Assignment ",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

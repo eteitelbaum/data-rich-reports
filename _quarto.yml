@@ -28,7 +28,7 @@ website:
       - icon: github
         href: https://classroom.github.com
         text: "Github Classroom"
-      - icon: bootstrap-reboot
+      - icon: r-project # bootstrap-reboot
         href: https://posit.co/download/rstudio-desktop
         text: "RStudio Desktop"
     style: "docked"

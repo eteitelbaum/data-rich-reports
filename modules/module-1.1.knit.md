@@ -8,6 +8,7 @@ execute:
   warning: false
 ---
 
+
 ## Pre-work
 
 At this point you should already have installed R, R Studio the Tidyverse collection of packages (see [getting started](/modules/getting-started.html)). In this module, we will be using the `readr`, `readxl` and `dplyr` from the Tidyverse.
@@ -16,26 +17,36 @@ You will also need to install the `vdemdta` package which we will use to interfa
 
 Now clone [the repo]() for this module. Then open the **module-1.1.qmd** file and load the packages: 
 
-```{r}
-#| eval: false
+
+::: {.cell}
+
+```{.r .cell-code}
 library(tidyverse)
 library(vdemdata)
 ```
+:::
+
 
 ## Reading data from a .csv file
 
+
 {{< video https://www.youtube.com/embed/wo9vZccmqwc title='Reading Data from a .csv File' >}}
 
-```{r}
-#| label: read_csv
-#| eval: false
 
+::: {.cell}
+
+```{.r .cell-code}
 demdata <- read_csv(data/"demdata.csv")
 ```
+:::
+
 
 ## Reading data from an excel file
 
+
 {{< video https://www.youtube.com/embed/wo9vZccmqwc title='Reading Data from an Excel File' >}}
+
+
 
 
 ## Reading data from an API

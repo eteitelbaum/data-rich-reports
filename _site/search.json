@@ -67,7 +67,7 @@
     "href": "modules/getting-started.html",
     "title": "Getting Started",
     "section": "",
-    "text": "All of our work for this course will be done in the R language. Please download and install the most recent version of R from the Comprehensive R Archive Network (CRAN).\nRStudio is an integrated development environment (IDE) develop by a company named Posit. We will do all of our code editing for this course in RStudio. Please be sure to download and install the most recent version of R Studio RStudio.\nWe are going to be using a number of R packages throughout the course. One essential set of packages are those that comprise the Tidyverse, but especially readr, dplyr, ggplot2 and tidyr. You can install the entire Tidyverse collection of packages by typing `install.packages(“tidyverse”) in your console. We will talk about these packages in detail as we go through the course, but have a look at this basic description now to gain some basic familiarity."
+    "text": "All of our work for this course will be done in the R language. Please download and install the most recent version of R from the Comprehensive R Archive Network (CRAN).\nRStudio is an integrated development environment (IDE) develop by a company named Posit. We will do all of our code editing for this course in RStudio. Please be sure to download and install the most recent version of R Studio RStudio.\nWe are going to be using a number of R packages throughout the course. One essential set of packages are those that comprise the Tidyverse, but especially readr, dplyr, ggplot2 and tidyr. You can install the entire Tidyverse collection of packages by typing install.packages(\"tidyverse\") in your console. We will talk about these packages in detail as we go through the course, but have a look at this basic description now to gain some basic familiarity."
   },
   {
     "objectID": "modules/getting-started.html#rstudio",
@@ -102,6 +102,34 @@
     "href": "modules/module-1.1.html",
     "title": "Module 1.1",
     "section": "",
-    "text": "change module page"
+    "text": "At this point you should already have installed R, R Studio the Tidyverse collection of packages (see getting started). In this module, we will be using the readr, readxl and dplyr from the Tidyverse.\nYou will also need to install the vdemdta package which we will use to interface with the V-Dem Institute’s API. Because this package is not on the CRAN Network, you will have to do a couple of extra steps. First, install the devtools package by typing install.packages(\"devtools\") in your console. Next, use devtools to install the vdemdata package directly from GitHub. Type devtools::install_github(\"vdeminstitute/vdemdata\") in your console.\nNow clone the repo for this module. Then open the module-1.1.qmd file and load the packages:\n\nlibrary(tidyverse)\nlibrary(vdemdata)"
+  },
+  {
+    "objectID": "modules/module-1.1.html#reading-data-from-an-excel-file",
+    "href": "modules/module-1.1.html#reading-data-from-an-excel-file",
+    "title": "Module 1.1",
+    "section": "Reading data from an excel file",
+    "text": "Reading data from an excel file"
+  },
+  {
+    "objectID": "modules/module-1.1.html#reading-data-from-a-.csv-file",
+    "href": "modules/module-1.1.html#reading-data-from-a-.csv-file",
+    "title": "Module 1.1",
+    "section": "Reading data from a .csv file",
+    "text": "Reading data from a .csv file\n\n\ndemdata <- read_csv(data/\"demdata.csv\")"
+  },
+  {
+    "objectID": "modules/module-1.1.html#reading-data-from-an-api",
+    "href": "modules/module-1.1.html#reading-data-from-an-api",
+    "title": "Module 1.1",
+    "section": "Reading data from an API",
+    "text": "Reading data from an API"
+  },
+  {
+    "objectID": "modules/module-1.1.html#assignment",
+    "href": "modules/module-1.1.html#assignment",
+    "title": "Module 1.1",
+    "section": "Assignment",
+    "text": "Assignment"
   }
 ]
