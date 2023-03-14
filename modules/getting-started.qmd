@@ -5,7 +5,7 @@ execute:
   echo: true
   message: false
   warning: false
-  link-external-newwindow: true
+link-external-newwindow: true
 ---
 
 ## R and RStudio
