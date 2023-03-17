@@ -33,7 +33,8 @@ Also, we will load the packages as we go along in various code chunks. But it is
 
 In this module, we are going to work with a "flat file" (.csv) that we will download from the World Bank's [Data Bank](https://databank.worldbank.org/). We are going to encounter many problems with these data that we will rectify using various R packages that I will introduce along the way. The idea is to take this file in its current state and transform it into a [tidy](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html) dataset where each column represents a variable, each row represents an observation, and each cell represents a single value.
 
-## Step 1: Download data from the World Bank
+
+## Downloading World Bank data into a flat file
 
 {{< video https://www.youtube.com/embed/wo9vZccmqwc title='Downloading Data from the World Bank' >}}
 
@@ -45,7 +46,8 @@ Next, under Series, search for "labor force participation" and find labor force 
 
 Now go to Time and select the years from the last 50 years. Click Apply Changes, go to Download Options and download as a .csv file. Place the .csv file in the data directory that you created for this module. Save it as "messy_wb_data.csv" or something like that. 
 
-## Step 2: Read the .csv file
+
+## Reading data from a flat file
 
 {{< video https://www.youtube.com/embed/wo9vZccmqwc title='Reading Data From a .csv File' >}}
 
@@ -56,7 +58,6 @@ Now we are going to read this messy World Bank data into R using the `read_csv()
 ::: {.callout-note collapse="true"}
 While comma delimited files are the most common kind of flat file, `readr` includes functions for parsing files with a wide range of delimiters including tabs (`read_tsv()`), semicolons (`read_csv2()`) and white spaces (`read_table()`). There is also a Tidyverse package for reading in Excel files called [readxl](https://readxl.tidyverse.org/).
 :::
-
 
 ```{r}
 #| label: step2
@@ -69,7 +70,8 @@ wb_data_messy <- read_csv("data/messy_wb_data.csv")
 glimpse(wb_data_messy)
 ```
 
-## Step 3: Reshape the data
+
+## Reshaping data
 
 {{< video https://www.youtube.com/embed/wo9vZccmqwc title='Reshaping Data With `pivot_longer()`' >}}
 
@@ -114,7 +116,7 @@ Notice that when we specify the years in our `pivot_longer()` call we encapsulat
 :::
 
 
-## Step 4: Fix year and change variables to numeric
+## Truncating strings and changing variable types
 
 {{< video https://www.youtube.com/embed/wo9vZccmqwc title='Truncating Variable Names and Changing to Numeric' >}}
 
@@ -134,7 +136,8 @@ wb_data <- wb_data |>
 glimpse(wb_data)
 ```
 
-## Step 5: Clean the variable names
+
+## Cleaning variable names
 
 {{< video https://www.youtube.com/embed/wo9vZccmqwc title='Clean Variable Names With `janitor`' >}}
 

@@ -345,11 +345,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#step-1-download-data-from-the-world-bank" id="toc-step-1-download-data-from-the-world-bank" class="nav-link" data-scroll-target="#step-1-download-data-from-the-world-bank">Step 1: Download data from the World Bank</a></li>
-  <li><a href="#step-2-read-the-.csv-file" id="toc-step-2-read-the-.csv-file" class="nav-link" data-scroll-target="#step-2-read-the-.csv-file">Step 2: Read the .csv file</a></li>
-  <li><a href="#step-3-reshape-the-data" id="toc-step-3-reshape-the-data" class="nav-link" data-scroll-target="#step-3-reshape-the-data">Step 3: Reshape the data</a></li>
-  <li><a href="#step-4-fix-year-and-change-variables-to-numeric" id="toc-step-4-fix-year-and-change-variables-to-numeric" class="nav-link" data-scroll-target="#step-4-fix-year-and-change-variables-to-numeric">Step 4: Fix year and change variables to numeric</a></li>
-  <li><a href="#step-5-clean-the-variable-names" id="toc-step-5-clean-the-variable-names" class="nav-link" data-scroll-target="#step-5-clean-the-variable-names">Step 5: Clean the variable names</a></li>
+  <li><a href="#downloading-world-bank-data-into-a-flat-file" id="toc-downloading-world-bank-data-into-a-flat-file" class="nav-link" data-scroll-target="#downloading-world-bank-data-into-a-flat-file">Downloading World Bank data into a flat file</a></li>
+  <li><a href="#reading-data-from-a-flat-file" id="toc-reading-data-from-a-flat-file" class="nav-link" data-scroll-target="#reading-data-from-a-flat-file">Reading data from a flat file</a></li>
+  <li><a href="#reshaping-data" id="toc-reshaping-data" class="nav-link" data-scroll-target="#reshaping-data">Reshaping data</a></li>
+  <li><a href="#truncating-strings-and-changing-variable-types" id="toc-truncating-strings-and-changing-variable-types" class="nav-link" data-scroll-target="#truncating-strings-and-changing-variable-types">Truncating strings and changing variable types</a></li>
+  <li><a href="#cleaning-variable-names" id="toc-cleaning-variable-names" class="nav-link" data-scroll-target="#cleaning-variable-names">Cleaning variable names</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/eteitelbaum/dataviz-summer-2023/edit/main/modules/module-1.1.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/eteitelbaum/dataviz-summer-2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -413,16 +413,16 @@ Note
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>In this module, we are going to work with a “flat file” (.csv) that we will download from the World Bank’s <a href="https://databank.worldbank.org/">Data Bank</a>. We are going to encounter many problems with these data that we will rectify using various R packages that I will introduce along the way. The idea is to take this file in its current state and transform it into a <a href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html">tidy</a> dataset where each column represents a variable, each row represents an observation, and each cell represents a single value.</p>
 </section>
-<section id="step-1-download-data-from-the-world-bank" class="level2">
-<h2 class="anchored" data-anchor-id="step-1-download-data-from-the-world-bank">Step 1: Download data from the World Bank</h2>
+<section id="downloading-world-bank-data-into-a-flat-file" class="level2">
+<h2 class="anchored" data-anchor-id="downloading-world-bank-data-into-a-flat-file">Downloading World Bank data into a flat file</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="Downloading Data from the World Bank" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>Go to the World Development Indicators <a href="https://databank.worldbank.org/source/world-development-indicators">portal</a> at the World Bank’s Data Bank.</p>
 <p>Under Countries, select the Countries tab and then select the little check mark ☑️ to select all of the countries. Be sure to select the Countries tab first, though, or you will also be downloading aggregate data for regions and groups of countries.</p>
 <p>Next, under Series, search for “labor force participation” and find labor force participation rates for women ages 15-64 (ILO modeled estimates). Check that series.</p>
 <p>Now go to Time and select the years from the last 50 years. Click Apply Changes, go to Download Options and download as a .csv file. Place the .csv file in the data directory that you created for this module. Save it as “messy_wb_data.csv” or something like that.</p>
 </section>
-<section id="step-2-read-the-.csv-file" class="level2">
-<h2 class="anchored" data-anchor-id="step-2-read-the-.csv-file">Step 2: Read the .csv file</h2>
+<section id="reading-data-from-a-flat-file" class="level2">
+<h2 class="anchored" data-anchor-id="reading-data-from-a-flat-file">Reading data from a flat file</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="Reading Data From a .csv File" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>Now we are going to read this messy World Bank data into R using the <code>read_csv()</code> function from the <code>readr</code> package. <a href="https://readr.tidyverse.org/">readr</a> is a collection of functions that parses data from a flat file into a <em>tibble</em>, the modern Tidyverse version of a data frame. After we have read the data into R, we are going to have a look at it with the <a href="https://dplyr.tidyverse.org/reference/glimpse.html">glimpse()</a> function from the <a href="https://dplyr.tidyverse.org/index.html">dplyr</a> package.</p>
 <p><code>glimpse()</code> shows us a list of the columns in the along with their type (e.g.&nbsp;character, double, etc.) and a few rows’ worth of data.</p>
@@ -509,8 +509,8 @@ $ `2021 [YR2021]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", ".
 </div>
 </div>
 </section>
-<section id="step-3-reshape-the-data" class="level2">
-<h2 class="anchored" data-anchor-id="step-3-reshape-the-data">Step 3: Reshape the data</h2>
+<section id="reshaping-data" class="level2">
+<h2 class="anchored" data-anchor-id="reshaping-data">Reshaping data</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="Reshaping Data With pivot_longer()" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>There are a few things about the data here that make it messy. First, in order for the data to be tidy, we want each column to represent a variable and each row to represent an observation.</p>
 <p>But here we see the reverse: the data are in <em>wide form</em>, meaning that each column represents a year and each row represents a country. This entails that each row represents <em>multiple</em> observations in that we have data for multiple years for each row.</p>
@@ -571,8 +571,8 @@ Spaces in Variable Names
 </div>
 </div>
 </section>
-<section id="step-4-fix-year-and-change-variables-to-numeric" class="level2">
-<h2 class="anchored" data-anchor-id="step-4-fix-year-and-change-variables-to-numeric">Step 4: Fix year and change variables to numeric</h2>
+<section id="truncating-strings-and-changing-variable-types" class="level2">
+<h2 class="anchored" data-anchor-id="truncating-strings-and-changing-variable-types">Truncating strings and changing variable types</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="Truncating Variable Names and Changing to Numeric" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>Now that our data are transposed, we can start to work on some other key issues. Notice that the year is stored in the weird way in which it was imported–as a character (or string) with both the year and the year in brackets, e.g.&nbsp;1972 [YR1972]. Notice that <code>flfp</code> is also stored as a character whereas it should be numeric.</p>
 <p>To fix this, we will use the <a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a> and <code>mutate_at()</code> functions from <code>dplyr</code>. <code>mutate()</code> is used to transform variables and to create new ones while <code>mutate_at()</code> allow us to transform multiple columns at once.</p>
@@ -595,8 +595,8 @@ $ flfp           &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,
 </div>
 </div>
 </section>
-<section id="step-5-clean-the-variable-names" class="level2">
-<h2 class="anchored" data-anchor-id="step-5-clean-the-variable-names">Step 5: Clean the variable names</h2>
+<section id="cleaning-variable-names" class="level2">
+<h2 class="anchored" data-anchor-id="cleaning-variable-names">Cleaning variable names</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="Clean Variable Names With janitor" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>The last thing we are going to do is to fix the variable names. Specifically, we want to remove the spaces from the remaining variables and conver them from title case to snake case. To do this, we will use the <code>clean_names()</code> function from the <code>janitor</code> package.</p>
 <p>As a final step, we can export our clean data to a new .csv file with the <code>write.csv()</code> function from <code>readr</code>.</p>

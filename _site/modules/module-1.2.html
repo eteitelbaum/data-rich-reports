@@ -345,9 +345,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#wrangle-wb-data" id="toc-wrangle-wb-data" class="nav-link" data-scroll-target="#wrangle-wb-data">Wrangle WB data</a></li>
+  <li><a href="#downloading-data-from-an-api" id="toc-downloading-data-from-an-api" class="nav-link" data-scroll-target="#downloading-data-from-an-api">Downloading data from an API</a></li>
   <li><a href="#filter-observations-select-and-create-new-variables" id="toc-filter-observations-select-and-create-new-variables" class="nav-link" data-scroll-target="#filter-observations-select-and-create-new-variables">Filter observations, select and create new variables</a></li>
-  <li><a href="#add-country-code-to-democracy-tibble" id="toc-add-country-code-to-democracy-tibble" class="nav-link" data-scroll-target="#add-country-code-to-democracy-tibble">Add country code to democracy tibble</a></li>
+  <li><a href="#add-country-code-to-democracy-data-frame" id="toc-add-country-code-to-democracy-data-frame" class="nav-link" data-scroll-target="#add-country-code-to-democracy-data-frame">Add country code to democracy data frame</a></li>
   <li><a href="#merge-two-datasets" id="toc-merge-two-datasets" class="nav-link" data-scroll-target="#merge-two-datasets">Merge two datasets</a></li>
   <li><a href="#group-summarize-and-arrange-summarize-by-region" id="toc-group-summarize-and-arrange-summarize-by-region" class="nav-link" data-scroll-target="#group-summarize-and-arrange-summarize-by-region">Group, summarize and arrange (summarize by region)</a></li>
   </ul>
@@ -390,8 +390,8 @@ Prework
 <li><p>Install the <code>wbstats</code> and <code>countrycode</code> packages:</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pkg_list <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"wbstats"</span>, <span class="st">"countrycode"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(pkg_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pkg_list <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"wbstats"</span>, <span class="st">"countrycode"</span>) <span class="co"># create a list of packages</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(pkg_list) <span class="co"># install the packages</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Generate a quarto document named “module-1.2.qmd” in your modules project folder so that you can code along with me</li>
@@ -401,27 +401,54 @@ Prework
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>In this module working, we are going to be working with data from <a href="https://en.wikipedia.org/wiki/API">APIs</a> instead of flat files. As we saw in the last lesson, importing and wrangling data from flat files can be a messy process. So when clean data are available for download, we want to be able to take advantage of that. Luckily there are some pretty good R packages that allow us to extract data from open source APIs. We are going to be working with two of those in this module (<code>wbstats</code> and <code>vdemdata</code>) and some others later in the course.</p>
-<p>Along the way, we are going to continue to extend our data wrangling skills. We will learn some new functions in <code>dplyr</code> and <code>janitor</code> that will help us get our data into usable form for analysis. We are also going to cover in depth some common data science workflows, including filtering observations, selecting variables, merging two data sets, summarizing data for different groups, and sorting data based on column values.</p>
+<p>Along the way, we are going to continue to extend our data wrangling skills. We will learn some new functions in <code>dplyr</code> and <code>janitor</code> that will help us get our data into a usable form for analysis. We are also going to cover in depth some common data science workflows, including filtering observations, selecting variables, merging two data sets, summarizing data for different groups, and sorting data based on column values.</p>
+<p>The end goal is to have a nice dataset with a combination of World Bank and <a href="https://www.v-dem.net/">V-Dem Institute</a> data that we can use to illustrate the relationship between the economy, democracy and women’s empowerment.</p>
 </section>
-<section id="wrangle-wb-data" class="level2">
-<h2 class="anchored" data-anchor-id="wrangle-wb-data">Wrangle WB data</h2>
-<p>Picking up where we left off… but let’s add one more variable…and use lubridate to specify the most recent date.</p>
+<section id="downloading-data-from-an-api" class="level2">
+<h2 class="anchored" data-anchor-id="downloading-data-from-an-api">Downloading data from an API</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="Downloading Data from the World Bank" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>You will no doubt remember the messy data that we downloaded from the World Bank’s website in <a href="../modules/module-1.1.htmll#step-1-download-data-from-the-world-bank">module 1.1</a>. Usually it is much easier to download data from an API as opposed to wrangling it from a .csv file. In this example, I want to illustrate that for you by having you download the same data that we worked with in the last module using the <a href="https://cran.r-project.org/web/packages/wbstats/vignettes/wbstats.html">wbstats</a> package.</p>
+<p>First we are going to load the <code>wbstats</code> along with <code>dplyr</code> and <code>janitor</code>. The <code>wb_data()</code> function is the one we need to download the data from the World Bank’s API. <code>wb_data()</code> requires to main sets of arguments: a list of indicators that we want to use and the period for which we want to download data. The period can can be entered as two separate arguments (e.g.&nbsp;<code>start_date</code> and <code>end_date</code>). But for this exercise we will specify the number of years we want to download using <code>mrv</code> which stands for “most recent value.”</p>
+<p>In addition to female labor force participation, let’s also grab the percentage of seats in parliament held by women. We will store that list of objects in a vector called <code>women_emp</code> to signify that these indicators are related to women’s empowerment. We will try to download 50 years of data for these two variables.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If you want to search World Bank data for additional indicators, you can use the <code>wb_search()</code> function. For example, if we wanted to find all of the indicators associated with female labor force participation, we could run:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wbstats) </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>indicators <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">flfp =</span> <span class="st">"SL.TLF.CACT.FE.ZS"</span>, <span class="at">women_rep =</span> <span class="st">"SG.GEN.PARL.ZS"</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>women_emp <span class="ot">&lt;-</span> <span class="fu">wb_data</span>(indicators, <span class="at">mrv =</span> <span class="dv">50</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span>iso2c) <span class="sc">|&gt;</span> </span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">year =</span> date) <span class="sc">|&gt;</span> </span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">flfp =</span> <span class="fu">round_to_fraction</span>(flfp, <span class="at">denominator =</span> <span class="dv">100</span>), </span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">women_rep =</span> <span class="fu">round_to_fraction</span>(women_rep, <span class="at">denominator =</span> <span class="dv">100</span>)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(women_emp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>flfp_indicators <span class="ot">&lt;-</span> <span class="fu">wb_search</span>(<span class="st">"female labor force"</span>) <span class="co"># store the list of indicators</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(flfp_indicators, <span class="at">n=</span><span class="dv">26</span>) <span class="co"># view the indicators</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Try searching for some indicators related to a topic you are interested in and see what you get!</p>
+</div>
+</div>
+</div>
+<p>While we are calling <code>wb_data</code> we will go ahead and pipe some additional functions from <code>dplyr</code> and <code>janitor</code> to clean it up. First, we will use <code>select()</code> to eliminate the iso2c variable, which we won’t be needing. Then, we will rename <code>date</code> to <code>year</code>. Then we will use a combination of <code>mutate</code> and <code>round_to_fraction()</code> to round the data to the nearest hundredth.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wbstats) <span class="co"># for downloading WB data</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="co"># for selecting, renaming and mutating</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor) <span class="co"># for rounding</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>indicators <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">flfp =</span> <span class="st">"SL.TLF.CACT.FE.ZS"</span>, <span class="at">women_rep =</span> <span class="st">"SG.GEN.PARL.ZS"</span>) <span class="co"># store indicators</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>women_emp <span class="ot">&lt;-</span> <span class="fu">wb_data</span>(indicators, <span class="at">mrv =</span> <span class="dv">50</span>) <span class="sc">|&gt;</span> <span class="co"># download indicator data for last 50 yrs</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span>iso2c) <span class="sc">|&gt;</span> <span class="co"># drop the iso2c code which we won't be using</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">year =</span> date) <span class="sc">|&gt;</span> <span class="co"># rename date to year </span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">flfp =</span> <span class="fu">round_to_fraction</span>(flfp, <span class="at">denominator =</span> <span class="dv">100</span>), <span class="co"># round to nearest 100th</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">women_rep =</span> <span class="fu">round_to_fraction</span>(women_rep, <span class="at">denominator =</span> <span class="dv">100</span>) </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(women_emp) <span class="co"># view the data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 6,944
 Columns: 5
@@ -432,123 +459,146 @@ $ women_rep &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
 $ flfp      &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</code></pre>
 </div>
 </div>
+<p>Now we have some pretty tidy World Bank data related to Women’s Empowerment without having to do too much work. I am sure you would agree that this is a much more straightforward process than downloading the data and then importing the data as a flat file!</p>
+<p>One thing that becomes very clear here is that <code>wb_data()</code> did not download any data before 1990. It automatically filtered out the years for which all countries had no data. The fact there were no data before 1990 for any of the countries is easily missed when we were simply importing it from a .csv file.</p>
 </section>
 <section id="filter-observations-select-and-create-new-variables" class="level2">
 <h2 class="anchored" data-anchor-id="filter-observations-select-and-create-new-variables">Filter observations, select and create new variables</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="Downloading Data from the World Bank" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>The next thing we want to talk about is how to filter observations and to select new variables. We also delve more into the topic of how to create new variables. To illustrate these concepts, we are going to be working with the <a href="https://www.v-dem.net/data/the-v-dem-dataset/">V-Dem Dataset</a>. The V-Dem offers an R package for downloading its data called <a href="https://github.com/vdeminstitute/vdemdata">vdemdata</a>.</p>
+<p><code>vdemdata</code> is perfect for illustrating the <code>filter()</code> and <code>select()</code> verbs because its main function for downloading the data (<code>vdem</code>) does not take any arguments (it simply downloads the whole dataset). So you have to use R functions to narrow down the variables and years you want to work with.</p>
+<p>While V-Dem has wealth of indicators related to democracy, we are going to focus on the most famous one called the “polyarchy” score. We are also going to download data on per capita GDP and create some indicator variables for region that we will use later on when we summarize the data. Along with those variables, we also want to retain <code>country_name</code>, <code>year</code> and <code>country_id</code> for the purposes of merging these data with our World Bank data.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>While V-Dem has a variable look-up tool (<code>find_var</code>), it does not provide very much information on the variables that the search function returns. Therefore, if you want to use this package for your own research, I highly recommend just going to the <a href="https://www.v-dem.net/documents/24/codebook_v13.pdf">V-Dem codebook</a> and manually grabbing the codes for the indicators that you want to use in your analysis.</p>
+</div>
+</div>
+</div>
+<p>In addition to filtering out years and selecting variables, let’s also create a <code>region</code> coding to facilitate our analysis later on. We will do this by piping in a <code>mutate()</code> call where we use the <a href="https://dplyr.tidyverse.org/reference/case_match.html">case_match()</a> function to change the <code>region</code> from a numeric variable to a string. This will come in handy when we go to visualize the data in future lessons.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vdemdata)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>democracy <span class="ot">&lt;-</span> vdem <span class="sc">|&gt;</span> </span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">1974</span>)  <span class="sc">|&gt;</span> </span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">country =</span> country_name,</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">vdem_ctry_id =</span> country_id, </span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    year, </span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">polyarchy =</span> v2x_polyarchy, </span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_pc =</span> e_gdppc, </span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">region =</span> e_regionpol_6C</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">region =</span> <span class="fu">recode</span>(region, <span class="st">`</span><span class="at">1</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"Eastern Europe"</span>, </span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>                    <span class="st">`</span><span class="at">2</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"Latin America"</span>, </span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>                    <span class="st">`</span><span class="at">3</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"Middle East"</span>, </span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>                    <span class="st">`</span><span class="at">4</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"Africa"</span>, </span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>                    <span class="st">`</span><span class="at">5</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"The West"</span>, </span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>                    <span class="st">`</span><span class="at">6</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"Asia"</span>)</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(democracy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vdemdata) <span class="co"># to download V-Dem data</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>democracy <span class="ot">&lt;-</span> vdem <span class="sc">|&gt;</span> <span class="co"># download the V-Dem dataset</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">1990</span>)  <span class="sc">|&gt;</span> <span class="co"># filter out years less than 1990</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(                  <span class="co"># select (and rename) these variables</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">country =</span> country_name,     <span class="co"># the name before the = sign is the new name  </span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">vdem_ctry_id =</span> country_id,  <span class="co"># the name after the = sign is the old name</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    year, </span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">polyarchy =</span> v2x_polyarchy, </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_pc =</span> e_gdppc, </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">region =</span> e_regionpol_6C</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">region =</span> <span class="fu">case_match</span>(region, <span class="co"># replace the values in region with country names</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Eastern Europe"</span>, <span class="co"># the number on the left of the = sign is the V-Dem region code</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Latin America"</span>, <span class="co"># we are changing the number to the country name on the right </span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">3</span> <span class="sc">~</span> <span class="st">"Middle East"</span>,   <span class="co"># of the equals sign</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Africa"</span>, </span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">5</span> <span class="sc">~</span> <span class="st">"The West"</span>, </span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">6</span> <span class="sc">~</span> <span class="st">"Asia"</span>)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(democracy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 8,182
+<pre><code>Rows: 5,667
 Columns: 6
 $ country      &lt;chr&gt; "Mexico", "Mexico", "Mexico", "Mexico", "Mexico", "Mexico…
 $ vdem_ctry_id &lt;dbl&gt; 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, …
-$ year         &lt;dbl&gt; 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 198…
-$ polyarchy    &lt;dbl&gt; 0.252, 0.252, 0.259, 0.274, 0.297, 0.298, 0.302, 0.304, 0…
-$ gdp_pc       &lt;dbl&gt; 9.189, 9.480, 9.673, 9.914, 10.434, 11.146, 11.865, 12.32…
+$ year         &lt;dbl&gt; 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 199…
+$ polyarchy    &lt;dbl&gt; 0.396, 0.416, 0.439, 0.456, 0.473, 0.485, 0.513, 0.548, 0…
+$ gdp_pc       &lt;dbl&gt; 11.389, 11.635, 11.883, 11.983, 12.043, 11.742, 12.059, 1…
 $ region       &lt;chr&gt; "Latin America", "Latin America", "Latin America", "Latin…</code></pre>
 </div>
 </div>
 </section>
-<section id="add-country-code-to-democracy-tibble" class="level2">
-<h2 class="anchored" data-anchor-id="add-country-code-to-democracy-tibble">Add country code to democracy tibble</h2>
+<section id="add-country-code-to-democracy-data-frame" class="level2">
+<h2 class="anchored" data-anchor-id="add-country-code-to-democracy-data-frame">Add country code to democracy data frame</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(countrycode)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>democracy <span class="ot">&lt;-</span> democracy <span class="sc">|&gt;</span> </span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">iso3c =</span> <span class="fu">countrycode</span>(vdem_ctry_id, <span class="st">"vdem"</span>, <span class="st">"wb"</span>))  <span class="sc">|&gt;</span> </span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(iso3c, <span class="at">.after =</span> vdem_ctry_id)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(democracy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(countrycode)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>democracy <span class="ot">&lt;-</span> democracy <span class="sc">|&gt;</span> </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">iso3c =</span> <span class="fu">countrycode</span>(vdem_ctry_id, <span class="st">"vdem"</span>, <span class="st">"wb"</span>))  <span class="sc">|&gt;</span> </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(iso3c, <span class="at">.after =</span> vdem_ctry_id)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(democracy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 8,182
+<pre><code>Rows: 5,667
 Columns: 7
 $ country      &lt;chr&gt; "Mexico", "Mexico", "Mexico", "Mexico", "Mexico", "Mexico…
 $ vdem_ctry_id &lt;dbl&gt; 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, …
 $ iso3c        &lt;chr&gt; "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "…
-$ year         &lt;dbl&gt; 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 198…
-$ polyarchy    &lt;dbl&gt; 0.252, 0.252, 0.259, 0.274, 0.297, 0.298, 0.302, 0.304, 0…
-$ gdp_pc       &lt;dbl&gt; 9.189, 9.480, 9.673, 9.914, 10.434, 11.146, 11.865, 12.32…
+$ year         &lt;dbl&gt; 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 199…
+$ polyarchy    &lt;dbl&gt; 0.396, 0.416, 0.439, 0.456, 0.473, 0.485, 0.513, 0.548, 0…
+$ gdp_pc       &lt;dbl&gt; 11.389, 11.635, 11.883, 11.983, 12.043, 11.742, 12.059, 1…
 $ region       &lt;chr&gt; "Latin America", "Latin America", "Latin America", "Latin…</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#filter(democracy, is.na(iso3c))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#filter(democracy, is.na(iso3c))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="merge-two-datasets" class="level2">
 <h2 class="anchored" data-anchor-id="merge-two-datasets">Merge two datasets</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>dem_women <span class="ot">&lt;-</span> <span class="fu">left_join</span>(democracy, women_emp, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"iso3c"</span>, <span class="st">"year"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">country =</span> country.x) <span class="sc">|&gt;</span> </span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span>country.y)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dem_women)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>dem_women <span class="ot">&lt;-</span> <span class="fu">left_join</span>(democracy, women_emp, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"iso3c"</span>, <span class="st">"year"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">country =</span> country.x) <span class="sc">|&gt;</span> </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span>country.y)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dem_women)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 8,182
+<pre><code>Rows: 5,667
 Columns: 9
 $ country      &lt;chr&gt; "Mexico", "Mexico", "Mexico", "Mexico", "Mexico", "Mexico…
 $ vdem_ctry_id &lt;dbl&gt; 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, …
 $ iso3c        &lt;chr&gt; "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "…
-$ year         &lt;dbl&gt; 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 198…
-$ polyarchy    &lt;dbl&gt; 0.252, 0.252, 0.259, 0.274, 0.297, 0.298, 0.302, 0.304, 0…
-$ gdp_pc       &lt;dbl&gt; 9.189, 9.480, 9.673, 9.914, 10.434, 11.146, 11.865, 12.32…
+$ year         &lt;dbl&gt; 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 199…
+$ polyarchy    &lt;dbl&gt; 0.396, 0.416, 0.439, 0.456, 0.473, 0.485, 0.513, 0.548, 0…
+$ gdp_pc       &lt;dbl&gt; 11.389, 11.635, 11.883, 11.983, 12.043, 11.742, 12.059, 1…
 $ region       &lt;chr&gt; "Latin America", "Latin America", "Latin America", "Latin…
-$ women_rep    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-$ flfp         &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</code></pre>
+$ women_rep    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, 14.20, 17.40, 18.20, 16.00, 1…
+$ flfp         &lt;dbl&gt; 33.94, 34.24, 35.01, 35.85, 36.38, 37.62, 37.69, 39.65, 3…</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(dem_women, <span class="st">"dem_women.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(dem_women, <span class="st">"data/dem_women.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="group-summarize-and-arrange-summarize-by-region" class="level2">
 <h2 class="anchored" data-anchor-id="group-summarize-and-arrange-summarize-by-region">Group, summarize and arrange (summarize by region)</h2>
 <p>Could this one be done with <code>webr</code>?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dem_summary <span class="ot">&lt;-</span> dem_women <span class="sc">|&gt;</span> </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region)  <span class="sc">|&gt;</span> </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">polyarchy =</span> <span class="fu">mean</span>(polyarchy, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_pc =</span> <span class="fu">mean</span>(gdp_pc, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">flfp =</span> <span class="fu">mean</span>(flfp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">women_rep =</span> <span class="fu">mean</span>(women_rep, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(polyarchy)) </span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>dem_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>dem_summary <span class="ot">&lt;-</span> dem_women <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region)  <span class="sc">|&gt;</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">polyarchy =</span> <span class="fu">mean</span>(polyarchy, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_pc =</span> <span class="fu">mean</span>(gdp_pc, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">flfp =</span> <span class="fu">mean</span>(flfp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">women_rep =</span> <span class="fu">mean</span>(women_rep, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(polyarchy)) </span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>dem_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 5
   region         polyarchy gdp_pc  flfp women_rep
   &lt;chr&gt;              &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;
-1 The West           0.857  32.7   52.8     27.8 
-2 Latin America      0.550   8.59  48.0     20.9 
-3 Eastern Europe     0.484  11.8   51.4     17.6 
-4 Asia               0.362   7.78  50.3     14.3 
-5 Africa             0.325   3.92  56.7     17.2 
-6 Middle East        0.219  20.7   26.5      9.95</code></pre>
+1 The West           0.873  37.9   52.8     27.8 
+2 Latin America      0.641   9.61  48.0     20.9 
+3 Eastern Europe     0.538  12.2   51.4     17.6 
+4 Asia               0.408   9.75  50.3     14.3 
+5 Africa             0.393   4.41  56.7     17.2 
+6 Middle East        0.249  21.1   26.5      9.95</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#filter(dem_women, is.na(region))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#filter(dem_women, is.na(region))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

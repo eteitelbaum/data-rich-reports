@@ -21,76 +21,120 @@ execute:
 ```{r}
 #| label: packages
 #| eval: false
-pkg_list <- c("wbstats", "countrycode")
-install.packages(pkg_list)
+pkg_list <- c("wbstats", "countrycode") # create a list of packages
+install.packages(pkg_list) # install the packages
 ```
 
 - Generate a quarto document named "module-1.2.qmd" in your modules project folder so that you can code along with me
 :::
 
+
 ## Overview 
 
 In this module working, we are going to be working with data from [APIs](https://en.wikipedia.org/wiki/API) instead of flat files. As we saw in the last lesson, importing and wrangling data from flat files can be a messy process. So when clean data are available for download, we want to be able to take advantage of that. Luckily there are some pretty good R packages that allow us to extract data from open source APIs. We are going to be working with two of those in this module (`wbstats` and `vdemdata`) and some others later in the course. 
 
-Along the way, we are going to continue to extend our data wrangling skills. We will learn some new functions in `dplyr` and `janitor` that will help us get our data into usable form for analysis. We are also going to cover in depth some common data science workflows, including filtering observations, selecting variables, merging two data sets, summarizing data for different groups, and sorting data based on column values. 
+Along the way, we are going to continue to extend our data wrangling skills. We will learn some new functions in `dplyr` and `janitor` that will help us get our data into a usable form for analysis. We are also going to cover in depth some common data science workflows, including filtering observations, selecting variables, merging two data sets, summarizing data for different groups, and sorting data based on column values. 
 
-## Wrangle WB data
+The end goal is to have a nice dataset with a combination of World Bank and [V-Dem Institute](https://www.v-dem.net/) data that we can use to illustrate the relationship between the economy, democracy and women's empowerment.   
 
-Picking up where we left off... but let's add one more variable...and use lubridate to specify the most recent date. 
+
+## Downloading data from an API
+
+{{< video https://www.youtube.com/embed/wo9vZccmqwc title='Downloading Data from the World Bank' >}}
+
+You will no doubt remember the messy data that we downloaded from the World Bank's website in [module 1.1](/modules/module-1.1.htmll#step-1-download-data-from-the-world-bank). Usually it is much easier to download data from an API as opposed to wrangling it from a .csv file. In this example, I want to illustrate that for you by having you download the same data that we worked with in the last module using the [wbstats](https://cran.r-project.org/web/packages/wbstats/vignettes/wbstats.html) package. 
+
+First we are going to load the `wbstats` along with `dplyr` and `janitor`. The `wb_data()` function is the one we need to download the data from the World Bank's API. `wb_data()` requires to main sets of arguments: a list of indicators that we want to use and the period for which we want to download data. The period can can be entered as two separate arguments (e.g. `start_date` and `end_date`). But for this exercise we will specify the number of years we want to download using `mrv` which stands for "most recent value." 
+
+In addition to female labor force participation, let's also grab the percentage of seats in parliament held by women. We will store that list of objects in a vector called `women_emp` to signify that these indicators are related to women's empowerment. We will try to download 50 years of data for these two variables.    
+
+::: {.callout-note collapse="true"}
+If you want to search World Bank data for additional indicators, you can use the `wb_search()` function. For example, if we wanted to find all of the indicators associated with female labor force participation, we could run: 
+
+```{r}
+#| label: wb_search
+#| eval: false
+flfp_indicators <- wb_search("female labor force") # store the list of indicators
+
+print(flfp_indicators, n=26) # view the indicators
+```
+
+Try searching for some indicators related to a topic you are interested in and see what you get!
+:::
+
+While we are calling `wb_data` we will go ahead and pipe some additional functions from `dplyr` and `janitor` to clean it up. First, we will use `select()` to eliminate the iso2c variable, which we won't be needing. Then, we will rename `date` to `year`. Then we will use a combination of `mutate` and `round_to_fraction()` to round the data to the nearest hundredth. 
 
 ```{r}
 #| label: wb_data
 
-library(wbstats) 
-library(dplyr)
-library(janitor)
+library(wbstats) # for downloading WB data
+library(dplyr) # for selecting, renaming and mutating
+library(janitor) # for rounding
 
-indicators <- c(flfp = "SL.TLF.CACT.FE.ZS", women_rep = "SG.GEN.PARL.ZS")
-
-women_emp <- wb_data(indicators, mrv = 50) |> 
-  select(!iso2c) |> 
-  rename(year = date) |> 
-    mutate(
-    flfp = round_to_fraction(flfp, denominator = 100), 
-    women_rep = round_to_fraction(women_rep, denominator = 100)
+indicators <- c(flfp = "SL.TLF.CACT.FE.ZS", women_rep = "SG.GEN.PARL.ZS") # store indicators
+  
+women_emp <- wb_data(indicators, mrv = 50) |> # download indicator data for last 50 yrs
+  select(!iso2c) |> # drop the iso2c code which we won't be using
+  rename(year = date) |> # rename date to year 
+  mutate(
+    flfp = round_to_fraction(flfp, denominator = 100), # round to nearest 100th
+    women_rep = round_to_fraction(women_rep, denominator = 100) 
   )
 
-glimpse(women_emp)
+glimpse(women_emp) # view the data
 ```
 
+Now we have some pretty tidy World Bank data related to Women's Empowerment without having to do too much work. I am sure you would agree that this is a much more straightforward process than downloading the data and then importing the data as a flat file! 
+
+One thing that becomes very clear here is that `wb_data()` did not download any data before 1990. It automatically filtered out the years for which all countries had no data. The fact there were no data before 1990 for any of the countries is easily missed when we were simply importing it from a .csv file. 
+
+
 ## Filter observations, select and create new variables 
+
+{{< video https://www.youtube.com/embed/wo9vZccmqwc title='Downloading Data from the World Bank' >}}
+
+The next thing we want to talk about is how to filter observations and to select new variables. We also delve more into the topic of how to create new variables. To illustrate these concepts, we are going to be working with the [V-Dem Dataset](https://www.v-dem.net/data/the-v-dem-dataset/). The V-Dem offers an R package for downloading its data called [vdemdata](https://github.com/vdeminstitute/vdemdata). 
+
+`vdemdata` is perfect for illustrating the `filter()` and `select()` verbs because its main function for downloading the data (`vdem`) does not take any arguments (it simply downloads the whole dataset). So you have to use R functions to narrow down the variables and years you want to work with. 
+
+While V-Dem has wealth of indicators related to democracy, we are going to focus on the most famous one called the "polyarchy" score. We are also going to download data on per capita GDP and create some indicator variables for region that we will use later on when we summarize the data. Along with those variables, we also want to retain `country_name`, `year` and `country_id` for the purposes of merging these data with our World Bank data. 
+
+::: {.callout-note collapse="true"}
+While V-Dem has a variable look-up tool (`find_var`), it does not provide very much information on the variables that the search function returns. Therefore, if you want to use this package for your own research, I highly recommend just going to the [V-Dem codebook](https://www.v-dem.net/documents/24/codebook_v13.pdf) and manually grabbing the codes for the indicators that you want to use in your analysis. 
+:::
+
+In addition to filtering out years and selecting variables, let's also create a `region` coding to facilitate our analysis later on. We will do this by piping in a `mutate()` call where we use the [case_match()](https://dplyr.tidyverse.org/reference/case_match.html) function to change the `region` from a numeric variable to a string. This will come in handy when we go to visualize the data in future lessons.  
 
 ```{r}
 #| label: democracy
 
-library(vdemdata)
-library(tibble)
+library(vdemdata) # to download V-Dem data
+library(dplyr)
 
-democracy <- vdem |> 
-  filter(year >= 1974)  |> 
-  select(
-    country = country_name,
-    vdem_ctry_id = country_id, 
+democracy <- vdem |> # download the V-Dem dataset
+  filter(year >= 1990)  |> # filter out years less than 1990
+  select(                  # select (and rename) these variables
+    country = country_name,     # the name before the = sign is the new name  
+    vdem_ctry_id = country_id,  # the name after the = sign is the old name
     year, 
     polyarchy = v2x_polyarchy, 
     gdp_pc = e_gdppc, 
     region = e_regionpol_6C
     ) |>
-    mutate(
-    region = recode(region, `1` = "Eastern Europe", 
-                    `2` = "Latin America", 
-                    `3` = "Middle East", 
-                    `4` = "Africa", 
-                    `5` = "The West", 
-                    `6` = "Asia")
-  ) |> 
-  as_tibble()
+  mutate(
+    region = case_match(region, # replace the values in region with country names
+                     1 ~ "Eastern Europe", # the number on the left of the = sign is the V-Dem region code
+                     2 ~ "Latin America", # we are changing the number to the country name on the right 
+                     3 ~ "Middle East",   # of the equals sign
+                     4 ~ "Africa", 
+                     5 ~ "The West", 
+                     6 ~ "Asia")
+  )
 
 glimpse(democracy)
 ```
 
-
-## Add country code to democracy tibble
+## Add country code to democracy data frame
 
 ```{r}
 library(countrycode)
@@ -114,7 +158,7 @@ dem_women <- left_join(democracy, women_emp, by = c("iso3c", "year")) |>
 
 glimpse(dem_women)  
 
-write_csv(dem_women, "dem_women.csv")
+write_csv(dem_women, "data/dem_women.csv")
 ```
 
 ## Group, summarize and arrange (summarize by region)
