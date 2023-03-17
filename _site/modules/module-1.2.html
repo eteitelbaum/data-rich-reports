@@ -391,8 +391,7 @@ Prework
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pkg_list <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"wbstats"</span>, <span class="st">"countrycode"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(pkg_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(pkg_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Generate a quarto document named “module-1.2.qmd” in your modules project folder so that you can code along with me</li>
@@ -401,6 +400,8 @@ Prework
 </div>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>In this module working, we are going to be working with data from <a href="https://en.wikipedia.org/wiki/API">APIs</a> instead of flat files. As we saw in the last lesson, importing and wrangling data from flat files can be a messy process. So when clean data are available for download, we want to be able to take advantage of that. Luckily there are some pretty good R packages that allow us to extract data from open source APIs. We are going to be working with two of those in this module (<code>wbstats</code> and <code>vdemdata</code>) and some others later in the course.</p>
+<p>Along the way, we are going to continue to extend our data wrangling skills. We will learn some new functions in <code>dplyr</code> and <code>janitor</code> that will help us get our data into usable form for analysis. We are also going to cover in depth some common data science workflows, including filtering observations, selecting variables, merging two data sets, summarizing data for different groups, and sorting data based on column values.</p>
 </section>
 <section id="wrangle-wb-data" class="level2">
 <h2 class="anchored" data-anchor-id="wrangle-wb-data">Wrangle WB data</h2>
@@ -523,6 +524,7 @@ $ flfp         &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N
 </section>
 <section id="group-summarize-and-arrange-summarize-by-region" class="level2">
 <h2 class="anchored" data-anchor-id="group-summarize-and-arrange-summarize-by-region">Group, summarize and arrange (summarize by region)</h2>
+<p>Could this one be done with <code>webr</code>?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dem_summary <span class="ot">&lt;-</span> dem_women <span class="sc">|&gt;</span> </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region)  <span class="sc">|&gt;</span> </span>

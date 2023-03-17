@@ -22,7 +22,6 @@ execute:
 #| label: packages
 #| eval: false
 pkg_list <- c("wbstats", "countrycode")
-
 install.packages(pkg_list)
 ```
 
@@ -31,6 +30,9 @@ install.packages(pkg_list)
 
 ## Overview 
 
+In this module working, we are going to be working with data from [APIs](https://en.wikipedia.org/wiki/API) instead of flat files. As we saw in the last lesson, importing and wrangling data from flat files can be a messy process. So when clean data are available for download, we want to be able to take advantage of that. Luckily there are some pretty good R packages that allow us to extract data from open source APIs. We are going to be working with two of those in this module (`wbstats` and `vdemdata`) and some others later in the course. 
+
+Along the way, we are going to continue to extend our data wrangling skills. We will learn some new functions in `dplyr` and `janitor` that will help us get our data into usable form for analysis. We are also going to cover in depth some common data science workflows, including filtering observations, selecting variables, merging two data sets, summarizing data for different groups, and sorting data based on column values. 
 
 ## Wrangle WB data
 
@@ -86,6 +88,8 @@ democracy <- vdem |>
 
 glimpse(democracy)
 ```
+
+
 ## Add country code to democracy tibble
 
 ```{r}
@@ -114,6 +118,8 @@ write_csv(dem_women, "dem_women.csv")
 ```
 
 ## Group, summarize and arrange (summarize by region)
+
+Could this one be done with `webr`?
 
 ```{r}
 dem_summary <- dem_women |> 

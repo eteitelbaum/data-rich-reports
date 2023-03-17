@@ -172,14 +172,14 @@
     "href": "modules/module-1.2.html",
     "title": "Module 1.2",
     "section": "",
-    "text": "Prework\n\n\n\n\nInstall the devtools package. Type install.packages(\"devtools\") in your console. You will need this to install the vdemdata package becaue it is not on the CRAN Network.\nInstall the vdemdata package from GitHub. Type devtools::install_github(\"vdeminstitute/vdemdata\") in your console.\nInstall the wbstats and countrycode packages:\n\n\npkg_list <- c(\"wbstats\", \"countrycode\")\n\ninstall.packages(pkg_list)\n\n\nGenerate a quarto document named “module-1.2.qmd” in your modules project folder so that you can code along with me"
+    "text": "Prework\n\n\n\n\nInstall the devtools package. Type install.packages(\"devtools\") in your console. You will need this to install the vdemdata package becaue it is not on the CRAN Network.\nInstall the vdemdata package from GitHub. Type devtools::install_github(\"vdeminstitute/vdemdata\") in your console.\nInstall the wbstats and countrycode packages:\n\n\npkg_list <- c(\"wbstats\", \"countrycode\")\ninstall.packages(pkg_list)\n\n\nGenerate a quarto document named “module-1.2.qmd” in your modules project folder so that you can code along with me"
   },
   {
     "objectID": "modules/module-1.2.html#overview",
     "href": "modules/module-1.2.html#overview",
     "title": "Module 1.2",
     "section": "Overview",
-    "text": "Overview"
+    "text": "Overview\nIn this module working, we are going to be working with data from APIs instead of flat files. As we saw in the last lesson, importing and wrangling data from flat files can be a messy process. So when clean data are available for download, we want to be able to take advantage of that. Luckily there are some pretty good R packages that allow us to extract data from open source APIs. We are going to be working with two of those in this module (wbstats and vdemdata) and some others later in the course.\nAlong the way, we are going to continue to extend our data wrangling skills. We will learn some new functions in dplyr and janitor that will help us get our data into usable form for analysis. We are also going to cover in depth some common data science workflows, including filtering observations, selecting variables, merging two data sets, summarizing data for different groups, and sorting data based on column values."
   },
   {
     "objectID": "modules/module-1.2.html#wrangle-wb-data",
@@ -214,7 +214,7 @@
     "href": "modules/module-1.2.html#group-summarize-and-arrange-summarize-by-region",
     "title": "Module 1.2",
     "section": "Group, summarize and arrange (summarize by region)",
-    "text": "Group, summarize and arrange (summarize by region)\n\ndem_summary <- dem_women |> \n  group_by(region)  |> \n  summarize(\n    polyarchy = mean(polyarchy, na.rm = TRUE),\n    gdp_pc = mean(gdp_pc, na.rm = TRUE), \n    flfp = mean(flfp, na.rm = TRUE), \n    women_rep = mean(women_rep, na.rm = TRUE)\n  ) |> \n  arrange(desc(polyarchy)) \n\ndem_summary\n\n# A tibble: 6 × 5\n  region         polyarchy gdp_pc  flfp women_rep\n  <chr>              <dbl>  <dbl> <dbl>     <dbl>\n1 The West           0.857  32.7   52.8     27.8 \n2 Latin America      0.550   8.59  48.0     20.9 \n3 Eastern Europe     0.484  11.8   51.4     17.6 \n4 Asia               0.362   7.78  50.3     14.3 \n5 Africa             0.325   3.92  56.7     17.2 \n6 Middle East        0.219  20.7   26.5      9.95\n\n#filter(dem_women, is.na(region))"
+    "text": "Group, summarize and arrange (summarize by region)\nCould this one be done with webr?\n\ndem_summary <- dem_women |> \n  group_by(region)  |> \n  summarize(\n    polyarchy = mean(polyarchy, na.rm = TRUE),\n    gdp_pc = mean(gdp_pc, na.rm = TRUE), \n    flfp = mean(flfp, na.rm = TRUE), \n    women_rep = mean(women_rep, na.rm = TRUE)\n  ) |> \n  arrange(desc(polyarchy)) \n\ndem_summary\n\n# A tibble: 6 × 5\n  region         polyarchy gdp_pc  flfp women_rep\n  <chr>              <dbl>  <dbl> <dbl>     <dbl>\n1 The West           0.857  32.7   52.8     27.8 \n2 Latin America      0.550   8.59  48.0     20.9 \n3 Eastern Europe     0.484  11.8   51.4     17.6 \n4 Asia               0.362   7.78  50.3     14.3 \n5 Africa             0.325   3.92  56.7     17.2 \n6 Middle East        0.219  20.7   26.5      9.95\n\n#filter(dem_women, is.na(region))"
   },
   {
     "objectID": "modules/module-1.1.html#step-4-fix-year-and-change-variables-to-numeric",
