@@ -2,18 +2,31 @@
 title: "Module 1.2"
 subtitle: "Working With APIs"
 format: html
+highlight-style: atom-one
 execute: 
   echo: true
   message: false
   warning: false
 ---
 
-:::{callout-tip}
+::: {.callout-tip}
 ## Prework
 
 - Install the devtools package. Type `install.packages("devtools")` in your console. You will need this to install the `vdemdata` package becaue it is not on the CRAN Network. 
 
-- Install the `vdemdta` package from GitHub. Type `devtools::install_github("vdeminstitute/vdemdata")` in your console. 
+- Install the `vdemdata` package from GitHub. Type `devtools::install_github("vdeminstitute/vdemdata")` in your console. 
+
+- Install the `wbstats` and `countrycode` packages:
+
+```{r}
+#| label: packages
+#| eval: false
+pkg_list <- c("wbstats", "countrycode")
+
+install.packages(pkg_list)
+```
+
+- Generate a quarto document named "module-1.2.qmd" in your modules project folder so that you can code along with me
 :::
 
 ## Overview 
@@ -27,13 +40,12 @@ Picking up where we left off... but let's add one more variable...and use lubrid
 #| label: wb_data
 
 library(wbstats) 
-library(lubridate)
 library(dplyr)
 library(janitor)
 
 indicators <- c(flfp = "SL.TLF.CACT.FE.ZS", women_rep = "SG.GEN.PARL.ZS")
 
-women_emp <- wb_data(indicators, start_date = 1974, end_date = year(Sys.Date())) |> 
+women_emp <- wb_data(indicators, mrv = 50) |> 
   select(!iso2c) |> 
   rename(year = date) |> 
     mutate(

@@ -387,7 +387,7 @@ Prework
 <ul>
 <li><p>Install R, R Studio and the Tidyverse collection of packages if you have not done so already (see <a href="../modules/getting-started.html">getting started</a>)</p></li>
 <li><p>Install the <code>janitor</code> package (<code>install.packages("janitor")</code>)</p></li>
-<li><p>Start a new quarto project called “module-1.1” and generate a quarto document by the same name so that you can use to follow along with this exercise</p></li>
+<li><p>Start a new quarto project called “modules” and generate a quarto document named “module-1.1.qmd” so that you can use to follow along with this exercise</p></li>
 <li><p>Create a new directory/folder in your project folder called “data” where you can store .csv files</p></li>
 </ul>
 </div>
@@ -404,7 +404,7 @@ Note
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>In this module, we will be using the <code>readr</code>, <code>tidyr</code> and <code>dplyr</code> from the Tidyverse. While we could just load the entire Tidyverse collection of packages (e.g.&nbsp;<code>library(tidyverse)</code>), it is generally better from a <a href="https://stackoverflow.com/questions/50257990/what-is-the-advantage-of-using-librarytidyverse-instead-of-sub-packages">performance standpoint</a> to load the packages individually.</p>
+<p>In this module, we will be using the <code>readr</code>, <code>tidyr</code> and <code>dplyr</code> packages from the Tidyverse. While we could just load the entire Tidyverse collection of packages (e.g.&nbsp;<code>library(tidyverse)</code>), it is generally better from a <a href="https://stackoverflow.com/questions/50257990/what-is-the-advantage-of-using-librarytidyverse-instead-of-sub-packages">performance standpoint</a> to load the packages individually.</p>
 <p>Also, we will load the packages as we go along in various code chunks. But it is also possible to load all of the packages you will be using in a Quarto doc or R script in a single “setup” code chunk at the beginning of the file. You will see both workflows represented in this course.</p>
 </div>
 </div>
@@ -424,7 +424,8 @@ Note
 <section id="step-2-read-the-.csv-file" class="level2">
 <h2 class="anchored" data-anchor-id="step-2-read-the-.csv-file">Step 2: Read the .csv file</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="Reading Data From a .csv File" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<p>Now we are going to read this messy World Bank data into R using the <code>read_csv()</code> function from the <code>readr</code> package. <a href="https://readr.tidyverse.org/">readr</a> is a collection of functions that parses data from a flat file into a <em>tibble</em>, the modern Tidyverse version of a data frame. Afater we have read the data into R, we are going to have a look at it with the <a href="https://dplyr.tidyverse.org/reference/glimpse.html">glimpse()</a> function from the <a href="https://dplyr.tidyverse.org/index.html">dplyr</a> package.</p>
+<p>Now we are going to read this messy World Bank data into R using the <code>read_csv()</code> function from the <code>readr</code> package. <a href="https://readr.tidyverse.org/">readr</a> is a collection of functions that parses data from a flat file into a <em>tibble</em>, the modern Tidyverse version of a data frame. After we have read the data into R, we are going to have a look at it with the <a href="https://dplyr.tidyverse.org/reference/glimpse.html">glimpse()</a> function from the <a href="https://dplyr.tidyverse.org/index.html">dplyr</a> package.</p>
+<p><code>glimpse()</code> shows us a list of the columns in the along with their type (e.g.&nbsp;character, double, etc.) and a few rows’ worth of data.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -507,7 +508,6 @@ $ `2020 [YR2020]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", ".
 $ `2021 [YR2021]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …</code></pre>
 </div>
 </div>
-<p><code>glimpse()</code> shows us a list of the columns in the along with their type (e.g.&nbsp;character, double, etc.) and a few rows’ worth of data.</p>
 </section>
 <section id="step-3-reshape-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="step-3-reshape-the-data">Step 3: Reshape the data</h2>
@@ -522,32 +522,6 @@ $ `2021 [YR2021]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", ".
 <li><strong>values_to</strong> - what you want the column with the values from the transposed data to be called</li>
 </ul>
 <p>In our case, we want to reshape all of the year columns and have the years represented in the rows. We want the newly created column to be called “year” and the values are going to represent the data on female labor force participation we downloaded (flfp).</p>
-<div class="callout-important callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-The Pipe Operator
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>For our <code>pivot-longer()</code> call we are going to use R’s native <a href="https://r4ds.hadley.nz/workflow-style.html#sec-pipes">pipe operator</a>. Pipes tell R to do something to the object that they are attached to. In this case, we are telling R to apply <code>pivot_longer()</code> to <code>wb_data</code>. The alternative way of writing this code would be to include the data as the first argument in the function, e.g.&nbsp;<code>pivot_longer(wb_data, cols = ..., names_to = ... , values_to = ...)</code>. As you will see, pipe operators enable us to string together multiple functions in a convenient way to transform our data.</p>
-</div>
-</div>
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Spaces in Variable Names
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Notice that when we specify the years in our <code>pivot_longer()</code> call we encapsulate them in backticks (``). This is because the years, as they were imported from the WDI dataset, have spaces in them. Typically we want to avoid this scenario by writing our variable names in <a href="https://en.wikipedia.org/wiki/Snake_case"><em>snake_case</em></a>.</p>
-</div>
-</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -568,6 +542,32 @@ $ `Series Name`  &lt;chr&gt; "Labor force participation rate, female (% of femal
 $ `Series Code`  &lt;chr&gt; "SL.TLF.ACTI.FE.ZS", "SL.TLF.ACTI.FE.ZS", "SL.TLF.ACTI.…
 $ year           &lt;chr&gt; "1972 [YR1972]", "1973 [YR1973]", "1974 [YR1974]", "197…
 $ flfp           &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", "…</code></pre>
+</div>
+</div>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+The Pipe Operator
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For our <code>pivot-longer()</code> call we used R’s native <a href="https://r4ds.hadley.nz/workflow-style.html#sec-pipes">pipe operator</a>. Pipes tell R to do something to the object that they are attached to. In this case, we are telling R to apply <code>pivot_longer()</code> to <code>wb_data</code>. The alternative way of writing this code would be to include the data as the first argument in the function, e.g.&nbsp;<code>pivot_longer(wb_data, cols = ..., names_to = ... , values_to = ...)</code>. As you will see, pipe operators enable us to string together multiple functions in a convenient way to transform our data.</p>
+</div>
+</div>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Spaces in Variable Names
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Notice that when we specify the years in our <code>pivot_longer()</code> call we encapsulate them in backticks (``). This is because the years, as they were imported from the WDI dataset, have spaces in them. Typically we want to avoid this scenario by writing our variable names in <a href="https://en.wikipedia.org/wiki/Snake_case"><em>snake_case</em></a>.</p>
 </div>
 </div>
 </section>

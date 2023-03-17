@@ -16,15 +16,14 @@ execute:
 
 - Install the `janitor` package (`install.packages("janitor")`)
 
-- Start a new quarto project called "module-1.1" and generate a quarto document by the same name so that you can use to follow along with this exercise
+- Start a new quarto project called "modules" and generate a quarto document named "module-1.1.qmd" so that you can use to follow along with this exercise
 
 - Create a new directory/folder in your project folder called "data" where you can store .csv files
 :::
 
-
 ::: {.callout-note collapse="true"} 
 
-In this module, we will be using the `readr`, `tidyr` and `dplyr` from the Tidyverse. While we could just load the entire Tidyverse collection of packages (e.g. `library(tidyverse)`), it is generally better from a [performance standpoint](https://stackoverflow.com/questions/50257990/what-is-the-advantage-of-using-librarytidyverse-instead-of-sub-packages) to load the packages individually. 
+In this module, we will be using the `readr`, `tidyr` and `dplyr` packages from the Tidyverse. While we could just load the entire Tidyverse collection of packages (e.g. `library(tidyverse)`), it is generally better from a [performance standpoint](https://stackoverflow.com/questions/50257990/what-is-the-advantage-of-using-librarytidyverse-instead-of-sub-packages) to load the packages individually. 
 
 Also, we will load the packages as we go along in various code chunks. But it is also possible to load all of the packages you will be using in a Quarto doc or R script in a single "setup" code chunk at the beginning of the file. You will see both workflows represented in this course.
 :::
@@ -50,8 +49,9 @@ Now go to Time and select the years from the last 50 years. Click Apply Changes,
 
 {{< video https://www.youtube.com/embed/wo9vZccmqwc title='Reading Data From a .csv File' >}}
 
-Now we are going to read this messy World Bank data into R using the `read_csv()` function from the `readr` package. [readr](https://readr.tidyverse.org/) is a collection of functions that parses data from a flat file into a *tibble*, the modern Tidyverse version of a data frame. Afater we have read the data  into R, we are going to have a look at it with the [glimpse()](https://dplyr.tidyverse.org/reference/glimpse.html) function from the [dplyr](https://dplyr.tidyverse.org/index.html) package.
+Now we are going to read this messy World Bank data into R using the `read_csv()` function from the `readr` package. [readr](https://readr.tidyverse.org/) is a collection of functions that parses data from a flat file into a *tibble*, the modern Tidyverse version of a data frame. After we have read the data  into R, we are going to have a look at it with the [glimpse()](https://dplyr.tidyverse.org/reference/glimpse.html) function from the [dplyr](https://dplyr.tidyverse.org/index.html) package.
 
+`glimpse()` shows us a list of the columns in the along with their type (e.g. character, double, etc.) and a few rows' worth of data. 
 
 ::: {.callout-note collapse="true"}
 While comma delimited files are the most common kind of flat file, `readr` includes functions for parsing files with a wide range of delimiters including tabs (`read_tsv()`), semicolons (`read_csv2()`) and white spaces (`read_table()`). There is also a Tidyverse package for reading in Excel files called [readxl](https://readxl.tidyverse.org/).
@@ -68,7 +68,6 @@ wb_data_messy <- read_csv("data/messy_wb_data.csv")
 
 glimpse(wb_data_messy)
 ```
-`glimpse()` shows us a list of the columns in the along with their type (e.g. character, double, etc.) and a few rows' worth of data. 
 
 ## Step 3: Reshape the data
 
@@ -88,17 +87,6 @@ The `pivot_longer()` function takes three basic arguments:
 
 In our case, we want to reshape all of the year columns and have the years represented in the rows. We want the newly created column to be called "year" and the values are going to represent the data on female labor force participation we downloaded (flfp).
 
-::: {.callout-important}
-## The Pipe Operator
-
-For our `pivot-longer()` call we are going to use R's native [pipe operator](https://r4ds.hadley.nz/workflow-style.html#sec-pipes). Pipes tell R to do something to the object that they are attached to. In this case, we are telling R to apply `pivot_longer()` to `wb_data`. The alternative way of writing this code would be to include the data as the first argument in the function, e.g. `pivot_longer(wb_data, cols = ..., names_to = ... , values_to = ...)`. As you will see, pipe operators enable us to string together multiple functions in a convenient way to transform our data. 
-:::
-
-::: {.callout-caution}
-## Spaces in Variable Names
-Notice that when we specify the years in our `pivot_longer()` call we encapsulate them in backticks (``). This is because the years, as they were imported from the WDI dataset, have spaces in them. Typically we want to avoid this scenario by writing our variable names in [*snake_case*](https://en.wikipedia.org/wiki/Snake_case). 
-:::
-
 ```{r}
 #| label: step3
 
@@ -113,6 +101,18 @@ wb_data <- wb_data_messy |>
 
 glimpse(wb_data)
 ```
+
+::: {.callout-important}
+## The Pipe Operator
+
+For our `pivot-longer()` call we used R's native [pipe operator](https://r4ds.hadley.nz/workflow-style.html#sec-pipes). Pipes tell R to do something to the object that they are attached to. In this case, we are telling R to apply `pivot_longer()` to `wb_data`. The alternative way of writing this code would be to include the data as the first argument in the function, e.g. `pivot_longer(wb_data, cols = ..., names_to = ... , values_to = ...)`. As you will see, pipe operators enable us to string together multiple functions in a convenient way to transform our data. 
+:::
+
+::: {.callout-caution}
+## Spaces in Variable Names
+Notice that when we specify the years in our `pivot_longer()` call we encapsulate them in backticks (``). This is because the years, as they were imported from the WDI dataset, have spaces in them. Typically we want to avoid this scenario by writing our variable names in [*snake_case*](https://en.wikipedia.org/wiki/Snake_case). 
+:::
+
 
 ## Step 4: Fix year and change variables to numeric
 
