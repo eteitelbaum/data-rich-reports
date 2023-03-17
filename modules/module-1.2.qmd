@@ -1,5 +1,120 @@
 ---
 title: "Module 1.2"
-subtitle: ""
-editor: visual
+subtitle: "Working With APIs"
+format: html
+execute: 
+  echo: true
+  message: false
+  warning: false
 ---
+
+:::{callout-tip}
+## Prework
+
+- Install the devtools package. Type `install.packages("devtools")` in your console. You will need this to install the `vdemdata` package becaue it is not on the CRAN Network. 
+
+- Install the `vdemdta` package from GitHub. Type `devtools::install_github("vdeminstitute/vdemdata")` in your console. 
+:::
+
+## Overview 
+
+
+## Wrangle WB data
+
+Picking up where we left off... but let's add one more variable...and use lubridate to specify the most recent date. 
+
+```{r}
+#| label: wb_data
+
+library(wbstats) 
+library(lubridate)
+library(dplyr)
+library(janitor)
+
+indicators <- c(flfp = "SL.TLF.CACT.FE.ZS", women_rep = "SG.GEN.PARL.ZS")
+
+women_emp <- wb_data(indicators, start_date = 1974, end_date = year(Sys.Date())) |> 
+  select(!iso2c) |> 
+  rename(year = date) |> 
+    mutate(
+    flfp = round_to_fraction(flfp, denominator = 100), 
+    women_rep = round_to_fraction(women_rep, denominator = 100)
+  )
+
+glimpse(women_emp)
+```
+
+## Filter observations, select and create new variables 
+
+```{r}
+#| label: democracy
+
+library(vdemdata)
+library(tibble)
+
+democracy <- vdem |> 
+  filter(year >= 1974)  |> 
+  select(
+    country = country_name,
+    vdem_ctry_id = country_id, 
+    year, 
+    polyarchy = v2x_polyarchy, 
+    gdp_pc = e_gdppc, 
+    region = e_regionpol_6C
+    ) |>
+    mutate(
+    region = recode(region, `1` = "Eastern Europe", 
+                    `2` = "Latin America", 
+                    `3` = "Middle East", 
+                    `4` = "Africa", 
+                    `5` = "The West", 
+                    `6` = "Asia")
+  ) |> 
+  as_tibble()
+
+glimpse(democracy)
+```
+## Add country code to democracy tibble
+
+```{r}
+library(countrycode)
+
+democracy <- democracy |> 
+  mutate(iso3c = countrycode(vdem_ctry_id, "vdem", "wb"))  |> 
+  relocate(iso3c, .after = vdem_ctry_id)
+
+glimpse(democracy)
+#filter(democracy, is.na(iso3c))
+```
+
+## Merge two datasets 
+
+```{r}
+library(readr)
+
+dem_women <- left_join(democracy, women_emp, by = c("iso3c", "year")) |> 
+  rename(country = country.x) |> 
+  select(!country.y)
+
+glimpse(dem_women)  
+
+write_csv(dem_women, "dem_women.csv")
+```
+
+## Group, summarize and arrange (summarize by region)
+
+```{r}
+dem_summary <- dem_women |> 
+  group_by(region)  |> 
+  summarize(
+    polyarchy = mean(polyarchy, na.rm = TRUE),
+    gdp_pc = mean(gdp_pc, na.rm = TRUE), 
+    flfp = mean(flfp, na.rm = TRUE), 
+    women_rep = mean(women_rep, na.rm = TRUE)
+  ) |> 
+  arrange(desc(polyarchy)) 
+
+dem_summary
+
+#filter(dem_women, is.na(region))
+```
