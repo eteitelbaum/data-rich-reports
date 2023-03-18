@@ -44,7 +44,7 @@ The end goal is to have a nice dataset with a combination of World Bank and [V-D
 
 You will no doubt remember the messy data that we downloaded from the World Bank's website in [module 1.1](/modules/module-1.1.htmll#step-1-download-data-from-the-world-bank). Usually it is much easier to download data from an API as opposed to wrangling it from a .csv file. In this example, I want to illustrate that for you by having you download the same data that we worked with in the last module using the [wbstats](https://cran.r-project.org/web/packages/wbstats/vignettes/wbstats.html) package. 
 
-First we are going to load the `wbstats` along with `dplyr` and `janitor`. The `wb_data()` function is the one we need to download the data from the World Bank's API. `wb_data()` requires to main sets of arguments: a list of indicators that we want to use and the period for which we want to download data. The period can can be entered as two separate arguments (e.g. `start_date` and `end_date`). But for this exercise we will specify the number of years we want to download using `mrv` which stands for "most recent value." 
+First we are going to load `wbstats` along with `dplyr` and `janitor`. The `wb_data()` function is the one we need to download the data from the World Bank's API. `wb_data()` requires to main sets of arguments: a list of indicators that we want to use and the period for which we want to download data. The period can can be entered as two separate arguments (e.g. `start_date` and `end_date`). But for this exercise we will specify the number of years we want to download using `mrv` which stands for "most recent value." 
 
 In addition to female labor force participation, let's also grab the percentage of seats in parliament held by women. We will store that list of objects in a vector called `women_emp` to signify that these indicators are related to women's empowerment. We will try to download 50 years of data for these two variables.  
 
@@ -63,6 +63,8 @@ Try searching for some indicators related to a topic you are interested in and s
 :::
 
 While we are calling `wb_data` we will go ahead and pipe some additional functions from `dplyr` and `janitor` to clean it up. First, we will use `select()` to eliminate the iso2c variable, which we won't be needing. Then, we will rename `date` to `year`. Then we will use a combination of `mutate` and `round_to_fraction()` to round the data to the nearest hundredth. 
+
+We will pipe all of these functions together and store the resulting data frame in a new object called `women_emp`.
 
 ```{r}
 #| label: wb_data
@@ -104,6 +106,8 @@ While V-Dem has a variable look-up tool (`find_var`), it does not provide very m
 :::
 
 In addition to filtering out years and selecting variables, let's also create a `region` coding to facilitate our analysis later on. We will do this by piping in a `mutate()` call where we use the [case_match()](https://dplyr.tidyverse.org/reference/case_match.html) function to change the `region` from a numeric variable to a string. This will come in handy when we go to visualize the data in future lessons.  
+
+We will store our new data as an object called `democracy`.  
 
 ```{r}
 #| label: democracy
@@ -172,6 +176,8 @@ We are going to use `left_join()` to merge our two datasets. `left_join()` takes
 
 When `dplyr` does a join, it renames any duplicate columns with suffixes like `.x` or `.y`. In our data, country is a duplicate column across the democracy and women's empowerment datasets. So `dplyr` renames these `country.x` and `country.y`. It doesn't really matter which one we keep, so let's just rename `country.x` to `country` and filter out `country.y` using `select()`.
 
+We can can pipe all of these functions together and store the resulting data frame in a new object called `dem_women`. Let's also save these data as a .csv file for future use with `write_csv()`. The first argument for `write_csv()` is the name of the data frame or tibble that we want to save. The second argument is the path and name of the file that we want to save it to. 
+
 ```{r}
 library(readr)
 
@@ -185,11 +191,17 @@ write_csv(dem_women, "data/dem_women.csv")
 ```
 
 
-## Group, summarize and arrange (summarize by region)
+## Group, summarize and arrange 
 
 {{< video https://www.youtube.com/embed/wo9vZccmqwc title='Group, Summarize and Arrange' >}}
 
-Could this one be done with `webr`?
+Now that we have completed all of the wrangling, let's do something with it. A common sequence in data science is [group by()](https://dplyr.tidyverse.org/reference/group_by.html), [summarize()](https://dplyr.tidyverse.org/reference/summarise.html) and [arrange()](https://dplyr.tidyverse.org/reference/arrange.html). First, we group the data by certain value or category. Then we summarize it by applying a function like `min()`, `max()`, `mean()`, `median()` or `sd()`. Finally, we order the data according to column values. 
+
+Let's go ahead and apply our three new verbs to the `dem_women` data frame and store the resulting new data frame in an object called `dem_summary`. Then we will print the object to view its contents. 
+
+::: {.note collapse="true"}
+To print an object in R, we can either use the `print()` function or just execute the name of the object. Usually it is simpler to just execute the name of the object. 
+:::
 
 ```{r}
 dem_summary <- dem_women |> 
@@ -206,3 +218,5 @@ dem_summary
 
 #filter(dem_women, is.na(region))
 ```
+
+Run the code and try changing it yourself. Try summarizing the data with a different function for one or more of the variables. Now try grouping by country instead of region. Finally try arranging the data in ascending rather than descending order (hint: delete "desc" from the `arrange()` call).  
