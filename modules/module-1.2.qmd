@@ -3,6 +3,8 @@ title: "Module 1.2"
 subtitle: "Working With APIs"
 format: html
 highlight-style: atom-one
+filters:
+  - webr
 execute: 
   echo: true
   message: false
@@ -203,7 +205,7 @@ Let's go ahead and apply our three new verbs to the `dem_women` data frame and s
 To print an object in R, we can either use the `print()` function or just execute the name of the object. Usually it is simpler to just execute the name of the object. 
 :::
 
-```{r}
+```{webr}
 dem_summary <- dem_women |> 
   group_by(region)  |> 
   summarize(
