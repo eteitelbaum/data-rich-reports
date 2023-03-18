@@ -126,6 +126,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <meta property="og:title" content="PSC/DATS 2102–Summer Schedule - Module 1.2">
 <meta property="og:description" content="Working With APIs">
@@ -349,7 +350,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#filter-observations-select-and-create-new-variables" id="toc-filter-observations-select-and-create-new-variables" class="nav-link" data-scroll-target="#filter-observations-select-and-create-new-variables">Filter observations, select and create new variables</a></li>
   <li><a href="#add-country-codes-to-a-data-frame" id="toc-add-country-codes-to-a-data-frame" class="nav-link" data-scroll-target="#add-country-codes-to-a-data-frame">Add country codes to a data frame</a></li>
   <li><a href="#merge-two-datasets" id="toc-merge-two-datasets" class="nav-link" data-scroll-target="#merge-two-datasets">Merge two datasets</a></li>
-  <li><a href="#group-summarize-and-arrange-summarize-by-region" id="toc-group-summarize-and-arrange-summarize-by-region" class="nav-link" data-scroll-target="#group-summarize-and-arrange-summarize-by-region">Group, summarize and arrange (summarize by region)</a></li>
+  <li><a href="#group-summarize-and-arrange" id="toc-group-summarize-and-arrange" class="nav-link" data-scroll-target="#group-summarize-and-arrange">Group, summarize and arrange</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/eteitelbaum/dataviz-summer-2023/edit/main/modules/module-1.2.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/eteitelbaum/dataviz-summer-2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -408,7 +409,7 @@ Prework
 <h2 class="anchored" data-anchor-id="downloading-data-from-an-api">Downloading data from an API</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="Downloading Data from the World Bank" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>You will no doubt remember the messy data that we downloaded from the World Bank’s website in <a href="../modules/module-1.1.htmll#step-1-download-data-from-the-world-bank">module 1.1</a>. Usually it is much easier to download data from an API as opposed to wrangling it from a .csv file. In this example, I want to illustrate that for you by having you download the same data that we worked with in the last module using the <a href="https://cran.r-project.org/web/packages/wbstats/vignettes/wbstats.html">wbstats</a> package.</p>
-<p>First we are going to load the <code>wbstats</code> along with <code>dplyr</code> and <code>janitor</code>. The <code>wb_data()</code> function is the one we need to download the data from the World Bank’s API. <code>wb_data()</code> requires to main sets of arguments: a list of indicators that we want to use and the period for which we want to download data. The period can can be entered as two separate arguments (e.g.&nbsp;<code>start_date</code> and <code>end_date</code>). But for this exercise we will specify the number of years we want to download using <code>mrv</code> which stands for “most recent value.”</p>
+<p>First we are going to load <code>wbstats</code> along with <code>dplyr</code> and <code>janitor</code>. The <code>wb_data()</code> function is the one we need to download the data from the World Bank’s API. <code>wb_data()</code> requires to main sets of arguments: a list of indicators that we want to use and the period for which we want to download data. The period can can be entered as two separate arguments (e.g.&nbsp;<code>start_date</code> and <code>end_date</code>). But for this exercise we will specify the number of years we want to download using <code>mrv</code> which stands for “most recent value.”</p>
 <p>In addition to female labor force participation, let’s also grab the percentage of seats in parliament held by women. We will store that list of objects in a vector called <code>women_emp</code> to signify that these indicators are related to women’s empowerment. We will try to download 50 years of data for these two variables.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
@@ -433,6 +434,7 @@ Note
 </div>
 </div>
 <p>While we are calling <code>wb_data</code> we will go ahead and pipe some additional functions from <code>dplyr</code> and <code>janitor</code> to clean it up. First, we will use <code>select()</code> to eliminate the iso2c variable, which we won’t be needing. Then, we will rename <code>date</code> to <code>year</code>. Then we will use a combination of <code>mutate</code> and <code>round_to_fraction()</code> to round the data to the nearest hundredth.</p>
+<p>We will pipe all of these functions together and store the resulting data frame in a new object called <code>women_emp</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wbstats) <span class="co"># for downloading WB data</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="co"># for selecting, renaming and mutating</span></span>
@@ -485,6 +487,7 @@ Note
 </div>
 </div>
 <p>In addition to filtering out years and selecting variables, let’s also create a <code>region</code> coding to facilitate our analysis later on. We will do this by piping in a <code>mutate()</code> call where we use the <a href="https://dplyr.tidyverse.org/reference/case_match.html">case_match()</a> function to change the <code>region</code> from a numeric variable to a string. This will come in handy when we go to visualize the data in future lessons.</p>
+<p>We will store our new data as an object called <code>democracy</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vdemdata) <span class="co"># to download V-Dem data</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
@@ -525,11 +528,16 @@ $ region       &lt;chr&gt; "Latin America", "Latin America", "Latin America", "L
 <section id="add-country-codes-to-a-data-frame" class="level2">
 <h2 class="anchored" data-anchor-id="add-country-codes-to-a-data-frame">Add country codes to a data frame</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="Add Country Codes to a Data Frame" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>One common problem scholars face when they want to analyze country-level data is the fact that datasets use different country codes. This can make it challenging to combine datasets, thus limiting the potential scope of our analysis. Lucikly, there is a wonderful package called <a href="https://vincentarelbundock.github.io/countrycode/">countrycode</a> that can help to solve this problem.</p>
+<p>The <code>countrycode()</code> function creates a new country code variable in our dataset that matches the country code variable of the second dataset that we are trying to merge it to. <code>countrycode()</code> takes three arguments: <code>sourcevar</code>; <code>origin</code>; and <code>destination</code>. <code>sourcevar</code> identifies the name of the column that you want to transform, <code>origin</code> is the coding system that you want to translate from, and <code>destination</code> is the coding system that you want to translate to.</p>
+<p>In this next step of our analysis, we are going to join the data the World Bank and V-Dem data that we wrangled into a single dataset. To do that we need a common country code. The way we are going to do this is to create a new country code variable in the democracy dataset that matches the one in the women’s empowerment dataset.</p>
+<p>Let’s create a new version of our democracy dataset where we add a variable called <code>iso3c</code>. We will call <code>mutate()</code> to create the variable and wrap the <code>countrycode()</code> call inside of that. The <code>sourcevar</code> that we want to transform is the <code>vdem_ctry_id</code>, the origin code is “vdem”, and the destination code is “wb”.</p>
+<p>We are also going to pipe in a <a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate()</a> call which simply moves the new <code>iso3c</code> column from the end of the data frame (where R automically drops it) so that it sits right next to <code>vdem_ctry_cd</code>. This is not essential but it is always good to keep our data frames looking nice and neat!.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(countrycode)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>democracy <span class="ot">&lt;-</span> democracy <span class="sc">|&gt;</span> </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">iso3c =</span> <span class="fu">countrycode</span>(vdem_ctry_id, <span class="st">"vdem"</span>, <span class="st">"wb"</span>))  <span class="sc">|&gt;</span> </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">iso3c =</span> <span class="fu">countrycode</span>(<span class="at">sourcevar =</span> vdem_ctry_id, <span class="at">origin =</span> <span class="st">"vdem"</span>, <span class="at">destination =</span> <span class="st">"wb"</span>))  <span class="sc">|&gt;</span> </span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(iso3c, <span class="at">.after =</span> vdem_ctry_id)</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#filter(democracy, is.na(iso3c))</span></span>
@@ -550,6 +558,12 @@ $ region       &lt;chr&gt; "Latin America", "Latin America", "Latin America", "L
 </section>
 <section id="merge-two-datasets" class="level2">
 <h2 class="anchored" data-anchor-id="merge-two-datasets">Merge two datasets</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="Merge Two Datasets" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>Now that we have a common country code, we can join the two data sets. There are many different types of joins. First there is a distinction between <a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">mutating joins</a>, which add observations from one dataset to another, and <a href="https://dplyr.tidyverse.org/reference/filter-joins.html">filtering joins</a>, which filter out variables based on their presence or absence in another dataset. Here we are going to be focused on mutating joins.</p>
+<p>There are four kinds of mutating joins we can do in <code>dplyr</code>. An <code>inner_join()</code> keeps only the observations that are common in both datasets that you want to merge. A <code>full_join()</code> does the opposite. It keeps all of the observations present in both datasets regardless of whether or not they have a match. A <code>left_join()</code> keeps all of the observations in dataset <span class="math inline">\(x\)</span> and only the matching observations in dataset <span class="math inline">\(y\)</span>. A <code>right_join()</code> does the same thing, but instead keeps all of the observations from dataset <span class="math inline">\(y\)</span> and only matching observations from dataset <span class="math inline">\(x\)</span>.</p>
+<p>We are going to use <code>left_join()</code> to merge our two datasets. <code>left_join()</code> takes three essential arguments: <span class="math inline">\(x\)</span>; <span class="math inline">\(y\)</span>; and <span class="math inline">\(by\)</span> which identifies the column that we want to join on. For this exercise, the <span class="math inline">\(x\)</span> dataset is going to be the democracy dataset, the <span class="math inline">\(y\)</span> dataset is the women empowerment dataset, and we want to join on both the “iso3c” and “year” columns.</p>
+<p>When <code>dplyr</code> does a join, it renames any duplicate columns with suffixes like <code>.x</code> or <code>.y</code>. In our data, country is a duplicate column across the democracy and women’s empowerment datasets. So <code>dplyr</code> renames these <code>country.x</code> and <code>country.y</code>. It doesn’t really matter which one we keep, so let’s just rename <code>country.x</code> to <code>country</code> and filter out <code>country.y</code> using <code>select()</code>.</p>
+<p>We can can pipe all of these functions together and store the resulting data frame in a new object called <code>dem_women</code>. Let’s also save these data as a .csv file for future use with <code>write_csv()</code>. The first argument for <code>write_csv()</code> is the name of the data frame or tibble that we want to save. The second argument is the path and name of the file that we want to save it to.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -557,7 +571,9 @@ $ region       &lt;chr&gt; "Latin America", "Latin America", "Latin America", "L
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">country =</span> country.x) <span class="sc">|&gt;</span> </span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span>country.y)</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dem_women)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(dem_women, <span class="st">"data/dem_women.csv"</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dem_women)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 5,667
 Columns: 9
@@ -571,24 +587,41 @@ $ region       &lt;chr&gt; "Latin America", "Latin America", "Latin America", "L
 $ women_rep    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, 14.20, 17.40, 18.20, 16.00, 1…
 $ flfp         &lt;dbl&gt; 33.94, 34.24, 35.01, 35.85, 36.38, 37.62, 37.69, 39.65, 3…</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(dem_women, <span class="st">"data/dem_women.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="group-summarize-and-arrange-summarize-by-region" class="level2">
-<h2 class="anchored" data-anchor-id="group-summarize-and-arrange-summarize-by-region">Group, summarize and arrange (summarize by region)</h2>
-<p>Could this one be done with <code>webr</code>?</p>
+<section id="group-summarize-and-arrange" class="level2">
+<h2 class="anchored" data-anchor-id="group-summarize-and-arrange">Group, summarize and arrange</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="Group, Summarize and Arrange" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>Now that we have completed all of the wrangling, let’s do something with it. A common sequence in data science is <a href="https://dplyr.tidyverse.org/reference/group_by.html">group by()</a>, <a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a> and <a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a>. First, we group the data by certain value or category. Then we summarize it by applying a function like <code>min()</code>, <code>max()</code>, <code>mean()</code>, <code>median()</code> or <code>sd()</code>. Finally, we order the data according to column values.</p>
+<p>Let’s go ahead and apply our three new verbs to the <code>dem_women</code> data frame and store the resulting new data frame in an object called <code>dem_summary</code>. We will group the data by region, take the mean of each variable, and sort the data in descending order based on the regions’ polyarchy scores. Then we will print the object to view its contents.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>To print an object in R, we can either use the <code>print()</code> function or just execute the name of the object. Usually it is simpler to just execute the name of the object.</p>
+</div>
+</div>
+</div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dem_summary <span class="ot">&lt;-</span> dem_women <span class="sc">|&gt;</span> </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region)  <span class="sc">|&gt;</span> </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">polyarchy =</span> <span class="fu">mean</span>(polyarchy, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_pc =</span> <span class="fu">mean</span>(gdp_pc, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">flfp =</span> <span class="fu">mean</span>(flfp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">women_rep =</span> <span class="fu">mean</span>(women_rep, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(polyarchy)) </span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>dem_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dem_summary <span class="ot">&lt;-</span> dem_women <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region)  <span class="sc">|&gt;</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">polyarchy =</span> <span class="fu">mean</span>(polyarchy, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_pc =</span> <span class="fu">mean</span>(gdp_pc, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">flfp =</span> <span class="fu">mean</span>(flfp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">women_rep =</span> <span class="fu">mean</span>(women_rep, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(polyarchy)) </span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>dem_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 5
   region         polyarchy gdp_pc  flfp women_rep
@@ -600,8 +633,8 @@ $ flfp         &lt;dbl&gt; 33.94, 34.24, 35.01, 35.85, 36.38, 37.62, 37.69, 39.6
 5 Africa             0.393   4.41  56.7     17.2 
 6 Middle East        0.249  21.1   26.5      9.95</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#filter(dem_women, is.na(region))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Run the code and try changing it yourself. Try summarizing the data with a different function for one or more of the variables. Now try grouping by country instead of region. Try arranging the data based on a variable other than <code>polyarchy</code>. Finally, try sorting the data in ascending rather than descending order (hint: delete “desc” from the <code>arrange()</code> call).</p>
 
 
 </section>
