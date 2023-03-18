@@ -347,7 +347,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
   <li><a href="#downloading-data-from-an-api" id="toc-downloading-data-from-an-api" class="nav-link" data-scroll-target="#downloading-data-from-an-api">Downloading data from an API</a></li>
   <li><a href="#filter-observations-select-and-create-new-variables" id="toc-filter-observations-select-and-create-new-variables" class="nav-link" data-scroll-target="#filter-observations-select-and-create-new-variables">Filter observations, select and create new variables</a></li>
-  <li><a href="#add-country-code-to-democracy-data-frame" id="toc-add-country-code-to-democracy-data-frame" class="nav-link" data-scroll-target="#add-country-code-to-democracy-data-frame">Add country code to democracy data frame</a></li>
+  <li><a href="#add-country-codes-to-a-data-frame" id="toc-add-country-codes-to-a-data-frame" class="nav-link" data-scroll-target="#add-country-codes-to-a-data-frame">Add country codes to a data frame</a></li>
   <li><a href="#merge-two-datasets" id="toc-merge-two-datasets" class="nav-link" data-scroll-target="#merge-two-datasets">Merge two datasets</a></li>
   <li><a href="#group-summarize-and-arrange-summarize-by-region" id="toc-group-summarize-and-arrange-summarize-by-region" class="nav-link" data-scroll-target="#group-summarize-and-arrange-summarize-by-region">Group, summarize and arrange (summarize by region)</a></li>
   </ul>
@@ -459,7 +459,7 @@ $ women_rep &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
 $ flfp      &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</code></pre>
 </div>
 </div>
-<p>Now we have some pretty tidy World Bank data related to Women’s Empowerment without having to do too much work. I am sure you would agree that this is a much more straightforward process than downloading the data and then importing the data as a flat file!</p>
+<p>Now we have some pretty tidy World Bank data related to women’s empowerment without having to do too much work. I am sure you would agree that this is a much more straightforward process than downloading the data and then importing the data as a flat file!</p>
 <p>One thing that becomes very clear here is that <code>wb_data()</code> did not download any data before 1990. It automatically filtered out the years for which all countries had no data. The fact there were no data before 1990 for any of the countries is easily missed when we were simply importing it from a .csv file.</p>
 </section>
 <section id="filter-observations-select-and-create-new-variables" class="level2">
@@ -522,8 +522,9 @@ $ region       &lt;chr&gt; "Latin America", "Latin America", "Latin America", "L
 </div>
 </div>
 </section>
-<section id="add-country-code-to-democracy-data-frame" class="level2">
-<h2 class="anchored" data-anchor-id="add-country-code-to-democracy-data-frame">Add country code to democracy data frame</h2>
+<section id="add-country-codes-to-a-data-frame" class="level2">
+<h2 class="anchored" data-anchor-id="add-country-codes-to-a-data-frame">Add country codes to a data frame</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="Add Country Codes to a Data Frame" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(countrycode)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -531,7 +532,9 @@ $ region       &lt;chr&gt; "Latin America", "Latin America", "Latin America", "L
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">iso3c =</span> <span class="fu">countrycode</span>(vdem_ctry_id, <span class="st">"vdem"</span>, <span class="st">"wb"</span>))  <span class="sc">|&gt;</span> </span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(iso3c, <span class="at">.after =</span> vdem_ctry_id)</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(democracy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#filter(democracy, is.na(iso3c))</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(democracy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 5,667
 Columns: 7
@@ -543,19 +546,18 @@ $ polyarchy    &lt;dbl&gt; 0.396, 0.416, 0.439, 0.456, 0.473, 0.485, 0.513, 0.54
 $ gdp_pc       &lt;dbl&gt; 11.389, 11.635, 11.883, 11.983, 12.043, 11.742, 12.059, 1…
 $ region       &lt;chr&gt; "Latin America", "Latin America", "Latin America", "Latin…</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#filter(democracy, is.na(iso3c))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="merge-two-datasets" class="level2">
 <h2 class="anchored" data-anchor-id="merge-two-datasets">Merge two datasets</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>dem_women <span class="ot">&lt;-</span> <span class="fu">left_join</span>(democracy, women_emp, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"iso3c"</span>, <span class="st">"year"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">country =</span> country.x) <span class="sc">|&gt;</span> </span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span>country.y)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dem_women)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>dem_women <span class="ot">&lt;-</span> <span class="fu">left_join</span>(democracy, women_emp, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"iso3c"</span>, <span class="st">"year"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">country =</span> country.x) <span class="sc">|&gt;</span> </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span>country.y)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dem_women)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 5,667
 Columns: 9
@@ -569,24 +571,24 @@ $ region       &lt;chr&gt; "Latin America", "Latin America", "Latin America", "L
 $ women_rep    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, 14.20, 17.40, 18.20, 16.00, 1…
 $ flfp         &lt;dbl&gt; 33.94, 34.24, 35.01, 35.85, 36.38, 37.62, 37.69, 39.65, 3…</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(dem_women, <span class="st">"data/dem_women.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(dem_women, <span class="st">"data/dem_women.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="group-summarize-and-arrange-summarize-by-region" class="level2">
 <h2 class="anchored" data-anchor-id="group-summarize-and-arrange-summarize-by-region">Group, summarize and arrange (summarize by region)</h2>
 <p>Could this one be done with <code>webr</code>?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>dem_summary <span class="ot">&lt;-</span> dem_women <span class="sc">|&gt;</span> </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region)  <span class="sc">|&gt;</span> </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">polyarchy =</span> <span class="fu">mean</span>(polyarchy, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_pc =</span> <span class="fu">mean</span>(gdp_pc, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">flfp =</span> <span class="fu">mean</span>(flfp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">women_rep =</span> <span class="fu">mean</span>(women_rep, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(polyarchy)) </span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>dem_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dem_summary <span class="ot">&lt;-</span> dem_women <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region)  <span class="sc">|&gt;</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">polyarchy =</span> <span class="fu">mean</span>(polyarchy, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_pc =</span> <span class="fu">mean</span>(gdp_pc, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">flfp =</span> <span class="fu">mean</span>(flfp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">women_rep =</span> <span class="fu">mean</span>(women_rep, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(polyarchy)) </span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>dem_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 5
   region         polyarchy gdp_pc  flfp women_rep
@@ -598,7 +600,7 @@ $ flfp         &lt;dbl&gt; 33.94, 34.24, 35.01, 35.85, 36.38, 37.62, 37.69, 39.6
 5 Africa             0.393   4.41  56.7     17.2 
 6 Middle East        0.249  21.1   26.5      9.95</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#filter(dem_women, is.na(region))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#filter(dem_women, is.na(region))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

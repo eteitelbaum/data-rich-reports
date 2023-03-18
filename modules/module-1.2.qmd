@@ -46,7 +46,7 @@ You will no doubt remember the messy data that we downloaded from the World Bank
 
 First we are going to load the `wbstats` along with `dplyr` and `janitor`. The `wb_data()` function is the one we need to download the data from the World Bank's API. `wb_data()` requires to main sets of arguments: a list of indicators that we want to use and the period for which we want to download data. The period can can be entered as two separate arguments (e.g. `start_date` and `end_date`). But for this exercise we will specify the number of years we want to download using `mrv` which stands for "most recent value." 
 
-In addition to female labor force participation, let's also grab the percentage of seats in parliament held by women. We will store that list of objects in a vector called `women_emp` to signify that these indicators are related to women's empowerment. We will try to download 50 years of data for these two variables.    
+In addition to female labor force participation, let's also grab the percentage of seats in parliament held by women. We will store that list of objects in a vector called `women_emp` to signify that these indicators are related to women's empowerment. We will try to download 50 years of data for these two variables.  
 
 ::: {.callout-note collapse="true"}
 If you want to search World Bank data for additional indicators, you can use the `wb_search()` function. For example, if we wanted to find all of the indicators associated with female labor force participation, we could run: 
@@ -84,7 +84,7 @@ women_emp <- wb_data(indicators, mrv = 50) |> # download indicator data for last
 glimpse(women_emp) # view the data
 ```
 
-Now we have some pretty tidy World Bank data related to Women's Empowerment without having to do too much work. I am sure you would agree that this is a much more straightforward process than downloading the data and then importing the data as a flat file! 
+Now we have some pretty tidy World Bank data related to women's empowerment without having to do too much work. I am sure you would agree that this is a much more straightforward process than downloading the data and then importing the data as a flat file! 
 
 One thing that becomes very clear here is that `wb_data()` did not download any data before 1990. It automatically filtered out the years for which all countries had no data. The fact there were no data before 1990 for any of the countries is easily missed when we were simply importing it from a .csv file. 
 
@@ -134,20 +134,43 @@ democracy <- vdem |> # download the V-Dem dataset
 glimpse(democracy)
 ```
 
-## Add country code to democracy data frame
+## Add country codes to a data frame
+
+{{< video https://www.youtube.com/embed/wo9vZccmqwc title='Add Country Codes to a Data Frame' >}}
+
+One common problem scholars face when they want to analyze country-level data is the fact that datasets use different country codes. This can make it challenging to combine datasets, thus limiting the potential scope of our analysis. Lucikly, there is a wonderful package called [countrycode](https://vincentarelbundock.github.io/countrycode/) that can help to solve this problem.
+
+The `countrycode()` function creates a new country code variable in our dataset that matches the country code variable of the second dataset that we are trying to merge it to. `countrycode()` takes three arguments: `sourcevar`; `origin`; and `destination`. `sourcevar` identifies  the name of the column that you want to transform, `origin` is the coding system that you want to translate from, and `destination` is the coding system that you want to translate to.  
+
+In this next step of our analysis, we are going to join the data the World Bank and V-Dem data that we wrangled into a single dataset. To do that we need a common country code. The way we are going to do this is to create a new country code variable in the democracy dataset that matches the one in the women's empowerment dataset.  
+
+Let's create a new version of our democracy dataset where we add a variable called `iso3c`. We will call `mutate()` to create the variable and wrap the `countrycode()` call inside of that. The `sourcevar` that we want to transform is the `vdem_ctry_id`, the origin code is "vdem", and the destination code is "wb". 
+
+We are also going to pipe in a [relocate()](https://dplyr.tidyverse.org/reference/relocate.html) call which simply moves the new `iso3c` column from the end of the data frame (where R automically drops it) so that it sits right next to `vdem_ctry_cd`. This is not essential but it is always good to keep our data frames looking nice and neat!. 
 
 ```{r}
 library(countrycode)
 
 democracy <- democracy |> 
-  mutate(iso3c = countrycode(vdem_ctry_id, "vdem", "wb"))  |> 
+  mutate(iso3c = countrycode(sourcevar = vdem_ctry_id, origin = "vdem", destination = "wb"))  |> 
   relocate(iso3c, .after = vdem_ctry_id)
 
-glimpse(democracy)
 #filter(democracy, is.na(iso3c))
+
+glimpse(democracy)
 ```
 
 ## Merge two datasets 
+
+{{< video https://www.youtube.com/embed/wo9vZccmqwc title='Merge Two Datasets' >}}
+
+Now that we have a common country code, we can join the two data sets. There are many different types of joins. First there is a distinction between [mutating joins](https://dplyr.tidyverse.org/reference/mutate-joins.html), which add observations from one dataset to another, and [filtering joins](https://dplyr.tidyverse.org/reference/filter-joins.html), which filter out variables based on their presence or absence in another dataset. Here we are going to be focused on mutating joins. 
+
+There are four kinds of mutating joins we can do in `dplyr`. An `inner_join()` keeps only the observations that are common in both datasets that you want to merge. A `full_join()` does the opposite. It keeps all of the observations present in both datasets regardless of whether or not they have a match. A `left_join()` keeps all of the observations in dataset $x$ and only the matching observations in dataset $y$. A `right_join()` does the same thing, but instead keeps all of the observations from dataset $y$ and only matching observations from dataset $x$. 
+
+We are going to use `left_join()` to merge our two datasets. `left_join()` takes three essential arguments: $x$; $y$; and $by$ which identifies the column that we want to join on. For this exercise, the $x$ dataset is going to be the democracy dataset, the $y$ dataset is the women empowerment dataset, and we want to join on both the "iso3c" and "year" columns. 
+
+When `dplyr` does a join, it renames any duplicate columns with suffixes like `.x` or `.y`. In our data, country is a duplicate column across the democracy and women's empowerment datasets. So `dplyr` renames these `country.x` and `country.y`. It doesn't really matter which one we keep, so let's just rename `country.x` to `country` and filter out `country.y` using `select()`.
 
 ```{r}
 library(readr)
@@ -161,7 +184,10 @@ glimpse(dem_women)
 write_csv(dem_women, "data/dem_women.csv")
 ```
 
+
 ## Group, summarize and arrange (summarize by region)
+
+{{< video https://www.youtube.com/embed/wo9vZccmqwc title='Group, Summarize and Arrange' >}}
 
 Could this one be done with `webr`?
 
