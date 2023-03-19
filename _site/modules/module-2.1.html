@@ -474,7 +474,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">women_rep =</span> <span class="fu">mean</span>(women_rep, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(dem_summary_ctry, <span class="st">"data/dem_summary_ctry"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(dem_summary_ctry, <span class="st">"data/dem_summary_ctry.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dem_summary_ctry, <span class="fu">aes</span>(<span class="at">x =</span> gdp_pc, <span class="at">y =</span> polyarchy, <span class="at">color =</span> region, <span class="at">size =</span> women_rep)) <span class="sc">+</span> </span>
