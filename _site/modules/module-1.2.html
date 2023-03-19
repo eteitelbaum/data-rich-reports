@@ -640,6 +640,20 @@ Note
 </div>
 </div>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dem_summary <span class="ot">&lt;-</span> dem_women <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region)  <span class="sc">|&gt;</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">polyarchy =</span> <span class="fu">mean</span>(polyarchy, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_pc =</span> <span class="fu">mean</span>(gdp_pc, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">flfp =</span> <span class="fu">mean</span>(flfp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">women_rep =</span> <span class="fu">mean</span>(women_rep, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(polyarchy)) </span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(dem_summary, <span class="st">"data/dem_summary.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Run the code and try changing it yourself. Try summarizing the data with a different function for one or more of the variables. Now try grouping by country instead of region. Try arranging the data based on a variable other than <code>polyarchy</code>. Finally, try sorting the data in ascending rather than descending order (hint: delete “desc” from the <code>arrange()</code> call).</p>
+<div class="cell">
 <button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-1">Loading webR...</button>
 <div id="webr-editor-1"></div>
 <div id="webr-code-output-1"><pre style="visibility: hidden"></pre></div>
@@ -653,7 +667,14 @@ Note
     elt.style.height = "auto";
     editorDiv.append(elt);
   },{
-    value: `dem_summary <- dem_women |> 
+    value: `webr::install("dplyr")
+
+library(dplyr)
+library(readr)
+
+dem_summary <- read_csv("data/dem_summary.csv")
+
+dem_summary <- dem_women |> 
   group_by(region)  |> 
   summarize(
     polyarchy = mean(polyarchy, na.rm = TRUE),
@@ -663,7 +684,7 @@ Note
   ) |> 
   arrange(desc(polyarchy)) 
 
-#write_csv(dem_summary, "data/dem_summary.csv")`,
+dem_summary`,
     lineNumbers: true,
     mode: "r",
     theme: "light default",
@@ -726,7 +747,6 @@ Note
 </script>
 
 </div>
-<p>Run the code and try changing it yourself. Try summarizing the data with a different function for one or more of the variables. Now try grouping by country instead of region. Try arranging the data based on a variable other than <code>polyarchy</code>. Finally, try sorting the data in ascending rather than descending order (hint: delete “desc” from the <code>arrange()</code> call).</p>
 
 
 </section>

@@ -105,7 +105,7 @@ dem_summary_ctry <- read_csv("data/dem_women.csv") |>
     women_rep = mean(women_rep, na.rm = TRUE)
   )
 
-write_csv(dem_summary_ctry, "data/dem_summary_ctry")
+write_csv(dem_summary_ctry, "data/dem_summary_ctry.csv")
 ```
 
 ```{r}
