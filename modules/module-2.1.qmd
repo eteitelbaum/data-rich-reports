@@ -87,8 +87,9 @@ ggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +
   labs(
     x = "Year", 
     y = "Polyarchy Score", 
-    title = "Levels of democracy in four countries", 
-    caption = "Source: V-Dem Institute"
+    title = 'Democracy in countries representing three different "waves"', 
+    caption = "Source: V-Dem Institute", 
+    color = "Country"
   )
 ```
 
@@ -116,7 +117,9 @@ ggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy, color = region, size = w
     x= "GDP per Capita", 
     y = "Polyarchy Score",
     title = "Wealth and democracy, 1990 - present", 
-    caption = "Source: V-Dem Institute"
+    caption = "Source: V-Dem Institute", 
+    color = "Region",
+    size = "Women Reps"
     )
 ```
 
@@ -129,7 +132,8 @@ ggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy)) +
     x= "GDP per Capita", 
     y = "Polyarchy Score",
     title = "Wealth and democracy, 1990 - present", 
-    caption = "Source: V-Dem Institute"
+    caption = "Source: V-Dem Institute", 
+    color = "Region"
     )
 ```
 
