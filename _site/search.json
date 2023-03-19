@@ -306,5 +306,12 @@
     "title": "Module 1.2",
     "section": "Group, summarize and arrange",
     "text": "Group, summarize and arrange\n\nNow that we have completed all of the wrangling, let’s do something with it. A common sequence in data science is group by(), summarize() and arrange(). First, we group the data by certain value or category. Then we summarize it by applying a function like min(), max(), mean(), median() or sd(). Finally, we order the data according to column values.\nLet’s go ahead and apply our three new verbs to the dem_women data frame and store the resulting new data frame in an object called dem_summary. We will group the data by region, take the mean of each variable, and sort the data in descending order based on the regions’ polyarchy scores. Then we will print the object to view its contents.\n\n\n\n\n\n\nNote\n\n\n\n\n\nTo print an object in R, we can either use the print() function or just execute the name of the object. Usually it is simpler to just execute the name of the object.\n\n\n\n\nLoading webR...\n\n\n\n\n\nRun the code and try changing it yourself. Try summarizing the data with a different function for one or more of the variables. Now try grouping by country instead of region. Try arranging the data based on a variable other than polyarchy. Finally, try sorting the data in ascending rather than descending order (hint: delete “desc” from the arrange() call)."
+  },
+  {
+    "objectID": "zzz.html",
+    "href": "zzz.html",
+    "title": "Additional Dependencies",
+    "section": "",
+    "text": "/modules/webr-serviceworker.js\n/modules/webr-worker.js"
   }
 ]

@@ -1,0 +1,7 @@
+---
+title: "Additional Dependencies"
+format: html
+---
+
+1. [/modules/webr-serviceworker.js](/modules/webr-serviceworker.js)
+2. [/modules/webr-worker.js](/modules/webr-worker.js) 

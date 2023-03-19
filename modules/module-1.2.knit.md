@@ -11,6 +11,7 @@ execute:
   warning: false
 ---
 
+
 ::: {.callout-tip}
 ## Prework
 
@@ -20,12 +21,15 @@ execute:
 
 - Install the `wbstats` and `countrycode` packages:
 
-```{r}
-#| label: packages
-#| eval: false
+
+::: {.cell}
+
+```{.r .cell-code}
 pkg_list <- c("wbstats", "countrycode") # create a list of packages
 install.packages(pkg_list) # install the packages
 ```
+:::
+
 
 - Generate a quarto document named "module-1.2.qmd" in your modules project folder so that you can code along with me
 :::
@@ -42,7 +46,10 @@ The end goal is to have a nice dataset with a combination of World Bank and [V-D
 
 ## Downloading data from an API
 
+
 {{< video https://www.youtube.com/embed/wo9vZccmqwc title='Downloading Data from the World Bank' >}}
+
+
 
 You will no doubt remember the messy data that we downloaded from the World Bank's website in [module 1.1](/modules/module-1.1.htmll#step-1-download-data-from-the-world-bank). Usually it is much easier to download data from an API as opposed to wrangling it from a .csv file. In this example, I want to illustrate that for you by having you download the same data that we worked with in the last module using the [wbstats](https://cran.r-project.org/web/packages/wbstats/vignettes/wbstats.html) package. 
 
@@ -53,13 +60,16 @@ In addition to female labor force participation, let's also grab the percentage 
 ::: {.callout-note collapse="true"}
 If you want to search World Bank data for additional indicators, you can use the `wb_search()` function. For example, if we wanted to find all of the indicators associated with female labor force participation, we could run: 
 
-```{r}
-#| label: wb_search
-#| eval: false
+
+::: {.cell}
+
+```{.r .cell-code}
 flfp_indicators <- wb_search("female labor force") # store the list of indicators
 
 print(flfp_indicators, n=26) # view the indicators
 ```
+:::
+
 
 Try searching for some indicators related to a topic you are interested in and see what you get!
 :::
@@ -68,9 +78,10 @@ While we are calling `wb_data` we will go ahead and pipe some additional functio
 
 We will pipe all of these functions together and store the resulting data frame in a new object called `women_emp`.
 
-```{r}
-#| label: wb_data
 
+::: {.cell}
+
+```{.r .cell-code}
 library(wbstats) # for downloading WB data
 library(dplyr) # for selecting, renaming and mutating
 library(janitor) # for rounding
@@ -88,6 +99,20 @@ women_emp <- wb_data(indicators, mrv = 50) |> # download indicator data for last
 glimpse(women_emp) # view the data
 ```
 
+::: {.cell-output .cell-output-stdout}
+```
+Rows: 6,944
+Columns: 5
+$ iso3c     <chr> "ABW", "ABW", "ABW", "ABW", "ABW", "ABW", "ABW", "ABW", "ABW…
+$ country   <chr> "Aruba", "Aruba", "Aruba", "Aruba", "Aruba", "Aruba", "Aruba…
+$ year      <dbl> 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, …
+$ women_rep <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ flfp      <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+```
+:::
+:::
+
+
 Now we have some pretty tidy World Bank data related to women's empowerment without having to do too much work. I am sure you would agree that this is a much more straightforward process than downloading the data and then importing the data as a flat file! 
 
 One thing that becomes very clear here is that `wb_data()` did not download any data before 1990. It automatically filtered out the years for which all countries had no data. The fact there were no data before 1990 for any of the countries is easily missed when we were simply importing it from a .csv file. 
@@ -95,7 +120,10 @@ One thing that becomes very clear here is that `wb_data()` did not download any 
 
 ## Filter observations, select and create new variables 
 
+
 {{< video https://www.youtube.com/embed/wo9vZccmqwc title='Downloading Data from the World Bank' >}}
+
+
 
 The next thing we want to talk about is how to filter observations and to select new variables. We also delve more into the topic of how to create new variables. To illustrate these concepts, we are going to be working with the [V-Dem Dataset](https://www.v-dem.net/data/the-v-dem-dataset/). The V-Dem offers an R package for downloading its data called [vdemdata](https://github.com/vdeminstitute/vdemdata). 
 
@@ -111,9 +139,10 @@ In addition to filtering out years and selecting variables, let's also create a 
 
 We will store our new data as an object called `democracy`.  
 
-```{r}
-#| label: democracy
 
+::: {.cell}
+
+```{.r .cell-code}
 library(vdemdata) # to download V-Dem data
 library(dplyr)
 
@@ -140,9 +169,27 @@ democracy <- vdem |> # download the V-Dem dataset
 glimpse(democracy)
 ```
 
+::: {.cell-output .cell-output-stdout}
+```
+Rows: 5,667
+Columns: 6
+$ country      <chr> "Mexico", "Mexico", "Mexico", "Mexico", "Mexico", "Mexico…
+$ vdem_ctry_id <dbl> 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, …
+$ year         <dbl> 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 199…
+$ polyarchy    <dbl> 0.396, 0.416, 0.439, 0.456, 0.473, 0.485, 0.513, 0.548, 0…
+$ gdp_pc       <dbl> 11.389, 11.635, 11.883, 11.983, 12.043, 11.742, 12.059, 1…
+$ region       <chr> "Latin America", "Latin America", "Latin America", "Latin…
+```
+:::
+:::
+
+
 ## Add country codes to a data frame
 
+
 {{< video https://www.youtube.com/embed/wo9vZccmqwc title='Add Country Codes to a Data Frame' >}}
+
+
 
 One common problem scholars face when they want to analyze country-level data is the fact that datasets use different country codes. This can make it challenging to combine datasets, thus limiting the potential scope of our analysis. Lucikly, there is a wonderful package called [countrycode](https://vincentarelbundock.github.io/countrycode/) that can help to solve this problem.
 
@@ -154,7 +201,10 @@ Let's create a new version of our democracy dataset where we add a variable call
 
 We are also going to pipe in a [relocate()](https://dplyr.tidyverse.org/reference/relocate.html) call which simply moves the new `iso3c` column from the end of the data frame (where R automically drops it) so that it sits right next to `vdem_ctry_cd`. This is not essential but it is always good to keep our data frames looking nice and neat!. 
 
-```{r}
+
+::: {.cell}
+
+```{.r .cell-code}
 library(countrycode)
 
 democracy <- democracy |> 
@@ -166,9 +216,28 @@ democracy <- democracy |>
 glimpse(democracy)
 ```
 
+::: {.cell-output .cell-output-stdout}
+```
+Rows: 5,667
+Columns: 7
+$ country      <chr> "Mexico", "Mexico", "Mexico", "Mexico", "Mexico", "Mexico…
+$ vdem_ctry_id <dbl> 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, …
+$ iso3c        <chr> "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "…
+$ year         <dbl> 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 199…
+$ polyarchy    <dbl> 0.396, 0.416, 0.439, 0.456, 0.473, 0.485, 0.513, 0.548, 0…
+$ gdp_pc       <dbl> 11.389, 11.635, 11.883, 11.983, 12.043, 11.742, 12.059, 1…
+$ region       <chr> "Latin America", "Latin America", "Latin America", "Latin…
+```
+:::
+:::
+
+
 ## Merge two datasets 
 
+
 {{< video https://www.youtube.com/embed/wo9vZccmqwc title='Merge Two Datasets' >}}
+
+
 
 Now that we have a common country code, we can join the two data sets. There are many different types of joins. First there is a distinction between [mutating joins](https://dplyr.tidyverse.org/reference/mutate-joins.html), which add observations from one dataset to another, and [filtering joins](https://dplyr.tidyverse.org/reference/filter-joins.html), which filter out variables based on their presence or absence in another dataset. Here we are going to be focused on mutating joins. 
 
@@ -180,7 +249,10 @@ When `dplyr` does a join, it renames any duplicate columns with suffixes like `.
 
 We can can pipe all of these functions together and store the resulting data frame in a new object called `dem_women`. Let's also save these data as a .csv file for future use with `write_csv()`. The first argument for `write_csv()` is the name of the data frame or tibble that we want to save. The second argument is the path and name of the file that we want to save it to. 
 
-```{r}
+
+::: {.cell}
+
+```{.r .cell-code}
 library(readr)
 
 dem_women <- left_join(democracy, women_emp, by = c("iso3c", "year")) |> 
@@ -192,10 +264,31 @@ write_csv(dem_women, "data/dem_women.csv")
 glimpse(dem_women)  
 ```
 
+::: {.cell-output .cell-output-stdout}
+```
+Rows: 5,667
+Columns: 9
+$ country      <chr> "Mexico", "Mexico", "Mexico", "Mexico", "Mexico", "Mexico…
+$ vdem_ctry_id <dbl> 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, …
+$ iso3c        <chr> "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "…
+$ year         <dbl> 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 199…
+$ polyarchy    <dbl> 0.396, 0.416, 0.439, 0.456, 0.473, 0.485, 0.513, 0.548, 0…
+$ gdp_pc       <dbl> 11.389, 11.635, 11.883, 11.983, 12.043, 11.742, 12.059, 1…
+$ region       <chr> "Latin America", "Latin America", "Latin America", "Latin…
+$ women_rep    <dbl> NA, NA, NA, NA, NA, NA, NA, 14.20, 17.40, 18.20, 16.00, 1…
+$ flfp         <dbl> 33.94, 34.24, 35.01, 35.85, 36.38, 37.62, 37.69, 39.65, 3…
+```
+:::
+:::
+
+
 
 ## Group, summarize and arrange 
 
+
 {{< video https://www.youtube.com/embed/wo9vZccmqwc title='Group, Summarize and Arrange' >}}
+
+
 
 Now that we have completed all of the wrangling, let's do something with it. A common sequence in data science is [group by()](https://dplyr.tidyverse.org/reference/group_by.html), [summarize()](https://dplyr.tidyverse.org/reference/summarise.html) and [arrange()](https://dplyr.tidyverse.org/reference/arrange.html). First, we group the data by certain value or category. Then we summarize it by applying a function like `min()`, `max()`, `mean()`, `median()` or `sd()`. Finally, we order the data according to column values. 
 
@@ -205,7 +298,10 @@ Let's go ahead and apply our three new verbs to the `dem_women` data frame and s
 To print an object in R, we can either use the `print()` function or just execute the name of the object. Usually it is simpler to just execute the name of the object. 
 :::
 
-```{webr}
+
+::: {.cell}
+
+```{.webr .cell-code}
 dem_summary <- dem_women |> 
   group_by(region)  |> 
   summarize(
@@ -218,5 +314,8 @@ dem_summary <- dem_women |>
 
 dem_summary
 ```
+:::
+
 
 Run the code and try changing it yourself. Try summarizing the data with a different function for one or more of the variables. Now try grouping by country instead of region. Try arranging the data based on a variable other than `polyarchy`. Finally, try sorting the data in ascending rather than descending order (hint: delete "desc" from the `arrange()` call).  
+
