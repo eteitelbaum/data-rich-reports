@@ -1,5 +1,12 @@
 ---
 title: "Module 2.1"
-subtitle: ""
-editor: visual
+subtitle: "Vizualizing Data With ggplot2"
+format: html
+highlight-style: atom-one
+filters:
+  - webr
+execute:
+  echo: true
+  message: false
+  warning: false
 ---
