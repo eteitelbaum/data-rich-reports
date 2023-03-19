@@ -622,7 +622,7 @@ $ flfp         &lt;dbl&gt; 33.94, 34.24, 35.01, 35.85, 36.38, 37.62, 37.69, 39.6
 <h2 class="anchored" data-anchor-id="group-summarize-and-arrange">Group, summarize and arrange</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="Group, Summarize and Arrange" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>Now that we have completed all of the wrangling, let’s do something with it. A common sequence in data science is <a href="https://dplyr.tidyverse.org/reference/group_by.html">group by()</a>, <a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a> and <a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a>. First, we group the data by certain value or category. Then we summarize it by applying a function like <code>min()</code>, <code>max()</code>, <code>mean()</code>, <code>median()</code> or <code>sd()</code>. Finally, we order the data according to column values.</p>
-<p>Let’s go ahead and apply our three new verbs to the <code>dem_women</code> data frame and store the resulting new data frame in an object called <code>dem_summary</code>. We will group the data by region, take the mean of each variable, and sort the data in descending order based on the regions’ polyarchy scores. Then we will print the object to view its contents.</p>
+<p>Let’s go ahead and apply our three new verbs to the <code>dem_women</code> data frame and store the resulting new data frame in an object called <code>dem_summary</code>. We will group the data by region, take the mean of each variable, and sort the data in descending order based on the regions’ polyarchy scores. Then we will print the object to view its contents. Along the way, we let’s also export the data to a .csv file for future use.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -635,7 +635,7 @@ Note
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>To print an object in R, we can either use the <code>print()</code> function or just execute the name of the object. Usually it is simpler to just execute the name of the object.</p>
+<p>To print an object in R, we can either use the <code>print()</code> function or just execute the name of the object. Oftentimes it is simpler to just execute the name of the object.</p>
 </div>
 </div>
 </div>
@@ -662,6 +662,8 @@ Note
     women_rep = mean(women_rep, na.rm = TRUE)
   ) |> 
   arrange(desc(polyarchy)) 
+
+#write_csv(dem_summary, "data/dem_summary.csv")
 
 dem_summary`,
     lineNumbers: true,
