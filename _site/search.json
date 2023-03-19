@@ -333,7 +333,7 @@
     "href": "modules/module-2.1.html#histograms",
     "title": "Module 2.1",
     "section": "Histograms",
-    "text": "Histograms\n\ndem_women_2015 <- read_csv(\"data/dem_women.csv\") |> \n  filter(year == 2015) \n\nggplot(dem_women_2015, aes(x = polyarchy)) +\n  geom_histogram(fill = \"steelblue\") + \n  labs(\n    x = \"Polyarchy Score, 2015\", \n    y = \"Count\",\n    title = \"Distribution of Democracy, 2015\", \n    caption = \"Source: V-Dem Institute\"\n    )"
+    "text": "Histograms\n\ndem_women_2015 <- read_csv(\"data/dem_women.csv\") |> \n  filter(year == 2015) \n\nggplot(dem_women_2015, aes(x = polyarchy)) +\n  geom_histogram(fill = \"steelblue\") + \n  labs(\n    x = \"Polyarchy Score, 2015\", \n    y = \"Count\",\n    title = \"Distribution of democracy, 2015\", \n    caption = \"Source: V-Dem Institute\"\n    )"
   },
   {
     "objectID": "modules/module-2.1.html#line-charts",

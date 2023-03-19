@@ -59,7 +59,7 @@ ggplot(dem_women_2015, aes(x = polyarchy)) +
   labs(
     x = "Polyarchy Score, 2015", 
     y = "Count",
-    title = "Distribution of Democracy, 2015", 
+    title = "Distribution of democracy, 2015", 
     caption = "Source: V-Dem Institute"
     )
 ```
