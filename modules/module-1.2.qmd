@@ -217,8 +217,6 @@ dem_summary <- dem_women |>
   arrange(desc(polyarchy)) 
 
 #write_csv(dem_summary, "data/dem_summary.csv")
-
-dem_summary
 ```
 
 Run the code and try changing it yourself. Try summarizing the data with a different function for one or more of the variables. Now try grouping by country instead of region. Try arranging the data based on a variable other than `polyarchy`. Finally, try sorting the data in ascending rather than descending order (hint: delete "desc" from the `arrange()` call).  

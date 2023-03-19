@@ -313,5 +313,40 @@
     "title": "Additional Dependencies",
     "section": "",
     "text": "/modules/webr-serviceworker.js\n/modules/webr-worker.js"
+  },
+  {
+    "objectID": "modules/module-2.1.html",
+    "href": "modules/module-2.1.html",
+    "title": "Module 2.1",
+    "section": "",
+    "text": "library(vdemdata)\nlibrary(readr)\nlibrary(dplyr)\nlibrary(ggplot2)"
+  },
+  {
+    "objectID": "modules/module-2.1.html#bar-charts",
+    "href": "modules/module-2.1.html#bar-charts",
+    "title": "Module 2.1",
+    "section": "Bar charts",
+    "text": "Bar charts\n\ndem_summary <- read_csv(\"data/dem_summary.csv\")\n\nggplot(dem_summary, aes(x = region, y = polyarchy)) +\n  geom_col(fill = \"steelblue\") + \n  labs(\n    x = \"Region\", \n    y = \"Avg. Polyarchy Score\", \n    title = \"Democracy by region, 1990 - present\", \n    caption = \"Source: V-Dem Institute\"\n    )\n\n\n\n\n\nggplot(dem_summary, aes(x = reorder(region, -polyarchy), y = polyarchy)) +\n  geom_col(fill = \"steelblue\") + \n  labs(\n    x = \"Region\", \n    y = \"Avg. Polyarchy Score\", \n    title = \"Democracy by region, 1990 - present\", \n    caption = \"Source: V-Dem Institute\"\n    )"
+  },
+  {
+    "objectID": "modules/module-2.1.html#histograms",
+    "href": "modules/module-2.1.html#histograms",
+    "title": "Module 2.1",
+    "section": "Histograms",
+    "text": "Histograms\n\ndem_women_2015 <- read_csv(\"data/dem_women.csv\") |> \n  filter(year == 2015) \n\nggplot(dem_women_2015, aes(x = polyarchy)) +\n  geom_histogram(fill = \"steelblue\") + \n  labs(\n    x = \"Polyarchy Score, 2015\", \n    y = \"Count\",\n    title = \"Distribution of Democracy, 2015\", \n    caption = \"Source: V-Dem Institute\"\n    )"
+  },
+  {
+    "objectID": "modules/module-2.1.html#line-charts",
+    "href": "modules/module-2.1.html#line-charts",
+    "title": "Module 2.1",
+    "section": "Line charts",
+    "text": "Line charts\n\ndem_waves_ctrs <- vdem |>\n  select(\n    country = country_name,     \n    year, \n    polyarchy = v2x_polyarchy, \n  ) |>\n  filter(\n    country %in% c(\"United States of America\", \n                   \"Japan\", \n                   \"Portugal\")\n    )\n\n\nggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +\n  geom_line(linewidth = 1) + \n  labs(\n    x = \"Year\", \n    y = \"Polyarchy Score\", \n    title = \"Levels of democracy in four countries\", \n    caption = \"Source: V-Dem Institute\"\n  )"
+  },
+  {
+    "objectID": "modules/module-2.1.html#scatter-plots",
+    "href": "modules/module-2.1.html#scatter-plots",
+    "title": "Module 2.1",
+    "section": "Scatter plots",
+    "text": "Scatter plots\n\ndem_summary_ctry <- read_csv(\"data/dem_women.csv\") |>\n  group_by(country, region) |>\n  summarize(\n    polyarchy = mean(polyarchy, na.rm = TRUE),\n    gdp_pc = mean(gdp_pc, na.rm = TRUE), \n    flfp = mean(flfp, na.rm = TRUE), \n    women_rep = mean(women_rep, na.rm = TRUE)\n  )\n\nwrite_csv(dem_summary_ctry, \"data/dem_summary_ctry\")\n\n\nggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy, color = region, size = women_rep)) + \n  geom_point() +\n  scale_x_log10(labels = scales::label_number(prefix = \"$\", suffix = \"k\")) +\n  labs(\n    x= \"GDP per Capita\", \n    y = \"Polyarchy Score\",\n    title = \"Wealth and democracy, 1990 - present\", \n    caption = \"Source: V-Dem Institute\"\n    )\n\n\n\n\n\nggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy)) + \n  geom_point(aes(color = region)) + \n  geom_smooth(method = \"lm\", linewidth = 1) + \n  scale_x_log10(labels = scales::label_number(prefix = \"$\", suffix = \"k\")) +\n  labs(\n    x= \"GDP per Capita\", \n    y = \"Polyarchy Score\",\n    title = \"Wealth and democracy, 1990 - present\", \n    caption = \"Source: V-Dem Institute\"\n    )\n\n\n\n\n\nggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy)) + \n  geom_point() + \n  geom_smooth(method = \"lm\", linewidth = 1) + \n  facet_wrap(~ region) +\n  scale_x_log10(labels = scales::label_number(prefix = \"$\", suffix = \"k\")) +\n  labs(\n    x= \"GDP per Capita\", \n    y = \"Polyarchy Score\",\n    title = \"Wealth and democracy, 1990 - present\", \n    caption = \"Source: V-Dem Institute\"\n    )\n\n\n\n\n\ndem_summary_ctry |> \n  filter(region == \"Asia\") |>\n  ggplot(aes(x = gdp_pc, y = polyarchy)) + \n    geom_point() + \n    geom_text(aes(label = country), size = 2, vjust = 2) +\n    geom_smooth(method = \"lm\", linewidth = 1) +\n    scale_x_log10(labels = scales::label_number(prefix = \"$\", suffix = \"k\")) +\n      labs(\n        x= \"GDP Per Capita\", \n        y = \"Polyarchy Score\",\n        title = \"Wealth and democracy in Asia, 1990 - present\", \n        caption = \"Source: V-Dem Institute\"\n        )"
   }
 ]
