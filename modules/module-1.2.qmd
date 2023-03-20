@@ -221,22 +221,24 @@ write_csv(dem_summary, "data/dem_summary.csv")
 
 Run the code and try changing it yourself. Try summarizing the data with a different function for one or more of the variables. Now try grouping by country instead of region. Try arranging the data based on a variable other than `polyarchy`. Finally, try sorting the data in ascending rather than descending order (hint: delete "desc" from the `arrange()` call).  
 
-
-```{webr}
-
+```{=html}
+<script type="module">
+await globalThis.webR.evalRVoid(`
 download.file(
   'https://raw.githubusercontent.com/eteitelbaum/dataviz-summer-2023/main/modules/data/dem_women.csv',
   'dem_women.csv'
 )
 
-
 webr::install(c("dplyr", "readr"))
 
 library(dplyr)
 library(readr)
-
 dem_women <- read_csv("dem_women.csv")
+`)
+</script>	
+```
 
+```{webr}
 dem_summary <- dem_women |> 
   group_by(region)  |> 
   summarize(
@@ -250,18 +252,3 @@ dem_summary <- dem_women |>
 dem_summary
 ```
 
-```{webr}
-fit = lm(mpg ~ am, data = mtcars)
-summary(fit)
-```
-
-```{webr}
-print(getwd())
-
-download.file(
-  'https://raw.githubusercontent.com/eteitelbaum/dataviz-summer-2023/main/modules/data/dem_women.csv',
-  'dem_women.csv'
-)
-
-print(list.files())
-```
