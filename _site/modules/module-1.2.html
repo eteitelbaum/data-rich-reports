@@ -483,11 +483,11 @@ Note
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 6,944
 Columns: 5
-$ iso3c     &lt;chr&gt; "ABW", "ABW", "ABW", "ABW", "ABW", "ABW", "ABW", "ABW", "ABW~
-$ country   &lt;chr&gt; "Aruba", "Aruba", "Aruba", "Aruba", "Aruba", "Aruba", "Aruba~
-$ year      &lt;dbl&gt; 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, ~
-$ women_rep &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, ~
-$ flfp      &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, ~</code></pre>
+$ iso3c     &lt;chr&gt; "ABW", "ABW", "ABW", "ABW", "ABW", "ABW", "ABW", "ABW", "ABW…
+$ country   &lt;chr&gt; "Aruba", "Aruba", "Aruba", "Aruba", "Aruba", "Aruba", "Aruba…
+$ year      &lt;dbl&gt; 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, …
+$ women_rep &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ flfp      &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</code></pre>
 </div>
 </div>
 <p>Now we have some pretty tidy World Bank data related to women’s empowerment without having to do too much work. I am sure you would agree that this is a much more straightforward process than downloading the data and then importing the data as a flat file!</p>
@@ -543,14 +543,14 @@ Note
 <span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(democracy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 5,846
+<pre><code>Rows: 5,667
 Columns: 6
-$ country      &lt;chr&gt; "Mexico", "Mexico", "Mexico", "Mexico", "Mexico", "Mexico~
-$ vdem_ctry_id &lt;dbl&gt; 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, ~
-$ year         &lt;dbl&gt; 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 199~
-$ polyarchy    &lt;dbl&gt; 0.396, 0.418, 0.441, 0.451, 0.472, 0.489, 0.511, 0.560, 0~
-$ gdp_pc       &lt;dbl&gt; 11.389, 11.635, 11.883, 11.983, 12.043, 11.742, 12.059, 1~
-$ region       &lt;chr&gt; "Latin America", "Latin America", "Latin America", "Latin~</code></pre>
+$ country      &lt;chr&gt; "Mexico", "Mexico", "Mexico", "Mexico", "Mexico", "Mexico…
+$ vdem_ctry_id &lt;dbl&gt; 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, …
+$ year         &lt;dbl&gt; 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 199…
+$ polyarchy    &lt;dbl&gt; 0.396, 0.416, 0.439, 0.456, 0.473, 0.485, 0.513, 0.548, 0…
+$ gdp_pc       &lt;dbl&gt; 11.389, 11.635, 11.883, 11.983, 12.043, 11.742, 12.059, 1…
+$ region       &lt;chr&gt; "Latin America", "Latin America", "Latin America", "Latin…</code></pre>
 </div>
 </div>
 </section>
@@ -573,15 +573,15 @@ $ region       &lt;chr&gt; "Latin America", "Latin America", "Latin America", "L
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(democracy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 5,846
+<pre><code>Rows: 5,667
 Columns: 7
-$ country      &lt;chr&gt; "Mexico", "Mexico", "Mexico", "Mexico", "Mexico", "Mexico~
-$ vdem_ctry_id &lt;dbl&gt; 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, ~
-$ iso3c        &lt;chr&gt; "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "~
-$ year         &lt;dbl&gt; 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 199~
-$ polyarchy    &lt;dbl&gt; 0.396, 0.418, 0.441, 0.451, 0.472, 0.489, 0.511, 0.560, 0~
-$ gdp_pc       &lt;dbl&gt; 11.389, 11.635, 11.883, 11.983, 12.043, 11.742, 12.059, 1~
-$ region       &lt;chr&gt; "Latin America", "Latin America", "Latin America", "Latin~</code></pre>
+$ country      &lt;chr&gt; "Mexico", "Mexico", "Mexico", "Mexico", "Mexico", "Mexico…
+$ vdem_ctry_id &lt;dbl&gt; 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, …
+$ iso3c        &lt;chr&gt; "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "…
+$ year         &lt;dbl&gt; 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 199…
+$ polyarchy    &lt;dbl&gt; 0.396, 0.416, 0.439, 0.456, 0.473, 0.485, 0.513, 0.548, 0…
+$ gdp_pc       &lt;dbl&gt; 11.389, 11.635, 11.883, 11.983, 12.043, 11.742, 12.059, 1…
+$ region       &lt;chr&gt; "Latin America", "Latin America", "Latin America", "Latin…</code></pre>
 </div>
 </div>
 </section>
@@ -604,17 +604,17 @@ $ region       &lt;chr&gt; "Latin America", "Latin America", "Latin America", "L
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dem_women)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 5,846
+<pre><code>Rows: 5,667
 Columns: 9
-$ country      &lt;chr&gt; "Mexico", "Mexico", "Mexico", "Mexico", "Mexico", "Mexico~
-$ vdem_ctry_id &lt;dbl&gt; 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, ~
-$ iso3c        &lt;chr&gt; "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "~
-$ year         &lt;dbl&gt; 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 199~
-$ polyarchy    &lt;dbl&gt; 0.396, 0.418, 0.441, 0.451, 0.472, 0.489, 0.511, 0.560, 0~
-$ gdp_pc       &lt;dbl&gt; 11.389, 11.635, 11.883, 11.983, 12.043, 11.742, 12.059, 1~
-$ region       &lt;chr&gt; "Latin America", "Latin America", "Latin America", "Latin~
-$ women_rep    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, 14.20, 17.40, 18.20, 16.00, 1~
-$ flfp         &lt;dbl&gt; 33.94, 34.24, 35.01, 35.85, 36.38, 37.62, 37.69, 39.65, 3~</code></pre>
+$ country      &lt;chr&gt; "Mexico", "Mexico", "Mexico", "Mexico", "Mexico", "Mexico…
+$ vdem_ctry_id &lt;dbl&gt; 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, …
+$ iso3c        &lt;chr&gt; "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "…
+$ year         &lt;dbl&gt; 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 199…
+$ polyarchy    &lt;dbl&gt; 0.396, 0.416, 0.439, 0.456, 0.473, 0.485, 0.513, 0.548, 0…
+$ gdp_pc       &lt;dbl&gt; 11.389, 11.635, 11.883, 11.983, 12.043, 11.742, 12.059, 1…
+$ region       &lt;chr&gt; "Latin America", "Latin America", "Latin America", "Latin…
+$ women_rep    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, 14.20, 17.40, 18.20, 16.00, 1…
+$ flfp         &lt;dbl&gt; 33.94, 34.24, 35.01, 35.85, 36.38, 37.62, 37.69, 39.65, 3…</code></pre>
 </div>
 </div>
 </section>
@@ -667,7 +667,8 @@ Note
     elt.style.height = "auto";
     editorDiv.append(elt);
   },{
-    value: `download.file(
+    value: `
+download.file(
   'https://raw.githubusercontent.com/eteitelbaum/dataviz-summer-2023/main/modules/data/dem_women.csv',
   'dem_women.csv'
 )
@@ -691,6 +692,168 @@ dem_summary <- dem_women |>
   arrange(desc(polyarchy)) 
 
 dem_summary`,
+    lineNumbers: true,
+    mode: "r",
+    theme: "light default",
+    viewportMargin: Infinity,
+  });
+
+  runButton.onclick = async () => {
+    runButton.disabled = true;
+    let canvas = undefined;
+    await globalThis.webR.init();
+    await webR.evalRVoid("canvas(width=504, height=360)");
+    const result = await webRCodeShelter.captureR(editor.getValue(), {
+      withAutoprint: true,
+      captureStreams: true,
+      captureConditions: false,
+      env: webR.objs.emptyEnv,
+    });
+    try {
+      await webR.evalRVoid("dev.off()");
+      const out = result.output.filter(
+        evt => evt.type == "stdout" || evt.type == "stderr"
+      ).map((evt) => evt.data).join("\n");
+
+      const msgs = await webR.flush();
+      msgs.forEach(msg => {
+        if (msg.type === "canvasExec"){
+          if (!canvas) {
+            canvas = document.createElement("canvas");
+            canvas.setAttribute("width", 2 * 504);
+            canvas.setAttribute("height", 2 * 360);
+            canvas.style.width="700px";
+            canvas.style.display="block";
+            canvas.style.margin="auto";
+          }
+          Function(`this.getContext("2d").${msg.data}`).bind(canvas)();
+        }
+      });
+
+      outputDiv.innerHTML = "";
+      const pre = document.createElement("pre");
+      if (/\S/.test(out)) {
+        const code = document.createElement("code");
+        code.innerText = out;
+        pre.appendChild(code);
+      } else {
+        pre.style.visibility = "hidden";
+      }
+      outputDiv.appendChild(pre);
+
+      if (canvas) {
+        const p = document.createElement("p");
+        p.appendChild(canvas);
+        outputDiv.appendChild(p);
+      }
+    } finally {
+      webRCodeShelter.purge();
+      runButton.disabled = false;
+    }
+  }
+</script>
+
+</div>
+<div class="cell">
+<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-2">Loading webR...</button>
+<div id="webr-editor-2"></div>
+<div id="webr-code-output-2"><pre style="visibility: hidden"></pre></div>
+<script type="module">
+  const runButton = document.getElementById("webr-run-button-2");
+  const outputDiv = document.getElementById("webr-code-output-2");
+  const editorDiv = document.getElementById("webr-editor-2");
+
+  const editor = CodeMirror((elt) => {
+    elt.style.border = "1px solid #eee";
+    elt.style.height = "auto";
+    editorDiv.append(elt);
+  },{
+    value: `fit = lm(mpg ~ am, data = mtcars)
+summary(fit)`,
+    lineNumbers: true,
+    mode: "r",
+    theme: "light default",
+    viewportMargin: Infinity,
+  });
+
+  runButton.onclick = async () => {
+    runButton.disabled = true;
+    let canvas = undefined;
+    await globalThis.webR.init();
+    await webR.evalRVoid("canvas(width=504, height=360)");
+    const result = await webRCodeShelter.captureR(editor.getValue(), {
+      withAutoprint: true,
+      captureStreams: true,
+      captureConditions: false,
+      env: webR.objs.emptyEnv,
+    });
+    try {
+      await webR.evalRVoid("dev.off()");
+      const out = result.output.filter(
+        evt => evt.type == "stdout" || evt.type == "stderr"
+      ).map((evt) => evt.data).join("\n");
+
+      const msgs = await webR.flush();
+      msgs.forEach(msg => {
+        if (msg.type === "canvasExec"){
+          if (!canvas) {
+            canvas = document.createElement("canvas");
+            canvas.setAttribute("width", 2 * 504);
+            canvas.setAttribute("height", 2 * 360);
+            canvas.style.width="700px";
+            canvas.style.display="block";
+            canvas.style.margin="auto";
+          }
+          Function(`this.getContext("2d").${msg.data}`).bind(canvas)();
+        }
+      });
+
+      outputDiv.innerHTML = "";
+      const pre = document.createElement("pre");
+      if (/\S/.test(out)) {
+        const code = document.createElement("code");
+        code.innerText = out;
+        pre.appendChild(code);
+      } else {
+        pre.style.visibility = "hidden";
+      }
+      outputDiv.appendChild(pre);
+
+      if (canvas) {
+        const p = document.createElement("p");
+        p.appendChild(canvas);
+        outputDiv.appendChild(p);
+      }
+    } finally {
+      webRCodeShelter.purge();
+      runButton.disabled = false;
+    }
+  }
+</script>
+
+</div>
+<div class="cell">
+<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-3">Loading webR...</button>
+<div id="webr-editor-3"></div>
+<div id="webr-code-output-3"><pre style="visibility: hidden"></pre></div>
+<script type="module">
+  const runButton = document.getElementById("webr-run-button-3");
+  const outputDiv = document.getElementById("webr-code-output-3");
+  const editorDiv = document.getElementById("webr-editor-3");
+
+  const editor = CodeMirror((elt) => {
+    elt.style.border = "1px solid #eee";
+    elt.style.height = "auto";
+    editorDiv.append(elt);
+  },{
+    value: `print(getwd())
+
+download.file(
+  'https://raw.githubusercontent.com/eteitelbaum/dataviz-summer-2023/main/modules/data/dem_women.csv',
+  'dem_women.csv'
+)
+
+print(list.files())`,
     lineNumbers: true,
     mode: "r",
     theme: "light default",

@@ -223,7 +223,6 @@ Run the code and try changing it yourself. Try summarizing the data with a diffe
 
 
 ```{webr}
-#| label: webr
 
 download.file(
   'https://raw.githubusercontent.com/eteitelbaum/dataviz-summer-2023/main/modules/data/dem_women.csv',
@@ -249,4 +248,20 @@ dem_summary <- dem_women |>
   arrange(desc(polyarchy)) 
 
 dem_summary
+```
+
+```{webr}
+fit = lm(mpg ~ am, data = mtcars)
+summary(fit)
+```
+
+```{webr}
+print(getwd())
+
+download.file(
+  'https://raw.githubusercontent.com/eteitelbaum/dataviz-summer-2023/main/modules/data/dem_women.csv',
+  'dem_women.csv'
+)
+
+print(list.files())
 ```
