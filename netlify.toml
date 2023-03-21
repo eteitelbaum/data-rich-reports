@@ -1,5 +1,5 @@
 [[headers]]
-  for = "/directory/with/webr/content/*"
+  for = "/modules"
 
   [headers.values]
     Cross-Origin-Opener-Policy = "same-origin"
