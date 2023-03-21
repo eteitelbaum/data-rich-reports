@@ -1,5 +1,5 @@
 [[headers]]
-  for = "/modules"
+  for = "/modules/*"
 
   [headers.values]
     Cross-Origin-Opener-Policy = "same-origin"
