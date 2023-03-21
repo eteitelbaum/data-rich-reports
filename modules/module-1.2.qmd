@@ -5,8 +5,6 @@ format: html
 highlight-style: atom-one
 filters:
   - webr
-include-in-header: 
-  - coop-coep.html
 execute:
   echo: true
   message: false
