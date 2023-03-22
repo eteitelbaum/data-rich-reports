@@ -62,10 +62,16 @@ While comma delimited files are the most common kind of flat file, `readr` inclu
 ```{r}
 #| label: step2
 
-library(readr)
-library(dplyr)
+# load packages
+
+library(readr) 
+library(dplyr) 
+
+# read data from csv file into an object called "wb_data_messy"
 
 wb_data_messy <- read_csv("data/messy_wb_data.csv")
+
+# view the data
 
 glimpse(wb_data_messy)
 ```
@@ -92,14 +98,18 @@ In our case, we want to reshape all of the year columns and have the years repre
 ```{r}
 #| label: step3
 
+# load tidyr
+
 library(tidyr)
 
-wb_data <- wb_data_messy |> 
-  pivot_longer(
-    cols = `1972 [YR1972]`: `2021 [YR2021]`, 
-    names_to = "year", 
-    values_to = "flfp"
+wb_data <- wb_data_messy |> # take wb_data_messy, and put it in wb_data, but first...
+  pivot_longer(             # pivot the data from wide to long form
+    cols = `1972 [YR1972]`: `2021 [YR2021]`, # columns to pivot (will create two columns)
+    names_to = "year", # name the first column "year" (tells us what year the data is for)
+    values_to = "flfp" # name the second column "flfp" (contains values for each year)
   ) 
+
+# view the data
 
 glimpse(wb_data)
 ```
@@ -129,9 +139,11 @@ First we call `mutate()` along with [substring()](https://www.statology.org/subs
 ```{r}
 #| label: step4
 
-wb_data <- wb_data |> 
-  mutate(year = substring(year, 1, 4)) |> 
-  mutate_at(c("year", "flfp"), as.numeric)
+wb_data <- wb_data |> # replace wb_data with a modified version of the dataframe 
+  mutate(year = substring(year, 1, 4)) |> # truncate year, keep first four characters of the string
+  mutate_at(c("year", "flfp"), as.numeric) # change year and flfp to numeric
+
+# view data
 
 glimpse(wb_data)
 ```
@@ -148,12 +160,20 @@ As a final step, we can export our clean data to a new .csv file with the `write
 ```{r}
 #| label: step5
 
+# load janitor
+
 library(janitor)
+
+# apply clean_names() to wb_data, store in new data frame called wb_data_clean
 
 wb_data_clean <- wb_data |>  
   clean_names() 
 
+# write wb_data_clean to a csv file
+
 write_csv(wb_data_clean, "data/wb_data_clean.csv")
+
+# view data
 
 glimpse(wb_data_clean)
 ```

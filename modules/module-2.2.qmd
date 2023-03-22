@@ -1,5 +1,56 @@
 ---
 title: "Module 2.2"
-subtitle: ""
-editor: visual
+subtitle: "Clarity, Interactivity and Accessibility"
+format: html
+highlight-style: atom-one
+execute:
+  echo: true
+  message: false
+  warning: false
 ---
+
+## Prework
+
+```{r}
+#| label: setup
+library(readr)
+library(dplyr)
+library(ggplot2)
+```
+
+## Overview
+
+Discuss some basic principles of design like no more than four lines, arranging bar charts in descending order, etc. Link to a relevant guide. 
+
+## Themes
+
+```{r}
+dem_summary_ctry <- read_csv("data/dem_summary_ctry.csv")
+
+ggplot(dem_summary_ctry, aes(x = gdp_pc, y = flfp)) + # plot gdp_pc on the x-axys and flfp on the y-axis 
+  geom_point(aes(color = region)) + # add an aesthetic to color points by region
+  geom_smooth(method = "loess", linewidth = 1) +  # make the line a loess curve
+  scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) + # stretch x- axis, add '$' and 'k' to values
+  labs(
+    x= "GDP per Capita", # x-axis title
+    y = "Female Labor Force Participation", # y-axis title
+    title = "Wealth and female labor force participation, 1990 - present", # plot title
+    caption = "Source: V-Dem Institute", # caption
+    color = "Region" # legend title
+    )
+```
+
+## Color Schemes
+
+Here mention the accessibility checker tools in Windows and OS
+
+
+## Annotations
+
+
+
+## Interactivity
+
+Most common tool is `plotly`
+
+

@@ -11,7 +11,7 @@ execute:
   warning: false
 ---
 
-## Overview
+## Prework
 
 ```{r}
 #| label: setup
@@ -20,6 +20,9 @@ library(readr)
 library(dplyr)
 library(ggplot2)
 ```
+
+## Overview
+
 
 ## Bar charts
 
