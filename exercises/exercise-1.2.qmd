@@ -49,14 +49,14 @@ dem_summary
   a. What is the median value of `polyarchy`? 
   b. What is the max value of `gdp_pc`?
   c. What is the standard deviation of `flfp`?
-  d. Waht is the interquartile range of `women_rep`?
+  d. What is the interquartile range of `women_rep`?
 
 2. Now try grouping by country instead of region. 
 
   a. What is the median value of `polyarchy`? 
   b. What is the max value of `gdp_pc`?
   c. What is the standard deviation of `flfp`?
-  d. Waht is the interquartile range of `women_rep`?
+  d. What is the interquartile range of `women_rep`?
 
 3. Sort the countries in descending order based on `gdp_pc`? Which country ranks first based on this sorting? 
 

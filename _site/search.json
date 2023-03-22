@@ -361,7 +361,7 @@
     "href": "exercises/exercise-1.2.html#questions",
     "title": "Exercise 1.2",
     "section": "Questions",
-    "text": "Questions\n\nTry summarizing the data with a different function for one or more of the variables.\n\n\nWhat is the median value of polyarchy?\nWhat is the max value of gdp_pc?\nWhat is the standard deviation of flfp?\nWaht is the interquartile range of women_rep?\n\n\nNow try grouping by country instead of region.\n\n\nWhat is the median value of polyarchy?\nWhat is the max value of gdp_pc?\nWhat is the standard deviation of flfp?\nWaht is the interquartile range of women_rep?\n\n\nSort the countries in descending order based on gdp_pc? Which country ranks first based on this sorting?\nNow try sorting the data in ascending order based on women_rep (hint: delete “desc” from the arrange() call). Which country ranks first in this sorting?"
+    "text": "Questions\n\nTry summarizing the data with a different function for one or more of the variables.\n\n\nWhat is the median value of polyarchy?\nWhat is the max value of gdp_pc?\nWhat is the standard deviation of flfp?\nWhat is the interquartile range of women_rep?\n\n\nNow try grouping by country instead of region.\n\n\nWhat is the median value of polyarchy?\nWhat is the max value of gdp_pc?\nWhat is the standard deviation of flfp?\nWhat is the interquartile range of women_rep?\n\n\nSort the countries in descending order based on gdp_pc? Which country ranks first based on this sorting?\nNow try sorting the data in ascending order based on women_rep (hint: delete “desc” from the arrange() call). Which country ranks first in this sorting?"
   },
   {
     "objectID": "exercises/zzz.html",
