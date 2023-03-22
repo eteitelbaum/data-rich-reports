@@ -1,0 +1,63 @@
+---
+title: "Exercise 1.2"
+format: html
+highlight-style: atom-one
+filters:
+  - webr
+execute:
+  echo: true
+  message: false
+  warning: false
+---
+
+## Code
+
+```{=html}
+<script type="module">
+await globalThis.webR.evalRVoid(`
+download.file(
+  'https://raw.githubusercontent.com/eteitelbaum/dataviz-summer-2023/main/modules/data/dem_women.csv',
+  'dem_women.csv'
+)
+
+webr::install(c("dplyr", "readr"))
+
+library(dplyr)
+library(readr)
+dem_women <- read_csv("dem_women.csv")
+`)
+</script>	
+```
+
+```{webr}
+dem_summary <- dem_women |> 
+  group_by(region)  |> 
+  summarize(
+    polyarchy = mean(polyarchy, na.rm = TRUE),
+    gdp_pc = mean(gdp_pc, na.rm = TRUE), 
+    flfp = mean(flfp, na.rm = TRUE), 
+    women_rep = mean(women_rep, na.rm = TRUE)
+  ) |> 
+  arrange(desc(polyarchy)) 
+
+dem_summary
+```
+
+## Questions
+
+1. Try summarizing the data with a [different function](https://dplyr.tidyverse.org/reference/summarise.html#useful-functions) for one or more of the variables. 
+  a. What is the median value of `polyarchy`? 
+  b. What is the max value of `gdp_pc`?
+  c. What is the standard deviation of `flfp`?
+  d. Waht is the interquartile range of `women_rep`?
+
+2. Now try grouping by country instead of region. 
+
+  a. What is the median value of `polyarchy`? 
+  b. What is the max value of `gdp_pc`?
+  c. What is the standard deviation of `flfp`?
+  d. Waht is the interquartile range of `women_rep`?
+
+3. Sort the countries in descending order based on `gdp_pc`? Which country ranks first based on this sorting? 
+
+4. Now try sorting the data in ascending order based on `women_rep` (hint: delete "desc" from the `arrange()` call). Which country ranks first in this sorting?

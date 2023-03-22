@@ -3,8 +3,6 @@ title: "Module 1.2"
 subtitle: "Working With APIs"
 format: html
 highlight-style: atom-one
-filters:
-  - webr
 execute:
   echo: true
   message: false
@@ -218,37 +216,3 @@ dem_summary <- dem_women |>
 
 write_csv(dem_summary, "data/dem_summary.csv")
 ```
-
-Run the code and try changing it yourself. Try summarizing the data with a different function for one or more of the variables. Now try grouping by country instead of region. Try arranging the data based on a variable other than `polyarchy`. Finally, try sorting the data in ascending rather than descending order (hint: delete "desc" from the `arrange()` call).  
-
-```{=html}
-<script type="module">
-await globalThis.webR.evalRVoid(`
-download.file(
-  'https://raw.githubusercontent.com/eteitelbaum/dataviz-summer-2023/main/modules/data/dem_women.csv',
-  'dem_women.csv'
-)
-
-webr::install(c("dplyr", "readr"))
-
-library(dplyr)
-library(readr)
-dem_women <- read_csv("dem_women.csv")
-`)
-</script>	
-```
-
-```{webr}
-dem_summary <- dem_women |> 
-  group_by(region)  |> 
-  summarize(
-    polyarchy = mean(polyarchy, na.rm = TRUE),
-    gdp_pc = mean(gdp_pc, na.rm = TRUE), 
-    flfp = mean(flfp, na.rm = TRUE), 
-    women_rep = mean(women_rep, na.rm = TRUE)
-  ) |> 
-  arrange(desc(polyarchy)) 
-
-dem_summary
-```
-
