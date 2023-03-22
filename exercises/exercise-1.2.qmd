@@ -46,17 +46,17 @@ dem_summary
 ## Questions
 
 1. Try summarizing the data with a [different function](https://dplyr.tidyverse.org/reference/summarise.html#useful-functions) for one or more of the variables. 
-  a. What is the median value of `polyarchy`? 
-  b. What is the max value of `gdp_pc`?
-  c. What is the standard deviation of `flfp`?
-  d. What is the interquartile range of `women_rep`?
+  a. What is the median value of `polyarchy` for The West? 
+  b. What is the max value of `gdp_pc` for Eastern Europe?
+  c. What is the standard deviation of `flfp` for Africa?
+  d. What is the interquartile range of `women_rep` for the Middle East?
 
 2. Now try grouping by country instead of region. 
 
-  a. What is the median value of `polyarchy`? 
-  b. What is the max value of `gdp_pc`?
-  c. What is the standard deviation of `flfp`?
-  d. What is the interquartile range of `women_rep`?
+  a. What is the median value of `polyarchy` for Sweden? 
+  b. What is the max value of `gdp_pc` New Zealand?
+  c. What is the standard deviation of `flfp` for Spain?
+  d. What is the interquartile range of `women_rep` for Germany?
 
 3. Sort the countries in descending order based on `gdp_pc`? Which country ranks first based on this sorting? 
 
