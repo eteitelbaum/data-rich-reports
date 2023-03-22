@@ -58,6 +58,6 @@ dem_summary
   c. What is the standard deviation of `flfp` for Spain?
   d. What is the interquartile range of `women_rep` for Germany?
 
-3. Sort the countries in descending order based on `gdp_pc`? Which country ranks first based on this sorting? 
+3. Sort the countries in descending order based on the mean value of `gdp_pc`? Which country ranks first based on this sorting? 
 
-4. Now try sorting the data in ascending order based on `women_rep` (hint: delete "desc" from the `arrange()` call). Which country ranks first in this sorting?
+4. Now try sorting the data in ascending order based on the median value of `women_rep` (hint: delete "desc" from the `arrange()` call). Which country ranks first in this sorting?
