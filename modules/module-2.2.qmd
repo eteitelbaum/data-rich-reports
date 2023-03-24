@@ -1,6 +1,6 @@
 ---
 title: "Module 2.2"
-subtitle: "Clarity, Interactivity and Accessibility"
+subtitle: "Accessibility, Clarity and Interactivity"
 format: html
 highlight-style: atom-one
 execute:
@@ -80,7 +80,7 @@ Here mention the accessibility checker tools in Windows and OS
 ```{r}
 cb_palette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
 
-flfp_region <- ggplot(flfp_gdp_regions, aes(x = reorder(region, -flfp), y = flfp, fill = region)) +
+flfp_region <- ggplot(flfp_gdp_regions, aes(x = reorder(iso3c, -flfp), y = flfp, fill = region)) +
   geom_col() + 
   scale_y_continuous(labels = scales::label_percent(scale = 1)) +
   labs(
