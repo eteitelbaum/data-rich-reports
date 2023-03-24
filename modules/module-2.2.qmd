@@ -11,32 +11,120 @@ execute:
 
 ## Prework
 
+Install plotly `install.packages("plotly")`
+
+Familiarize yourself with this setup code and the dataframes it generates. 
+
 ```{r}
 #| label: setup
+
 library(readr)
 library(dplyr)
 library(ggplot2)
 library(wbstats)
 library(countrycode)
+library(plotly)
+
+indicators = c(flfp = "SL.TLF.CACT.FE.ZS", gdp_pc = "NY.GDP.PCAP.KD") # define indicators
+
+## Regional levels of FLFP for column chart 
+
+flfp_gdp_regions <- 
+  wb_data("SL.TLF.CACT.FE.ZS", country = "regions_only", mrnev = 1) |> 
+  rename(
+    region = country,
+    year = date,
+    flfp = SL.TLF.CACT.FE.ZS
+  ) |> 
+  select(region, iso3c, year, flfp)
+  
+flfp_gdp_regions
+
+## Cross-section of data on FLFP and GDP per capita for scatter plot
+
+flfp_gdp <- wb_data(indicators, mrnev = 1) |> # download most recent non-missing value of indicators
+    left_join(select(wb_countries(), c(iso3c, region)), by = "iso3c")  # add regions from countrycode()
+
+glimpse(flfp_gdp)
+
+## Time series data on regional trends in FLFP for line chart
+
+flfp_ts <- wb_data("SL.TLF.CACT.FE.ZS", country = "regions_only", start_date = 1990, end_date = 2022) |> 
+  rename(
+    region = country,
+    year = date,
+    flfp = SL.TLF.CACT.FE.ZS
+  ) |> 
+  select(region, iso3c, year, flfp)
+  
+glimpse(flfp_ts)
 ```
+
 
 ## Overview
 
 Discuss some basic principles of design like no more than four lines, arranging bar charts in descending order, etc. Link to a relevant guide. 
 
-## Themes
+
+## Color Schemes
+
+Here mention the accessibility checker tools in Windows and OS
+
+
+### Create your own colorblind friendly color scheme
+
+[](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/)
+[scale_color_manual()](https://ggplot2.tidyverse.org/reference/scale_manual.html)
+
 
 ```{r}
+cb_palette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
 
-indicators = c(flfp = "SL.TLF.CACT.FE.ZS", gdp_pc = "NY.GDP.PCAP.KD") # define indicators
+flfp_region <- ggplot(flfp_gdp_regions, aes(x = reorder(region, -flfp), y = flfp, fill = region)) +
+  geom_col() + 
+  scale_y_continuous(labels = scales::label_percent(scale = 1)) +
+  labs(
+    x = "Region", 
+    y = "Avg. Female Labor Force Participation", 
+    title = "Levels of female labor force participation by region", 
+    fill = "Region",
+    caption = "Source: World Bank"
+    ) 
 
-flfp_gdp <- wb_data(indicators, mrnev = 1) |> # download most recent non-missing value of indicators
-    left_join(select(wb_countries(), c(iso3c, region)), by = "iso3c")
+flfp_region + scale_fill_manual(values = cb_palette)
+```
+
+
+### Use Viridis
+
+[viridis()](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html)
+
+
+```{r}
+flfp_region + scale_fill_viridis_d()
+```
+
+
+### Use R color brewer
+
+[](https://ggplot2.tidyverse.org/reference/scale_brewer.html)
+[](https://colorbrewer2.org/)
+
+
+```{r}
+flfp_region + scale_fill_brewer(palette = "BrBG")
+```
+
+
+## Scale color for scatterplots an line charts
+
+```{r}
   
-wealth_flfp <- ggplot(flfp_gdp, aes(x = gdp_pc, y = flfp)) + # plot gdp_pc vs flfp, store in wealth_flfp  
+wealth_flfp <- ggplot(flfp_gdp, aes(x = gdp_pc, y = flfp)) + # plot gdp_pc vs flfp, store in wealth_flfp 
   geom_point(aes(color = region)) + # add an aesthetic to color points by region
   geom_smooth(method = "loess", linewidth = 1) +  # make the line a loess curve
-  scale_x_log10(labels = scales::dollar_format()) + # stretch x- axis, add '$' and 'k' to values
+  scale_x_log10(labels = scales::label_dollar()) + # stretch x- axis, add '$' format
+  scale_y_continuous(labels = scales::label_percent(scale = 1)) + # add % label to y-axis
   labs(
     x= "GDP per Capita", # x-axis title
     y = "Female Labor Force Participation", # y-axis title
@@ -45,21 +133,117 @@ wealth_flfp <- ggplot(flfp_gdp, aes(x = gdp_pc, y = flfp)) + # plot gdp_pc vs fl
     color = "Region" # legend title
     )
 
-wealth_flfp
+wealth_flfp + scale_color_viridis_d(option = "plasma")
 ```
 
-## Color Schemes
-
-Here mention the accessibility checker tools in Windows and OS
 
 
+```{r}
+flfp_line <- ggplot(flfp_ts, aes(x = year, y = flfp, color = region)) +
+  geom_line(linewidth = 1) + 
+  scale_y_continuous(labels = scales::label_percent(scale = 1)) +
+  labs(
+    x = "Year", 
+    y = "Female Labor Force Participation", 
+    title = "Regional trends in female labor force participation", 
+    caption = "Source: V-Dem Institute", 
+    color = "Country"
+  )
+
+flfp_line + scale_color_brewer(palette = "RdYlBu")
+```
+
+## Themes
+
+[ggplot themes](https://ggplot2.tidyverse.org/reference/ggtheme.html)
+
+
+```{r}
+wealth_flfp + scale_color_viridis_d(option = "plasma") + theme_dark()
+```
+
+```{r}
+flfp_region + scale_fill_brewer(palette = "BrBG") + theme_minimal()
+```
 
 ## Annotations
 
+```{r}
+wealth_flfp <- wealth_flfp + scale_color_viridis_d(option = "plasma") + theme_minimal()
+
+wealth_flfp + annotate("text", x = 90000, y = 75, label = "Wealthy") + 
+  annotate("text", x = 1000, y = 80, label = "Low income") +
+  annotate("text", x = 10000, y = 20, label = "Middle income")
+```
+
+
+```{r}
+flfp_line <- flfp_line + scale_color_brewer(palette = "RdYlBu") 
+
+flfp_line + geom_hline(yintercept=52, linetype="dashed", color = "red", size = 1) +
+  annotate("text", x = 1995, y = 55, label = "Global average")
+```
+
+
+```{r}
+flfp_line <- flfp_line + scale_color_brewer(palette = "RdYlBu") 
+
+flfp_line + geom_vline(xintercept=2020, linetype = "dashed", size = 1) +
+  annotate("text", x = 2017, y = 35, label = "Pandemic")
+```
 
 
 ## Interactivity
 
-Most common tool is `plotly`
+
+[plotly](https://plotly.com/r/)
+[ggplotly](https://plotly.com/ggplot2/)
+
+```{r}
+ggplotly(flfp_line)
+```
+
+
+In this next one, if you don't control the tool tip it looks bad
+
+```{r}
+flfp_region <- flfp_region + scale_fill_brewer(palette = "BrBG") + theme_minimal()
+
+ggplotly(flfp_region, tooltip = c("region", "flfp")) # controlling the tooltip output
+```
+
+need to include `aes(label = country)` to view country in tool tip. How to add notes and other stuff with `layout(annotations = list())`. 
+
+```{r}
+
+wealth_flfp <- ggplot(flfp_gdp, aes(x = gdp_pc, y = flfp)) + 
+  geom_point(aes(color = region)) + 
+  geom_smooth(method = "loess", linewidth = 1) +  
+  scale_x_log10(labels = scales::label_dollar()) + 
+  scale_y_continuous(labels = scales::label_percent(scale = 1)) + 
+  labs(
+    x= "GDP per Capita", 
+    y = "Female Labor Force Participation", 
+    title = "Wealth and female labor force participation", 
+    caption = "Source: World Bank Development Indicators", # will not show up!
+    color = "Region" 
+    ) + 
+  scale_color_viridis_d(option = "plasma") +
+  theme_minimal() +
+  aes(label = country)  # need so ggplot retains label for plotly
+
+ggplotly(wealth_flfp, tooltip = c("country", "flfp", "gdp_pc")) |> 
+  
+  layout(annotations = list(text = "Source: World Bank Development Indicators",  
+                            font = list(size = 10), showarrow = FALSE,
+                            xref = 'paper', x = 1.1, xanchor = 'right', xshift = 0,
+                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) |> 
+  # add web address
+  layout(annotations = list(text = "www.dataviz-gwu.rocks", 
+                            font = list(size = 10, color = 'grey'), showarrow = FALSE,
+                            xref = 'paper', x = .5, xanchor = 'center', xshift = 0,
+                            yref = 'paper', y = 1, yanchor = 'top', yshift = 0))
+```
+
 
 

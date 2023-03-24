@@ -375,7 +375,7 @@
     "href": "modules/module-2.2.html",
     "title": "Module 2.2",
     "section": "",
-    "text": "library(readr)\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(wbstats)\nlibrary(countrycode)"
+    "text": "Install plotly install.packages(\"plotly\")\nFamiliarize yourself with this setup code and the dataframes it generates.\n\nlibrary(readr)\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(wbstats)\nlibrary(countrycode)\nlibrary(plotly)\n\nindicators = c(flfp = \"SL.TLF.CACT.FE.ZS\", gdp_pc = \"NY.GDP.PCAP.KD\") # define indicators\n\n## Regional levels of FLFP for column chart \n\nflfp_gdp_regions <- \n  wb_data(\"SL.TLF.CACT.FE.ZS\", country = \"regions_only\", mrnev = 1) |> \n  rename(\n    region = country,\n    year = date,\n    flfp = SL.TLF.CACT.FE.ZS\n  ) |> \n  select(region, iso3c, year, flfp)\n  \nflfp_gdp_regions\n\n# A tibble: 7 × 4\n  region                     iso3c  year  flfp\n  <chr>                      <chr> <dbl> <dbl>\n1 East Asia & Pacific        EAS    2021  58.9\n2 Europe & Central Asia      ECS    2021  51.6\n3 Latin America & Caribbean  LCN    2021  49.8\n4 Middle East & North Africa MEA    2021  18.2\n5 North America              NAC    2021  56.1\n6 South Asia                 SAS    2021  24.8\n7 Sub-Saharan Africa         SSF    2021  60.4\n\n## Cross-section of data on FLFP and GDP per capita for scatter plot\n\nflfp_gdp <- wb_data(indicators, mrnev = 1) |> # download most recent non-missing value of indicators\n    left_join(select(wb_countries(), c(iso3c, region)), by = \"iso3c\")  # add regions from countrycode()\n\nglimpse(flfp_gdp)\n\nRows: 224\nColumns: 7\n$ iso2c   <chr> \"AW\", \"AF\", \"AF\", \"AO\", \"AL\", \"AD\", \"AE\", \"AR\", \"AM\", \"AS\", \"A…\n$ iso3c   <chr> \"ABW\", \"AFG\", \"AFG\", \"AGO\", \"ALB\", \"AND\", \"ARE\", \"ARG\", \"ARM\",…\n$ country <chr> \"Aruba\", \"Afghanistan\", \"Afghanistan\", \"Angola\", \"Albania\", \"A…\n$ date    <dbl> 2021, 2020, 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021, 20…\n$ gdp_pc  <dbl> 30271.8335, NA, 426.0300, 2299.6406, 4830.5963, 36839.8762, 42…\n$ flfp    <dbl> NA, 16.463, NA, 74.464, 51.653, NA, 52.789, 50.283, 57.779, NA…\n$ region  <chr> \"Latin America & Caribbean\", \"South Asia\", \"South Asia\", \"Sub-…\n\n## Time series data on regional trends in FLFP for line chart\n\nflfp_ts <- wb_data(\"SL.TLF.CACT.FE.ZS\", country = \"regions_only\", start_date = 1990, end_date = 2022) |> \n  rename(\n    region = country,\n    year = date,\n    flfp = SL.TLF.CACT.FE.ZS\n  ) |> \n  select(region, iso3c, year, flfp)\n  \nglimpse(flfp_ts)\n\nRows: 224\nColumns: 4\n$ region <chr> \"East Asia & Pacific\", \"East Asia & Pacific\", \"East Asia & Paci…\n$ iso3c  <chr> \"EAS\", \"EAS\", \"EAS\", \"EAS\", \"EAS\", \"EAS\", \"EAS\", \"EAS\", \"EAS\", …\n$ year   <dbl> 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 200…\n$ flfp   <dbl> 66.32925, 66.12070, 66.00342, 65.68375, 65.65046, 65.50232, 65.…"
   },
   {
     "objectID": "modules/module-2.2.html#overview",
@@ -389,28 +389,28 @@
     "href": "modules/module-2.2.html#themes",
     "title": "Module 2.2",
     "section": "Themes",
-    "text": "Themes\n\nindicators = c(flfp = \"SL.TLF.CACT.FE.ZS\", gdp_pc = \"NY.GDP.PCAP.KD\") # define indicators\n\nflfp_gdp <- wb_data(indicators, mrnev = 1) |> # download most recent non-missing value of indicators\n    left_join(select(wb_countries(), c(iso3c, region)), by = \"iso3c\")\n  \nwealth_flfp <- ggplot(flfp_gdp, aes(x = gdp_pc, y = flfp)) + # plot gdp_pc vs flfp, store in wealth_flfp  \n  geom_point(aes(color = region)) + # add an aesthetic to color points by region\n  geom_smooth(method = \"loess\", linewidth = 1) +  # make the line a loess curve\n  scale_x_log10(labels = scales::dollar_format()) + # stretch x- axis, add '$' and 'k' to values\n  labs(\n    x= \"GDP per Capita\", # x-axis title\n    y = \"Female Labor Force Participation\", # y-axis title\n    title = \"Wealth and female labor force participation\", # plot title\n    caption = \"Source: World Bank Development Indicators\", # caption\n    color = \"Region\" # legend title\n    )\n\nwealth_flfp"
+    "text": "Themes\nggplot themes\n\nwealth_flfp + scale_color_viridis_d(option = \"plasma\") + theme_dark()\n\n\n\n\n\nflfp_region + scale_fill_brewer(palette = \"BrBG\") + theme_minimal()"
   },
   {
     "objectID": "modules/module-2.2.html#color-schemes",
     "href": "modules/module-2.2.html#color-schemes",
     "title": "Module 2.2",
     "section": "Color Schemes",
-    "text": "Color Schemes\nHere mention the accessibility checker tools in Windows and OS"
+    "text": "Color Schemes\nHere mention the accessibility checker tools in Windows and OS\n\nCreate your own colorblind friendly color scheme\n scale_color_manual()\n\ncb_palette <- c(\"#E69F00\", \"#56B4E9\", \"#009E73\", \"#F0E442\", \"#0072B2\", \"#D55E00\", \"#CC79A7\")\n\nflfp_region <- ggplot(flfp_gdp_regions, aes(x = reorder(region, -flfp), y = flfp, fill = region)) +\n  geom_col() + \n  scale_y_continuous(labels = scales::label_percent(scale = 1)) +\n  labs(\n    x = \"Region\", \n    y = \"Avg. Female Labor Force Participation\", \n    title = \"Levels of female labor force participation by region\", \n    fill = \"Region\",\n    caption = \"Source: World Bank\"\n    ) \n\nflfp_region + scale_fill_manual(values = cb_palette)\n\n\n\n\n\n\nUse Viridis\nviridis()\n\nflfp_region + scale_fill_viridis_d()\n\n\n\n\n\n\nUse R color brewer\n \n\nflfp_region + scale_fill_brewer(palette = \"BrBG\")"
   },
   {
     "objectID": "modules/module-2.2.html#annotations",
     "href": "modules/module-2.2.html#annotations",
     "title": "Module 2.2",
     "section": "Annotations",
-    "text": "Annotations"
+    "text": "Annotations\n\nwealth_flfp <- wealth_flfp + scale_color_viridis_d(option = \"plasma\") + theme_minimal()\n\nwealth_flfp + annotate(\"text\", x = 90000, y = 75, label = \"Wealthy\") + \n  annotate(\"text\", x = 1000, y = 80, label = \"Low income\") +\n  annotate(\"text\", x = 10000, y = 20, label = \"Middle income\")\n\n\n\n\n\nflfp_line <- flfp_line + scale_color_brewer(palette = \"RdYlBu\") \n\nflfp_line + geom_hline(yintercept=52, linetype=\"dashed\", color = \"red\", size = 1) +\n  annotate(\"text\", x = 1995, y = 55, label = \"Global average\")\n\n\n\n\n\nflfp_line <- flfp_line + scale_color_brewer(palette = \"RdYlBu\") \n\nflfp_line + geom_vline(xintercept=2020, linetype = \"dashed\", size = 1) +\n  annotate(\"text\", x = 2017, y = 35, label = \"Pandemic\")"
   },
   {
     "objectID": "modules/module-2.2.html#interactivity",
     "href": "modules/module-2.2.html#interactivity",
     "title": "Module 2.2",
     "section": "Interactivity",
-    "text": "Interactivity\nMost common tool is plotly"
+    "text": "Interactivity\nplotly ggplotly\n\nggplotly(flfp_line)\n\n\n\n\n\nIn this next one, if you don’t control the tool tip it looks bad\n\nflfp_region <- flfp_region + scale_fill_brewer(palette = \"BrBG\") + theme_minimal()\n\nggplotly(flfp_region, tooltip = c(\"region\", \"flfp\")) # controlling the tooltip output\n\n\n\n\n\nneed to include aes(label = country) to view country in tool tip. How to add notes and other stuff with layout(annotations = list()).\n\nwealth_flfp <- ggplot(flfp_gdp, aes(x = gdp_pc, y = flfp)) + \n  geom_point(aes(color = region)) + \n  geom_smooth(method = \"loess\", linewidth = 1) +  \n  scale_x_log10(labels = scales::label_dollar()) + \n  scale_y_continuous(labels = scales::label_percent(scale = 1)) + \n  labs(\n    x= \"GDP per Capita\", \n    y = \"Female Labor Force Participation\", \n    title = \"Wealth and female labor force participation\", \n    caption = \"Source: World Bank Development Indicators\", # will not show up!\n    color = \"Region\" \n    ) + \n  scale_color_viridis_d(option = \"plasma\") +\n  theme_minimal() +\n  aes(label = country)  # need so ggplot retains label for plotly\n\nggplotly(wealth_flfp, tooltip = c(\"country\", \"flfp\", \"gdp_pc\")) |> \n  \n  layout(annotations = list(text = \"Source: World Bank Development Indicators\",  \n                            font = list(size = 10), showarrow = FALSE,\n                            xref = 'paper', x = 1.1, xanchor = 'right', xshift = 0,\n                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) |> \n  # add web address\n  layout(annotations = list(text = \"www.dataviz-gwu.rocks\", \n                            font = list(size = 10, color = 'grey'), showarrow = FALSE,\n                            xref = 'paper', x = .5, xanchor = 'center', xshift = 0,\n                            yref = 'paper', y = 1, yanchor = 'top', yshift = 0))"
   },
   {
     "objectID": "modules/module-2.1.html#overview",
@@ -418,5 +418,12 @@
     "title": "Module 2.1",
     "section": "Overview",
     "text": "Overview"
+  },
+  {
+    "objectID": "modules/module-2.2.html#scale-color-for-scatterplots-an-line-charts",
+    "href": "modules/module-2.2.html#scale-color-for-scatterplots-an-line-charts",
+    "title": "Module 2.2",
+    "section": "Scale color for scatterplots an line charts",
+    "text": "Scale color for scatterplots an line charts\n\nwealth_flfp <- ggplot(flfp_gdp, aes(x = gdp_pc, y = flfp)) + # plot gdp_pc vs flfp, store in wealth_flfp \n  geom_point(aes(color = region)) + # add an aesthetic to color points by region\n  geom_smooth(method = \"loess\", linewidth = 1) +  # make the line a loess curve\n  scale_x_log10(labels = scales::label_dollar()) + # stretch x- axis, add '$' format\n  scale_y_continuous(labels = scales::label_percent(scale = 1)) + # add % label to y-axis\n  labs(\n    x= \"GDP per Capita\", # x-axis title\n    y = \"Female Labor Force Participation\", # y-axis title\n    title = \"Wealth and female labor force participation\", # plot title\n    caption = \"Source: World Bank Development Indicators\", # caption\n    color = \"Region\" # legend title\n    )\n\nwealth_flfp + scale_color_viridis_d(option = \"plasma\")\n\n\n\n\n\nflfp_line <- ggplot(flfp_ts, aes(x = year, y = flfp, color = region)) +\n  geom_line(linewidth = 1) + \n  scale_y_continuous(labels = scales::label_percent(scale = 1)) +\n  labs(\n    x = \"Year\", \n    y = \"Female Labor Force Participation\", \n    title = \"Regional trends in female labor force participation\", \n    caption = \"Source: V-Dem Institute\", \n    color = \"Country\"\n  )\n\nflfp_line + scale_color_brewer(palette = \"RdYlBu\")"
   }
 ]
