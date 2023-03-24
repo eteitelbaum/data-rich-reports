@@ -16,6 +16,8 @@ execute:
 library(readr)
 library(dplyr)
 library(ggplot2)
+library(wbstats)
+library(countrycode)
 ```
 
 ## Overview
@@ -25,24 +27,31 @@ Discuss some basic principles of design like no more than four lines, arranging 
 ## Themes
 
 ```{r}
-dem_summary_ctry <- read_csv("data/dem_summary_ctry.csv")
 
-ggplot(dem_summary_ctry, aes(x = gdp_pc, y = flfp)) + # plot gdp_pc on the x-axys and flfp on the y-axis 
+indicators = c(flfp = "SL.TLF.CACT.FE.ZS", gdp_pc = "NY.GDP.PCAP.KD") # define indicators
+
+flfp_gdp <- wb_data(indicators, mrnev = 1) |> # download most recent non-missing value of indicators
+    left_join(select(wb_countries(), c(iso3c, region)), by = "iso3c")
+  
+wealth_flfp <- ggplot(flfp_gdp, aes(x = gdp_pc, y = flfp)) + # plot gdp_pc on the x-axys and flfp on the y-axis  
   geom_point(aes(color = region)) + # add an aesthetic to color points by region
   geom_smooth(method = "loess", linewidth = 1) +  # make the line a loess curve
-  scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) + # stretch x- axis, add '$' and 'k' to values
+  scale_x_log10(labels = scales::dollar_format()) + # stretch x- axis, add '$' and 'k' to values
   labs(
     x= "GDP per Capita", # x-axis title
     y = "Female Labor Force Participation", # y-axis title
-    title = "Wealth and female labor force participation, 1990 - present", # plot title
-    caption = "Source: V-Dem Institute", # caption
+    title = "Wealth and female labor force participation", # plot title
+    caption = "Source: World Bank Development Indicators", # caption
     color = "Region" # legend title
     )
+
+wealth_flfp
 ```
 
 ## Color Schemes
 
 Here mention the accessibility checker tools in Windows and OS
+
 
 
 ## Annotations
