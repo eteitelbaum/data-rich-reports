@@ -1,5 +1,119 @@
 ---
 title: "Module 3.1"
-subtitle: ""
-editor: visual
+subtitle: "Choropleth Maps"
+format: html
+highlight-style: atom-one
+execute:
+  echo: true
+  message: false
+  warning: false
 ---
+
+## Grabbing country shapes from rnaturalearth
+
+```{r}
+library(rnaturalearth)
+library(dplyr)
+
+world_map_df <- ne_countries(scale = "medium", returnclass = "sf") |> 
+    filter(iso_a3 != "ATA") # remove Antarctica
+
+#world_map_df |>
+  # select and view first 10 columns
+  #select(1:10) |> 
+  #glimpse()
+
+world_map_df |>
+  select(geometry) # view contents of last column of df (geometry)
+``` 
+
+## Make a map with geom_sf()
+
+```{r}
+library(ggplot2)
+
+ggplot(data = world_map_df) +
+  geom_sf(aes(fill = as.factor(income_grp))) + 
+  labs(title = "World Bank country income categories")
+```
+
+
+## Beautify your map
+
+```{r}
+library(ggthemes)
+
+ggplot(data = world_map_df) +
+  geom_sf(aes(fill = as.factor(income_grp))) + 
+  labs(
+    title = "Population, most recent available estimate",
+    fill = "Category"
+    ) +
+    theme_map() + 
+    scale_fill_viridis_d()
+```
+
+## Merging rnaturalearth with other data
+
+We are going to use iso2c to do the merge
+
+```{r}
+library(wbstats)
+
+oil_rents_df <- wb_data(c(oil_rents_gdp = "NY.GDP.PETR.RT.ZS"), mrnev = 1) 
+
+rents_map_df <- left_join(world_map_df, oil_rents_df, join_by(iso_a2 == iso2c))
+
+rents_map_df |>
+  select(last_col(5):last_col()) |> #select last 5 columns of df
+  glimpse() 
+```
+
+
+```{r}
+ggplot(data = rents_map_df) +
+  geom_sf(aes(fill = oil_rents_gdp)) + # change var
+  labs(
+    title = "Oil rents as a % of GDP", # change title
+    subtitle = "(Most recent available data)", # add subtitle
+    fill = "Category", # change legend title
+    caption = "Source: World Bank Development Indicators"
+    ) +
+  theme_map() +
+  theme(legend.position = "right") +
+  scale_fill_viridis_c( # chg from discrete (_d) to continuous (_c)
+      option = "magma", #  chg to magma theme
+      labels = scales::label_percent(scale = 1) # add percent label for legend
+      ) 
+```
+
+## Build your map in one long pipe sequence
+
+- change indicator to illustrate ease of making map when code is finished, maybe build an exercise based on that 
+
+```{r}
+ne_countries(scale = "medium", returnclass = "sf") |> 
+  left_join(
+    wb_data(
+      c(oil_rents_gdp = "NY.GDP.PETR.RT.ZS"), 
+      mrnev = 1
+    ),
+    join_by(iso_a2 == iso2c)
+  ) |> 
+  filter(iso_a3 != "ATA") |>  # remove Antarctica
+  ggplot(aes(fill = oil_rents_gdp)) +
+  geom_sf() +
+  labs(
+    title = "Oil rents as a % of GDP", # change title
+    subtitle = "(Most recent available data)", # add subtitle
+    fill = "Category", # change legend title
+    caption = "Source: World Bank Development Indicators"
+    ) +
+  theme_map() +
+  theme(legend.position="right") +
+  scale_fill_viridis_c( # chg from discrete (_d) to continuous (_c)
+    option = "magma", #  chg to magma theme
+    labels = scales::label_percent(scale = 1) # add percent label for legend
+    )
+```
+

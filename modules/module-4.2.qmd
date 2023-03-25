@@ -3,3 +3,5 @@ title: "Module 4.2"
 subtitle: ""
 editor: visual
 ---
+
+Use {peacesciencer}, teach broom, regression table package of some sort and coeffplots. 

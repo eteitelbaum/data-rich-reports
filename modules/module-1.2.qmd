@@ -73,7 +73,7 @@ library(wbstats) # for downloading WB data
 library(dplyr) # for selecting, renaming and mutating
 library(janitor) # for rounding
 
-indicators <- c(flfp = "SL.TLF.CACT.FE.ZS", women_rep = "SG.GEN.PARL.ZS") # store indicators
+indicators <- c("flfp" = "SL.TLF.CACT.FE.ZS", "women_rep" = "SG.GEN.PARL.ZS") # store indicators
   
 women_emp <- wb_data(indicators, mrv = 50) |> # download indicator data for last 50 yrs
   select(!iso2c) |> # drop the iso2c code which we won't be using
