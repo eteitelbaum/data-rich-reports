@@ -63,7 +63,7 @@ library(ggthemes)
 ggplot(data = world_map_df) +
   geom_sf(aes(fill = as.factor(income_grp))) + 
   labs(
-    title = "Population, most recent available estimate",
+    title = "World Bank country income categories",
     fill = "Category"
     ) +
     theme_map() + 
@@ -97,43 +97,102 @@ ggplot(data = rents_map_df) +
   labs(
     title = "Oil rents as a % of GDP", # change title
     subtitle = "(Most recent available data)", # add subtitle
-    fill = "Category", # change legend title
+    fill = "Percent", # change legend title
     caption = "Source: World Bank Development Indicators"
     ) +
   theme_map() +
-  theme(legend.position = "right") +
+  theme(
+    legend.position = "right", 
+    plot.title = element_text(face = "bold") #,
+    #legend.title = element_text(size = 8),
+    #legend.text = element_text(size = 6)
+    ) +
   scale_fill_viridis_c( # chg from discrete (_d) to continuous (_c)
       option = "magma", #  chg to magma theme
-      labels = scales::label_percent(scale = 1) # add percent label for legend
+      labels = scales::label_percent(scale = 1) # add % label for legend
       ) 
 ```
 
-## Build your map in one long pipe sequence
+## Turn your map into a function
 
-- change indicator to illustrate ease of making map when code is finished, maybe build an exercise based on that 
+- save this code as an R. script 
 
 ```{r}
 #| crop: true
 
+library(rnaturalearth)
+library(dplyr)
+library(ggplot2)
+library(ggthemes)
+library(wbstats)
+
+create_map <- function(var_id, title, legend_title, theme, direction){
+
 ne_countries(scale = "medium", returnclass = "sf") |> 
   left_join(
-    wb_data(c(oil_rents_gdp = "NY.GDP.PETR.RT.ZS"), mrnev = 1),
+    wb_data(var_id, mrnev = 1), # change variable id
     join_by(iso_a2 == iso2c)
   ) |> 
-  filter(iso_a3 != "ATA") |>  # remove Antarctica
-  ggplot(aes(fill = oil_rents_gdp)) +
-  geom_sf() +
+  filter(iso_a3 != "ATA") |>  
+  ggplot() + 
+  geom_sf(aes(fill = eval(parse(text=var_id)))) + # remove quotes
   labs(
-    title = "Oil rents as a % of GDP", # change title
-    subtitle = "(Most recent available data)", # add subtitle
-    fill = "Category", # change legend title
+    title =  title, # change title
+    fill = legend_title, # change legend title
     caption = "Source: World Bank Development Indicators"
     ) +
   theme_map() +
-  theme(legend.position="right") +
-  scale_fill_viridis_c( # chg from discrete (_d) to continuous (_c)
-    option = "magma", #  chg to magma theme
-    labels = scales::label_percent(scale = 1) # add percent label for legend
+  theme(
+    plot.title = element_text(face = "bold"),
+  ) +
+  scale_fill_viridis_c( 
+    option = "magma", #  chg theme
+    direction = direction # change direction of scale
     )
+}
+
+create_map(var_id = "SL.TLF.CACT.FE.ZS", 
+           title= "Female Labor Force Participation", 
+           legend_title = "FLFP %", 
+           theme = "inferno", 
+           direction = -1)
+```
+
+
+## Use R file as a "source" in another document
+
+```{r}
+source("functions/wb-maps.R", local = knitr::knit_global())
+```
+
+Now I write some text here and then I want to show map, so I call the `create_map()` function that we just made:
+
+```{r}
+#| crop: true
+
+create_map(var_id = "SL.TLF.CACT.FE.ZS", 
+           title= "Female Labor Force Participation", 
+           legend_title = "FLFP %", 
+           theme = "inferno", 
+           direction = -1)
+```
+
+
+But now I want to show a different indicator with a different theme, let's say GDP per capita. Let's search for it: 
+
+```{r}
+wb_search("GDP per capita") 
+```
+
+Now let's map GDP in constant 2017 international dollars ("NY.GDP.PCAP.PP.KD") with the mako theme:
+
+```{r}
+#| crop: true 
+
+create_map(var_id = "NY.GDP.PCAP.PP.KD", 
+           title= "GDP per capita (constant 2017 Int'l $)", 
+           legend_title = "Geary-Khamis $", 
+           theme = "mako", 
+           direction = -1)
 ```
 
