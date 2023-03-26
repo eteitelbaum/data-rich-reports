@@ -571,20 +571,9 @@ $ geometry      &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((31.28789 -2..., MULTIP
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"functions/wb-maps.R"</span>, <span class="at">local =</span> knitr<span class="sc">::</span><span class="fu">knit_global</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Now I write some text here and then I want to show map, so I call the <code>create_map()</code> function that we just made:</p>
-<div class="cell" data-crop="true">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">create_map</span>(<span class="at">var_id =</span> <span class="st">"SL.TLF.CACT.FE.ZS"</span>, </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">title=</span> <span class="st">"Female Labor Force Participation"</span>, </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">legend_title =</span> <span class="st">"FLFP %"</span>, </span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">theme =</span> <span class="st">"inferno"</span>, </span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="module-3.1_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>But now I want to show a different indicator with a different theme, let’s say GDP per capita. Let’s search for it:</p>
+<p>Now I write some text here and then I want to show map, so I call the <code>create_map()</code> function that we just made. Let’s say I want to show a different indicator with a different theme, maybe GDP per capita. Let’s search for it using the wb_search() tool:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wb_search</span>(<span class="st">"GDP per capita"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wb_search</span>(<span class="st">"GDP per capita"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 24 × 3
    indicator_id       indicator                                   indicator_desc
@@ -604,13 +593,13 @@ $ geometry      &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((31.28789 -2..., MULTIP
 </div>
 <p>Now let’s map GDP in constant 2017 international dollars (“NY.GDP.PCAP.PP.KD”) with the mako theme:</p>
 <div class="cell" data-crop="true">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">create_map</span>(<span class="at">var_id =</span> <span class="st">"NY.GDP.PCAP.PP.KD"</span>, </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">title=</span> <span class="st">"GDP per capita (constant 2017 Int'l $)"</span>, </span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">legend_title =</span> <span class="st">"Geary-Khamis $"</span>, </span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">theme =</span> <span class="st">"mako"</span>, </span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">create_map</span>(<span class="at">var_id =</span> <span class="st">"NY.GDP.PCAP.PP.KD"</span>, </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">title=</span> <span class="st">"GDP per capita (constant 2017 internatioal $)"</span>, </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">legend_title =</span> <span class="st">"Geary-Khamis $"</span>, </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">theme =</span> <span class="st">"mako"</span>, </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="module-3.1_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+<p><img src="module-3.1_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 

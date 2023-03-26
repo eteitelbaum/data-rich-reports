@@ -165,20 +165,7 @@ create_map(var_id = "SL.TLF.CACT.FE.ZS",
 source("functions/wb-maps.R", local = knitr::knit_global())
 ```
 
-Now I write some text here and then I want to show map, so I call the `create_map()` function that we just made:
-
-```{r}
-#| crop: true
-
-create_map(var_id = "SL.TLF.CACT.FE.ZS", 
-           title= "Female Labor Force Participation", 
-           legend_title = "FLFP %", 
-           theme = "inferno", 
-           direction = -1)
-```
-
-
-But now I want to show a different indicator with a different theme, let's say GDP per capita. Let's search for it: 
+Now I write some text here and then I want to show map, so I call the `create_map()` function that we just made. Let's say I want to show a different indicator with a different theme, maybe GDP per capita. Let's search for it using the wb_search() tool: 
 
 ```{r}
 wb_search("GDP per capita") 
@@ -190,7 +177,7 @@ Now let's map GDP in constant 2017 international dollars ("NY.GDP.PCAP.PP.KD") w
 #| crop: true 
 
 create_map(var_id = "NY.GDP.PCAP.PP.KD", 
-           title= "GDP per capita (constant 2017 Int'l $)", 
+           title= "GDP per capita (constant 2017 internatioal $)", 
            legend_title = "Geary-Khamis $", 
            theme = "mako", 
            direction = -1)
