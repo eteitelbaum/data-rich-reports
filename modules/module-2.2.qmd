@@ -11,7 +11,9 @@ execute:
 
 ## Prework
 
-Install plotly `install.packages("plotly")`
+- Install plotly `install.packages("plotly")`
+
+- Install colorBlindness Guide `install.packages("colorBlindness")`
 
 Familiarize yourself with this setup code and the dataframes it generates. 
 
@@ -23,7 +25,6 @@ library(dplyr)
 library(ggplot2)
 library(wbstats)
 library(countrycode)
-library(plotly)
 
 indicators = c(flfp = "SL.TLF.CACT.FE.ZS", gdp_pc = "NY.GDP.PCAP.KD") # define indicators
 
@@ -68,7 +69,31 @@ Discuss some basic principles of design like no more than four lines, arranging 
 
 ## Color Schemes
 
-Here mention the accessibility checker tools in Windows and OS
+Here mention the accessibility checker tools in Windows and OS. Use line chart we did in module 2.1 as an example. At the end of the lesson, ask students to fix it as an exercise. 
+
+```{r}
+dem_waves_ctrs <- read_csv("data/dem_waves_ctrs.csv")
+
+dem_waves_chart <- ggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +
+  geom_line(linewidth = 1) + 
+  labs(
+    x = "Year", 
+    y = "Polyarchy Score", 
+    title = 'Democracy in countries representing three different "waves"', 
+    caption = "Source: V-Dem Institute", 
+    color = "Country"
+  )
+
+dem_waves_chart
+```
+
+[colorBlindness Guide](https://cran.r-project.org/web/packages/colorBlindness/vignettes/colorBlindness.html)
+
+```{r}
+library(colorBlindness)
+
+cvdPlot(dem_waves_chart)
+```
 
 
 ### Create your own colorblind friendly color scheme
@@ -94,6 +119,12 @@ flfp_region <- ggplot(flfp_gdp_regions, aes(x = reorder(iso3c, -flfp), y = flfp,
 flfp_region + scale_fill_manual(values = cb_palette)
 ```
 
+```{r}
+flfp_region <- flfp_region + scale_fill_manual(values = cb_palette)
+
+cvdPlot(flfp_region)
+```
+
 
 ### Use Viridis
 
@@ -104,19 +135,36 @@ flfp_region + scale_fill_manual(values = cb_palette)
 flfp_region + scale_fill_viridis_d()
 ```
 
-
-### Use R color brewer
-
-[](https://ggplot2.tidyverse.org/reference/scale_brewer.html)
-[](https://colorbrewer2.org/)
-
-
 ```{r}
-flfp_region + scale_fill_brewer(palette = "BrBG")
+flfp_region <- flfp_region + scale_fill_viridis_d()
+
+cvdPlot(flfp_region)
 ```
 
 
-## Scale color for scatterplots an line charts
+### Use R color brewer
+
+[color brewer](https://ggplot2.tidyverse.org/reference/scale_brewer.html)
+[palette selector tool](https://colorbrewer2.org/)
+
+
+Show how it works with YlGn but does not work with with BlGn
+
+```{r}
+flfp_region + scale_fill_brewer(palette = "YlGn") # try with BrBG
+```
+
+```{r}
+flfp_region <- flfp_region + scale_fill_brewer(palette = "YlGn")
+
+cvdPlot(flfp_region)
+```
+
+
+
+## Scaling for scatterplots an line charts
+
+Use "scale_color" instead of "scale_fill" for line charts and scatter plots, e.g. `scale_color_manual()`, `scale_color_viridis_d()`, `scale_color_brewer`.  
 
 ```{r}
   
@@ -150,7 +198,7 @@ flfp_line <- ggplot(flfp_ts, aes(x = year, y = flfp, color = region)) +
     color = "Country"
   )
 
-flfp_line + scale_color_brewer(palette = "RdYlBu")
+flfp_line + scale_color_brewer(palette = "YlOrRd")
 ```
 
 ## Themes
@@ -163,7 +211,7 @@ wealth_flfp + scale_color_viridis_d(option = "plasma") + theme_dark()
 ```
 
 ```{r}
-flfp_region + scale_fill_brewer(palette = "BrBG") + theme_minimal()
+flfp_region + scale_fill_brewer(palette = "YlGn") + theme_minimal()
 ```
 
 ## Annotations
@@ -178,7 +226,7 @@ wealth_flfp + annotate("text", x = 90000, y = 75, label = "Wealthy") +
 
 
 ```{r}
-flfp_line <- flfp_line + scale_color_brewer(palette = "RdYlBu") 
+flfp_line <- flfp_line + scale_color_viridis_d() 
 
 flfp_line + geom_hline(yintercept=52, linetype="dashed", color = "red", size = 1) +
   annotate("text", x = 1995, y = 55, label = "Global average")
@@ -186,7 +234,7 @@ flfp_line + geom_hline(yintercept=52, linetype="dashed", color = "red", size = 1
 
 
 ```{r}
-flfp_line <- flfp_line + scale_color_brewer(palette = "RdYlBu") 
+flfp_line <- flfp_line + scale_color_viridis_d() 
 
 flfp_line + geom_vline(xintercept=2020, linetype = "dashed", size = 1) +
   annotate("text", x = 2017, y = 35, label = "Pandemic")
@@ -200,6 +248,8 @@ flfp_line + geom_vline(xintercept=2020, linetype = "dashed", size = 1) +
 [ggplotly](https://plotly.com/ggplot2/)
 
 ```{r}
+library(plotly)
+
 ggplotly(flfp_line)
 ```
 
@@ -207,14 +257,17 @@ ggplotly(flfp_line)
 In this next one, if you don't control the tool tip it looks bad
 
 ```{r}
-flfp_region <- flfp_region + scale_fill_brewer(palette = "BrBG") + theme_minimal()
+flfp_region <- flfp_region + scale_fill_brewer(palette = "YlGn") + theme_minimal()
 
 ggplotly(flfp_region, tooltip = c("region", "flfp")) # controlling the tooltip output
 ```
 
 need to include `aes(label = country)` to view country in tool tip. How to add notes and other stuff with `layout(annotations = list())`. 
 
+## Interactivity
+
 ```{r}
+library(plotly)
 
 wealth_flfp <- ggplot(flfp_gdp, aes(x = gdp_pc, y = flfp)) + 
   geom_point(aes(color = region)) + 

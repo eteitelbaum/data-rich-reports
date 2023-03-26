@@ -82,6 +82,7 @@ dem_waves_ctrs <- vdem |>
                    "Portugal")
     )
 
+#write_csv(dem_waves_ctrs, "data/dem_waves_ctrs.csv")
 ```
 
 ```{r}

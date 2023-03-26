@@ -1,5 +1,10 @@
 ---
 title: "Module 4.1"
-subtitle: ""
-editor: visual
+subtitle: "Making Tables"
+format: html
+highlight-style: atom-one
+execute:
+  echo: true
+  message: false
+  warning: false
 ---
