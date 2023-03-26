@@ -9,9 +9,22 @@ execute:
   warning: false
 ---
 
+## Prework
+
+
+- Optional: install `magick` and underlying file system to [remove whitespace](https://www.pmassicotte.com/posts/2022-08-15-removing-whitespace-around-figures-quarto/) around maps
+
+```{r}
+# create a hook to crop maps as recommended by pmassicotte
+# must have `magick` and its dependencies installed
+
+knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
+```
+
 ## Grabbing country shapes from rnaturalearth
 
 ```{r}
+
 library(rnaturalearth)
 library(dplyr)
 
@@ -30,6 +43,8 @@ world_map_df |>
 ## Make a map with geom_sf()
 
 ```{r}
+#| crop: true 
+
 library(ggplot2)
 
 ggplot(data = world_map_df) +
@@ -41,6 +56,8 @@ ggplot(data = world_map_df) +
 ## Beautify your map
 
 ```{r}
+#| crop: true
+
 library(ggthemes)
 
 ggplot(data = world_map_df) +
@@ -58,6 +75,8 @@ ggplot(data = world_map_df) +
 We are going to use iso2c to do the merge
 
 ```{r}
+#| crop: true
+
 library(wbstats)
 
 oil_rents_df <- wb_data(c(oil_rents_gdp = "NY.GDP.PETR.RT.ZS"), mrnev = 1) 
@@ -71,6 +90,8 @@ rents_map_df |>
 
 
 ```{r}
+#| crop: true 
+
 ggplot(data = rents_map_df) +
   geom_sf(aes(fill = oil_rents_gdp)) + # change var
   labs(
@@ -92,12 +113,11 @@ ggplot(data = rents_map_df) +
 - change indicator to illustrate ease of making map when code is finished, maybe build an exercise based on that 
 
 ```{r}
+#| crop: true
+
 ne_countries(scale = "medium", returnclass = "sf") |> 
   left_join(
-    wb_data(
-      c(oil_rents_gdp = "NY.GDP.PETR.RT.ZS"), 
-      mrnev = 1
-    ),
+    wb_data(c(oil_rents_gdp = "NY.GDP.PETR.RT.ZS"), mrnev = 1),
     join_by(iso_a2 == iso2c)
   ) |> 
   filter(iso_a3 != "ATA") |>  # remove Antarctica

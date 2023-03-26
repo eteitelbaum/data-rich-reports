@@ -431,7 +431,7 @@
     "href": "modules/module-3.1.html",
     "title": "Module 3.1",
     "section": "",
-    "text": "library(rnaturalearth)\nlibrary(dplyr)\n\nworld_map_df <- ne_countries(scale = \"medium\", returnclass = \"sf\") |> \n    filter(iso_a3 != \"ATA\") # remove Antarctica\n\n#world_map_df |>\n  # select and view first 10 columns\n  #select(1:10) |> \n  #glimpse()\n\nworld_map_df |>\n  select(geometry) # view contents of last column of df (geometry)\n\nSimple feature collection with 232 features and 0 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -180 ymin: -58.49229 xmax: 180 ymax: 83.59961\nCRS:           +proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0\nFirst 10 features:\n                         geometry\n1  MULTIPOLYGON (((31.28789 -2...\n2  MULTIPOLYGON (((30.39609 -1...\n3  MULTIPOLYGON (((53.08564 16...\n4  MULTIPOLYGON (((104.064 10....\n5  MULTIPOLYGON (((-60.82119 9...\n6  MULTIPOLYGON (((12.43916 41...\n7  MULTIPOLYGON (((166.7458 -1...\n8  MULTIPOLYGON (((70.94678 42...\n9  MULTIPOLYGON (((-53.37061 -...\n10 MULTIPOLYGON (((162.9832 5...."
+    "text": "Optional: install magick and underlying file system to remove whitespace around maps\n\n\n# create a hook to crop maps as recommended by pmassicotte\n# must have `magick` and its dependencies installed\n\nknitr::knit_hooks$set(crop = knitr::hook_pdfcrop)"
   },
   {
     "objectID": "modules/module-3.1.html#make-a-map-with-geom_sf",
@@ -473,7 +473,7 @@
     "href": "modules/module-3.1.html#build-your-map-in-one-long-pipe-sequence",
     "title": "Module 3.1",
     "section": "Build your map in one long pipe sequence",
-    "text": "Build your map in one long pipe sequence\n\nchange indicator to illustrate ease of making map when code is finished, maybe build an exercise based on that\n\n\nne_countries(scale = \"medium\", returnclass = \"sf\") |> \n  left_join(\n    wb_data(\n      c(oil_rents_gdp = \"NY.GDP.PETR.RT.ZS\"), \n      mrnev = 1\n    ),\n    join_by(iso_a2 == iso2c)\n  ) |> \n  filter(iso_a3 != \"ATA\") |>  # remove Antarctica\n  ggplot(aes(fill = oil_rents_gdp)) +\n  geom_sf() +\n  labs(\n    title = \"Oil rents as a % of GDP\", # change title\n    subtitle = \"(Most recent available data)\", # add subtitle\n    fill = \"Category\", # change legend title\n    caption = \"Source: World Bank Development Indicators\"\n    ) +\n  theme_map() +\n  theme(legend.position=\"right\") +\n  scale_fill_viridis_c( # chg from discrete (_d) to continuous (_c)\n    option = \"magma\", #  chg to magma theme\n    labels = scales::label_percent(scale = 1) # add percent label for legend\n    )"
+    "text": "Build your map in one long pipe sequence\n\nchange indicator to illustrate ease of making map when code is finished, maybe build an exercise based on that\n\n\nne_countries(scale = \"medium\", returnclass = \"sf\") |> \n  left_join(\n    wb_data(c(oil_rents_gdp = \"NY.GDP.PETR.RT.ZS\"), mrnev = 1),\n    join_by(iso_a2 == iso2c)\n  ) |> \n  filter(iso_a3 != \"ATA\") |>  # remove Antarctica\n  ggplot(aes(fill = oil_rents_gdp)) +\n  geom_sf() +\n  labs(\n    title = \"Oil rents as a % of GDP\", # change title\n    subtitle = \"(Most recent available data)\", # add subtitle\n    fill = \"Category\", # change legend title\n    caption = \"Source: World Bank Development Indicators\"\n    ) +\n  theme_map() +\n  theme(legend.position=\"right\") +\n  scale_fill_viridis_c( # chg from discrete (_d) to continuous (_c)\n    option = \"magma\", #  chg to magma theme\n    labels = scales::label_percent(scale = 1) # add percent label for legend\n    )"
   },
   {
     "objectID": "modules/module-3.2.html",
@@ -516,5 +516,12 @@
     "title": "Module 3.2",
     "section": "Using basemaps",
     "text": "Using basemaps\navailable basemaps\n\nleaflet(data = ged_yemen_21[ged_yemen_21$date < \"2021-03-01\", ]) |> # Jan and Feb  \n  addProviderTiles(\"OpenTopoMap\") |> # include name of provider here\n  setView(lng = 44.1910, lat = 15.3694, zoom = 6) |> # Sana'a coordinates\n  addAwesomeMarkers(\n    icon = icon, \n    popup = ~popup_text, \n    label = ~where_coordinates\n    )\n\n\n\n\n\nNow we can see a bit more about the topography, which could be useful for conflict analysis."
+  },
+  {
+    "objectID": "modules/module-3.1.html#grabbing-country-shapes-from-rnaturalearth",
+    "href": "modules/module-3.1.html#grabbing-country-shapes-from-rnaturalearth",
+    "title": "Module 3.1",
+    "section": "Grabbing country shapes from rnaturalearth",
+    "text": "Grabbing country shapes from rnaturalearth\n\nlibrary(rnaturalearth)\nlibrary(dplyr)\n\nworld_map_df <- ne_countries(scale = \"medium\", returnclass = \"sf\") |> \n    filter(iso_a3 != \"ATA\") # remove Antarctica\n\n#world_map_df |>\n  # select and view first 10 columns\n  #select(1:10) |> \n  #glimpse()\n\nworld_map_df |>\n  select(geometry) # view contents of last column of df (geometry)\n\nSimple feature collection with 232 features and 0 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -180 ymin: -58.49229 xmax: 180 ymax: 83.59961\nCRS:           +proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0\nFirst 10 features:\n                         geometry\n1  MULTIPOLYGON (((31.28789 -2...\n2  MULTIPOLYGON (((30.39609 -1...\n3  MULTIPOLYGON (((53.08564 16...\n4  MULTIPOLYGON (((104.064 10....\n5  MULTIPOLYGON (((-60.82119 9...\n6  MULTIPOLYGON (((12.43916 41...\n7  MULTIPOLYGON (((166.7458 -1...\n8  MULTIPOLYGON (((70.94678 42...\n9  MULTIPOLYGON (((-53.37061 -...\n10 MULTIPOLYGON (((162.9832 5...."
   }
 ]
