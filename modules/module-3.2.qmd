@@ -95,18 +95,18 @@ leaflet(data = ged_yemen_21[ged_yemen_21$date < "2021-03-01", ]) |> # Jan and Fe
 Libraries include [glyphicons](https://getbootstrap.com/docs/3.3/components/), [font awesome](https://fontawesome.com/search?q=location&o=r&m=free) and [ionicons](https://ionic.io/ionicons). 
 
 ```{r}
-awesome <- makeAwesomeIcon(
-  icon = "screenshot",
+icon <- awesomeIcons(
+  icon = "ios-close",
   iconColor = "black",
-  markerColor = "blue", 
-  library = "glyphicon" # other options include font awesome and ionicons
+  markerColor = "red", 
+  library = "ion" # other options include font awesome and ionicons
 )
 
 leaflet(data = ged_yemen_21[ged_yemen_21$date < "2021-03-01", ]) |> # Jan and Feb  
   addTiles() |> 
   setView(lng = 44.1910, lat = 15.3694, zoom = 6) |> # Sana'a coordinates
   addAwesomeMarkers(
-    icon = awesome, 
+    icon = icon, 
     popup = ~as.character(deaths), 
     label = ~where_coordinates
     )
@@ -115,12 +115,12 @@ leaflet(data = ged_yemen_21[ged_yemen_21$date < "2021-03-01", ]) |> # Jan and Fe
 ## Change content of popup
 
 ```{r}
-popup_text <- sprintf(
+ged_yemen_21$popup_text <- sprintf(
       "Date: %s <br> 
-       Total Deaths: %s <br> 
-       Govt. Deaths: %s <br> 
-       Rebel Deaths: %s <br> 
-       Civilian Death: %s <br>",
+       Total Deaths: %.0f <br> 
+       Govt. Deaths: %.0f <br> 
+       Rebel Deaths: %.0f <br> 
+       Civilian Death: %.0f <br>",
       ged_yemen_21$date, 
       ged_yemen_21$deaths, 
       ged_yemen_21$gov_deaths, 
@@ -132,7 +132,7 @@ leaflet(data = ged_yemen_21[ged_yemen_21$date < "2021-03-01", ]) |> # Jan and Fe
   addTiles() |> 
   setView(lng = 44.1910, lat = 15.3694, zoom = 6) |> # Sana'a coordinates
   addAwesomeMarkers(
-    icon = awesome, 
+    icon = icon, 
     popup = ~popup_text, 
     label = ~where_coordinates
     )
@@ -143,7 +143,7 @@ Now e can check the labels.
 
 ```{r}
 ged_yemen_21 |>
-  filter(where_coordinates == "Umari junction")
+  filter(where_coordinates == "Marib Dam")
 ```
 
 
@@ -157,8 +157,8 @@ leaflet(data = ged_yemen_21[ged_yemen_21$date < "2021-03-01", ]) |> # Jan and Fe
   addProviderTiles("OpenTopoMap") |> # include name of provider here
   setView(lng = 44.1910, lat = 15.3694, zoom = 6) |> # Sana'a coordinates
   addAwesomeMarkers(
-    icon = awesome, 
-    popup = ~as.character(deaths), 
+    icon = icon, 
+    popup = ~popup_text, 
     label = ~where_coordinates
     )
 ```
