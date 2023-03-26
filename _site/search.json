@@ -474,5 +474,47 @@
     "title": "Module 3.1",
     "section": "Build your map in one long pipe sequence",
     "text": "Build your map in one long pipe sequence\n\nchange indicator to illustrate ease of making map when code is finished, maybe build an exercise based on that\n\n\nne_countries(scale = \"medium\", returnclass = \"sf\") |> \n  left_join(\n    wb_data(\n      c(oil_rents_gdp = \"NY.GDP.PETR.RT.ZS\"), \n      mrnev = 1\n    ),\n    join_by(iso_a2 == iso2c)\n  ) |> \n  filter(iso_a3 != \"ATA\") |>  # remove Antarctica\n  ggplot(aes(fill = oil_rents_gdp)) +\n  geom_sf() +\n  labs(\n    title = \"Oil rents as a % of GDP\", # change title\n    subtitle = \"(Most recent available data)\", # add subtitle\n    fill = \"Category\", # change legend title\n    caption = \"Source: World Bank Development Indicators\"\n    ) +\n  theme_map() +\n  theme(legend.position=\"right\") +\n  scale_fill_viridis_c( # chg from discrete (_d) to continuous (_c)\n    option = \"magma\", #  chg to magma theme\n    labels = scales::label_percent(scale = 1) # add percent label for legend\n    )"
+  },
+  {
+    "objectID": "modules/module-3.2.html",
+    "href": "modules/module-3.2.html",
+    "title": "Module 3.2",
+    "section": "",
+    "text": "Install states package. install.packages(\"states\")\nInstall the [leaflet package(http://rstudio.github.io/leaflet/). install.packages(\"leaflet\")\nInstall simple features\nInstall html tools\n\n\nlibrary(states)\n\nsfind(\"Yemen\")[1:6]\n\n    list ccode code3c                   country_name      start        end\n169   GW   678    YEM Yemen (Arab Republic of Yemen) 1918-10-30 9999-12-31\n170   GW   680    YPR    Yemen, People's Republic of 1967-11-30 1990-05-21\n428  COW   678    YAR            Yemen Arab Republic 1926-09-02 1990-05-21\n429  COW   679    YEM                          Yemen 1990-05-22 9999-12-31\n430  COW   680    YPR        Yemen People's Republic 1967-11-30 1990-05-21\n\n\nTell them where you got the data from but don’t make them download it.\nPrimer on country codes\nUCDP codebook\n\nlibrary(dplyr)\nlibrary(readr)\n\nged_data <- read_csv(\"data/GEDEvent_v22_1_sm.csv\") ## slimmed version\n\nged_yemen_21 <- ged_data |> \n  filter(\n    country_id == 678, #gw country code\n    year == 2021, \n    where_prec < 3, # keep if certain where event occurred\n    event_clarity == 1, # keep if event reporting is clear\n      ) |> \n  mutate(deaths = deaths_a + deaths_b + deaths_civilians + deaths_unknown) |> \n  select(event_id = id, \n         date = date_start,\n         gov_deaths = deaths_a, \n         rebel_deaths = deaths_b, \n         civilian_deaths = deaths_civilians, \n         deaths, \n         where_coordinates,\n         latitude, \n         longitude) |>\n  sf::st_as_sf(coords = c(\"longitude\", \"latitude\")) \n\nglimpse(ged_yemen_21)\n\nRows: 555\nColumns: 8\n$ event_id          <dbl> 410593, 410601, 415966, 419510, 423037, 414170, 3780…\n$ date              <dttm> 2021-04-29, 2021-06-01, 2021-09-29, 2021-10-04, 202…\n$ gov_deaths        <dbl> 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…\n$ rebel_deaths      <dbl> 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…\n$ civilian_deaths   <dbl> 0, 0, 0, 0, 0, 1, 6, 1, 1, 1, 1, 1, 1, 1, 5, 1, 0, 2…\n$ deaths            <dbl> 2, 1, 1, 1, 2, 1, 6, 1, 1, 1, 1, 1, 1, 1, 5, 1, 0, 2…\n$ where_coordinates <chr> \"Ţiyāb town\", \"Ţiyāb town\", \"Radā‘ town\", \"Dammaj vi…\n$ geometry          <POINT> POINT (45.46916 14.14912), POINT (45.46916 14.1491…"
+  },
+  {
+    "objectID": "modules/module-3.2.html#plot-an-event",
+    "href": "modules/module-3.2.html#plot-an-event",
+    "title": "Module 3.2",
+    "section": "Plot an event",
+    "text": "Plot an event\n\nlibrary(leaflet)\n\nsyria_map <- leaflet() %>%\n  addTiles() %>%  # Add default OpenStreetMap map tiles\n  addMarkers(lng = 45.46916, lat = 14.14912, label = \"First conflict event\")\n\nsyria_map"
+  },
+  {
+    "objectID": "modules/module-3.2.html#plot-some-events-from-the-dataframe",
+    "href": "modules/module-3.2.html#plot-some-events-from-the-dataframe",
+    "title": "Module 3.2",
+    "section": "Plot some events from the dataframe",
+    "text": "Plot some events from the dataframe\nScroll to the bottom of this page for an explanation of the ~ notation.\n\nleaflet(data = ged_yemen_21[ged_yemen_21$date < \"2021-03-01\", ]) |> # Jan and Feb  \n  addTiles() |> \n  setView(lng = 44.1910, lat = 15.3694, zoom = 6) |> # Sana'a coordinates\n  addMarkers(\n    popup = ~as.character(deaths), # here ~ means \n    label = ~where_coordinates\n    )"
+  },
+  {
+    "objectID": "modules/module-3.2.html#use-an-awesome-icon",
+    "href": "modules/module-3.2.html#use-an-awesome-icon",
+    "title": "Module 3.2",
+    "section": "Use an awesome icon",
+    "text": "Use an awesome icon\nLibraries include glyphicons, font awesome and ionicons.\n\nawesome <- makeAwesomeIcon(\n  icon = \"screenshot\",\n  iconColor = \"black\",\n  markerColor = \"blue\", \n  library = \"glyphicon\" # other options include font awesome and ionicons\n)\n\nleaflet(data = ged_yemen_21[ged_yemen_21$date < \"2021-03-01\", ]) |> # Jan and Feb  \n  addTiles() |> \n  setView(lng = 44.1910, lat = 15.3694, zoom = 6) |> # Sana'a coordinates\n  addAwesomeMarkers(\n    icon = awesome, \n    popup = ~as.character(deaths), \n    label = ~where_coordinates\n    )"
+  },
+  {
+    "objectID": "modules/module-3.2.html#change-content-of-popup",
+    "href": "modules/module-3.2.html#change-content-of-popup",
+    "title": "Module 3.2",
+    "section": "Change content of popup",
+    "text": "Change content of popup\n\npopup_text <- sprintf(\n      \"Date: %s <br> \n       Total Deaths: %s <br> \n       Govt. Deaths: %s <br> \n       Rebel Deaths: %s <br> \n       Civilian Death: %s <br>\",\n      ged_yemen_21$date, \n      ged_yemen_21$deaths, \n      ged_yemen_21$gov_deaths, \n      ged_yemen_21$rebel_deaths,\n      ged_yemen_21$civilian_deaths\n    ) |> lapply(htmltools::HTML)\n\nleaflet(data = ged_yemen_21[ged_yemen_21$date < \"2021-03-01\", ]) |> # Jan and Feb  \n  addTiles() |> \n  setView(lng = 44.1910, lat = 15.3694, zoom = 6) |> # Sana'a coordinates\n  addAwesomeMarkers(\n    icon = awesome, \n    popup = ~popup_text, \n    label = ~where_coordinates\n    )\n\n\n\n\n\nNow e can check the labels.\n\nged_yemen_21 |>\n  filter(where_coordinates == \"Umari junction\")\n\nSimple feature collection with 1 feature and 7 fields\nGeometry type: POINT\nDimension:     XY\nBounding box:  xmin: 43.40306 ymin: 12.98833 xmax: 43.40306 ymax: 12.98833\nCRS:           NA\n# A tibble: 1 × 8\n  event_id date                gov_deaths rebel_deaths civilian_deaths deaths\n*    <dbl> <dttm>                   <dbl>        <dbl>           <dbl>  <dbl>\n1   378426 2021-01-14 00:00:00          0            0               1      1\n# ℹ 2 more variables: where_coordinates <chr>, geometry <POINT>"
+  },
+  {
+    "objectID": "modules/module-3.2.html#using-basemaps",
+    "href": "modules/module-3.2.html#using-basemaps",
+    "title": "Module 3.2",
+    "section": "Using basemaps",
+    "text": "Using basemaps\navailable basemaps\n\nleaflet(data = ged_yemen_21[ged_yemen_21$date < \"2021-03-01\", ]) |> # Jan and Feb  \n  addProviderTiles(\"OpenTopoMap\") |> # include name of provider here\n  setView(lng = 44.1910, lat = 15.3694, zoom = 6) |> # Sana'a coordinates\n  addAwesomeMarkers(\n    icon = awesome, \n    popup = ~as.character(deaths), \n    label = ~where_coordinates\n    )\n\n\n\n\n\nNow we can see a bit more about the topography, which could be useful for conflict analysis."
   }
 ]

@@ -1,5 +1,170 @@
 ---
 title: "Module 3.2"
-subtitle: ""
-editor: visual
+subtitle: "Leaflet Maps"
+format: html
+highlight-style: atom-one
+execute:
+  echo: true
+  message: false
+  warning: false
 ---
+
+## Prework
+
+- Install [states](https://www.andybeger.com/states/index.html) package. `install.packages("states")`
+
+- Install the [leaflet package(http://rstudio.github.io/leaflet/). `install.packages("leaflet")`
+
+- Install simple features 
+
+- Install html tools
+
+```{r}
+library(states)
+
+sfind("Yemen")[1:6]
+```
+
+Tell them where you got the data from but don't make them download it. 
+
+[Primer on country codes](http://svmiller.com/blog/2021/01/a-tutorial-on-state-classification-systems/) 
+
+[UCDP codebook](https://ucdp.uu.se/downloads/ged/ged221.pdf)
+
+
+```{r}
+#| label: wrangling
+
+library(dplyr)
+library(readr)
+
+ged_data <- read_csv("data/GEDEvent_v22_1_sm.csv") ## slimmed version
+
+ged_yemen_21 <- ged_data |> 
+  filter(
+    country_id == 678, #gw country code
+    year == 2021, 
+    where_prec < 3, # keep if certain where event occurred
+    event_clarity == 1, # keep if event reporting is clear
+      ) |> 
+  mutate(deaths = deaths_a + deaths_b + deaths_civilians + deaths_unknown) |> 
+  select(event_id = id, 
+         date = date_start,
+         gov_deaths = deaths_a, 
+         rebel_deaths = deaths_b, 
+         civilian_deaths = deaths_civilians, 
+         deaths, 
+         where_coordinates,
+         latitude, 
+         longitude) |>
+  sf::st_as_sf(coords = c("longitude", "latitude")) 
+
+glimpse(ged_yemen_21)
+```
+
+## Plot an event
+
+```{r}
+library(leaflet)
+
+syria_map <- leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng = 45.46916, lat = 14.14912, label = "First conflict event")
+
+syria_map 
+```
+
+
+## Plot some events from the dataframe
+
+Scroll to the bottom of [this page](http://rstudio.github.io/leaflet/map_widget.html) for an explanation of the ~ notation. 
+
+```{r}
+leaflet(data = ged_yemen_21[ged_yemen_21$date < "2021-03-01", ]) |> # Jan and Feb  
+  addTiles() |> 
+  setView(lng = 44.1910, lat = 15.3694, zoom = 6) |> # Sana'a coordinates
+  addMarkers(
+    popup = ~as.character(deaths), # here ~ means 
+    label = ~where_coordinates
+    )
+```
+
+
+## Use an awesome icon
+
+Libraries include [glyphicons](https://getbootstrap.com/docs/3.3/components/), [font awesome](https://fontawesome.com/search?q=location&o=r&m=free) and [ionicons](https://ionic.io/ionicons). 
+
+```{r}
+awesome <- makeAwesomeIcon(
+  icon = "screenshot",
+  iconColor = "black",
+  markerColor = "blue", 
+  library = "glyphicon" # other options include font awesome and ionicons
+)
+
+leaflet(data = ged_yemen_21[ged_yemen_21$date < "2021-03-01", ]) |> # Jan and Feb  
+  addTiles() |> 
+  setView(lng = 44.1910, lat = 15.3694, zoom = 6) |> # Sana'a coordinates
+  addAwesomeMarkers(
+    icon = awesome, 
+    popup = ~as.character(deaths), 
+    label = ~where_coordinates
+    )
+```
+
+## Change content of popup
+
+```{r}
+popup_text <- sprintf(
+      "Date: %s <br> 
+       Total Deaths: %s <br> 
+       Govt. Deaths: %s <br> 
+       Rebel Deaths: %s <br> 
+       Civilian Death: %s <br>",
+      ged_yemen_21$date, 
+      ged_yemen_21$deaths, 
+      ged_yemen_21$gov_deaths, 
+      ged_yemen_21$rebel_deaths,
+      ged_yemen_21$civilian_deaths
+    ) |> lapply(htmltools::HTML)
+
+leaflet(data = ged_yemen_21[ged_yemen_21$date < "2021-03-01", ]) |> # Jan and Feb  
+  addTiles() |> 
+  setView(lng = 44.1910, lat = 15.3694, zoom = 6) |> # Sana'a coordinates
+  addAwesomeMarkers(
+    icon = awesome, 
+    popup = ~popup_text, 
+    label = ~where_coordinates
+    )
+```
+
+
+Now e can check the labels. 
+
+```{r}
+ged_yemen_21 |>
+  filter(where_coordinates == "Umari junction")
+```
+
+
+## Using basemaps
+
+[available basemaps](http://leaflet-extras.github.io/leaflet-providers/preview/index.html)
+
+```{r}
+
+leaflet(data = ged_yemen_21[ged_yemen_21$date < "2021-03-01", ]) |> # Jan and Feb  
+  addProviderTiles("OpenTopoMap") |> # include name of provider here
+  setView(lng = 44.1910, lat = 15.3694, zoom = 6) |> # Sana'a coordinates
+  addAwesomeMarkers(
+    icon = awesome, 
+    popup = ~as.character(deaths), 
+    label = ~where_coordinates
+    )
+```
+
+
+
+
+Now we can see a bit more about the topography, which could be useful for conflict analysis. 
+
