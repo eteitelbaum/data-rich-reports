@@ -33,39 +33,14 @@ census_api_key = my_api_key # enter your census api key here in quotes
 `View` and use the search function in the viewer. Search for "household income."
 
 ```{r}
-v17 <- load_variables(2017, "acs1", cache = TRUE)
+v21 <- load_variables(2021, "acs5", cache = TRUE)
 
-View(v17)
+#View(v21)
 ```
-
-```{r}
-v17.2 <- load_variables(2017, "acs5", cache = TRUE)
-
-View(v17.2)
-```
-
-
-
-```{r}
-income <- get_decennial(geography = "state", 
-                       variables = "", 
-                       year = 2010)
-
-head(income)
-```
-
-
-```{r}
-age10 <- get_decennial(geography = "state", 
-                       variables = "P013001", 
-                       year = 2010)
-
-head(age10)
-```
-
 
 ```{r}
 library(stringr)
+library(dplyr)
 
 quintiles <- get_acs(geography = "state", 
                       variables = c(q1 = "B19081_001",
@@ -156,10 +131,11 @@ library(gt)
 
 gt(states_data) |> 
   tab_header(
-    title = "Mean Household Income of Quintiles",
+    title = "Mean Household Income of Quintiles, 2021",
     subtitle = "Seven Representative U.S. States"
   ) |> 
   cols_label(
+    name = "",
     q1 = "lowest",
     q2 = "second",
     q3 = "third",
@@ -169,17 +145,16 @@ gt(states_data) |>
   ) |> 
   fmt_currency(
     columns = c(q1, q2, q3, q4, q5, top5),
-    currency = "USD"
+    currency = "USD", 
+    use_subunits = FALSE
   ) |>
   # note that you can use markdown (md) to format the source note for html documents
   tab_source_note(source_note = md("**Source**: US Census Bureau, American Community Survey"))
 ```
-```
 
 
 
-
-## Plot confidence intervals
+## Plot confidence intervals of estimates
 
 Use median income as example here
 
