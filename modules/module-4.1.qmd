@@ -8,3 +8,178 @@ execute:
   message: false
   warning: false
 ---
+
+```{r}
+#| include: false
+my_api_key = Sys.getenv("")
+```
+
+
+## Prework
+
+- get a us census [api key](https://api.census.gov/data/key_signup.html)
+- install `tidycensus`, `install.packages("tidycensus")`
+
+[tidy census basic usage](https://walker-data.com/tidycensus/articles/basic-usage.html)
+
+[acs table info](https://www.census.gov/programs-surveys/acs/data/data-tables.html)
+
+```{r}
+#| label: setup
+library(tidycensus)
+census_api_key = my_api_key # enter your census api key here in quotes
+```
+
+`View` and use the search function in the viewer. Search for "household income."
+
+```{r}
+v17 <- load_variables(2017, "acs1", cache = TRUE)
+
+View(v17)
+```
+
+```{r}
+v17.2 <- load_variables(2017, "acs5", cache = TRUE)
+
+View(v17.2)
+```
+
+
+
+```{r}
+income <- get_decennial(geography = "state", 
+                       variables = "", 
+                       year = 2010)
+
+head(income)
+```
+
+
+```{r}
+age10 <- get_decennial(geography = "state", 
+                       variables = "P013001", 
+                       year = 2010)
+
+head(age10)
+```
+
+
+```{r}
+library(stringr)
+
+quintiles <- get_acs(geography = "state", 
+                      variables = c(q1 = "B19081_001",
+                                    q2 = "B19081_002",
+                                    q3 = "B19081_003",
+                                    q4 = "B19081_004",
+                                    q5 = "B19081_005",
+                                    top5 = "B19081_006"),
+                      year = 2021,
+                      output = "wide") |>
+                      select(
+                        !ends_with("m"), # eliminate margin of error
+                        -GEOID) |> # eliminate geo id
+                      rename(name = NAME) |>
+                      rename_with(~str_remove(., 'E'))
+    
+
+glimpse(quintiles)
+```
+## Explore the data
+
+Use [slice](https://dplyr.tidyverse.org/reference/slice.html) to explore data and select some cases. 
+
+
+Where do the wealthiest people live?
+```{r}
+library(kableExtra)
+
+top_10 <- quintiles |>
+  slice_max(top5, n = 10)
+
+kable(top_10)
+```
+
+What states have the lowest incomes?
+```{r}
+library(kableExtra)
+
+bottom_10 <- quintiles |>
+  slice_min(q1, n = 10)
+
+kable(bottom_10)
+```
+
+
+```{r}
+library(dplyr)
+
+# lowest 
+state_min = quintiles |> 
+  slice_min(q1) |>
+  select(name) |>
+  pull() # convert from tibble to vector
+
+# highest
+state_max = quintiles |> 
+  slice_max(top5) |>
+  select(name) |>
+  pull()
+
+# randomly select five more
+
+five_more = quintiles |>
+  slice_sample(n = 5) |>
+  select(name) |>
+  pull()
+
+states <- c(state_min, state_max, five_more)
+
+states
+```
+
+```{r}
+states_data <- quintiles |>
+  filter(name %in% states) |> 
+  arrange(desc(top5))
+
+kable(states_data)
+```
+
+## GT Table
+
+[gt](https://gt.rstudio.com/)
+[gt reference](https://gt.rstudio.com/reference/cols_label.html)
+
+```{r}
+library(gt)
+
+gt(states_data) |> 
+  tab_header(
+    title = "Mean Household Income of Quintiles",
+    subtitle = "Seven Representative U.S. States"
+  ) |> 
+  cols_label(
+    q1 = "lowest",
+    q2 = "second",
+    q3 = "third",
+    q4 = "fourth",
+    q5 = "fifth",
+    top5 = "top 5%"
+  ) |> 
+  fmt_currency(
+    columns = c(q1, q2, q3, q4, q5, top5),
+    currency = "USD"
+  ) |>
+  # note that you can use markdown (md) to format the source note for html documents
+  tab_source_note(source_note = md("**Source**: US Census Bureau, American Community Survey"))
+```
+```
+
+
+
+
+## Plot confidence intervals
+
+Use median income as example here
+

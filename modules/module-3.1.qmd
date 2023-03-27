@@ -171,6 +171,8 @@ Now I write some text here and then I want to show map, so I call the `create_ma
 wb_search("GDP per capita") 
 ```
 
+(Note: For an exercise, you could have students use ChatGPT to create a map function and then tweak it to make it work. You could also have them try using a color brewer them instead of viridis).
+
 Now let's map GDP in constant 2017 international dollars ("NY.GDP.PCAP.PP.KD") with the mako theme:
 
 ```{r}
