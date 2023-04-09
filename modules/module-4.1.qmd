@@ -86,6 +86,8 @@ kable(bottom_10)
 ```
 
 
+Maybe instead of the following, I could select a stratified random sample of states within each tier. 
+
 ```{r}
 library(dplyr)
 
@@ -121,7 +123,7 @@ states_data <- quintiles |>
 kable(states_data)
 ```
 
-## GT Table
+## gt tables
 
 [gt](https://gt.rstudio.com/)
 [gt reference](https://gt.rstudio.com/reference/cols_label.html)
