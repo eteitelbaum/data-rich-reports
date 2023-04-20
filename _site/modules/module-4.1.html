@@ -361,8 +361,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#prework" id="toc-prework" class="nav-link active" data-scroll-target="#prework">Prework</a></li>
   <li><a href="#explore-the-data" id="toc-explore-the-data" class="nav-link" data-scroll-target="#explore-the-data">Explore the data</a></li>
-  <li><a href="#gt-table" id="toc-gt-table" class="nav-link" data-scroll-target="#gt-table">GT Table</a></li>
-  <li><a href="#plot-confidence-intervals" id="toc-plot-confidence-intervals" class="nav-link" data-scroll-target="#plot-confidence-intervals">Plot confidence intervals</a></li>
+  <li><a href="#gt-tables" id="toc-gt-tables" class="nav-link" data-scroll-target="#gt-tables">gt tables</a></li>
+  <li><a href="#plot-confidence-intervals-of-estimates" id="toc-plot-confidence-intervals-of-estimates" class="nav-link" data-scroll-target="#plot-confidence-intervals-of-estimates">Plot confidence intervals of estimates</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/eteitelbaum/dataviz-summer-2023/edit/main/modules/module-4.1.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/eteitelbaum/dataviz-summer-2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -678,6 +678,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 
 </div>
 </div>
+<p>Maybe instead of the following, I could select a stratified random sample of states within each tier.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -704,9 +705,9 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>states</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Puerto Rico"          "District of Columbia" "New Jersey"          
-[4] "Utah"                 "West Virginia"        "Montana"             
-[7] "Wisconsin"           </code></pre>
+<pre><code>[1] "Puerto Rico"          "District of Columbia" "Utah"                
+[4] "Ohio"                 "South Carolina"       "Wisconsin"           
+[7] "Arizona"             </code></pre>
 </div>
 </div>
 <div class="cell">
@@ -740,15 +741,6 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
    <td style="text-align:right;"> 670768 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> New Jersey </td>
-   <td style="text-align:right;"> 18458 </td>
-   <td style="text-align:right;"> 52339 </td>
-   <td style="text-align:right;"> 90337 </td>
-   <td style="text-align:right;"> 142858 </td>
-   <td style="text-align:right;"> 319140 </td>
-   <td style="text-align:right;"> 562886 </td>
-  </tr>
-  <tr>
    <td style="text-align:left;"> Utah </td>
    <td style="text-align:right;"> 21105 </td>
    <td style="text-align:right;"> 51272 </td>
@@ -756,6 +748,24 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
    <td style="text-align:right;"> 116016 </td>
    <td style="text-align:right;"> 239149 </td>
    <td style="text-align:right;"> 421379 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Arizona </td>
+   <td style="text-align:right;"> 15486 </td>
+   <td style="text-align:right;"> 40774 </td>
+   <td style="text-align:right;"> 66384 </td>
+   <td style="text-align:right;"> 102299 </td>
+   <td style="text-align:right;"> 223521 </td>
+   <td style="text-align:right;"> 395620 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> South Carolina </td>
+   <td style="text-align:right;"> 12680 </td>
+   <td style="text-align:right;"> 34881 </td>
+   <td style="text-align:right;"> 58665 </td>
+   <td style="text-align:right;"> 92118 </td>
+   <td style="text-align:right;"> 207367 </td>
+   <td style="text-align:right;"> 374427 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Wisconsin </td>
@@ -767,22 +777,13 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
    <td style="text-align:right;"> 371015 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Montana </td>
-   <td style="text-align:right;"> 14811 </td>
-   <td style="text-align:right;"> 36927 </td>
-   <td style="text-align:right;"> 60644 </td>
-   <td style="text-align:right;"> 93340 </td>
-   <td style="text-align:right;"> 205462 </td>
-   <td style="text-align:right;"> 370234 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> West Virginia </td>
-   <td style="text-align:right;"> 11120 </td>
-   <td style="text-align:right;"> 29606 </td>
-   <td style="text-align:right;"> 51038 </td>
-   <td style="text-align:right;"> 81393 </td>
-   <td style="text-align:right;"> 174019 </td>
-   <td style="text-align:right;"> 299882 </td>
+   <td style="text-align:left;"> Ohio </td>
+   <td style="text-align:right;"> 13962 </td>
+   <td style="text-align:right;"> 37248 </td>
+   <td style="text-align:right;"> 62197 </td>
+   <td style="text-align:right;"> 96445 </td>
+   <td style="text-align:right;"> 209247 </td>
+   <td style="text-align:right;"> 370964 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Puerto Rico </td>
@@ -799,8 +800,8 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 </div>
 </div>
 </section>
-<section id="gt-table" class="level2">
-<h2 class="anchored" data-anchor-id="gt-table">GT Table</h2>
+<section id="gt-tables" class="level2">
+<h2 class="anchored" data-anchor-id="gt-tables">gt tables</h2>
 <p><a href="https://gt.rstudio.com/">gt</a> <a href="https://gt.rstudio.com/reference/cols_label.html">gt reference</a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
@@ -828,12 +829,12 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(<span class="at">source_note =</span> <span class="fu">md</span>(<span class="st">"**Source**: US Census Bureau, American Community Survey"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div id="ggliwvlkqf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="szqfsssrhv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-:where(#ggliwvlkqf) .gt_table {
+:where(#szqfsssrhv) .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -858,7 +859,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-left-color: #D3D3D3;
 }
 
-:where(#ggliwvlkqf) .gt_heading {
+:where(#szqfsssrhv) .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -870,12 +871,12 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-:where(#ggliwvlkqf) .gt_caption {
+:where(#szqfsssrhv) .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-:where(#ggliwvlkqf) .gt_title {
+:where(#szqfsssrhv) .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -887,7 +888,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-width: 0;
 }
 
-:where(#ggliwvlkqf) .gt_subtitle {
+:where(#szqfsssrhv) .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -899,13 +900,13 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-top-width: 0;
 }
 
-:where(#ggliwvlkqf) .gt_bottom_border {
+:where(#szqfsssrhv) .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-:where(#ggliwvlkqf) .gt_col_headings {
+:where(#szqfsssrhv) .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -920,7 +921,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-:where(#ggliwvlkqf) .gt_col_heading {
+:where(#szqfsssrhv) .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -940,7 +941,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   overflow-x: hidden;
 }
 
-:where(#ggliwvlkqf) .gt_column_spanner_outer {
+:where(#szqfsssrhv) .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -952,15 +953,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 4px;
 }
 
-:where(#ggliwvlkqf) .gt_column_spanner_outer:first-child {
+:where(#szqfsssrhv) .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-:where(#ggliwvlkqf) .gt_column_spanner_outer:last-child {
+:where(#szqfsssrhv) .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-:where(#ggliwvlkqf) .gt_column_spanner {
+:where(#szqfsssrhv) .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -972,7 +973,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   width: 100%;
 }
 
-:where(#ggliwvlkqf) .gt_group_heading {
+:where(#szqfsssrhv) .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -998,7 +999,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   text-align: left;
 }
 
-:where(#ggliwvlkqf) .gt_empty_group_heading {
+:where(#szqfsssrhv) .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1013,15 +1014,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   vertical-align: middle;
 }
 
-:where(#ggliwvlkqf) .gt_from_md > :first-child {
+:where(#szqfsssrhv) .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-:where(#ggliwvlkqf) .gt_from_md > :last-child {
+:where(#szqfsssrhv) .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-:where(#ggliwvlkqf) .gt_row {
+:where(#szqfsssrhv) .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1040,7 +1041,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   overflow-x: hidden;
 }
 
-:where(#ggliwvlkqf) .gt_stub {
+:where(#szqfsssrhv) .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1053,7 +1054,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-:where(#ggliwvlkqf) .gt_stub_row_group {
+:where(#szqfsssrhv) .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1067,11 +1068,11 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   vertical-align: top;
 }
 
-:where(#ggliwvlkqf) .gt_row_group_first td {
+:where(#szqfsssrhv) .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-:where(#ggliwvlkqf) .gt_summary_row {
+:where(#szqfsssrhv) .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1081,16 +1082,16 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-:where(#ggliwvlkqf) .gt_first_summary_row {
+:where(#szqfsssrhv) .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-:where(#ggliwvlkqf) .gt_first_summary_row.thick {
+:where(#szqfsssrhv) .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-:where(#ggliwvlkqf) .gt_last_summary_row {
+:where(#szqfsssrhv) .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1100,7 +1101,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-color: #D3D3D3;
 }
 
-:where(#ggliwvlkqf) .gt_grand_summary_row {
+:where(#szqfsssrhv) .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1110,7 +1111,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-:where(#ggliwvlkqf) .gt_first_grand_summary_row {
+:where(#szqfsssrhv) .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1120,11 +1121,11 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-top-color: #D3D3D3;
 }
 
-:where(#ggliwvlkqf) .gt_striped {
+:where(#szqfsssrhv) .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-:where(#ggliwvlkqf) .gt_table_body {
+:where(#szqfsssrhv) .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1133,7 +1134,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-color: #D3D3D3;
 }
 
-:where(#ggliwvlkqf) .gt_footnotes {
+:where(#szqfsssrhv) .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1147,7 +1148,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-:where(#ggliwvlkqf) .gt_footnote {
+:where(#szqfsssrhv) .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1156,7 +1157,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-:where(#ggliwvlkqf) .gt_sourcenotes {
+:where(#szqfsssrhv) .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1170,7 +1171,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-:where(#ggliwvlkqf) .gt_sourcenote {
+:where(#szqfsssrhv) .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1178,64 +1179,64 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-:where(#ggliwvlkqf) .gt_left {
+:where(#szqfsssrhv) .gt_left {
   text-align: left;
 }
 
-:where(#ggliwvlkqf) .gt_center {
+:where(#szqfsssrhv) .gt_center {
   text-align: center;
 }
 
-:where(#ggliwvlkqf) .gt_right {
+:where(#szqfsssrhv) .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-:where(#ggliwvlkqf) .gt_font_normal {
+:where(#szqfsssrhv) .gt_font_normal {
   font-weight: normal;
 }
 
-:where(#ggliwvlkqf) .gt_font_bold {
+:where(#szqfsssrhv) .gt_font_bold {
   font-weight: bold;
 }
 
-:where(#ggliwvlkqf) .gt_font_italic {
+:where(#szqfsssrhv) .gt_font_italic {
   font-style: italic;
 }
 
-:where(#ggliwvlkqf) .gt_super {
+:where(#szqfsssrhv) .gt_super {
   font-size: 65%;
 }
 
-:where(#ggliwvlkqf) .gt_footnote_marks {
+:where(#szqfsssrhv) .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-:where(#ggliwvlkqf) .gt_asterisk {
+:where(#szqfsssrhv) .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-:where(#ggliwvlkqf) .gt_indent_1 {
+:where(#szqfsssrhv) .gt_indent_1 {
   text-indent: 5px;
 }
 
-:where(#ggliwvlkqf) .gt_indent_2 {
+:where(#szqfsssrhv) .gt_indent_2 {
   text-indent: 10px;
 }
 
-:where(#ggliwvlkqf) .gt_indent_3 {
+:where(#szqfsssrhv) .gt_indent_3 {
   text-indent: 15px;
 }
 
-:where(#ggliwvlkqf) .gt_indent_4 {
+:where(#szqfsssrhv) .gt_indent_4 {
   text-indent: 20px;
 }
 
-:where(#ggliwvlkqf) .gt_indent_5 {
+:where(#szqfsssrhv) .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1267,13 +1268,6 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <td headers="q4" class="gt_row gt_right">$157,803</td>
 <td headers="q5" class="gt_row gt_right">$375,792</td>
 <td headers="top5" class="gt_row gt_right">$670,768</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">New Jersey</td>
-<td headers="q1" class="gt_row gt_right">$18,458</td>
-<td headers="q2" class="gt_row gt_right">$52,339</td>
-<td headers="q3" class="gt_row gt_right">$90,337</td>
-<td headers="q4" class="gt_row gt_right">$142,858</td>
-<td headers="q5" class="gt_row gt_right">$319,140</td>
-<td headers="top5" class="gt_row gt_right">$562,886</td></tr>
     <tr><td headers="name" class="gt_row gt_left">Utah</td>
 <td headers="q1" class="gt_row gt_right">$21,105</td>
 <td headers="q2" class="gt_row gt_right">$51,272</td>
@@ -1281,6 +1275,20 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <td headers="q4" class="gt_row gt_right">$116,016</td>
 <td headers="q5" class="gt_row gt_right">$239,149</td>
 <td headers="top5" class="gt_row gt_right">$421,379</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Arizona</td>
+<td headers="q1" class="gt_row gt_right">$15,486</td>
+<td headers="q2" class="gt_row gt_right">$40,774</td>
+<td headers="q3" class="gt_row gt_right">$66,384</td>
+<td headers="q4" class="gt_row gt_right">$102,299</td>
+<td headers="q5" class="gt_row gt_right">$223,521</td>
+<td headers="top5" class="gt_row gt_right">$395,620</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">South Carolina</td>
+<td headers="q1" class="gt_row gt_right">$12,680</td>
+<td headers="q2" class="gt_row gt_right">$34,881</td>
+<td headers="q3" class="gt_row gt_right">$58,665</td>
+<td headers="q4" class="gt_row gt_right">$92,118</td>
+<td headers="q5" class="gt_row gt_right">$207,367</td>
+<td headers="top5" class="gt_row gt_right">$374,427</td></tr>
     <tr><td headers="name" class="gt_row gt_left">Wisconsin</td>
 <td headers="q1" class="gt_row gt_right">$16,787</td>
 <td headers="q2" class="gt_row gt_right">$41,986</td>
@@ -1288,20 +1296,13 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <td headers="q4" class="gt_row gt_right">$101,424</td>
 <td headers="q5" class="gt_row gt_right">$211,049</td>
 <td headers="top5" class="gt_row gt_right">$371,015</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Montana</td>
-<td headers="q1" class="gt_row gt_right">$14,811</td>
-<td headers="q2" class="gt_row gt_right">$36,927</td>
-<td headers="q3" class="gt_row gt_right">$60,644</td>
-<td headers="q4" class="gt_row gt_right">$93,340</td>
-<td headers="q5" class="gt_row gt_right">$205,462</td>
-<td headers="top5" class="gt_row gt_right">$370,234</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">West Virginia</td>
-<td headers="q1" class="gt_row gt_right">$11,120</td>
-<td headers="q2" class="gt_row gt_right">$29,606</td>
-<td headers="q3" class="gt_row gt_right">$51,038</td>
-<td headers="q4" class="gt_row gt_right">$81,393</td>
-<td headers="q5" class="gt_row gt_right">$174,019</td>
-<td headers="top5" class="gt_row gt_right">$299,882</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Ohio</td>
+<td headers="q1" class="gt_row gt_right">$13,962</td>
+<td headers="q2" class="gt_row gt_right">$37,248</td>
+<td headers="q3" class="gt_row gt_right">$62,197</td>
+<td headers="q4" class="gt_row gt_right">$96,445</td>
+<td headers="q5" class="gt_row gt_right">$209,247</td>
+<td headers="top5" class="gt_row gt_right">$370,964</td></tr>
     <tr><td headers="name" class="gt_row gt_left">Puerto Rico</td>
 <td headers="q1" class="gt_row gt_right">$2,906</td>
 <td headers="q2" class="gt_row gt_right">$12,144</td>
@@ -1321,8 +1322,8 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 </div>
 </div>
 </section>
-<section id="plot-confidence-intervals" class="level2">
-<h2 class="anchored" data-anchor-id="plot-confidence-intervals">Plot confidence intervals</h2>
+<section id="plot-confidence-intervals-of-estimates" class="level2">
+<h2 class="anchored" data-anchor-id="plot-confidence-intervals-of-estimates">Plot confidence intervals of estimates</h2>
 <p>Use median income as example here</p>
 
 
