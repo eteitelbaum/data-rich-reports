@@ -11,7 +11,7 @@ execute:
 
 ```{r}
 #| include: false
-my_api_key = Sys.getenv("")
+my_api_key = Sys.getenv("census_api_key")
 ```
 
 

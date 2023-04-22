@@ -9,14 +9,17 @@ execute:
   warning: false
 ---
 
+
 ## Scatter plot app
 
 <iframe src="https://emmanuelteitelbaum.shinyapps.io/scatterplot/" width="800" height="470" data-external="1"></iframe>
 
 ## Setup 
 
-```{r}
-#| eval: false
+
+::: {.cell}
+
+```{.r .cell-code}
 # load packages
 library(shiny)
 library(readr)
@@ -35,12 +38,16 @@ vars <- c("Democracy" = "polyarchy",
           "Life Expectancy" = "life_exp", 
           "Education" = "education")
 ```
+:::
+
 
 
 ## ui 
 
-```{r}
-#| eval: false
+
+::: {.cell}
+
+```{.r .cell-code}
 # Define UI for application that draws a histogram
 ui <- fluidPage(
 
@@ -60,14 +67,17 @@ ui <- fluidPage(
         )
     )
 )
-
 ```
+:::
+
 
 
 ## Server
 
-```{r}
-#| eval: false
+
+::: {.cell}
+
+```{.r .cell-code}
 # Define server logic required to draw a scatter plot
 server <- function(input, output, session) {
   
@@ -93,12 +103,15 @@ server <- function(input, output, session) {
   })
 }
 ```
+:::
+
 
 ## Call to Shiny app
 
-```{r}
-#| eval: false
 
+::: {.cell}
+
+```{.r .cell-code}
 # See above for the definitions of ui and server
 ui <- ...
 
@@ -107,6 +120,5 @@ server <- ...
 # Run the application 
 shinyApp(ui = ui, server = server)
 ```
-
-
+:::
 
