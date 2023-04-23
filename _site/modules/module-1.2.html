@@ -401,7 +401,7 @@ Prework
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li><p>Install the devtools package. Type <code>install.packages("devtools")</code> in your console. You will need this to install the <code>vdemdata</code> package becaue it is not on the CRAN Network.</p></li>
+<li><p>Install the <code>devtools</code> package. Type <code>install.packages("devtools")</code> in your console. You will need this to install the <code>vdemdata</code> package becaue it is not on the CRAN Network.</p></li>
 <li><p>Install the <code>vdemdata</code> package from GitHub. Type <code>devtools::install_github("vdeminstitute/vdemdata")</code> in your console.</p></li>
 <li><p>Install the <code>wbstats</code> and <code>countrycode</code> packages:</p></li>
 </ul>
@@ -427,16 +427,14 @@ Prework
 <p>First we are going to load <code>wbstats</code> along with <code>dplyr</code> and <code>janitor</code>. The <code>wb_data()</code> function is the one we need to download the data from the World Bank’s API. <code>wb_data()</code> requires to main sets of arguments: a list of indicators that we want to use and the period for which we want to download data. The period can can be entered as two separate arguments (e.g.&nbsp;<code>start_date</code> and <code>end_date</code>). But for this exercise we will specify the number of years we want to download using <code>mrv</code> which stands for “most recent value.”</p>
 <p>In addition to female labor force participation, let’s also grab the percentage of seats in parliament held by women. We will store that list of objects in a vector called <code>women_emp</code> to signify that these indicators are related to women’s empowerment. We will try to download 50 years of data for these two variables.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
 Note
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>If you want to search World Bank data for additional indicators, you can use the <code>wb_search()</code> function. For example, if we wanted to find all of the indicators associated with female labor force participation, we could run:</p>
 <div class="cell">
@@ -445,7 +443,6 @@ Note
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(flfp_indicators, <span class="at">n=</span><span class="dv">26</span>) <span class="co"># view the indicators</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Try searching for some indicators related to a topic you are interested in and see what you get!</p>
-</div>
 </div>
 </div>
 <p>While we are calling <code>wb_data</code> we will go ahead and pipe some additional functions from <code>dplyr</code> and <code>janitor</code> to clean it up. First, we will use <code>select()</code> to eliminate the iso2c variable, which we won’t be needing. Then, we will rename <code>date</code> to <code>year</code>. Then we will use a combination of <code>mutate</code> and <code>round_to_fraction()</code> to round the data to the nearest hundredth.</p>

@@ -13,15 +13,12 @@ execute:
 ## Prework
 
 - Install R, R Studio and the Tidyverse collection of packages if you have not done so already (see [getting started](/modules/getting-started.html))
-
 - Install the `janitor` package (`install.packages("janitor")`)
-
 - Start a new quarto project called "modules" and generate a quarto document named "module-1.1.qmd" so that you can use to follow along with this exercise
-
 - Create a new directory/folder in your project folder called "data" where you can store .csv files
 :::
 
-::: {.callout-note collapse="true"} 
+::: {.callout-note} 
 
 In this module, we will be using the `readr`, `tidyr` and `dplyr` packages from the Tidyverse. While we could just load the entire Tidyverse collection of packages (e.g. `library(tidyverse)`), it is generally better from a [performance standpoint](https://stackoverflow.com/questions/50257990/what-is-the-advantage-of-using-librarytidyverse-instead-of-sub-packages) to load the packages individually. 
 
@@ -55,7 +52,7 @@ Now we are going to read this messy World Bank data into R using the `read_csv()
 
 `glimpse()` shows us a list of the columns in the along with their type (e.g. character, double, etc.) and a few rows' worth of data. 
 
-::: {.callout-note collapse="true"}
+::: {.callout-note}
 While comma delimited files are the most common kind of flat file, `readr` includes functions for parsing files with a wide range of delimiters including tabs (`read_tsv()`), semicolons (`read_csv2()`) and white spaces (`read_table()`). There is also a Tidyverse package for reading in Excel files called [readxl](https://readxl.tidyverse.org/).
 :::
 
@@ -117,7 +114,7 @@ glimpse(wb_data)
 ::: {.callout-important}
 ## The Pipe Operator
 
-For our `pivot-longer()` call we used R's native [pipe operator](https://r4ds.hadley.nz/workflow-style.html#sec-pipes). Pipes tell R to do something to the object that they are attached to. In this case, we are telling R to apply `pivot_longer()` to `wb_data`. The alternative way of writing this code would be to include the data as the first argument in the function, e.g. `pivot_longer(wb_data, cols = ..., names_to = ... , values_to = ...)`. As you will see, pipe operators enable us to string together multiple functions in a convenient way to transform our data. 
+For our `pivot-longer()` call we used R's native [pipe operator](https://r4ds.hadley.nz/workflow-style.html#sec-pipes), e.g. `|>`. Pipes tell R to do something to the object that they are attached to. In this case, we are telling R to apply `pivot_longer()` to `wb_data`. The alternative way of writing this code would be to include the data as the first argument in the function, e.g. `pivot_longer(wb_data, cols = ..., names_to = ... , values_to = ...)`. As you will see, pipe operators enable us to string together multiple functions in a convenient way to transform our data. 
 :::
 
 ::: {.callout-caution}

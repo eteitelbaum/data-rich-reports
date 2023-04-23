@@ -12,7 +12,7 @@ execute:
 ::: {.callout-tip}
 ## Prework
 
-- Install the devtools package. Type `install.packages("devtools")` in your console. You will need this to install the `vdemdata` package becaue it is not on the CRAN Network. 
+- Install the `devtools` package. Type `install.packages("devtools")` in your console. You will need this to install the `vdemdata` package becaue it is not on the CRAN Network. 
 
 - Install the `vdemdata` package from GitHub. Type `devtools::install_github("vdeminstitute/vdemdata")` in your console. 
 
@@ -42,13 +42,13 @@ The end goal is to have a nice dataset with a combination of World Bank and [V-D
 
 {{< video https://www.youtube.com/embed/wo9vZccmqwc title='Downloading Data from the World Bank' >}}
 
-You will no doubt remember the messy data that we downloaded from the World Bank's website in [module 1.1](/modules/module-1.1.htmll#step-1-download-data-from-the-world-bank). Usually it is much easier to download data from an API as opposed to wrangling it from a .csv file. In this example, I want to illustrate that for you by having you download the same data that we worked with in the last module using the [wbstats](https://cran.r-project.org/web/packages/wbstats/vignettes/wbstats.html) package. 
+You will no doubt remember the messy data that we downloaded from the World Bank's website in [module 1.1](/modules/module-1.1.htmll#step-1-download-data-from-the-world-bank). Usually it is much easier to download data from an API as opposed to wrangling it from a .csv file. In this example, I want to illustrate that for you by having you download the same data that we worked with in the last module using the [wbstats](https://cran.r-project.org/web/packages/wbstats/vignettes/wbstats.html) package.
 
 First we are going to load `wbstats` along with `dplyr` and `janitor`. The `wb_data()` function is the one we need to download the data from the World Bank's API. `wb_data()` requires to main sets of arguments: a list of indicators that we want to use and the period for which we want to download data. The period can can be entered as two separate arguments (e.g. `start_date` and `end_date`). But for this exercise we will specify the number of years we want to download using `mrv` which stands for "most recent value." 
 
 In addition to female labor force participation, let's also grab the percentage of seats in parliament held by women. We will store that list of objects in a vector called `women_emp` to signify that these indicators are related to women's empowerment. We will try to download 50 years of data for these two variables.  
 
-::: {.callout-note collapse="true"}
+::: {.callout-note}
 If you want to search World Bank data for additional indicators, you can use the `wb_search()` function. For example, if we wanted to find all of the indicators associated with female labor force participation, we could run: 
 
 ```{r}
@@ -89,7 +89,6 @@ glimpse(women_emp) # view the data
 Now we have some pretty tidy World Bank data related to women's empowerment without having to do too much work. I am sure you would agree that this is a much more straightforward process than downloading the data and then importing the data as a flat file! 
 
 One thing that becomes very clear here is that `wb_data()` did not download any data before 1990. It automatically filtered out the years for which all countries had no data. The fact there were no data before 1990 for any of the countries is easily missed when we were simply importing it from a .csv file. 
-
 
 ## Filter observations, select and create new variables 
 
