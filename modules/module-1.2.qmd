@@ -13,9 +13,7 @@ execute:
 ## Prework
 
 - Install the `devtools` package. Type `install.packages("devtools")` in your console. You will need this to install the `vdemdata` package becaue it is not on the CRAN Network. 
-
 - Install the `vdemdata` package from GitHub. Type `devtools::install_github("vdeminstitute/vdemdata")` in your console. 
-
 - Install the `wbstats` and `countrycode` packages:
 
 ```{r}
@@ -24,7 +22,7 @@ execute:
 pkg_list <- c("wbstats", "countrycode") # create a list of packages
 install.packages(pkg_list) # install the packages
 ```
-
+- Have a look at the vignettes for [wbstats](https://cran.r-project.org/web/packages/wbstats/vignettes/wbstats.html) and the [countrycode](https://vincentarelbundock.github.io/countrycode/) documentation
 - Generate a quarto document named "module-1.2.qmd" in your modules project folder so that you can code along with me
 :::
 

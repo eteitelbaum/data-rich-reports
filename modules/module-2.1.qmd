@@ -15,9 +15,9 @@ execute:
 ## Prework
 
 - Install the `scales` package (`install.packages("scales")`)
-- Have a look at the `ggplot2` [documentation](https://ggplot2.tidyverse.org/)  
-- Familiarize yourself with the `ggplot2` [cheatsheet](https://github.com/rstudio/cheatsheets/blob/main/data-visualization.pdf)
-- Generate a quarto document named "module-2.1.qmd" so that you can use to follow along with this exercise
+- Have a look at the documentation for [ggplot2](https://ggplot2.tidyverse.org/)
+- Familiarize yourself with the `ggplot2` [cheatseet](file:///C:/Users/emman/Downloads/data-visualization-1.pdf)
+- Generate a quarto document named "module-2.1.qmd" so that you can code along with me
 
 If you have installed the Tidyverse, then you should already have the packages for this model, including `ggplot2`. You can go ahead and load `ggplot2` along with `readr` and `dplyr`. 
 

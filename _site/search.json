@@ -102,7 +102,7 @@
     "href": "modules/module-1.1.html",
     "title": "Module 1.1",
     "section": "",
-    "text": "Prework\n\n\n\n\nInstall R, R Studio and the Tidyverse collection of packages if you have not done so already (see getting started)\nInstall the janitor package (install.packages(\"janitor\"))\nStart a new quarto project called “modules” and generate a quarto document named “module-1.1.qmd” so that you can use to follow along with this exercise\nCreate a new directory/folder in your project folder called “data” where you can store .csv files"
+    "text": "Prework\n\n\n\n\nInstall R, R Studio and the Tidyverse collection of packages if you have not done so already (see getting started)\nInstall the janitor package (install.packages(\"janitor\"))\nHave a look at the documentation for readr, dplyr, tidyr and janitor\nFamiliarize yourself with the readr, dplyr and tidyr cheatsheets\nCreate a new directory/folder in your project folder called “data” where you can store .csv files\nStart a new quarto project called “modules” and generate a quarto document named “module-1.1.qmd” inside of it so that you can code along with me"
   },
   {
     "objectID": "modules/module-1.1.html#reading-data-from-an-excel-file",
@@ -172,7 +172,7 @@
     "href": "modules/module-1.2.html",
     "title": "Module 1.2",
     "section": "",
-    "text": "Prework\n\n\n\n\nInstall the devtools package. Type install.packages(\"devtools\") in your console. You will need this to install the vdemdata package becaue it is not on the CRAN Network.\nInstall the vdemdata package from GitHub. Type devtools::install_github(\"vdeminstitute/vdemdata\") in your console.\nInstall the wbstats and countrycode packages:\n\n\npkg_list <- c(\"wbstats\", \"countrycode\") # create a list of packages\ninstall.packages(pkg_list) # install the packages\n\n\nGenerate a quarto document named “module-1.2.qmd” in your modules project folder so that you can code along with me"
+    "text": "Prework\n\n\n\n\nInstall the devtools package. Type install.packages(\"devtools\") in your console. You will need this to install the vdemdata package becaue it is not on the CRAN Network.\nInstall the vdemdata package from GitHub. Type devtools::install_github(\"vdeminstitute/vdemdata\") in your console.\nInstall the wbstats and countrycode packages:\n\n\npkg_list <- c(\"wbstats\", \"countrycode\") # create a list of packages\ninstall.packages(pkg_list) # install the packages\n\n\nHave a look at the vignettes for wbstats and the countrycode documentation\nGenerate a quarto document named “module-1.2.qmd” in your modules project folder so that you can code along with me"
   },
   {
     "objectID": "modules/module-1.2.html#overview",
@@ -319,7 +319,7 @@
     "href": "modules/module-2.1.html",
     "title": "Module 2.1",
     "section": "",
-    "text": "Prework\n\n\n\n\nInstall the scales package (install.packages(\"scales\"))\nHave a look at the ggplot2 documentation\n\nFamiliarize yourself with the ggplot2 cheatsheet\nGenerate a quarto document named “module-2.1.qmd” so that you can use to follow along with this exercise\n\nIf you have installed the Tidyverse, then you should already have the packages for this model, including ggplot2. You can go ahead and load ggplot2 along with readr and dplyr.\n\nlibrary(readr)\nlibrary(dplyr)\nlibrary(ggplot2)\n\nNote that you could also load these three packages by running library(tidyverse). However, it is good to be intentional about which packages we are loading as we are learning them."
+    "text": "Prework\n\n\n\n\nInstall the scales package (install.packages(\"scales\"))\nHave a look at the documentation for ggplot2\nFamiliarize yourself with the ggplot2 cheatseet\nGenerate a quarto document named “module-2.1.qmd” so that you can code along with me\n\nIf you have installed the Tidyverse, then you should already have the packages for this model, including ggplot2. You can go ahead and load ggplot2 along with readr and dplyr.\n\nlibrary(readr)\nlibrary(dplyr)\nlibrary(ggplot2)\n\nNote that you could also load these three packages by running library(tidyverse). However, it is good to be intentional about which packages we are loading as we are learning them."
   },
   {
     "objectID": "modules/module-2.1.html#bar-charts",
