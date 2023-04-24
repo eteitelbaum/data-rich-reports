@@ -22,9 +22,9 @@ execute:
 
 ::: {.callout-note} 
 
-In this module, we will be using the `readr`, `tidyr` and `dplyr` packages from the Tidyverse. While we could just load the entire Tidyverse collection of packages (e.g. `library(tidyverse)`), it is generally better from a [performance standpoint](https://stackoverflow.com/questions/50257990/what-is-the-advantage-of-using-librarytidyverse-instead-of-sub-packages) to load the packages individually. Also it is good to be more intentional about which packages we are loading while we are learning them. 
+In this module, we will be using the `readr`, `tidyr` and `dplyr` packages from the Tidyverse. While we could just load the entire Tidyverse collection of packages (e.g. `library(tidyverse)`), it is generally better from a [performance standpoint](https://stackoverflow.com/questions/50257990/what-is-the-advantage-of-using-librarytidyverse-instead-of-sub-packages) to load the packages individually. Another reason to laod the packages separately is that it is good to be more intentional about which packages we are loading while we are learning them. 
 
-Also, we will load the packages as we go along in various code chunks. But it is also possible to load all of the packages you will be using in a Quarto doc or R script in a single "setup" code chunk at the beginning of the file. You will see both workflows represented in this course.
+Also, note that in this module we will load the packages as we go along in various code chunks; but it is also possible to load all of the packages you will be using in a Quarto doc or R script in a single "setup" code chunk at the beginning of the file. You will see both workflows represented in this course.
 :::
 
 
@@ -61,17 +61,14 @@ While comma delimited files are the most common kind of flat file, `readr` inclu
 ```{r}
 #| label: step2
 
-# load packages
-
+# Load packages
 library(readr) 
 library(dplyr) 
 
-# read data from csv file into an object called "wb_data_messy"
-
+# Read data from csv file into an object called "wb_data_messy"
 wb_data_messy <- read_csv("data/messy_wb_data.csv")
 
-# view the data
-
+# View the data
 glimpse(wb_data_messy)
 ```
 
@@ -97,19 +94,18 @@ In our case, we want to reshape all of the year columns and have the years repre
 ```{r}
 #| label: step3
 
-# load tidyr
-
+# Load tidyr
 library(tidyr)
 
+# Reshape the data
 wb_data <- wb_data_messy |> # take wb_data_messy, and put it in wb_data, but first...
   pivot_longer(             # pivot the data from wide to long form
-    cols = `1972 [YR1972]`: `2021 [YR2021]`, # columns to pivot (will create two columns)
-    names_to = "year", # name the first column "year" (tells us what year the data is for)
-    values_to = "flfp" # name the second column "flfp" (contains values for each year)
+    cols = `1972 [YR1972]`: `2021 [YR2021]`, # columns to pivot
+    names_to = "year", # name the first column "year"
+    values_to = "flfp" # name the second column "flfp"
   ) 
 
-# view the data
-
+# View the data
 glimpse(wb_data)
 ```
 
@@ -133,17 +129,17 @@ Now that our data are transposed, we can start to work on some other key issues.
 
 To fix this, we will use the [mutate()](https://dplyr.tidyverse.org/reference/mutate.html) and `mutate_at()` functions from `dplyr`. `mutate()` is used to transform variables and to create new ones while `mutate_at()` allow us to transform multiple columns at once. 
 
-First we call `mutate()` along with [substring()](https://www.statology.org/substring-function-in-r/) to truncate the year variable to only include the first four characters of the string. Then we call `mutate_all()` along with `as.numeric` to transform `year` and `flfp` to numeric variables.
+First we call `mutate()` along with [substring()](https://www.statology.org/substring-function-in-r/) to truncate the year variable to only include the first four characters of the string. Then we call `mutate_at()` along with `as.numeric` to transform `year` and `flfp` to numeric variables.
 
 ```{r}
 #| label: step4
 
+# Fix year and flfp
 wb_data <- wb_data |> # replace wb_data with a modified version of the dataframe 
-  mutate(year = substring(year, 1, 4)) |> # truncate year, keep first four characters of the string
+  mutate(year = substring(year, 1, 4)) |> # truncate year (keep first four characters)
   mutate_at(c("year", "flfp"), as.numeric) # change year and flfp to numeric
 
-# view data
-
+# View the data
 glimpse(wb_data)
 ```
 
@@ -159,21 +155,17 @@ As a final step, we can export our clean data to a new .csv file with the `write
 ```{r}
 #| label: step5
 
-# load janitor
-
+# Load janitor
 library(janitor)
 
-# apply clean_names() to wb_data, store in new data frame called wb_data_clean
-
+# Apply clean_names() to wb_data, store in new data frame called wb_data_clean
 wb_data_clean <- wb_data |>  
   clean_names() 
 
-# write wb_data_clean to a csv file
-
+# Write wb_data_clean to a csv file
 write_csv(wb_data_clean, "data/wb_data_clean.csv")
 
-# view data
-
+# View the data
 glimpse(wb_data_clean)
 ```
 

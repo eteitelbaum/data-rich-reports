@@ -52,6 +52,7 @@ If you want to search World Bank data for additional indicators, you can use the
 ```{r}
 #| label: wb_search
 #| eval: false
+
 flfp_indicators <- wb_search("female labor force") # store the list of indicators
 
 print(flfp_indicators, n=26) # view the indicators
@@ -67,13 +68,16 @@ We will pipe all of these functions together and store the resulting data frame 
 ```{r}
 #| label: wb_data
 
+# Load packages
 library(wbstats) # for downloading WB data
 library(dplyr) # for selecting, renaming and mutating
 library(janitor) # for rounding
 
-indicators <- c("flfp" = "SL.TLF.CACT.FE.ZS", "women_rep" = "SG.GEN.PARL.ZS") # store indicators
-  
-women_emp <- wb_data(indicators, mrv = 50) |> # download indicator data for last 50 yrs
+# Store the list of indicators in an object
+indicators <- c("flfp" = "SL.TLF.CACT.FE.ZS", "women_rep" = "SG.GEN.PARL.ZS") 
+
+# Download the data  
+women_emp <- wb_data(indicators, mrv = 50) |> # download data for last 50 yrs
   select(!iso2c) |> # drop the iso2c code which we won't be using
   rename(year = date) |> # rename date to year 
   mutate(
@@ -81,7 +85,8 @@ women_emp <- wb_data(indicators, mrv = 50) |> # download indicator data for last
     women_rep = round_to_fraction(women_rep, denominator = 100) 
   )
 
-glimpse(women_emp) # view the data
+# View the data
+glimpse(women_emp) 
 ```
 
 Now we have some pretty tidy World Bank data related to women's empowerment without having to do too much work. I am sure you would agree that this is a much more straightforward process than downloading the data and then importing the data as a flat file! 
@@ -98,7 +103,7 @@ The next thing we want to talk about is how to filter observations and to select
 
 While V-Dem has wealth of indicators related to democracy, we are going to focus on the most famous one called the "polyarchy" score. We are also going to download data on per capita GDP and create some indicator variables for region that we will use later on when we summarize the data. Along with those variables, we also want to retain `country_name`, `year` and `country_id` for the purposes of merging these data with our World Bank data. 
 
-::: {.callout-note collapse="true"}
+::: {.callout-note}
 While V-Dem has a variable look-up tool (`find_var`), it does not provide very much information on the variables that the search function returns. Therefore, if you want to use this package for your own research, I highly recommend just going to the [V-Dem codebook](https://www.v-dem.net/documents/24/codebook_v13.pdf) and manually grabbing the codes for the indicators that you want to use in your analysis. 
 :::
 
@@ -109,9 +114,11 @@ We will store our new data as an object called `democracy`.
 ```{r}
 #| label: democracy
 
+# Load packages
 library(vdemdata) # to download V-Dem data
 library(dplyr)
 
+# Download the data
 democracy <- vdem |> # download the V-Dem dataset
   filter(year >= 1990)  |> # filter out years less than 1990
   select(                  # select (and rename) these variables
@@ -124,14 +131,18 @@ democracy <- vdem |> # download the V-Dem dataset
     ) |>
   mutate(
     region = case_match(region, # replace the values in region with country names
-                     1 ~ "Eastern Europe", # the number on the left of the = sign is the V-Dem region code
-                     2 ~ "Latin America", # we are changing the number to the country name on the right 
-                     3 ~ "Middle East",   # of the equals sign
+                     1 ~ "Eastern Europe", 
+                     2 ~ "Latin America",  
+                     3 ~ "Middle East",   
                      4 ~ "Africa", 
                      5 ~ "The West", 
                      6 ~ "Asia")
+                    # number on the left of the = sign is the V-Dem region code
+                    # we are changing the number to the country name on the right
+                    # of the equals sign
   )
 
+# View the data
 glimpse(democracy)
 ```
 
@@ -143,21 +154,27 @@ One common problem scholars face when they want to analyze country-level data is
 
 The `countrycode()` function creates a new country code variable in our dataset that matches the country code variable of the second dataset that we are trying to merge it to. `countrycode()` takes three arguments: `sourcevar`; `origin`; and `destination`. `sourcevar` identifies  the name of the column that you want to transform, `origin` is the coding system that you want to translate from, and `destination` is the coding system that you want to translate to.  
 
-In this next step of our analysis, we are going to join the data the World Bank and V-Dem data that we wrangled into a single dataset. To do that we need a common country code. The way we are going to do this is to create a new country code variable in the democracy dataset that matches the one in the women's empowerment dataset.  
+In this next step of our analysis, we are going to join the World Bank and V-Dem data that we wrangled into a single dataset. To do that we need a common country code. The way we are going to do this is to create a new country code variable in the democracy dataset that matches the one in the women's empowerment dataset.
 
 Let's create a new version of our democracy dataset where we add a variable called `iso3c`. We will call `mutate()` to create the variable and wrap the `countrycode()` call inside of that. The `sourcevar` that we want to transform is the `vdem_ctry_id`, the origin code is "vdem", and the destination code is "wb". 
 
 We are also going to pipe in a [relocate()](https://dplyr.tidyverse.org/reference/relocate.html) call which simply moves the new `iso3c` column from the end of the data frame (where R automically drops it) so that it sits right next to `vdem_ctry_cd`. This is not essential but it is always good to keep our data frames looking nice and neat!. 
 
 ```{r}
+#| label: countrycode
+# Load countrycode
 library(countrycode)
 
-democracy <- democracy |> 
-  mutate(iso3c = countrycode(sourcevar = vdem_ctry_id, origin = "vdem", destination = "wb"))  |> 
-  relocate(iso3c, .after = vdem_ctry_id)
+# Create new iso3c variable
+democracy <- democracy |>    
+  mutate(iso3c = countrycode(sourcevar = vdem_ctry_id, # what we are converting
+        origin = "vdem",         # we are converting from vdem
+        destination = "wb"))  |> # and converting to the WB iso3c code 
+  relocate(iso3c, .after = vdem_ctry_id) # move iso3c 
 
-#filter(democracy, is.na(iso3c))
+#filter(democracy, is.na(iso3c)) STILL NEED THIS?
 
+# View the data
 glimpse(democracy)
 ```
 
@@ -176,14 +193,19 @@ When `dplyr` does a join, it renames any duplicate columns with suffixes like `.
 We can can pipe all of these functions together and store the resulting data frame in a new object called `dem_women`. Let's also save these data as a .csv file for future use with `write_csv()`. The first argument for `write_csv()` is the name of the data frame or tibble that we want to save. The second argument is the path and name of the file that we want to save it to. 
 
 ```{r}
+#| label: leftjoin
+# Load readr
 library(readr)
 
+# Perform left join using common iso3c variable and year
 dem_women <- left_join(democracy, women_emp, by = c("iso3c", "year")) |> 
-  rename(country = country.x) |> 
-  select(!country.y)
+  rename(country = country.x) |> # rename country.x
+  select(!country.y)             # crop country.y
 
+# Save as .csv for future use
 write_csv(dem_women, "data/dem_women.csv")
 
+# View the data
 glimpse(dem_women)  
 ```
 
@@ -196,20 +218,26 @@ Now that we have completed all of the wrangling, let's do something with it. A c
 
 Let's go ahead and apply our three new verbs to the `dem_women` data frame and store the resulting new data frame in an object called `dem_summary`. We will group the data by region, take the mean of each variable, and sort the data in descending order based on the regions' polyarchy scores. Then we will print the object to view its contents. Along the way, we let's also export the data to a .csv file for future use. 
 
-::: {.callout-note collapse="true"}
+::: {.callout-note}
 To print an object in R, we can either use the `print()` function or just execute the name of the object. Oftentimes it is simpler to just execute the name of the object. 
 :::
 
 ```{r}
-dem_summary <- dem_women |> 
-  group_by(region)  |> 
-  summarize(
-    polyarchy = mean(polyarchy, na.rm = TRUE),
+#| label: verbs
+# group_by(), summarize() and arrange()
+dem_summary <- dem_women |> # save result as new object
+  group_by(region)  |> # group dem_women data by region
+  summarize(           # summarize following vars (by region)
+    polyarchy = mean(polyarchy, na.rm = TRUE), # calculate mean, remove NAs
     gdp_pc = mean(gdp_pc, na.rm = TRUE), 
     flfp = mean(flfp, na.rm = TRUE), 
     women_rep = mean(women_rep, na.rm = TRUE)
   ) |> 
-  arrange(desc(polyarchy)) 
+  arrange(desc(polyarchy)) # arrange in descending order by polyarchy score
 
+# Save as .csv for future use
 write_csv(dem_summary, "data/dem_summary.csv")
+
+# View the data
+glimpse(dem_summary)
 ```
