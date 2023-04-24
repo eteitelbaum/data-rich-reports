@@ -9,13 +9,13 @@ execute:
   warning: false
 ---
 
+::: {.callout-tip}
 ## Prework
 
-- Install plotly `install.packages("plotly")`
-
-- Install colorBlindness Guide `install.packages("colorBlindness")`
-
-Familiarize yourself with this setup code and the dataframes it generates. 
+- Install plotly (`install.packages("plotly")`) and have a look at the [documentation](https://plotly.com/ggplot2/getting-started/#plotly-for-r)
+- Install (colorBlindness Guide) `install.packages("colorBlindness")` and read this [vignette](https://cran.r-project.org/web/packages/colorBlindness/vignettes/colorBlindness.html)
+- Generate a quarto document named "module-2.2.qmd" in your "modules" project folder so that you can code along with me
+- In your quarto document, run these code chunks and familiarize yourself the data frames that they generate 
 
 ```{r}
 #| label: setup
@@ -60,7 +60,7 @@ flfp_ts <- wb_data("SL.TLF.CACT.FE.ZS", country = "regions_only", start_date = 1
   
 glimpse(flfp_ts)
 ```
-
+:::
 
 ## Overview
 
@@ -69,9 +69,12 @@ Discuss some basic principles of design like no more than four lines, arranging 
 
 ## Color Schemes
 
+{{< video https://www.youtube.com/embed/wo9vZccmqwc >}}
+
 Here mention the accessibility checker tools in Windows and OS. Use line chart we did in module 2.1 as an example. At the end of the lesson, ask students to fix it as an exercise. 
 
 ```{r}
+#| label: dem_waves
 dem_waves_ctrs <- read_csv("data/dem_waves_ctrs.csv")
 
 dem_waves_chart <- ggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +
@@ -90,6 +93,9 @@ dem_waves_chart
 [colorBlindness Guide](https://cran.r-project.org/web/packages/colorBlindness/vignettes/colorBlindness.html)
 
 ```{r}
+#| label: dem_waves_cvd
+#| fig-width: 12
+#| fig-height: 7
 library(colorBlindness)
 
 cvdPlot(dem_waves_chart)
@@ -103,6 +109,7 @@ cvdPlot(dem_waves_chart)
 
 
 ```{r}
+#| label: flfp_region
 cb_palette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
 
 flfp_region <- ggplot(flfp_gdp_regions, aes(x = reorder(iso3c, -flfp), y = flfp, fill = region)) +
@@ -120,6 +127,9 @@ flfp_region + scale_fill_manual(values = cb_palette)
 ```
 
 ```{r}
+#| label: flfp_region_cvd
+#| fig-width: 12
+#| fig-height: 7
 flfp_region <- flfp_region + scale_fill_manual(values = cb_palette)
 
 cvdPlot(flfp_region)
@@ -132,10 +142,14 @@ cvdPlot(flfp_region)
 
 
 ```{r}
+#| label: viridis
 flfp_region + scale_fill_viridis_d()
 ```
 
 ```{r}
+#| label: viridis_cvd
+#| fig-width: 12
+#| fig-height: 7
 flfp_region <- flfp_region + scale_fill_viridis_d()
 
 cvdPlot(flfp_region)
@@ -151,10 +165,14 @@ cvdPlot(flfp_region)
 Show how it works with YlGn but does not work with with BlGn
 
 ```{r}
+#| label: brewer
 flfp_region + scale_fill_brewer(palette = "YlGn") # try with BrBG
 ```
 
 ```{r}
+#| label: brewer_cvd
+#| fig-width: 12
+#| fig-height: 7
 flfp_region <- flfp_region + scale_fill_brewer(palette = "YlGn")
 
 cvdPlot(flfp_region)
@@ -162,12 +180,14 @@ cvdPlot(flfp_region)
 
 
 
-## Scaling for scatterplots an line charts
+## Scaling for scatterplots and line charts
+
+{{< video https://www.youtube.com/embed/wo9vZccmqwc >}}
 
 Use "scale_color" instead of "scale_fill" for line charts and scatter plots, e.g. `scale_color_manual()`, `scale_color_viridis_d()`, `scale_color_brewer`.  
 
 ```{r}
-  
+#| label: scale_color_viridis()  
 wealth_flfp <- ggplot(flfp_gdp, aes(x = gdp_pc, y = flfp)) + # plot gdp_pc vs flfp, store in wealth_flfp 
   geom_point(aes(color = region)) + # add an aesthetic to color points by region
   geom_smooth(method = "loess", linewidth = 1) +  # make the line a loess curve
@@ -187,6 +207,7 @@ wealth_flfp + scale_color_viridis_d(option = "plasma")
 
 
 ```{r}
+#| label: scale_color_brewer()
 flfp_line <- ggplot(flfp_ts, aes(x = year, y = flfp, color = region)) +
   geom_line(linewidth = 1) + 
   scale_y_continuous(labels = scales::label_percent(scale = 1)) +
@@ -203,20 +224,27 @@ flfp_line + scale_color_brewer(palette = "YlOrRd")
 
 ## Themes
 
+{{< video https://www.youtube.com/embed/wo9vZccmqwc >}}
+
 [ggplot themes](https://ggplot2.tidyverse.org/reference/ggtheme.html)
 
 
 ```{r}
+#| label: theme_dark()
 wealth_flfp + scale_color_viridis_d(option = "plasma") + theme_dark()
 ```
 
 ```{r}
+#| label: theme_minimal()
 flfp_region + scale_fill_brewer(palette = "YlGn") + theme_minimal()
 ```
 
 ## Annotations
 
+{{< video https://www.youtube.com/embed/wo9vZccmqwc >}}
+
 ```{r}
+#| label: annotate1
 wealth_flfp <- wealth_flfp + scale_color_viridis_d(option = "plasma") + theme_minimal()
 
 wealth_flfp + annotate("text", x = 90000, y = 75, label = "Wealthy") + 
@@ -226,6 +254,7 @@ wealth_flfp + annotate("text", x = 90000, y = 75, label = "Wealthy") +
 
 
 ```{r}
+#| label: annotate2
 flfp_line <- flfp_line + scale_color_viridis_d() 
 
 flfp_line + geom_hline(yintercept=52, linetype="dashed", color = "red", size = 1) +
@@ -234,6 +263,7 @@ flfp_line + geom_hline(yintercept=52, linetype="dashed", color = "red", size = 1
 
 
 ```{r}
+#| label: annotate3
 flfp_line <- flfp_line + scale_color_viridis_d() 
 
 flfp_line + geom_vline(xintercept=2020, linetype = "dashed", size = 1) +
@@ -243,11 +273,13 @@ flfp_line + geom_vline(xintercept=2020, linetype = "dashed", size = 1) +
 
 ## Interactivity
 
+{{< video https://www.youtube.com/embed/wo9vZccmqwc >}}
 
 [plotly](https://plotly.com/r/)
 [ggplotly](https://plotly.com/ggplot2/)
 
 ```{r}
+#| label: plotly
 library(plotly)
 
 ggplotly(flfp_line)
@@ -257,6 +289,7 @@ ggplotly(flfp_line)
 In this next one, if you don't control the tool tip it looks bad
 
 ```{r}
+#| label: tooltip
 flfp_region <- flfp_region + scale_fill_brewer(palette = "YlGn") + theme_minimal()
 
 ggplotly(flfp_region, tooltip = c("region", "flfp")) # controlling the tooltip output
@@ -264,9 +297,8 @@ ggplotly(flfp_region, tooltip = c("region", "flfp")) # controlling the tooltip o
 
 need to include `aes(label = country)` to view country in tool tip. How to add notes and other stuff with `layout(annotations = list())`. 
 
-## Interactivity
-
 ```{r}
+#| label: plotly_scatterplot
 library(plotly)
 
 wealth_flfp <- ggplot(flfp_gdp, aes(x = gdp_pc, y = flfp)) + 

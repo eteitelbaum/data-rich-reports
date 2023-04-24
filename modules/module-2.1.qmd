@@ -11,13 +11,13 @@ execute:
   warning: false
 ---
 
-::: {.callout-tip appearance="minimal"}
+::: {.callout-tip}
 ## Prework
 
 - Install the `scales` package (`install.packages("scales")`)
 - Have a look at the documentation for [ggplot2](https://ggplot2.tidyverse.org/)
 - Familiarize yourself with the `ggplot2` [cheatseet](file:///C:/Users/emman/Downloads/data-visualization-1.pdf)
-- Generate a quarto document named "module-2.1.qmd" so that you can code along with me
+- Generate a quarto document named "module-2.1.qmd" in youe modules project folder so that you can code along with me
 
 If you have installed the Tidyverse, then you should already have the packages for this model, including `ggplot2`. You can go ahead and load `ggplot2` along with `readr` and `dplyr`. 
 
@@ -34,7 +34,7 @@ Note that you could also load these three packages by running `library(tidyverse
 
 ## Overview
 
-Last week we learned how to gather and wrangle data. This week we are going to start visualizing it with the `ggplot2`. We will learn how to make bar charts, histographs, line charts and scatter plots. 
+Last week we learned how to gather and wrangle data. This week we are going to start visualizing it with the `ggplot2`. We will learn how to make bar charts, histograms, line charts and scatter plots. 
 
 Along the way we are going to be talking about the "grammar of graphics" that `ggplot2` is based on. The "gg" in ggplot stands for "grammar of graphics." The grammar of graphics is a layered approach to constructing graphs based on a [book](https://link-springer-com.proxygw.wrlc.org/book/10.1007/0-387-28695-0) by Leland Wilkinson.
 
