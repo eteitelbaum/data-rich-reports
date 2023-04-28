@@ -35,7 +35,7 @@ In this module, we are going to work with a "flat file" (.csv) that we will down
 
 ## Downloading World Bank data into a flat file
 
-{{< video https://www.youtube.com/watch?v=vEZb4C0Wszo title="Downloading Data from the World Bank" >}}
+{{< video https://youtu.be/YLOaKB8dfF4 title="Downloading Data from the World Bank" >}}
 
 Go to the World Development Indicators [portal](https://databank.worldbank.org/source/world-development-indicators) at the World Bank's Data Bank.
 
