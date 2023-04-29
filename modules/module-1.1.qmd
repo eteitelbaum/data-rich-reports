@@ -75,7 +75,7 @@ glimpse(wb_data_messy)
 
 ## Reshaping data
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title='Reshaping Data With `pivot_longer()`' >}}
+{{< video https://youtu.be/_rflNTP_BbA title='Reshaping Data With `pivot_longer()`' >}}
 
 There are a few things about the data here that make it messy. First, in order for the data to be tidy, we want each column to represent a variable and each row to represent an observation. 
 
@@ -86,8 +86,8 @@ To rectify this, we need to *reshape* the data from wide form to *long form*. Fo
 The `pivot_longer()` function takes three basic arguments: 
 
 - **cols** - which columns you want to pivot
-- **names_to** - what you want the column with the transposed data to be called
-- **values_to** - what you want the column with the values from the transposed data to be called 
+- **names_to** - the name of the column where the old column names are going to
+- **values_to** - the name of the column where the values are going to 
 
 In our case, we want to reshape all of the year columns and have the years represented in the rows. We want the newly created column to be called "year" and the values are going to represent the data on female labor force participation we downloaded (flfp).
 

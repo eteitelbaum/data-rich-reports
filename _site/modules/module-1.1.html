@@ -533,15 +533,15 @@ $ `2021 [YR2021]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", ".
 </section>
 <section id="reshaping-data" class="level2">
 <h2 class="anchored" data-anchor-id="reshaping-data">Reshaping data</h2>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/wo9vZccmqwc" title="Reshaping Data With pivot_longer()" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/_rflNTP_BbA" title="Reshaping Data With pivot_longer()" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>There are a few things about the data here that make it messy. First, in order for the data to be tidy, we want each column to represent a variable and each row to represent an observation.</p>
 <p>But here we see the reverse: the data are in <em>wide form</em>, meaning that each column represents a year and each row represents a country. This entails that each row represents <em>multiple</em> observations in that we have data for multiple years for each row.</p>
 <p>To rectify this, we need to <em>reshape</em> the data from wide form to <em>long form</em>. For this, we need the <a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a> function from the <a href="https://tidyr.tidyverse.org/index.html">tidyr</a> package.</p>
 <p>The <code>pivot_longer()</code> function takes three basic arguments:</p>
 <ul>
 <li><strong>cols</strong> - which columns you want to pivot</li>
-<li><strong>names_to</strong> - what you want the column with the transposed data to be called</li>
-<li><strong>values_to</strong> - what you want the column with the values from the transposed data to be called</li>
+<li><strong>names_to</strong> - the name of the column where the old column names are going to</li>
+<li><strong>values_to</strong> - the name of the column where the values are going to</li>
 </ul>
 <p>In our case, we want to reshape all of the year columns and have the years represented in the rows. We want the newly created column to be called “year” and the values are going to represent the data on female labor force participation we downloaded (flfp).</p>
 <div class="cell">
