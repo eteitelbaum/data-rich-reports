@@ -75,7 +75,7 @@ glimpse(wb_data_messy)
 
 ## Reshaping data
 
-{{< video https://youtu.be/_rflNTP_BbA title='Reshaping Data With `pivot_longer()`' >}}
+{{< video https://youtu.be/ud36szsO9a4 title='Reshaping Data With `pivot_longer()`' >}}
 
 There are a few things about the data here that make it messy. First, in order for the data to be tidy, we want each column to represent a variable and each row to represent an observation. 
 
