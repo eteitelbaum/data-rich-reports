@@ -64,14 +64,17 @@ glimpse(flfp_ts)
 
 ## Overview
 
-Discuss some basic principles of design like no more than four lines, arranging bar charts in descending order, etc. Link to a relevant guide. 
-
+In this lesson we are going to take our visualizations from Module 2.1 and improve them. In the first part of the lesson we are going to focused on how to make your visualizations accessible to a color-blind audience. Then we will discuss how to improve the look of your visualizations with themes and to provide additional information and context with annotations. Finally, we will spend some time talking about how to make your graphs interactive so that users can explore them in a more dynamic and flexible way. 
 
 ## Color Schemes
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc >}}
+{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'Accessible Color Schemes'>}}
 
-Here mention the accessibility checker tools in Windows and OS. Use line chart we did in module 2.1 as an example. At the end of the lesson, ask students to fix it as an exercise. 
+There are a number of different [types](https://www.nei.nih.gov/learn-about-eye-health/eye-conditions-and-diseases/color-blindness/types-color-blindness) of color blindness, but the most common type is red-green color blindness. 
+
+[accessible](https://towardsdatascience.com/is-your-color-palette-stopping-you-from-reaching-your-goals-bf3b32d2ac49) to a color-blind
+
+Here mention the accessibility checker tools in Windows? Use line chart we did in module 2.1 as an example. At the end of the lesson, ask students to fix it as an exercise. 
 
 ```{r}
 #| label: dem_waves
@@ -179,8 +182,7 @@ cvdPlot(flfp_region)
 ```
 
 
-
-## Scaling for scatterplots and line charts
+### Scaling for scatterplots and line charts
 
 {{< video https://www.youtube.com/embed/wo9vZccmqwc >}}
 

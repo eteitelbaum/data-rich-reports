@@ -9,17 +9,22 @@ execute:
   warning: false
 ---
 
+::: {.callout-tip}
 ## Prework
 
-
-- Optional: install `magick` and underlying file system to [remove whitespace](https://www.pmassicotte.com/posts/2022-08-15-removing-whitespace-around-figures-quarto/) around maps
-
+- Install `rnaturalearth` (`install.packages("rnaturalearth")`) and have a look at the [documentation](https://cran.r-project.org/web/packages/rnaturalearth/vignettes/rnaturalearth.html)
+- Install `ggthemes` (`install.packages("ggthemes")`)and have a look at [this post](https://rpubs.com/Mentors_Ubiqum/ggthemes_1)) for a brief explanation of how it works
+- Install `magick` and underlying file system to [remove whitespace](https://www.pmassicotte.com/posts/2022-08-15-removing-whitespace-around-figures-quarto/) around maps
+- Then insert this code chunk somewhere in your Quarto document:
 ```{r}
 # create a hook to crop maps as recommended by pmassicotte
 # must have `magick` and its dependencies installed
 
 knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 ```
+:::
+
+## Overview
 
 ## Grabbing country shapes from rnaturalearth
 
