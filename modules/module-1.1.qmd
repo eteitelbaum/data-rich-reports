@@ -146,7 +146,7 @@ glimpse(wb_data)
 
 ## Cleaning variable names
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title='Clean Variable Names With `janitor`' >}}
+{{< video https://youtu.be/M-uuPBdBCTw title='Clean Variable Names with Janitor' >}}
 
 The last thing we are going to do is to fix the variable names. Specifically, we want to remove the spaces from the remaining variables and conver them from title case to snake case. To do this, we will use the `clean_names()` function from the `janitor` package. 
 
