@@ -147,7 +147,7 @@ glimpse(democracy)
 
 ## Add country codes to a data frame
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title='Add Country Codes to a Data Frame' >}}
+{{< video https://youtu.be/ZGD0kO_iwAM title='Add Country Codes to a Data Frame' >}}
 
 One common problem scholars face when they want to analyze country-level data is the fact that datasets use different country codes. This can make it challenging to combine datasets, thus limiting the potential scope of our analysis. Lucikly, there is a wonderful package called [countrycode](https://vincentarelbundock.github.io/countrycode/) that can help to solve this problem.
 
