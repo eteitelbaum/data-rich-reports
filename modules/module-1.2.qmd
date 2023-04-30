@@ -38,7 +38,7 @@ The end goal is to have a nice dataset with a combination of World Bank and [V-D
 
 ## Downloading data from an API
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title='Downloading Data from the World Bank' >}}
+{{< video https://youtu.be/cBRTP2imt_o title='Downloading Data from the World Bank' >}}
 
 You will no doubt remember the messy data that we downloaded from the World Bank's website in [module 1.1](/modules/module-1.1.htmll#step-1-download-data-from-the-world-bank). Usually it is much easier to download data from an API as opposed to wrangling it from a .csv file. In this example, I want to illustrate that for you by having you download the same data that we worked with in the last module using the [wbstats](https://cran.r-project.org/web/packages/wbstats/vignettes/wbstats.html) package.
 
@@ -116,7 +116,6 @@ We will store our new data as an object called `democracy`.
 
 # Load packages
 library(vdemdata) # to download V-Dem data
-library(dplyr)
 
 # Download the data
 democracy <- vdem |> # download the V-Dem dataset

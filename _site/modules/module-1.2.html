@@ -432,7 +432,7 @@ Prework
 </section>
 <section id="downloading-data-from-an-api" class="level2">
 <h2 class="anchored" data-anchor-id="downloading-data-from-an-api">Downloading data from an API</h2>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/wo9vZccmqwc" title="Downloading Data from the World Bank" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/cBRTP2imt_o" title="Downloading Data from the World Bank" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>You will no doubt remember the messy data that we downloaded from the World Bank’s website in <a href="../modules/module-1.1.htmll#step-1-download-data-from-the-world-bank">module 1.1</a>. Usually it is much easier to download data from an API as opposed to wrangling it from a .csv file. In this example, I want to illustrate that for you by having you download the same data that we worked with in the last module using the <a href="https://cran.r-project.org/web/packages/wbstats/vignettes/wbstats.html">wbstats</a> package.</p>
 <p>First we are going to load <code>wbstats</code> along with <code>dplyr</code> and <code>janitor</code>. The <code>wb_data()</code> function is the one we need to download the data from the World Bank’s API. <code>wb_data()</code> requires to main sets of arguments: a list of indicators that we want to use and the period for which we want to download data. The period can can be entered as two separate arguments (e.g.&nbsp;<code>start_date</code> and <code>end_date</code>). But for this exercise we will specify the number of years we want to download using <code>mrv</code> which stands for “most recent value.”</p>
 <p>In addition to female labor force participation, let’s also grab the percentage of seats in parliament held by women. We will store that list of objects in a vector called <code>women_emp</code> to signify that these indicators are related to women’s empowerment. We will try to download 50 years of data for these two variables.</p>
@@ -514,34 +514,33 @@ Note
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load packages</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vdemdata) <span class="co"># to download V-Dem data</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the data</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>democracy <span class="ot">&lt;-</span> vdem <span class="sc">|&gt;</span> <span class="co"># download the V-Dem dataset</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">1990</span>)  <span class="sc">|&gt;</span> <span class="co"># filter out years less than 1990</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(                  <span class="co"># select (and rename) these variables</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">country =</span> country_name,     <span class="co"># the name before the = sign is the new name  </span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">vdem_ctry_id =</span> country_id,  <span class="co"># the name after the = sign is the old name</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    year, </span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">polyarchy =</span> v2x_polyarchy, </span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_pc =</span> e_gdppc, </span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">region =</span> e_regionpol_6C</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">region =</span> <span class="fu">case_match</span>(region, <span class="co"># replace the values in region with country names</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Eastern Europe"</span>, </span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Latin America"</span>,  </span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">3</span> <span class="sc">~</span> <span class="st">"Middle East"</span>,   </span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Africa"</span>, </span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">5</span> <span class="sc">~</span> <span class="st">"The West"</span>, </span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">6</span> <span class="sc">~</span> <span class="st">"Asia"</span>)</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># number on the left of the = sign is the V-Dem region code</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># we are changing the number to the country name on the right</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># of the equals sign</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="co"># View the data</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(democracy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the data</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>democracy <span class="ot">&lt;-</span> vdem <span class="sc">|&gt;</span> <span class="co"># download the V-Dem dataset</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">1990</span>)  <span class="sc">|&gt;</span> <span class="co"># filter out years less than 1990</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(                  <span class="co"># select (and rename) these variables</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">country =</span> country_name,     <span class="co"># the name before the = sign is the new name  </span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">vdem_ctry_id =</span> country_id,  <span class="co"># the name after the = sign is the old name</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    year, </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">polyarchy =</span> v2x_polyarchy, </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_pc =</span> e_gdppc, </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">region =</span> e_regionpol_6C</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">region =</span> <span class="fu">case_match</span>(region, <span class="co"># replace the values in region with country names</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Eastern Europe"</span>, </span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Latin America"</span>,  </span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">3</span> <span class="sc">~</span> <span class="st">"Middle East"</span>,   </span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Africa"</span>, </span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">5</span> <span class="sc">~</span> <span class="st">"The West"</span>, </span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">6</span> <span class="sc">~</span> <span class="st">"Asia"</span>)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># number on the left of the = sign is the V-Dem region code</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># we are changing the number to the country name on the right</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># of the equals sign</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="co"># View the data</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(democracy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 5,667
 Columns: 6
