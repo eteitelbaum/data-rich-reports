@@ -95,7 +95,7 @@ One thing that becomes very clear here is that `wb_data()` did not download any 
 
 ## Filter observations, select and create new variables 
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title='Downloading Data from the World Bank' >}}
+{{< video https://youtu.be/7CvYTeMP_PU title='Downloading Data Using wbstats' >}}
 
 The next thing we want to talk about is how to filter observations and to select new variables. We also delve more into the topic of how to create new variables. To illustrate these concepts, we are going to be working with the [V-Dem Dataset](https://www.v-dem.net/data/the-v-dem-dataset/). The V-Dem offers an R package for downloading its data called [vdemdata](https://github.com/vdeminstitute/vdemdata). 
 
@@ -136,7 +136,7 @@ democracy <- vdem |> # download the V-Dem dataset
                      4 ~ "Africa", 
                      5 ~ "The West", 
                      6 ~ "Asia")
-                    # number on the left of the = sign is the V-Dem region code
+                    # number on the left of the ~ is the V-Dem region code
                     # we are changing the number to the country name on the right
                     # of the equals sign
   )
