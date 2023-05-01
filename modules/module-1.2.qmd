@@ -171,17 +171,15 @@ democracy <- democracy |>
         destination = "wb"))  |> # and converting to the WB iso3c code 
   relocate(iso3c, .after = vdem_ctry_id) # move iso3c 
 
-#filter(democracy, is.na(iso3c)) STILL NEED THIS?
-
 # View the data
 glimpse(democracy)
 ```
 
 ## Merge two datasets 
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title='Merge Two Datasets' >}}
+{{< video https://youtu.be/wNF3ZPneHWw title='Merge Two Datasets' >}}
 
-Now that we have a common country code, we can join the two data sets. There are many different types of joins. First there is a distinction between [mutating joins](https://dplyr.tidyverse.org/reference/mutate-joins.html), which add observations from one dataset to another, and [filtering joins](https://dplyr.tidyverse.org/reference/filter-joins.html), which filter out variables based on their presence or absence in another dataset. Here we are going to be focused on mutating joins. 
+Now that we have a common country code, we can join the two data sets. There are many different types of joins. First there is a distinction between [mutating joins](https://dplyr.tidyverse.org/reference/mutate-joins.html), which add observations from one dataset to another, and [filtering joins](https://dplyr.tidyverse.org/reference/filter-joins.html), which filter out observations based on their presence or absence in another dataset. Here we are going to be focused on mutating joins. 
 
 There are four kinds of mutating joins we can do in `dplyr`. An `inner_join()` keeps only the observations that are common in both datasets that you want to merge. A `full_join()` does the opposite. It keeps all of the observations present in both datasets regardless of whether or not they have a match. A `left_join()` keeps all of the observations in dataset $x$ and only the matching observations in dataset $y$. A `right_join()` does the same thing, but instead keeps all of the observations from dataset $y$ and only matching observations from dataset $x$. 
 
@@ -211,7 +209,7 @@ glimpse(dem_women)
 
 ## Group, summarize and arrange 
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title='Group, Summarize and Arrange' >}}
+{{< video https://youtu.be/2nX9p6arQjg title='Group, Summarize and Arrange' >}}
 
 Now that we have completed all of the wrangling, let's do something with it. A common sequence in data science is [group by()](https://dplyr.tidyverse.org/reference/group_by.html), [summarize()](https://dplyr.tidyverse.org/reference/summarise.html) and [arrange()](https://dplyr.tidyverse.org/reference/arrange.html). First, we group the data by certain value or category. Then we summarize it by applying a function like `min()`, `max()`, `mean()`, `median()` or `sd()`. Finally, we order the data according to column values. 
 
