@@ -380,9 +380,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#scatter-plots" id="toc-scatter-plots" class="nav-link" data-scroll-target="#scatter-plots">Scatter plots</a>
   <ul class="collapse">
   <li><a href="#adding-a-trend-line" id="toc-adding-a-trend-line" class="nav-link" data-scroll-target="#adding-a-trend-line">Adding a trend line</a></li>
-  </ul></li>
-  <li><a href="#facet-wrapping" id="toc-facet-wrapping" class="nav-link" data-scroll-target="#facet-wrapping">Facet wrapping</a>
-  <ul class="collapse">
+  <li><a href="#facet-wrapping" id="toc-facet-wrapping" class="nav-link" data-scroll-target="#facet-wrapping">Facet wrapping</a></li>
   <li><a href="#labeling-points" id="toc-labeling-points" class="nav-link" data-scroll-target="#labeling-points">Labeling points</a></li>
   </ul></li>
   </ul>
@@ -532,7 +530,7 @@ Note
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"Portugal"</span>)</span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">#write_csv(dem_waves_ctrs, "data/dem_waves_ctrs.csv")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(dem_waves_ctrs, <span class="st">"data/dem_waves_ctrs.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next, we are going to do our <code>ggplot()</code> call. The data will be the <code>dem_waves_ctrs</code> object that we just created. For the aesthetics mapping, we will put the year on the x-axis and the polyarchy score on the y-axis. We will also specify <code>color</code> in the <code>aes()</code> call so that we can color the lines by region.</p>
 <p>To get a line chart, we have to specify <code>geom_line()</code>. Then within the <code>geom_line()</code> function we will set the <code>linewidth</code> equal to ` so that the lines are a bit more visible.</p>
@@ -556,7 +554,7 @@ Note
 <h2 class="anchored" data-anchor-id="scatter-plots">Scatter plots</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>The last thing we are going to do in this lesson is to create a scatter plot. We use scatter plots in order to illustrate how two variables relate to each other (or not). In this example, we are going to illustrating modernization theory, which predicts a positive relationship between wealth and democracy, while also incorporating levels of women’s representation into our analysis.</p>
-<p>We are going to start with the <code>dem_women.csv</code> file we created in Module 1.2. We will then group the data by country and calculate the mean for each variable. Note that in the <code>group_by()</code> call we also include <code>region</code> because we will want to keep it so that we can color our points by region. Let’s also save this data frame as a .csv file for later use.</p>
+<p>We are going to start with the <code>dem_women.csv</code> file we created in Module 1.2. We will then group the data by country and calculate the mean for each variable. Note that in the <code>group_by()</code> call we also include <code>region</code> because we will want to keep it so that we can color our points by region.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dem_summary_ctry <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/dem_women.csv"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country, region) <span class="sc">|&gt;</span></span>
@@ -565,9 +563,7 @@ Note
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">gdp_pc =</span> <span class="fu">mean</span>(gdp_pc, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">flfp =</span> <span class="fu">mean</span>(flfp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">women_rep =</span> <span class="fu">mean</span>(women_rep, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(dem_summary_ctry, <span class="st">"data/dem_summary_ctry.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now let’s create our first scatter plot. Our <code>ggplot()</code> call looks similar to previous ones except for a few things. First we are calling <code>geom_point()</code> for our geom. But also notice that our aesthetics mapping includes four dimenstions: <code>x</code>, <code>y</code>, <code>color</code> and <code>size</code>. So here we are telling <code>ggplot2</code> that we want wealth on the x-axis, the polyarchy score on the y-axis, to color the points based on region, and to vary the size of the points in relation to the level of women’s representation.</p>
 <p>One last thing we want to do is to put our x-axis on a log scale and change the labels to reflect their dollar values. For the log scale, we can use the <code>scale_x_log10()</code> function and for the labels we can use the <code>label_number()</code> function from the <a href="https://scales.r-lib.org/">scales</a> package. We set the <code>prefix</code> to “$” and the <code>suffix</code> to “k” so that each number on the x-axis starts with a dollar sign and ends with “k” denoting “thousands.”</p>
@@ -624,9 +620,8 @@ Note
 </div>
 </div>
 </section>
-</section>
-<section id="facet-wrapping" class="level2">
-<h2 class="anchored" data-anchor-id="facet-wrapping">Facet wrapping</h2>
+<section id="facet-wrapping" class="level3">
+<h3 class="anchored" data-anchor-id="facet-wrapping">Facet wrapping</h3>
 <p>Now let’s imagine that we really interested in drilling down into the “heterogeneous effects” of wealth on democracy by region. In other words, we want to see more clearly how wealth is related to democracy in some regions but not others. For this, we can use <code>facet_wrap()</code> to get a separate chart for each region rather than just shading the points by region. Inside of facet_wrap() we identify region as the variable that we want to use to separate the plots, e.g.&nbsp;<code>facet_wrap(~region)</code>. Notice how we have to include a tilde (~) here.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dem_summary_ctry, <span class="fu">aes</span>(<span class="at">x =</span> gdp_pc, <span class="at">y =</span> polyarchy)) <span class="sc">+</span> </span>
@@ -663,6 +658,7 @@ Note
 </div>
 </div>
 <p>But notice there is a bit of a tradeoff here. With the <code>scales = free</code> option set, we now have separate axes for each of the plots. This is less of a clean look than having common x and y axes.</p>
+</section>
 <section id="labeling-points" class="level3">
 <h3 class="anchored" data-anchor-id="labeling-points">Labeling points</h3>
 <p>Now let’s try drilling down into one of the regions to get a better sense of what countries are driving the relationship. To do this, we can filter our data set for a region that we are interested in and then add country labels to the points in the scatter plot. Here we are going to filter for “Asia” and we will ad a <code>geom_text()</code> call to add country labels. In the <code>geom_text()</code> call we include arguments for <code>size</code> and <code>vjust</code> to adjust the size and vertical location of the labels relative to the points.</p>

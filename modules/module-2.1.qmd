@@ -132,7 +132,7 @@ dem_waves_ctrs <- vdem |>
                    "Portugal")
     )
 
-#write_csv(dem_waves_ctrs, "data/dem_waves_ctrs.csv")
+write_csv(dem_waves_ctrs, "data/dem_waves_ctrs.csv")
 ```
 
 Next, we are going to do our `ggplot()` call. The data will be the `dem_waves_ctrs` object that we just created. For the aesthetics mapping, we will put the year on the x-axis and the polyarchy score on the y-axis. We will also specify `color` in the `aes()` call so that we can color the lines by region. 
@@ -160,8 +160,7 @@ ggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +
 
 The last thing we are going to do in this lesson is to create a scatter plot. We use scatter plots in order to illustrate how two variables relate to each other (or not). In this example, we are going to illustrating modernization theory, which predicts a positive relationship between wealth and democracy, while also incorporating levels of women's representation into our analysis.  
 
-We are going to start with the `dem_women.csv` file we created in Module 1.2. We will then group the data by country and calculate the mean for each variable. Note that in the `group_by()` call we also include `region` because we will want to keep it so that we can color our points by region. Let's also save this data frame as a .csv file for later use.  
-
+We are going to start with the `dem_women.csv` file we created in Module 1.2. We will then group the data by country and calculate the mean for each variable. Note that in the `group_by()` call we also include `region` because we will want to keep it so that we can color our points by region.
 ```{r}
 #| label: ctry_data
 dem_summary_ctry <- read_csv("data/dem_women.csv") |>
@@ -172,8 +171,6 @@ dem_summary_ctry <- read_csv("data/dem_women.csv") |>
     flfp = mean(flfp, na.rm = TRUE), 
     women_rep = mean(women_rep, na.rm = TRUE)
   )
-
-write_csv(dem_summary_ctry, "data/dem_summary_ctry.csv")
 ```
 
 Now let's create our first scatter plot. Our `ggplot()` call looks similar to previous ones except for a few things. First we are calling `geom_point()` for our geom. But also notice that our aesthetics mapping includes four dimenstions: `x`, `y`, `color` and `size`. So here we are telling `ggplot2` that we want wealth on the x-axis, the polyarchy score on the y-axis, to color the points based on region, and to vary the size of the points in relation to the level of women's representation. 
@@ -227,7 +224,7 @@ ggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy)) +
     )
 ```
 
-## Facet wrapping 
+### Facet wrapping 
 
 Now let's imagine that we really interested in drilling down into the "heterogeneous effects" of wealth on democracy by region. In other words, we want to see more clearly how wealth is related to democracy in some regions but not others. For this, we can use `facet_wrap()` to get a separate chart for each region rather than just shading the points by region. Inside of facet_wrap() we identify region as the variable that we want to use to separate the plots, e.g. `facet_wrap(~region)`. Notice how we have to include a tilde (~) here. 
 
