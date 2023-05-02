@@ -76,7 +76,7 @@ This page displays an outline of the topics, content, and assignments for the te
 <td><p>Clean data</p></td>
 <td><p><code>dplyr</code>, <code>janitor</code> , <code>readr</code></p></td>
 <td><p><code>mutate_at()</code>, <code>clean_names()</code> , <code>write_csv()</code></p></td>
-<td><p><a href="https://link.springer.com/article/10.1057/palgrave.ap.5500151" title="Norris">Norris</a>us</p></td>
+<td><p><a href="https://link.springer.com/article/10.1057/palgrave.ap.5500151" title="Norris">Norris</a></p></td>
 <td></td>
 <td></td>
 </tr>

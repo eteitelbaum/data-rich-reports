@@ -282,7 +282,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercises/exercise-1.2" class="sidebar-item-text sidebar-link">Exercise 1.2</a>
+  <a href="./exercises/exercise-1.2.html" class="sidebar-item-text sidebar-link">Exercise 1.2</a>
   </div>
 </li>
       </ul>
@@ -316,391 +316,1052 @@ ul.task-list li input[type="checkbox"] {
 
 <p>This page displays an outline of the topics, content, and assignments for the term. Each module starts on a Monday. There are no assignments due on Sundays.</p>
 <div class="column-screen-inset-right">
+
 <table class="table">
 <colgroup>
-<col style="width: 5%">
-<col style="width: 15%">
-<col style="width: 30%">
-<col style="width: 30%">
-<col style="width: 5%">
-<col style="width: 5%">
-<col style="width: 5%">
-<col style="width: 5%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Module</th>
-<th>Date</th>
-<th>Topics</th>
-<th>Skills</th>
-<th>Readings</th>
-<th>Videos</th>
-<th>Slides</th>
-<th>Assignments</th>
+<th>
+<p>
+Module
+</p>
+</th>
+<th>
+<p>
+Date
+</p>
+</th>
+<th>
+<p>
+Skills
+</p>
+</th>
+<th>
+<p>
+Packages
+</p>
+</th>
+<th>
+<p>
+Functions
+</p>
+</th>
+<th>
+<p>
+Readings
+</p>
+</th>
+<th>
+<p>
+Videos
+</p>
+</th>
+<th>
+<p>
+Assignments
+</p>
+</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>1.1</td>
-<td>May 22</td>
-<td>The <code>readr</code> package</td>
-<td>Read .csv and excel files into R</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+<p>
+1.1
+</p>
+</td>
+<td>
+<p>
+<code>r advdate(mon,0)</code>
+</p>
+</td>
+<td>
+<p>
+Read data from flat files into R
+</p>
+</td>
+<td>
+<p>
+<code>readr</code>
+</p>
+</td>
+<td>
+<p>
+<code>read_csv()</code>, <code>glimpse()</code>
+</p>
+</td>
+<td>
+<p>
+r4ds, <a href="https://r4ds.hadley.nz/data-import.html#introduction" title="r4ds, 8.1 &amp; 8.2">8.1 &amp; 8.2</a>
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="even">
-<td></td>
-<td>May 23</td>
-<td>Downloading data from APIs</td>
-<td>Download data from <code>vdemdata</code> and store as an object</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+</td>
+<td>
+<p>
+<code>r advdate(tues,0)</code>
+</p>
+</td>
+<td>
+<p>
+Reshape data
+</p>
+</td>
+<td>
+<p>
+<code>tidyr</code>
+</p>
+</td>
+<td>
+<p>
+<code>pivot_longer()</code>
+</p>
+</td>
+<td>
+<p>
+r4ds, <a href="https://r4ds.hadley.nz/data-tidy.html" title="r4ds, 6.1 - 6.3">6.1 - 6.3</a>
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="odd">
-<td></td>
-<td>May 24</td>
-<td>Exploring APIs</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+</td>
+<td>
+<p>
+<code>r advdate(wed,0)</code>
+</p>
+</td>
+<td>
+<p>
+Clean data
+</p>
+</td>
+<td>
+<p>
+<code>dplyr</code>, <code>janitor</code> , <code>readr</code>
+</p>
+</td>
+<td>
+<p>
+<code>mutate_at()</code>, <code>clean_names()</code> , <code>write_csv()</code>
+</p>
+</td>
+<td>
+<p>
+<a href="https://link.springer.com/article/10.1057/palgrave.ap.5500151" title="Norris">Norris</a>
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="even">
-<td>1.2</td>
-<td>May 25</td>
-<td>The <code>dplyr</code> package I</td>
-<td>Filter observations, select variables and create new ones</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+<p>
+1.2
+</p>
+</td>
+<td>
+<p>
+<code>r advdate(thur,0)</code>
+</p>
+</td>
+<td>
+<p>
+Download data from an API, filter observations, select and create variables
+</p>
+</td>
+<td>
+<p>
+<code>wbstats</code>, <code>vdemdata</code>, <code>dplyr</code>
+</p>
+</td>
+<td>
+<p>
+<code>wbstats()</code>, <code>vdem</code>,
+</p>
+<p>
+<code>filter()</code> , <code>select()</code>, <code>mutate()</code>
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="odd">
-<td></td>
-<td>May 26</td>
-<td>The <code>dplyr</code> package II</td>
-<td>Arrange, group and summarize data</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+</td>
+<td>
+<p>
+<code>r advdate(fri,0)</code>
+</p>
+</td>
+<td>
+<p>
+Merge data frames
+</p>
+</td>
+<td>
+<p>
+<code>countrycode</code>, <code>dplyr</code>
+</p>
+</td>
+<td>
+<p>
+<code>country_code()</code>, <code>left_join()</code>
+</p>
+</td>
+<td>
+<p>
+r4ds, <a href="https://r4ds.hadley.nz/joins.html#sec-mutating-joins" title="r4ds, 20.3">20.3</a>
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="even">
-<td></td>
-<td>May 27</td>
-<td>Data tidying and cleaning</td>
-<td>Pivot data with <code>tidyr</code>; clean data with <code>janitor</code></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+</td>
+<td>
+<p>
+<code>r advdate(sat,0)</code>
+</p>
+</td>
+<td>
+<p>
+Group, summarize and arrange data
+</p>
+</td>
+<td>
+<p>
+<code>dplyr</code>
+</p>
+</td>
+<td>
+<p>
+<code>group_by()</code>, <code>summarize()</code>, <code>arrange()</code>
+</p>
+</td>
+<td>
+<p>
+r4ds, <a href="https://r4ds.hadley.nz/data-transform.html#groups" title="r4ds, 4.5">4.5</a>
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="odd">
-<td>2.1</td>
-<td>May 29</td>
-<td>The grammar of graphics and <code>ggplot2</code></td>
-<td>Basics of <code>ggplot2</code> syntax</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+<p>
+2.1
+</p>
+</td>
+<td>
+<p>
+<code>r advdate(mon,1)</code>
+</p>
+</td>
+<td>
+<p>
+The grammar of graphics and <code>ggplot2</code>
+</p>
+</td>
+<td>
+<p>
+Basics of <code>ggplot2</code> syntax
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="even">
-<td></td>
-<td>May 30</td>
-<td>Bar charts and line charts</td>
-<td>Create bar charts, line charts and shaded area charts</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+</td>
+<td>
+<p>
+<code>r advdate(tues, 1)</code>
+</p>
+</td>
+<td>
+<p>
+Bar charts and line charts
+</p>
+</td>
+<td>
+<p>
+Create bar charts, line charts and shaded area charts
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="odd">
-<td></td>
-<td>May 31</td>
-<td>Scatter plots and linear models</td>
-<td>Group points using shapes or colors; add fitted lines to data</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+</td>
+<td>
+<p>
+<code>r advdate(wed, 1)</code>
+</p>
+</td>
+<td>
+<p>
+Scatter plots and linear models
+</p>
+</td>
+<td>
+<p>
+Group points using shapes or colors; add fitted lines to data
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="even">
-<td>2.2</td>
-<td>Jun 1</td>
-<td>Themes and annotations</td>
-<td>Add text, labels, annotations and lines to your graphs</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+<p>
+2.2
+</p>
+</td>
+<td>
+<p>
+<code>r advdate(thur, 1)</code>
+</p>
+</td>
+<td>
+<p>
+Themes and annotations
+</p>
+</td>
+<td>
+<p>
+Add text, labels, annotations and lines to your graphs
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="odd">
-<td></td>
-<td>Jun 2</td>
-<td>Interactivity</td>
-<td>Make visualizations interactive with <code>plotly</code></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+</td>
+<td>
+<p>
+<code>r advdate(fri, 1)</code>
+</p>
+</td>
+<td>
+<p>
+Interactivity
+</p>
+</td>
+<td>
+<p>
+Make visualizations interactive with <code>plotly</code>
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="even">
-<td></td>
-<td>Jun 3</td>
-<td>Clarity and accessibility</td>
-<td>Make sure everyone can read your graphs</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+</td>
+<td>
+<p>
+<code>r advdate(sat, 1)</code>
+</p>
+</td>
+<td>
+<p>
+Clarity and accessibility
+</p>
+</td>
+<td>
+<p>
+Make sure everyone can read your graphs
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="odd">
-<td>3.1</td>
-<td>Jun 5</td>
-<td>World Bank databases</td>
-<td>Download World Bank with <code>wbstats</code></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+<p>
+3.1
+</p>
+</td>
+<td>
+<p>
+<code>r advdate(mon, 2)</code>
+</p>
+</td>
+<td>
+<p>
+World Bank databases
+</p>
+</td>
+<td>
+<p>
+Download World Bank with <code>wbstats</code>
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="even">
-<td></td>
-<td>Jun 6</td>
-<td>Create a world map</td>
-<td>Basics of <code>sf</code> and <code>rnaturalearth packages</code></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+</td>
+<td>
+<p>
+<code>r advdate(tues, 2)</code>
+</p>
+</td>
+<td>
+<p>
+Create a world map
+</p>
+</td>
+<td>
+<p>
+Basics of <code>sf</code> and <code>rnaturalearth packages</code>
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="odd">
-<td></td>
-<td>Jun 7</td>
-<td>Mapping data</td>
-<td>Join WB data to polygons and map</td>
-<td>Something related to ethics here?</td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+</td>
+<td>
+<p>
+<code>r advdate(wed, 2)</code>
+</p>
+</td>
+<td>
+<p>
+Mapping data
+</p>
+</td>
+<td>
+<p>
+Join WB data to polygons and map
+</p>
+</td>
+<td>
+<p>
+Something related to ethics here?
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="even">
-<td>3.2</td>
-<td>Jun 8</td>
-<td>The <code>leaflet</code> package</td>
-<td>Make an OpenStreetMap with markers or popups</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+<p>
+3.2
+</p>
+</td>
+<td>
+<p>
+<code>r advdate(thur, 2)</code>
+</p>
+</td>
+<td>
+<p>
+The <code>leaflet</code> package
+</p>
+</td>
+<td>
+<p>
+Make an OpenStreetMap with markers or popups
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="odd">
-<td></td>
-<td>Jun 9</td>
-<td>Map state-level data</td>
-<td>Create choropleth with <code>colorBin()</code> and <code>addPolygons()</code> functions</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+</td>
+<td>
+<p>
+<code>r advdate(fri, 2)</code>
+</p>
+</td>
+<td>
+<p>
+Map state-level data
+</p>
+</td>
+<td>
+<p>
+Create choropleth with <code>colorBin()</code> and <code>addPolygons()</code> functions
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="even">
-<td></td>
-<td>Jun 10</td>
-<td>Map interactivity</td>
-<td>Add interactive labels to state choropleth</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+</td>
+<td>
+<p>
+<code>r advdate(sat, 2)</code>
+</p>
+</td>
+<td>
+<p>
+Map interactivity
+</p>
+</td>
+<td>
+<p>
+Add interactive labels to state choropleth
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="odd">
-<td>4.1</td>
-<td>Jun 12</td>
-<td>The <code>wid-r-tool</code> package</td>
-<td>Use the <code>download_wid()</code> function to download wealth/income shares</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+<p>
+4.1
+</p>
+</td>
+<td>
+<p>
+<code>r advdate(mon, 3)</code>
+</p>
+</td>
+<td>
+<p>
+The <code>wid-r-tool</code> package
+</p>
+</td>
+<td>
+<p>
+Use the <code>download_wid()</code> function to download wealth/income shares
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="even">
-<td></td>
-<td>Jun 13</td>
-<td>Reshaping data I</td>
-<td>Transform data to wide format with <code>pivot_wider()</code></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+</td>
+<td>
+<p>
+<code>r advdate(tues, 3)</code>
+</p>
+</td>
+<td>
+<p>
+Reshaping data I
+</p>
+</td>
+<td>
+<p>
+Transform data to wide format with <code>pivot_wider()</code>
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="odd">
-<td></td>
-<td>Jun 14</td>
-<td>Reshaping data II</td>
-<td>Transform data to long format with <code>pivot_longer()</code></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+</td>
+<td>
+<p>
+<code>r advdate(wed, 3)</code>
+</p>
+</td>
+<td>
+<p>
+Reshaping data II
+</p>
+</td>
+<td>
+<p>
+Transform data to long format with <code>pivot_longer()</code>
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="even">
-<td>4.2</td>
-<td>Jun 15</td>
-<td>The grammar of tables</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+<p>
+4.2
+</p>
+</td>
+<td>
+<p>
+<code>r advdate(thur, 3)</code>
+</p>
+</td>
+<td>
+<p>
+The grammar of tables
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="odd">
-<td></td>
-<td>Jun 16</td>
-<td>Make a table of income shares</td>
-<td>Format data with <code>fmt_percent()</code></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+</td>
+<td>
+<p>
+<code>r advdate(fri, 3)</code>
+</p>
+</td>
+<td>
+<p>
+Make a table of income shares
+</p>
+</td>
+<td>
+<p>
+Format data with <code>fmt_percent()</code>
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="even">
-<td></td>
-<td>Jun 17</td>
-<td>Modify parts of table</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+</td>
+<td>
+<p>
+<code>r advdate(sat, 3)</code>
+</p>
+</td>
+<td>
+<p>
+Modify parts of table
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="odd">
-<td>5.1</td>
-<td>Jun 19</td>
-<td>What is a Shiny app?</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+<p>
+5.1
+</p>
+</td>
+<td>
+<p>
+<code>r advdate(mon, 4)</code>
+</p>
+</td>
+<td>
+<p>
+What is a Shiny app?
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="even">
-<td></td>
-<td>Jun 20</td>
-<td>The <code>ui</code> and <code>server</code> objects</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+</td>
+<td>
+<p>
+<code>r advdate(tues, 4)</code>
+</p>
+</td>
+<td>
+<p>
+The <code>ui</code> and <code>server</code> objects
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="odd">
-<td></td>
-<td>Jun 21</td>
-<td>Your first Shiny app</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+</td>
+<td>
+<p>
+<code>r advdate(wed, 4)</code>
+</p>
+</td>
+<td>
+<p>
+Your first Shiny app
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="even">
-<td>5.2</td>
-<td>Jun 22</td>
-<td>The <code>fredr</code> package</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+<p>
+5.2
+</p>
+</td>
+<td>
+<p>
+<code>r advdate(thur, 4)</code>
+</p>
+</td>
+<td>
+<p>
+The <code>fredr</code> package
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="odd">
-<td></td>
-<td>Jun 23</td>
-<td>Indicator graphing app, Part I</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+</td>
+<td>
+<p>
+<code>r advdate(fri, 4)</code>
+</p>
+</td>
+<td>
+<p>
+Indicator graphing app, Part I
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="even">
-<td></td>
-<td>Jun 24</td>
-<td>Indicator graphing app, Part II</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+</td>
+<td>
+<p>
+<code>r advdate(sat, 4)</code>
+</p>
+</td>
+<td>
+<p>
+Indicator graphing app, Part II
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="odd">
-<td>6.1</td>
-<td>Jun 26</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+<p>
+6.1
+</p>
+</td>
+<td>
+<p>
+<code>r advdate(mon, 5)</code>
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="even">
-<td></td>
-<td>Jun 27</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+</td>
+<td>
+<p>
+<code>r advdate(tues, 5)</code>
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="odd">
-<td></td>
-<td>Jun 28</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+</td>
+<td>
+<p>
+<code>r advdate(wed, 5)</code>
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="even">
-<td>6.2</td>
-<td>Jun 29</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+<p>
+6.2
+</p>
+</td>
+<td>
+<p>
+<code>r advdate(thur, 5)</code>
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="odd">
-<td></td>
-<td>Jun 30</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+</td>
+<td>
+<p>
+<code>r advdate(fri, 5)</code>
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="even">
-<td></td>
-<td>Jul 1</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>
+</td>
+<td>
+<p>
+<code>r advdate(sat, 5)</code>
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 </tbody>
+
 </table>
 </div>
 
