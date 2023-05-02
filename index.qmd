@@ -26,42 +26,391 @@ advdate <- function(day, week) {
 This page displays an outline of the topics, content, and assignments for the term. Each module starts on a Monday. There are no assignments due on Sundays.
 
 ::: column-screen-inset-right
-| Module | Date                 | Topics                                | Skills                                                             | Readings                          | Videos | Slides | Assignments |
-|---------|---------|---------|--------------|---------|---------|---------|---------|
-| 1.1    | `r advdate(mon,0)`   | The `readr` package                   | Read .csv and excel files into R                                   |                                   |        |        |             |
-|        | `r advdate(tues,0)`  | Downloading data from APIs            | Download data from `vdemdata` and store as an object               |                                   |        |        |             |
-|        | `r advdate(wed,0)`   | Exploring APIs                        |                                                                    |                                   |        |        |             |
-| 1.2    | `r advdate(thur,0)`  | The `dplyr` package I                 | Filter observations, select variables and create new ones          |                                   |        |        |             |
-|        | `r advdate(fri,0)`   | The `dplyr` package II                | Arrange, group and summarize data                                  |                                   |        |        |             |
-|        | `r advdate(sat,0)`   | Data tidying and cleaning             | Pivot data with `tidyr`; clean data with `janitor`                 |                                   |        |        |             |
-| 2.1    | `r advdate(mon,1)`   | The grammar of graphics and `ggplot2` | Basics of `ggplot2` syntax                                         |                                   |        |        |             |
-|        | `r advdate(tues, 1)` | Bar charts and line charts            | Create bar charts, line charts and shaded area charts              |                                   |        |        |             |
-|        | `r advdate(wed, 1)`  | Scatter plots and linear models       | Group points using shapes or colors; add fitted lines to data      |                                   |        |        |             |
-| 2.2    | `r advdate(thur, 1)` | Themes and annotations                | Add text, labels, annotations and lines to your graphs             |                                   |        |        |             |
-|        | `r advdate(fri, 1)`  | Interactivity                         | Make visualizations interactive with `plotly`                      |                                   |        |        |             |
-|        | `r advdate(sat, 1)`  | Clarity and accessibility             | Make sure everyone can read your graphs                            |                                   |        |        |             |
-| 3.1    | `r advdate(mon, 2)`  | World Bank databases                  | Download World Bank with `wbstats`                                 |                                   |        |        |             |
-|        | `r advdate(tues, 2)` | Create a world map                    | Basics of `sf` and `rnaturalearth packages`                        |                                   |        |        |             |
-|        | `r advdate(wed, 2)`  | Mapping data                          | Join WB data to polygons and map                                   | Something related to ethics here? |        |        |             |
-| 3.2    | `r advdate(thur, 2)` | The `leaflet` package                 | Make an OpenStreetMap with markers or popups                       |                                   |        |        |             |
-|        | `r advdate(fri, 2)`  | Map state-level data                  | Create choropleth with `colorBin()` and `addPolygons()` functions  |                                   |        |        |             |
-|        | `r advdate(sat, 2)`  | Map interactivity                     | Add interactive labels to state choropleth                         |                                   |        |        |             |
-| 4.1    | `r advdate(mon, 3)`  | The `wid-r-tool` package              | Use the `download_wid()` function to download wealth/income shares |                                   |        |        |             |
-|        | `r advdate(tues, 3)` | Reshaping data I                      | Transform data to wide format with `pivot_wider()`                 |                                   |        |        |             |
-|        | `r advdate(wed, 3)`  | Reshaping data II                     | Transform data to long format with `pivot_longer()`                |                                   |        |        |             |
-| 4.2    | `r advdate(thur, 3)` | The grammar of tables                 |                                                                    |                                   |        |        |             |
-|        | `r advdate(fri, 3)`  | Make a table of income shares         | Format data with `fmt_percent()`                                   |                                   |        |        |             |
-|        | `r advdate(sat, 3)`  | Modify parts of table                 |                                                                    |                                   |        |        |             |
-| 5.1    | `r advdate(mon, 4)`  | What is a Shiny app?                  |                                                                    |                                   |        |        |             |
-|        | `r advdate(tues, 4)` | The `ui` and `server` objects         |                                                                    |                                   |        |        |             |
-|        | `r advdate(wed, 4)`  | Your first Shiny app                  |                                                                    |                                   |        |        |             |
-| 5.2    | `r advdate(thur, 4)` | The `fredr` package                   |                                                                    |                                   |        |        |             |
-|        | `r advdate(fri, 4)`  | Indicator graphing app, Part I        |                                                                    |                                   |        |        |             |
-|        | `r advdate(sat, 4)`  | Indicator graphing app, Part II       |                                                                    |                                   |        |        |             |
-| 6.1    | `r advdate(mon, 5)`  |                                       |                                                                    |                                   |        |        |             |
-|        | `r advdate(tues, 5)` |                                       |                                                                    |                                   |        |        |             |
-|        | `r advdate(wed, 5)`  |                                       |                                                                    |                                   |        |        |             |
-| 6.2    | `r advdate(thur, 5)` |                                       |                                                                    |                                   |        |        |             |
-|        | `r advdate(fri, 5)`  |                                       |                                                                    |                                   |        |        |             |
-|        | `r advdate(sat, 5)`  |                                       |                                                                    |                                   |        |        |             |
+<table style="width:100%;">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><p>Module</p></th>
+<th><p>Date</p></th>
+<th><p>Skills</p></th>
+<th><p>Packages</p></th>
+<th><p>Functions</p></th>
+<th><p>Readings</p></th>
+<th><p>Videos</p></th>
+<th><p>Assignments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>1.1</p></td>
+<td><p><code>r advdate(mon,0)</code></p></td>
+<td><p>Read data from flat files into R</p></td>
+<td><p><code>readr</code></p></td>
+<td><p><code>read_csv()</code>, <code>glimpse()</code></p></td>
+<td><p>r4ds, <a href="https://r4ds.hadley.nz/data-import.html#introduction" title="r4ds, 8.1 &amp; 8.2">8.1 &amp; 8.2</a></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><p><code>r advdate(tues,0)</code></p></td>
+<td><p>Reshape data</p></td>
+<td><p><code>tidyr</code></p></td>
+<td><p><code>pivot_longer()</code></p></td>
+<td><p>r4ds, <a href="https://r4ds.hadley.nz/data-tidy.html" title="r4ds, 6.1 - 6.3">6.1 - 6.3</a></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><p><code>r advdate(wed,0)</code></p></td>
+<td><p>Clean data</p></td>
+<td><p><code>dplyr</code>, <code>janitor</code> , <code>readr</code></p></td>
+<td><p><code>mutate_at()</code>, <code>clean_names()</code> , <code>write_csv()</code></p></td>
+<td><p><a href="https://link.springer.com/article/10.1057/palgrave.ap.5500151" title="Norris">Norris</a>us</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><p>1.2</p></td>
+<td><p><code>r advdate(thur,0)</code></p></td>
+<td><p>Download data from an API, filter observations, select and create variables</p></td>
+<td><p><code>wbstats</code>, <code>vdemdata</code>, <code>dplyr</code></p></td>
+<td><p><code>wbstats()</code>, <code>vdem</code>, </p>
+<p><code>filter()</code> , <code>select()</code>, <code>mutate()</code> </p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><p><code>r advdate(fri,0)</code></p></td>
+<td><p>Merge data frames</p></td>
+<td><p><code>countrycode</code>, <code>dplyr</code></p></td>
+<td><p><code>country_code()</code>, <code>left_join()</code></p></td>
+<td><p>r4ds, <a href="https://r4ds.hadley.nz/joins.html#sec-mutating-joins" title="r4ds, 20.3">20.3</a></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><p><code>r advdate(sat,0)</code></p></td>
+<td><p>Group, summarize and arrange data</p></td>
+<td><p><code>dplyr</code></p></td>
+<td><p><code>group_by()</code>, <code>summarize()</code>, <code>arrange()</code></p></td>
+<td><p>r4ds, <a href="https://r4ds.hadley.nz/data-transform.html#groups" title="r4ds, 4.5">4.5</a></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><p>2.1</p></td>
+<td><p><code>r advdate(mon,1)</code></p></td>
+<td><p>The grammar of graphics and <code>ggplot2</code></p></td>
+<td><p>Basics of <code>ggplot2</code> syntax</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><p><code>r advdate(tues, 1)</code></p></td>
+<td><p>Bar charts and line charts</p></td>
+<td><p>Create bar charts, line charts and shaded area charts</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><p><code>r advdate(wed, 1)</code></p></td>
+<td><p>Scatter plots and linear models</p></td>
+<td><p>Group points using shapes or colors; add fitted lines to data</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><p>2.2</p></td>
+<td><p><code>r advdate(thur, 1)</code></p></td>
+<td><p>Themes and annotations</p></td>
+<td><p>Add text, labels, annotations and lines to your graphs</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><p><code>r advdate(fri, 1)</code></p></td>
+<td><p>Interactivity</p></td>
+<td><p>Make visualizations interactive with <code>plotly</code></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><p><code>r advdate(sat, 1)</code></p></td>
+<td><p>Clarity and accessibility</p></td>
+<td><p>Make sure everyone can read your graphs</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><p>3.1</p></td>
+<td><p><code>r advdate(mon, 2)</code></p></td>
+<td><p>World Bank databases</p></td>
+<td><p>Download World Bank with <code>wbstats</code></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><p><code>r advdate(tues, 2)</code></p></td>
+<td><p>Create a world map</p></td>
+<td><p>Basics of <code>sf</code> and <code>rnaturalearth packages</code></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><p><code>r advdate(wed, 2)</code></p></td>
+<td><p>Mapping data</p></td>
+<td><p>Join WB data to polygons and map</p></td>
+<td><p>Something related to ethics here?</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><p>3.2</p></td>
+<td><p><code>r advdate(thur, 2)</code></p></td>
+<td><p>The <code>leaflet</code> package</p></td>
+<td><p>Make an OpenStreetMap with markers or popups</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><p><code>r advdate(fri, 2)</code></p></td>
+<td><p>Map state-level data</p></td>
+<td><p>Create choropleth with <code>colorBin()</code> and <code>addPolygons()</code> functions</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><p><code>r advdate(sat, 2)</code></p></td>
+<td><p>Map interactivity</p></td>
+<td><p>Add interactive labels to state choropleth</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><p>4.1</p></td>
+<td><p><code>r advdate(mon, 3)</code></p></td>
+<td><p>The <code>wid-r-tool</code> package</p></td>
+<td><p>Use the <code>download_wid()</code> function to download wealth/income shares</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><p><code>r advdate(tues, 3)</code></p></td>
+<td><p>Reshaping data I</p></td>
+<td><p>Transform data to wide format with <code>pivot_wider()</code></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><p><code>r advdate(wed, 3)</code></p></td>
+<td><p>Reshaping data II</p></td>
+<td><p>Transform data to long format with <code>pivot_longer()</code></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><p>4.2</p></td>
+<td><p><code>r advdate(thur, 3)</code></p></td>
+<td><p>The grammar of tables</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><p><code>r advdate(fri, 3)</code></p></td>
+<td><p>Make a table of income shares</p></td>
+<td><p>Format data with <code>fmt_percent()</code></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><p><code>r advdate(sat, 3)</code></p></td>
+<td><p>Modify parts of table</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><p>5.1</p></td>
+<td><p><code>r advdate(mon, 4)</code></p></td>
+<td><p>What is a Shiny app?</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><p><code>r advdate(tues, 4)</code></p></td>
+<td><p>The <code>ui</code> and <code>server</code> objects</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><p><code>r advdate(wed, 4)</code></p></td>
+<td><p>Your first Shiny app</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><p>5.2</p></td>
+<td><p><code>r advdate(thur, 4)</code></p></td>
+<td><p>The <code>fredr</code> package</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><p><code>r advdate(fri, 4)</code></p></td>
+<td><p>Indicator graphing app, Part I</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><p><code>r advdate(sat, 4)</code></p></td>
+<td><p>Indicator graphing app, Part II</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><p>6.1</p></td>
+<td><p><code>r advdate(mon, 5)</code></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><p><code>r advdate(tues, 5)</code></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><p><code>r advdate(wed, 5)</code></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><p>6.2</p></td>
+<td><p><code>r advdate(thur, 5)</code></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><p><code>r advdate(fri, 5)</code></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><p><code>r advdate(sat, 5)</code></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 :::
