@@ -440,7 +440,7 @@ Prework
 </section>
 <section id="bar-charts" class="level2">
 <h2 class="anchored" data-anchor-id="bar-charts">Bar charts</h2>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/hl02sVTyCRA" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>Let’s get started with our first visualization–a basic bar chart. Bar charts are good for comparing data across cases. Our aim here is going to be to summarize levels of democracy across different regions like we did in the last lesson, but this time we will illustrate the differences with a chart.</p>
 <p>We will start by loading in the <code>dem_summary.csv</code> file that we made in the last lesson. Next we will do our first <code>ggplot()</code> call. The <code>ggplot()</code> function takes two arguments: <code>data</code> and <code>mapping</code>. <code>data</code> refers to the data frame that includes the variables we want to visualize and <code>mapping</code> refers to the aesthetics mappings for the visualization. The aesthetics mappings are themselves presented in a quoting function <code>aes()</code> that defines the x and y values of the plot along with other aesthetic values like <code>fill</code>, <code>color</code> and <code>linetype</code>. We will focus on x and y values here and return to these additional aesthetic values later.</p>
 <p>After our <code>ggplot()</code> call, we can add a series of additional functions to define our visualization following a <code>+</code> sign. The most important group are the geoms which will define the basic type of plot we want to make. In this case, we are calling <code>geom_col()</code> for our histogram and specifying that the fill color should be “steelblue.”</p>
@@ -477,7 +477,7 @@ Prework
 </section>
 <section id="histograms" class="level2">
 <h2 class="anchored" data-anchor-id="histograms">Histograms</h2>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/LuNDAIQXx9w" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>Now let’s do another <code>ggplot()</code> call to make a histogram. We use histograms when we want to show how our data are distributed.</p>
 <p>We’ll start by reading in the <code>dem_women.csv</code> file from our previous lesson. From there, we call <code>ggplot()</code>, specifying the polyarchy score on x-axis. But this time we change the geom to <code>geom_histogram()</code>. We also change the title and axis labels to reflect the fact that we are plotting the number of cases falling in each bin.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -512,7 +512,7 @@ Note
 </section>
 <section id="line-charts" class="level2">
 <h2 class="anchored" data-anchor-id="line-charts">Line charts</h2>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/cHos9y261SQ" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>Now let’s create a line chart. Line charts are usually the best option when we want to illustrate trends in our data. For this visualization, we will try to illustrate Samuel Huntington’s waves of democracy by showing how countries representing each of the three waves. The U.S. represents the first wave, Japan the second wave starting with the allied victory in WWII, and Portugal represents the first country to transition in the third wave.</p>
 <p>First, let’s grab the relevant data using <code>vdemdata</code> and <code>dplyr</code>. We are going to be downloading the polyarchy measure for the U.S., Japan and Portugal as far back as the data are available. So first we will select country name, year and the polyarchy schore and then we will filter the data based on the three country names. We are saving these data in an object called <code>dem_waves_ctrs</code>.</p>
 <div class="cell">
@@ -552,7 +552,7 @@ Note
 </section>
 <section id="scatter-plots" class="level2">
 <h2 class="anchored" data-anchor-id="scatter-plots">Scatter plots</h2>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/Cvme3C268wE" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>The last thing we are going to do in this lesson is to create a scatter plot. We use scatter plots in order to illustrate how two variables relate to each other (or not). In this example, we are going to illustrating modernization theory, which predicts a positive relationship between wealth and democracy, while also incorporating levels of women’s representation into our analysis.</p>
 <p>We are going to start with the <code>dem_women.csv</code> file we created in Module 1.2. We will then group the data by country and calculate the mean for each variable. Note that in the <code>group_by()</code> call we also include <code>region</code> because we will want to keep it so that we can color our points by region.</p>
 <div class="cell">
