@@ -71,14 +71,13 @@ ui <- fluidPage(
 # Define server logic required to draw a scatter plot
 server <- function(input, output, session) {
   
-  # Combine the selected variables into a new data frame
-
-  
   # Render the plot
   output$scatterplot <- renderPlot({
     
+    # Combine the selected variables into a new data frame
     selectedData <- dem_data[, c(input$xcol, input$ycol, "region")]
     
+    # ggplot call
     ggplot(selectedData(), aes_string(x = input$xcol, y = input$ycol)) +
       geom_point(aes(color = region)) +
       geom_smooth(method = "loess") +

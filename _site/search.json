@@ -585,7 +585,7 @@
     "href": "modules/module-5.1.html#setup",
     "title": "Module 5.1",
     "section": "Setup",
-    "text": "Setup\n\n# load packages\nlibrary(shiny)\nlibrary(readr)\nlibrary(ggplot2)\n\n# read in data, create a vector of variable names\ndem_data &lt;- read_csv(\"dem_data.csv\")\n\n# create list of named values for the input selection\nvars &lt;- c(\"Democracy\" = \"polyarchy\",\n          \"Clientelism\" = \"clientelism\",\n          \"Corruption\" = \"corruption\",\n          \"Women's Empowerment\" = \"womens_emp\",\n          \"Wealth\" = \"gdp_pc\",\n          \"Infant Mortality\" = \"inf_mort\",\n          \"Life Expectancy\" = \"life_exp\", \n          \"Education\" = \"education\")"
+    "text": "Setup\n\n# load packages\nlibrary(shiny)\nlibrary(readr)\nlibrary(ggplot2)\n\n# read in data, create a vector of variable names\ndem_data <- read_csv(\"dem_data.csv\")\n\n# create list of named values for the input selection\nvars <- c(\"Democracy\" = \"polyarchy\",\n          \"Clientelism\" = \"clientelism\",\n          \"Corruption\" = \"corruption\",\n          \"Women's Empowerment\" = \"womens_emp\",\n          \"Wealth\" = \"gdp_pc\",\n          \"Infant Mortality\" = \"inf_mort\",\n          \"Life Expectancy\" = \"life_exp\", \n          \"Education\" = \"education\")"
   },
   {
     "objectID": "modules/module-5.1.html#scatter-plot-app",
@@ -599,21 +599,21 @@
     "href": "modules/module-5.1.html#ui",
     "title": "Module 5.1",
     "section": "ui",
-    "text": "ui\n\n# Define UI for application that draws a histogram\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(\"Democracy and Development\"),\n\n    # Sidebar with a slider input for number of bins \n    sidebarLayout(\n      sidebarPanel(\n        selectInput('xcol', 'X Variable', vars),\n        selectInput('ycol', 'Y Variable', vars, selected = vars[[6]])\n      ),\n\n        # Show a plot of the generated distribution\n        mainPanel(\n           plotOutput(\"scatterplot\")\n        )\n    )\n)"
+    "text": "ui\n\n# Define UI for application that draws a histogram\nui <- fluidPage(\n\n    # Application title\n    titlePanel(\"Democracy and Development\"),\n\n    # Sidebar with a slider input for number of bins \n    sidebarLayout(\n      sidebarPanel(\n        selectInput('xcol', 'X Variable', vars),\n        selectInput('ycol', 'Y Variable', vars, selected = vars[[6]])\n      ),\n\n        # Show a plot of the generated distribution\n        mainPanel(\n           plotOutput(\"scatterplot\")\n        )\n    )\n)"
   },
   {
     "objectID": "modules/module-5.1.html#server",
     "href": "modules/module-5.1.html#server",
     "title": "Module 5.1",
     "section": "Server",
-    "text": "Server\n\n# Define server logic required to draw a scatter plot\nserver &lt;- function(input, output, session) {\n  \n  # Combine the selected variables into a new data frame\n\n  \n  # Render the plot\n  output$scatterplot &lt;- renderPlot({\n    \n    selectedData &lt;- dem_data[, c(input$xcol, input$ycol, \"region\")]\n    \n    ggplot(selectedData(), aes_string(x = input$xcol, y = input$ycol)) +\n      geom_point(aes(color = region)) +\n      geom_smooth(method = \"loess\") +\n      scale_color_viridis_d(option = \"plasma\") +\n      theme_minimal() +\n      labs(\n        x =  names(vars[which(vars == input$xcol)]),\n        y =  names(vars[which(vars == input$ycol)]),\n        caption = \"Source: V-Dem Institute\", # caption\n        color = \"Region\" # legend title\n      )\n  })\n}"
+    "text": "Server\n\n# Define server logic required to draw a scatter plot\nserver <- function(input, output, session) {\n  \n  # Render the plot\n  output$scatterplot <- renderPlot({\n    \n    # Combine the selected variables into a new data frame\n    selectedData <- dem_data[, c(input$xcol, input$ycol, \"region\")]\n    \n    # ggplot call\n    ggplot(selectedData(), aes_string(x = input$xcol, y = input$ycol)) +\n      geom_point(aes(color = region)) +\n      geom_smooth(method = \"loess\") +\n      scale_color_viridis_d(option = \"plasma\") +\n      theme_minimal() +\n      labs(\n        x =  names(vars[which(vars == input$xcol)]),\n        y =  names(vars[which(vars == input$ycol)]),\n        caption = \"Source: V-Dem Institute\", # caption\n        color = \"Region\" # legend title\n      )\n  })\n}"
   },
   {
     "objectID": "modules/module-5.1.html#call-to-shiny-app",
     "href": "modules/module-5.1.html#call-to-shiny-app",
     "title": "Module 5.1",
     "section": "Call to Shiny app",
-    "text": "Call to Shiny app\n\n# See above for the definitions of ui and server\nui &lt;- ...\n\nserver &lt;- ...\n\n# Run the application \nshinyApp(ui = ui, server = server)"
+    "text": "Call to Shiny app\n\n# See above for the definitions of ui and server\nui <- ...\n\nserver <- ...\n\n# Run the application \nshinyApp(ui = ui, server = server)"
   },
   {
     "objectID": "modules/module-4.1.html#gt-tables",
