@@ -144,7 +144,7 @@ cvdPlot(flfp_region)
 
 Although it would still be difficult for a person with red-green color blindness to see some of the colors in the chart (like the pink of SSF or the bright green of LAC), it would still be possible for them to distinguish the colors of the bars based on what would appear to them as shades of grey. 
 
-### Use Viridis
+### Use viridis
 
 Another option is to use a package designed with accessibility issues in mind. One of the more popular ones is the [viridis()](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) package. To use it just load `viridis` and add a `viridis` color scheme to the plot. You have the option of choosing continuous, discrete or binned color schemes but here we use the discrete option `scale_fill_viridis_d()` because our regions constitute a discrete variable. You can also try different `viridis` color maps by inserting the various available schemes in the function. For example you can get the "plasma" map with `scale_fill_viridis_d(option = "plasma"). The default map is "viridis." 
 
@@ -166,7 +166,7 @@ cvdPlot(flfp_region)
 
 This is pretty good. In fact it looks fairly close to the original. It is even to easy to see the differences in colors when looking at the desaturated output. Of course the first column for the black and white plot is difficult to distinguish from the plot's background, but we will learn how to change this up later in this module. 
 
-### Use R color brewer
+### Use ColorBrewer
 
 Another package available to us is the [RColorBrewer](https://cran.r-project.org/web/packages/RColorBrewer/index.html) package. Technically, `RColorBrewer` is a separate package but its color mappings come [available](https://ggplot2.tidyverse.org/reference/scale_brewer.html) as part of `ggplot2`, so we don't have to load `RColorBrewer` in order to use it with `ggplot2`. We can also use the color brewer [palette selector tool](https://colorbrewer2.org/) to help select palettes that are "colorblind safe." 
 
