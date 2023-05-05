@@ -57,8 +57,8 @@ From there we will further customize our visualization with the `labs()` functio
 #| label: barchart
 dem_summary <- read_csv("data/dem_summary.csv")
 
-ggplot(dem_summary, aes(x = region, y = polyarchy)) +
-  geom_col(fill = "steelblue") + 
+ggplot(dem_summary, aes(x = region, y = polyarchy)) + # ggplot call
+  geom_col(fill = "steelblue") + # we use geom_col() for a a bar chart
   labs(
     x = "Region", 
     y = "Avg. Polyarchy Score", 
@@ -98,8 +98,8 @@ Note that we leave the y-axis blank for the histogram because ggplot will automa
 dem_women_2015 <- read_csv("data/dem_women.csv") |> 
   filter(year == 2015) 
 
-ggplot(dem_women_2015, aes(x = polyarchy)) +
-  geom_histogram(fill = "steelblue") + 
+ggplot(dem_women_2015, aes(x = polyarchy)) + # only specify x for histogram
+  geom_histogram(fill = "steelblue") + # geom is a histogram
   labs(
     x = "Polyarchy Score, 2015", 
     y = "Count",
@@ -126,8 +126,8 @@ dem_waves_ctrs <- vdem |>
     year, 
     polyarchy = v2x_polyarchy, 
   ) |>
-  filter(
-    country %in% c("United States of America", 
+  filter( 
+    country %in% c("United States of America", # select countries in this list
                    "Japan", 
                    "Portugal")
     )
@@ -143,14 +143,16 @@ Finally, we will add a `labs()` call as with the previous visualizations. But in
 
 ```{r}
 #| label: linechart
+
+# in this ggplot() call, we add a third dimension for line color
 ggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +
-  geom_line(linewidth = 1) + 
+  geom_line(linewidth = 1) + # our geom is a line with a width of 1
   labs(
     x = "Year", 
     y = "Polyarchy Score", 
     title = 'Democracy in countries representing three different "waves"', 
     caption = "Source: V-Dem Institute", 
-    color = "Country"
+    color = "Country" # make title of legend to upper case
   )
 ```
 
@@ -165,7 +167,7 @@ We are going to start with the `dem_women.csv` file we created in Module 1.2. We
 ```{r}
 #| label: ctry_data
 dem_summary_ctry <- read_csv("data/dem_women.csv") |>
-  group_by(country, region) |>
+  group_by(country, region) |> # group by country, keep region
   summarize(
     polyarchy = mean(polyarchy, na.rm = TRUE),
     gdp_pc = mean(gdp_pc, na.rm = TRUE), 
@@ -187,8 +189,11 @@ Notice that in this example we introduce the scales package by including it as a
 
 ```{r}
 #| label: scatterplot
+
+# in this ggplot() call we have four dimensions
+# x, y, color, and size
 ggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy, color = region, size = women_rep)) + 
-  geom_point() +
+  geom_point() + # use geom_point() for scatter plots
   scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) +
   labs(
     x= "GDP per Capita", 
