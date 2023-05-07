@@ -65,9 +65,9 @@ glimpse(flfp_ts)
 
 ## Overview
 
-In this lesson we are going to take our visualizations from Module 2.1 and improve them. In the first part of the lesson we are going to focused on how to make your visualizations accessible to a color-blind audience. Then we will discuss how to improve the look of your visualizations with themes and to provide additional information and context with annotations. Finally, we will spend some time talking about how to make your graphs interactive so that users can explore them in a more dynamic and flexible way. 
+In this module we are going to take our visualizations from Module 2.1 and improve them. In the first part of the lesson we are going to focused on how to make your visualizations accessible to a color-blind audience. Then we will discuss how to improve the look of your visualizations with themes and to provide additional information and context with annotations. Finally, we will spend some time talking about how to make your graphs interactive so that users can explore them in a more dynamic and flexible way. 
 
-## Color Schemes
+## Color schemes
 
 {{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'Accessible Color Schemes'>}}
 

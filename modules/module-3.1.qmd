@@ -26,91 +26,115 @@ knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 
 ## Overview
 
-## Grabbing country shapes from rnaturalearth
+The focus of this module is going to be on how to make *choropleth maps*. A choropleth map is a type of data visualization used to show a geographical distribution of data where areas or regions are shaded based on quantities or levels represented in each area or region. 
+
+One important concept in mapping that we are going to come across this week: [simple features](https://r.geocompx.org/spatial-class.html#intro-sf). Simple features is a formal international standard for representing objects in the real world in digital space. 
+
+A "feature" is basically any object in the real world that can be represented in two or three-dimensional space. A tree or a house can be a feature as can a forest or a body of water. But in politics e we are usually focused on mapping the political boundaries of different administrative units like countries, states or provinces, counties and cities.
+
+Simple features allow us to work with such boundaries easily in a dataframe in R. We can take all of the points associated with a geometry and store it in a special data frame column (usually labeled 'geom' or 'geometry'). This ability to store all of the geographic information in one column differs from how spatial data are organized under the traditional [spatial objects](https://cran.r-project.org/web/packages/sp/vignettes/intro_sp.pdf)) standard and makes it much easier to work with geographic data in R.
+
+## Using rnaturalearth
+
+{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'Using rnaturalearth'>}}
+
+In this module we are going to be with the [rnaturalearth](https://cran.r-project.org/web/packages/rnaturalearth/rnaturalearth.pdf) package, which facilitates working with [Natural Earth](https://www.naturalearthdata.com/) map data in R. Natural Earth is a public domain map dataset based on Tom Patterson's Natural Earth [projection](https://en.wikipedia.org/wiki/Natural_Earth_projection) that provides data suitable for making small-scale world, regional and country maps. Natural Earth contains country boundaries, first-order admin boundaries like provinces and states, urban polygons and [more](https://www.naturalearthdata.com/features/). `rnaturalearth` supports both simple features (`sf`) and spatial objects (`sp`) formats, but we are going to be focused on using simple features for the reasons stated earlier. 
+
+### Grabbing country shapes with ne_countries()
+
+Let's start by loading country shapes using the `ne_countries()` function from `rnaturalearth`. We will start by loading `rnaturalearth` and `dplyr`. Next we will load the country boundaries into an object called `world_map_df` while filtering out Antarctica. Then, let's `glimpse()` the data and have a closure look at the  `geometry` column.
 
 ```{r}
-
+#| label: download_shapes
 library(rnaturalearth)
 library(dplyr)
 
-world_map_df <- ne_countries(scale = "medium", returnclass = "sf") |> 
-    filter(iso_a3 != "ATA") # remove Antarctica
-
-#world_map_df |>
-  # select and view first 10 columns
-  #select(1:10) |> 
-  #glimpse()
+world_map_df <- ne_countries(scale = "medium", returnclass = "sf") |>
+    filter(name != "Antarctica") # remove Antarctica
 
 world_map_df |>
-  select(geometry) # view contents of last column of df (geometry)
+  glimpse()
+
+# world_map_df |>
+#   select(geometry) # view contents of geometry column
 ``` 
 
-## Make a map with geom_sf()
+### Make a map with geom_sf()
+
+Now, let's make our first choropleth map with the data. Let's map World Bank income groups. Here we will use the special features `geom_sf()` from `ggplot2` and for our aesthetics mapping we will specify `fill = income_grp`. 
 
 ```{r}
+#| label: first_map
 #| crop: true 
 
 library(ggplot2)
 
 ggplot(data = world_map_df) +
-  geom_sf(aes(fill = as.factor(income_grp))) + 
+  geom_sf(aes(fill = income_grp)) + 
   labs(title = "World Bank country income categories")
 ```
 
 
-## Beautify your map
+### Beautify your map
+
+The default ggplot settings are pretty good for a preview, but we could make it look a lot better. Let's add some labels, a `ggtheme` map theme and the default `viridis` color mapping.
 
 ```{r}
+#| label: beautify_map
 #| crop: true
 
 library(ggthemes)
 
 ggplot(data = world_map_df) +
-  geom_sf(aes(fill = as.factor(income_grp))) + 
+  geom_sf(aes(fill = income_grp)) + 
   labs(
     title = "World Bank country income categories",
     fill = "Category"
     ) +
-    theme_map() + 
-    scale_fill_viridis_d()
+    scale_fill_viridis_d() +
+    theme_map() 
 ```
 
-## Merging rnaturalearth with other data
+## Using rnaturalearth to map other data
 
-We are going to use iso2c to do the merge
+{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'Using rnaturalearth to map other data'>}}
+
+Now that we know how to make a map with Natural Earth shapes and `geom_sf()`, we can merge in data and map data from other sources. Let's go ahead and merge some data on oil rents from the World Bank. We will do a `left_join()` based on iso3c country codes. In the World Bank data the iso3c codes are simply called "iso3c." In `rnaturalearth` there are a number of options, but the best is "iso3_a3_eh" because at the time this lesson was written the codes for some of the others [are missing](https://github.com/ropensci/rnaturalearth/issues/77).   
 
 ```{r}
+#| label: merge_data
 #| crop: true
 
 library(wbstats)
 
 oil_rents_df <- wb_data(c(oil_rents_gdp = "NY.GDP.PETR.RT.ZS"), mrnev = 1) 
 
-rents_map_df <- left_join(world_map_df, oil_rents_df, join_by(iso_a2 == iso2c))
+rents_map_df <- left_join(world_map_df, oil_rents_df, join_by(iso_a3_eh == iso3c))
 
 rents_map_df |>
   select(last_col(5):last_col()) |> #select last 5 columns of df
   glimpse() 
 ```
-
+Now let's map these data. Everything here is pretty much the same as before, except we change the fill to `oil_rents_gdp`. We will also add a subtitle and make a few other cosmetic changes like shifting the position of the legend title, bolding the plot title and changing the `viridis` color scale from discrete to continuous. 
 
 ```{r}
+#| label: oil_rents
 #| crop: true 
 
 ggplot(data = rents_map_df) +
-  geom_sf(aes(fill = oil_rents_gdp)) + # change var
+  geom_sf(aes(fill = oil_rents_gdp)) + # shade based on oil rents
   labs(
-    title = "Oil rents as a % of GDP", # change title
+    title = "Oil rents (% of GDP)",
     subtitle = "(Most recent available data)", # add subtitle
-    fill = "Percent", # change legend title
+    fill = "Percent", 
     caption = "Source: World Bank Development Indicators"
     ) +
   theme_map() +
   theme(
     legend.position = "right", 
-    plot.title = element_text(face = "bold") #,
     #legend.title = element_text(size = 8),
     #legend.text = element_text(size = 6)
+    plot.title = element_text(face = "bold"), # move legend
     ) +
   scale_fill_viridis_c( # chg from discrete (_d) to continuous (_c)
       option = "magma", #  chg to magma theme
@@ -120,10 +144,23 @@ ggplot(data = rents_map_df) +
 
 ## Turn your map into a function
 
-- save this code as an R. script 
+{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'Accessible Color Schemes'>}}
+
+Sometimes you may want to map more than one variable in a paper or display variables with a map in an app. For these situations, it can help to create your own [function](https://r4ds.had.co.nz/functions.html) that allows you to change various components of the map code without having to type out all of the code every time you want to create a map. 
+
+### Create the map function
+
+The first thing that you want to do is to write out the script for your function. That should include any packages that you need to run that may not already be loaded. 
+
+From there, you can build your function. The code for your function contains three elements: 1) a name; 2) the arguments you will include in your function; and 3) a code block of code that will execute when you call the function. 
+
+In this example, we are going to call our function `create_map()`. It is going to include five arguments: `var_id`, `title`, `legend_title`, `theme` and `direction`. `var_id` refers to the World Bank variable id, `title` and `legend_title` refer to the title of the plot and the title of the legend respectively. `theme` will allow the user to adjust the `viridis` theme. And `direction` refers to whether the color scale is light to dark or dark to light. 
+
+The code block will first join the country shapes to the selected World Bank data and then map those data by piping them into a `ggplot()` call. Everything is pretty similar to our previous use of `ggplot()` and `geom_sf()`, but one tricky part here is that we have to use `eval(parse(text=var_id))))` to remove the quotes surrounding the variable code entered by the user. 
 
 ```{r}
-#| crop: true
+#| label: create_function
+#| execute: false
 
 library(rnaturalearth)
 library(dplyr)
@@ -136,9 +173,9 @@ create_map <- function(var_id, title, legend_title, theme, direction){
 ne_countries(scale = "medium", returnclass = "sf") |> 
   left_join(
     wb_data(var_id, mrnev = 1), # change variable id
-    join_by(iso_a2 == iso2c)
+    join_by(iso_a3_eh == iso3c)
   ) |> 
-  filter(iso_a3 != "ATA") |>  
+  filter(name != "Antarctica") |>  
   ggplot() + 
   geom_sf(aes(fill = eval(parse(text=var_id)))) + # remove quotes
   labs(
@@ -155,7 +192,22 @@ ne_countries(scale = "medium", returnclass = "sf") |>
     direction = direction # change direction of scale
     )
 }
+```
 
+### Deploy the function in another document
+
+To deploy the function in a Quarto or R Markdown dackument, we need to [source](https://bookdown.org/yihui/rmarkdown-cookbook/source-script.html) it as an external R script. First we will save the previous code as a source document. Let's name our file `web-maps.R` and save it in a subdirectory called `functions`. From there, we can use the `source()` function so that we can call our `create_map()` function in subsequent code chunks in our document.
+
+```{r}
+#| label: source
+source("functions/wb-maps.R", local = knitr::knit_global())
+```
+
+Now let's call our `create_map()` function that we just made using female labor force particpation. 
+
+```{r}
+#| label: use_function
+#| crop: true
 create_map(var_id = "SL.TLF.CACT.FE.ZS", 
            title= "Female Labor Force Participation", 
            legend_title = "FLFP %", 
@@ -164,23 +216,16 @@ create_map(var_id = "SL.TLF.CACT.FE.ZS",
 ```
 
 
-## Use R file as a "source" in another document
-
-```{r}
-source("functions/wb-maps.R", local = knitr::knit_global())
-```
-
-Now I write some text here and then I want to show map, so I call the `create_map()` function that we just made. Let's say I want to show a different indicator with a different theme, maybe GDP per capita. Let's search for it using the wb_search() tool: 
+Now search for an indicator we want to use. We will look for something related to GDP per capita.
 
 ```{r}
 wb_search("GDP per capita") 
 ```
 
-(Note: For an exercise, you could have students use ChatGPT to create a map function and then tweak it to make it work. You could also have them try using a color brewer them instead of viridis).
-
-Now let's map GDP in constant 2017 international dollars ("NY.GDP.PCAP.PP.KD") with the mako theme:
+Now let's take that info. and use it to make a plot of GDP per capita. 
 
 ```{r}
+#| label: deploy_function
 #| crop: true 
 
 create_map(var_id = "NY.GDP.PCAP.PP.KD", 
@@ -189,4 +234,6 @@ create_map(var_id = "NY.GDP.PCAP.PP.KD",
            theme = "mako", 
            direction = -1)
 ```
+
+There you go! That's how we can build and use a map function to easily map different indicators in our document or web app. 
 

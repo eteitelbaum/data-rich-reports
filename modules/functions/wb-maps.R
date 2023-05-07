@@ -9,9 +9,9 @@ create_map <- function(var_id, title, legend_title, theme, direction){
   ne_countries(scale = "medium", returnclass = "sf") |> 
     left_join(
       wb_data(var_id, mrnev = 1), # change variable id
-      join_by(iso_a2 == iso2c)
+      join_by(iso_a3_eh == iso3c)
     ) |> 
-    filter(iso_a3 != "ATA") |>  
+    filter(name != "Antarctica") |>  
     ggplot() + 
     geom_sf(aes(fill = eval(parse(text=var_id)))) + # remove quotes
     labs(
@@ -28,9 +28,3 @@ create_map <- function(var_id, title, legend_title, theme, direction){
       direction = direction # change direction of scale
     )
 }
-
-create_map(var_id = "SL.TLF.CACT.FE.ZS", 
-           title= "Female Labor Force Participation", 
-           legend_title = "FLFP %", 
-           theme = "inferno", 
-           direction = -1)

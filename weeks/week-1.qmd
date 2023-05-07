@@ -1,0 +1,26 @@
+---
+title: Week 1
+subtitle: Working with Data
+---
+
+## Readings
+
+📖 Review the [course syllabus](/course-syllabus.html) and [support
+resources](/course-support.html)
+
+📖 r4ds
+  - [8.1 & 8.2]
+  - [6.1 - 6.3]
+  - [20.3]
+  - [4.5]
+  
+📖 Norris, [The Impact of Electoral Reform on Women's Representation](https://link-springer-com.proxygw.wrlc.org/article/10.1057/palgrave.ap.5500151)
+
+## Assignments
+
+📘 Quiz 1
+📘 Quiz 2
+🧮 Coding Assignment 1
+
+
+  

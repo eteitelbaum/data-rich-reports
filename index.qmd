@@ -26,16 +26,16 @@ advdate <- function(day, week) {
 This page displays an outline of the topics, content, and assignments for the term. Each module starts on a Monday. There are no assignments due on Sundays.
 
 ::: column-screen-inset-right
-<table style="width:100%;">
+<table style="width:95%;">
 <colgroup>
-<col style="width: 12%" />
-<col style="width: 12%" />
-<col style="width: 12%" />
-<col style="width: 12%" />
-<col style="width: 12%" />
-<col style="width: 12%" />
-<col style="width: 12%" />
-<col style="width: 12%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -85,8 +85,8 @@ This page displays an outline of the topics, content, and assignments for the te
 <td><p><code>r advdate(thur,0)</code></p></td>
 <td><p>Download data from an API, filter observations, select and create variables</p></td>
 <td><p><code>wbstats</code>, <code>vdemdata</code>, <code>dplyr</code></p></td>
-<td><p><code>wbstats()</code>, <code>vdem</code>, </p>
-<p><code>filter()</code> , <code>select()</code>, <code>mutate()</code> </p></td>
+<td><p><code>wbstats()</code>, <code>vdem</code>,</p>
+<p><code>filter()</code> , <code>select()</code>, <code>mutate()</code></p></td>
 <td></td>
 <td></td>
 <td></td>
