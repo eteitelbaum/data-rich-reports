@@ -29,7 +29,11 @@ Pop-ups can be used to display information such as an address or the name of a c
 
 Our running example in this module is going to involve mapping conflict events for Yemen from the Uppsala Conflict Data Program [UCDP](https://ucdp.uu.se/). So while we will be building on some of our earlier knowledge, this module is going to depart a bit from previous ones in that we are using an entirely new dataset. Specifically, we will be using the UCDP georeferenced event dataset, which you can download from[here](https://ucdp.uu.se/downloads/index.html#ged_global). 
 
-After you have downloaded the data and saved it in your modules folder, go ahead and, read it in and have a look at its contenst with `gplimpse()`. 
+After you have downloaded the data and saved it in your modules folder, go ahead and, read it in and have a look at its contents with `gplimpse()`. 
+
+::: {.callout-note}
+I am working with a truncated version of the UCDP GED data so that I can upload everything to GitHub. Consequently, my `glimpse()` output may look slightly different from yours if you are using the full data. 
+:::
 
 ```{r}
 library(readr)
