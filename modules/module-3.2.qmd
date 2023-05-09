@@ -20,14 +20,15 @@ execute:
 
 ## Overview
 
-This module is going to introduce you to pop-up maps. Pop-ups on maps are essentially windows that allow you to show information related to a particular point or feature on a map without having to navigate away from the current view.
-Pop-ups can be used to display information such as an address or the name of a city or town. You can customize how pop-ups look, choose what data to display in them and, as you get more advanced, you can even link them to external websites. 
+This module is going to introduce you to how to make maps with markers and pop-ups using leaflet. *Markers* are icons or symbols that show where something is located. *Pop-ups* are fields that display information about a location on a map. Together, pop-ups and markers allow you to show information related to a particular point or feature on a map without having to navigate away from the current view.
+
+Markers and pop-ups can be used to display information such as an address or the name of a city or town. You can customize how pop-ups look, choose what data to display in them. As you get more advanced, you can do even more cool things like link them to other pages or external websites. 
 
 ## Working with UCDP data
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'Working with UCDP data'>}}
+{{< video https://www.youtube.com/watch?v=If2PwFv90iI title = 'Working with UCDP data'>}}
 
-Our running example in this module is going to involve mapping conflict events for Yemen from the Uppsala Conflict Data Program [UCDP](https://ucdp.uu.se/). So while we will be building on some of our earlier knowledge, this module is going to depart a bit from previous ones in that we are using an entirely new dataset. Specifically, we will be using the UCDP georeferenced event dataset, which you can download from[here](https://ucdp.uu.se/downloads/index.html#ged_global). 
+Our running example in this module is going to involve mapping conflict events for Yemen from the Uppsala Conflict Data Program UCDP. So while we will be building on some of our earlier knowledge, this module is going to depart a bit from previous ones in that we are using an entirely new dataset. Specifically, we will be using the UCDP georeferenced event dataset, which you can download from [here](https://ucdp.uu.se/). 
 
 After you have downloaded the data and saved it in your modules folder, go ahead and, read it in and have a look at its contents with `gplimpse()`. 
 
@@ -81,7 +82,7 @@ ged_yemen <- ged_data |>
          rebel_deaths = deaths_b, 
          civilian_deaths = deaths_civilians, 
          deaths, 
-         where_coordinates,
+         place = where_coordinates,
          latitude, 
          longitude) |>
   sf::st_as_sf(coords = c("longitude", "latitude")) 
@@ -89,11 +90,11 @@ ged_yemen <- ged_data |>
 glimpse(ged_yemen)
 ```
 
-## Make a leaflet plot
+## Make a leaflet map
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'Plot conlfict'>}}
+{{< video https://www.youtube.com/watch?v=hHUPqgHRqYU title = 'Plot conlfict'>}}
 
-Now that we have our data, let's make our first pop-up map. To do this we are going to be using the [leaflet](https://rstudio.github.io/leaflet/) package. Leaflet is a really popular JavaScript library for interactive mpas. To get started with leaflet, we'll make a really simple map with one marker that says "First conflict event." 
+Now that we have our data, let's make our first pop-up map. To do this we are going to be using the [leaflet](https://rstudio.github.io/leaflet/) package. Leaflet is a really popular JavaScript library for interactive maps. To get started with leaflet, we'll make a really simple map with one marker that says "First conflict event." 
 
 ### Plot a single marker
 
@@ -109,7 +110,7 @@ leaflet() |>
 
 ### Plot some conflict events from Yemen
 
-Now that you have the hang of it, we can move on to plotting some conflict events from our data frame. Again we will call `leaflet()` but this time we will add `data = ged_yemen` as an argument. We will also use `setView()` to center the map on Yemen's capital Sana'a. We include two arguments for `addMarkers`. `popup = ~as.character(deaths)` displays the number of deaths when the user clicks on the marker and `label = ~where_coordinates` displays the name of the town that the coordinates correspond to.  
+Now that you have the hang of it, we can move on to plotting some conflict events from our data frame. Again we will call `leaflet()` but this time we will add `data = ged_yemen` as an argument. We will also use `setView()` to center the map on Yemen's capital Sana'a. We include two arguments for `addMarkers`. `popup = ~as.character(deaths)` displays the number of deaths when the user clicks on the marker and `label = ~place` displays the name of the town that the coordinates correspond to.  
 
 ::: {.callout-note}
 Note that arguments for the `popup =` argument take the form of a one-sided formula, meaning that they require a tilde (~) as a prefix. Scroll to the bottom of [this page](http://rstudio.github.io/leaflet/map_widget.html) for a more detailed explanation of the ~ notation in this context. 
@@ -121,13 +122,13 @@ leaflet(data = ged_yemen) |> # map points in ged_yemen data frame
   setView(lng = 44.1910, lat = 15.3694, zoom = 6) |> # Sana'a coordinates
   addMarkers(
     popup = ~as.character(deaths), # when user clicks, show deaths
-    label = ~where_coordinates # when user hovers, show town
+    label = ~place # when user hovers, show town
     )
 ```
 
-## Customize your leaflet plot
+## Customize your leaflet map
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'Customize your leaflet plot'>}}
+{{< video https://www.youtube.com/watch?v=qLYeSsoDvgs title = 'Customize your leaflet plot'>}}
 
 Next, let's do some customization to make our map look amazing. We will talk about changing the icon style, customized the information displayed in the icon and adding base maps.  
 
@@ -138,6 +139,7 @@ We can dress our leaflet map up a little bit with the `addAwesomeMarkers()` func
 First we will use `awesomeIcons()` to store the icon we want to use. Here we choose "ios-close" from the ionic library. We will say that we want the icon colorto be black and the surrounding marker color to be red. Then we call `addAwesomeMarkers()` and specify `icon = icon` to call the red and black ionic marker.  
 
 ```{r}
+# save icon
 icon <- awesomeIcons(
   icon = "ios-close",
   iconColor = "black",
@@ -145,14 +147,14 @@ icon <- awesomeIcons(
   library = "ion" 
 )
 
-# Get data for Jan and Feb
+# Build map
 leaflet(data = ged_yemen) |>   
   addTiles() |> 
   setView(lng = 44.1910, lat = 15.3694, zoom = 6) |> # Sana'a coordinates
   addAwesomeMarkers(
     icon = icon, 
     popup = ~as.character(deaths), 
-    label = ~where_coordinates
+    label = ~place
     )
 ```
 
@@ -192,7 +194,7 @@ leaflet(data = ged_yemen) |>
   addAwesomeMarkers(
     icon = icon, 
     popup = ~popup_text, 
-    label = ~where_coordinates
+    label = ~place
     )
 ```
 
@@ -200,7 +202,7 @@ Now let's spot check the labels.
 
 ```{r}
 ged_yemen |>
-  filter(where_coordinates == "Marib Dam")
+  filter(place == "Marib Dam")
 ```
 
 ### Using basemaps
@@ -215,7 +217,7 @@ leaflet(data = ged_yemen) |> # Jan and Feb
   addAwesomeMarkers(
     icon = icon, 
     popup = ~popup_text, 
-    label = ~where_coordinates
+    label = ~place
     )
 ```
 

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.3.306">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,9 +17,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -46,43 +47,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -125,7 +96,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script src="../site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="../site_libs/htmlwidgets-1.6.0/htmlwidgets.js"></script>
 <script src="../site_libs/jquery-1.12.4/jquery.min.js"></script>
 <link href="../site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
 <script src="../site_libs/leaflet-1.3.1/leaflet.js"></script>
@@ -153,11 +124,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Module 3.2</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/getting-started.html">Course Modules</a></li><li class="breadcrumb-item"><a href="../modules/module-3.2.html">Module 3.2</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -165,201 +141,232 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
       <img src="../images/logo-placeholder.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
-    <a href="https://blackboard.gwu.edu" title="Blackboard" class="sidebar-tool px-1"><i class="bi bi-mortarboard-fill"></i></a>
-    <a href="https://classroom.github.com" title="Github Classroom" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-    <a href="https://posit.co/download/rstudio-desktop" title="RStudio Desktop" class="sidebar-tool px-1"><i class="bi bi-r-project"></i></a>
-  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-  <a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+    <a href="https://blackboard.gwu.edu" title="Blackboard" class="quarto-navigation-tool px-1" aria-label="Blackboard"><i class="bi bi-mortarboard-fill"></i></a>
+    <a href="https://classroom.github.com" title="Github Classroom" class="quarto-navigation-tool px-1" aria-label="Github Classroom"><i class="bi bi-github"></i></a>
+    <a href="https://posit.co/download/rstudio-desktop" title="RStudio Desktop" class="quarto-navigation-tool px-1" aria-label="RStudio Desktop"><i class="bi bi-r-project"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
   </div>
 </a>
 </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">Course information</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text">Course information</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../course-description.html" class="sidebar-item-text sidebar-link">Description</a>
+  <a href="../course-description.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Description</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">Overview</a>
+  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../course-syllabus.html" class="sidebar-item-text sidebar-link">Syllabus</a>
+  <a href="../course-syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../course-support.html" class="sidebar-item-text sidebar-link">Support</a>
+  <a href="../course-support.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Support</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../instructor.html" class="sidebar-item-text sidebar-link">Instructor</a>
+  <a href="../instructor.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Instructor</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">Schedule</a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Schedule</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../course-links.html" class="sidebar-item-text sidebar-link">Useful links</a>
+  <a href="../course-links.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Useful links</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../faq.html" class="sidebar-item-text sidebar-link">FAQ</a>
+  <a href="../faq.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FAQ</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Project</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">Project</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../project/project-description.html" class="sidebar-item-text sidebar-link">Description</a>
+  <a href="../project/project-description.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Description</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../project/project-assignment-1.html" class="sidebar-item-text sidebar-link">Assignment 1</a>
+  <a href="../project/project-assignment-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignment 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../project/project-assignment-2.html" class="sidebar-item-text sidebar-link">Assignment 2</a>
+  <a href="../project/project-assignment-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignment 2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../project/project-assignment-3.html" class="sidebar-item-text sidebar-link">Assignment 3</a>
+  <a href="../project/project-assignment-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignment 3</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../project/project-datasets.html" class="sidebar-item-text sidebar-link">Datasets</a>
+  <a href="../project/project-datasets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Datasets</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Course Modules</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Course Modules</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/getting-started.html" class="sidebar-item-text sidebar-link">Getting Started</a>
+  <a href="../modules/getting-started.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/module-1.1.html" class="sidebar-item-text sidebar-link">Module 1.1</a>
+  <a href="../modules/module-1.1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 1.1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/module-1.2.html" class="sidebar-item-text sidebar-link">Module 1.2</a>
+  <a href="../modules/module-1.2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 1.2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/module-2.1.html" class="sidebar-item-text sidebar-link">Module 2.1</a>
+  <a href="../modules/module-2.1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 2.1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/module-2.2.html" class="sidebar-item-text sidebar-link">Module 2.2</a>
+  <a href="../modules/module-2.2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 2.2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/module-3.1.html" class="sidebar-item-text sidebar-link">Module 3.1</a>
+  <a href="../modules/module-3.1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 3.1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/module-3.2.html" class="sidebar-item-text sidebar-link active">Module 3.2</a>
+  <a href="../modules/module-3.2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Module 3.2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/module-4.1.html" class="sidebar-item-text sidebar-link">Module 4.1</a>
+  <a href="../modules/module-4.1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 4.1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/module-4.2.html" class="sidebar-item-text sidebar-link">Module 4.2</a>
+  <a href="../modules/module-4.2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 4.2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/module-5.1.html" class="sidebar-item-text sidebar-link">Module 5.1</a>
+  <a href="../modules/module-5.1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 5.1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/module-5.2.html" class="sidebar-item-text sidebar-link">Module 5.2</a>
+  <a href="../modules/module-5.2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 5.2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/module-6.1.html" class="sidebar-item-text sidebar-link">Module 6.1</a>
+  <a href="../modules/module-6.1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 6.1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/module-6.2.html" class="sidebar-item-text sidebar-link">Module 6.2</a>
+  <a href="../modules/module-6.2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 6.2</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Exercises</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">Exercises</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../exercises/exercise-1.2.html" class="sidebar-item-text sidebar-link">Exercise 1.2</a>
+  <a href="../exercises/exercise-1.2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercise 1.2</span></a>
   </div>
 </li>
       </ul>
@@ -367,6 +374,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -375,12 +383,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
   <li><a href="#working-with-ucdp-data" id="toc-working-with-ucdp-data" class="nav-link" data-scroll-target="#working-with-ucdp-data">Working with UCDP data</a></li>
-  <li><a href="#make-a-leaflet-plot" id="toc-make-a-leaflet-plot" class="nav-link" data-scroll-target="#make-a-leaflet-plot">Make a leaflet plot</a>
+  <li><a href="#make-a-leaflet-map" id="toc-make-a-leaflet-map" class="nav-link" data-scroll-target="#make-a-leaflet-map">Make a leaflet map</a>
   <ul class="collapse">
   <li><a href="#plot-a-single-marker" id="toc-plot-a-single-marker" class="nav-link" data-scroll-target="#plot-a-single-marker">Plot a single marker</a></li>
   <li><a href="#plot-some-conflict-events-from-yemen" id="toc-plot-some-conflict-events-from-yemen" class="nav-link" data-scroll-target="#plot-some-conflict-events-from-yemen">Plot some conflict events from Yemen</a></li>
   </ul></li>
-  <li><a href="#customize-your-leaflet-plot" id="toc-customize-your-leaflet-plot" class="nav-link" data-scroll-target="#customize-your-leaflet-plot">Customize your leaflet plot</a>
+  <li><a href="#customize-your-leaflet-map" id="toc-customize-your-leaflet-map" class="nav-link" data-scroll-target="#customize-your-leaflet-map">Customize your leaflet map</a>
   <ul class="collapse">
   <li><a href="#use-an-awesome-icon" id="toc-use-an-awesome-icon" class="nav-link" data-scroll-target="#use-an-awesome-icon">Use an awesome icon</a></li>
   <li><a href="#change-content-of-the-popup" id="toc-change-content-of-the-popup" class="nav-link" data-scroll-target="#change-content-of-the-popup">Change content of the popup</a></li>
@@ -394,7 +402,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Module 3.2</h1>
+<h1 class="title">Module 3.2</h1>
 <p class="subtitle lead">Leaflet Maps</p>
 </div>
 
@@ -410,12 +418,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Prework
 </div>
 </div>
@@ -428,13 +436,27 @@ Prework
 </div>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>This module is going to introduce you to pop-up maps. Pop-ups on maps are essentially windows that allow you to show information related to a particular point or feature on a map without having to navigate away from the current view. Pop-ups can be used to display information such as an address or the name of a city or town. You can customize how pop-ups look, choose what data to display in them and, as you get more advanced, you can even link them to external websites.</p>
+<p>This module is going to introduce you to how to make maps with markers and pop-ups using leaflet. <em>Markers</em> are icons or symbols that show where something is located. <em>Pop-ups</em> are fields that display information about a location on a map. Together, pop-ups and markers allow you to show information related to a particular point or feature on a map without having to navigate away from the current view.</p>
+<p>Markers and pop-ups can be used to display information such as an address or the name of a city or town. You can customize how pop-ups look, choose what data to display in them. As you get more advanced, you can do even more cool things like link them to other pages or external websites.</p>
 </section>
 <section id="working-with-ucdp-data" class="level2">
 <h2 class="anchored" data-anchor-id="working-with-ucdp-data">Working with UCDP data</h2>
-<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<p>Our running example in this module is going to involve mapping conflict events for Yemen from the Uppsala Conflict Data Program <a href="https://ucdp.uu.se/">UCDP</a>. So while we will be building on some of our earlier knowledge, this module is going to depart a bit from previous ones in that we are using an entirely new dataset. Specifically, we will be using the UCDP georeferenced event dataset, which you can download from<a href="https://ucdp.uu.se/downloads/index.html#ged_global">here</a>.</p>
-<p>After you have downloaded the data and saved it in your modules folder, go ahead and, read it in and have a look at its contenst with <code>gplimpse()</code>.</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/If2PwFv90iI" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>Our running example in this module is going to involve mapping conflict events for Yemen from the Uppsala Conflict Data Program UCDP. So while we will be building on some of our earlier knowledge, this module is going to depart a bit from previous ones in that we are using an entirely new dataset. Specifically, we will be using the UCDP georeferenced event dataset, which you can download from <a href="https://ucdp.uu.se/">here</a>.</p>
+<p>After you have downloaded the data and saved it in your modules folder, go ahead and, read it in and have a look at its contents with <code>gplimpse()</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I am working with a truncated version of the UCDP GED data so that I can upload everything to GitHub. Consequently, my <code>glimpse()</code> output may look slightly different from yours if you are using the full data.</p>
+</div>
+</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
@@ -532,7 +554,7 @@ $ gwnob             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">rebel_deaths =</span> deaths_b, </span>
 <span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">civilian_deaths =</span> deaths_civilians, </span>
 <span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>         deaths, </span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>         where_coordinates,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">place =</span> where_coordinates,</span>
 <span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>         latitude, </span>
 <span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>         longitude) <span class="sc">|&gt;</span></span>
 <span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  sf<span class="sc">::</span><span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"longitude"</span>, <span class="st">"latitude"</span>)) </span>
@@ -541,22 +563,22 @@ $ gwnob             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 83
 Columns: 9
-$ event_id          &lt;dbl&gt; 378022, 378424, 378425, 378904, 378908, 378942, 3866…
-$ country_id        &lt;dbl&gt; 678, 678, 678, 678, 678, 678, 678, 678, 678, 678, 67…
-$ date              &lt;dttm&gt; 2021-01-06, 2021-01-14, 2021-01-20, 2021-01-22, 202…
-$ gov_deaths        &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2…
-$ rebel_deaths      &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-$ civilian_deaths   &lt;dbl&gt; 6, 1, 1, 1, 1, 1, 1, 1, 5, 1, 7, 1, 1, 1, 3, 1, 1, 0…
-$ deaths            &lt;dbl&gt; 6, 1, 1, 1, 1, 1, 1, 1, 5, 1, 7, 1, 1, 1, 3, 1, 1, 2…
-$ where_coordinates &lt;chr&gt; "Al Ḩaymah as Suflá area", "Wādī al Ḩājib village", …
-$ geometry          &lt;POINT&gt; POINT (44.06 13.70564), POINT (44.04394 13.74153),…</code></pre>
+$ event_id        &lt;dbl&gt; 378022, 378424, 378425, 378904, 378908, 378942, 386614…
+$ country_id      &lt;dbl&gt; 678, 678, 678, 678, 678, 678, 678, 678, 678, 678, 678,…
+$ date            &lt;dttm&gt; 2021-01-06, 2021-01-14, 2021-01-20, 2021-01-22, 2021-…
+$ gov_deaths      &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, …
+$ rebel_deaths    &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+$ civilian_deaths &lt;dbl&gt; 6, 1, 1, 1, 1, 1, 1, 1, 5, 1, 7, 1, 1, 1, 3, 1, 1, 0, …
+$ deaths          &lt;dbl&gt; 6, 1, 1, 1, 1, 1, 1, 1, 5, 1, 7, 1, 1, 1, 3, 1, 1, 2, …
+$ place           &lt;chr&gt; "Al Ḩaymah as Suflá area", "Wādī al Ḩājib village", "A…
+$ geometry        &lt;POINT&gt; POINT (44.06 13.70564), POINT (44.04394 13.74153), P…</code></pre>
 </div>
 </div>
 </section>
-<section id="make-a-leaflet-plot" class="level2">
-<h2 class="anchored" data-anchor-id="make-a-leaflet-plot">Make a leaflet plot</h2>
-<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<p>Now that we have our data, let’s make our first pop-up map. To do this we are going to be using the <a href="https://rstudio.github.io/leaflet/">leaflet</a> package. Leaflet is a really popular JavaScript library for interactive mpas. To get started with leaflet, we’ll make a really simple map with one marker that says “First conflict event.”</p>
+<section id="make-a-leaflet-map" class="level2">
+<h2 class="anchored" data-anchor-id="make-a-leaflet-map">Make a leaflet map</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/hHUPqgHRqYU" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>Now that we have our data, let’s make our first pop-up map. To do this we are going to be using the <a href="https://rstudio.github.io/leaflet/">leaflet</a> package. Leaflet is a really popular JavaScript library for interactive maps. To get started with leaflet, we’ll make a really simple map with one marker that says “First conflict event.”</p>
 <section id="plot-a-single-marker" class="level3">
 <h3 class="anchored" data-anchor-id="plot-a-single-marker">Plot a single marker</h3>
 <p>Let’s start with a really simple hypothetical example. Let’s say we want to plot one conflict event that we have the coordinates for and label it “First conflict event.” To do this, we would first call the <code>leaflet()</code>function. From there will add default street map tiles with <code>addTiles()</code> and then our single pop-up marker with <code>addMarkers()</code>.</p>
@@ -567,20 +589,20 @@ $ geometry          &lt;POINT&gt; POINT (44.06 13.70564), POINT (44.04394 13.741
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addTiles</span>() <span class="sc">|&gt;</span>  <span class="co"># Add default OpenStreetMap map tiles</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addMarkers</span>(<span class="at">lng =</span> <span class="fl">45.46916</span>, <span class="at">lat =</span> <span class="fl">14.14912</span>, <span class="at">label =</span> <span class="st">"First conflict event"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-4efdc7c2e236ec716078" style="width:100%;height:464px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4efdc7c2e236ec716078">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[14.14912,45.46916,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,"First conflict event",{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[14.14912,14.14912],"lng":[45.46916,45.46916]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-f832fd367c01e750852e" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-f832fd367c01e750852e">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[14.14912,45.46916,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,"First conflict event",{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[14.14912,14.14912],"lng":[45.46916,45.46916]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
 <section id="plot-some-conflict-events-from-yemen" class="level3">
 <h3 class="anchored" data-anchor-id="plot-some-conflict-events-from-yemen">Plot some conflict events from Yemen</h3>
-<p>Now that you have the hang of it, we can move on to plotting some conflict events from our data frame. Again we will call <code>leaflet()</code> but this time we will add <code>data = ged_yemen</code> as an argument. We will also use <code>setView()</code> to center the map on Yemen’s capital Sana’a. We include two arguments for <code>addMarkers</code>. <code>popup = ~as.character(deaths)</code> displays the number of deaths when the user clicks on the marker and <code>label = ~where_coordinates</code> displays the name of the town that the coordinates correspond to.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<p>Now that you have the hang of it, we can move on to plotting some conflict events from our data frame. Again we will call <code>leaflet()</code> but this time we will add <code>data = ged_yemen</code> as an argument. We will also use <code>setView()</code> to center the map on Yemen’s capital Sana’a. We include two arguments for <code>addMarkers</code>. <code>popup = ~as.character(deaths)</code> displays the number of deaths when the user clicks on the marker and <code>label = ~place</code> displays the name of the town that the coordinates correspond to.</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note
 </div>
 </div>
@@ -594,43 +616,44 @@ Note
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">setView</span>(<span class="at">lng =</span> <span class="fl">44.1910</span>, <span class="at">lat =</span> <span class="fl">15.3694</span>, <span class="at">zoom =</span> <span class="dv">6</span>) <span class="sc">|&gt;</span> <span class="co"># Sana'a coordinates</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addMarkers</span>(</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">popup =</span> <span class="sc">~</span><span class="fu">as.character</span>(deaths), <span class="co"># when user clicks, show deaths</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="sc">~</span>where_coordinates <span class="co"># when user hovers, show town</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="sc">~</span>place <span class="co"># when user hovers, show town</span></span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-8cf39bfbb02afa1d558e" style="width:100%;height:464px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8cf39bfbb02afa1d558e">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[[13.70564,13.741527,13.70564,16.164056,13.60529,14.50235,13.70564,16.144444,15.423232,13.940771,14.797812,14.797812,17.255265,13.49647,13.71739,13.597618,15.47404,14.988239,14.97423,14.911667,13.94617,13.28871,13.840529,13.933889,13.866966,15.043889,13.931702,12.988333,13.87712,14.637019,14.637019,13.931702,13.931702,14.66585,12.765224,16.0548,14.761333,15.465293,15.460977,14.12096,16.942775,17.255265,14.810388,14.0725,14.18356,15.460977,15.544167,13.24217,15.7325,16.0548,15.460977,15.460977,15.449328,14.026603,17.10076,13.463284,15.410833,15.460977,15.460977,17.10076,15.5573,15.460977,15.409655,15.410833,15.414722,13.579522,13.78052,13.579522,15.460977,15.508466,15.508466,15.544167,15.687222,15.59858,15.409655,15.396389,14.97195,15.508466,17.02627,15.414722,14.797812,15.460977,14.56979],[44.06,44.043937,44.06,44.776919,43.92862,44.27095,44.06,42.28,44.227265,44.177343,42.954516,42.954516,43.202825,43.41309,43.44757,43.958131,45.40256,45.196624,45.11947,45.181389,43.463454,44.381551,44.585906,44.653056,44.603752,45.162222,43.483099,43.403056,43.45577,43.055048,43.055048,43.483099,43.483099,45.15703,45.053769,45.47893,43.014915,45.08406,45.325301,44.61708,44.973478,43.202825,42.963743,43.158889,43.226369,45.325301,45.126389,44.2113,44.600556,45.47893,45.325301,45.325301,45.018915,44.693025,43.21884,44.063422,45.086944,45.325301,45.325301,43.21884,45.1955,45.325301,45.189423,45.086944,45.2225,44.020908,44.11063,44.020908,45.325301,45.099781,45.099781,45.126389,44.903056,45.04013,45.189423,45.244167,45.47129,45.099781,43.254751,45.2225,42.954516,45.325301,44.77465],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["6","1","1","1","1","1","1","1","5","1","7","1","1","1","3","1","1","2","2","2","6","1","2","2","2","24","1","1","1","5","33","33","1","1","0","7","1","2","0","0","1","1","1","1","10","17","2","1","0","2","6","23","4","1","1","1","38","8","8","2","80","40","24","8","1","1","0","1","20","94","2","2","1","30","27","61","4","4","1","50","5","1","1"],null,null,null,["Al Ḩaymah as Suflá area","Wādī al Ḩājib village","Al Ḩaymah as Suflá area","Al Ḩazm town","Hadhran town","Mariyah town","Al Ḩaymah as Suflá area","Jazīrat Sānā island","Rawdah village","Ibb town","Al-Ḩudaydah town","Al-Ḩudaydah town","Ar Raqw village","Bāqirīyah village","Mahjar Rai village","Camp Mattar al-Qadim","Ar Rākah village","Washal village","Al Quraydah area","Najd al Majmaah village","Bayt Baysh village","Jabal Jālis","Sabira village","Hajara village","Al Fājir town","Jabal Murād mountain","Hays town","Umari junction","Ar Ribat village","Ad Durayhimī town","Ad Durayhimī town","Hays town","Hays town","Rakis village","Maashiq Palace","Duḩayḑah mountain","Al Masnā’ town","Mashjah area","Marib town","Maşfarah village","Wādī Silbā valley","Ar Raqw village","Al Ḩālī town","Al Jabalīyah village","At Tuḩaytā’ town","Marib town","Kassara checkpoint","Ahkum area","Masurah mountain","Duḩayḑah mountain","Marib town","Marib town","Şirwāḩ town","Mahqan village","Al Umm Shaykh area","Shaqab village","Kofal Camp","Marib town","Marib town","Al Umm Shaykh area","Wadi Nakhla valley","Marib town","Az Zur town","Kofal Camp","Jabal al-Balaq al Qibli mountain","Ta'izz town","As Safnah village","Ta'izz town","Marib town","Jabal Haylan mountain","Jabal Haylan mountain","Kassara checkpoint","Mas Camp","Madghil al Jid‘ān town","Az Zur town","Marib Dam","Wadi Ablah area","Jabal Haylan mountain","Al Ghawr village","Jabal al-Balaq al Qibli mountain","Al-Ḩudaydah town","Marib town","Jabal al Ulayb mountain"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[15.3694,44.191],6,[]],"limits":{"lat":[12.765224,17.255265],"lng":[42.28,45.47893]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-10d3227c60e7cdc4d2e5" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-10d3227c60e7cdc4d2e5">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[[13.70564,13.741527,13.70564,16.164056,13.60529,14.50235,13.70564,16.144444,15.423232,13.940771,14.797812,14.797812,17.255265,13.49647,13.71739,13.597618,15.47404,14.988239,14.97423,14.911667,13.94617,13.28871,13.840529,13.933889,13.866966,15.043889,13.931702,12.988333,13.87712,14.637019,14.637019,13.931702,13.931702,14.66585,12.765224,16.0548,14.761333,15.465293,15.460977,14.12096,16.942775,17.255265,14.810388,14.0725,14.18356,15.460977,15.544167,13.24217,15.7325,16.0548,15.460977,15.460977,15.449328,14.026603,17.10076,13.463284,15.410833,15.460977,15.460977,17.10076,15.5573,15.460977,15.409655,15.410833,15.414722,13.579522,13.78052,13.579522,15.460977,15.508466,15.508466,15.544167,15.687222,15.59858,15.409655,15.396389,14.97195,15.508466,17.02627,15.414722,14.797812,15.460977,14.56979],[44.06,44.043937,44.06,44.776919,43.92862,44.27095,44.06,42.28,44.227265,44.177343,42.954516,42.954516,43.202825,43.41309,43.44757,43.958131,45.40256,45.196624,45.11947,45.181389,43.463454,44.381551,44.585906,44.653056,44.603752,45.162222,43.483099,43.403056,43.45577,43.055048,43.055048,43.483099,43.483099,45.15703,45.053769,45.47893,43.014915,45.08406,45.325301,44.61708,44.973478,43.202825,42.963743,43.158889,43.226369,45.325301,45.126389,44.2113,44.600556,45.47893,45.325301,45.325301,45.018915,44.693025,43.21884,44.063422,45.086944,45.325301,45.325301,43.21884,45.1955,45.325301,45.189423,45.086944,45.2225,44.020908,44.11063,44.020908,45.325301,45.099781,45.099781,45.126389,44.903056,45.04013,45.189423,45.244167,45.47129,45.099781,43.254751,45.2225,42.954516,45.325301,44.77465],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["6","1","1","1","1","1","1","1","5","1","7","1","1","1","3","1","1","2","2","2","6","1","2","2","2","24","1","1","1","5","33","33","1","1","0","7","1","2","0","0","1","1","1","1","10","17","2","1","0","2","6","23","4","1","1","1","38","8","8","2","80","40","24","8","1","1","0","1","20","94","2","2","1","30","27","61","4","4","1","50","5","1","1"],null,null,null,["Al Ḩaymah as Suflá area","Wādī al Ḩājib village","Al Ḩaymah as Suflá area","Al Ḩazm town","Hadhran town","Mariyah town","Al Ḩaymah as Suflá area","Jazīrat Sānā island","Rawdah village","Ibb town","Al-Ḩudaydah town","Al-Ḩudaydah town","Ar Raqw village","Bāqirīyah village","Mahjar Rai village","Camp Mattar al-Qadim","Ar Rākah village","Washal village","Al Quraydah area","Najd al Majmaah village","Bayt Baysh village","Jabal Jālis","Sabira village","Hajara village","Al Fājir town","Jabal Murād mountain","Hays town","Umari junction","Ar Ribat village","Ad Durayhimī town","Ad Durayhimī town","Hays town","Hays town","Rakis village","Maashiq Palace","Duḩayḑah mountain","Al Masnā’ town","Mashjah area","Marib town","Maşfarah village","Wādī Silbā valley","Ar Raqw village","Al Ḩālī town","Al Jabalīyah village","At Tuḩaytā’ town","Marib town","Kassara checkpoint","Ahkum area","Masurah mountain","Duḩayḑah mountain","Marib town","Marib town","Şirwāḩ town","Mahqan village","Al Umm Shaykh area","Shaqab village","Kofal Camp","Marib town","Marib town","Al Umm Shaykh area","Wadi Nakhla valley","Marib town","Az Zur town","Kofal Camp","Jabal al-Balaq al Qibli mountain","Ta'izz town","As Safnah village","Ta'izz town","Marib town","Jabal Haylan mountain","Jabal Haylan mountain","Kassara checkpoint","Mas Camp","Madghil al Jid‘ān town","Az Zur town","Marib Dam","Wadi Ablah area","Jabal Haylan mountain","Al Ghawr village","Jabal al-Balaq al Qibli mountain","Al-Ḩudaydah town","Marib town","Jabal al Ulayb mountain"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[15.3694,44.191],6,[]],"limits":{"lat":[12.765224,17.255265],"lng":[42.28,45.47893]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
 </section>
-<section id="customize-your-leaflet-plot" class="level2">
-<h2 class="anchored" data-anchor-id="customize-your-leaflet-plot">Customize your leaflet plot</h2>
-<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<section id="customize-your-leaflet-map" class="level2">
+<h2 class="anchored" data-anchor-id="customize-your-leaflet-map">Customize your leaflet map</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/qLYeSsoDvgs" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>Next, let’s do some customization to make our map look amazing. We will talk about changing the icon style, customized the information displayed in the icon and adding base maps.</p>
 <section id="use-an-awesome-icon" class="level3">
 <h3 class="anchored" data-anchor-id="use-an-awesome-icon">Use an awesome icon</h3>
 <p>We can dress our leaflet map up a little bit with the <code>addAwesomeMarkers()</code> function which allows us to use the <a href="https://getbootstrap.com/docs/3.3/components/">glyphicons</a>, <a href="https://fontawesome.com/search?q=location&amp;o=r&amp;m=free">font awesome</a> and <a href="https://ionic.io/ionicons">ionicons</a> libraries.</p>
 <p>First we will use <code>awesomeIcons()</code> to store the icon we want to use. Here we choose “ios-close” from the ionic library. We will say that we want the icon colorto be black and the surrounding marker color to be red. Then we call <code>addAwesomeMarkers()</code> and specify <code>icon = icon</code> to call the red and black ionic marker.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>icon <span class="ot">&lt;-</span> <span class="fu">awesomeIcons</span>(</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">icon =</span> <span class="st">"ios-close"</span>,</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">iconColor =</span> <span class="st">"black"</span>,</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">markerColor =</span> <span class="st">"red"</span>, </span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">library =</span> <span class="st">"ion"</span> </span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Get data for Jan and Feb</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">leaflet</span>(<span class="at">data =</span> ged_yemen) <span class="sc">|&gt;</span>   </span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addTiles</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">setView</span>(<span class="at">lng =</span> <span class="fl">44.1910</span>, <span class="at">lat =</span> <span class="fl">15.3694</span>, <span class="at">zoom =</span> <span class="dv">6</span>) <span class="sc">|&gt;</span> <span class="co"># Sana'a coordinates</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addAwesomeMarkers</span>(</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">icon =</span> icon, </span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">popup =</span> <span class="sc">~</span><span class="fu">as.character</span>(deaths), </span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="sc">~</span>where_coordinates</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save icon</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>icon <span class="ot">&lt;-</span> <span class="fu">awesomeIcons</span>(</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">icon =</span> <span class="st">"ios-close"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">iconColor =</span> <span class="st">"black"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">markerColor =</span> <span class="st">"red"</span>, </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">library =</span> <span class="st">"ion"</span> </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Build map</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="fu">leaflet</span>(<span class="at">data =</span> ged_yemen) <span class="sc">|&gt;</span>   </span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addTiles</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">setView</span>(<span class="at">lng =</span> <span class="fl">44.1910</span>, <span class="at">lat =</span> <span class="fl">15.3694</span>, <span class="at">zoom =</span> <span class="dv">6</span>) <span class="sc">|&gt;</span> <span class="co"># Sana'a coordinates</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addAwesomeMarkers</span>(</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">icon =</span> icon, </span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">popup =</span> <span class="sc">~</span><span class="fu">as.character</span>(deaths), </span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="sc">~</span>place</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-66b59b39a67a2c1d98f2" style="width:100%;height:464px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-66b59b39a67a2c1d98f2">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addAwesomeMarkers","args":[[13.70564,13.741527,13.70564,16.164056,13.60529,14.50235,13.70564,16.144444,15.423232,13.940771,14.797812,14.797812,17.255265,13.49647,13.71739,13.597618,15.47404,14.988239,14.97423,14.911667,13.94617,13.28871,13.840529,13.933889,13.866966,15.043889,13.931702,12.988333,13.87712,14.637019,14.637019,13.931702,13.931702,14.66585,12.765224,16.0548,14.761333,15.465293,15.460977,14.12096,16.942775,17.255265,14.810388,14.0725,14.18356,15.460977,15.544167,13.24217,15.7325,16.0548,15.460977,15.460977,15.449328,14.026603,17.10076,13.463284,15.410833,15.460977,15.460977,17.10076,15.5573,15.460977,15.409655,15.410833,15.414722,13.579522,13.78052,13.579522,15.460977,15.508466,15.508466,15.544167,15.687222,15.59858,15.409655,15.396389,14.97195,15.508466,17.02627,15.414722,14.797812,15.460977,14.56979],[44.06,44.043937,44.06,44.776919,43.92862,44.27095,44.06,42.28,44.227265,44.177343,42.954516,42.954516,43.202825,43.41309,43.44757,43.958131,45.40256,45.196624,45.11947,45.181389,43.463454,44.381551,44.585906,44.653056,44.603752,45.162222,43.483099,43.403056,43.45577,43.055048,43.055048,43.483099,43.483099,45.15703,45.053769,45.47893,43.014915,45.08406,45.325301,44.61708,44.973478,43.202825,42.963743,43.158889,43.226369,45.325301,45.126389,44.2113,44.600556,45.47893,45.325301,45.325301,45.018915,44.693025,43.21884,44.063422,45.086944,45.325301,45.325301,43.21884,45.1955,45.325301,45.189423,45.086944,45.2225,44.020908,44.11063,44.020908,45.325301,45.099781,45.099781,45.126389,44.903056,45.04013,45.189423,45.244167,45.47129,45.099781,43.254751,45.2225,42.954516,45.325301,44.77465],{"icon":"ios-close","markerColor":"red","iconColor":"black","spin":false,"squareMarker":false,"iconRotate":0,"font":"monospace","prefix":"ion"},null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["6","1","1","1","1","1","1","1","5","1","7","1","1","1","3","1","1","2","2","2","6","1","2","2","2","24","1","1","1","5","33","33","1","1","0","7","1","2","0","0","1","1","1","1","10","17","2","1","0","2","6","23","4","1","1","1","38","8","8","2","80","40","24","8","1","1","0","1","20","94","2","2","1","30","27","61","4","4","1","50","5","1","1"],null,null,null,["Al Ḩaymah as Suflá area","Wādī al Ḩājib village","Al Ḩaymah as Suflá area","Al Ḩazm town","Hadhran town","Mariyah town","Al Ḩaymah as Suflá area","Jazīrat Sānā island","Rawdah village","Ibb town","Al-Ḩudaydah town","Al-Ḩudaydah town","Ar Raqw village","Bāqirīyah village","Mahjar Rai village","Camp Mattar al-Qadim","Ar Rākah village","Washal village","Al Quraydah area","Najd al Majmaah village","Bayt Baysh village","Jabal Jālis","Sabira village","Hajara village","Al Fājir town","Jabal Murād mountain","Hays town","Umari junction","Ar Ribat village","Ad Durayhimī town","Ad Durayhimī town","Hays town","Hays town","Rakis village","Maashiq Palace","Duḩayḑah mountain","Al Masnā’ town","Mashjah area","Marib town","Maşfarah village","Wādī Silbā valley","Ar Raqw village","Al Ḩālī town","Al Jabalīyah village","At Tuḩaytā’ town","Marib town","Kassara checkpoint","Ahkum area","Masurah mountain","Duḩayḑah mountain","Marib town","Marib town","Şirwāḩ town","Mahqan village","Al Umm Shaykh area","Shaqab village","Kofal Camp","Marib town","Marib town","Al Umm Shaykh area","Wadi Nakhla valley","Marib town","Az Zur town","Kofal Camp","Jabal al-Balaq al Qibli mountain","Ta'izz town","As Safnah village","Ta'izz town","Marib town","Jabal Haylan mountain","Jabal Haylan mountain","Kassara checkpoint","Mas Camp","Madghil al Jid‘ān town","Az Zur town","Marib Dam","Wadi Ablah area","Jabal Haylan mountain","Al Ghawr village","Jabal al-Balaq al Qibli mountain","Al-Ḩudaydah town","Marib town","Jabal al Ulayb mountain"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[15.3694,44.191],6,[]],"limits":{"lat":[12.765224,17.255265],"lng":[42.28,45.47893]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-27431a9eb721ae455515" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-27431a9eb721ae455515">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addAwesomeMarkers","args":[[13.70564,13.741527,13.70564,16.164056,13.60529,14.50235,13.70564,16.144444,15.423232,13.940771,14.797812,14.797812,17.255265,13.49647,13.71739,13.597618,15.47404,14.988239,14.97423,14.911667,13.94617,13.28871,13.840529,13.933889,13.866966,15.043889,13.931702,12.988333,13.87712,14.637019,14.637019,13.931702,13.931702,14.66585,12.765224,16.0548,14.761333,15.465293,15.460977,14.12096,16.942775,17.255265,14.810388,14.0725,14.18356,15.460977,15.544167,13.24217,15.7325,16.0548,15.460977,15.460977,15.449328,14.026603,17.10076,13.463284,15.410833,15.460977,15.460977,17.10076,15.5573,15.460977,15.409655,15.410833,15.414722,13.579522,13.78052,13.579522,15.460977,15.508466,15.508466,15.544167,15.687222,15.59858,15.409655,15.396389,14.97195,15.508466,17.02627,15.414722,14.797812,15.460977,14.56979],[44.06,44.043937,44.06,44.776919,43.92862,44.27095,44.06,42.28,44.227265,44.177343,42.954516,42.954516,43.202825,43.41309,43.44757,43.958131,45.40256,45.196624,45.11947,45.181389,43.463454,44.381551,44.585906,44.653056,44.603752,45.162222,43.483099,43.403056,43.45577,43.055048,43.055048,43.483099,43.483099,45.15703,45.053769,45.47893,43.014915,45.08406,45.325301,44.61708,44.973478,43.202825,42.963743,43.158889,43.226369,45.325301,45.126389,44.2113,44.600556,45.47893,45.325301,45.325301,45.018915,44.693025,43.21884,44.063422,45.086944,45.325301,45.325301,43.21884,45.1955,45.325301,45.189423,45.086944,45.2225,44.020908,44.11063,44.020908,45.325301,45.099781,45.099781,45.126389,44.903056,45.04013,45.189423,45.244167,45.47129,45.099781,43.254751,45.2225,42.954516,45.325301,44.77465],{"icon":"ios-close","markerColor":"red","iconColor":"black","spin":false,"squareMarker":false,"iconRotate":0,"font":"monospace","prefix":"ion"},null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["6","1","1","1","1","1","1","1","5","1","7","1","1","1","3","1","1","2","2","2","6","1","2","2","2","24","1","1","1","5","33","33","1","1","0","7","1","2","0","0","1","1","1","1","10","17","2","1","0","2","6","23","4","1","1","1","38","8","8","2","80","40","24","8","1","1","0","1","20","94","2","2","1","30","27","61","4","4","1","50","5","1","1"],null,null,null,["Al Ḩaymah as Suflá area","Wādī al Ḩājib village","Al Ḩaymah as Suflá area","Al Ḩazm town","Hadhran town","Mariyah town","Al Ḩaymah as Suflá area","Jazīrat Sānā island","Rawdah village","Ibb town","Al-Ḩudaydah town","Al-Ḩudaydah town","Ar Raqw village","Bāqirīyah village","Mahjar Rai village","Camp Mattar al-Qadim","Ar Rākah village","Washal village","Al Quraydah area","Najd al Majmaah village","Bayt Baysh village","Jabal Jālis","Sabira village","Hajara village","Al Fājir town","Jabal Murād mountain","Hays town","Umari junction","Ar Ribat village","Ad Durayhimī town","Ad Durayhimī town","Hays town","Hays town","Rakis village","Maashiq Palace","Duḩayḑah mountain","Al Masnā’ town","Mashjah area","Marib town","Maşfarah village","Wādī Silbā valley","Ar Raqw village","Al Ḩālī town","Al Jabalīyah village","At Tuḩaytā’ town","Marib town","Kassara checkpoint","Ahkum area","Masurah mountain","Duḩayḑah mountain","Marib town","Marib town","Şirwāḩ town","Mahqan village","Al Umm Shaykh area","Shaqab village","Kofal Camp","Marib town","Marib town","Al Umm Shaykh area","Wadi Nakhla valley","Marib town","Az Zur town","Kofal Camp","Jabal al-Balaq al Qibli mountain","Ta'izz town","As Safnah village","Ta'izz town","Marib town","Jabal Haylan mountain","Jabal Haylan mountain","Kassara checkpoint","Mas Camp","Madghil al Jid‘ān town","Az Zur town","Marib Dam","Wadi Ablah area","Jabal Haylan mountain","Al Ghawr village","Jabal al-Balaq al Qibli mountain","Al-Ḩudaydah town","Marib town","Jabal al Ulayb mountain"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[15.3694,44.191],6,[]],"limits":{"lat":[12.765224,17.255265],"lng":[42.28,45.47893]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -662,17 +685,17 @@ Note
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addAwesomeMarkers</span>(</span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">icon =</span> icon, </span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">popup =</span> <span class="sc">~</span>popup_text, </span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="sc">~</span>where_coordinates</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="sc">~</span>place</span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-97dbb2e470e3a4a77480" style="width:100%;height:464px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-97dbb2e470e3a4a77480">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addAwesomeMarkers","args":[[13.70564,13.741527,13.70564,16.164056,13.60529,14.50235,13.70564,16.144444,15.423232,13.940771,14.797812,14.797812,17.255265,13.49647,13.71739,13.597618,15.47404,14.988239,14.97423,14.911667,13.94617,13.28871,13.840529,13.933889,13.866966,15.043889,13.931702,12.988333,13.87712,14.637019,14.637019,13.931702,13.931702,14.66585,12.765224,16.0548,14.761333,15.465293,15.460977,14.12096,16.942775,17.255265,14.810388,14.0725,14.18356,15.460977,15.544167,13.24217,15.7325,16.0548,15.460977,15.460977,15.449328,14.026603,17.10076,13.463284,15.410833,15.460977,15.460977,17.10076,15.5573,15.460977,15.409655,15.410833,15.414722,13.579522,13.78052,13.579522,15.460977,15.508466,15.508466,15.544167,15.687222,15.59858,15.409655,15.396389,14.97195,15.508466,17.02627,15.414722,14.797812,15.460977,14.56979],[44.06,44.043937,44.06,44.776919,43.92862,44.27095,44.06,42.28,44.227265,44.177343,42.954516,42.954516,43.202825,43.41309,43.44757,43.958131,45.40256,45.196624,45.11947,45.181389,43.463454,44.381551,44.585906,44.653056,44.603752,45.162222,43.483099,43.403056,43.45577,43.055048,43.055048,43.483099,43.483099,45.15703,45.053769,45.47893,43.014915,45.08406,45.325301,44.61708,44.973478,43.202825,42.963743,43.158889,43.226369,45.325301,45.126389,44.2113,44.600556,45.47893,45.325301,45.325301,45.018915,44.693025,43.21884,44.063422,45.086944,45.325301,45.325301,43.21884,45.1955,45.325301,45.189423,45.086944,45.2225,44.020908,44.11063,44.020908,45.325301,45.099781,45.099781,45.126389,44.903056,45.04013,45.189423,45.244167,45.47129,45.099781,43.254751,45.2225,42.954516,45.325301,44.77465],{"icon":"ios-close","markerColor":"red","iconColor":"black","spin":false,"squareMarker":false,"iconRotate":0,"font":"monospace","prefix":"ion"},null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Date: 2021-01-06 <br> \n       Total Deaths: 6 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 6 <br>","Date: 2021-01-14 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-20 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-22 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-26 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-30 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-03 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-13 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-20 <br> \n       Total Deaths: 5 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 5 <br>","Date: 2021-02-24 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-01 <br> \n       Total Deaths: 7 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 7 <br>","Date: 2021-01-01 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-02 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-04 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-08 <br> \n       Total Deaths: 3 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 3 <br>","Date: 2021-01-08 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-09 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-09 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-11 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-11 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-11 <br> \n       Total Deaths: 6 <br> \n       Govt. Deaths: 4 <br> \n       Rebel Deaths: 2 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-11 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 1 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-12 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-13 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-13 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-13 <br> \n       Total Deaths: 24 <br> \n       Govt. Deaths: 12 <br> \n       Rebel Deaths: 12 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-13 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-14 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-14 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-16 <br> \n       Total Deaths: 5 <br> \n       Govt. Deaths: 5 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-16 <br> \n       Total Deaths: 33 <br> \n       Govt. Deaths: 19 <br> \n       Rebel Deaths: 14 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-16 <br> \n       Total Deaths: 33 <br> \n       Govt. Deaths: 20 <br> \n       Rebel Deaths: 13 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-17 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-17 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-19 <br> \n       Total Deaths: 0 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-22 <br> \n       Total Deaths: 7 <br> \n       Govt. Deaths: 6 <br> \n       Rebel Deaths: 1 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-22 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-25 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-31 <br> \n       Total Deaths: 0 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-31 <br> \n       Total Deaths: 0 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-01 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 1 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-02 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-03 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-04 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-04 <br> \n       Total Deaths: 10 <br> \n       Govt. Deaths: 10 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-07 <br> \n       Total Deaths: 17 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 17 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-07 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-07 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 1 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-07 <br> \n       Total Deaths: 0 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-07 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-07 <br> \n       Total Deaths: 6 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 3 <br> \n       Civilian Death: 3 <br>","Date: 2021-02-08 <br> \n       Total Deaths: 23 <br> \n       Govt. Deaths: 3 <br> \n       Rebel Deaths: 20 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-09 <br> \n       Total Deaths: 4 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 2 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-09 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-10 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-10 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-10 <br> \n       Total Deaths: 38 <br> \n       Govt. Deaths: 23 <br> \n       Rebel Deaths: 15 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-11 <br> \n       Total Deaths: 8 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 8 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-11 <br> \n       Total Deaths: 8 <br> \n       Govt. Deaths: 8 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-12 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 2 <br>","Date: 2021-02-12 <br> \n       Total Deaths: 80 <br> \n       Govt. Deaths: 50 <br> \n       Rebel Deaths: 30 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-13 <br> \n       Total Deaths: 40 <br> \n       Govt. Deaths: 24 <br> \n       Rebel Deaths: 16 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-15 <br> \n       Total Deaths: 24 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 2 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-16 <br> \n       Total Deaths: 8 <br> \n       Govt. Deaths: 8 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-17 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 1 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-17 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-19 <br> \n       Total Deaths: 0 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-20 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-20 <br> \n       Total Deaths: 20 <br> \n       Govt. Deaths: 20 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-21 <br> \n       Total Deaths: 94 <br> \n       Govt. Deaths: 70 <br> \n       Rebel Deaths: 24 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-21 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-22 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-22 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 1 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-23 <br> \n       Total Deaths: 30 <br> \n       Govt. Deaths: 30 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-25 <br> \n       Total Deaths: 27 <br> \n       Govt. Deaths: 14 <br> \n       Rebel Deaths: 2 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-26 <br> \n       Total Deaths: 61 <br> \n       Govt. Deaths: 34 <br> \n       Rebel Deaths: 27 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-26 <br> \n       Total Deaths: 4 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 2 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-26 <br> \n       Total Deaths: 4 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 2 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-26 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-27 <br> \n       Total Deaths: 50 <br> \n       Govt. Deaths: 28 <br> \n       Rebel Deaths: 22 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-28 <br> \n       Total Deaths: 5 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 5 <br>","Date: 2021-03-01 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-06 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>"],null,null,null,["Al Ḩaymah as Suflá area","Wādī al Ḩājib village","Al Ḩaymah as Suflá area","Al Ḩazm town","Hadhran town","Mariyah town","Al Ḩaymah as Suflá area","Jazīrat Sānā island","Rawdah village","Ibb town","Al-Ḩudaydah town","Al-Ḩudaydah town","Ar Raqw village","Bāqirīyah village","Mahjar Rai village","Camp Mattar al-Qadim","Ar Rākah village","Washal village","Al Quraydah area","Najd al Majmaah village","Bayt Baysh village","Jabal Jālis","Sabira village","Hajara village","Al Fājir town","Jabal Murād mountain","Hays town","Umari junction","Ar Ribat village","Ad Durayhimī town","Ad Durayhimī town","Hays town","Hays town","Rakis village","Maashiq Palace","Duḩayḑah mountain","Al Masnā’ town","Mashjah area","Marib town","Maşfarah village","Wādī Silbā valley","Ar Raqw village","Al Ḩālī town","Al Jabalīyah village","At Tuḩaytā’ town","Marib town","Kassara checkpoint","Ahkum area","Masurah mountain","Duḩayḑah mountain","Marib town","Marib town","Şirwāḩ town","Mahqan village","Al Umm Shaykh area","Shaqab village","Kofal Camp","Marib town","Marib town","Al Umm Shaykh area","Wadi Nakhla valley","Marib town","Az Zur town","Kofal Camp","Jabal al-Balaq al Qibli mountain","Ta'izz town","As Safnah village","Ta'izz town","Marib town","Jabal Haylan mountain","Jabal Haylan mountain","Kassara checkpoint","Mas Camp","Madghil al Jid‘ān town","Az Zur town","Marib Dam","Wadi Ablah area","Jabal Haylan mountain","Al Ghawr village","Jabal al-Balaq al Qibli mountain","Al-Ḩudaydah town","Marib town","Jabal al Ulayb mountain"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[15.3694,44.191],6,[]],"limits":{"lat":[12.765224,17.255265],"lng":[42.28,45.47893]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-e679d195e3d5c01b4afa" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-e679d195e3d5c01b4afa">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addAwesomeMarkers","args":[[13.70564,13.741527,13.70564,16.164056,13.60529,14.50235,13.70564,16.144444,15.423232,13.940771,14.797812,14.797812,17.255265,13.49647,13.71739,13.597618,15.47404,14.988239,14.97423,14.911667,13.94617,13.28871,13.840529,13.933889,13.866966,15.043889,13.931702,12.988333,13.87712,14.637019,14.637019,13.931702,13.931702,14.66585,12.765224,16.0548,14.761333,15.465293,15.460977,14.12096,16.942775,17.255265,14.810388,14.0725,14.18356,15.460977,15.544167,13.24217,15.7325,16.0548,15.460977,15.460977,15.449328,14.026603,17.10076,13.463284,15.410833,15.460977,15.460977,17.10076,15.5573,15.460977,15.409655,15.410833,15.414722,13.579522,13.78052,13.579522,15.460977,15.508466,15.508466,15.544167,15.687222,15.59858,15.409655,15.396389,14.97195,15.508466,17.02627,15.414722,14.797812,15.460977,14.56979],[44.06,44.043937,44.06,44.776919,43.92862,44.27095,44.06,42.28,44.227265,44.177343,42.954516,42.954516,43.202825,43.41309,43.44757,43.958131,45.40256,45.196624,45.11947,45.181389,43.463454,44.381551,44.585906,44.653056,44.603752,45.162222,43.483099,43.403056,43.45577,43.055048,43.055048,43.483099,43.483099,45.15703,45.053769,45.47893,43.014915,45.08406,45.325301,44.61708,44.973478,43.202825,42.963743,43.158889,43.226369,45.325301,45.126389,44.2113,44.600556,45.47893,45.325301,45.325301,45.018915,44.693025,43.21884,44.063422,45.086944,45.325301,45.325301,43.21884,45.1955,45.325301,45.189423,45.086944,45.2225,44.020908,44.11063,44.020908,45.325301,45.099781,45.099781,45.126389,44.903056,45.04013,45.189423,45.244167,45.47129,45.099781,43.254751,45.2225,42.954516,45.325301,44.77465],{"icon":"ios-close","markerColor":"red","iconColor":"black","spin":false,"squareMarker":false,"iconRotate":0,"font":"monospace","prefix":"ion"},null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Date: 2021-01-06 <br> \n       Total Deaths: 6 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 6 <br>","Date: 2021-01-14 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-20 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-22 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-26 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-30 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-03 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-13 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-20 <br> \n       Total Deaths: 5 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 5 <br>","Date: 2021-02-24 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-01 <br> \n       Total Deaths: 7 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 7 <br>","Date: 2021-01-01 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-02 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-04 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-08 <br> \n       Total Deaths: 3 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 3 <br>","Date: 2021-01-08 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-09 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-09 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-11 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-11 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-11 <br> \n       Total Deaths: 6 <br> \n       Govt. Deaths: 4 <br> \n       Rebel Deaths: 2 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-11 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 1 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-12 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-13 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-13 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-13 <br> \n       Total Deaths: 24 <br> \n       Govt. Deaths: 12 <br> \n       Rebel Deaths: 12 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-13 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-14 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-14 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-16 <br> \n       Total Deaths: 5 <br> \n       Govt. Deaths: 5 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-16 <br> \n       Total Deaths: 33 <br> \n       Govt. Deaths: 19 <br> \n       Rebel Deaths: 14 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-16 <br> \n       Total Deaths: 33 <br> \n       Govt. Deaths: 20 <br> \n       Rebel Deaths: 13 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-17 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-17 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-19 <br> \n       Total Deaths: 0 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-22 <br> \n       Total Deaths: 7 <br> \n       Govt. Deaths: 6 <br> \n       Rebel Deaths: 1 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-22 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-25 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-31 <br> \n       Total Deaths: 0 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-31 <br> \n       Total Deaths: 0 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-01 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 1 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-02 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-03 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-04 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-04 <br> \n       Total Deaths: 10 <br> \n       Govt. Deaths: 10 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-07 <br> \n       Total Deaths: 17 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 17 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-07 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-07 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 1 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-07 <br> \n       Total Deaths: 0 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-07 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-07 <br> \n       Total Deaths: 6 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 3 <br> \n       Civilian Death: 3 <br>","Date: 2021-02-08 <br> \n       Total Deaths: 23 <br> \n       Govt. Deaths: 3 <br> \n       Rebel Deaths: 20 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-09 <br> \n       Total Deaths: 4 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 2 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-09 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-10 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-10 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-10 <br> \n       Total Deaths: 38 <br> \n       Govt. Deaths: 23 <br> \n       Rebel Deaths: 15 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-11 <br> \n       Total Deaths: 8 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 8 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-11 <br> \n       Total Deaths: 8 <br> \n       Govt. Deaths: 8 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-12 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 2 <br>","Date: 2021-02-12 <br> \n       Total Deaths: 80 <br> \n       Govt. Deaths: 50 <br> \n       Rebel Deaths: 30 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-13 <br> \n       Total Deaths: 40 <br> \n       Govt. Deaths: 24 <br> \n       Rebel Deaths: 16 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-15 <br> \n       Total Deaths: 24 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 2 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-16 <br> \n       Total Deaths: 8 <br> \n       Govt. Deaths: 8 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-17 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 1 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-17 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-19 <br> \n       Total Deaths: 0 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-20 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-20 <br> \n       Total Deaths: 20 <br> \n       Govt. Deaths: 20 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-21 <br> \n       Total Deaths: 94 <br> \n       Govt. Deaths: 70 <br> \n       Rebel Deaths: 24 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-21 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-22 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-22 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 1 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-23 <br> \n       Total Deaths: 30 <br> \n       Govt. Deaths: 30 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-25 <br> \n       Total Deaths: 27 <br> \n       Govt. Deaths: 14 <br> \n       Rebel Deaths: 2 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-26 <br> \n       Total Deaths: 61 <br> \n       Govt. Deaths: 34 <br> \n       Rebel Deaths: 27 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-26 <br> \n       Total Deaths: 4 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 2 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-26 <br> \n       Total Deaths: 4 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 2 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-26 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-27 <br> \n       Total Deaths: 50 <br> \n       Govt. Deaths: 28 <br> \n       Rebel Deaths: 22 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-28 <br> \n       Total Deaths: 5 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 5 <br>","Date: 2021-03-01 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-06 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>"],null,null,null,["Al Ḩaymah as Suflá area","Wādī al Ḩājib village","Al Ḩaymah as Suflá area","Al Ḩazm town","Hadhran town","Mariyah town","Al Ḩaymah as Suflá area","Jazīrat Sānā island","Rawdah village","Ibb town","Al-Ḩudaydah town","Al-Ḩudaydah town","Ar Raqw village","Bāqirīyah village","Mahjar Rai village","Camp Mattar al-Qadim","Ar Rākah village","Washal village","Al Quraydah area","Najd al Majmaah village","Bayt Baysh village","Jabal Jālis","Sabira village","Hajara village","Al Fājir town","Jabal Murād mountain","Hays town","Umari junction","Ar Ribat village","Ad Durayhimī town","Ad Durayhimī town","Hays town","Hays town","Rakis village","Maashiq Palace","Duḩayḑah mountain","Al Masnā’ town","Mashjah area","Marib town","Maşfarah village","Wādī Silbā valley","Ar Raqw village","Al Ḩālī town","Al Jabalīyah village","At Tuḩaytā’ town","Marib town","Kassara checkpoint","Ahkum area","Masurah mountain","Duḩayḑah mountain","Marib town","Marib town","Şirwāḩ town","Mahqan village","Al Umm Shaykh area","Shaqab village","Kofal Camp","Marib town","Marib town","Al Umm Shaykh area","Wadi Nakhla valley","Marib town","Az Zur town","Kofal Camp","Jabal al-Balaq al Qibli mountain","Ta'izz town","As Safnah village","Ta'izz town","Marib town","Jabal Haylan mountain","Jabal Haylan mountain","Kassara checkpoint","Mas Camp","Madghil al Jid‘ān town","Az Zur town","Marib Dam","Wadi Ablah area","Jabal Haylan mountain","Al Ghawr village","Jabal al-Balaq al Qibli mountain","Al-Ḩudaydah town","Marib town","Jabal al Ulayb mountain"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[15.3694,44.191],6,[]],"limits":{"lat":[12.765224,17.255265],"lng":[42.28,45.47893]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Now let’s spot check the labels.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ged_yemen <span class="sc">|&gt;</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(where_coordinates <span class="sc">==</span> <span class="st">"Marib Dam"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(place <span class="sc">==</span> <span class="st">"Marib Dam"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Simple feature collection with 1 feature and 9 fields
 Geometry type: POINT
@@ -680,11 +703,11 @@ Dimension:     XY
 Bounding box:  xmin: 45.24417 ymin: 15.39639 xmax: 45.24417 ymax: 15.39639
 CRS:           NA
 # A tibble: 1 × 10
-  event_id country_id date                gov_deaths rebel_deaths
-*    &lt;dbl&gt;      &lt;dbl&gt; &lt;dttm&gt;                   &lt;dbl&gt;        &lt;dbl&gt;
-1   385602        678 2021-02-26 00:00:00         34           27
-# ℹ 5 more variables: civilian_deaths &lt;dbl&gt;, deaths &lt;dbl&gt;,
-#   where_coordinates &lt;chr&gt;, geometry &lt;POINT&gt;, popup_text &lt;list&gt;</code></pre>
+  event_id country_id date                gov_dea…¹ rebel…² civil…³ deaths place
+*    &lt;dbl&gt;      &lt;dbl&gt; &lt;dttm&gt;                  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;
+1   385602        678 2021-02-26 00:00:00        34      27       0     61 Mari…
+# … with 2 more variables: geometry &lt;POINT&gt;, popup_text &lt;list&gt;, and abbreviated
+#   variable names ¹​gov_deaths, ²​rebel_deaths, ³​civilian_deaths</code></pre>
 </div>
 </div>
 </section>
@@ -698,11 +721,11 @@ CRS:           NA
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addAwesomeMarkers</span>(</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">icon =</span> icon, </span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">popup =</span> <span class="sc">~</span>popup_text, </span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="sc">~</span>where_coordinates</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="sc">~</span>place</span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-85275d3a49d409d1b724" style="width:100%;height:464px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-85275d3a49d409d1b724">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["OpenTopoMap",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addAwesomeMarkers","args":[[13.70564,13.741527,13.70564,16.164056,13.60529,14.50235,13.70564,16.144444,15.423232,13.940771,14.797812,14.797812,17.255265,13.49647,13.71739,13.597618,15.47404,14.988239,14.97423,14.911667,13.94617,13.28871,13.840529,13.933889,13.866966,15.043889,13.931702,12.988333,13.87712,14.637019,14.637019,13.931702,13.931702,14.66585,12.765224,16.0548,14.761333,15.465293,15.460977,14.12096,16.942775,17.255265,14.810388,14.0725,14.18356,15.460977,15.544167,13.24217,15.7325,16.0548,15.460977,15.460977,15.449328,14.026603,17.10076,13.463284,15.410833,15.460977,15.460977,17.10076,15.5573,15.460977,15.409655,15.410833,15.414722,13.579522,13.78052,13.579522,15.460977,15.508466,15.508466,15.544167,15.687222,15.59858,15.409655,15.396389,14.97195,15.508466,17.02627,15.414722,14.797812,15.460977,14.56979],[44.06,44.043937,44.06,44.776919,43.92862,44.27095,44.06,42.28,44.227265,44.177343,42.954516,42.954516,43.202825,43.41309,43.44757,43.958131,45.40256,45.196624,45.11947,45.181389,43.463454,44.381551,44.585906,44.653056,44.603752,45.162222,43.483099,43.403056,43.45577,43.055048,43.055048,43.483099,43.483099,45.15703,45.053769,45.47893,43.014915,45.08406,45.325301,44.61708,44.973478,43.202825,42.963743,43.158889,43.226369,45.325301,45.126389,44.2113,44.600556,45.47893,45.325301,45.325301,45.018915,44.693025,43.21884,44.063422,45.086944,45.325301,45.325301,43.21884,45.1955,45.325301,45.189423,45.086944,45.2225,44.020908,44.11063,44.020908,45.325301,45.099781,45.099781,45.126389,44.903056,45.04013,45.189423,45.244167,45.47129,45.099781,43.254751,45.2225,42.954516,45.325301,44.77465],{"icon":"ios-close","markerColor":"red","iconColor":"black","spin":false,"squareMarker":false,"iconRotate":0,"font":"monospace","prefix":"ion"},null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Date: 2021-01-06 <br> \n       Total Deaths: 6 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 6 <br>","Date: 2021-01-14 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-20 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-22 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-26 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-30 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-03 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-13 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-20 <br> \n       Total Deaths: 5 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 5 <br>","Date: 2021-02-24 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-01 <br> \n       Total Deaths: 7 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 7 <br>","Date: 2021-01-01 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-02 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-04 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-08 <br> \n       Total Deaths: 3 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 3 <br>","Date: 2021-01-08 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-09 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-09 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-11 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-11 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-11 <br> \n       Total Deaths: 6 <br> \n       Govt. Deaths: 4 <br> \n       Rebel Deaths: 2 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-11 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 1 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-12 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-13 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-13 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-13 <br> \n       Total Deaths: 24 <br> \n       Govt. Deaths: 12 <br> \n       Rebel Deaths: 12 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-13 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-14 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-14 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-16 <br> \n       Total Deaths: 5 <br> \n       Govt. Deaths: 5 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-16 <br> \n       Total Deaths: 33 <br> \n       Govt. Deaths: 19 <br> \n       Rebel Deaths: 14 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-16 <br> \n       Total Deaths: 33 <br> \n       Govt. Deaths: 20 <br> \n       Rebel Deaths: 13 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-17 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-17 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-19 <br> \n       Total Deaths: 0 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-22 <br> \n       Total Deaths: 7 <br> \n       Govt. Deaths: 6 <br> \n       Rebel Deaths: 1 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-22 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-25 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-31 <br> \n       Total Deaths: 0 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-31 <br> \n       Total Deaths: 0 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-01 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 1 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-02 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-03 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-04 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-04 <br> \n       Total Deaths: 10 <br> \n       Govt. Deaths: 10 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-07 <br> \n       Total Deaths: 17 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 17 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-07 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-07 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 1 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-07 <br> \n       Total Deaths: 0 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-07 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-07 <br> \n       Total Deaths: 6 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 3 <br> \n       Civilian Death: 3 <br>","Date: 2021-02-08 <br> \n       Total Deaths: 23 <br> \n       Govt. Deaths: 3 <br> \n       Rebel Deaths: 20 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-09 <br> \n       Total Deaths: 4 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 2 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-09 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-10 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-10 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-10 <br> \n       Total Deaths: 38 <br> \n       Govt. Deaths: 23 <br> \n       Rebel Deaths: 15 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-11 <br> \n       Total Deaths: 8 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 8 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-11 <br> \n       Total Deaths: 8 <br> \n       Govt. Deaths: 8 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-12 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 2 <br>","Date: 2021-02-12 <br> \n       Total Deaths: 80 <br> \n       Govt. Deaths: 50 <br> \n       Rebel Deaths: 30 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-13 <br> \n       Total Deaths: 40 <br> \n       Govt. Deaths: 24 <br> \n       Rebel Deaths: 16 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-15 <br> \n       Total Deaths: 24 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 2 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-16 <br> \n       Total Deaths: 8 <br> \n       Govt. Deaths: 8 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-17 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 1 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-17 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-19 <br> \n       Total Deaths: 0 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-20 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-20 <br> \n       Total Deaths: 20 <br> \n       Govt. Deaths: 20 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-21 <br> \n       Total Deaths: 94 <br> \n       Govt. Deaths: 70 <br> \n       Rebel Deaths: 24 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-21 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-22 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-22 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 1 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-23 <br> \n       Total Deaths: 30 <br> \n       Govt. Deaths: 30 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-25 <br> \n       Total Deaths: 27 <br> \n       Govt. Deaths: 14 <br> \n       Rebel Deaths: 2 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-26 <br> \n       Total Deaths: 61 <br> \n       Govt. Deaths: 34 <br> \n       Rebel Deaths: 27 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-26 <br> \n       Total Deaths: 4 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 2 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-26 <br> \n       Total Deaths: 4 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 2 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-26 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-27 <br> \n       Total Deaths: 50 <br> \n       Govt. Deaths: 28 <br> \n       Rebel Deaths: 22 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-28 <br> \n       Total Deaths: 5 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 5 <br>","Date: 2021-03-01 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-06 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>"],null,null,null,["Al Ḩaymah as Suflá area","Wādī al Ḩājib village","Al Ḩaymah as Suflá area","Al Ḩazm town","Hadhran town","Mariyah town","Al Ḩaymah as Suflá area","Jazīrat Sānā island","Rawdah village","Ibb town","Al-Ḩudaydah town","Al-Ḩudaydah town","Ar Raqw village","Bāqirīyah village","Mahjar Rai village","Camp Mattar al-Qadim","Ar Rākah village","Washal village","Al Quraydah area","Najd al Majmaah village","Bayt Baysh village","Jabal Jālis","Sabira village","Hajara village","Al Fājir town","Jabal Murād mountain","Hays town","Umari junction","Ar Ribat village","Ad Durayhimī town","Ad Durayhimī town","Hays town","Hays town","Rakis village","Maashiq Palace","Duḩayḑah mountain","Al Masnā’ town","Mashjah area","Marib town","Maşfarah village","Wādī Silbā valley","Ar Raqw village","Al Ḩālī town","Al Jabalīyah village","At Tuḩaytā’ town","Marib town","Kassara checkpoint","Ahkum area","Masurah mountain","Duḩayḑah mountain","Marib town","Marib town","Şirwāḩ town","Mahqan village","Al Umm Shaykh area","Shaqab village","Kofal Camp","Marib town","Marib town","Al Umm Shaykh area","Wadi Nakhla valley","Marib town","Az Zur town","Kofal Camp","Jabal al-Balaq al Qibli mountain","Ta'izz town","As Safnah village","Ta'izz town","Marib town","Jabal Haylan mountain","Jabal Haylan mountain","Kassara checkpoint","Mas Camp","Madghil al Jid‘ān town","Az Zur town","Marib Dam","Wadi Ablah area","Jabal Haylan mountain","Al Ghawr village","Jabal al-Balaq al Qibli mountain","Al-Ḩudaydah town","Marib town","Jabal al Ulayb mountain"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[15.3694,44.191],6,[]],"limits":{"lat":[12.765224,17.255265],"lng":[42.28,45.47893]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-3442bf3604676d0783c0" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-3442bf3604676d0783c0">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["OpenTopoMap",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addAwesomeMarkers","args":[[13.70564,13.741527,13.70564,16.164056,13.60529,14.50235,13.70564,16.144444,15.423232,13.940771,14.797812,14.797812,17.255265,13.49647,13.71739,13.597618,15.47404,14.988239,14.97423,14.911667,13.94617,13.28871,13.840529,13.933889,13.866966,15.043889,13.931702,12.988333,13.87712,14.637019,14.637019,13.931702,13.931702,14.66585,12.765224,16.0548,14.761333,15.465293,15.460977,14.12096,16.942775,17.255265,14.810388,14.0725,14.18356,15.460977,15.544167,13.24217,15.7325,16.0548,15.460977,15.460977,15.449328,14.026603,17.10076,13.463284,15.410833,15.460977,15.460977,17.10076,15.5573,15.460977,15.409655,15.410833,15.414722,13.579522,13.78052,13.579522,15.460977,15.508466,15.508466,15.544167,15.687222,15.59858,15.409655,15.396389,14.97195,15.508466,17.02627,15.414722,14.797812,15.460977,14.56979],[44.06,44.043937,44.06,44.776919,43.92862,44.27095,44.06,42.28,44.227265,44.177343,42.954516,42.954516,43.202825,43.41309,43.44757,43.958131,45.40256,45.196624,45.11947,45.181389,43.463454,44.381551,44.585906,44.653056,44.603752,45.162222,43.483099,43.403056,43.45577,43.055048,43.055048,43.483099,43.483099,45.15703,45.053769,45.47893,43.014915,45.08406,45.325301,44.61708,44.973478,43.202825,42.963743,43.158889,43.226369,45.325301,45.126389,44.2113,44.600556,45.47893,45.325301,45.325301,45.018915,44.693025,43.21884,44.063422,45.086944,45.325301,45.325301,43.21884,45.1955,45.325301,45.189423,45.086944,45.2225,44.020908,44.11063,44.020908,45.325301,45.099781,45.099781,45.126389,44.903056,45.04013,45.189423,45.244167,45.47129,45.099781,43.254751,45.2225,42.954516,45.325301,44.77465],{"icon":"ios-close","markerColor":"red","iconColor":"black","spin":false,"squareMarker":false,"iconRotate":0,"font":"monospace","prefix":"ion"},null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Date: 2021-01-06 <br> \n       Total Deaths: 6 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 6 <br>","Date: 2021-01-14 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-20 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-22 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-26 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-30 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-03 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-13 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-20 <br> \n       Total Deaths: 5 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 5 <br>","Date: 2021-02-24 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-01 <br> \n       Total Deaths: 7 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 7 <br>","Date: 2021-01-01 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-02 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-04 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-08 <br> \n       Total Deaths: 3 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 3 <br>","Date: 2021-01-08 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-09 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-09 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-11 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-11 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-11 <br> \n       Total Deaths: 6 <br> \n       Govt. Deaths: 4 <br> \n       Rebel Deaths: 2 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-11 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 1 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-12 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-13 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-13 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-13 <br> \n       Total Deaths: 24 <br> \n       Govt. Deaths: 12 <br> \n       Rebel Deaths: 12 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-13 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-14 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-14 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-16 <br> \n       Total Deaths: 5 <br> \n       Govt. Deaths: 5 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-16 <br> \n       Total Deaths: 33 <br> \n       Govt. Deaths: 19 <br> \n       Rebel Deaths: 14 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-16 <br> \n       Total Deaths: 33 <br> \n       Govt. Deaths: 20 <br> \n       Rebel Deaths: 13 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-17 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-17 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-19 <br> \n       Total Deaths: 0 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-22 <br> \n       Total Deaths: 7 <br> \n       Govt. Deaths: 6 <br> \n       Rebel Deaths: 1 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-22 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-01-25 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-31 <br> \n       Total Deaths: 0 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-01-31 <br> \n       Total Deaths: 0 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-01 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 1 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-02 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-03 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-04 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-04 <br> \n       Total Deaths: 10 <br> \n       Govt. Deaths: 10 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-07 <br> \n       Total Deaths: 17 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 17 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-07 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-07 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 1 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-07 <br> \n       Total Deaths: 0 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-07 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-07 <br> \n       Total Deaths: 6 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 3 <br> \n       Civilian Death: 3 <br>","Date: 2021-02-08 <br> \n       Total Deaths: 23 <br> \n       Govt. Deaths: 3 <br> \n       Rebel Deaths: 20 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-09 <br> \n       Total Deaths: 4 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 2 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-09 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-10 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-10 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-10 <br> \n       Total Deaths: 38 <br> \n       Govt. Deaths: 23 <br> \n       Rebel Deaths: 15 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-11 <br> \n       Total Deaths: 8 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 8 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-11 <br> \n       Total Deaths: 8 <br> \n       Govt. Deaths: 8 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-12 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 2 <br>","Date: 2021-02-12 <br> \n       Total Deaths: 80 <br> \n       Govt. Deaths: 50 <br> \n       Rebel Deaths: 30 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-13 <br> \n       Total Deaths: 40 <br> \n       Govt. Deaths: 24 <br> \n       Rebel Deaths: 16 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-15 <br> \n       Total Deaths: 24 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 2 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-16 <br> \n       Total Deaths: 8 <br> \n       Govt. Deaths: 8 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-17 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 1 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-17 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-19 <br> \n       Total Deaths: 0 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-20 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-20 <br> \n       Total Deaths: 20 <br> \n       Govt. Deaths: 20 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-21 <br> \n       Total Deaths: 94 <br> \n       Govt. Deaths: 70 <br> \n       Rebel Deaths: 24 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-21 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-22 <br> \n       Total Deaths: 2 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-22 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 1 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-23 <br> \n       Total Deaths: 30 <br> \n       Govt. Deaths: 30 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-25 <br> \n       Total Deaths: 27 <br> \n       Govt. Deaths: 14 <br> \n       Rebel Deaths: 2 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-26 <br> \n       Total Deaths: 61 <br> \n       Govt. Deaths: 34 <br> \n       Rebel Deaths: 27 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-26 <br> \n       Total Deaths: 4 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 2 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-26 <br> \n       Total Deaths: 4 <br> \n       Govt. Deaths: 2 <br> \n       Rebel Deaths: 2 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-26 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-27 <br> \n       Total Deaths: 50 <br> \n       Govt. Deaths: 28 <br> \n       Rebel Deaths: 22 <br> \n       Civilian Death: 0 <br>","Date: 2021-02-28 <br> \n       Total Deaths: 5 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 5 <br>","Date: 2021-03-01 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>","Date: 2021-02-06 <br> \n       Total Deaths: 1 <br> \n       Govt. Deaths: 0 <br> \n       Rebel Deaths: 0 <br> \n       Civilian Death: 1 <br>"],null,null,null,["Al Ḩaymah as Suflá area","Wādī al Ḩājib village","Al Ḩaymah as Suflá area","Al Ḩazm town","Hadhran town","Mariyah town","Al Ḩaymah as Suflá area","Jazīrat Sānā island","Rawdah village","Ibb town","Al-Ḩudaydah town","Al-Ḩudaydah town","Ar Raqw village","Bāqirīyah village","Mahjar Rai village","Camp Mattar al-Qadim","Ar Rākah village","Washal village","Al Quraydah area","Najd al Majmaah village","Bayt Baysh village","Jabal Jālis","Sabira village","Hajara village","Al Fājir town","Jabal Murād mountain","Hays town","Umari junction","Ar Ribat village","Ad Durayhimī town","Ad Durayhimī town","Hays town","Hays town","Rakis village","Maashiq Palace","Duḩayḑah mountain","Al Masnā’ town","Mashjah area","Marib town","Maşfarah village","Wādī Silbā valley","Ar Raqw village","Al Ḩālī town","Al Jabalīyah village","At Tuḩaytā’ town","Marib town","Kassara checkpoint","Ahkum area","Masurah mountain","Duḩayḑah mountain","Marib town","Marib town","Şirwāḩ town","Mahqan village","Al Umm Shaykh area","Shaqab village","Kofal Camp","Marib town","Marib town","Al Umm Shaykh area","Wadi Nakhla valley","Marib town","Az Zur town","Kofal Camp","Jabal al-Balaq al Qibli mountain","Ta'izz town","As Safnah village","Ta'izz town","Marib town","Jabal Haylan mountain","Jabal Haylan mountain","Kassara checkpoint","Mas Camp","Madghil al Jid‘ān town","Az Zur town","Marib Dam","Wadi Ablah area","Jabal Haylan mountain","Al Ghawr village","Jabal al-Balaq al Qibli mountain","Al-Ḩudaydah town","Marib town","Jabal al Ulayb mountain"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[15.3694,44.191],6,[]],"limits":{"lat":[12.765224,17.255265],"lng":[42.28,45.47893]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Now we can see a bit more about the topography, which could be super-useful for conflict analysis.</p>
@@ -854,9 +877,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -921,6 +958,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -959,12 +1082,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp(/https:\/\/dataviz-gwu\.rocks/);
+      var filterRegex = new RegExp("https:\/\/dataviz-gwu\.rocks");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
-    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -990,6 +1113,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">© Copyright 2023, <a href="https://emmanuel.teitelbaum.com">Emmanuel Teitelbaum</a></div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
     <div class="nav-footer-right">This page is built with <a href="https://quarto.org/">Quarto</a>. 👷🛠️</div>
   </div>
 </footer>

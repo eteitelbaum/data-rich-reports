@@ -14,8 +14,10 @@ execute:
 
 - Install `rnaturalearth` (`install.packages("rnaturalearth")`) and have a look at the [documentation](https://cran.r-project.org/web/packages/rnaturalearth/vignettes/rnaturalearth.html)
 - Install `ggthemes` (`install.packages("ggthemes")`)and have a look at [this post](https://rpubs.com/Mentors_Ubiqum/ggthemes_1)) for a brief explanation of how it works
+- Create a Quarto document called "module-3.1.qmd" in your modules folder for the code-along
 - Install `magick` and underlying file system to [remove whitespace](https://www.pmassicotte.com/posts/2022-08-15-removing-whitespace-around-figures-quarto/) around maps
-- Then insert this code chunk somewhere in your Quarto document:
+- Then insert this code chunk somewhere in your module 3.1 Quarto document:
+
 ```{r}
 # create a hook to crop maps as recommended by pmassicotte
 # must have `magick` and its dependencies installed
@@ -30,13 +32,13 @@ The focus of this module is going to be on how to make *choropleth maps*. A chor
 
 One important concept in mapping that we are going to come across this week: [simple features](https://r.geocompx.org/spatial-class.html#intro-sf). Simple features is a formal international standard for representing objects in the real world in digital space. 
 
-A "feature" is basically any object in the real world that can be represented in two or three-dimensional space. A tree or a house can be a feature as can a forest or a body of water. But in politics e we are usually focused on mapping the political boundaries of different administrative units like countries, states or provinces, counties and cities.
+A "feature" is basically any object in the real world that can be represented in two or three-dimensional space. A tree or a house can be a feature as can a forest or a body of water. But in politics we are usually focused on mapping the political boundaries of different administrative units like countries, states or provinces, counties and cities.
 
-Simple features allow us to work with such boundaries easily in a dataframe in R. We can take all of the points associated with a geometry and store it in a special data frame column (usually labeled 'geom' or 'geometry'). This ability to store all of the geographic information in one column differs from how spatial data are organized under the traditional [spatial objects](https://cran.r-project.org/web/packages/sp/vignettes/intro_sp.pdf)) standard and makes it much easier to work with geographic data in R.
+Simple features allow us to work with such boundaries easily in a data frame in R. We can take all of the points associated with a geometry and store it in a special data frame column (usually labeled 'geom' or 'geometry'). This ability to store all of the geographic information in one column differs from how spatial data are organized under the traditional [spatial objects](https://cran.r-project.org/web/packages/sp/vignettes/intro_sp.pdf) standard and makes it much easier to work with geographic data in R.
 
 ## Using rnaturalearth
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'Using rnaturalearth'>}}
+{{< video https://www.youtube.com/watch?v=HB3PMF93hzs&t=131s title = 'Using rnaturalearth'>}}
 
 In this module we are going to be with the [rnaturalearth](https://cran.r-project.org/web/packages/rnaturalearth/rnaturalearth.pdf) package, which facilitates working with [Natural Earth](https://www.naturalearthdata.com/) map data in R. Natural Earth is a public domain map dataset based on Tom Patterson's Natural Earth [projection](https://en.wikipedia.org/wiki/Natural_Earth_projection) that provides data suitable for making small-scale world, regional and country maps. Natural Earth contains country boundaries, first-order admin boundaries like provinces and states, urban polygons and [more](https://www.naturalearthdata.com/features/). `rnaturalearth` supports both simple features (`sf`) and spatial objects (`sp`) formats, but we are going to be focused on using simple features for the reasons stated earlier. 
 
@@ -52,11 +54,12 @@ library(dplyr)
 world_map_df <- ne_countries(scale = "medium", returnclass = "sf") |>
     filter(name != "Antarctica") # remove Antarctica
 
-world_map_df |>
-  glimpse()
+#world_map_df |>
+#glimpse()
 
-# world_map_df |>
-#   select(geometry) # view contents of geometry column
+# view contents of geometry column
+world_map_df |>
+  select(geometry) 
 ``` 
 
 ### Make a map with geom_sf()
@@ -97,7 +100,7 @@ ggplot(data = world_map_df) +
 
 ## Using rnaturalearth to map other data
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'Using rnaturalearth to map other data'>}}
+{{< video https://www.youtube.com/watch?v=5RnnGov3Iw4&t=7s title = 'Using rnaturalearth to map data'>}}
 
 Now that we know how to make a map with Natural Earth shapes and `geom_sf()`, we can merge in data and map data from other sources. Let's go ahead and merge some data on oil rents from the World Bank. We will do a `left_join()` based on iso3c country codes. In the World Bank data the iso3c codes are simply called "iso3c." In `rnaturalearth` there are a number of options, but the best is "iso3_a3_eh" because at the time this lesson was written the codes for some of the others [are missing](https://github.com/ropensci/rnaturalearth/issues/77).   
 
@@ -115,7 +118,8 @@ rents_map_df |>
   select(last_col(5):last_col()) |> #select last 5 columns of df
   glimpse() 
 ```
-Now let's map these data. Everything here is pretty much the same as before, except we change the fill to `oil_rents_gdp`. We will also add a subtitle and make a few other cosmetic changes like shifting the position of the legend title, bolding the plot title and changing the `viridis` color scale from discrete to continuous. 
+
+Now we can map these data. Everything here is pretty much the same as before, except we change the fill to `oil_rents_gdp`. We will also add a subtitle and make a few other cosmetic changes like shifting the position of the legend title, bolding the plot title and changing the `viridis` color scale from discrete to continuous. 
 
 ```{r}
 #| label: oil_rents
@@ -144,7 +148,7 @@ ggplot(data = rents_map_df) +
 
 ## Turn your map into a function
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'Accessible Color Schemes'>}}
+{{< video https://www.youtube.com/watch?v=m42vrbEEHT4&t=25s title = 'Accessible Color Schemes'>}}
 
 Sometimes you may want to map more than one variable in a paper or display variables with a map in an app. For these situations, it can help to create your own [function](https://r4ds.had.co.nz/functions.html) that allows you to change various components of the map code without having to type out all of the code every time you want to create a map. 
 
