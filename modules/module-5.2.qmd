@@ -22,7 +22,7 @@ execute:
 
 ## App with a reactive API call and date parameters
 
-<iframe src="https://emmanuelteitelbaum.shinyapps.io/fred_app/" width="1050" height="700" data-external="1"></iframe>
+<iframe src="https://emmanuelteitelbaum.shinyapps.io/fred_app/" width="780" height="500" data-external="1"></iframe>
 
 
 ## Setup

@@ -9,6 +9,7 @@ execute:
   warning: false
 ---
 
+
 :::{.callout-tip}
 - Get a [FRED API key](https://fred.stlouisfed.org/docs/api/api_key.html)
 - Install [fredr](https://cran.r-project.org/web/packages/fredr/vignettes/fredr.html) and read about its basic usage
@@ -29,10 +30,10 @@ execute:
 
 Say something about how to set up an app.R script. 
 
-```{r}
-#| label: setup
-#| eval: false
 
+::: {.cell}
+
+```{.r .cell-code}
 # load packages
 library(shiny)
 library(readr)
@@ -51,16 +52,18 @@ vars <- c("Democracy" = "polyarchy",
           "Life Expectancy" = "life_exp", 
           "Education" = "education")
 ```
+:::
+
 
 
 ## ui 
 
 {{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'View regression results with broom'>}}
 
-```{r}
-#| label: ui
-#| eval: false
 
+::: {.cell}
+
+```{.r .cell-code}
 # Define UI for application that draws a histogram
 ui <- fluidPage(
 
@@ -80,18 +83,19 @@ ui <- fluidPage(
         )
     )
 )
-
 ```
+:::
+
 
 
 ## Server
 
 {{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'View regression results with broom'>}}
 
-```{r}
-#| label: server
-#| eval: false
 
+::: {.cell}
+
+```{.r .cell-code}
 # Define server logic required to draw a scatter plot
 server <- function(input, output, session) {
   
@@ -116,13 +120,15 @@ server <- function(input, output, session) {
   })
 }
 ```
+:::
+
 
 ## Call to Shiny app
 
-```{r}
-#| label: call_shiny
-#| eval: false
 
+::: {.cell}
+
+```{.r .cell-code}
 # See above for the definitions of ui and server
 ui <- ...
 
@@ -131,6 +137,5 @@ server <- ...
 # Run the application 
 shinyApp(ui = ui, server = server)
 ```
-
-
+:::
 
