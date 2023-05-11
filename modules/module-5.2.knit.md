@@ -9,6 +9,7 @@ execute:
   warning: false
 ---
 
+
 :::{.callout-tip}
 - Review the prework for [module 5.1](https://dataviz-gwu.rocks/modules/module-5.1.html) and make sure that you have everything installed
 - Install [ecm](https://cran.r-project.org/web/packages/ecm/ecm.pdf), which we will use to build our recession shading helper script
@@ -29,10 +30,10 @@ execute:
 
 {{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'View regression results with broom'>}}
 
-```{r}
-#| label: setup
-#| eval: false
 
+::: {.cell}
+
+```{.r .cell-code}
 # Load packages
 library(shiny)
 library(fredr)
@@ -64,6 +65,8 @@ vars <- c("Consumer Confidence" = cci,
 # Load helper script
 source("helper.R") # scroll down, code pasted below
 ```
+:::
+
 
 
 ## ui
@@ -72,10 +75,10 @@ source("helper.R") # scroll down, code pasted below
 
 Define UI for application that draws a line chart
 
-```{r}
-#| label: ui
-#| eval: false 
 
+::: {.cell}
+
+```{.r .cell-code}
 ui <- fluidPage(
 
     # Application title
@@ -109,6 +112,8 @@ ui <- fluidPage(
     )
 )
 ```
+:::
+
 
 
 ## Server
@@ -117,10 +122,10 @@ ui <- fluidPage(
 
 Define server logic required to draw a histogram.
 
-```{r}
-#| label: server
-#| eval: false
 
+::: {.cell}
+
+```{.r .cell-code}
 server <- function(input, output) {
   
     # Download data from FRED with reactive function. 
@@ -158,14 +163,16 @@ server <- function(input, output) {
     })
 }
 ```
+:::
+
 
 
 ## Call to Shiny app
 
-```{r}
-#| label: call_shiny
-#| eval: false
 
+::: {.cell}
+
+```{.r .cell-code}
 # See above for the definitions of ui and server
 ui <- ...
 
@@ -174,16 +181,18 @@ server <- ...
 # Run the application 
 shinyApp(ui = ui, server = server)
 ```
+:::
+
 
 
 ## Helper script
 
 Helper script for shaded recession rectangles. Save in a file called `helper.R` in same folder as your `app.R` file. See [this post](https://rpubs.com/FSl/609471) for more details. 
 
-```{r}
-#| label: helper_script
-#| eval: false
 
+::: {.cell}
+
+```{.r .cell-code}
 # build recession shading function 
 library(ecm)
 
@@ -214,4 +223,5 @@ add_rec_shade<-function(st_date,ed_date,shade_color, y_min, y_max) # are st_date
   }
 }
 ```
+:::
 
