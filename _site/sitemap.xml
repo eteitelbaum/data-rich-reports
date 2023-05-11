@@ -1,207 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://dataviz.rocks/index.html</loc>
-    <lastmod>2023-03-14T14:36:01.110Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/about.html</loc>
+    <lastmod>2023-05-11T14:33:54.525Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz.rocks/about.html</loc>
-    <lastmod>2023-02-03T03:01:20.213Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/course-description.html</loc>
+    <lastmod>2023-05-11T14:33:55.175Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz.rocks/course-description.html</loc>
-    <lastmod>2023-02-03T19:23:20.087Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/course-links.html</loc>
+    <lastmod>2023-05-11T14:33:55.831Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz.rocks/course-links.html</loc>
-    <lastmod>2023-03-14T14:52:20.454Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/course-overview.html</loc>
+    <lastmod>2023-05-11T14:33:56.365Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz.rocks/course-support.html</loc>
-    <lastmod>2023-02-03T19:23:35.110Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/course-support.html</loc>
+    <lastmod>2023-05-11T14:33:57.068Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz.rocks/course-syllabus.html</loc>
-    <lastmod>2023-02-03T19:23:33.331Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/course-syllabus.html</loc>
+    <lastmod>2023-05-11T14:33:57.629Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz.rocks/faq.html</loc>
-    <lastmod>2023-02-03T19:23:00.985Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/exercises/exercise-1.2.html</loc>
+    <lastmod>2023-05-11T14:34:00.310Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz.rocks/instructor.html</loc>
-    <lastmod>2023-02-03T19:23:38.717Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/exercises/zzz.html</loc>
+    <lastmod>2023-05-11T14:34:01.928Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz.rocks/modules/module-1.1.html</loc>
-    <lastmod>2023-03-14T14:27:05.029Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/faq.html</loc>
+    <lastmod>2023-05-11T14:34:02.513Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz.rocks/modules/module-1.2.html</loc>
-    <lastmod>2023-03-14T14:23:54.685Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/index.html</loc>
+    <lastmod>2023-05-11T14:34:04.101Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz.rocks/modules/module-2.1.html</loc>
-    <lastmod>2023-02-03T19:23:04.761Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/instructor.html</loc>
+    <lastmod>2023-05-11T14:34:04.716Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz.rocks/modules/module-2.2.html</loc>
-    <lastmod>2023-02-03T19:23:05.330Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/LICENSE.html</loc>
+    <lastmod>2023-05-11T14:34:05.936Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz.rocks/modules/module-3.1.html</loc>
-    <lastmod>2023-02-03T19:23:05.898Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/modules/getting-started.html</loc>
+    <lastmod>2023-05-11T14:34:06.770Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz.rocks/modules/module-3.2.html</loc>
-    <lastmod>2023-02-03T19:23:06.457Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/modules/module-1.1.html</loc>
+    <lastmod>2023-05-11T14:34:08.952Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz.rocks/modules/module-4.1.html</loc>
-    <lastmod>2023-02-03T19:23:07.031Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/modules/module-1.2.html</loc>
+    <lastmod>2023-05-11T14:34:10.363Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz.rocks/modules/module-4.2.html</loc>
-    <lastmod>2023-02-03T19:23:07.579Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/modules/module-2.1.html</loc>
+    <lastmod>2023-05-11T14:34:12.307Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz.rocks/modules/module-5.1.html</loc>
-    <lastmod>2023-02-03T19:23:08.111Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/modules/module-2.2.html</loc>
+    <lastmod>2023-05-11T14:34:14.603Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz.rocks/modules/module-5.2.html</loc>
-    <lastmod>2023-02-03T19:23:08.715Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/modules/module-3.1.html</loc>
+    <lastmod>2023-05-11T14:34:16.285Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz.rocks/modules/module-6.1.html</loc>
-    <lastmod>2023-02-03T19:23:09.223Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/modules/module-3.2.html</loc>
+    <lastmod>2023-05-11T14:34:17.904Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz.rocks/modules/module-6.2.html</loc>
-    <lastmod>2023-02-03T19:23:09.792Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/modules/module-4.1.html</loc>
+    <lastmod>2023-05-11T14:34:21.851Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz.rocks/project/project-assignment-1.html</loc>
-    <lastmod>2023-02-03T19:23:10.357Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/modules/module-4.2.html</loc>
+    <lastmod>2023-05-11T14:34:23.026Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz.rocks/project/project-assignment-2.html</loc>
-    <lastmod>2023-02-03T19:23:10.871Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/modules/module-5.1.html</loc>
+    <lastmod>2023-05-11T14:34:23.964Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz.rocks/project/project-assignment-3.html</loc>
-    <lastmod>2023-02-03T19:23:11.414Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/modules/module-5.2.html</loc>
+    <lastmod>2023-05-11T14:34:25.726Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz.rocks/project/project-datasets.html</loc>
-    <lastmod>2023-02-03T19:23:11.995Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/modules/module-6.1.html</loc>
+    <lastmod>2023-05-11T14:34:26.310Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz.rocks/project/project-description.html</loc>
-    <lastmod>2023-02-03T19:23:12.522Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/modules/module-6.2.html</loc>
+    <lastmod>2023-05-11T14:34:26.879Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz.rocks/course-overview.html</loc>
-    <lastmod>2023-02-03T19:23:21.892Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/project/project-assignment-1.html</loc>
+    <lastmod>2023-05-11T14:34:27.424Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz.rocks/LICENSE.html</loc>
-    <lastmod>2023-02-03T19:23:02.476Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/project/project-assignment-2.html</loc>
+    <lastmod>2023-05-11T14:34:28.009Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz.rocks/modules/getting-started.html</loc>
-    <lastmod>2023-03-14T14:29:34.291Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/project/project-assignment-3.html</loc>
+    <lastmod>2023-05-11T14:34:28.549Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz-gwu.rocks/index.html</loc>
-    <lastmod>2023-05-09T18:25:06.144Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/project/project-datasets.html</loc>
+    <lastmod>2023-05-11T14:34:29.194Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz-gwu.rocks/course-links.html</loc>
-    <lastmod>2023-05-02T03:28:28.081Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/project/project-description.html</loc>
+    <lastmod>2023-05-11T14:34:29.829Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz-gwu.rocks/modules/module-1.1.html</loc>
-    <lastmod>2023-05-02T03:41:01.446Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/weeks/week-1.html</loc>
+    <lastmod>2023-05-11T14:34:30.404Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz-gwu.rocks/modules/module-1.2.html</loc>
-    <lastmod>2023-05-01T04:11:10.278Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/weeks/week-2.html</loc>
+    <lastmod>2023-05-11T14:34:30.973Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz-gwu.rocks/modules/getting-started.html</loc>
-    <lastmod>2023-04-24T14:54:02.654Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/weeks/week-3.html</loc>
+    <lastmod>2023-05-11T14:34:31.581Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz-gwu.rocks/modules/module-2.1.html</loc>
-    <lastmod>2023-05-05T03:48:18.611Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/weeks/week-4.html</loc>
+    <lastmod>2023-05-11T14:34:32.159Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz-gwu.rocks/zzz.html</loc>
-    <lastmod>2023-03-19T12:06:14.651Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/weeks/week-5.html</loc>
+    <lastmod>2023-05-11T14:34:32.754Z</lastmod>
   </url>
   <url>
-    <loc>https://dataviz-gwu.rocks/modules/module-2.2.html</loc>
-    <lastmod>2023-05-08T03:32:19.655Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dataviz-gwu.rocks/exercises/exercise-1.2.html</loc>
-    <lastmod>2023-05-02T23:07:46.627Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dataviz-gwu.rocks/exercises/zzz.html</loc>
-    <lastmod>2023-03-22T14:16:25.040Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dataviz-gwu.rocks/modules/module-3.1.html</loc>
-    <lastmod>2023-05-09T18:25:59.792Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dataviz-gwu.rocks/modules/module-4.2.html</loc>
-    <lastmod>2023-05-11T13:36:27.236Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dataviz-gwu.rocks/modules/module-3.2.html</loc>
-    <lastmod>2023-05-09T18:26:05.645Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dataviz-gwu.rocks/modules/module-4.1.html</loc>
-    <lastmod>2023-05-11T13:35:59.313Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dataviz-gwu.rocks/modules/module-5.1.html</loc>
-    <lastmod>2023-05-11T13:36:33.052Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dataviz-gwu.rocks/modules/module-5.2.html</loc>
-    <lastmod>2023-05-04T01:54:30.151Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dataviz-gwu.rocks/modules/module-5.1.knit.html</loc>
-    <lastmod>2023-04-22T04:31:11.727Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dataviz-gwu.rocks/weeks/week-1.html</loc>
-    <lastmod>2023-05-09T18:25:30.742Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dataviz-gwu.rocks/weeks/week-2.html</loc>
-    <lastmod>2023-05-09T18:25:31.389Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dataviz-gwu.rocks/weeks/week-3.html</loc>
-    <lastmod>2023-05-09T18:25:32.095Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dataviz-gwu.rocks/weeks/week-4.html</loc>
-    <lastmod>2023-05-09T18:25:32.767Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dataviz-gwu.rocks/weeks/week-5.html</loc>
-    <lastmod>2023-05-09T18:25:33.471Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dataviz-gwu.rocks/weeks/week-6.html</loc>
-    <lastmod>2023-05-09T18:25:34.112Z</lastmod>
+    <loc>https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/weeks/week-6.html</loc>
+    <lastmod>2023-05-11T14:34:33.363Z</lastmod>
   </url>
 </urlset>

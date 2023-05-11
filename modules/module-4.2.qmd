@@ -1,7 +1,12 @@
 ---
 title: "Module 4.2"
 subtitle: "Regression Tables and Coefficient Plots"
-editor: visual
+format: html
+highlight-style: atom-one
+execute:
+  echo: true
+  message: false
+  warning: false
 ---
 
 ::: callout-tip
@@ -11,11 +16,6 @@ editor: visual
 :::
 
 Use {peacesciencer}, teach broom, regression table package of some sort and coeffplots.
-
-
-
-
-
 
 ```{r}
 library(peacesciencer)
@@ -32,14 +32,11 @@ conflict_df <- create_stateyears(system = 'gw') |>
 glimpse(conflict_df)
 ```
 
-
-
-
 ```{r}
 library(broom)
 
-conflict_model <- glm(ucdponset ~ ethpol + relpol + polity2 + 
-                        newlmtnest + wbgdppc2011est + wbpopest,
+conflict_model <- glm(ucdponset ~ ethfrac + relfrac + v2x_polyarchy + 
+                        rugged + wbgdppc2011est + wbpopest,
                   data=subset(conflict_df),
                   family = binomial(link="logit"))
 
@@ -49,9 +46,6 @@ conflict_model |>
   tidy() |>
   mutate_if(is.numeric, round, 5)
 ```
-
-
-
 
 ```{r}
 #| label: regression_table
@@ -70,8 +64,8 @@ model3 <- glm(ucdponset ~ rugged + wbgdppc2011est + wbpopest ,
                   data=subset(conflict_df),
                   family = binomial(link="logit"))
 
-model4 <- glm(ucdponset ~ ethfrac + relfrac + v2x_polyarchy +
-                        wbgdppc2011est + wbpopest + rugged,
+model4 <- glm(ucdponset ~ ethfrac + relfrac + v2x_polyarchy + rugged +
+                        wbgdppc2011est + wbpopest,
                   data=subset(conflict_df),
                   family = binomial(link="logit"))
 
@@ -99,10 +93,9 @@ modelsummary(models,
              notes = reference)
 ```
 
-
 ## When a coefficient plot is better
 
-A table is not as compelling for one model. 
+A table is not as compelling for one model.
 
 ```{r}
 modelsummary(conflict_model, 
@@ -114,8 +107,6 @@ modelsummary(conflict_model,
 
 ```
 
-
-
 Better to do a coefficient plot. Have to call `ggplot2` for customization.
 
 ```{r}
@@ -123,17 +114,16 @@ Better to do a coefficient plot. Have to call `ggplot2` for customization.
 
 library(ggplot2)
 
+
 modelplot(conflict_model, 
-          coef_map = coef_map,
+          coef_map = rev(coef_map), # rev() reverses list order
           coef_omit = "Intercept", 
           color = "blue") +
+  # insert a red 0 line so it is easier to tell var significance
+  geom_vline(xintercept = 0, color = "red", linetype = "dashed", linewidth = .75)
   labs(
-    title = "Figure 1: Predictors of Conflict Onset",
     x = "",
+    title = "Figure 1: Predictors of Conflict Onset",
     caption = "Note: Coefficients and 95% confidence intervals."
   ) 
 ```
-
-
-
-

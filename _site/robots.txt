@@ -1,1 +1,1 @@
-Sitemap: https://dataviz-gwu.rocks/sitemap.xml
+Sitemap: https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/sitemap.xml

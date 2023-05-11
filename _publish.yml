@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: f4e485bf-0ef2-40b4-9332-9b9374924de8
+      url: 'https://eteitelbaum.quarto.pub/modelsummary-test'

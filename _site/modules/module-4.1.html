@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.3.306">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,9 +17,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -46,43 +47,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -129,21 +100,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <meta property="og:title" content="PSC/DATS 2102–Summer Schedule - Module 4.1">
 <meta property="og:description" content="Making Tables">
+<meta property="og:image" content="https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/modules/module-4.1_files/figure-html/unnamed-chunk-15-1.png">
 <meta property="og:site-name" content="PSC/DATS 2102--Summer Schedule">
+<meta property="og:image:height" content="960">
+<meta property="og:image:width" content="1344">
 <meta name="twitter:title" content="PSC/DATS 2102–Summer Schedule - Module 4.1">
 <meta name="twitter:description" content="Making Tables">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/modules/module-4.1_files/figure-html/unnamed-chunk-15-1.png">
+<meta name="twitter:image-height" content="960">
+<meta name="twitter:image-width" content="1344">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Module 4.1</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/getting-started.html">Course Modules</a></li><li class="breadcrumb-item"><a href="../modules/module-4.1.html">Module 4.1</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -151,201 +133,232 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
       <img src="../images/logo-placeholder.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
-    <a href="https://blackboard.gwu.edu" title="Blackboard" class="sidebar-tool px-1"><i class="bi bi-mortarboard-fill"></i></a>
-    <a href="https://classroom.github.com" title="Github Classroom" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-    <a href="https://posit.co/download/rstudio-desktop" title="RStudio Desktop" class="sidebar-tool px-1"><i class="bi bi-r-project"></i></a>
-  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-  <a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+    <a href="https://blackboard.gwu.edu" title="Blackboard" class="quarto-navigation-tool px-1" aria-label="Blackboard"><i class="bi bi-mortarboard-fill"></i></a>
+    <a href="https://classroom.github.com" title="Github Classroom" class="quarto-navigation-tool px-1" aria-label="Github Classroom"><i class="bi bi-github"></i></a>
+    <a href="https://posit.co/download/rstudio-desktop" title="RStudio Desktop" class="quarto-navigation-tool px-1" aria-label="RStudio Desktop"><i class="bi bi-r-project"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
   </div>
 </a>
 </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">Course information</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text">Course information</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../course-description.html" class="sidebar-item-text sidebar-link">Description</a>
+  <a href="../course-description.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Description</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">Overview</a>
+  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../course-syllabus.html" class="sidebar-item-text sidebar-link">Syllabus</a>
+  <a href="../course-syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../course-support.html" class="sidebar-item-text sidebar-link">Support</a>
+  <a href="../course-support.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Support</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../instructor.html" class="sidebar-item-text sidebar-link">Instructor</a>
+  <a href="../instructor.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Instructor</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">Schedule</a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Schedule</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../course-links.html" class="sidebar-item-text sidebar-link">Useful links</a>
+  <a href="../course-links.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Useful links</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../faq.html" class="sidebar-item-text sidebar-link">FAQ</a>
+  <a href="../faq.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FAQ</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Project</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">Project</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../project/project-description.html" class="sidebar-item-text sidebar-link">Description</a>
+  <a href="../project/project-description.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Description</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../project/project-assignment-1.html" class="sidebar-item-text sidebar-link">Assignment 1</a>
+  <a href="../project/project-assignment-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignment 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../project/project-assignment-2.html" class="sidebar-item-text sidebar-link">Assignment 2</a>
+  <a href="../project/project-assignment-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignment 2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../project/project-assignment-3.html" class="sidebar-item-text sidebar-link">Assignment 3</a>
+  <a href="../project/project-assignment-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignment 3</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../project/project-datasets.html" class="sidebar-item-text sidebar-link">Datasets</a>
+  <a href="../project/project-datasets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Datasets</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Course Modules</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Course Modules</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/getting-started.html" class="sidebar-item-text sidebar-link">Getting Started</a>
+  <a href="../modules/getting-started.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/module-1.1.html" class="sidebar-item-text sidebar-link">Module 1.1</a>
+  <a href="../modules/module-1.1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 1.1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/module-1.2.html" class="sidebar-item-text sidebar-link">Module 1.2</a>
+  <a href="../modules/module-1.2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 1.2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/module-2.1.html" class="sidebar-item-text sidebar-link">Module 2.1</a>
+  <a href="../modules/module-2.1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 2.1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/module-2.2.html" class="sidebar-item-text sidebar-link">Module 2.2</a>
+  <a href="../modules/module-2.2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 2.2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/module-3.1.html" class="sidebar-item-text sidebar-link">Module 3.1</a>
+  <a href="../modules/module-3.1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 3.1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/module-3.2.html" class="sidebar-item-text sidebar-link">Module 3.2</a>
+  <a href="../modules/module-3.2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 3.2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/module-4.1.html" class="sidebar-item-text sidebar-link active">Module 4.1</a>
+  <a href="../modules/module-4.1.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Module 4.1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/module-4.2.html" class="sidebar-item-text sidebar-link">Module 4.2</a>
+  <a href="../modules/module-4.2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 4.2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/module-5.1.html" class="sidebar-item-text sidebar-link">Module 5.1</a>
+  <a href="../modules/module-5.1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 5.1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/module-5.2.html" class="sidebar-item-text sidebar-link">Module 5.2</a>
+  <a href="../modules/module-5.2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 5.2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/module-6.1.html" class="sidebar-item-text sidebar-link">Module 6.1</a>
+  <a href="../modules/module-6.1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 6.1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/module-6.2.html" class="sidebar-item-text sidebar-link">Module 6.2</a>
+  <a href="../modules/module-6.2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 6.2</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Exercises</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">Exercises</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../exercises/exercise-1.2.html" class="sidebar-item-text sidebar-link">Exercise 1.2</a>
+  <a href="../exercises/exercise-1.2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercise 1.2</span></a>
   </div>
 </li>
       </ul>
@@ -353,6 +366,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -379,7 +393,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Module 4.1</h1>
+<h1 class="title">Module 4.1</h1>
 <p class="subtitle lead">Making Tables</p>
 </div>
 
@@ -395,12 +409,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Prework
 </div>
 </div>
@@ -422,7 +436,7 @@ Prework
 </section>
 <section id="working-with-tidycensus" class="level2">
 <h2 class="anchored" data-anchor-id="working-with-tidycensus">Working with tidycensus</h2>
-<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>We are going to start by using <code>tidycensus</code> to download some income data. To use <code>tidycensus</code> you need a Census API key, which you can get here: http://api.census.gov/data/key_signup.html.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidycensus)</span>
@@ -472,7 +486,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 </section>
 <section id="explore-the-data-with-kableextra" class="level2">
 <h2 class="anchored" data-anchor-id="explore-the-data-with-kableextra">Explore the data with kableExtra</h2>
-<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>Now let’s use some <code>dplyr</code> <a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a> functions and <code>kableExtra</code> to subset and explore the data. First let’s see which are the wealthiest states. To do this, we can apply <code>slice_max()</code> to identify the states with the highest incomes among the top 5 percent of wage earners. We will save that list as an object called <code>top_10</code> and then call <code>kable()</code> to view it.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
@@ -482,112 +496,112 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(top_10)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> name </th>
-   <th style="text-align:right;"> q1 </th>
-   <th style="text-align:right;"> q2 </th>
-   <th style="text-align:right;"> q3 </th>
-   <th style="text-align:right;"> q4 </th>
-   <th style="text-align:right;"> q5 </th>
-   <th style="text-align:right;"> top5 </th>
-  </tr>
- </thead>
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">name</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">q1</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">q2</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">q3</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">q4</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">q5</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">top5</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> District of Columbia </td>
-   <td style="text-align:right;"> 12971 </td>
-   <td style="text-align:right;"> 51060 </td>
-   <td style="text-align:right;"> 94478 </td>
-   <td style="text-align:right;"> 157803 </td>
-   <td style="text-align:right;"> 375792 </td>
-   <td style="text-align:right;"> 670768 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Connecticut </td>
-   <td style="text-align:right;"> 17417 </td>
-   <td style="text-align:right;"> 48870 </td>
-   <td style="text-align:right;"> 84042 </td>
-   <td style="text-align:right;"> 133488 </td>
-   <td style="text-align:right;"> 319533 </td>
-   <td style="text-align:right;"> 602707 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> New York </td>
-   <td style="text-align:right;"> 14054 </td>
-   <td style="text-align:right;"> 42220 </td>
-   <td style="text-align:right;"> 75647 </td>
-   <td style="text-align:right;"> 123318 </td>
-   <td style="text-align:right;"> 302676 </td>
-   <td style="text-align:right;"> 574063 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> New Jersey </td>
-   <td style="text-align:right;"> 18458 </td>
-   <td style="text-align:right;"> 52339 </td>
-   <td style="text-align:right;"> 90337 </td>
-   <td style="text-align:right;"> 142858 </td>
-   <td style="text-align:right;"> 319140 </td>
-   <td style="text-align:right;"> 562886 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Massachusetts </td>
-   <td style="text-align:right;"> 16812 </td>
-   <td style="text-align:right;"> 50519 </td>
-   <td style="text-align:right;"> 89602 </td>
-   <td style="text-align:right;"> 142491 </td>
-   <td style="text-align:right;"> 316447 </td>
-   <td style="text-align:right;"> 558616 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> California </td>
-   <td style="text-align:right;"> 17433 </td>
-   <td style="text-align:right;"> 49234 </td>
-   <td style="text-align:right;"> 84658 </td>
-   <td style="text-align:right;"> 134560 </td>
-   <td style="text-align:right;"> 309857 </td>
-   <td style="text-align:right;"> 555007 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Maryland </td>
-   <td style="text-align:right;"> 19946 </td>
-   <td style="text-align:right;"> 55165 </td>
-   <td style="text-align:right;"> 91725 </td>
-   <td style="text-align:right;"> 140353 </td>
-   <td style="text-align:right;"> 293979 </td>
-   <td style="text-align:right;"> 503597 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Washington </td>
-   <td style="text-align:right;"> 19367 </td>
-   <td style="text-align:right;"> 50803 </td>
-   <td style="text-align:right;"> 82817 </td>
-   <td style="text-align:right;"> 127003 </td>
-   <td style="text-align:right;"> 277165 </td>
-   <td style="text-align:right;"> 487950 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Virginia </td>
-   <td style="text-align:right;"> 17922 </td>
-   <td style="text-align:right;"> 48359 </td>
-   <td style="text-align:right;"> 81072 </td>
-   <td style="text-align:right;"> 127411 </td>
-   <td style="text-align:right;"> 280299 </td>
-   <td style="text-align:right;"> 486006 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Illinois </td>
-   <td style="text-align:right;"> 15102 </td>
-   <td style="text-align:right;"> 42688 </td>
-   <td style="text-align:right;"> 72900 </td>
-   <td style="text-align:right;"> 114531 </td>
-   <td style="text-align:right;"> 258373 </td>
-   <td style="text-align:right;"> 466713 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">District of Columbia</td>
+<td style="text-align: right;">12971</td>
+<td style="text-align: right;">51060</td>
+<td style="text-align: right;">94478</td>
+<td style="text-align: right;">157803</td>
+<td style="text-align: right;">375792</td>
+<td style="text-align: right;">670768</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Connecticut</td>
+<td style="text-align: right;">17417</td>
+<td style="text-align: right;">48870</td>
+<td style="text-align: right;">84042</td>
+<td style="text-align: right;">133488</td>
+<td style="text-align: right;">319533</td>
+<td style="text-align: right;">602707</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">New York</td>
+<td style="text-align: right;">14054</td>
+<td style="text-align: right;">42220</td>
+<td style="text-align: right;">75647</td>
+<td style="text-align: right;">123318</td>
+<td style="text-align: right;">302676</td>
+<td style="text-align: right;">574063</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">New Jersey</td>
+<td style="text-align: right;">18458</td>
+<td style="text-align: right;">52339</td>
+<td style="text-align: right;">90337</td>
+<td style="text-align: right;">142858</td>
+<td style="text-align: right;">319140</td>
+<td style="text-align: right;">562886</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Massachusetts</td>
+<td style="text-align: right;">16812</td>
+<td style="text-align: right;">50519</td>
+<td style="text-align: right;">89602</td>
+<td style="text-align: right;">142491</td>
+<td style="text-align: right;">316447</td>
+<td style="text-align: right;">558616</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">California</td>
+<td style="text-align: right;">17433</td>
+<td style="text-align: right;">49234</td>
+<td style="text-align: right;">84658</td>
+<td style="text-align: right;">134560</td>
+<td style="text-align: right;">309857</td>
+<td style="text-align: right;">555007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Maryland</td>
+<td style="text-align: right;">19946</td>
+<td style="text-align: right;">55165</td>
+<td style="text-align: right;">91725</td>
+<td style="text-align: right;">140353</td>
+<td style="text-align: right;">293979</td>
+<td style="text-align: right;">503597</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Washington</td>
+<td style="text-align: right;">19367</td>
+<td style="text-align: right;">50803</td>
+<td style="text-align: right;">82817</td>
+<td style="text-align: right;">127003</td>
+<td style="text-align: right;">277165</td>
+<td style="text-align: right;">487950</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Virginia</td>
+<td style="text-align: right;">17922</td>
+<td style="text-align: right;">48359</td>
+<td style="text-align: right;">81072</td>
+<td style="text-align: right;">127411</td>
+<td style="text-align: right;">280299</td>
+<td style="text-align: right;">486006</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Illinois</td>
+<td style="text-align: right;">15102</td>
+<td style="text-align: right;">42688</td>
+<td style="text-align: right;">72900</td>
+<td style="text-align: right;">114531</td>
+<td style="text-align: right;">258373</td>
+<td style="text-align: right;">466713</td>
+</tr>
 </tbody>
 </table>
+
 
 </div>
 </div>
@@ -600,112 +614,112 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(bottom_10)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> name </th>
-   <th style="text-align:right;"> q1 </th>
-   <th style="text-align:right;"> q2 </th>
-   <th style="text-align:right;"> q3 </th>
-   <th style="text-align:right;"> q4 </th>
-   <th style="text-align:right;"> q5 </th>
-   <th style="text-align:right;"> top5 </th>
-  </tr>
- </thead>
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">name</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">q1</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">q2</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">q3</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">q4</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">q5</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">top5</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> Puerto Rico </td>
-   <td style="text-align:right;"> 2906 </td>
-   <td style="text-align:right;"> 12144 </td>
-   <td style="text-align:right;"> 22163 </td>
-   <td style="text-align:right;"> 38397 </td>
-   <td style="text-align:right;"> 99043 </td>
-   <td style="text-align:right;"> 187234 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mississippi </td>
-   <td style="text-align:right;"> 10096 </td>
-   <td style="text-align:right;"> 27963 </td>
-   <td style="text-align:right;"> 49418 </td>
-   <td style="text-align:right;"> 80125 </td>
-   <td style="text-align:right;"> 175581 </td>
-   <td style="text-align:right;"> 308523 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Louisiana </td>
-   <td style="text-align:right;"> 10371 </td>
-   <td style="text-align:right;"> 29781 </td>
-   <td style="text-align:right;"> 53925 </td>
-   <td style="text-align:right;"> 89536 </td>
-   <td style="text-align:right;"> 201514 </td>
-   <td style="text-align:right;"> 357026 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> New Mexico </td>
-   <td style="text-align:right;"> 11058 </td>
-   <td style="text-align:right;"> 31274 </td>
-   <td style="text-align:right;"> 54295 </td>
-   <td style="text-align:right;"> 86905 </td>
-   <td style="text-align:right;"> 188282 </td>
-   <td style="text-align:right;"> 323568 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> West Virginia </td>
-   <td style="text-align:right;"> 11120 </td>
-   <td style="text-align:right;"> 29606 </td>
-   <td style="text-align:right;"> 51038 </td>
-   <td style="text-align:right;"> 81393 </td>
-   <td style="text-align:right;"> 174019 </td>
-   <td style="text-align:right;"> 299882 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Alabama </td>
-   <td style="text-align:right;"> 11602 </td>
-   <td style="text-align:right;"> 31928 </td>
-   <td style="text-align:right;"> 55270 </td>
-   <td style="text-align:right;"> 88640 </td>
-   <td style="text-align:right;"> 193311 </td>
-   <td style="text-align:right;"> 336788 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kentucky </td>
-   <td style="text-align:right;"> 11846 </td>
-   <td style="text-align:right;"> 32616 </td>
-   <td style="text-align:right;"> 55838 </td>
-   <td style="text-align:right;"> 88089 </td>
-   <td style="text-align:right;"> 194168 </td>
-   <td style="text-align:right;"> 350411 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Arkansas </td>
-   <td style="text-align:right;"> 12076 </td>
-   <td style="text-align:right;"> 31051 </td>
-   <td style="text-align:right;"> 52280 </td>
-   <td style="text-align:right;"> 82811 </td>
-   <td style="text-align:right;"> 188510 </td>
-   <td style="text-align:right;"> 344470 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> South Carolina </td>
-   <td style="text-align:right;"> 12680 </td>
-   <td style="text-align:right;"> 34881 </td>
-   <td style="text-align:right;"> 58665 </td>
-   <td style="text-align:right;"> 92118 </td>
-   <td style="text-align:right;"> 207367 </td>
-   <td style="text-align:right;"> 374427 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> District of Columbia </td>
-   <td style="text-align:right;"> 12971 </td>
-   <td style="text-align:right;"> 51060 </td>
-   <td style="text-align:right;"> 94478 </td>
-   <td style="text-align:right;"> 157803 </td>
-   <td style="text-align:right;"> 375792 </td>
-   <td style="text-align:right;"> 670768 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">Puerto Rico</td>
+<td style="text-align: right;">2906</td>
+<td style="text-align: right;">12144</td>
+<td style="text-align: right;">22163</td>
+<td style="text-align: right;">38397</td>
+<td style="text-align: right;">99043</td>
+<td style="text-align: right;">187234</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mississippi</td>
+<td style="text-align: right;">10096</td>
+<td style="text-align: right;">27963</td>
+<td style="text-align: right;">49418</td>
+<td style="text-align: right;">80125</td>
+<td style="text-align: right;">175581</td>
+<td style="text-align: right;">308523</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Louisiana</td>
+<td style="text-align: right;">10371</td>
+<td style="text-align: right;">29781</td>
+<td style="text-align: right;">53925</td>
+<td style="text-align: right;">89536</td>
+<td style="text-align: right;">201514</td>
+<td style="text-align: right;">357026</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">New Mexico</td>
+<td style="text-align: right;">11058</td>
+<td style="text-align: right;">31274</td>
+<td style="text-align: right;">54295</td>
+<td style="text-align: right;">86905</td>
+<td style="text-align: right;">188282</td>
+<td style="text-align: right;">323568</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">West Virginia</td>
+<td style="text-align: right;">11120</td>
+<td style="text-align: right;">29606</td>
+<td style="text-align: right;">51038</td>
+<td style="text-align: right;">81393</td>
+<td style="text-align: right;">174019</td>
+<td style="text-align: right;">299882</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Alabama</td>
+<td style="text-align: right;">11602</td>
+<td style="text-align: right;">31928</td>
+<td style="text-align: right;">55270</td>
+<td style="text-align: right;">88640</td>
+<td style="text-align: right;">193311</td>
+<td style="text-align: right;">336788</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Kentucky</td>
+<td style="text-align: right;">11846</td>
+<td style="text-align: right;">32616</td>
+<td style="text-align: right;">55838</td>
+<td style="text-align: right;">88089</td>
+<td style="text-align: right;">194168</td>
+<td style="text-align: right;">350411</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Arkansas</td>
+<td style="text-align: right;">12076</td>
+<td style="text-align: right;">31051</td>
+<td style="text-align: right;">52280</td>
+<td style="text-align: right;">82811</td>
+<td style="text-align: right;">188510</td>
+<td style="text-align: right;">344470</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">South Carolina</td>
+<td style="text-align: right;">12680</td>
+<td style="text-align: right;">34881</td>
+<td style="text-align: right;">58665</td>
+<td style="text-align: right;">92118</td>
+<td style="text-align: right;">207367</td>
+<td style="text-align: right;">374427</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">District of Columbia</td>
+<td style="text-align: right;">12971</td>
+<td style="text-align: right;">51060</td>
+<td style="text-align: right;">94478</td>
+<td style="text-align: right;">157803</td>
+<td style="text-align: right;">375792</td>
+<td style="text-align: right;">670768</td>
+</tr>
 </tbody>
 </table>
+
 
 </div>
 </div>
@@ -732,92 +746,92 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(states)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> name </th>
-   <th style="text-align:right;"> q1 </th>
-   <th style="text-align:right;"> q2 </th>
-   <th style="text-align:right;"> q3 </th>
-   <th style="text-align:right;"> q4 </th>
-   <th style="text-align:right;"> q5 </th>
-   <th style="text-align:right;"> top5 </th>
-  </tr>
- </thead>
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">name</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">q1</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">q2</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">q3</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">q4</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">q5</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">top5</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> District of Columbia </td>
-   <td style="text-align:right;"> 12971 </td>
-   <td style="text-align:right;"> 51060 </td>
-   <td style="text-align:right;"> 94478 </td>
-   <td style="text-align:right;"> 157803 </td>
-   <td style="text-align:right;"> 375792 </td>
-   <td style="text-align:right;"> 670768 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Minnesota </td>
-   <td style="text-align:right;"> 18936 </td>
-   <td style="text-align:right;"> 48127 </td>
-   <td style="text-align:right;"> 78073 </td>
-   <td style="text-align:right;"> 117959 </td>
-   <td style="text-align:right;"> 250361 </td>
-   <td style="text-align:right;"> 441274 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> New Hampshire </td>
-   <td style="text-align:right;"> 20203 </td>
-   <td style="text-align:right;"> 51363 </td>
-   <td style="text-align:right;"> 83876 </td>
-   <td style="text-align:right;"> 126230 </td>
-   <td style="text-align:right;"> 258632 </td>
-   <td style="text-align:right;"> 440829 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Florida </td>
-   <td style="text-align:right;"> 14307 </td>
-   <td style="text-align:right;"> 37662 </td>
-   <td style="text-align:right;"> 62092 </td>
-   <td style="text-align:right;"> 97166 </td>
-   <td style="text-align:right;"> 230107 </td>
-   <td style="text-align:right;"> 431870 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Louisiana </td>
-   <td style="text-align:right;"> 10371 </td>
-   <td style="text-align:right;"> 29781 </td>
-   <td style="text-align:right;"> 53925 </td>
-   <td style="text-align:right;"> 89536 </td>
-   <td style="text-align:right;"> 201514 </td>
-   <td style="text-align:right;"> 357026 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Oklahoma </td>
-   <td style="text-align:right;"> 13348 </td>
-   <td style="text-align:right;"> 34646 </td>
-   <td style="text-align:right;"> 57485 </td>
-   <td style="text-align:right;"> 89451 </td>
-   <td style="text-align:right;"> 195269 </td>
-   <td style="text-align:right;"> 348180 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Puerto Rico </td>
-   <td style="text-align:right;"> 2906 </td>
-   <td style="text-align:right;"> 12144 </td>
-   <td style="text-align:right;"> 22163 </td>
-   <td style="text-align:right;"> 38397 </td>
-   <td style="text-align:right;"> 99043 </td>
-   <td style="text-align:right;"> 187234 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">District of Columbia</td>
+<td style="text-align: right;">12971</td>
+<td style="text-align: right;">51060</td>
+<td style="text-align: right;">94478</td>
+<td style="text-align: right;">157803</td>
+<td style="text-align: right;">375792</td>
+<td style="text-align: right;">670768</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Minnesota</td>
+<td style="text-align: right;">18936</td>
+<td style="text-align: right;">48127</td>
+<td style="text-align: right;">78073</td>
+<td style="text-align: right;">117959</td>
+<td style="text-align: right;">250361</td>
+<td style="text-align: right;">441274</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">New Hampshire</td>
+<td style="text-align: right;">20203</td>
+<td style="text-align: right;">51363</td>
+<td style="text-align: right;">83876</td>
+<td style="text-align: right;">126230</td>
+<td style="text-align: right;">258632</td>
+<td style="text-align: right;">440829</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Florida</td>
+<td style="text-align: right;">14307</td>
+<td style="text-align: right;">37662</td>
+<td style="text-align: right;">62092</td>
+<td style="text-align: right;">97166</td>
+<td style="text-align: right;">230107</td>
+<td style="text-align: right;">431870</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Louisiana</td>
+<td style="text-align: right;">10371</td>
+<td style="text-align: right;">29781</td>
+<td style="text-align: right;">53925</td>
+<td style="text-align: right;">89536</td>
+<td style="text-align: right;">201514</td>
+<td style="text-align: right;">357026</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Oklahoma</td>
+<td style="text-align: right;">13348</td>
+<td style="text-align: right;">34646</td>
+<td style="text-align: right;">57485</td>
+<td style="text-align: right;">89451</td>
+<td style="text-align: right;">195269</td>
+<td style="text-align: right;">348180</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Puerto Rico</td>
+<td style="text-align: right;">2906</td>
+<td style="text-align: right;">12144</td>
+<td style="text-align: right;">22163</td>
+<td style="text-align: right;">38397</td>
+<td style="text-align: right;">99043</td>
+<td style="text-align: right;">187234</td>
+</tr>
 </tbody>
 </table>
+
 
 </div>
 </div>
 </section>
 <section id="display-the-data-with-a-gt-table" class="level2">
 <h2 class="anchored" data-anchor-id="display-the-data-with-a-gt-table">Display the data with a gt table</h2>
-<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>Now that we have some good data for a table, let’s make a really beautiful table with the <code>gt</code> package. “gt” stands for “grammar of tables.” So just as we talked about a “grammar of graphics” when we were studying plots, we can talk about the “grammar of tables” and break a table down into its component parts.</p>
 <p><code>gt</code> envisions six main parts of a table that can be customized in various ways. The table header includes the title and possibly a subtitle. Next, we have the stub section that contains our row labels and, above that, a stubhead label, which we could use to provide more information about what is in the rows. Then, we have column labels that tell us about what is in each column and the table body which contains the actual data that we want to present. Finally, we have the table footer, which would contain any notes that we have about information contained in the table as well as information about sources. Check out the <code>gt</code> <a href="https://gt.rstudio.com/reference/">function reference</a> to get a sense of all the customizations available.</p>
 <p>Let’s go ahead and start out by making a basic <code>gt</code> table with a title, subtitle, column labels, source note and format the numbers as dollar figures.</p>
@@ -856,7 +870,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-:where(#fdwsauqruo) .gt_table {
+#fdwsauqruo .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -881,7 +895,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-left-color: #D3D3D3;
 }
 
-:where(#fdwsauqruo) .gt_heading {
+#fdwsauqruo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -893,12 +907,12 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-:where(#fdwsauqruo) .gt_caption {
+#fdwsauqruo .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-:where(#fdwsauqruo) .gt_title {
+#fdwsauqruo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -910,7 +924,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-width: 0;
 }
 
-:where(#fdwsauqruo) .gt_subtitle {
+#fdwsauqruo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -922,13 +936,13 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-top-width: 0;
 }
 
-:where(#fdwsauqruo) .gt_bottom_border {
+#fdwsauqruo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-:where(#fdwsauqruo) .gt_col_headings {
+#fdwsauqruo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -943,7 +957,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-:where(#fdwsauqruo) .gt_col_heading {
+#fdwsauqruo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -963,7 +977,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   overflow-x: hidden;
 }
 
-:where(#fdwsauqruo) .gt_column_spanner_outer {
+#fdwsauqruo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -975,15 +989,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 4px;
 }
 
-:where(#fdwsauqruo) .gt_column_spanner_outer:first-child {
+#fdwsauqruo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-:where(#fdwsauqruo) .gt_column_spanner_outer:last-child {
+#fdwsauqruo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-:where(#fdwsauqruo) .gt_column_spanner {
+#fdwsauqruo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -995,7 +1009,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   width: 100%;
 }
 
-:where(#fdwsauqruo) .gt_group_heading {
+#fdwsauqruo .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1021,7 +1035,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   text-align: left;
 }
 
-:where(#fdwsauqruo) .gt_empty_group_heading {
+#fdwsauqruo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1036,15 +1050,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   vertical-align: middle;
 }
 
-:where(#fdwsauqruo) .gt_from_md > :first-child {
+#fdwsauqruo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-:where(#fdwsauqruo) .gt_from_md > :last-child {
+#fdwsauqruo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-:where(#fdwsauqruo) .gt_row {
+#fdwsauqruo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1063,7 +1077,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   overflow-x: hidden;
 }
 
-:where(#fdwsauqruo) .gt_stub {
+#fdwsauqruo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1076,7 +1090,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-:where(#fdwsauqruo) .gt_stub_row_group {
+#fdwsauqruo .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1090,11 +1104,11 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   vertical-align: top;
 }
 
-:where(#fdwsauqruo) .gt_row_group_first td {
+#fdwsauqruo .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-:where(#fdwsauqruo) .gt_summary_row {
+#fdwsauqruo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1104,16 +1118,16 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-:where(#fdwsauqruo) .gt_first_summary_row {
+#fdwsauqruo .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-:where(#fdwsauqruo) .gt_first_summary_row.thick {
+#fdwsauqruo .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-:where(#fdwsauqruo) .gt_last_summary_row {
+#fdwsauqruo .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1123,7 +1137,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-color: #D3D3D3;
 }
 
-:where(#fdwsauqruo) .gt_grand_summary_row {
+#fdwsauqruo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1133,7 +1147,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-:where(#fdwsauqruo) .gt_first_grand_summary_row {
+#fdwsauqruo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1143,11 +1157,11 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-top-color: #D3D3D3;
 }
 
-:where(#fdwsauqruo) .gt_striped {
+#fdwsauqruo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-:where(#fdwsauqruo) .gt_table_body {
+#fdwsauqruo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1156,7 +1170,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-color: #D3D3D3;
 }
 
-:where(#fdwsauqruo) .gt_footnotes {
+#fdwsauqruo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1170,7 +1184,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-:where(#fdwsauqruo) .gt_footnote {
+#fdwsauqruo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1179,7 +1193,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-:where(#fdwsauqruo) .gt_sourcenotes {
+#fdwsauqruo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1193,7 +1207,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-:where(#fdwsauqruo) .gt_sourcenote {
+#fdwsauqruo .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1201,145 +1215,127 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-:where(#fdwsauqruo) .gt_left {
+#fdwsauqruo .gt_left {
   text-align: left;
 }
 
-:where(#fdwsauqruo) .gt_center {
+#fdwsauqruo .gt_center {
   text-align: center;
 }
 
-:where(#fdwsauqruo) .gt_right {
+#fdwsauqruo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-:where(#fdwsauqruo) .gt_font_normal {
+#fdwsauqruo .gt_font_normal {
   font-weight: normal;
 }
 
-:where(#fdwsauqruo) .gt_font_bold {
+#fdwsauqruo .gt_font_bold {
   font-weight: bold;
 }
 
-:where(#fdwsauqruo) .gt_font_italic {
+#fdwsauqruo .gt_font_italic {
   font-style: italic;
 }
 
-:where(#fdwsauqruo) .gt_super {
+#fdwsauqruo .gt_super {
   font-size: 65%;
 }
 
-:where(#fdwsauqruo) .gt_footnote_marks {
+#fdwsauqruo .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-:where(#fdwsauqruo) .gt_asterisk {
+#fdwsauqruo .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-:where(#fdwsauqruo) .gt_indent_1 {
+#fdwsauqruo .gt_indent_1 {
   text-indent: 5px;
 }
 
-:where(#fdwsauqruo) .gt_indent_2 {
+#fdwsauqruo .gt_indent_2 {
   text-indent: 10px;
 }
 
-:where(#fdwsauqruo) .gt_indent_3 {
+#fdwsauqruo .gt_indent_3 {
   text-indent: 15px;
 }
 
-:where(#fdwsauqruo) .gt_indent_4 {
+#fdwsauqruo .gt_indent_4 {
   text-indent: 20px;
 }
 
-:where(#fdwsauqruo) .gt_indent_5 {
+#fdwsauqruo .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
-<table class="gt_table">
-  <thead class="gt_header">
-    <tr>
-      <td colspan="7" class="gt_heading gt_title gt_font_normal" style="">Mean Household Income of Quintiles, 2021</td>
-    </tr>
-    <tr>
-      <td colspan="7" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">Seven Representative U.S. States</td>
-    </tr>
-  </thead>
-  <thead class="gt_col_headings">
-    <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=""></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="lowest">lowest</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="second">second</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="third">third</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="fourth">fourth</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="fifth">fifth</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="top 5%">top 5%</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="name" class="gt_row gt_left">District of Columbia</td>
-<td headers="q1" class="gt_row gt_right">$12,971</td>
-<td headers="q2" class="gt_row gt_right">$51,060</td>
-<td headers="q3" class="gt_row gt_right">$94,478</td>
-<td headers="q4" class="gt_row gt_right">$157,803</td>
-<td headers="q5" class="gt_row gt_right">$375,792</td>
-<td headers="top5" class="gt_row gt_right">$670,768</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Minnesota</td>
-<td headers="q1" class="gt_row gt_right">$18,936</td>
-<td headers="q2" class="gt_row gt_right">$48,127</td>
-<td headers="q3" class="gt_row gt_right">$78,073</td>
-<td headers="q4" class="gt_row gt_right">$117,959</td>
-<td headers="q5" class="gt_row gt_right">$250,361</td>
-<td headers="top5" class="gt_row gt_right">$441,274</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">New Hampshire</td>
-<td headers="q1" class="gt_row gt_right">$20,203</td>
-<td headers="q2" class="gt_row gt_right">$51,363</td>
-<td headers="q3" class="gt_row gt_right">$83,876</td>
-<td headers="q4" class="gt_row gt_right">$126,230</td>
-<td headers="q5" class="gt_row gt_right">$258,632</td>
-<td headers="top5" class="gt_row gt_right">$440,829</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Florida</td>
-<td headers="q1" class="gt_row gt_right">$14,307</td>
-<td headers="q2" class="gt_row gt_right">$37,662</td>
-<td headers="q3" class="gt_row gt_right">$62,092</td>
-<td headers="q4" class="gt_row gt_right">$97,166</td>
-<td headers="q5" class="gt_row gt_right">$230,107</td>
-<td headers="top5" class="gt_row gt_right">$431,870</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Louisiana</td>
-<td headers="q1" class="gt_row gt_right">$10,371</td>
-<td headers="q2" class="gt_row gt_right">$29,781</td>
-<td headers="q3" class="gt_row gt_right">$53,925</td>
-<td headers="q4" class="gt_row gt_right">$89,536</td>
-<td headers="q5" class="gt_row gt_right">$201,514</td>
-<td headers="top5" class="gt_row gt_right">$357,026</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Oklahoma</td>
-<td headers="q1" class="gt_row gt_right">$13,348</td>
-<td headers="q2" class="gt_row gt_right">$34,646</td>
-<td headers="q3" class="gt_row gt_right">$57,485</td>
-<td headers="q4" class="gt_row gt_right">$89,451</td>
-<td headers="q5" class="gt_row gt_right">$195,269</td>
-<td headers="top5" class="gt_row gt_right">$348,180</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Puerto Rico</td>
-<td headers="q1" class="gt_row gt_right">$2,906</td>
-<td headers="q2" class="gt_row gt_right">$12,144</td>
-<td headers="q3" class="gt_row gt_right">$22,163</td>
-<td headers="q4" class="gt_row gt_right">$38,397</td>
-<td headers="q5" class="gt_row gt_right">$99,043</td>
-<td headers="top5" class="gt_row gt_right">$187,234</td></tr>
-  </tbody>
-  <tfoot class="gt_sourcenotes">
-    <tr>
-      <td class="gt_sourcenote" colspan="7"><strong>Source</strong>: US Census Bureau, American Community Survey</td>
-    </tr>
-  </tfoot>
-  
-</table>
+
+Mean Household Income of Quintiles, 2021
+Seven Representative U.S. States
+lowest
+second
+third
+fourth
+fifth
+top 5%
+District of Columbia
+$12,971
+$51,060
+$94,478
+$157,803
+$375,792
+$670,768
+Minnesota
+$18,936
+$48,127
+$78,073
+$117,959
+$250,361
+$441,274
+New Hampshire
+$20,203
+$51,363
+$83,876
+$126,230
+$258,632
+$440,829
+Florida
+$14,307
+$37,662
+$62,092
+$97,166
+$230,107
+$431,870
+Louisiana
+$10,371
+$29,781
+$53,925
+$89,536
+$201,514
+$357,026
+Oklahoma
+$13,348
+$34,646
+$57,485
+$89,451
+$195,269
+$348,180
+Puerto Rico
+$2,906
+$12,144
+$22,163
+$38,397
+$99,043
+$187,234
+<strong>Source</strong>: US Census Bureau, American Community Survey
+
 </div>
 </div>
 </div>
@@ -1765,93 +1761,66 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" style="table-layout: fixed;">
-  <colgroup>
-    <col>
-    <col style="width:90px;">
-    <col style="width:90px;">
-    <col style="width:90px;">
-    <col style="width:90px;">
-    <col style="width:90px;">
-    <col style="width:90px;">
-  </colgroup>
-  <thead class="gt_header">
-    <tr>
-      <td colspan="7" class="gt_heading gt_title gt_font_normal" style="">Mean Household Income of Quintiles, 2021</td>
-    </tr>
-    <tr>
-      <td colspan="7" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">Seven Representative U.S. States</td>
-    </tr>
-  </thead>
-  <thead class="gt_col_headings">
-    <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=""></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="lowest">lowest</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="second">second</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="third">third</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="fourth">fourth</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="fifth">fifth</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="top 5%">top 5%</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="name" class="gt_row gt_left">District of Columbia</td>
-<td headers="q1" class="gt_row gt_right">$12,971</td>
-<td headers="q2" class="gt_row gt_right">$51,060</td>
-<td headers="q3" class="gt_row gt_right">$94,478</td>
-<td headers="q4" class="gt_row gt_right">$157,803</td>
-<td headers="q5" class="gt_row gt_right">$375,792</td>
-<td headers="top5" class="gt_row gt_right">$670,768</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Minnesota</td>
-<td headers="q1" class="gt_row gt_right">$18,936</td>
-<td headers="q2" class="gt_row gt_right">$48,127</td>
-<td headers="q3" class="gt_row gt_right">$78,073</td>
-<td headers="q4" class="gt_row gt_right">$117,959</td>
-<td headers="q5" class="gt_row gt_right">$250,361</td>
-<td headers="top5" class="gt_row gt_right">$441,274</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">New Hampshire</td>
-<td headers="q1" class="gt_row gt_right">$20,203</td>
-<td headers="q2" class="gt_row gt_right">$51,363</td>
-<td headers="q3" class="gt_row gt_right">$83,876</td>
-<td headers="q4" class="gt_row gt_right">$126,230</td>
-<td headers="q5" class="gt_row gt_right">$258,632</td>
-<td headers="top5" class="gt_row gt_right">$440,829</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Florida</td>
-<td headers="q1" class="gt_row gt_right">$14,307</td>
-<td headers="q2" class="gt_row gt_right">$37,662</td>
-<td headers="q3" class="gt_row gt_right">$62,092</td>
-<td headers="q4" class="gt_row gt_right">$97,166</td>
-<td headers="q5" class="gt_row gt_right">$230,107</td>
-<td headers="top5" class="gt_row gt_right">$431,870</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Louisiana</td>
-<td headers="q1" class="gt_row gt_right">$10,371</td>
-<td headers="q2" class="gt_row gt_right">$29,781</td>
-<td headers="q3" class="gt_row gt_right">$53,925</td>
-<td headers="q4" class="gt_row gt_right">$89,536</td>
-<td headers="q5" class="gt_row gt_right">$201,514</td>
-<td headers="top5" class="gt_row gt_right">$357,026</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Oklahoma</td>
-<td headers="q1" class="gt_row gt_right">$13,348</td>
-<td headers="q2" class="gt_row gt_right">$34,646</td>
-<td headers="q3" class="gt_row gt_right">$57,485</td>
-<td headers="q4" class="gt_row gt_right">$89,451</td>
-<td headers="q5" class="gt_row gt_right">$195,269</td>
-<td headers="top5" class="gt_row gt_right">$348,180</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Puerto Rico</td>
-<td headers="q1" class="gt_row gt_right">$2,906</td>
-<td headers="q2" class="gt_row gt_right">$12,144</td>
-<td headers="q3" class="gt_row gt_right">$22,163</td>
-<td headers="q4" class="gt_row gt_right">$38,397</td>
-<td headers="q5" class="gt_row gt_right">$99,043</td>
-<td headers="top5" class="gt_row gt_right">$187,234</td></tr>
-  </tbody>
-  <tfoot class="gt_sourcenotes">
-    <tr>
-      <td class="gt_sourcenote" colspan="7"><strong>Source</strong>: US Census Bureau, American Community Survey</td>
-    </tr>
-  </tfoot>
-  
-</table>
+
+Mean Household Income of Quintiles, 2021
+Seven Representative U.S. States
+lowest
+second
+third
+fourth
+fifth
+top 5%
+District of Columbia
+$12,971
+$51,060
+$94,478
+$157,803
+$375,792
+$670,768
+Minnesota
+$18,936
+$48,127
+$78,073
+$117,959
+$250,361
+$441,274
+New Hampshire
+$20,203
+$51,363
+$83,876
+$126,230
+$258,632
+$440,829
+Florida
+$14,307
+$37,662
+$62,092
+$97,166
+$230,107
+$431,870
+Louisiana
+$10,371
+$29,781
+$53,925
+$89,536
+$201,514
+$357,026
+Oklahoma
+$13,348
+$34,646
+$57,485
+$89,451
+$195,269
+$348,180
+Puerto Rico
+$2,906
+$12,144
+$22,163
+$38,397
+$99,043
+$187,234
+<strong>Source</strong>: US Census Bureau, American Community Survey
+
 </div>
 </div>
 </div>
@@ -2277,93 +2246,66 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" style="table-layout: fixed;">
-  <colgroup>
-    <col>
-    <col style="width:90px;">
-    <col style="width:90px;">
-    <col style="width:90px;">
-    <col style="width:90px;">
-    <col style="width:90px;">
-    <col style="width:90px;">
-  </colgroup>
-  <thead class="gt_header">
-    <tr>
-      <td colspan="7" class="gt_heading gt_title gt_font_normal" style="">Mean Household Income of Quintiles, 2021</td>
-    </tr>
-    <tr>
-      <td colspan="7" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">Seven Representative U.S. States</td>
-    </tr>
-  </thead>
-  <thead class="gt_col_headings">
-    <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=""></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="lowest">lowest</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="second">second</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="third">third</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="fourth">fourth</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="fifth">fifth</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="top 5%">top 5%</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="name" class="gt_row gt_left">District of Columbia</td>
-<td headers="q1" class="gt_row gt_right">$12,971</td>
-<td headers="q2" class="gt_row gt_right">$51,060</td>
-<td headers="q3" class="gt_row gt_right">$94,478</td>
-<td headers="q4" class="gt_row gt_right">$157,803</td>
-<td headers="q5" class="gt_row gt_right">$375,792</td>
-<td headers="top5" class="gt_row gt_right">$670,768</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Minnesota</td>
-<td headers="q1" class="gt_row gt_right">$18,936</td>
-<td headers="q2" class="gt_row gt_right">$48,127</td>
-<td headers="q3" class="gt_row gt_right">$78,073</td>
-<td headers="q4" class="gt_row gt_right">$117,959</td>
-<td headers="q5" class="gt_row gt_right">$250,361</td>
-<td headers="top5" class="gt_row gt_right">$441,274</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">New Hampshire</td>
-<td headers="q1" class="gt_row gt_right">$20,203</td>
-<td headers="q2" class="gt_row gt_right">$51,363</td>
-<td headers="q3" class="gt_row gt_right">$83,876</td>
-<td headers="q4" class="gt_row gt_right">$126,230</td>
-<td headers="q5" class="gt_row gt_right">$258,632</td>
-<td headers="top5" class="gt_row gt_right">$440,829</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Florida</td>
-<td headers="q1" class="gt_row gt_right">$14,307</td>
-<td headers="q2" class="gt_row gt_right">$37,662</td>
-<td headers="q3" class="gt_row gt_right">$62,092</td>
-<td headers="q4" class="gt_row gt_right">$97,166</td>
-<td headers="q5" class="gt_row gt_right">$230,107</td>
-<td headers="top5" class="gt_row gt_right">$431,870</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Louisiana</td>
-<td headers="q1" class="gt_row gt_right">$10,371</td>
-<td headers="q2" class="gt_row gt_right">$29,781</td>
-<td headers="q3" class="gt_row gt_right">$53,925</td>
-<td headers="q4" class="gt_row gt_right">$89,536</td>
-<td headers="q5" class="gt_row gt_right">$201,514</td>
-<td headers="top5" class="gt_row gt_right">$357,026</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Oklahoma</td>
-<td headers="q1" class="gt_row gt_right">$13,348</td>
-<td headers="q2" class="gt_row gt_right">$34,646</td>
-<td headers="q3" class="gt_row gt_right">$57,485</td>
-<td headers="q4" class="gt_row gt_right">$89,451</td>
-<td headers="q5" class="gt_row gt_right">$195,269</td>
-<td headers="top5" class="gt_row gt_right">$348,180</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Puerto Rico</td>
-<td headers="q1" class="gt_row gt_right">$2,906</td>
-<td headers="q2" class="gt_row gt_right">$12,144</td>
-<td headers="q3" class="gt_row gt_right">$22,163</td>
-<td headers="q4" class="gt_row gt_right">$38,397</td>
-<td headers="q5" class="gt_row gt_right">$99,043</td>
-<td headers="top5" class="gt_row gt_right">$187,234</td></tr>
-  </tbody>
-  <tfoot class="gt_sourcenotes">
-    <tr>
-      <td class="gt_sourcenote" colspan="7"><strong>Source</strong>: US Census Bureau, American Community Survey</td>
-    </tr>
-  </tfoot>
-  
-</table>
+
+Mean Household Income of Quintiles, 2021
+Seven Representative U.S. States
+lowest
+second
+third
+fourth
+fifth
+top 5%
+District of Columbia
+$12,971
+$51,060
+$94,478
+$157,803
+$375,792
+$670,768
+Minnesota
+$18,936
+$48,127
+$78,073
+$117,959
+$250,361
+$441,274
+New Hampshire
+$20,203
+$51,363
+$83,876
+$126,230
+$258,632
+$440,829
+Florida
+$14,307
+$37,662
+$62,092
+$97,166
+$230,107
+$431,870
+Louisiana
+$10,371
+$29,781
+$53,925
+$89,536
+$201,514
+$357,026
+Oklahoma
+$13,348
+$34,646
+$57,485
+$89,451
+$195,269
+$348,180
+Puerto Rico
+$2,906
+$12,144
+$22,163
+$38,397
+$99,043
+$187,234
+<strong>Source</strong>: US Census Bureau, American Community Survey
+
 </div>
 </div>
 </div>
@@ -2792,93 +2734,66 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" style="table-layout: fixed;">
-  <colgroup>
-    <col>
-    <col style="width:90px;">
-    <col style="width:90px;">
-    <col style="width:90px;">
-    <col style="width:90px;">
-    <col style="width:90px;">
-    <col style="width:90px;">
-  </colgroup>
-  <thead class="gt_header">
-    <tr>
-      <td colspan="7" class="gt_heading gt_title gt_font_normal" style="">Mean Household Income of Quintiles, 2021</td>
-    </tr>
-    <tr>
-      <td colspan="7" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">Seven Representative U.S. States</td>
-    </tr>
-  </thead>
-  <thead class="gt_col_headings">
-    <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=""></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="lowest">lowest</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="second">second</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="third">third</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="fourth">fourth</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="fifth">fifth</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="top 5%">top 5%</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="name" class="gt_row gt_left">District of Columbia</td>
-<td headers="q1" class="gt_row gt_center">$12,971</td>
-<td headers="q2" class="gt_row gt_center">$51,060</td>
-<td headers="q3" class="gt_row gt_center">$94,478</td>
-<td headers="q4" class="gt_row gt_center">$157,803</td>
-<td headers="q5" class="gt_row gt_center">$375,792</td>
-<td headers="top5" class="gt_row gt_center">$670,768</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Minnesota</td>
-<td headers="q1" class="gt_row gt_center">$18,936</td>
-<td headers="q2" class="gt_row gt_center">$48,127</td>
-<td headers="q3" class="gt_row gt_center">$78,073</td>
-<td headers="q4" class="gt_row gt_center">$117,959</td>
-<td headers="q5" class="gt_row gt_center">$250,361</td>
-<td headers="top5" class="gt_row gt_center">$441,274</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">New Hampshire</td>
-<td headers="q1" class="gt_row gt_center">$20,203</td>
-<td headers="q2" class="gt_row gt_center">$51,363</td>
-<td headers="q3" class="gt_row gt_center">$83,876</td>
-<td headers="q4" class="gt_row gt_center">$126,230</td>
-<td headers="q5" class="gt_row gt_center">$258,632</td>
-<td headers="top5" class="gt_row gt_center">$440,829</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Florida</td>
-<td headers="q1" class="gt_row gt_center">$14,307</td>
-<td headers="q2" class="gt_row gt_center">$37,662</td>
-<td headers="q3" class="gt_row gt_center">$62,092</td>
-<td headers="q4" class="gt_row gt_center">$97,166</td>
-<td headers="q5" class="gt_row gt_center">$230,107</td>
-<td headers="top5" class="gt_row gt_center">$431,870</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Louisiana</td>
-<td headers="q1" class="gt_row gt_center">$10,371</td>
-<td headers="q2" class="gt_row gt_center">$29,781</td>
-<td headers="q3" class="gt_row gt_center">$53,925</td>
-<td headers="q4" class="gt_row gt_center">$89,536</td>
-<td headers="q5" class="gt_row gt_center">$201,514</td>
-<td headers="top5" class="gt_row gt_center">$357,026</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Oklahoma</td>
-<td headers="q1" class="gt_row gt_center">$13,348</td>
-<td headers="q2" class="gt_row gt_center">$34,646</td>
-<td headers="q3" class="gt_row gt_center">$57,485</td>
-<td headers="q4" class="gt_row gt_center">$89,451</td>
-<td headers="q5" class="gt_row gt_center">$195,269</td>
-<td headers="top5" class="gt_row gt_center">$348,180</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Puerto Rico</td>
-<td headers="q1" class="gt_row gt_center">$2,906</td>
-<td headers="q2" class="gt_row gt_center">$12,144</td>
-<td headers="q3" class="gt_row gt_center">$22,163</td>
-<td headers="q4" class="gt_row gt_center">$38,397</td>
-<td headers="q5" class="gt_row gt_center">$99,043</td>
-<td headers="top5" class="gt_row gt_center">$187,234</td></tr>
-  </tbody>
-  <tfoot class="gt_sourcenotes">
-    <tr>
-      <td class="gt_sourcenote" colspan="7"><strong>Source</strong>: US Census Bureau, American Community Survey</td>
-    </tr>
-  </tfoot>
-  
-</table>
+
+Mean Household Income of Quintiles, 2021
+Seven Representative U.S. States
+lowest
+second
+third
+fourth
+fifth
+top 5%
+District of Columbia
+$12,971
+$51,060
+$94,478
+$157,803
+$375,792
+$670,768
+Minnesota
+$18,936
+$48,127
+$78,073
+$117,959
+$250,361
+$441,274
+New Hampshire
+$20,203
+$51,363
+$83,876
+$126,230
+$258,632
+$440,829
+Florida
+$14,307
+$37,662
+$62,092
+$97,166
+$230,107
+$431,870
+Louisiana
+$10,371
+$29,781
+$53,925
+$89,536
+$201,514
+$357,026
+Oklahoma
+$13,348
+$34,646
+$57,485
+$89,451
+$195,269
+$348,180
+Puerto Rico
+$2,906
+$12,144
+$22,163
+$38,397
+$99,043
+$187,234
+<strong>Source</strong>: US Census Bureau, American Community Survey
+
 </div>
 </div>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gtsave</span>(vgreattable, <span class="st">"vgreattable.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -3311,93 +3226,66 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" style="table-layout: fixed;">
-  <colgroup>
-    <col>
-    <col style="width:90px;">
-    <col style="width:90px;">
-    <col style="width:90px;">
-    <col style="width:90px;">
-    <col style="width:90px;">
-    <col style="width:90px;">
-  </colgroup>
-  <thead class="gt_header">
-    <tr>
-      <td colspan="7" class="gt_heading gt_title gt_font_normal" style="">Mean Household Income of Quintiles, 2021</td>
-    </tr>
-    <tr>
-      <td colspan="7" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">Seven Representative U.S. States</td>
-    </tr>
-  </thead>
-  <thead class="gt_col_headings">
-    <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=""></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="lowest">lowest</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="second">second</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="third">third</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="fourth">fourth</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="fifth">fifth</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="top 5%">top 5%</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="name" class="gt_row gt_left">District of Columbia</td>
-<td headers="q1" class="gt_row gt_center">$12,971</td>
-<td headers="q2" class="gt_row gt_center">$51,060</td>
-<td headers="q3" class="gt_row gt_center">$94,478</td>
-<td headers="q4" class="gt_row gt_center">$157,803</td>
-<td headers="q5" class="gt_row gt_center">$375,792</td>
-<td headers="top5" class="gt_row gt_center">$670,768</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Minnesota</td>
-<td headers="q1" class="gt_row gt_center">$18,936</td>
-<td headers="q2" class="gt_row gt_center">$48,127</td>
-<td headers="q3" class="gt_row gt_center">$78,073</td>
-<td headers="q4" class="gt_row gt_center">$117,959</td>
-<td headers="q5" class="gt_row gt_center">$250,361</td>
-<td headers="top5" class="gt_row gt_center">$441,274</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">New Hampshire</td>
-<td headers="q1" class="gt_row gt_center">$20,203</td>
-<td headers="q2" class="gt_row gt_center">$51,363</td>
-<td headers="q3" class="gt_row gt_center">$83,876</td>
-<td headers="q4" class="gt_row gt_center">$126,230</td>
-<td headers="q5" class="gt_row gt_center">$258,632</td>
-<td headers="top5" class="gt_row gt_center">$440,829</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Florida</td>
-<td headers="q1" class="gt_row gt_center">$14,307</td>
-<td headers="q2" class="gt_row gt_center">$37,662</td>
-<td headers="q3" class="gt_row gt_center">$62,092</td>
-<td headers="q4" class="gt_row gt_center">$97,166</td>
-<td headers="q5" class="gt_row gt_center">$230,107</td>
-<td headers="top5" class="gt_row gt_center">$431,870</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Louisiana</td>
-<td headers="q1" class="gt_row gt_center">$10,371</td>
-<td headers="q2" class="gt_row gt_center">$29,781</td>
-<td headers="q3" class="gt_row gt_center">$53,925</td>
-<td headers="q4" class="gt_row gt_center">$89,536</td>
-<td headers="q5" class="gt_row gt_center">$201,514</td>
-<td headers="top5" class="gt_row gt_center">$357,026</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Oklahoma</td>
-<td headers="q1" class="gt_row gt_center">$13,348</td>
-<td headers="q2" class="gt_row gt_center">$34,646</td>
-<td headers="q3" class="gt_row gt_center">$57,485</td>
-<td headers="q4" class="gt_row gt_center">$89,451</td>
-<td headers="q5" class="gt_row gt_center">$195,269</td>
-<td headers="top5" class="gt_row gt_center">$348,180</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Puerto Rico</td>
-<td headers="q1" class="gt_row gt_center">$2,906</td>
-<td headers="q2" class="gt_row gt_center">$12,144</td>
-<td headers="q3" class="gt_row gt_center">$22,163</td>
-<td headers="q4" class="gt_row gt_center">$38,397</td>
-<td headers="q5" class="gt_row gt_center">$99,043</td>
-<td headers="top5" class="gt_row gt_center">$187,234</td></tr>
-  </tbody>
-  <tfoot class="gt_sourcenotes">
-    <tr>
-      <td class="gt_sourcenote" colspan="7"><strong>Source</strong>: US Census Bureau, American Community Survey</td>
-    </tr>
-  </tfoot>
-  
-</table>
+
+Mean Household Income of Quintiles, 2021
+Seven Representative U.S. States
+lowest
+second
+third
+fourth
+fifth
+top 5%
+District of Columbia
+$12,971
+$51,060
+$94,478
+$157,803
+$375,792
+$670,768
+Minnesota
+$18,936
+$48,127
+$78,073
+$117,959
+$250,361
+$441,274
+New Hampshire
+$20,203
+$51,363
+$83,876
+$126,230
+$258,632
+$440,829
+Florida
+$14,307
+$37,662
+$62,092
+$97,166
+$230,107
+$431,870
+Louisiana
+$10,371
+$29,781
+$53,925
+$89,536
+$201,514
+$357,026
+Oklahoma
+$13,348
+$34,646
+$57,485
+$89,451
+$195,269
+$348,180
+Puerto Rico
+$2,906
+$12,144
+$22,163
+$38,397
+$99,043
+$187,234
+<strong>Source</strong>: US Census Bureau, American Community Survey
+
 </div>
 </div>
 </div>
@@ -3405,7 +3293,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 </section>
 <section id="when-a-plot-is-better-than-a-table" class="level2">
 <h2 class="anchored" data-anchor-id="when-a-plot-is-better-than-a-table">When a plot is better than a table</h2>
-<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>Be judicious with your use of tables. You would not want to use tables where a plot is more appropriate. For example you would not want to use a table to show a trend over time (a line chart would be more appropriate) or to display the relationship between two variables (where a scatter plot would be more appropriate).</p>
 <p>Another case where a table would be less effective than a plot is in showing estimates, margins of error and confidence intervals. Let’s do an example with median income estimates. We can start by searching for “median income” and discover that the code for median income is B06011_001. Let’s use that to extract the median income for counties in the state of Massachusetts.</p>
 <div class="cell">
@@ -3439,103 +3327,103 @@ $ upper_90 &lt;dbl&gt; 41330, 34006, 37473, 45447, 40338, 35838, 32817, 31722, 5
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(mass_med_inc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> name </th>
-   <th style="text-align:right;"> estimate </th>
-   <th style="text-align:right;"> lower_90 </th>
-   <th style="text-align:right;"> upper_90 </th>
-  </tr>
- </thead>
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">name</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">estimate</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">lower_90</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">upper_90</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> Barnstable </td>
-   <td style="text-align:right;"> 40442 </td>
-   <td style="text-align:right;"> 39554 </td>
-   <td style="text-align:right;"> 41330 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Berkshire </td>
-   <td style="text-align:right;"> 33040 </td>
-   <td style="text-align:right;"> 32074 </td>
-   <td style="text-align:right;"> 34006 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bristol </td>
-   <td style="text-align:right;"> 36910 </td>
-   <td style="text-align:right;"> 36347 </td>
-   <td style="text-align:right;"> 37473 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Dukes </td>
-   <td style="text-align:right;"> 40119 </td>
-   <td style="text-align:right;"> 34791 </td>
-   <td style="text-align:right;"> 45447 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Essex </td>
-   <td style="text-align:right;"> 39756 </td>
-   <td style="text-align:right;"> 39174 </td>
-   <td style="text-align:right;"> 40338 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Franklin </td>
-   <td style="text-align:right;"> 34775 </td>
-   <td style="text-align:right;"> 33712 </td>
-   <td style="text-align:right;"> 35838 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Hampden </td>
-   <td style="text-align:right;"> 32262 </td>
-   <td style="text-align:right;"> 31707 </td>
-   <td style="text-align:right;"> 32817 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Hampshire </td>
-   <td style="text-align:right;"> 30795 </td>
-   <td style="text-align:right;"> 29868 </td>
-   <td style="text-align:right;"> 31722 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Middlesex </td>
-   <td style="text-align:right;"> 51808 </td>
-   <td style="text-align:right;"> 51337 </td>
-   <td style="text-align:right;"> 52279 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nantucket </td>
-   <td style="text-align:right;"> 45717 </td>
-   <td style="text-align:right;"> 38260 </td>
-   <td style="text-align:right;"> 53174 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Norfolk </td>
-   <td style="text-align:right;"> 52591 </td>
-   <td style="text-align:right;"> 51991 </td>
-   <td style="text-align:right;"> 53191 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Plymouth </td>
-   <td style="text-align:right;"> 43684 </td>
-   <td style="text-align:right;"> 43014 </td>
-   <td style="text-align:right;"> 44354 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Suffolk </td>
-   <td style="text-align:right;"> 39200 </td>
-   <td style="text-align:right;"> 38624 </td>
-   <td style="text-align:right;"> 39776 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Worcester </td>
-   <td style="text-align:right;"> 39009 </td>
-   <td style="text-align:right;"> 38454 </td>
-   <td style="text-align:right;"> 39564 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">Barnstable</td>
+<td style="text-align: right;">40442</td>
+<td style="text-align: right;">39554</td>
+<td style="text-align: right;">41330</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Berkshire</td>
+<td style="text-align: right;">33040</td>
+<td style="text-align: right;">32074</td>
+<td style="text-align: right;">34006</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bristol</td>
+<td style="text-align: right;">36910</td>
+<td style="text-align: right;">36347</td>
+<td style="text-align: right;">37473</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dukes</td>
+<td style="text-align: right;">40119</td>
+<td style="text-align: right;">34791</td>
+<td style="text-align: right;">45447</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Essex</td>
+<td style="text-align: right;">39756</td>
+<td style="text-align: right;">39174</td>
+<td style="text-align: right;">40338</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Franklin</td>
+<td style="text-align: right;">34775</td>
+<td style="text-align: right;">33712</td>
+<td style="text-align: right;">35838</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hampden</td>
+<td style="text-align: right;">32262</td>
+<td style="text-align: right;">31707</td>
+<td style="text-align: right;">32817</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hampshire</td>
+<td style="text-align: right;">30795</td>
+<td style="text-align: right;">29868</td>
+<td style="text-align: right;">31722</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Middlesex</td>
+<td style="text-align: right;">51808</td>
+<td style="text-align: right;">51337</td>
+<td style="text-align: right;">52279</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nantucket</td>
+<td style="text-align: right;">45717</td>
+<td style="text-align: right;">38260</td>
+<td style="text-align: right;">53174</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Norfolk</td>
+<td style="text-align: right;">52591</td>
+<td style="text-align: right;">51991</td>
+<td style="text-align: right;">53191</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Plymouth</td>
+<td style="text-align: right;">43684</td>
+<td style="text-align: right;">43014</td>
+<td style="text-align: right;">44354</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Suffolk</td>
+<td style="text-align: right;">39200</td>
+<td style="text-align: right;">38624</td>
+<td style="text-align: right;">39776</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Worcester</td>
+<td style="text-align: right;">39009</td>
+<td style="text-align: right;">38454</td>
+<td style="text-align: right;">39564</td>
+</tr>
 </tbody>
 </table>
+
 
 </div>
 </div>
@@ -3705,9 +3593,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -3772,6 +3674,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -3810,12 +3798,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp(/https:\/\/dataviz-gwu\.rocks/);
+      var filterRegex = new RegExp("https:\/\/f4e485bf-0ef2-40b4-9332-9b9374924de8\.netlify\.app\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
-    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -3841,6 +3829,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">© Copyright 2023, <a href="https://emmanuel.teitelbaum.com">Emmanuel Teitelbaum</a></div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
     <div class="nav-footer-right">This page is built with <a href="https://quarto.org/">Quarto</a>. 👷🛠️</div>
   </div>
 </footer>
