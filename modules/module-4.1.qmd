@@ -26,6 +26,7 @@ census_api_key(my_api_key)
 `install.packages(c("tidycensus", "kableExtra", "gt"))`
 
 - We will be using the [stringr](https://stringr.tidyverse.org/) package, which is part of the Tidyverse, so you probably already have it installed. But spend some time reading about its usage and features.
+- Install `webshot2` for the purposes of saving a .png of your table (`install.packages("webshot2")`)
 :::
 
 ## Overview
@@ -215,7 +216,6 @@ vgreattable <- greattable |>
 )
 
 vgreattable
-gtsave(vgreattable, "vgreattable.png")
 ```
 
 ### Add borders and lines
@@ -235,6 +235,17 @@ awesometable <- vgreattable |>
 
 awesometable
 ```
+
+### Export your table
+
+Now try exporting your table as .png file with the `gtsave()` function. 
+
+```{r}
+#| label: table_export
+gtsave(awesometable, "awesometable.png")
+```
+
+
 
 
 ## When a plot is better than a table
