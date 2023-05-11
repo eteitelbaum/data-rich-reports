@@ -103,13 +103,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <meta property="og:title" content="PSC/DATS 2102–Summer Schedule - Module 4.2">
 <meta property="og:description" content="Regression Tables and Coefficient Plots">
-<meta property="og:image" content="https://dataviz-gwu.rocks/modules/module-4.2_files/figure-html/unnamed-chunk-5-1.png">
+<meta property="og:image" content="https://dataviz-gwu.rocks/modules/module-4.2_files/figure-html/unnamed-chunk-7-1.png">
 <meta property="og:site-name" content="PSC/DATS 2102--Summer Schedule">
 <meta property="og:image:height" content="960">
 <meta property="og:image:width" content="1344">
 <meta name="twitter:title" content="PSC/DATS 2102–Summer Schedule - Module 4.2">
 <meta name="twitter:description" content="Regression Tables and Coefficient Plots">
-<meta name="twitter:image" content="https://dataviz-gwu.rocks/modules/module-4.2_files/figure-html/unnamed-chunk-5-1.png">
+<meta name="twitter:image" content="https://dataviz-gwu.rocks/modules/module-4.2_files/figure-html/unnamed-chunk-7-1.png">
 <meta name="twitter:image-height" content="960">
 <meta name="twitter:image-width" content="1344">
 <meta name="twitter:card" content="summary_large_image">
@@ -376,7 +376,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#when-a-coefficient-plot-is-better" id="toc-when-a-coefficient-plot-is-better" class="nav-link active" data-scroll-target="#when-a-coefficient-plot-is-better">When a coefficient plot is better</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#run-a-regression-model-and-display-results-with-broom" id="toc-run-a-regression-model-and-display-results-with-broom" class="nav-link" data-scroll-target="#run-a-regression-model-and-display-results-with-broom">Run a regression model and display results with broom</a></li>
+  <li><a href="#run-many-regressions-and-display-with-modelsummary" id="toc-run-many-regressions-and-display-with-modelsummary" class="nav-link" data-scroll-target="#run-many-regressions-and-display-with-modelsummary">Run many regressions and display with modelsummary</a></li>
+  <li><a href="#when-a-coefficient-plot-is-better" id="toc-when-a-coefficient-plot-is-better" class="nav-link" data-scroll-target="#when-a-coefficient-plot-is-better">When a coefficient plot is better</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/eteitelbaum/dataviz-summer-2023/edit/main/modules/module-4.2.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/eteitelbaum/dataviz-summer-2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -412,17 +415,28 @@ Prework
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Install <a href="http://svmiller.com/peacesciencer/">peacesciencer</a> and familiarize yourself with the documentation, <code>install.packages("peacesciencer")</code></li>
+<li>Install <a href="http://svmiller.com/peacesciencer/">peacesciencer</a>, <a href="https://cran.r-project.org/web/packages/broom/vignettes/broom.html">broom</a> and <a href="https://vincentarelbundock.github.io/modelsummary/articles/modelsummary.html">modelsummary</a>. Familiarize yourself with the basic purpose and usage of these packages, `</li>
 </ul>
+<p><code>install.packages(c("peacesciencer", "broom", "modelsummary"))</code></p>
 </div>
 </div>
-<p>Use {peacesciencer}, teach broom, regression table package of some sort and coeffplots.</p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>A very common use of tables in the social sciences is to present regression results. There are numerous packages available for presenting regression output. In this lesson, we are going to focus on one of them that I think is particularly good for both pdf and html output: <code>modelsummary</code>. <code>modelsummary</code> also includes a function (<code>modelplot()</code>) for plotting point estimates and confidence intervals. So part of the objective of this lesson is going to be to learn when you should use a table to present your regression results versus when you should use a plot.</p>
+<p>We will be taking our example from the peace studies literature. We are going to download data using the <code>peacesciencer</code> package and use it to partially reproduce a famous analysis of conflict onset by <a href="https://www-jstor-org.proxygw.wrlc.org/stable/3118222">Fearon and Laitin</a>.</p>
+</section>
+<section id="run-a-regression-model-and-display-results-with-broom" class="level2">
+<h2 class="anchored" data-anchor-id="run-a-regression-model-and-display-results-with-broom">Run a regression model and display results with broom</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>We will start off by building a data frame for our analysis with the <code>peacesciencer</code> package. <code>peacesciencer</code> is designed to make standard analysis for conflict studies more convenient and includes many of the control variables that you would use to estimate the likelihood of conflict onset or duration.</p>
+<p>To start, we call <code>create_stateyears(s)</code> to create a time-series data set for all available countries. We will specify <code>system = 'gw'</code> to denote the Gleditsch-Ward country coding system. Then we will filter for roughly the same years of Fearon and Laitin’s original analysis (1945-99) with the caveat that <code>peacesciencer</code> only has conflict data starting in 1946.</p>
+<p>Then we add a bunch of data to the data frame using the various <code>add_X</code> functions available in the package. Here we add UCDP conflict data which includes our dependent variable for this analysis–conflict onset. Then we add measures of democracy, ethno-religious fractionalization, GDP and terrain.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(peacesciencer)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>conflict_df <span class="ot">&lt;-</span> <span class="fu">create_stateyears</span>(<span class="at">system =</span> <span class="st">'gw'</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1949</span><span class="sc">:</span><span class="dv">2019</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1946</span><span class="sc">:</span><span class="dv">1999</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_ucdp_acd</span>(<span class="at">type=</span><span class="fu">c</span>(<span class="st">"intrastate"</span>), <span class="at">only_wars =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_democracy</span>() <span class="sc">|&gt;</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_creg_fractionalization</span>() <span class="sc">|&gt;</span></span>
@@ -431,36 +445,38 @@ Prework
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(conflict_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 10,268
+<pre><code>Rows: 7,036
 Columns: 20
 $ gwcode         &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2…
 $ statename      &lt;chr&gt; "United States of America", "United States of America",…
-$ year           &lt;dbl&gt; 1949, 1950, 1951, 1952, 1953, 1954, 1955, 1956, 1957, 1…
+$ year           &lt;dbl&gt; 1946, 1947, 1948, 1949, 1950, 1951, 1952, 1953, 1954, 1…
 $ ucdpongoing    &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
 $ ucdponset      &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
 $ maxintensity   &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
 $ conflict_ids   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
-$ v2x_polyarchy  &lt;dbl&gt; 0.599, 0.587, 0.602, 0.601, 0.594, 0.603, 0.614, 0.633,…
+$ v2x_polyarchy  &lt;dbl&gt; 0.605, 0.587, 0.599, 0.599, 0.587, 0.602, 0.601, 0.594,…
 $ polity2        &lt;dbl&gt; 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,…
-$ xm_qudsest     &lt;dbl&gt; 1.252190, 1.270106, 1.259412, 1.345101, 1.345101, 1.345…
-$ ethfrac        &lt;dbl&gt; 0.2294918, 0.2318781, 0.2343169, 0.2368087, 0.2393554, …
-$ ethpol         &lt;dbl&gt; 0.4255134, 0.4290458, 0.4326358, 0.4362829, 0.4399888, …
-$ relfrac        &lt;dbl&gt; 0.5065309, 0.5093204, 0.5120965, 0.5148594, 0.5176094, …
-$ relpol         &lt;dbl&gt; 0.7770729, 0.7771274, 0.7771923, 0.7772656, 0.7773457, …
-$ wbgdp2011est   &lt;dbl&gt; 28.534, 28.572, 28.635, 28.669, 28.725, 28.730, 28.764,…
-$ wbpopest       &lt;dbl&gt; 18.804, 18.821, 18.832, 18.848, 18.868, 18.883, 18.901,…
-$ sdpest         &lt;dbl&gt; 28.469, 28.510, 28.576, 28.611, 28.668, 28.674, 28.708,…
-$ wbgdppc2011est &lt;dbl&gt; 9.730, 9.752, 9.803, 9.821, 9.857, 9.848, 9.863, 9.885,…
+$ xm_qudsest     &lt;dbl&gt; 1.259180, 1.259180, 1.252190, 1.252190, 1.270106, 1.259…
+$ ethfrac        &lt;dbl&gt; 0.2226323, 0.2248701, 0.2271561, 0.2294918, 0.2318781, …
+$ ethpol         &lt;dbl&gt; 0.4152487, 0.4186156, 0.4220368, 0.4255134, 0.4290458, …
+$ relfrac        &lt;dbl&gt; 0.4980802, 0.5009111, 0.5037278, 0.5065309, 0.5093204, …
+$ relpol         &lt;dbl&gt; 0.7769888, 0.7770017, 0.7770303, 0.7770729, 0.7771274, …
+$ wbgdp2011est   &lt;dbl&gt; 28.539, 28.519, 28.545, 28.534, 28.572, 28.635, 28.669,…
+$ wbpopest       &lt;dbl&gt; 18.744, 18.756, 18.781, 18.804, 18.821, 18.832, 18.848,…
+$ sdpest         &lt;dbl&gt; 28.478, 28.456, 28.483, 28.469, 28.510, 28.576, 28.611,…
+$ wbgdppc2011est &lt;dbl&gt; 9.794, 9.762, 9.764, 9.730, 9.752, 9.803, 9.821, 9.857,…
 $ rugged         &lt;dbl&gt; 1.073, 1.073, 1.073, 1.073, 1.073, 1.073, 1.073, 1.073,…
 $ newlmtnest     &lt;dbl&gt; 3.214868, 3.214868, 3.214868, 3.214868, 3.214868, 3.214…</code></pre>
 </div>
 </div>
+<p>Now let’s go ahead and run the analysis. We will specify a logit model using the <code>glm()</code> function and specifying <code>family = binomial(link = "logit")</code>. We will store our model in an object called <code>conflict_model</code>. And from there we can use the <code>tidy()</code> function from the <code>broom</code> package to view the results.</p>
+<p>We notice that by default <code>tidy()</code> returns figures with large numbers of digits following the decimal point, making hard to tell whether the variables are significant. To fix this, let’s pipe our <code>tidy()</code> output inot a <code>mutate_if()</code> call and specificy that we want numeric output to round to five decimal places.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>conflict_model <span class="ot">&lt;-</span> <span class="fu">glm</span>(ucdponset <span class="sc">~</span> ethfrac <span class="sc">+</span> relfrac <span class="sc">+</span> v2x_polyarchy <span class="sc">+</span> </span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                        rugged <span class="sc">+</span> wbgdppc2011est <span class="sc">+</span> wbpopest,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data=</span><span class="fu">subset</span>(conflict_df),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data=</span> conflict_df,</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link=</span><span class="st">"logit"</span>))</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#tidy(conflict_model)</span></span>
@@ -472,16 +488,68 @@ $ newlmtnest     &lt;dbl&gt; 3.214868, 3.214868, 3.214868, 3.214868, 3.214868, 3
 <pre><code># A tibble: 7 × 5
   term           estimate std.error statistic p.value
   &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
-1 (Intercept)    -5.73       1.32      -4.33  0.00001
-2 ethfrac         0.679      0.366      1.85  0.0637 
-3 relfrac        -0.392      0.403     -0.971 0.331  
-4 v2x_polyarchy  -1.19       0.462     -2.58  0.00984
-5 rugged         -0.00845    0.0768    -0.110 0.912  
-6 wbgdppc2011est -0.364      0.106     -3.45  0.00057
-7 wbpopest        0.303      0.0647     4.69  0      </code></pre>
+1 (Intercept)     -5.69      1.41      -4.04  0.00005
+2 ethfrac          0.800     0.381      2.10  0.0356 
+3 relfrac         -0.391     0.417     -0.939 0.348  
+4 v2x_polyarchy   -0.602     0.509     -1.18  0.237  
+5 rugged           0.0641    0.0760     0.843 0.399  
+6 wbgdppc2011est  -0.372     0.121     -3.08  0.00204
+7 wbpopest         0.293     0.0673     4.35  0.00001</code></pre>
 </div>
 </div>
+<p>How did we do relative to Fearon and Latin’s original analysis. Well, one thing that F&amp;L were pretty certain about is that ethnic and religiou fractionalization <em>do not</em> matter for conflict onset. But here we find a statistically significan relationship between these variables and conflict onset. But one thing we do find in common with their analysis is the importance of wealth and population. Both of these variables are significant in the expected direction. Wealthier countries experience less risk of conflict onset while more populous ones have a higher risk.</p>
+</section>
+<section id="run-many-regressions-and-display-with-modelsummary" class="level2">
+<h2 class="anchored" data-anchor-id="run-many-regressions-and-display-with-modelsummary">Run many regressions and display with modelsummary</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p><code>broom</code> is really great if we want to just run one regression and see the results in the context of a working document. But what if we want to display our results to other researchers? For this, we need to use a different package. One package that is really good at producing professional-looking tabels is <code>modelsummary</code> and one of its strongest features is the ability to combine multiple models into the same table while still allowing for substantial customization.</p>
+<p>Let’s go ahead and store four models. In the first three, we will feature sets of predictors (ethnicity, democracy and terrain) and then a final model that includes all of our predictors. In each model, we will include wealth (GDP) and population as controls because we have a feeling that these are robust predictors of conflict onset.</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ethnicity <span class="ot">&lt;-</span> <span class="fu">glm</span>(ucdponset <span class="sc">~</span> ethfrac <span class="sc">+</span> relfrac <span class="sc">+</span> wbgdppc2011est <span class="sc">+</span> wbpopest, <span class="co"># store each model in an object</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data=</span><span class="fu">subset</span>(conflict_df),</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link=</span><span class="st">"logit"</span>))</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>democracy <span class="ot">&lt;-</span> <span class="fu">glm</span>(ucdponset <span class="sc">~</span> v2x_polyarchy <span class="sc">+</span> wbgdppc2011est <span class="sc">+</span>  wbpopest,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data=</span><span class="fu">subset</span>(conflict_df),</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link=</span><span class="st">"logit"</span>))</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>terrain <span class="ot">&lt;-</span> <span class="fu">glm</span>(ucdponset <span class="sc">~</span> rugged <span class="sc">+</span> wbgdppc2011est <span class="sc">+</span> wbpopest ,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data=</span><span class="fu">subset</span>(conflict_df),</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link=</span><span class="st">"logit"</span>))</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>full_model <span class="ot">&lt;-</span> <span class="fu">glm</span>(ucdponset <span class="sc">~</span> ethfrac <span class="sc">+</span> relfrac <span class="sc">+</span> v2x_polyarchy <span class="sc">+</span> rugged <span class="sc">+</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>                        wbgdppc2011est <span class="sc">+</span> wbpopest,</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data=</span><span class="fu">subset</span>(conflict_df),</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link=</span><span class="st">"logit"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next we will store our models as a list with intuitive names that we can display as column headers in our regression table. Then we will store a new coefficient mapping where we rename our variables and change the order that they will appear in the table. We will also store a title and a reference.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>models <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"Ethnicity"</span> <span class="ot">=</span> ethnicity,  <span class="co"># store list of models in an object</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Democracy"</span> <span class="ot">=</span> democracy, </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Terrain"</span> <span class="ot">=</span> terrain, </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Full Model"</span> <span class="ot">=</span> full_model)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>coef_map <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ethfrac"</span> <span class="ot">=</span> <span class="st">"Ethnic Frac"</span>,  <span class="co"># map coefficients</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"relfrac"</span> <span class="ot">=</span> <span class="st">"Religions Frac"</span>,     <span class="co">#(change names and order)</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"v2x_polyarchy"</span> <span class="ot">=</span> <span class="st">"Polyarchy"</span>,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"rugged"</span> <span class="ot">=</span> <span class="st">"Terrain"</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"wbgdppc2011est"</span> <span class="ot">=</span> <span class="st">"Per capita GDP"</span>,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"wbpopest"</span> <span class="ot">=</span> <span class="st">"Population"</span>,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">"(Intercept)"</span> <span class="ot">=</span> <span class="st">"Intercept"</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>caption <span class="ot">=</span> <span class="st">"Table 1: Predictors of Conflict Onset"</span> <span class="co"># store caption</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>reference <span class="ot">=</span> <span class="st">"See appendix for data sources."</span>      <span class="co"># store reference notes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we can call <code>modelsummary()</code>. The first argument is the list of models we want to display. Next we tell <code>modelsummary</code> that we want it to show stars for statitiscal significance (<code>stars = TRUE</code>). And in <code>gof_map()</code>, we say that, of the many goodness of fit statistics available to us, we only want to include the number of observations. Finally we plug our title into <code>title =</code> and a source note into <code>notes =</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(models,                      <span class="co"># display the table</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">stars =</span> <span class="cn">TRUE</span>,                <span class="co"># include stars for significance</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">gof_map =</span> <span class="fu">c</span>(<span class="st">"nobs"</span>),         <span class="co"># goodness of fit stats to include   </span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">coef_map =</span> coef_map,         <span class="co"># coefficient mapping</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">title =</span> caption,             <span class="co"># title</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">notes =</span> reference)           <span class="co"># source note</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Table 1: Predictors of Conflict Onset</caption>
@@ -497,108 +565,108 @@ $ newlmtnest     &lt;dbl&gt; 3.214868, 3.214868, 3.214868, 3.214868, 3.214868, 3
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Ethnic Frac</td>
-<td style="text-align: center;">0.703*</td>
+<td style="text-align: center;">0.744*</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;">0.679+</td>
+<td style="text-align: center;">0.800*</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: center;">(0.357)</td>
+<td style="text-align: center;">(0.367)</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;">(0.366)</td>
+<td style="text-align: center;">(0.381)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Religions Frac</td>
-<td style="text-align: center;">−0.503</td>
+<td style="text-align: center;">−0.481</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;">−0.392</td>
+<td style="text-align: center;">−0.391</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: center;">(0.399)</td>
+<td style="text-align: center;">(0.411)</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;">(0.403)</td>
+<td style="text-align: center;">(0.417)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Polyarchy</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;">−0.759*</td>
+<td style="text-align: center;">−0.228</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;">−1.192**</td>
+<td style="text-align: center;">−0.602</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;">(0.382)</td>
+<td style="text-align: center;">(0.436)</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;">(0.462)</td>
+<td style="text-align: center;">(0.509)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Terrain</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;">−0.036</td>
-<td style="text-align: center;">−0.008</td>
+<td style="text-align: center;">0.031</td>
+<td style="text-align: center;">0.064</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;">(0.075)</td>
-<td style="text-align: center;">(0.077)</td>
+<td style="text-align: center;">(0.076)</td>
+<td style="text-align: center;">(0.076)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Per capita GDP</td>
-<td style="text-align: center;">−0.503***</td>
-<td style="text-align: center;">−0.396***</td>
-<td style="text-align: center;">−0.487***</td>
-<td style="text-align: center;">−0.364***</td>
+<td style="text-align: center;">−0.474***</td>
+<td style="text-align: center;">−0.512***</td>
+<td style="text-align: center;">−0.543***</td>
+<td style="text-align: center;">−0.372**</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: center;">(0.094)</td>
-<td style="text-align: center;">(0.090)</td>
-<td style="text-align: center;">(0.078)</td>
-<td style="text-align: center;">(0.106)</td>
+<td style="text-align: center;">(0.104)</td>
+<td style="text-align: center;">(0.108)</td>
+<td style="text-align: center;">(0.092)</td>
+<td style="text-align: center;">(0.121)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Population</td>
-<td style="text-align: center;">0.292***</td>
-<td style="text-align: center;">0.333***</td>
-<td style="text-align: center;">0.333***</td>
-<td style="text-align: center;">0.303***</td>
+<td style="text-align: center;">0.282***</td>
+<td style="text-align: center;">0.297***</td>
+<td style="text-align: center;">0.299***</td>
+<td style="text-align: center;">0.293***</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: center;">(0.064)</td>
-<td style="text-align: center;">(0.047)</td>
-<td style="text-align: center;">(0.047)</td>
-<td style="text-align: center;">(0.065)</td>
+<td style="text-align: center;">(0.067)</td>
+<td style="text-align: center;">(0.051)</td>
+<td style="text-align: center;">(0.050)</td>
+<td style="text-align: center;">(0.067)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Intercept</td>
-<td style="text-align: center;">−4.791***</td>
-<td style="text-align: center;">−5.863***</td>
-<td style="text-align: center;">−5.336***</td>
-<td style="text-align: center;">−5.733***</td>
+<td style="text-align: center;">−4.703***</td>
+<td style="text-align: center;">−4.407***</td>
+<td style="text-align: center;">−4.296***</td>
+<td style="text-align: center;">−5.693***</td>
 </tr>
 <tr class="even">
 <td style="text-align: left; box-shadow: 0px 1.5px;"></td>
-<td style="text-align: center; box-shadow: 0px 1.5px;">(1.257)</td>
-<td style="text-align: center; box-shadow: 0px 1.5px;">(1.049)</td>
-<td style="text-align: center; box-shadow: 0px 1.5px;">(1.013)</td>
-<td style="text-align: center; box-shadow: 0px 1.5px;">(1.323)</td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(1.327)</td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(1.205)</td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(1.143)</td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(1.408)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Num.Obs.</td>
-<td style="text-align: center;">8308</td>
-<td style="text-align: center;">9249</td>
-<td style="text-align: center;">9345</td>
-<td style="text-align: center;">8082</td>
+<td style="text-align: center;">6364</td>
+<td style="text-align: center;">6772</td>
+<td style="text-align: center;">6840</td>
+<td style="text-align: center;">6151</td>
 </tr>
 </tbody><tfoot>
 <tr class="even">
@@ -622,16 +690,18 @@ $ newlmtnest     &lt;dbl&gt; 3.214868, 3.214868, 3.214868, 3.214868, 3.214868, 3
 
 </div>
 </div>
+</section>
 <section id="when-a-coefficient-plot-is-better" class="level2">
 <h2 class="anchored" data-anchor-id="when-a-coefficient-plot-is-better">When a coefficient plot is better</h2>
-<p>A table is not as compelling for one model.</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>A regression table is great when we have many models that we want to display. But what happens when we have just one model? We could present something like our earlier <code>tidy()</code> output which has the beta coefficient, the standard error, t-statistic and p-values in separate columns, but this would be unconvetional and would take up a lot of space. Another option is just to present a table with one column like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(conflict_model, </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">stars =</span> <span class="cn">TRUE</span>,  </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">gof_map =</span> <span class="fu">c</span>(<span class="st">"nobs"</span>),</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">coef_map =</span> coef_map,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">title =</span> caption, </span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">notes =</span> reference)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(conflict_model, </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">stars =</span> <span class="cn">TRUE</span>,  </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">gof_map =</span> <span class="fu">c</span>(<span class="st">"nobs"</span>),</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">coef_map =</span> coef_map,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">title =</span> caption, </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">notes =</span> reference)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Table 1: Predictors of Conflict Onset</caption>
@@ -644,63 +714,63 @@ $ newlmtnest     &lt;dbl&gt; 3.214868, 3.214868, 3.214868, 3.214868, 3.214868, 3
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Ethnic Frac</td>
-<td style="text-align: center;">0.679+</td>
+<td style="text-align: center;">0.800*</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: center;">(0.366)</td>
+<td style="text-align: center;">(0.381)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Religions Frac</td>
-<td style="text-align: center;">−0.392</td>
+<td style="text-align: center;">−0.391</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: center;">(0.403)</td>
+<td style="text-align: center;">(0.417)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Polyarchy</td>
-<td style="text-align: center;">−1.192**</td>
+<td style="text-align: center;">−0.602</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: center;">(0.462)</td>
+<td style="text-align: center;">(0.509)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Terrain</td>
-<td style="text-align: center;">−0.008</td>
+<td style="text-align: center;">0.064</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: center;">(0.077)</td>
+<td style="text-align: center;">(0.076)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Per capita GDP</td>
-<td style="text-align: center;">−0.364***</td>
+<td style="text-align: center;">−0.372**</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: center;">(0.106)</td>
+<td style="text-align: center;">(0.121)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Population</td>
-<td style="text-align: center;">0.303***</td>
+<td style="text-align: center;">0.293***</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: center;">(0.065)</td>
+<td style="text-align: center;">(0.067)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Intercept</td>
-<td style="text-align: center;">−5.733***</td>
+<td style="text-align: center;">−5.693***</td>
 </tr>
 <tr class="even">
 <td style="text-align: left; box-shadow: 0px 1.5px;"></td>
-<td style="text-align: center; box-shadow: 0px 1.5px;">(1.323)</td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(1.408)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Num.Obs.</td>
-<td style="text-align: center;">8082</td>
+<td style="text-align: center;">6151</td>
 </tr>
 </tbody><tfoot>
 <tr class="even">
@@ -718,24 +788,26 @@ $ newlmtnest     &lt;dbl&gt; 3.214868, 3.214868, 3.214868, 3.214868, 3.214868, 3
 
 </div>
 </div>
-<p>Better to do a coefficient plot. Have to call <code>ggplot2</code> for customization.</p>
+<p>But this is also somewhat unconventional and makes our regression output look a little bit lonely. A better option could be to display a coefficient plot that shows point estimates and confidence intervals. This is often preferable with one model because it makes our results so much easier to interpret.</p>
+<p>Let’s try making a coefficient plot with <code>modelplot()</code> from the <code>modelsummary</code> package. The syntax for <code>modelplot()</code> is very similar to that of <code>modelsummary()</code> but there are a few small differences.</p>
+<p>First, it puts maps the coefficients from the bottom up, so if you to maintain the order of the coefficients you need to reverse the mapping. We do this with the <code>rev()</code> function.</p>
+<p>Second, we want to omit the intercept with <code>coef_omit = "Intercept"</code> because the emphasis in a coefficient plot is less on the exact regression equation and more on the magnitude and significance of the coefficients.</p>
+<p>Third we can customize various things. We can specify the color of the points and confidence intervals and we can load <code>ggplot2</code> for furthercustomization. Now we can add geoms and labels just like any other ggplot object. Here we add a red vertical intercept line at zero to make it clearer which variables are significant (e.g.&nbsp;the confidence interval does not overlap with zero). And we add a title and a caption using the <code>labs()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">modelplot</span>(conflict_model, </span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">coef_map =</span> <span class="fu">rev</span>(coef_map), <span class="co"># rev() reverses list order</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">coef_omit =</span> <span class="st">"Intercept"</span>, </span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># insert a red 0 line so it is easier to tell var significance</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">linewidth =</span> .<span class="dv">75</span>) <span class="sc">+</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">""</span>,</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Figure 1: Predictors of Conflict Onset"</span>,</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Note: Coefficients and 95% confidence intervals."</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">modelplot</span>(conflict_model, </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">coef_map =</span> <span class="fu">rev</span>(coef_map), <span class="co"># rev() reverses list order</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">coef_omit =</span> <span class="st">"Intercept"</span>, </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span> <span class="co"># use plus to add customizations like any ggplot object</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">linewidth =</span> .<span class="dv">75</span>) <span class="sc">+</span> <span class="co"># red 0 line</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Figure 1: Predictors of Conflict Onset"</span>,</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Note: Coefficients and 95% confidence intervals."</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="module-4.2_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<p><img src="module-4.2_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 
