@@ -110,8 +110,6 @@ modelsummary(conflict_model,
 Better to do a coefficient plot. Have to call `ggplot2` for customization.
 
 ```{r}
-#| echo: false
-
 library(ggplot2)
 
 
@@ -120,7 +118,7 @@ modelplot(conflict_model,
           coef_omit = "Intercept", 
           color = "blue") +
   # insert a red 0 line so it is easier to tell var significance
-  geom_vline(xintercept = 0, color = "red", linetype = "dashed", linewidth = .75)
+  geom_vline(xintercept = 0, color = "red", linetype = "dashed", linewidth = .75) +
   labs(
     x = "",
     title = "Figure 1: Predictors of Conflict Onset",

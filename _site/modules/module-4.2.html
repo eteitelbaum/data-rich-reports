@@ -103,13 +103,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <meta property="og:title" content="PSC/DATS 2102–Summer Schedule - Module 4.2">
 <meta property="og:description" content="Regression Tables and Coefficient Plots">
-<meta property="og:image" content="https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/modules/module-4.2_files/figure-html/unnamed-chunk-5-1.png">
+<meta property="og:image" content="https://dataviz-gwu.rocks/modules/module-4.2_files/figure-html/unnamed-chunk-5-1.png">
 <meta property="og:site-name" content="PSC/DATS 2102--Summer Schedule">
 <meta property="og:image:height" content="960">
 <meta property="og:image:width" content="1344">
 <meta name="twitter:title" content="PSC/DATS 2102–Summer Schedule - Module 4.2">
 <meta name="twitter:description" content="Regression Tables and Coefficient Plots">
-<meta name="twitter:image" content="https://f4e485bf-0ef2-40b4-9332-9b9374924de8.netlify.app/modules/module-4.2_files/figure-html/unnamed-chunk-5-1.png">
+<meta name="twitter:image" content="https://dataviz-gwu.rocks/modules/module-4.2_files/figure-html/unnamed-chunk-5-1.png">
 <meta name="twitter:image-height" content="960">
 <meta name="twitter:image-width" content="1344">
 <meta name="twitter:card" content="summary_large_image">
@@ -483,65 +483,141 @@ $ newlmtnest     &lt;dbl&gt; 3.214868, 3.214868, 3.214868, 3.214868, 3.214868, 3
 </div>
 <div class="cell">
 <div class="cell-output-display">
-Table 1: Predictors of Conflict Onset
-Ethnicity
-Democracy
-Terrain
-Full Model
-Ethnic Frac
-0.703*
-0.679+
-(0.357)
-(0.366)
-Religions Frac
-−0.503
-−0.392
-(0.399)
-(0.403)
-Polyarchy
-−0.759*
-−1.192**
-(0.382)
-(0.462)
-Terrain
-−0.036
-−0.008
-(0.075)
-(0.077)
-Per capita GDP
-−0.503***
-−0.396***
-−0.487***
-−0.364***
-(0.094)
-(0.090)
-(0.078)
-(0.106)
-Population
-0.292***
-0.333***
-0.333***
-0.303***
-(0.064)
-(0.047)
-(0.047)
-(0.065)
-Intercept
-−4.791***
-−5.863***
-−5.336***
-−5.733***
-(1.257)
-(1.049)
-(1.013)
-(1.323)
-Num.Obs.
-8308
-9249
-9345
-8082
-<sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001
-<sup></sup> See appendix for data sources.
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Table 1: Predictors of Conflict Onset</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Ethnicity</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Democracy</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Terrain</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Full Model</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Ethnic Frac</td>
+<td style="text-align: center;">0.703*</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0.679+</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.357)</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">(0.366)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Religions Frac</td>
+<td style="text-align: center;">−0.503</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">−0.392</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.399)</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">(0.403)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Polyarchy</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">−0.759*</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">−1.192**</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">(0.382)</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">(0.462)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Terrain</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">−0.036</td>
+<td style="text-align: center;">−0.008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">(0.075)</td>
+<td style="text-align: center;">(0.077)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Per capita GDP</td>
+<td style="text-align: center;">−0.503***</td>
+<td style="text-align: center;">−0.396***</td>
+<td style="text-align: center;">−0.487***</td>
+<td style="text-align: center;">−0.364***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.094)</td>
+<td style="text-align: center;">(0.090)</td>
+<td style="text-align: center;">(0.078)</td>
+<td style="text-align: center;">(0.106)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Population</td>
+<td style="text-align: center;">0.292***</td>
+<td style="text-align: center;">0.333***</td>
+<td style="text-align: center;">0.333***</td>
+<td style="text-align: center;">0.303***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.064)</td>
+<td style="text-align: center;">(0.047)</td>
+<td style="text-align: center;">(0.047)</td>
+<td style="text-align: center;">(0.065)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Intercept</td>
+<td style="text-align: center;">−4.791***</td>
+<td style="text-align: center;">−5.863***</td>
+<td style="text-align: center;">−5.336***</td>
+<td style="text-align: center;">−5.733***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; box-shadow: 0px 1.5px;"></td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(1.257)</td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(1.049)</td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(1.013)</td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(1.323)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Num.Obs.</td>
+<td style="text-align: center;">8308</td>
+<td style="text-align: center;">9249</td>
+<td style="text-align: center;">9345</td>
+<td style="text-align: center;">8082</td>
+</tr>
+</tbody><tfoot>
+<tr class="even">
+<td style="text-align: left; padding: 0;"><sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><sup></sup> See appendix for data sources.</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tfoot>
+
+</table>
 
 
 </div>
@@ -557,54 +633,109 @@ Num.Obs.
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">title =</span> caption, </span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">notes =</span> reference)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-Table 1: Predictors of Conflict Onset
-Model 1
-Ethnic Frac
-0.679+
-(0.366)
-Religions Frac
-−0.392
-(0.403)
-Polyarchy
-−1.192**
-(0.462)
-Terrain
-−0.008
-(0.077)
-Per capita GDP
-−0.364***
-(0.106)
-Population
-0.303***
-(0.065)
-Intercept
-−5.733***
-(1.323)
-Num.Obs.
-8082
-<sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001
-<sup></sup> See appendix for data sources.
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Table 1: Predictors of Conflict Onset</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;(1)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Ethnic Frac</td>
+<td style="text-align: center;">0.679+</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.366)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Religions Frac</td>
+<td style="text-align: center;">−0.392</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.403)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Polyarchy</td>
+<td style="text-align: center;">−1.192**</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.462)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Terrain</td>
+<td style="text-align: center;">−0.008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.077)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Per capita GDP</td>
+<td style="text-align: center;">−0.364***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.106)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Population</td>
+<td style="text-align: center;">0.303***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.065)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Intercept</td>
+<td style="text-align: center;">−5.733***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; box-shadow: 0px 1.5px;"></td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(1.323)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Num.Obs.</td>
+<td style="text-align: center;">8082</td>
+</tr>
+</tbody><tfoot>
+<tr class="even">
+<td style="text-align: left; padding: 0;"><sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><sup></sup> See appendix for data sources.</td>
+<td style="text-align: center;"></td>
+</tr>
+</tfoot>
+
+</table>
 
 
 </div>
 </div>
 <p>Better to do a coefficient plot. Have to call <code>ggplot2</code> for customization.</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">modelplot</span>(conflict_model, </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">coef_map =</span> <span class="fu">rev</span>(coef_map), <span class="co"># rev() reverses list order</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">coef_omit =</span> <span class="st">"Intercept"</span>, </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># insert a red 0 line so it is easier to tell var significance</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">linewidth =</span> .<span class="dv">75</span>) <span class="sc">+</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">""</span>,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Figure 1: Predictors of Conflict Onset"</span>,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Note: Coefficients and 95% confidence intervals."</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="module-4.2_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$x
-[1] ""
-
-$title
-[1] "Figure 1: Predictors of Conflict Onset"
-
-$caption
-[1] "Note: Coefficients and 95% confidence intervals."
-
-attr(,"class")
-[1] "labels"</code></pre>
 </div>
 </div>
 
@@ -959,7 +1090,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp("https:\/\/f4e485bf-0ef2-40b4-9332-9b9374924de8\.netlify\.app\/");
+      var filterRegex = new RegExp("https:\/\/dataviz-gwu\.rocks");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
