@@ -1,7 +1,139 @@
 ---
 title: "Module 4.2"
-subtitle: ""
+subtitle: "Regression Tables and Coefficient Plots"
 editor: visual
 ---
 
-Use {peacesciencer}, teach broom, regression table package of some sort and coeffplots. 
+::: callout-tip
+## Prework
+
+-   Install [peacesciencer](http://svmiller.com/peacesciencer/) and familiarize yourself with the documentation, `install.packages("peacesciencer")`
+:::
+
+Use {peacesciencer}, teach broom, regression table package of some sort and coeffplots.
+
+
+
+
+
+
+```{r}
+library(peacesciencer)
+library(dplyr)
+
+conflict_df <- create_stateyears(system = 'gw') |>
+  filter(year %in% c(1949:2019)) |>
+  add_ucdp_acd(type=c("intrastate"), only_wars = FALSE) |>
+  add_democracy() |>
+  add_creg_fractionalization() |>
+  add_sdp_gdp() |>
+  add_rugged_terrain()
+
+glimpse(conflict_df)
+```
+
+
+
+
+```{r}
+library(broom)
+
+conflict_model <- glm(ucdponset ~ ethpol + relpol + polity2 + 
+                        newlmtnest + wbgdppc2011est + wbpopest,
+                  data=subset(conflict_df),
+                  family = binomial(link="logit"))
+
+#tidy(conflict_model)
+
+conflict_model |>
+  tidy() |>
+  mutate_if(is.numeric, round, 5)
+```
+
+
+
+
+```{r}
+#| label: regression_table
+#| echo: false 
+library(modelsummary)
+
+model1 <- glm(ucdponset ~ ethfrac + relfrac + wbgdppc2011est + wbpopest,
+                  data=subset(conflict_df),
+                  family = binomial(link="logit"))
+
+model2 <- glm(ucdponset ~ v2x_polyarchy + wbgdppc2011est +  wbpopest,
+                  data=subset(conflict_df),
+                  family = binomial(link="logit"))
+
+model3 <- glm(ucdponset ~ rugged + wbgdppc2011est + wbpopest ,
+                  data=subset(conflict_df),
+                  family = binomial(link="logit"))
+
+model4 <- glm(ucdponset ~ ethfrac + relfrac + v2x_polyarchy +
+                        wbgdppc2011est + wbpopest + rugged,
+                  data=subset(conflict_df),
+                  family = binomial(link="logit"))
+
+models <- list("Ethnicity" = model1, 
+               "Democracy" = model2, 
+               "Terrain" = model3, 
+               "Full Model" = model4)
+
+coef_map <- c("ethfrac" = "Ethnic Frac", 
+        "relfrac" = "Religions Frac",
+        "v2x_polyarchy" = "Polyarchy",
+        "rugged" = "Terrain",
+        "wbgdppc2011est" = "Per capita GDP",
+        "wbpopest" = "Population",
+        "(Intercept)" = "Intercept")
+
+caption = "Table 1: Predictors of Conflict Onset"
+reference = "See appendix for data sources."
+
+modelsummary(models, 
+             stars = TRUE,  
+             gof_map = c("nobs"), 
+             coef_map = coef_map,
+             title = caption, 
+             notes = reference)
+```
+
+
+## When a coefficient plot is better
+
+A table is not as compelling for one model. 
+
+```{r}
+modelsummary(conflict_model, 
+             stars = TRUE,  
+             gof_map = c("nobs"),
+             coef_map = coef_map,
+             title = caption, 
+             notes = reference)
+
+```
+
+
+
+Better to do a coefficient plot. Have to call `ggplot2` for customization.
+
+```{r}
+#| echo: false
+
+library(ggplot2)
+
+modelplot(conflict_model, 
+          coef_map = coef_map,
+          coef_omit = "Intercept", 
+          color = "blue") +
+  labs(
+    title = "Figure 1: Predictors of Conflict Onset",
+    x = "",
+    caption = "Note: Coefficients and 95% confidence intervals."
+  ) 
+```
+
+
+
+

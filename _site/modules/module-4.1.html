@@ -359,10 +359,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#prework" id="toc-prework" class="nav-link active" data-scroll-target="#prework">Prework</a></li>
-  <li><a href="#explore-the-data" id="toc-explore-the-data" class="nav-link" data-scroll-target="#explore-the-data">Explore the data</a></li>
-  <li><a href="#gt-tables" id="toc-gt-tables" class="nav-link" data-scroll-target="#gt-tables">gt tables</a></li>
-  <li><a href="#plot-confidence-intervals-of-estimates" id="toc-plot-confidence-intervals-of-estimates" class="nav-link" data-scroll-target="#plot-confidence-intervals-of-estimates">Plot confidence intervals of estimates</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#working-with-tidycensus" id="toc-working-with-tidycensus" class="nav-link" data-scroll-target="#working-with-tidycensus">Working with tidycensus</a></li>
+  <li><a href="#explore-the-data-with-kableextra" id="toc-explore-the-data-with-kableextra" class="nav-link" data-scroll-target="#explore-the-data-with-kableextra">Explore the data with kableExtra</a></li>
+  <li><a href="#display-the-data-with-a-gt-table" id="toc-display-the-data-with-a-gt-table" class="nav-link" data-scroll-target="#display-the-data-with-a-gt-table">Display the data with a gt table</a>
+  <ul class="collapse">
+  <li><a href="#make-a-good-gt-table" id="toc-make-a-good-gt-table" class="nav-link" data-scroll-target="#make-a-good-gt-table">Make a good gt table</a></li>
+  <li><a href="#change-column-width" id="toc-change-column-width" class="nav-link" data-scroll-target="#change-column-width">Change column width</a></li>
+  <li><a href="#change-font" id="toc-change-font" class="nav-link" data-scroll-target="#change-font">Change font</a></li>
+  <li><a href="#center" id="toc-center" class="nav-link" data-scroll-target="#center">Center</a></li>
+  <li><a href="#add-borders-and-lines" id="toc-add-borders-and-lines" class="nav-link" data-scroll-target="#add-borders-and-lines">Add borders and lines</a></li>
+  </ul></li>
+  <li><a href="#when-a-plot-is-better-than-a-table" id="toc-when-a-plot-is-better-than-a-table" class="nav-link" data-scroll-target="#when-a-plot-is-better-than-a-table">When a plot is better than a table</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/eteitelbaum/dataviz-summer-2023/edit/main/modules/module-4.1.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/eteitelbaum/dataviz-summer-2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -387,24 +395,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="prework" class="level2">
-<h2 class="anchored" data-anchor-id="prework">Prework</h2>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Prework
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ul>
-<li>get a us census <a href="https://api.census.gov/data/key_signup.html">api key</a></li>
-<li>install <code>tidycensus</code>, <code>install.packages("tidycensus")</code></li>
+<li>Get a U.S. Census <a href="https://api.census.gov/data/key_signup.html">api key</a></li>
+<li>Install <a href="https://walker-data.com/tidycensus/articles/basic-usage.html">tidycensus</a>, <a href="https://haozhu233.github.io/kableExtra/">kableExtra</a> and <a href="https://gt.rstudio.com/">gt</a></li>
 </ul>
-<p><a href="https://walker-data.com/tidycensus/articles/basic-usage.html">tidy census basic usage</a></p>
-<p><a href="https://www.census.gov/programs-surveys/acs/data/data-tables.html">acs table info</a></p>
+<p><code>install.packages(c("tidycensus", "kableExtra", "gt"))</code></p>
+<ul>
+<li>We will be using the <a href="https://stringr.tidyverse.org/">stringr</a> package, which is part of the Tidyverse, so you probably already have it installed. But spend some time reading about its usage and features.</li>
+</ul>
+</div>
+</div>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This week we are going to be talking about making tables in R. Tables can be a great way to summarize data for your audience. While there are no hard and fast rules about when to use a table versus a plot, typically we use tables when we want to present summary statistics that we want to compare across groups or when we want to show the precise values for individual data points. This can be true when we have a small number of cases that we want to discuss.</p>
+<p>In this module we are going to be working with the <code>tidycensus</code> package to download income data from the [American Community Survey (ACS)]((https://www.census.gov/programs-surveys/acs/data/data-tables.html) and the <code>kableExtra</code> and <code>gt</code> packages to visualize it. Along the way, we discuss “the grammar of tables” and some situations where a table would be less appropriate than other methods of visualizing our data.</p>
+</section>
+<section id="working-with-tidycensus" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-tidycensus">Working with tidycensus</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>We are going to start by using <code>tidycensus</code> to download some income data. To use <code>tidycensus</code> you need a Census API key, which you can get here: http://api.census.gov/data/key_signup.html.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidycensus)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>census_api_key <span class="ot">=</span> my_api_key <span class="co"># enter your census api key here in quotes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">census_api_key</span>(<span class="st">"YOUR API KEY"</span>) <span class="co"># enter your census api key here in quotes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code>View</code> and use the search function in the viewer. Search for “household income.”</p>
+<p>Use the <code>load_variables()</code> function to import data from the census or ACS for a particular year. There is a <code>cache = TRUE</code> option if you want to cache the data for faster retrieval in the future. We can save our data in an object called <code>v21</code> and then click on it or use <code>View()</code> and the search function in the data frame viewer to see what data are available.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>v21 <span class="ot">&lt;-</span> <span class="fu">load_variables</span>(<span class="dv">2021</span>, <span class="st">"acs5"</span>, <span class="at">cache =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#View(v21)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>We want data on income quintiles, so let’s search for “quintile” in the search field. From there we use <code>get_acs()</code> to retrieve the data based on the codes for the five quintiles and the top five percent of earners.</p>
+<p>In our call, we specify “state” as the geography and “2021” as the year. This will ensure that data from the 2017-2021 ACS is retrieved. Note that by default, tidycensus returns data such that rows represent a unit-variable combination. To get the data with census variables in the columns, we have to specify wide form with <code>output = "wide"</code>. We will select all of the variables except for the margin of error and GEOID. Let’s rename NAME so it is in lower case. And for some reason, <code>tidycensus</code> puts an “E” suffix at the end of all of our variables when we specify wide format, so let’s use <code>rename_with()</code> and <code>str_remove</code> from the [stringr] package to get rid of that suffix. We will save the data frame in an object called <code>quintiles</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
@@ -439,10 +470,10 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 </div>
 </div>
 </section>
-<section id="explore-the-data" class="level2">
-<h2 class="anchored" data-anchor-id="explore-the-data">Explore the data</h2>
-<p>Use <a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a> to explore data and select some cases.</p>
-<p>Where do the wealthiest people live?</p>
+<section id="explore-the-data-with-kableextra" class="level2">
+<h2 class="anchored" data-anchor-id="explore-the-data-with-kableextra">Explore the data with kableExtra</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>Now let’s use some <code>dplyr</code> <a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a> functions and <code>kableExtra</code> to subset and explore the data. First let’s see which are the wealthiest states. To do this, we can apply <code>slice_max()</code> to identify the states with the highest incomes among the top 5 percent of wage earners. We will save that list as an object called <code>top_10</code> and then call <code>kable()</code> to view it.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -560,7 +591,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 
 </div>
 </div>
-<p>What states have the lowest incomes?</p>
+<p>Now let’s do the same thing but searching for the poorest states instead. We will use the <code>slice_min()</code> function to identify the states with the lowest incomes in the first quintile of earners.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -678,44 +709,28 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 
 </div>
 </div>
-<p>Maybe instead of the following, I could select a stratified random sample of states within each tier.</p>
+<p>OK now let’s make a table with a selection of states that reflects the full range of household incomes. So first, we will use <code>slice_min()</code> and <code>slice_max()</code> without arguments to select the state with the poorest households in <code>q1</code> and the state with the wealthiest households in <code>top5</code>. The we will use <code>slice_sample()</code> to take a random sample of five additional states.</p>
+<p>We will store these selections in three objects and then combine them into a single data frame called <code>states</code> using the <code>dplyr</code> function <a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a>. <code>bind_rows()</code> appends data frames with different observations for the same set of columns. You can think of its a kind of “verticle merging” of data frames.</p>
+<p>After we have done the append, we can view the new data by calling <code>kable(states)</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># lowest </span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>state_min <span class="ot">=</span> quintiles <span class="sc">|&gt;</span> </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_min</span>(q1) <span class="sc">|&gt;</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name) <span class="sc">|&gt;</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>() <span class="co"># convert from tibble to vector</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># highest</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>state_max <span class="ot">=</span> quintiles <span class="sc">|&gt;</span> </span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(top5) <span class="sc">|&gt;</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name) <span class="sc">|&gt;</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>()</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_min</span>(q1) </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># highest</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>state_max <span class="ot">=</span> quintiles <span class="sc">|&gt;</span> </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(top5) </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># randomly select five more</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>five_more <span class="ot">=</span> quintiles <span class="sc">|&gt;</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>   <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">5</span>) </span>
 <span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># randomly select five more</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>five_more <span class="ot">=</span> quintiles <span class="sc">|&gt;</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">5</span>) <span class="sc">|&gt;</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name) <span class="sc">|&gt;</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>()</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>states <span class="ot">&lt;-</span> <span class="fu">c</span>(state_min, state_max, five_more)</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>states</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Puerto Rico"          "District of Columbia" "Washington"          
-[4] "Idaho"                "North Dakota"         "Nebraska"            
-[7] "Kansas"              </code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>states_data <span class="ot">&lt;-</span> quintiles <span class="sc">|&gt;</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(name <span class="sc">%in%</span> states) <span class="sc">|&gt;</span> </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(top5))</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(states_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>states <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(state_min, state_max, five_more) <span class="sc">|&gt;</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(top5))</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(states)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <table>
@@ -741,49 +756,49 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
    <td style="text-align:right;"> 670768 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Washington </td>
-   <td style="text-align:right;"> 19367 </td>
-   <td style="text-align:right;"> 50803 </td>
-   <td style="text-align:right;"> 82817 </td>
-   <td style="text-align:right;"> 127003 </td>
-   <td style="text-align:right;"> 277165 </td>
-   <td style="text-align:right;"> 487950 </td>
+   <td style="text-align:left;"> Minnesota </td>
+   <td style="text-align:right;"> 18936 </td>
+   <td style="text-align:right;"> 48127 </td>
+   <td style="text-align:right;"> 78073 </td>
+   <td style="text-align:right;"> 117959 </td>
+   <td style="text-align:right;"> 250361 </td>
+   <td style="text-align:right;"> 441274 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Kansas </td>
-   <td style="text-align:right;"> 15817 </td>
-   <td style="text-align:right;"> 40065 </td>
-   <td style="text-align:right;"> 64780 </td>
-   <td style="text-align:right;"> 99380 </td>
-   <td style="text-align:right;"> 215122 </td>
-   <td style="text-align:right;"> 383038 </td>
+   <td style="text-align:left;"> New Hampshire </td>
+   <td style="text-align:right;"> 20203 </td>
+   <td style="text-align:right;"> 51363 </td>
+   <td style="text-align:right;"> 83876 </td>
+   <td style="text-align:right;"> 126230 </td>
+   <td style="text-align:right;"> 258632 </td>
+   <td style="text-align:right;"> 440829 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> North Dakota </td>
-   <td style="text-align:right;"> 15507 </td>
-   <td style="text-align:right;"> 41406 </td>
-   <td style="text-align:right;"> 68558 </td>
-   <td style="text-align:right;"> 104602 </td>
-   <td style="text-align:right;"> 217143 </td>
-   <td style="text-align:right;"> 380261 </td>
+   <td style="text-align:left;"> Florida </td>
+   <td style="text-align:right;"> 14307 </td>
+   <td style="text-align:right;"> 37662 </td>
+   <td style="text-align:right;"> 62092 </td>
+   <td style="text-align:right;"> 97166 </td>
+   <td style="text-align:right;"> 230107 </td>
+   <td style="text-align:right;"> 431870 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Nebraska </td>
-   <td style="text-align:right;"> 16506 </td>
-   <td style="text-align:right;"> 41590 </td>
-   <td style="text-align:right;"> 66977 </td>
-   <td style="text-align:right;"> 100910 </td>
-   <td style="text-align:right;"> 213091 </td>
-   <td style="text-align:right;"> 378679 </td>
+   <td style="text-align:left;"> Louisiana </td>
+   <td style="text-align:right;"> 10371 </td>
+   <td style="text-align:right;"> 29781 </td>
+   <td style="text-align:right;"> 53925 </td>
+   <td style="text-align:right;"> 89536 </td>
+   <td style="text-align:right;"> 201514 </td>
+   <td style="text-align:right;"> 357026 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Idaho </td>
-   <td style="text-align:right;"> 16450 </td>
-   <td style="text-align:right;"> 40433 </td>
-   <td style="text-align:right;"> 63643 </td>
-   <td style="text-align:right;"> 95316 </td>
-   <td style="text-align:right;"> 203042 </td>
-   <td style="text-align:right;"> 360622 </td>
+   <td style="text-align:left;"> Oklahoma </td>
+   <td style="text-align:right;"> 13348 </td>
+   <td style="text-align:right;"> 34646 </td>
+   <td style="text-align:right;"> 57485 </td>
+   <td style="text-align:right;"> 89451 </td>
+   <td style="text-align:right;"> 195269 </td>
+   <td style="text-align:right;"> 348180 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Puerto Rico </td>
@@ -800,41 +815,48 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 </div>
 </div>
 </section>
-<section id="gt-tables" class="level2">
-<h2 class="anchored" data-anchor-id="gt-tables">gt tables</h2>
-<p><a href="https://gt.rstudio.com/">gt</a> <a href="https://gt.rstudio.com/reference/cols_label.html">gt reference</a></p>
+<section id="display-the-data-with-a-gt-table" class="level2">
+<h2 class="anchored" data-anchor-id="display-the-data-with-a-gt-table">Display the data with a gt table</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>Now that we have some good data for a table, let’s make a really beautiful table with the <code>gt</code> package. “gt” stands for “grammar of tables.” So just as we talked about a “grammar of graphics” when we were studying plots, we can talk about the “grammar of tables” and break a table down into its component parts.</p>
+<p><code>gt</code> envisions six main parts of a table that can be customized in various ways. The table header includes the title and possibly a subtitle. Next, we have the stub section that contains our row labels and, above that, a stubhead label, which we could use to provide more information about what is in the rows. Then, we have column labels that tell us about what is in each column and the table body which contains the actual data that we want to present. Finally, we have the table footer, which would contain any notes that we have about information contained in the table as well as information about sources. Check out the <code>gt</code> <a href="https://gt.rstudio.com/reference/">function reference</a> to get a sense of all the customizations available.</p>
+<p>Let’s go ahead and start out by making a basic <code>gt</code> table with a title, subtitle, column labels, source note and format the numbers as dollar figures.</p>
+<section id="make-a-good-gt-table" class="level3">
+<h3 class="anchored" data-anchor-id="make-a-good-gt-table">Make a good gt table</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">gt</span>(states_data) <span class="sc">|&gt;</span> </span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Mean Household Income of Quintiles, 2021"</span>,</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Seven Representative U.S. States"</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">""</span>,</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">q1 =</span> <span class="st">"lowest"</span>,</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">q2 =</span> <span class="st">"second"</span>,</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">q3 =</span> <span class="st">"third"</span>,</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">q4 =</span> <span class="st">"fourth"</span>,</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">q5 =</span> <span class="st">"fifth"</span>,</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">top5 =</span> <span class="st">"top 5%"</span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_currency</span>(</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(q1, q2, q3, q4, q5, top5),</span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">currency =</span> <span class="st">"USD"</span>, </span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">use_subunits =</span> <span class="cn">FALSE</span></span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># note that you can use markdown (md) to format the source note for html documents</span></span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(<span class="at">source_note =</span> <span class="fu">md</span>(<span class="st">"**Source**: US Census Bureau, American Community Survey"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>goodtable <span class="ot">&lt;-</span> <span class="fu">gt</span>(states) <span class="sc">|&gt;</span> </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Mean Household Income of Quintiles, 2021"</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Seven Representative U.S. States"</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">""</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">q1 =</span> <span class="st">"lowest"</span>,</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">q2 =</span> <span class="st">"second"</span>,</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">q3 =</span> <span class="st">"third"</span>,</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">q4 =</span> <span class="st">"fourth"</span>,</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">q5 =</span> <span class="st">"fifth"</span>,</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">top5 =</span> <span class="st">"top 5%"</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_currency</span>(</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(q1, q2, q3, q4, q5, top5),</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">currency =</span> <span class="st">"USD"</span>, </span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">use_subunits =</span> <span class="cn">FALSE</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># note that you can use markdown (md) to format the source note for html documents</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(<span class="at">source_note =</span> <span class="fu">md</span>(<span class="st">"**Source**: US Census Bureau, American Community Survey"</span>))</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>goodtable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div id="nilneocgfy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="fdwsauqruo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-:where(#nilneocgfy) .gt_table {
+:where(#fdwsauqruo) .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -859,7 +881,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-left-color: #D3D3D3;
 }
 
-:where(#nilneocgfy) .gt_heading {
+:where(#fdwsauqruo) .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -871,12 +893,12 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-:where(#nilneocgfy) .gt_caption {
+:where(#fdwsauqruo) .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-:where(#nilneocgfy) .gt_title {
+:where(#fdwsauqruo) .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -888,7 +910,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-width: 0;
 }
 
-:where(#nilneocgfy) .gt_subtitle {
+:where(#fdwsauqruo) .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -900,13 +922,13 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-top-width: 0;
 }
 
-:where(#nilneocgfy) .gt_bottom_border {
+:where(#fdwsauqruo) .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-:where(#nilneocgfy) .gt_col_headings {
+:where(#fdwsauqruo) .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -921,7 +943,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-:where(#nilneocgfy) .gt_col_heading {
+:where(#fdwsauqruo) .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -941,7 +963,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   overflow-x: hidden;
 }
 
-:where(#nilneocgfy) .gt_column_spanner_outer {
+:where(#fdwsauqruo) .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -953,15 +975,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 4px;
 }
 
-:where(#nilneocgfy) .gt_column_spanner_outer:first-child {
+:where(#fdwsauqruo) .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-:where(#nilneocgfy) .gt_column_spanner_outer:last-child {
+:where(#fdwsauqruo) .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-:where(#nilneocgfy) .gt_column_spanner {
+:where(#fdwsauqruo) .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -973,7 +995,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   width: 100%;
 }
 
-:where(#nilneocgfy) .gt_group_heading {
+:where(#fdwsauqruo) .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -999,7 +1021,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   text-align: left;
 }
 
-:where(#nilneocgfy) .gt_empty_group_heading {
+:where(#fdwsauqruo) .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1014,15 +1036,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   vertical-align: middle;
 }
 
-:where(#nilneocgfy) .gt_from_md > :first-child {
+:where(#fdwsauqruo) .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-:where(#nilneocgfy) .gt_from_md > :last-child {
+:where(#fdwsauqruo) .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-:where(#nilneocgfy) .gt_row {
+:where(#fdwsauqruo) .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1041,7 +1063,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   overflow-x: hidden;
 }
 
-:where(#nilneocgfy) .gt_stub {
+:where(#fdwsauqruo) .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1054,7 +1076,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-:where(#nilneocgfy) .gt_stub_row_group {
+:where(#fdwsauqruo) .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1068,11 +1090,11 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   vertical-align: top;
 }
 
-:where(#nilneocgfy) .gt_row_group_first td {
+:where(#fdwsauqruo) .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-:where(#nilneocgfy) .gt_summary_row {
+:where(#fdwsauqruo) .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1082,16 +1104,16 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-:where(#nilneocgfy) .gt_first_summary_row {
+:where(#fdwsauqruo) .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-:where(#nilneocgfy) .gt_first_summary_row.thick {
+:where(#fdwsauqruo) .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-:where(#nilneocgfy) .gt_last_summary_row {
+:where(#fdwsauqruo) .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1101,7 +1123,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-color: #D3D3D3;
 }
 
-:where(#nilneocgfy) .gt_grand_summary_row {
+:where(#fdwsauqruo) .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1111,7 +1133,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-:where(#nilneocgfy) .gt_first_grand_summary_row {
+:where(#fdwsauqruo) .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1121,11 +1143,11 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-top-color: #D3D3D3;
 }
 
-:where(#nilneocgfy) .gt_striped {
+:where(#fdwsauqruo) .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-:where(#nilneocgfy) .gt_table_body {
+:where(#fdwsauqruo) .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1134,7 +1156,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-color: #D3D3D3;
 }
 
-:where(#nilneocgfy) .gt_footnotes {
+:where(#fdwsauqruo) .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1148,7 +1170,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-:where(#nilneocgfy) .gt_footnote {
+:where(#fdwsauqruo) .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1157,7 +1179,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-:where(#nilneocgfy) .gt_sourcenotes {
+:where(#fdwsauqruo) .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1171,7 +1193,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-:where(#nilneocgfy) .gt_sourcenote {
+:where(#fdwsauqruo) .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1179,64 +1201,64 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-:where(#nilneocgfy) .gt_left {
+:where(#fdwsauqruo) .gt_left {
   text-align: left;
 }
 
-:where(#nilneocgfy) .gt_center {
+:where(#fdwsauqruo) .gt_center {
   text-align: center;
 }
 
-:where(#nilneocgfy) .gt_right {
+:where(#fdwsauqruo) .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-:where(#nilneocgfy) .gt_font_normal {
+:where(#fdwsauqruo) .gt_font_normal {
   font-weight: normal;
 }
 
-:where(#nilneocgfy) .gt_font_bold {
+:where(#fdwsauqruo) .gt_font_bold {
   font-weight: bold;
 }
 
-:where(#nilneocgfy) .gt_font_italic {
+:where(#fdwsauqruo) .gt_font_italic {
   font-style: italic;
 }
 
-:where(#nilneocgfy) .gt_super {
+:where(#fdwsauqruo) .gt_super {
   font-size: 65%;
 }
 
-:where(#nilneocgfy) .gt_footnote_marks {
+:where(#fdwsauqruo) .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-:where(#nilneocgfy) .gt_asterisk {
+:where(#fdwsauqruo) .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-:where(#nilneocgfy) .gt_indent_1 {
+:where(#fdwsauqruo) .gt_indent_1 {
   text-indent: 5px;
 }
 
-:where(#nilneocgfy) .gt_indent_2 {
+:where(#fdwsauqruo) .gt_indent_2 {
   text-indent: 10px;
 }
 
-:where(#nilneocgfy) .gt_indent_3 {
+:where(#fdwsauqruo) .gt_indent_3 {
   text-indent: 15px;
 }
 
-:where(#nilneocgfy) .gt_indent_4 {
+:where(#fdwsauqruo) .gt_indent_4 {
   text-indent: 20px;
 }
 
-:where(#nilneocgfy) .gt_indent_5 {
+:where(#fdwsauqruo) .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1268,41 +1290,41 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <td headers="q4" class="gt_row gt_right">$157,803</td>
 <td headers="q5" class="gt_row gt_right">$375,792</td>
 <td headers="top5" class="gt_row gt_right">$670,768</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Washington</td>
-<td headers="q1" class="gt_row gt_right">$19,367</td>
-<td headers="q2" class="gt_row gt_right">$50,803</td>
-<td headers="q3" class="gt_row gt_right">$82,817</td>
-<td headers="q4" class="gt_row gt_right">$127,003</td>
-<td headers="q5" class="gt_row gt_right">$277,165</td>
-<td headers="top5" class="gt_row gt_right">$487,950</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Kansas</td>
-<td headers="q1" class="gt_row gt_right">$15,817</td>
-<td headers="q2" class="gt_row gt_right">$40,065</td>
-<td headers="q3" class="gt_row gt_right">$64,780</td>
-<td headers="q4" class="gt_row gt_right">$99,380</td>
-<td headers="q5" class="gt_row gt_right">$215,122</td>
-<td headers="top5" class="gt_row gt_right">$383,038</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">North Dakota</td>
-<td headers="q1" class="gt_row gt_right">$15,507</td>
-<td headers="q2" class="gt_row gt_right">$41,406</td>
-<td headers="q3" class="gt_row gt_right">$68,558</td>
-<td headers="q4" class="gt_row gt_right">$104,602</td>
-<td headers="q5" class="gt_row gt_right">$217,143</td>
-<td headers="top5" class="gt_row gt_right">$380,261</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Nebraska</td>
-<td headers="q1" class="gt_row gt_right">$16,506</td>
-<td headers="q2" class="gt_row gt_right">$41,590</td>
-<td headers="q3" class="gt_row gt_right">$66,977</td>
-<td headers="q4" class="gt_row gt_right">$100,910</td>
-<td headers="q5" class="gt_row gt_right">$213,091</td>
-<td headers="top5" class="gt_row gt_right">$378,679</td></tr>
-    <tr><td headers="name" class="gt_row gt_left">Idaho</td>
-<td headers="q1" class="gt_row gt_right">$16,450</td>
-<td headers="q2" class="gt_row gt_right">$40,433</td>
-<td headers="q3" class="gt_row gt_right">$63,643</td>
-<td headers="q4" class="gt_row gt_right">$95,316</td>
-<td headers="q5" class="gt_row gt_right">$203,042</td>
-<td headers="top5" class="gt_row gt_right">$360,622</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Minnesota</td>
+<td headers="q1" class="gt_row gt_right">$18,936</td>
+<td headers="q2" class="gt_row gt_right">$48,127</td>
+<td headers="q3" class="gt_row gt_right">$78,073</td>
+<td headers="q4" class="gt_row gt_right">$117,959</td>
+<td headers="q5" class="gt_row gt_right">$250,361</td>
+<td headers="top5" class="gt_row gt_right">$441,274</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">New Hampshire</td>
+<td headers="q1" class="gt_row gt_right">$20,203</td>
+<td headers="q2" class="gt_row gt_right">$51,363</td>
+<td headers="q3" class="gt_row gt_right">$83,876</td>
+<td headers="q4" class="gt_row gt_right">$126,230</td>
+<td headers="q5" class="gt_row gt_right">$258,632</td>
+<td headers="top5" class="gt_row gt_right">$440,829</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Florida</td>
+<td headers="q1" class="gt_row gt_right">$14,307</td>
+<td headers="q2" class="gt_row gt_right">$37,662</td>
+<td headers="q3" class="gt_row gt_right">$62,092</td>
+<td headers="q4" class="gt_row gt_right">$97,166</td>
+<td headers="q5" class="gt_row gt_right">$230,107</td>
+<td headers="top5" class="gt_row gt_right">$431,870</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Louisiana</td>
+<td headers="q1" class="gt_row gt_right">$10,371</td>
+<td headers="q2" class="gt_row gt_right">$29,781</td>
+<td headers="q3" class="gt_row gt_right">$53,925</td>
+<td headers="q4" class="gt_row gt_right">$89,536</td>
+<td headers="q5" class="gt_row gt_right">$201,514</td>
+<td headers="top5" class="gt_row gt_right">$357,026</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Oklahoma</td>
+<td headers="q1" class="gt_row gt_right">$13,348</td>
+<td headers="q2" class="gt_row gt_right">$34,646</td>
+<td headers="q3" class="gt_row gt_right">$57,485</td>
+<td headers="q4" class="gt_row gt_right">$89,451</td>
+<td headers="q5" class="gt_row gt_right">$195,269</td>
+<td headers="top5" class="gt_row gt_right">$348,180</td></tr>
     <tr><td headers="name" class="gt_row gt_left">Puerto Rico</td>
 <td headers="q1" class="gt_row gt_right">$2,906</td>
 <td headers="q2" class="gt_row gt_right">$12,144</td>
@@ -1322,9 +1344,2220 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 </div>
 </div>
 </section>
-<section id="plot-confidence-intervals-of-estimates" class="level2">
-<h2 class="anchored" data-anchor-id="plot-confidence-intervals-of-estimates">Plot confidence intervals of estimates</h2>
-<p>Use median income as example here</p>
+<section id="change-column-width" class="level3">
+<h3 class="anchored" data-anchor-id="change-column-width">Change column width</h3>
+<p>Now let’s add some further customization. One thing to pay attention to is the column width. Too narrow of columns can make it difficult to read the information, while too wide of columns can cause the table not to fit on the page. We can adjust the column width of our table with the <code>cols_width()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>vgoodtable <span class="ot">&lt;-</span> goodtable <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_width</span>(<span class="fu">c</span>(q1<span class="sc">:</span>top5) <span class="sc">~</span> <span class="fu">px</span>(<span class="dv">90</span>))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>vgoodtable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div id="mvuezlecnv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#mvuezlecnv .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#mvuezlecnv .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mvuezlecnv .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#mvuezlecnv .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mvuezlecnv .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mvuezlecnv .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mvuezlecnv .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mvuezlecnv .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#mvuezlecnv .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#mvuezlecnv .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#mvuezlecnv .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#mvuezlecnv .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#mvuezlecnv .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#mvuezlecnv .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mvuezlecnv .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#mvuezlecnv .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#mvuezlecnv .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#mvuezlecnv .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mvuezlecnv .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#mvuezlecnv .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#mvuezlecnv .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mvuezlecnv .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#mvuezlecnv .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#mvuezlecnv .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mvuezlecnv .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mvuezlecnv .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#mvuezlecnv .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#mvuezlecnv .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mvuezlecnv .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mvuezlecnv .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mvuezlecnv .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mvuezlecnv .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mvuezlecnv .gt_left {
+  text-align: left;
+}
+
+#mvuezlecnv .gt_center {
+  text-align: center;
+}
+
+#mvuezlecnv .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#mvuezlecnv .gt_font_normal {
+  font-weight: normal;
+}
+
+#mvuezlecnv .gt_font_bold {
+  font-weight: bold;
+}
+
+#mvuezlecnv .gt_font_italic {
+  font-style: italic;
+}
+
+#mvuezlecnv .gt_super {
+  font-size: 65%;
+}
+
+#mvuezlecnv .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#mvuezlecnv .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#mvuezlecnv .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#mvuezlecnv .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#mvuezlecnv .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#mvuezlecnv .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#mvuezlecnv .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" style="table-layout: fixed;">
+  <colgroup>
+    <col>
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+  </colgroup>
+  <thead class="gt_header">
+    <tr>
+      <td colspan="7" class="gt_heading gt_title gt_font_normal" style="">Mean Household Income of Quintiles, 2021</td>
+    </tr>
+    <tr>
+      <td colspan="7" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">Seven Representative U.S. States</td>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=""></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="lowest">lowest</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="second">second</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="third">third</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="fourth">fourth</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="fifth">fifth</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="top 5%">top 5%</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="name" class="gt_row gt_left">District of Columbia</td>
+<td headers="q1" class="gt_row gt_right">$12,971</td>
+<td headers="q2" class="gt_row gt_right">$51,060</td>
+<td headers="q3" class="gt_row gt_right">$94,478</td>
+<td headers="q4" class="gt_row gt_right">$157,803</td>
+<td headers="q5" class="gt_row gt_right">$375,792</td>
+<td headers="top5" class="gt_row gt_right">$670,768</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Minnesota</td>
+<td headers="q1" class="gt_row gt_right">$18,936</td>
+<td headers="q2" class="gt_row gt_right">$48,127</td>
+<td headers="q3" class="gt_row gt_right">$78,073</td>
+<td headers="q4" class="gt_row gt_right">$117,959</td>
+<td headers="q5" class="gt_row gt_right">$250,361</td>
+<td headers="top5" class="gt_row gt_right">$441,274</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">New Hampshire</td>
+<td headers="q1" class="gt_row gt_right">$20,203</td>
+<td headers="q2" class="gt_row gt_right">$51,363</td>
+<td headers="q3" class="gt_row gt_right">$83,876</td>
+<td headers="q4" class="gt_row gt_right">$126,230</td>
+<td headers="q5" class="gt_row gt_right">$258,632</td>
+<td headers="top5" class="gt_row gt_right">$440,829</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Florida</td>
+<td headers="q1" class="gt_row gt_right">$14,307</td>
+<td headers="q2" class="gt_row gt_right">$37,662</td>
+<td headers="q3" class="gt_row gt_right">$62,092</td>
+<td headers="q4" class="gt_row gt_right">$97,166</td>
+<td headers="q5" class="gt_row gt_right">$230,107</td>
+<td headers="top5" class="gt_row gt_right">$431,870</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Louisiana</td>
+<td headers="q1" class="gt_row gt_right">$10,371</td>
+<td headers="q2" class="gt_row gt_right">$29,781</td>
+<td headers="q3" class="gt_row gt_right">$53,925</td>
+<td headers="q4" class="gt_row gt_right">$89,536</td>
+<td headers="q5" class="gt_row gt_right">$201,514</td>
+<td headers="top5" class="gt_row gt_right">$357,026</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Oklahoma</td>
+<td headers="q1" class="gt_row gt_right">$13,348</td>
+<td headers="q2" class="gt_row gt_right">$34,646</td>
+<td headers="q3" class="gt_row gt_right">$57,485</td>
+<td headers="q4" class="gt_row gt_right">$89,451</td>
+<td headers="q5" class="gt_row gt_right">$195,269</td>
+<td headers="top5" class="gt_row gt_right">$348,180</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Puerto Rico</td>
+<td headers="q1" class="gt_row gt_right">$2,906</td>
+<td headers="q2" class="gt_row gt_right">$12,144</td>
+<td headers="q3" class="gt_row gt_right">$22,163</td>
+<td headers="q4" class="gt_row gt_right">$38,397</td>
+<td headers="q5" class="gt_row gt_right">$99,043</td>
+<td headers="top5" class="gt_row gt_right">$187,234</td></tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="7"><strong>Source</strong>: US Census Bureau, American Community Survey</td>
+    </tr>
+  </tfoot>
+  
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="change-font" class="level3">
+<h3 class="anchored" data-anchor-id="change-font">Change font</h3>
+<p>Next we want to make sure that the fonts that we use are legible and accessible, just like we did for our charts. We can do this with <code>opt_table_font()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>greattable <span class="ot">&lt;-</span> vgoodtable <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_table_font</span>(<span class="at">font =</span> <span class="st">"verdana"</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>greattable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div id="xzisgfuwrf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: verdana, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#xzisgfuwrf .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#xzisgfuwrf .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xzisgfuwrf .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#xzisgfuwrf .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#xzisgfuwrf .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#xzisgfuwrf .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xzisgfuwrf .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xzisgfuwrf .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#xzisgfuwrf .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#xzisgfuwrf .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#xzisgfuwrf .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#xzisgfuwrf .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#xzisgfuwrf .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#xzisgfuwrf .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#xzisgfuwrf .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#xzisgfuwrf .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#xzisgfuwrf .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#xzisgfuwrf .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xzisgfuwrf .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#xzisgfuwrf .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#xzisgfuwrf .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xzisgfuwrf .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#xzisgfuwrf .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#xzisgfuwrf .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xzisgfuwrf .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xzisgfuwrf .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#xzisgfuwrf .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#xzisgfuwrf .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xzisgfuwrf .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xzisgfuwrf .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xzisgfuwrf .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xzisgfuwrf .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xzisgfuwrf .gt_left {
+  text-align: left;
+}
+
+#xzisgfuwrf .gt_center {
+  text-align: center;
+}
+
+#xzisgfuwrf .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#xzisgfuwrf .gt_font_normal {
+  font-weight: normal;
+}
+
+#xzisgfuwrf .gt_font_bold {
+  font-weight: bold;
+}
+
+#xzisgfuwrf .gt_font_italic {
+  font-style: italic;
+}
+
+#xzisgfuwrf .gt_super {
+  font-size: 65%;
+}
+
+#xzisgfuwrf .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#xzisgfuwrf .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#xzisgfuwrf .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#xzisgfuwrf .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#xzisgfuwrf .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#xzisgfuwrf .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#xzisgfuwrf .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" style="table-layout: fixed;">
+  <colgroup>
+    <col>
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+  </colgroup>
+  <thead class="gt_header">
+    <tr>
+      <td colspan="7" class="gt_heading gt_title gt_font_normal" style="">Mean Household Income of Quintiles, 2021</td>
+    </tr>
+    <tr>
+      <td colspan="7" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">Seven Representative U.S. States</td>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=""></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="lowest">lowest</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="second">second</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="third">third</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="fourth">fourth</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="fifth">fifth</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="top 5%">top 5%</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="name" class="gt_row gt_left">District of Columbia</td>
+<td headers="q1" class="gt_row gt_right">$12,971</td>
+<td headers="q2" class="gt_row gt_right">$51,060</td>
+<td headers="q3" class="gt_row gt_right">$94,478</td>
+<td headers="q4" class="gt_row gt_right">$157,803</td>
+<td headers="q5" class="gt_row gt_right">$375,792</td>
+<td headers="top5" class="gt_row gt_right">$670,768</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Minnesota</td>
+<td headers="q1" class="gt_row gt_right">$18,936</td>
+<td headers="q2" class="gt_row gt_right">$48,127</td>
+<td headers="q3" class="gt_row gt_right">$78,073</td>
+<td headers="q4" class="gt_row gt_right">$117,959</td>
+<td headers="q5" class="gt_row gt_right">$250,361</td>
+<td headers="top5" class="gt_row gt_right">$441,274</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">New Hampshire</td>
+<td headers="q1" class="gt_row gt_right">$20,203</td>
+<td headers="q2" class="gt_row gt_right">$51,363</td>
+<td headers="q3" class="gt_row gt_right">$83,876</td>
+<td headers="q4" class="gt_row gt_right">$126,230</td>
+<td headers="q5" class="gt_row gt_right">$258,632</td>
+<td headers="top5" class="gt_row gt_right">$440,829</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Florida</td>
+<td headers="q1" class="gt_row gt_right">$14,307</td>
+<td headers="q2" class="gt_row gt_right">$37,662</td>
+<td headers="q3" class="gt_row gt_right">$62,092</td>
+<td headers="q4" class="gt_row gt_right">$97,166</td>
+<td headers="q5" class="gt_row gt_right">$230,107</td>
+<td headers="top5" class="gt_row gt_right">$431,870</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Louisiana</td>
+<td headers="q1" class="gt_row gt_right">$10,371</td>
+<td headers="q2" class="gt_row gt_right">$29,781</td>
+<td headers="q3" class="gt_row gt_right">$53,925</td>
+<td headers="q4" class="gt_row gt_right">$89,536</td>
+<td headers="q5" class="gt_row gt_right">$201,514</td>
+<td headers="top5" class="gt_row gt_right">$357,026</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Oklahoma</td>
+<td headers="q1" class="gt_row gt_right">$13,348</td>
+<td headers="q2" class="gt_row gt_right">$34,646</td>
+<td headers="q3" class="gt_row gt_right">$57,485</td>
+<td headers="q4" class="gt_row gt_right">$89,451</td>
+<td headers="q5" class="gt_row gt_right">$195,269</td>
+<td headers="top5" class="gt_row gt_right">$348,180</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Puerto Rico</td>
+<td headers="q1" class="gt_row gt_right">$2,906</td>
+<td headers="q2" class="gt_row gt_right">$12,144</td>
+<td headers="q3" class="gt_row gt_right">$22,163</td>
+<td headers="q4" class="gt_row gt_right">$38,397</td>
+<td headers="q5" class="gt_row gt_right">$99,043</td>
+<td headers="top5" class="gt_row gt_right">$187,234</td></tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="7"><strong>Source</strong>: US Census Bureau, American Community Survey</td>
+    </tr>
+  </tfoot>
+  
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="center" class="level3">
+<h3 class="anchored" data-anchor-id="center">Center</h3>
+<p>Then we want to check to make sure that information is aligned properly in the table. We can use right, left or center justify our text, depending on its purpose, by calling <code>cols_align()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>vgreattable <span class="ot">&lt;-</span> greattable <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_align</span>(</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">align =</span> <span class="st">"center"</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">columns =</span> q1<span class="sc">:</span>top5</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>vgreattable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div id="cemncpmcjj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: verdana, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#cemncpmcjj .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#cemncpmcjj .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cemncpmcjj .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#cemncpmcjj .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#cemncpmcjj .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#cemncpmcjj .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cemncpmcjj .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cemncpmcjj .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#cemncpmcjj .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#cemncpmcjj .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#cemncpmcjj .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#cemncpmcjj .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#cemncpmcjj .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#cemncpmcjj .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#cemncpmcjj .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#cemncpmcjj .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#cemncpmcjj .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#cemncpmcjj .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cemncpmcjj .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#cemncpmcjj .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#cemncpmcjj .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cemncpmcjj .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#cemncpmcjj .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#cemncpmcjj .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cemncpmcjj .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cemncpmcjj .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#cemncpmcjj .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#cemncpmcjj .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cemncpmcjj .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cemncpmcjj .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cemncpmcjj .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cemncpmcjj .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cemncpmcjj .gt_left {
+  text-align: left;
+}
+
+#cemncpmcjj .gt_center {
+  text-align: center;
+}
+
+#cemncpmcjj .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#cemncpmcjj .gt_font_normal {
+  font-weight: normal;
+}
+
+#cemncpmcjj .gt_font_bold {
+  font-weight: bold;
+}
+
+#cemncpmcjj .gt_font_italic {
+  font-style: italic;
+}
+
+#cemncpmcjj .gt_super {
+  font-size: 65%;
+}
+
+#cemncpmcjj .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#cemncpmcjj .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#cemncpmcjj .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#cemncpmcjj .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#cemncpmcjj .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#cemncpmcjj .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#cemncpmcjj .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" style="table-layout: fixed;">
+  <colgroup>
+    <col>
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+  </colgroup>
+  <thead class="gt_header">
+    <tr>
+      <td colspan="7" class="gt_heading gt_title gt_font_normal" style="">Mean Household Income of Quintiles, 2021</td>
+    </tr>
+    <tr>
+      <td colspan="7" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">Seven Representative U.S. States</td>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=""></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="lowest">lowest</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="second">second</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="third">third</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="fourth">fourth</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="fifth">fifth</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="top 5%">top 5%</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="name" class="gt_row gt_left">District of Columbia</td>
+<td headers="q1" class="gt_row gt_center">$12,971</td>
+<td headers="q2" class="gt_row gt_center">$51,060</td>
+<td headers="q3" class="gt_row gt_center">$94,478</td>
+<td headers="q4" class="gt_row gt_center">$157,803</td>
+<td headers="q5" class="gt_row gt_center">$375,792</td>
+<td headers="top5" class="gt_row gt_center">$670,768</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Minnesota</td>
+<td headers="q1" class="gt_row gt_center">$18,936</td>
+<td headers="q2" class="gt_row gt_center">$48,127</td>
+<td headers="q3" class="gt_row gt_center">$78,073</td>
+<td headers="q4" class="gt_row gt_center">$117,959</td>
+<td headers="q5" class="gt_row gt_center">$250,361</td>
+<td headers="top5" class="gt_row gt_center">$441,274</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">New Hampshire</td>
+<td headers="q1" class="gt_row gt_center">$20,203</td>
+<td headers="q2" class="gt_row gt_center">$51,363</td>
+<td headers="q3" class="gt_row gt_center">$83,876</td>
+<td headers="q4" class="gt_row gt_center">$126,230</td>
+<td headers="q5" class="gt_row gt_center">$258,632</td>
+<td headers="top5" class="gt_row gt_center">$440,829</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Florida</td>
+<td headers="q1" class="gt_row gt_center">$14,307</td>
+<td headers="q2" class="gt_row gt_center">$37,662</td>
+<td headers="q3" class="gt_row gt_center">$62,092</td>
+<td headers="q4" class="gt_row gt_center">$97,166</td>
+<td headers="q5" class="gt_row gt_center">$230,107</td>
+<td headers="top5" class="gt_row gt_center">$431,870</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Louisiana</td>
+<td headers="q1" class="gt_row gt_center">$10,371</td>
+<td headers="q2" class="gt_row gt_center">$29,781</td>
+<td headers="q3" class="gt_row gt_center">$53,925</td>
+<td headers="q4" class="gt_row gt_center">$89,536</td>
+<td headers="q5" class="gt_row gt_center">$201,514</td>
+<td headers="top5" class="gt_row gt_center">$357,026</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Oklahoma</td>
+<td headers="q1" class="gt_row gt_center">$13,348</td>
+<td headers="q2" class="gt_row gt_center">$34,646</td>
+<td headers="q3" class="gt_row gt_center">$57,485</td>
+<td headers="q4" class="gt_row gt_center">$89,451</td>
+<td headers="q5" class="gt_row gt_center">$195,269</td>
+<td headers="top5" class="gt_row gt_center">$348,180</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Puerto Rico</td>
+<td headers="q1" class="gt_row gt_center">$2,906</td>
+<td headers="q2" class="gt_row gt_center">$12,144</td>
+<td headers="q3" class="gt_row gt_center">$22,163</td>
+<td headers="q4" class="gt_row gt_center">$38,397</td>
+<td headers="q5" class="gt_row gt_center">$99,043</td>
+<td headers="top5" class="gt_row gt_center">$187,234</td></tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="7"><strong>Source</strong>: US Census Bureau, American Community Survey</td>
+    </tr>
+  </tfoot>
+  
+</table>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gtsave</span>(vgreattable, <span class="st">"vgreattable.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="add-borders-and-lines" class="level3">
+<h3 class="anchored" data-anchor-id="add-borders-and-lines">Add borders and lines</h3>
+<p>Finally, we want to think about how to use borders and lines to separate and identify different elements of the table using <code>tab_options()</code> like this.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>awesometable <span class="ot">&lt;-</span> vgreattable <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_options</span>(</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">table.border.top.color =</span> <span class="st">"black"</span>, </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">table.border.bottom.color =</span> <span class="st">"black"</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">heading.border.bottom.color =</span> <span class="st">"black"</span>, </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">column_labels.border.bottom.color =</span> <span class="st">"black"</span>, </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">table_body.border.bottom.color =</span> <span class="st">"black"</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>awesometable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div id="jqppoeeshq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: verdana, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#jqppoeeshq .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #000000;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #000000;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#jqppoeeshq .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jqppoeeshq .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#jqppoeeshq .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#jqppoeeshq .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#jqppoeeshq .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #000000;
+}
+
+#jqppoeeshq .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #000000;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jqppoeeshq .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#jqppoeeshq .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#jqppoeeshq .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#jqppoeeshq .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#jqppoeeshq .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #000000;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#jqppoeeshq .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#jqppoeeshq .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#jqppoeeshq .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#jqppoeeshq .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#jqppoeeshq .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#jqppoeeshq .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jqppoeeshq .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#jqppoeeshq .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#jqppoeeshq .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jqppoeeshq .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#jqppoeeshq .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#jqppoeeshq .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jqppoeeshq .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jqppoeeshq .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#jqppoeeshq .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#jqppoeeshq .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #000000;
+}
+
+#jqppoeeshq .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jqppoeeshq .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jqppoeeshq .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jqppoeeshq .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jqppoeeshq .gt_left {
+  text-align: left;
+}
+
+#jqppoeeshq .gt_center {
+  text-align: center;
+}
+
+#jqppoeeshq .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#jqppoeeshq .gt_font_normal {
+  font-weight: normal;
+}
+
+#jqppoeeshq .gt_font_bold {
+  font-weight: bold;
+}
+
+#jqppoeeshq .gt_font_italic {
+  font-style: italic;
+}
+
+#jqppoeeshq .gt_super {
+  font-size: 65%;
+}
+
+#jqppoeeshq .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#jqppoeeshq .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#jqppoeeshq .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#jqppoeeshq .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#jqppoeeshq .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#jqppoeeshq .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#jqppoeeshq .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" style="table-layout: fixed;">
+  <colgroup>
+    <col>
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+  </colgroup>
+  <thead class="gt_header">
+    <tr>
+      <td colspan="7" class="gt_heading gt_title gt_font_normal" style="">Mean Household Income of Quintiles, 2021</td>
+    </tr>
+    <tr>
+      <td colspan="7" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">Seven Representative U.S. States</td>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=""></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="lowest">lowest</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="second">second</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="third">third</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="fourth">fourth</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="fifth">fifth</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="top 5%">top 5%</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="name" class="gt_row gt_left">District of Columbia</td>
+<td headers="q1" class="gt_row gt_center">$12,971</td>
+<td headers="q2" class="gt_row gt_center">$51,060</td>
+<td headers="q3" class="gt_row gt_center">$94,478</td>
+<td headers="q4" class="gt_row gt_center">$157,803</td>
+<td headers="q5" class="gt_row gt_center">$375,792</td>
+<td headers="top5" class="gt_row gt_center">$670,768</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Minnesota</td>
+<td headers="q1" class="gt_row gt_center">$18,936</td>
+<td headers="q2" class="gt_row gt_center">$48,127</td>
+<td headers="q3" class="gt_row gt_center">$78,073</td>
+<td headers="q4" class="gt_row gt_center">$117,959</td>
+<td headers="q5" class="gt_row gt_center">$250,361</td>
+<td headers="top5" class="gt_row gt_center">$441,274</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">New Hampshire</td>
+<td headers="q1" class="gt_row gt_center">$20,203</td>
+<td headers="q2" class="gt_row gt_center">$51,363</td>
+<td headers="q3" class="gt_row gt_center">$83,876</td>
+<td headers="q4" class="gt_row gt_center">$126,230</td>
+<td headers="q5" class="gt_row gt_center">$258,632</td>
+<td headers="top5" class="gt_row gt_center">$440,829</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Florida</td>
+<td headers="q1" class="gt_row gt_center">$14,307</td>
+<td headers="q2" class="gt_row gt_center">$37,662</td>
+<td headers="q3" class="gt_row gt_center">$62,092</td>
+<td headers="q4" class="gt_row gt_center">$97,166</td>
+<td headers="q5" class="gt_row gt_center">$230,107</td>
+<td headers="top5" class="gt_row gt_center">$431,870</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Louisiana</td>
+<td headers="q1" class="gt_row gt_center">$10,371</td>
+<td headers="q2" class="gt_row gt_center">$29,781</td>
+<td headers="q3" class="gt_row gt_center">$53,925</td>
+<td headers="q4" class="gt_row gt_center">$89,536</td>
+<td headers="q5" class="gt_row gt_center">$201,514</td>
+<td headers="top5" class="gt_row gt_center">$357,026</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Oklahoma</td>
+<td headers="q1" class="gt_row gt_center">$13,348</td>
+<td headers="q2" class="gt_row gt_center">$34,646</td>
+<td headers="q3" class="gt_row gt_center">$57,485</td>
+<td headers="q4" class="gt_row gt_center">$89,451</td>
+<td headers="q5" class="gt_row gt_center">$195,269</td>
+<td headers="top5" class="gt_row gt_center">$348,180</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Puerto Rico</td>
+<td headers="q1" class="gt_row gt_center">$2,906</td>
+<td headers="q2" class="gt_row gt_center">$12,144</td>
+<td headers="q3" class="gt_row gt_center">$22,163</td>
+<td headers="q4" class="gt_row gt_center">$38,397</td>
+<td headers="q5" class="gt_row gt_center">$99,043</td>
+<td headers="top5" class="gt_row gt_center">$187,234</td></tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="7"><strong>Source</strong>: US Census Bureau, American Community Survey</td>
+    </tr>
+  </tfoot>
+  
+</table>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="when-a-plot-is-better-than-a-table" class="level2">
+<h2 class="anchored" data-anchor-id="when-a-plot-is-better-than-a-table">When a plot is better than a table</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>Be judicious with your use of tables. You would not want to use tables where a plot is more appropriate. For example you would not want to use a table to show a trend over time (a line chart would be more appropriate) or to display the relationship between two variables (where a scatter plot would be more appropriate).</p>
+<p>Another case where a table would be less effective than a plot is in showing estimates, margins of error and confidence intervals. Let’s do an example with median income estimates. We can start by searching for “median income” and discover that the code for median income is B06011_001. Let’s use that to extract the median income for counties in the state of Massachusetts.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>mass_med_inc <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">"county"</span>, </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> <span class="fu">c</span>(<span class="at">mediancome =</span> <span class="st">"B06011_001"</span>), </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">"MA"</span>, </span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2021</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">lower_90 =</span> estimate <span class="sc">-</span> moe,</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">upper_90 =</span> estimate <span class="sc">+</span> moe </span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">|&gt;</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">str_replace_all</span>(name, <span class="st">" County, Massachusetts"</span>, <span class="st">""</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, estimate, lower_90, upper_90)</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(mass_med_inc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 14
+Columns: 4
+$ name     &lt;chr&gt; "Barnstable", "Berkshire", "Bristol", "Dukes", "Essex", "Fran…
+$ estimate &lt;dbl&gt; 40442, 33040, 36910, 40119, 39756, 34775, 32262, 30795, 51808…
+$ lower_90 &lt;dbl&gt; 39554, 32074, 36347, 34791, 39174, 33712, 31707, 29868, 51337…
+$ upper_90 &lt;dbl&gt; 41330, 34006, 37473, 45447, 40338, 35838, 32817, 31722, 52279…</code></pre>
+</div>
+</div>
+<p>We can select the county name, median income estimate and the upper and lower confidence intervals and put those in a table.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(mass_med_inc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> name </th>
+   <th style="text-align:right;"> estimate </th>
+   <th style="text-align:right;"> lower_90 </th>
+   <th style="text-align:right;"> upper_90 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Barnstable </td>
+   <td style="text-align:right;"> 40442 </td>
+   <td style="text-align:right;"> 39554 </td>
+   <td style="text-align:right;"> 41330 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Berkshire </td>
+   <td style="text-align:right;"> 33040 </td>
+   <td style="text-align:right;"> 32074 </td>
+   <td style="text-align:right;"> 34006 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bristol </td>
+   <td style="text-align:right;"> 36910 </td>
+   <td style="text-align:right;"> 36347 </td>
+   <td style="text-align:right;"> 37473 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Dukes </td>
+   <td style="text-align:right;"> 40119 </td>
+   <td style="text-align:right;"> 34791 </td>
+   <td style="text-align:right;"> 45447 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Essex </td>
+   <td style="text-align:right;"> 39756 </td>
+   <td style="text-align:right;"> 39174 </td>
+   <td style="text-align:right;"> 40338 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Franklin </td>
+   <td style="text-align:right;"> 34775 </td>
+   <td style="text-align:right;"> 33712 </td>
+   <td style="text-align:right;"> 35838 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Hampden </td>
+   <td style="text-align:right;"> 32262 </td>
+   <td style="text-align:right;"> 31707 </td>
+   <td style="text-align:right;"> 32817 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Hampshire </td>
+   <td style="text-align:right;"> 30795 </td>
+   <td style="text-align:right;"> 29868 </td>
+   <td style="text-align:right;"> 31722 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Middlesex </td>
+   <td style="text-align:right;"> 51808 </td>
+   <td style="text-align:right;"> 51337 </td>
+   <td style="text-align:right;"> 52279 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Nantucket </td>
+   <td style="text-align:right;"> 45717 </td>
+   <td style="text-align:right;"> 38260 </td>
+   <td style="text-align:right;"> 53174 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Norfolk </td>
+   <td style="text-align:right;"> 52591 </td>
+   <td style="text-align:right;"> 51991 </td>
+   <td style="text-align:right;"> 53191 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Plymouth </td>
+   <td style="text-align:right;"> 43684 </td>
+   <td style="text-align:right;"> 43014 </td>
+   <td style="text-align:right;"> 44354 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Suffolk </td>
+   <td style="text-align:right;"> 39200 </td>
+   <td style="text-align:right;"> 38624 </td>
+   <td style="text-align:right;"> 39776 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Worcester </td>
+   <td style="text-align:right;"> 39009 </td>
+   <td style="text-align:right;"> 38454 </td>
+   <td style="text-align:right;"> 39564 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>But this is not very compelling. So instead, we can plot confidence intervals with ggplot using a combination of <code>geom_errorbar()</code> and <code>geom_point()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>mass_med_inc <span class="sc">|&gt;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> estimate, <span class="at">y =</span> <span class="fu">reorder</span>(name, estimate))) <span class="sc">+</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> lower_90, <span class="at">xmax =</span> upper_90)) <span class="sc">+</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Household income by county in Massachusetts"</span>,</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"2017-2021 American Community Survey"</span>,</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">""</span>,</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Median Income"</span>, </span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"ACS estimate (bars represent 90% confidence intervals)"</span>) <span class="sc">+</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="module-4.1_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>This conveys a lot more information relative to a table.</p>
 
 
 </section>

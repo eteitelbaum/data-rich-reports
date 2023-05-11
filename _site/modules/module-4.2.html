@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -63,12 +126,15 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+<script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
 
 <meta property="og:title" content="PSC/DATS 2102–Summer Schedule - Module 4.2">
-<meta property="og:description" content="">
+<meta property="og:description" content="Regression Tables and Coefficient Plots">
 <meta property="og:site-name" content="PSC/DATS 2102--Summer Schedule">
 <meta name="twitter:title" content="PSC/DATS 2102–Summer Schedule - Module 4.2">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="Regression Tables and Coefficient Plots">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -292,7 +358,13 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#when-a-coefficient-plot-is-better" id="toc-when-a-coefficient-plot-is-better" class="nav-link active" data-scroll-target="#when-a-coefficient-plot-is-better">When a coefficient plot is better</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/eteitelbaum/dataviz-summer-2023/edit/main/modules/module-4.2.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/eteitelbaum/dataviz-summer-2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -300,6 +372,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title d-none d-lg-block">Module 4.2</h1>
+<p class="subtitle lead">Regression Tables and Coefficient Plots</p>
 </div>
 
 
@@ -314,9 +387,317 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Prework
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Install <a href="http://svmiller.com/peacesciencer/">peacesciencer</a> and familiarize yourself with the documentation, <code>install.packages("peacesciencer")</code></li>
+</ul>
+</div>
+</div>
 <p>Use {peacesciencer}, teach broom, regression table package of some sort and coeffplots.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(peacesciencer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>{peacesciencer} includes additional remote data for separate download. Please type ?download_extdata() for more information.
+This message disappears on load when these data are downloaded and in the package's `extdata` directory.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'dplyr' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>conflict_df <span class="ot">&lt;-</span> <span class="fu">create_stateyears</span>(<span class="at">system =</span> <span class="st">'gw'</span>) <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1949</span><span class="sc">:</span><span class="dv">2019</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_ucdp_acd</span>(<span class="at">type=</span><span class="fu">c</span>(<span class="st">"intrastate"</span>), <span class="at">only_wars =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_democracy</span>() <span class="sc">|&gt;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_creg_fractionalization</span>() <span class="sc">|&gt;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_sdp_gdp</span>() <span class="sc">|&gt;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_rugged_terrain</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining with `by = join_by(gwcode, year)`</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining with `by = join_by(gwcode, year)`
+Joining with `by = join_by(gwcode, year)`
+Joining with `by = join_by(gwcode, year)`
+Joining with `by = join_by(gwcode)`</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(conflict_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 10,268
+Columns: 20
+$ gwcode         &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2…
+$ statename      &lt;chr&gt; "United States of America", "United States of America",…
+$ year           &lt;dbl&gt; 1949, 1950, 1951, 1952, 1953, 1954, 1955, 1956, 1957, 1…
+$ ucdpongoing    &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ ucdponset      &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ maxintensity   &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ conflict_ids   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ v2x_polyarchy  &lt;dbl&gt; 0.599, 0.587, 0.602, 0.601, 0.594, 0.603, 0.614, 0.633,…
+$ polity2        &lt;dbl&gt; 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,…
+$ xm_qudsest     &lt;dbl&gt; 1.252190, 1.270106, 1.259412, 1.345101, 1.345101, 1.345…
+$ ethfrac        &lt;dbl&gt; 0.2294918, 0.2318781, 0.2343169, 0.2368087, 0.2393554, …
+$ ethpol         &lt;dbl&gt; 0.4255134, 0.4290458, 0.4326358, 0.4362829, 0.4399888, …
+$ relfrac        &lt;dbl&gt; 0.5065309, 0.5093204, 0.5120965, 0.5148594, 0.5176094, …
+$ relpol         &lt;dbl&gt; 0.7770729, 0.7771274, 0.7771923, 0.7772656, 0.7773457, …
+$ wbgdp2011est   &lt;dbl&gt; 28.534, 28.572, 28.635, 28.669, 28.725, 28.730, 28.764,…
+$ wbpopest       &lt;dbl&gt; 18.804, 18.821, 18.832, 18.848, 18.868, 18.883, 18.901,…
+$ sdpest         &lt;dbl&gt; 28.469, 28.510, 28.576, 28.611, 28.668, 28.674, 28.708,…
+$ wbgdppc2011est &lt;dbl&gt; 9.730, 9.752, 9.803, 9.821, 9.857, 9.848, 9.863, 9.885,…
+$ rugged         &lt;dbl&gt; 1.073, 1.073, 1.073, 1.073, 1.073, 1.073, 1.073, 1.073,…
+$ newlmtnest     &lt;dbl&gt; 3.214868, 3.214868, 3.214868, 3.214868, 3.214868, 3.214…</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>conflict_model <span class="ot">&lt;-</span> <span class="fu">glm</span>(ucdponset <span class="sc">~</span> ethpol <span class="sc">+</span> relpol <span class="sc">+</span> polity2 <span class="sc">+</span> newlmtnest <span class="sc">+</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                        wbgdppc2011est <span class="sc">+</span> wbpopest,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data=</span><span class="fu">subset</span>(conflict_df),</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link=</span><span class="st">"logit"</span>))</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">#tidy(conflict_model)</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>conflict_model <span class="sc">|&gt;</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_if</span>(is.numeric, round, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 7 × 5
+  term           estimate std.error statistic p.value
+  &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+1 (Intercept)    -4.95       1.33      -3.73  0.00019
+2 ethpol          0.993      0.414      2.40  0.0165 
+3 relpol         -0.402      0.315     -1.28  0.201  
+4 polity2        -0.00401    0.0144    -0.278 0.781  
+5 newlmtnest      0.0254     0.0670     0.379 0.705  
+6 wbgdppc2011est -0.549      0.0979    -5.61  0      
+7 wbpopest        0.312      0.066      4.73  0      </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'modelsummary' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output-display">
+
+<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
+<caption>Table 1: Predictors of Conflict Onset</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:center;"> Ethnicity </th>
+   <th style="text-align:center;"> Democracy </th>
+   <th style="text-align:center;"> Terrain </th>
+   <th style="text-align:center;"> Full Model </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Ethnic Frac </td>
+   <td style="text-align:center;"> 0.703* </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> 0.679+ </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.357) </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> (0.366) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Religions Frac </td>
+   <td style="text-align:center;"> −0.503 </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> −0.392 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.399) </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> (0.403) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Polyarchy </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> −0.759* </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> −1.192** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> (0.382) </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> (0.462) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Terrain </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> −0.036 </td>
+   <td style="text-align:center;"> −0.008 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> (0.075) </td>
+   <td style="text-align:center;"> (0.077) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Per capita GDP </td>
+   <td style="text-align:center;"> −0.503*** </td>
+   <td style="text-align:center;"> −0.396*** </td>
+   <td style="text-align:center;"> −0.487*** </td>
+   <td style="text-align:center;"> −0.364*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.094) </td>
+   <td style="text-align:center;"> (0.090) </td>
+   <td style="text-align:center;"> (0.078) </td>
+   <td style="text-align:center;"> (0.106) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Population </td>
+   <td style="text-align:center;"> 0.292*** </td>
+   <td style="text-align:center;"> 0.333*** </td>
+   <td style="text-align:center;"> 0.333*** </td>
+   <td style="text-align:center;"> 0.303*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.064) </td>
+   <td style="text-align:center;"> (0.047) </td>
+   <td style="text-align:center;"> (0.047) </td>
+   <td style="text-align:center;"> (0.065) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Intercept </td>
+   <td style="text-align:center;"> −4.791*** </td>
+   <td style="text-align:center;"> −5.863*** </td>
+   <td style="text-align:center;"> −5.336*** </td>
+   <td style="text-align:center;"> −5.733*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;box-shadow: 0px 1.5px">  </td>
+   <td style="text-align:center;box-shadow: 0px 1.5px"> (1.257) </td>
+   <td style="text-align:center;box-shadow: 0px 1.5px"> (1.049) </td>
+   <td style="text-align:center;box-shadow: 0px 1.5px"> (1.013) </td>
+   <td style="text-align:center;box-shadow: 0px 1.5px"> (1.323) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Num.Obs. </td>
+   <td style="text-align:center;"> 8308 </td>
+   <td style="text-align:center;"> 9249 </td>
+   <td style="text-align:center;"> 9345 </td>
+   <td style="text-align:center;"> 8082 </td>
+  </tr>
+</tbody>
+<tfoot>
+<tr><td style="padding: 0; " colspan="100%">
+<sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr>
+<tr><td style="padding: 0; " colspan="100%">
+<sup></sup> See appendix for data sources.</td></tr>
+</tfoot>
+</table>
+
+</div>
+</div>
+<section id="when-a-coefficient-plot-is-better" class="level2">
+<h2 class="anchored" data-anchor-id="when-a-coefficient-plot-is-better">When a coefficient plot is better</h2>
+<p>A table is not as compelling for one model.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(conflict_model, </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">stars =</span> <span class="cn">TRUE</span>,  </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">gof_map =</span> <span class="fu">c</span>(<span class="st">"nobs"</span>),</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">coef_map =</span> coef_map,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">title =</span> caption, </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">notes =</span> reference)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
+<caption>Table 1: Predictors of Conflict Onset</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:center;"> &nbsp;(1) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Per capita GDP </td>
+   <td style="text-align:center;"> −0.549*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.098) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Population </td>
+   <td style="text-align:center;"> 0.312*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.066) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Intercept </td>
+   <td style="text-align:center;"> −4.954*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;box-shadow: 0px 1.5px">  </td>
+   <td style="text-align:center;box-shadow: 0px 1.5px"> (1.327) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Num.Obs. </td>
+   <td style="text-align:center;"> 8049 </td>
+  </tr>
+</tbody>
+<tfoot>
+<tr><td style="padding: 0; " colspan="100%">
+<sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr>
+<tr><td style="padding: 0; " colspan="100%">
+<sup></sup> See appendix for data sources.</td></tr>
+</tfoot>
+</table>
+
+</div>
+</div>
+<p>Better to do a coefficient plot. Have to call <code>ggplot2</code> for customization.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="module-4.2_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
