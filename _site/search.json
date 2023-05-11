@@ -438,21 +438,21 @@
     "href": "modules/module-5.1.html#setup",
     "title": "Module 5.1",
     "section": "Setup",
-    "text": "Setup\n\n# load packages\nlibrary(shiny)\nlibrary(readr)\nlibrary(ggplot2)\n\n# read in data, create a vector of variable names\ndem_data &lt;- read_csv(\"dem_data.csv\")\n\n# create list of named values for the input selection\nvars &lt;- c(\"Democracy\" = \"polyarchy\",\n          \"Clientelism\" = \"clientelism\",\n          \"Corruption\" = \"corruption\",\n          \"Women's Empowerment\" = \"womens_emp\",\n          \"Wealth\" = \"gdp_pc\",\n          \"Infant Mortality\" = \"inf_mort\",\n          \"Life Expectancy\" = \"life_exp\", \n          \"Education\" = \"education\")"
+    "text": "Setup\n\nSay something about how to set up an app.R script.\n\n# load packages\nlibrary(shiny)\nlibrary(readr)\nlibrary(ggplot2)\n\n# read in data, create a vector of variable names\ndem_data &lt;- read_csv(\"dem_data.csv\")\n\n# create list of named values for the input selection\nvars &lt;- c(\"Democracy\" = \"polyarchy\",\n          \"Clientelism\" = \"clientelism\",\n          \"Corruption\" = \"corruption\",\n          \"Women's Empowerment\" = \"womens_emp\",\n          \"Wealth\" = \"gdp_pc\",\n          \"Infant Mortality\" = \"inf_mort\",\n          \"Life Expectancy\" = \"life_exp\", \n          \"Education\" = \"education\")"
   },
   {
     "objectID": "modules/module-5.1.html#ui",
     "href": "modules/module-5.1.html#ui",
     "title": "Module 5.1",
     "section": "ui",
-    "text": "ui\n\n# Define UI for application that draws a histogram\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(\"Democracy and Development\"),\n\n    # Sidebar with a slider input for number of bins \n    sidebarLayout(\n      sidebarPanel(\n        selectInput('xcol', 'X Variable', vars),\n        selectInput('ycol', 'Y Variable', vars, selected = vars[[6]])\n      ),\n\n        # Show a plot of the generated distribution\n        mainPanel(\n           plotOutput(\"scatterplot\")\n        )\n    )\n)"
+    "text": "ui\n\n\n# Define UI for application that draws a histogram\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(\"Democracy and Development\"),\n\n    # Sidebar with a slider input for number of bins \n    sidebarLayout(\n      sidebarPanel(\n        selectInput('xcol', 'X Variable', vars),\n        selectInput('ycol', 'Y Variable', vars, selected = vars[[6]])\n      ),\n\n        # Show a plot of the generated distribution\n        mainPanel(\n           plotOutput(\"scatterplot\")\n        )\n    )\n)"
   },
   {
     "objectID": "modules/module-5.1.html#server",
     "href": "modules/module-5.1.html#server",
     "title": "Module 5.1",
     "section": "Server",
-    "text": "Server\n\n# Define server logic required to draw a scatter plot\nserver &lt;- function(input, output, session) {\n  \n  # Render the plot\n  output$scatterplot &lt;- renderPlot({\n    \n    # Combine the selected variables into a new data frame\n    selectedData &lt;- dem_data[, c(input$xcol, input$ycol, \"region\")]\n    \n    # ggplot call\n    ggplot(selectedData(), aes_string(x = input$xcol, y = input$ycol)) +\n      geom_point(aes(color = region)) +\n      geom_smooth(method = \"loess\") +\n      scale_color_viridis_d(option = \"plasma\") +\n      theme_minimal() +\n      labs(\n        x =  names(vars[which(vars == input$xcol)]),\n        y =  names(vars[which(vars == input$ycol)]),\n        caption = \"Source: V-Dem Institute\", # caption\n        color = \"Region\" # legend title\n      )\n  })\n}"
+    "text": "Server\n\n\n# Define server logic required to draw a scatter plot\nserver &lt;- function(input, output, session) {\n  \n  # Render the plot\n  output$scatterplot &lt;- renderPlot({\n    \n    # Combine the selected variables into a new data frame\n    selectedData &lt;- dem_data[, c(input$xcol, input$ycol, \"region\")]\n    \n    # ggplot call\n    ggplot(selectedData(), aes_string(x = input$xcol, y = input$ycol)) +\n      geom_point(aes(color = region)) +\n      geom_smooth(method = \"loess\") +\n      scale_color_viridis_d(option = \"plasma\") +\n      theme_minimal() +\n      labs(\n        x =  names(vars[which(vars == input$xcol)]),\n        y =  names(vars[which(vars == input$ycol)]),\n        caption = \"Source: V-Dem Institute\", # caption\n        color = \"Region\" # legend title\n      )\n  })\n}"
   },
   {
     "objectID": "modules/module-5.1.html#call-to-shiny-app",
@@ -509,5 +509,82 @@
     "title": "Module 4.2",
     "section": "Run many regressions and display with modelsummary",
     "text": "Run many regressions and display with modelsummary\n\nbroom is really great if we want to just run one regression and see the results in the context of a working document. But what if we want to display our results to other researchers? For this, we need to use a different package. One package that is really good at producing professional-looking tabels is modelsummary and one of its strongest features is the ability to combine multiple models into the same table while still allowing for substantial customization.\nLet’s go ahead and store four models. In the first three, we will feature sets of predictors (ethnicity, democracy and terrain) and then a final model that includes all of our predictors. In each model, we will include wealth (GDP) and population as controls because we have a feeling that these are robust predictors of conflict onset.\n\nethnicity &lt;- glm(ucdponset ~ ethfrac + relfrac + wbgdppc2011est + wbpopest, # store each model in an object\n                  data=subset(conflict_df),\n                  family = binomial(link=\"logit\"))\n\ndemocracy &lt;- glm(ucdponset ~ v2x_polyarchy + wbgdppc2011est +  wbpopest,\n                  data=subset(conflict_df),\n                  family = binomial(link=\"logit\"))\n\nterrain &lt;- glm(ucdponset ~ rugged + wbgdppc2011est + wbpopest ,\n                  data=subset(conflict_df),\n                  family = binomial(link=\"logit\"))\n\nfull_model &lt;- glm(ucdponset ~ ethfrac + relfrac + v2x_polyarchy + rugged +\n                        wbgdppc2011est + wbpopest,\n                  data=subset(conflict_df),\n                  family = binomial(link=\"logit\"))\n\nNext we will store our models as a list with intuitive names that we can display as column headers in our regression table. Then we will store a new coefficient mapping where we rename our variables and change the order that they will appear in the table. We will also store a title and a reference.\n\nmodels &lt;- list(\"Ethnicity\" = ethnicity,  # store list of models in an object\n               \"Democracy\" = democracy, \n               \"Terrain\" = terrain, \n               \"Full Model\" = full_model)\n\ncoef_map &lt;- c(\"ethfrac\" = \"Ethnic Frac\",  # map coefficients\n        \"relfrac\" = \"Religions Frac\",     #(change names and order)\n        \"v2x_polyarchy\" = \"Polyarchy\",\n        \"rugged\" = \"Terrain\",\n        \"wbgdppc2011est\" = \"Per capita GDP\",\n        \"wbpopest\" = \"Population\",\n        \"(Intercept)\" = \"Intercept\")\n\ncaption = \"Table 1: Predictors of Conflict Onset\" # store caption\nreference = \"See appendix for data sources.\"      # store reference notes\n\nNow we can call modelsummary(). The first argument is the list of models we want to display. Next we tell modelsummary that we want it to show stars for statitiscal significance (stars = TRUE). And in gof_map(), we say that, of the many goodness of fit statistics available to us, we only want to include the number of observations. Finally we plug our title into title = and a source note into notes =.\n\nlibrary(modelsummary)\n\nmodelsummary(models,                      # display the table\n             stars = TRUE,                # include stars for significance\n             gof_map = c(\"nobs\"),         # goodness of fit stats to include   \n             coef_map = coef_map,         # coefficient mapping\n             title = caption,             # title\n             notes = reference)           # source note\n\n\nTable 1: Predictors of Conflict Onset\n\n\n\nEthnicity\nDemocracy\nTerrain\nFull Model\n\n\n\n\nEthnic Frac\n0.744*\n\n\n0.800*\n\n\n\n(0.367)\n\n\n(0.381)\n\n\nReligions Frac\n−0.481\n\n\n−0.391\n\n\n\n(0.411)\n\n\n(0.417)\n\n\nPolyarchy\n\n−0.228\n\n−0.602\n\n\n\n\n(0.436)\n\n(0.509)\n\n\nTerrain\n\n\n0.031\n0.064\n\n\n\n\n\n(0.076)\n(0.076)\n\n\nPer capita GDP\n−0.474***\n−0.512***\n−0.543***\n−0.372**\n\n\n\n(0.104)\n(0.108)\n(0.092)\n(0.121)\n\n\nPopulation\n0.282***\n0.297***\n0.299***\n0.293***\n\n\n\n(0.067)\n(0.051)\n(0.050)\n(0.067)\n\n\nIntercept\n−4.703***\n−4.407***\n−4.296***\n−5.693***\n\n\n\n(1.327)\n(1.205)\n(1.143)\n(1.408)\n\n\nNum.Obs.\n6364\n6772\n6840\n6151\n\n\n\n + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001\n\n\n\n\n\n\n See appendix for data sources."
+  },
+  {
+    "objectID": "modules/module-5.1.html",
+    "href": "modules/module-5.1.html",
+    "title": "Module 5.1",
+    "section": "",
+    "text": "Tip\n\n\n\n\nGet a FRED API key\nInstall fredr and read about its basic usage\nInstall shiny and read about the"
+  },
+  {
+    "objectID": "modules/module-5.1.html#overview",
+    "href": "modules/module-5.1.html#overview",
+    "title": "Module 5.1",
+    "section": "Overview",
+    "text": "Overview"
+  },
+  {
+    "objectID": "modules/module-5.1.html#scatter-plot-app",
+    "href": "modules/module-5.1.html#scatter-plot-app",
+    "title": "Module 5.1",
+    "section": "Scatter plot app",
+    "text": "Scatter plot app"
+  },
+  {
+    "objectID": "modules/module-5.2.html",
+    "href": "modules/module-5.2.html",
+    "title": "Module 5.2",
+    "section": "",
+    "text": "Tip\n\n\n\n\nReview the prework for module 5.1 and make sure that you have everything installed\nInstall ecm, which we will use to build our recession shading helper script\nInstall shinyWidgets and familiarize yourself with its basic functions\nWe will be using lubridate, which is part of the Tidyverse. So it should already be installed; but take some time to familiarize yourself with its basic purpose and functions."
+  },
+  {
+    "objectID": "modules/module-5.2.html#overview",
+    "href": "modules/module-5.2.html#overview",
+    "title": "Module 5.2",
+    "section": "Overview",
+    "text": "Overview"
+  },
+  {
+    "objectID": "modules/module-5.2.html#app-with-a-reactive-api-call-and-date-parameters",
+    "href": "modules/module-5.2.html#app-with-a-reactive-api-call-and-date-parameters",
+    "title": "Module 5.2",
+    "section": "App with a reactive API call and date parameters",
+    "text": "App with a reactive API call and date parameters"
+  },
+  {
+    "objectID": "modules/module-5.2.html#setup",
+    "href": "modules/module-5.2.html#setup",
+    "title": "Module 5.2",
+    "section": "Setup",
+    "text": "Setup\n\n\n# Load packages\nlibrary(shiny)\nlibrary(fredr)\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(lubridate)\n\n# Set Fred API key \nfredr_set_key(\"YOUR FRED API KEY\") \n\n# Assign FRED series to objects\ncci &lt;- \"CSCICP03USM665S\" # consumer confidence\nbci &lt;- \"BSCICP03USM665S\" # business confidence\ncli &lt;- \"USALOLITONOSTSAM\" # composite lead indicator\nunemp_rate &lt;- \"UNRATE\" # unemployment rate\ngrowth &lt;- \"A191RL1Q225SBEA\" # growth rate\n\n# set start and end date\nstart_date &lt;- as.Date(\"1970-01-01\")\nend_date &lt;- as.Date(Sys.Date())\n\n# Create list of named values for the input selection\nvars &lt;- c(\"Consumer Confidence\" = cci, \n          \"Business Confidence\" = bci, \n          \"Composite Indicator\" = cli, \n          \"Unemployment Rate\" = unemp_rate,\n          \"Growth Rate\" = growth)\n\n# Load helper script\nsource(\"helper.R\") # scroll down, code pasted below"
+  },
+  {
+    "objectID": "modules/module-5.2.html#ui",
+    "href": "modules/module-5.2.html#ui",
+    "title": "Module 5.2",
+    "section": "ui",
+    "text": "ui\n\nDefine UI for application that draws a line chart\n\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(\"FRED Data App\"),\n    \n    fluidRow(\n      \n      # 12 columns on one row: this panel will take 1/4 of it\n      column(3, wellPanel(\n        selectInput(\"indicator\", \"Indicator:\", vars)\n        ),\n      helpText(\"Select an indicator, choose a date range and view the trend. \n               The grey bars represent economic recessions. \n               The data for this app comes from the St. Louis Fed's \n               FRED database. The consumer confidence, business confidence and \n               lead composite indicators are OECD data downloaded through FRED.\")\n      ), \n      \n      # Remaining 3/4 occupied by plot\n      column(8,\n        plotOutput(\"lineChart\"),     \n        sliderInput(\n          \"range\",\n          \"\",\n          min = my(\"01-1970\"),\n          max = today(), \n          value = c(my(\"01-1970\"), today()), \n          width = \"100%\"\n        )\n      )\n    )\n)"
+  },
+  {
+    "objectID": "modules/module-5.2.html#server",
+    "href": "modules/module-5.2.html#server",
+    "title": "Module 5.2",
+    "section": "Server",
+    "text": "Server\n\nDefine server logic required to draw a histogram.\n\nserver &lt;- function(input, output) {\n  \n    # Download data from FRED with reactive function. \n    # Only updates when user selects new indicator\n    fred_indicator &lt;- reactive({\n      fredr(series_id = input$indicator,\n        observation_start = start_date,\n        observation_end = end_date)\n    })\n  \n    # Filter data according to chosen years \n    # Only updates when user selects new data range\n    fred_data &lt;- reactive({\n      fred_indicator() |&gt;\n      filter(date %in% (input$range[1]:input$range[2]))\n   })\n\n    # Render line chart\n    output$lineChart &lt;- renderPlot({\n      \n      # Build plot with ggplot2\n      ggplot(fred_data(), aes(x = date, y = value)) + \n        geom_line(color = \"navyblue\") +\n        labs(\n          x = \"\", \n          y =  names(vars[which(vars == input$indicator)])\n        ) +\n        theme_minimal() +\n        # add recession shading\n        add_rec_shade(st_date = input$range[1], \n                      ed_date = input$range[2], \n                      shade_color = \"darkgrey\",\n                      y_min = min(fred_data()$value),\n                      y_max = max(fred_data()$value))\n    })\n}"
+  },
+  {
+    "objectID": "modules/module-5.2.html#call-to-shiny-app",
+    "href": "modules/module-5.2.html#call-to-shiny-app",
+    "title": "Module 5.2",
+    "section": "Call to Shiny app",
+    "text": "Call to Shiny app\n\n# See above for the definitions of ui and server\nui &lt;- ...\n\nserver &lt;- ...\n\n# Run the application \nshinyApp(ui = ui, server = server)"
+  },
+  {
+    "objectID": "modules/module-5.2.html#helper-script",
+    "href": "modules/module-5.2.html#helper-script",
+    "title": "Module 5.2",
+    "section": "Helper script",
+    "text": "Helper script\nHelper script for shaded recession rectangles. Save in a file called helper.R in same folder as your app.R file. See this post for more details.\n\n# build recession shading function \nlibrary(ecm)\n\nadd_rec_shade&lt;-function(st_date,ed_date,shade_color, y_min, y_max) # are st_date and ed_date being used in this function?\n{\n  \n  recession&lt;-fredr(series_id = \"USRECD\",observation_start = as.Date(st_date),observation_end = as.Date(ed_date))\n  \n  recession$diff&lt;-recession$value-lagpad(recession$value,k=1) #code 1 for 1st day of recession, -1 for first day after recession ends\n  recession&lt;-recession[!is.na(recession$diff),] #drop 1st N.A. value\n  recession.start&lt;-recession[recession$diff==1,]$date #create vector of recession start dates\n  recession.end&lt;-recession[recession$diff==(-1),]$date #create vector of recession end dates\n  \n  if(length(recession.start)&gt;length(recession.end)) # if there are more dates listed in recession.start than recession.end\n  {recession.end&lt;-c(recession.end,Sys.Date())} # enter system date for last date in recession.end\n  if(length(recession.end)&gt;length(recession.start)) # if there are more dates listed in recession.end than recession.start         \n  {recession.start&lt;-c(min(recession$date),recession.start)} # enter the earliest date in recession$date as first date in recession.start\n  \n  recs&lt;-as.data.frame(cbind(recession.start,recession.end)) # make a dataframe out of recession.start and recession.end\n  recs$recession.start&lt;-as.Date(as.numeric(recs$recession.start),origin=as.Date(\"1970-01-01\")) # convert recession.start into a date\n  recs$recession.end&lt;-as.Date(recs$recession.end,origin=as.Date(\"1970-01-01\")) # convert recession.end into a \n  if(nrow(recs)&gt;0) # if the number of rows in recs &gt; 0\n  {\n    rec_shade&lt;-geom_rect(data=recs, inherit.aes=F, #inherit.aes=F overrides default aesthetics\n                         aes(xmin=recession.start, xmax=recession.end, ymin=y_min, ymax=y_max), \n                         fill=shade_color, alpha=0.5)\n    return(rec_shade)\n  }\n}"
   }
 ]
