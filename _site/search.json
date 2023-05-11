@@ -438,7 +438,7 @@
     "href": "modules/module-5.1.html#setup",
     "title": "Module 5.1",
     "section": "Setup",
-    "text": "Setup\n\nSay something about how to set up an app.R script.\n\n# load packages\nlibrary(shiny)\nlibrary(readr)\nlibrary(ggplot2)\n\n# read in data, create a vector of variable names\ndem_data <- read_csv(\"dem_data.csv\")\n\n# create list of named values for the input selection\nvars <- c(\"Democracy\" = \"polyarchy\",\n          \"Clientelism\" = \"clientelism\",\n          \"Corruption\" = \"corruption\",\n          \"Women's Empowerment\" = \"womens_emp\",\n          \"Wealth\" = \"gdp_pc\",\n          \"Infant Mortality\" = \"inf_mort\",\n          \"Life Expectancy\" = \"life_exp\", \n          \"Education\" = \"education\")"
+    "text": "Setup\n\n\nWrangle data and produce .csv file\nSay something about how to set up an app.R script. We could include this code in app.R file, but it would require more resources than a free account. So instead we will wrangle the data first and save it in a .csv file.\n\nlibrary(vdemdata)\nlibrary(dplyr)\nlibrary(readr)\n\ndem_data <- vdem |>\n  filter(year > 2000) |>\n  select(\n    country = country_name, \n    polyarchy = v2x_polyarchy,\n    clientelism = v2xnp_client,\n    corruption = v2xnp_regcorr,\n    womens_emp = v2x_gender,\n    gdp_pc = e_gdppc,\n    inf_mort = e_peinfmor,\n    life_exp = e_pelifeex,\n    education = e_peaveduc,\n    region = e_regionpol_6C \n  ) |>   mutate(\n    region = case_match(region, \n                        1 ~ \"Eastern Europe\", \n                        2 ~ \"Latin America\",  \n                        3 ~ \"Middle East\",   \n                        4 ~ \"Africa\", \n                        5 ~ \"The West\", \n                        6 ~ \"Asia\")\n  ) |>\n  group_by(country, region) |>\n  summarize_all(mean, na.rm = TRUE)\n\n#glimpse(dem_data)\n\nwrite_csv(dem_data, \"dem_data.csv\")\n\nThis chunk we will include in the app.R script.\n\n# load packages\nlibrary(shiny)\nlibrary(readr)\nlibrary(ggplot2)\n\n# load the data \ndem_data <- read_csv(\"dem_data.csv\")\n\n# create list of named values for the input selection\nvars <- c(\"Democracy\" = \"polyarchy\",\n          \"Clientelism\" = \"clientelism\",\n          \"Corruption\" = \"corruption\",\n          \"Women's Empowerment\" = \"womens_emp\",\n          \"Wealth\" = \"gdp_pc\",\n          \"Infant Mortality\" = \"inf_mort\",\n          \"Life Expectancy\" = \"life_exp\", \n          \"Education\" = \"education\")"
   },
   {
     "objectID": "modules/module-5.1.html#ui",
@@ -583,6 +583,111 @@
   {
     "objectID": "modules/module-5.2.html#helper-script",
     "href": "modules/module-5.2.html#helper-script",
+    "title": "Module 5.2",
+    "section": "Helper script",
+    "text": "Helper script\nHelper script for shaded recession rectangles. Save in a file called helper.R in same folder as your app.R file. See this post for more details.\n\n# build recession shading function \nlibrary(ecm)\n\nadd_rec_shade<-function(st_date,ed_date,shade_color, y_min, y_max) # are st_date and ed_date being used in this function?\n{\n  \n  recession<-fredr(series_id = \"USRECD\",observation_start = as.Date(st_date),observation_end = as.Date(ed_date))\n  \n  recession$diff<-recession$value-lagpad(recession$value,k=1) #code 1 for 1st day of recession, -1 for first day after recession ends\n  recession<-recession[!is.na(recession$diff),] #drop 1st N.A. value\n  recession.start<-recession[recession$diff==1,]$date #create vector of recession start dates\n  recession.end<-recession[recession$diff==(-1),]$date #create vector of recession end dates\n  \n  if(length(recession.start)>length(recession.end)) # if there are more dates listed in recession.start than recession.end\n  {recession.end<-c(recession.end,Sys.Date())} # enter system date for last date in recession.end\n  if(length(recession.end)>length(recession.start)) # if there are more dates listed in recession.end than recession.start         \n  {recession.start<-c(min(recession$date),recession.start)} # enter the earliest date in recession$date as first date in recession.start\n  \n  recs<-as.data.frame(cbind(recession.start,recession.end)) # make a dataframe out of recession.start and recession.end\n  recs$recession.start<-as.Date(as.numeric(recs$recession.start),origin=as.Date(\"1970-01-01\")) # convert recession.start into a date\n  recs$recession.end<-as.Date(recs$recession.end,origin=as.Date(\"1970-01-01\")) # convert recession.end into a \n  if(nrow(recs)>0) # if the number of rows in recs > 0\n  {\n    rec_shade<-geom_rect(data=recs, inherit.aes=F, #inherit.aes=F overrides default aesthetics\n                         aes(xmin=recession.start, xmax=recession.end, ymin=y_min, ymax=y_max), \n                         fill=shade_color, alpha=0.5)\n    return(rec_shade)\n  }\n}"
+  },
+  {
+    "objectID": "modules/module-5.1.knit.html",
+    "href": "modules/module-5.1.knit.html",
+    "title": "Module 5.1",
+    "section": "",
+    "text": "Tip\n\n\n\n\nGet a FRED API key\nInstall fredr and read about its basic usage\nInstall shiny and read about the"
+  },
+  {
+    "objectID": "modules/module-5.1.knit.html#overview",
+    "href": "modules/module-5.1.knit.html#overview",
+    "title": "Module 5.1",
+    "section": "Overview",
+    "text": "Overview"
+  },
+  {
+    "objectID": "modules/module-5.1.knit.html#scatter-plot-app",
+    "href": "modules/module-5.1.knit.html#scatter-plot-app",
+    "title": "Module 5.1",
+    "section": "Scatter plot app",
+    "text": "Scatter plot app"
+  },
+  {
+    "objectID": "modules/module-5.1.knit.html#setup",
+    "href": "modules/module-5.1.knit.html#setup",
+    "title": "Module 5.1",
+    "section": "Setup",
+    "text": "Setup\n\n\nWrangle data and produce .csv file\nSay something about how to set up an app.R script. We could include this code in app.R file, but it would require more resources than a free account. So instead we will wrangle the data first and save it in a .csv file.\n\nlibrary(vdemdata)\nlibrary(dplyr)\nlibrary(readr)\n\ndem_data <- vdem |>\n  filter(year > 2000) |>\n  select(\n    country = country_name, \n    polyarchy = v2x_polyarchy,\n    clientelism = v2xnp_client,\n    corruption = v2xnp_regcorr,\n    womens_emp = v2x_gender,\n    gdp_pc = e_gdppc,\n    inf_mort = e_peinfmor,\n    life_exp = e_pelifeex,\n    education = e_peaveduc,\n    region = e_regionpol_6C \n  ) |>   mutate(\n    region = case_match(region, \n                        1 ~ \"Eastern Europe\", \n                        2 ~ \"Latin America\",  \n                        3 ~ \"Middle East\",   \n                        4 ~ \"Africa\", \n                        5 ~ \"The West\", \n                        6 ~ \"Asia\")\n  ) |>\n  group_by(country, region) |>\n  summarize_all(mean, na.rm = TRUE)\n\n#glimpse(dem_data)\n\nwrite_csv(dem_data, \"dem_data.csv\")\n\nThis chunk we will include in the app.R script.\n\n# load packages\nlibrary(shiny)\nlibrary(readr)\nlibrary(ggplot2)\n\n# load the data \ndem_data <- read_csv(\"dem_data.csv\")\n\n# create list of named values for the input selection\nvars <- c(\"Democracy\" = \"polyarchy\",\n          \"Clientelism\" = \"clientelism\",\n          \"Corruption\" = \"corruption\",\n          \"Women's Empowerment\" = \"womens_emp\",\n          \"Wealth\" = \"gdp_pc\",\n          \"Infant Mortality\" = \"inf_mort\",\n          \"Life Expectancy\" = \"life_exp\", \n          \"Education\" = \"education\")"
+  },
+  {
+    "objectID": "modules/module-5.1.knit.html#ui",
+    "href": "modules/module-5.1.knit.html#ui",
+    "title": "Module 5.1",
+    "section": "ui",
+    "text": "ui\n\n\n# Define UI for application that draws a histogram\nui <- fluidPage(\n\n    # Application title\n    titlePanel(\"Democracy and Development\"),\n\n    # Sidebar with a slider input for number of bins \n    sidebarLayout(\n      sidebarPanel(\n        selectInput('xcol', 'X Variable', vars),\n        selectInput('ycol', 'Y Variable', vars, selected = vars[[6]])\n      ),\n\n        # Show a plot of the generated distribution\n        mainPanel(\n           plotOutput(\"scatterplot\")\n        )\n    )\n)"
+  },
+  {
+    "objectID": "modules/module-5.1.knit.html#server",
+    "href": "modules/module-5.1.knit.html#server",
+    "title": "Module 5.1",
+    "section": "Server",
+    "text": "Server\n\n\n# Define server logic required to draw a scatter plot\nserver <- function(input, output, session) {\n  \n  # Render the plot\n  output$scatterplot <- renderPlot({\n    \n    # Combine the selected variables into a new data frame\n    selectedData <- dem_data[, c(input$xcol, input$ycol, \"region\")]\n    \n    # ggplot call\n    ggplot(selectedData(), aes_string(x = input$xcol, y = input$ycol)) +\n      geom_point(aes(color = region)) +\n      geom_smooth(method = \"loess\") +\n      scale_color_viridis_d(option = \"plasma\") +\n      theme_minimal() +\n      labs(\n        x =  names(vars[which(vars == input$xcol)]),\n        y =  names(vars[which(vars == input$ycol)]),\n        caption = \"Source: V-Dem Institute\", # caption\n        color = \"Region\" # legend title\n      )\n  })\n}"
+  },
+  {
+    "objectID": "modules/module-5.1.knit.html#call-to-shiny-app",
+    "href": "modules/module-5.1.knit.html#call-to-shiny-app",
+    "title": "Module 5.1",
+    "section": "Call to Shiny app",
+    "text": "Call to Shiny app\n\n# See above for the definitions of ui and server\nui <- ...\n\nserver <- ...\n\n# Run the application \nshinyApp(ui = ui, server = server)"
+  },
+  {
+    "objectID": "modules/module-5.2.knit.html",
+    "href": "modules/module-5.2.knit.html",
+    "title": "Module 5.2",
+    "section": "",
+    "text": "Tip\n\n\n\n\nReview the prework for module 5.1 and make sure that you have everything installed\nInstall ecm, which we will use to build our recession shading helper script\nInstall shinyWidgets and familiarize yourself with its basic functions\nWe will be using lubridate, which is part of the Tidyverse. So it should already be installed; but take some time to familiarize yourself with its basic purpose and functions."
+  },
+  {
+    "objectID": "modules/module-5.2.knit.html#overview",
+    "href": "modules/module-5.2.knit.html#overview",
+    "title": "Module 5.2",
+    "section": "Overview",
+    "text": "Overview"
+  },
+  {
+    "objectID": "modules/module-5.2.knit.html#app-with-a-reactive-api-call-and-date-parameters",
+    "href": "modules/module-5.2.knit.html#app-with-a-reactive-api-call-and-date-parameters",
+    "title": "Module 5.2",
+    "section": "App with a reactive API call and date parameters",
+    "text": "App with a reactive API call and date parameters"
+  },
+  {
+    "objectID": "modules/module-5.2.knit.html#setup",
+    "href": "modules/module-5.2.knit.html#setup",
+    "title": "Module 5.2",
+    "section": "Setup",
+    "text": "Setup\n\n\n# Load packages\nlibrary(shiny)\nlibrary(fredr)\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(lubridate)\n\n# Set Fred API key \nfredr_set_key(\"YOUR FRED API KEY\") \n\n# Assign FRED series to objects\ncci <- \"CSCICP03USM665S\" # consumer confidence\nbci <- \"BSCICP03USM665S\" # business confidence\ncli <- \"USALOLITONOSTSAM\" # composite lead indicator\nunemp_rate <- \"UNRATE\" # unemployment rate\ngrowth <- \"A191RL1Q225SBEA\" # growth rate\n\n# set start and end date\nstart_date <- as.Date(\"1970-01-01\")\nend_date <- as.Date(Sys.Date())\n\n# Create list of named values for the input selection\nvars <- c(\"Consumer Confidence\" = cci, \n          \"Business Confidence\" = bci, \n          \"Composite Indicator\" = cli, \n          \"Unemployment Rate\" = unemp_rate,\n          \"Growth Rate\" = growth)\n\n# Load helper script\nsource(\"helper.R\") # scroll down, code pasted below"
+  },
+  {
+    "objectID": "modules/module-5.2.knit.html#ui",
+    "href": "modules/module-5.2.knit.html#ui",
+    "title": "Module 5.2",
+    "section": "ui",
+    "text": "ui\n\nDefine UI for application that draws a line chart\n\nui <- fluidPage(\n\n    # Application title\n    titlePanel(\"FRED Data App\"),\n    \n    fluidRow(\n      \n      # 12 columns on one row: this panel will take 1/4 of it\n      column(3, wellPanel(\n        selectInput(\"indicator\", \"Indicator:\", vars)\n        ),\n      helpText(\"Select an indicator, choose a date range and view the trend. \n               The grey bars represent economic recessions. \n               The data for this app comes from the St. Louis Fed's \n               FRED database. The consumer confidence, business confidence and \n               lead composite indicators are OECD data downloaded through FRED.\")\n      ), \n      \n      # Remaining 3/4 occupied by plot\n      column(8,\n        plotOutput(\"lineChart\"),     \n        sliderInput(\n          \"range\",\n          \"\",\n          min = my(\"01-1970\"),\n          max = today(), \n          value = c(my(\"01-1970\"), today()), \n          width = \"100%\"\n        )\n      )\n    )\n)"
+  },
+  {
+    "objectID": "modules/module-5.2.knit.html#server",
+    "href": "modules/module-5.2.knit.html#server",
+    "title": "Module 5.2",
+    "section": "Server",
+    "text": "Server\n\nDefine server logic required to draw a histogram.\n\nserver <- function(input, output) {\n  \n    # Download data from FRED with reactive function. \n    # Only updates when user selects new indicator\n    fred_indicator <- reactive({\n      fredr(series_id = input$indicator,\n        observation_start = start_date,\n        observation_end = end_date)\n    })\n  \n    # Filter data according to chosen years \n    # Only updates when user selects new data range\n    fred_data <- reactive({\n      fred_indicator() |>\n      filter(date %in% (input$range[1]:input$range[2]))\n   })\n\n    # Render line chart\n    output$lineChart <- renderPlot({\n      \n      # Build plot with ggplot2\n      ggplot(fred_data(), aes(x = date, y = value)) + \n        geom_line(color = \"navyblue\") +\n        labs(\n          x = \"\", \n          y =  names(vars[which(vars == input$indicator)])\n        ) +\n        theme_minimal() +\n        # add recession shading\n        add_rec_shade(st_date = input$range[1], \n                      ed_date = input$range[2], \n                      shade_color = \"darkgrey\",\n                      y_min = min(fred_data()$value),\n                      y_max = max(fred_data()$value))\n    })\n}"
+  },
+  {
+    "objectID": "modules/module-5.2.knit.html#call-to-shiny-app",
+    "href": "modules/module-5.2.knit.html#call-to-shiny-app",
+    "title": "Module 5.2",
+    "section": "Call to Shiny app",
+    "text": "Call to Shiny app\n\n# See above for the definitions of ui and server\nui <- ...\n\nserver <- ...\n\n# Run the application \nshinyApp(ui = ui, server = server)"
+  },
+  {
+    "objectID": "modules/module-5.2.knit.html#helper-script",
+    "href": "modules/module-5.2.knit.html#helper-script",
     "title": "Module 5.2",
     "section": "Helper script",
     "text": "Helper script\nHelper script for shaded recession rectangles. Save in a file called helper.R in same folder as your app.R file. See this post for more details.\n\n# build recession shading function \nlibrary(ecm)\n\nadd_rec_shade<-function(st_date,ed_date,shade_color, y_min, y_max) # are st_date and ed_date being used in this function?\n{\n  \n  recession<-fredr(series_id = \"USRECD\",observation_start = as.Date(st_date),observation_end = as.Date(ed_date))\n  \n  recession$diff<-recession$value-lagpad(recession$value,k=1) #code 1 for 1st day of recession, -1 for first day after recession ends\n  recession<-recession[!is.na(recession$diff),] #drop 1st N.A. value\n  recession.start<-recession[recession$diff==1,]$date #create vector of recession start dates\n  recession.end<-recession[recession$diff==(-1),]$date #create vector of recession end dates\n  \n  if(length(recession.start)>length(recession.end)) # if there are more dates listed in recession.start than recession.end\n  {recession.end<-c(recession.end,Sys.Date())} # enter system date for last date in recession.end\n  if(length(recession.end)>length(recession.start)) # if there are more dates listed in recession.end than recession.start         \n  {recession.start<-c(min(recession$date),recession.start)} # enter the earliest date in recession$date as first date in recession.start\n  \n  recs<-as.data.frame(cbind(recession.start,recession.end)) # make a dataframe out of recession.start and recession.end\n  recs$recession.start<-as.Date(as.numeric(recs$recession.start),origin=as.Date(\"1970-01-01\")) # convert recession.start into a date\n  recs$recession.end<-as.Date(recs$recession.end,origin=as.Date(\"1970-01-01\")) # convert recession.end into a \n  if(nrow(recs)>0) # if the number of rows in recs > 0\n  {\n    rec_shade<-geom_rect(data=recs, inherit.aes=F, #inherit.aes=F overrides default aesthetics\n                         aes(xmin=recession.start, xmax=recession.end, ymin=y_min, ymax=y_max), \n                         fill=shade_color, alpha=0.5)\n    return(rec_shade)\n  }\n}"
