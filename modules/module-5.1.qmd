@@ -10,6 +10,7 @@ execute:
 ---
 
 :::{.callout-tip}
+## Prework
 - Get a [FRED API key](https://fred.stlouisfed.org/docs/api/api_key.html)
 - Install [fredr](https://cran.r-project.org/web/packages/fredr/vignettes/fredr.html) and read about its basic usage
 - Install [shiny](https://shiny.posit.co/) and read about the 

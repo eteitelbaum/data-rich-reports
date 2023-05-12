@@ -10,6 +10,7 @@ execute:
 ---
 
 :::{.callout-tip}
+## Prework
 - Review the prework for [module 5.1](https://dataviz-gwu.rocks/modules/module-5.1.html) and make sure that you have everything installed
 - Install [ecm](https://cran.r-project.org/web/packages/ecm/ecm.pdf), which we will use to build our recession shading helper script
 - Install [shinyWidgets](https://dreamrs.github.io/shinyWidgets/) and familiarize yourself with its basic functions

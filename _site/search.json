@@ -515,7 +515,7 @@
     "href": "modules/module-5.1.html",
     "title": "Module 5.1",
     "section": "",
-    "text": "Tip\n\n\n\n\nGet a FRED API key\nInstall fredr and read about its basic usage\nInstall shiny and read about the"
+    "text": "Prework\n\n\n\n\nGet a FRED API key\nInstall fredr and read about its basic usage\nInstall shiny and read about the"
   },
   {
     "objectID": "modules/module-5.1.html#overview",
@@ -536,7 +536,7 @@
     "href": "modules/module-5.2.html",
     "title": "Module 5.2",
     "section": "",
-    "text": "Tip\n\n\n\n\nReview the prework for module 5.1 and make sure that you have everything installed\nInstall ecm, which we will use to build our recession shading helper script\nInstall shinyWidgets and familiarize yourself with its basic functions\nWe will be using lubridate, which is part of the Tidyverse. So it should already be installed; but take some time to familiarize yourself with its basic purpose and functions."
+    "text": "Prework\n\n\n\n\nReview the prework for module 5.1 and make sure that you have everything installed\nInstall ecm, which we will use to build our recession shading helper script\nInstall shinyWidgets and familiarize yourself with its basic functions\nWe will be using lubridate, which is part of the Tidyverse. So it should already be installed; but take some time to familiarize yourself with its basic purpose and functions."
   },
   {
     "objectID": "modules/module-5.2.html#overview",
