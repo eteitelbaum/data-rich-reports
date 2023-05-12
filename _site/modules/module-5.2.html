@@ -128,10 +128,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <meta property="og:title" content="PSC/DATS 2102–Summer Schedule - Module 5.2">
-<meta property="og:description" content="">
+<meta property="og:description" content="API Calls and Sliders">
 <meta property="og:site-name" content="PSC/DATS 2102--Summer Schedule">
 <meta name="twitter:title" content="PSC/DATS 2102–Summer Schedule - Module 5.2">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="API Calls and Sliders">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -375,6 +375,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title d-none d-lg-block">Module 5.2</h1>
+<p class="subtitle lead">API Calls and Sliders</p>
 </div>
 
 
@@ -549,35 +550,65 @@ Tip
 <h2 class="anchored" data-anchor-id="helper-script">Helper script</h2>
 <p>Helper script for shaded recession rectangles. Save in a file called <code>helper.R</code> in same folder as your <code>app.R</code> file. See <a href="https://rpubs.com/FSl/609471">this post</a> for more details.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># build recession shading function </span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ecm)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>add_rec_shade<span class="ot">&lt;-</span><span class="cf">function</span>(st_date,ed_date,shade_color, y_min, y_max) <span class="co"># are st_date and ed_date being used in this function?</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  recession<span class="ot">&lt;-</span><span class="fu">fredr</span>(<span class="at">series_id =</span> <span class="st">"USRECD"</span>,<span class="at">observation_start =</span> <span class="fu">as.Date</span>(st_date),<span class="at">observation_end =</span> <span class="fu">as.Date</span>(ed_date))</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  recession<span class="sc">$</span>diff<span class="ot">&lt;-</span>recession<span class="sc">$</span>value<span class="sc">-</span><span class="fu">lagpad</span>(recession<span class="sc">$</span>value,<span class="at">k=</span><span class="dv">1</span>) <span class="co">#code 1 for 1st day of recession, -1 for first day after recession ends</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  recession<span class="ot">&lt;-</span>recession[<span class="sc">!</span><span class="fu">is.na</span>(recession<span class="sc">$</span>diff),] <span class="co">#drop 1st N.A. value</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  recession.start<span class="ot">&lt;-</span>recession[recession<span class="sc">$</span>diff<span class="sc">==</span><span class="dv">1</span>,]<span class="sc">$</span>date <span class="co">#create vector of recession start dates</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  recession.end<span class="ot">&lt;-</span>recession[recession<span class="sc">$</span>diff<span class="sc">==</span>(<span class="sc">-</span><span class="dv">1</span>),]<span class="sc">$</span>date <span class="co">#create vector of recession end dates</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">length</span>(recession.start)<span class="sc">&gt;</span><span class="fu">length</span>(recession.end)) <span class="co"># if there are more dates listed in recession.start than recession.end</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  {recession.end<span class="ot">&lt;-</span><span class="fu">c</span>(recession.end,<span class="fu">Sys.Date</span>())} <span class="co"># enter system date for last date in recession.end</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">length</span>(recession.end)<span class="sc">&gt;</span><span class="fu">length</span>(recession.start)) <span class="co"># if there are more dates listed in recession.end than recession.start         </span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  {recession.start<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fu">min</span>(recession<span class="sc">$</span>date),recession.start)} <span class="co"># enter the earliest date in recession$date as first date in recession.start</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  recs<span class="ot">&lt;-</span><span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(recession.start,recession.end)) <span class="co"># make a dataframe out of recession.start and recession.end</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  recs<span class="sc">$</span>recession.start<span class="ot">&lt;-</span><span class="fu">as.Date</span>(<span class="fu">as.numeric</span>(recs<span class="sc">$</span>recession.start),<span class="at">origin=</span><span class="fu">as.Date</span>(<span class="st">"1970-01-01"</span>)) <span class="co"># convert recession.start into a date</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  recs<span class="sc">$</span>recession.end<span class="ot">&lt;-</span><span class="fu">as.Date</span>(recs<span class="sc">$</span>recession.end,<span class="at">origin=</span><span class="fu">as.Date</span>(<span class="st">"1970-01-01"</span>)) <span class="co"># convert recession.end into a </span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">nrow</span>(recs)<span class="sc">&gt;</span><span class="dv">0</span>) <span class="co"># if the number of rows in recs &gt; 0</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  {</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    rec_shade<span class="ot">&lt;-</span><span class="fu">geom_rect</span>(<span class="at">data=</span>recs, <span class="at">inherit.aes=</span>F, <span class="co">#inherit.aes=F overrides default aesthetics</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">aes</span>(<span class="at">xmin=</span>recession.start, <span class="at">xmax=</span>recession.end, <span class="at">ymin=</span>y_min, <span class="at">ymax=</span>y_max), </span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>                         <span class="at">fill=</span>shade_color, <span class="at">alpha=</span><span class="fl">0.5</span>)</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(rec_shade)</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ecm) <span class="co"># forlagpad</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># define add_rec_shade function</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>add_rec_shade<span class="ot">&lt;-</span><span class="cf">function</span>(st_date,ed_date,shade_color, y_min, y_max) {</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># download NBER recession indicators, peak through trough</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  recession<span class="ot">&lt;-</span> <span class="fu">fredr</span>(<span class="at">series_id =</span> <span class="st">"USRECD"</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">observation_start =</span> st_date,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">as.Date</span>(st_date), </span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                    <span class="at">observation_end =</span> <span class="fu">as.Date</span>(ed_date))</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">#code 1 for 1st day of recession, -1 for 1st day after it ends</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  recession<span class="sc">$</span>diff<span class="ot">&lt;-</span>recession<span class="sc">$</span>value<span class="sc">-</span><span class="fu">lagpad</span>(recession<span class="sc">$</span>value,<span class="at">k=</span><span class="dv">1</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="co">#drop 1st N.A. value</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  recession<span class="ot">&lt;-</span>recession[<span class="sc">!</span><span class="fu">is.na</span>(recession<span class="sc">$</span>diff),] </span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="co">#create vector of recession start dates</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  recession.start<span class="ot">&lt;-</span>recession[recession<span class="sc">$</span>diff<span class="sc">==</span><span class="dv">1</span>,]<span class="sc">$</span>date </span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  <span class="co">#create vector of recession end dates</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  recession.end<span class="ot">&lt;-</span>recession[recession<span class="sc">$</span>diff<span class="sc">==</span>(<span class="sc">-</span><span class="dv">1</span>),]<span class="sc">$</span>date </span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># if there are more dates listed in recession.start than recession.end</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">length</span>(recession.start)<span class="sc">&gt;</span><span class="fu">length</span>(recession.end))</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># then enter system date for last date in recession.end</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>  {recession.end<span class="ot">&lt;-</span><span class="fu">c</span>(recession.end,<span class="fu">Sys.Date</span>())} </span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># if there are more dates listed in recession.end than recession.start</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">length</span>(recession.end)<span class="sc">&gt;</span><span class="fu">length</span>(recession.start))       </span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  <span class="co"># then enter the earliest date in recession$date as first date in recession.start  </span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>  {recession.start<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fu">min</span>(recession<span class="sc">$</span>date),recession.start)} </span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># make a dataframe out of recession.start and recession.end</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>  recs<span class="ot">&lt;-</span><span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(recession.start,recession.end))</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># convert recession.start into a date</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>  recs<span class="sc">$</span>recession.start<span class="ot">&lt;-</span><span class="fu">as.Date</span>(</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.numeric</span>(recs<span class="sc">$</span>recession.start),</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">origin=</span><span class="fu">as.Date</span>(<span class="st">"1970-01-01"</span>)) </span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>  <span class="co"># convert recession.end into a date</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>  recs<span class="sc">$</span>recession.end<span class="ot">&lt;-</span><span class="fu">as.Date</span>(</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>    recs<span class="sc">$</span>recession.end,</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">origin=</span><span class="fu">as.Date</span>(<span class="st">"1970-01-01"</span>)) </span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>  <span class="co"># if the number of rows in recs &gt; 0</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">nrow</span>(recs)<span class="sc">&gt;</span><span class="dv">0</span>) </span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>  <span class="co"># draw the rectangle  </span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>  {rec_shade<span class="ot">&lt;-</span><span class="fu">geom_rect</span>(<span class="at">data=</span>recs, </span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>                         <span class="co"># inherit.aes=F overrides default aesthetics</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>                         <span class="at">inherit.aes=</span>F, </span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">aes</span>(<span class="at">xmin=</span>recession.start, </span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>                         <span class="at">xmax=</span>recession.end, </span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>                         <span class="at">ymin=</span>y_min, <span class="at">ymax=</span>y_max), </span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>                         <span class="at">fill=</span>shade_color, <span class="at">alpha=</span><span class="fl">0.5</span>)</span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(rec_shade)</span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
