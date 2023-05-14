@@ -335,8 +335,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#sec-rstudio-setup" id="toc-sec-rstudio-setup" class="nav-link active" data-scroll-target="#sec-rstudio-setup">R and RStudio</a></li>
   <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
-  <li><a href="#github" id="toc-github" class="nav-link" data-scroll-target="#github">GitHub</a></li>
-  <li><a href="#github-classroom" id="toc-github-classroom" class="nav-link" data-scroll-target="#github-classroom">GitHub Classroom</a></li>
+  <li><a href="#github-and-github-classroom" id="toc-github-and-github-classroom" class="nav-link" data-scroll-target="#github-and-github-classroom">GitHub and GitHub Classroom</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/eteitelbaum/dataviz-summer-2023/edit/main/modules/getting-started.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/eteitelbaum/dataviz-summer-2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -375,7 +374,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="quarto" class="level2">
 <h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/wo9vZccmqwc" title="Your First Quarto Document" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/c654j7aQjcg" title="Your First Quarto Document" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>Once you have R, R Studio and Quarto installed, you are ready to start integrating text and code with <a href="https://quarto.org/">Quarto</a>. Quarto is an open source publishing platform that enables you to integrate text with code. If you have used <a href="https://rmarkdown.rstudio.com/">R Markdown</a> before then Quarto will look familiar to you because Quarto is the next generation of R Markdown.</p>
 <p>RStudio comes with a version of Quarto already installed, but it can be useful to install the most recent version separately and because doing so will allow you to use Quarto with another IDE like VS Code. You can install the most recent version of Quarto by visiting <a href="https://quarto.org/docs/get-started/">this page</a> and selecting the version for your operating system.</p>
 <p>Now take a little time to create a Quarto project in R Studio and make sure everything is working properly. But before you get started, create a new folder(directory) for this course on your computer somewhere. Once that is done, go to File &gt; New Project. Then select Quarto Project and name the project something like “test-project” in the Directory name field. Next, select Browse and navigate to the folder that you created for this course. Select Create Project.</p>
@@ -385,8 +384,8 @@ ul.task-list li input[type="checkbox"] {
 <p>Now take a few minutes and try changing more of the code in the YAML header. You can try changing the title, adding a subtitle (<code>subtitle:</code>) or changing the <a href="https://quarto.org/docs/computations/execution-options.html">execution options</a>. By default, Quarto uses the <a href="https://quarto.org/docs/visual-editor/">visual editor</a> but behind the scenes it is using Markdown. Try and edit some text using the toggle buttons available in the visual editor and then switch to Source to view the underlying Markdown code. Play with the R code chunks embedded in the document or try adding new code chunks.</p>
 <p>You may already have some experience writing in Markdown, which is a lightweight markup language that enables you to format plaintext files. If you have not used Markdown, or if your memory is hazy, don’t worry: it is really easy to learn. Have a look at this Markdown <a href="https://www.markdownguide.org/cheat-sheet/">cheat sheet</a> and try to familiarize yourself with its basic syntax. Finally, take some time to get familiar with the <a href="https://quarto.org/docs/guide/">Guide</a> and <a href="https://quarto.org/docs/reference/">Reference</a> sections of the Quarto website. Then take a look at the <a href="https://quarto.org/docs/gallery/">gallery</a> so that you can get an idea of the kinds of things you can produce with Quarto.</p>
 </section>
-<section id="github" class="level2">
-<h2 class="anchored" data-anchor-id="github">GitHub</h2>
+<section id="github-and-github-classroom" class="level2">
+<h2 class="anchored" data-anchor-id="github-and-github-classroom">GitHub and GitHub Classroom</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/wo9vZccmqwc" title="Getting Started With GitHub" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>GitHub is a platform for hosting version control repositories. In this course we will learn to use GitHub to store, manage and collaborate on code.</p>
 <p>One central concept you want to be familiar with is a <em>repository</em> or “repo” for short. Repos are essentially folders where code can be stored and then accessed and changed by multiple users. All of the assignments for this course will be managed in repos.</p>
@@ -394,14 +393,6 @@ ul.task-list li input[type="checkbox"] {
 <p>The first thing you are going to want to do is to <a href="https://happygitwithr.com/github-acct.html">register</a> a GitHub account. From there, you want to <a href="https://happygitwithr.com/install-git.html">install Git</a> and <a href="https://happygitwithr.com/hello-git.html">initiate Git</a> using the <code>usethis</code> package.</p>
 <p>Next, you need to generate a personal access token <a href="https://happygitwithr.com/https-pat.html">(PAT)</a> and set your credentials with the <code>gitcreds</code> package.</p>
 <p>Now, you can <a href="https://happygitwithr.com/rstudio-git-github.html">create a GitHub repo</a> and clone it to your computer in RStudio. There a number of ways to clone a repo, but the recommended method for this course involves creating a new project in RStudio and selecting “Version Control” for the method (instead of “New Directory” as we did before). From there, select “Git”, copy the URL from the green “Code” tab in the GitHub repo, and paste it into “Repository URL” field. Next, select the directory where you want the repository to be created and click “create project.”</p>
-</section>
-<section id="github-classroom" class="level2">
-<h2 class="anchored" data-anchor-id="github-classroom">GitHub Classroom</h2>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/wo9vZccmqwc" title="Getting Started With GitHub" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<ul>
-<li>Give a brief overview of GitHub Classroom and how to use it.</li>
-<li>Perhaps have students download a mock assignment to illustrate how it works.</li>
-</ul>
 
 
 </section>
