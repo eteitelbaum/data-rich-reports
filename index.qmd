@@ -1,6 +1,6 @@
 ---
 title: "Course Schedule"
-tbl-colwidths: [5,15,30,30,5,5,5,5]
+tbl-colwidths: [5,20,30,30,5,5,5,5]
 editor: visual
 ---
 
@@ -20,424 +20,46 @@ advdate <- function(day, week) {
   date <- (day + weeks(week))
   dm <- paste(month(date, label = TRUE)," ",day(date))
   return(dm)  
-} 
+}
 ```
 
 This page displays an outline of the topics, content, and assignments for the term. Each module starts on a Monday. There are no assignments due on Sundays.
 
-::: column-screen-inset-right
-<table>
-<thead>
-<tr class="header">
-<th><p>Module</p></th>
-<th><p>Date</p></th>
-<th><p>Skills</p></th>
-<th><p>Packages</p></th>
-<th><p>Functions</p></th>
-<th><p>Readings</p></th>
-<th><p>Reference</p></th>
-<th><p>Videos</p></th>
-<th><p>Assignments</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><p>1.1</p></td>
-<td><p><code>r advdate(mon,0)</code></p></td>
-<td><p>Read data from flat files into R</p></td>
-<td><p><code>readr</code></p></td>
-<td><p><code>read_csv()</code>, <code>glimpse()</code></p></td>
-<td></td>
-<td><p><a href="https://r4ds.hadley.nz/data-import.html#introduction" title="r4ds, 8.1 &amp; 8.2">📖</a></p></td>
-<td><p><a href="https://youtu.be/YLOaKB8dfF4" title="Download WB data">🖥️</a> <a href="https://youtu.be/XOGXn8IiHK8" title="Read data from .csv file">🖥️</a></p></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><p><code>r advdate(tues,0)</code></p></td>
-<td><p>Reshape data</p></td>
-<td><p><code>tidyr</code></p></td>
-<td><p><code>pivot_longer()</code></p></td>
-<td></td>
-<td><p><a href="https://r4ds.hadley.nz/data-tidy.html" title="r4ds, 6.1 &amp; 6.3">📖</a></p></td>
-<td><p><a href="https://youtu.be/ud36szsO9a4" title="Reshaping data">🖥️</a></p></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><p><code>r advdate(wed,0)</code></p></td>
-<td><p>Clean data</p></td>
-<td><p><code>dplyr</code>, <code>janitor</code> , <code>readr</code></p></td>
-<td><p><code>mutate_at()</code>, <code>clean_names()</code> , <code>write_csv()</code></p></td>
-<td><p><a href="https://link.springer.com/article/10.1057/palgrave.ap.5500151" title="Norris">📖</a></p></td>
-<td></td>
-<td><p><a href="https://youtu.be/syG5cdmtXSo" title="Truncating strings, changing variable types">🖥️</a> <a href="https://youtu.be/M-uuPBdBCTw" title="Cleaning variable names">🖥️</a></p></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><p>1.2</p></td>
-<td><p><code>r advdate(thur,0)</code></p></td>
-<td><p>Download and filter data, select and create variables</p></td>
-<td><p><code>wbstats</code>, <code>vdemdata</code>, <code>dplyr</code></p></td>
-<td><p><code>wbstats()</code>, <code>vdem</code>,</p>
-<p><code>filter()</code> , <code>select()</code>, <code>mutate()</code></p></td>
-<td></td>
-<td></td>
-<td><p><a href="https://youtu.be/cBRTP2imt_o" title="Download data from an API">🖥️</a> <a href="https://youtu.be/7CvYTeMP_PU" title="Filter(), select(), mutate()">🖥️</a></p></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><p><code>r advdate(fri,0)</code></p></td>
-<td><p>Merge data frames</p></td>
-<td><p><code>countrycode</code>, <code>dplyr</code></p></td>
-<td><p><code>country_code()</code>, <code>left_join()</code></p></td>
-<td></td>
-<td><p><a href="https://r4ds.hadley.nz/joins.html#sec-mutating-joins" title="r4ds, 20.3">📖</a></p></td>
-<td><p><a href="https://youtu.be/ZGD0kO_iwAM" title="Add country codes to a data frame">🖥️</a> <a href="https://youtu.be/wNF3ZPneHWw" title="Merge two data frames">🖥️</a></p></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><p><code>r advdate(sat,0)</code></p></td>
-<td><p>Group, summarize and arrange data</p></td>
-<td><p><code>dplyr</code></p></td>
-<td><p><code>group_by()</code>, <code>summarize()</code>, <code>arrange()</code></p></td>
-<td></td>
-<td><p><a href="https://r4ds.hadley.nz/data-transform.html#groups" title="r4ds, 4.5">📖</a></p></td>
-<td><p><a href="https://youtu.be/2nX9p6arQjg" title="Group, summarize and arrange">🖥️</a></p></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><p>2.1</p></td>
-<td><p><code>r advdate(mon,1)</code></p></td>
-<td><p>Bar charts and histograms</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p><a href="https://youtu.be/hl02sVTyCRA" title="Bar charts">🖥️</a> <a href="https://youtu.be/LuNDAIQXx9w" title="Histograms">🖥️</a></p></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><p><code>r advdate(tues, 1)</code></p></td>
-<td><p>Line charts</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p><a href="https://youtu.be/cHos9y261SQ" title="Line charts">🖥️</a></p></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><p><code>r advdate(wed, 1)</code></p></td>
-<td><p>Scatter plots</p></td>
-<td></td>
-<td></td>
-<td><p><a href="https://www-jstor-org.proxygw.wrlc.org/stable/1951731?seq=8" title="Lipset">📖</a></p></td>
-<td></td>
-<td><p><a href="https://youtu.be/Cvme3C268wE" title="Scatter plots">🖥️</a></p></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><p>2.2</p></td>
-<td><p><code>r advdate(thur, 1)</code></p></td>
-<td><p>Color schemes</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p><a href="https://youtu.be/fBCtSjg_-Ik" title="Color schemes">🖥️</a></p></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><p><code>r advdate(fri, 1)</code></p></td>
-<td><p>Add themes and annotations</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p><a href="https://youtu.be/Le0OJXdsy3o" title="Themes">🖥️</a> <a href="https://youtu.be/uEpBMgWilXc" title="Annotations">🖥️</a></p></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><p><code>r advdate(sat, 1)</code></p></td>
-<td><p>Make an interactive plot</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p><a href="https://youtu.be/T-7jtbcwaJ0" title="Interactivity">🖥️</a></p></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><p>3.1</p></td>
-<td><p><code>r advdate(mon, 2)</code></p></td>
-<td><p>Choropleth map</p></td>
-<td><p><code>rnaturalearth</code></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p><a href="https://youtu.be/HB3PMF93hzs" title="Using rnaturalearth">🖥️</a></p></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><p><code>r advdate(tues, 2)</code></p></td>
-<td><p>Map data</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p><a href="https://youtu.be/5RnnGov3Iw4" title="Mapping data with rnaturalearth">🖥️</a></p></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><p><code>r advdate(wed, 2)</code></p></td>
-<td><p>Make a map function</p></td>
-<td></td>
-<td></td>
-<td><p><a href="https://www-jstor-org.proxygw.wrlc.org/stable/j.ctt7s3wz.10" title="Ross, Chapter 3">📖</a></p></td>
-<td></td>
-<td><p><a href="https://youtu.be/m42vrbEEHT4" title="Making a map function">🖥️</a></p></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><p>3.2</p></td>
-<td><p><code>r advdate(thur, 2)</code></p></td>
-<td><p>Upload UCDP data</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p><a href="https://youtu.be/If2PwFv90iI" title="Working with UCDP data">🖥️</a></p></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><p><code>r advdate(fri, 2)</code></p></td>
-<td><p>Make a leaflet map</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p><a href="https://youtu.be/hHUPqgHRqYU" title="Make a leaflet map">🖥️</a></p></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><p><code>r advdate(sat, 2)</code></p></td>
-<td><p>Customize your map</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p><a href="https://youtu.be/qLYeSsoDvgs" title="Customize your leaflet map">🖥️</a></p></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><p>4.1</p></td>
-<td><p><code>r advdate(mon, 3)</code></p></td>
-<td><p>Exploring tabular data</p></td>
-<td><p><code>tidycensus</code>, <code>kableExtra</code></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>🖥️</p></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><p><code>r advdate(tues, 3)</code></p></td>
-<td><p>Make a <code>gt</code> table</p></td>
-<td><p><code>gt</code></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>🖥️</p></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><p><code>r advdate(wed, 3)</code></p></td>
-<td><p>Plot confidence intervals</p></td>
-<td></td>
-<td></td>
-<td><p><a href="https://www.jstor.org/stable/3118222" title="Fearon &amp; Laitin">📖</a></p></td>
-<td></td>
-<td><p>🖥️</p></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><p>4.2</p></td>
-<td><p><code>r advdate(thur, 3)</code></p></td>
-<td><p>Display regression tables</p></td>
-<td><p><code>broom</code></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>🖥️</p></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><p><code>r advdate(fri, 3)</code></p></td>
-<td><p>Make regression tables</p></td>
-<td><p><code>modelsummary</code></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>🖥️</p></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><p><code>r advdate(sat, 3)</code></p></td>
-<td><p>Coefficient plots</p></td>
-<td></td>
-<td><p>`</p></td>
-<td></td>
-<td></td>
-<td><p>🖥️</p></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><p>5.1</p></td>
-<td><p><code>r advdate(mon, 4)</code></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>🖥️</p></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><p><code>r advdate(tues, 4)</code></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>🖥️</p></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><p><code>r advdate(wed, 4)</code></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p><a href="https://muse-jhu-edu.proxygw.wrlc.org/article/225602" title="Huntington">📖</a></p></td>
-<td></td>
-<td><p>🖥️</p></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><p>5.2</p></td>
-<td><p><code>r advdate(thur, 4)</code></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>🖥️</p></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><p><code>r advdate(fri, 4)</code></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>🖥️</p></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><p><code>r advdate(sat, 4)</code></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>🖥️</p></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><p>6.1</p></td>
-<td><p><code>r advdate(mon, 5)</code></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>🖥️</p></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><p><code>r advdate(tues, 5)</code></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>🖥️</p></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><p><code>r advdate(wed, 5)</code></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>🖥️</p></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><p>6.2</p></td>
-<td><p><code>r advdate(thur, 5)</code></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>🖥️</p></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><p><code>r advdate(fri, 5)</code></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>🖥️</p></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><p><code>r advdate(sat, 5)</code></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>🖥️</p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-:::
+| Module | Date                | Skills                       | Packages | Functions |                                      Readings                                       |                                  Reference                                  | Videos | Assignments |
+|:------:|---------------------|------------------------------|----------|-----------|:-----------------------------------------------------------------------------------:|:---------------------------------------------------------------------------:|--------|:-----------:|
+|  1.1   | `r advdate(mon,0)`  | Read data into R             |          |           |                                                                                     | [📖](https://r4ds.hadley.nz/data-import.html#introduction "r4ds 8.1 & 8.2") |        |             |
+|        | `r advdate(tues,0)` | Reshape data                 |          |           |                                                                                     |        [📖](https://r4ds.hadley.nz/data-tidy.html "r4ds 6.1 & 6.3")         |        |             |
+|        | `r advdate(wed,0)`  | Clean data                   |          |           |    [📖](https://link.springer.com/article/10.1057/palgrave.ap.5500151 "Norris")     |                                                                             |        |             |
+|  1.2   | `r advdate(thur,0)` | Download data from APIs      |          |           |                                                                                     |                                                                             |        |             |
+|        | `r advdate(fri,0)`  | Merge data frames            |          |           |                                                                                     |   [📖](https://r4ds.hadley.nz/joins.html#sec-mutating-joins "r4ds, 20.3")   |        |             |
+|        | `r advdate(sat,0)`  | Group, summarize and arrange |          |           |                                                                                     |     [📖](https://r4ds.hadley.nz/data-transform.html#groups "r4ds, 4.5")     |        |             |
+|  2.1   | `r advdate(mon,1)`  | Bar charts & histograms      |          |           |                                                                                     |                                                                             |        |             |
+|        | `r advdate(tues,1)` | Line charts                  |          |           |                                                                                     |                                                                             |        |             |
+|        | `r advdate(wed,1)`  | Scatter plots                |          |           |     [📖](https://www-jstor-org.proxygw.wrlc.org/stable/1951731?seq=8 "Lipset")      |                                                                             |        |             |
+|  2.2   | `r advdate(thur,1)` | Color schemes                |          |           |                                                                                     |                                                                             |        |             |
+|        | `r advdate(fri,1)`  | Themes & annotations         |          |           |                                                                                     |                                                                             |        |             |
+|        | `r advdate(sat,1)`  | Make an interactive plot     |          |           |                                                                                     |                                                                             |        |             |
+|  3.1   | `r advdate(mon,2)`  | Choropleth map               |          |           |                                                                                     |                                                                             |        |             |
+|        | `r advdate(tues,2)` | Map data                     |          |           |                                                                                     |                                                                             |        |             |
+|        | `r advdate(wed,2)`  | Make a map function          |          |           | [📖](https://www-jstor-org.proxygw.wrlc.org/stable/j.ctt7s3wz.10 "Ross, Chapter 3") |                                                                             |        |             |
+|  3.2   | `r advdate(thur,2)` | Upload UCDP data             |          |           |                                                                                     |                                                                             |        |             |
+|        | `r advdate(fri,2)`  | Make a leaflet map           |          |           |                                                                                     |                                                                             |        |             |
+|        | `r advdate(sat,2)`  | Customize your map           |          |           |                                                                                     |                                                                             |        |             |
+|  4.1   | `r advdate(mon,3)`  | Exploring tabular data       |          |           |                                                                                     |                                                                             |        |             |
+|        | `r advdate(tues,3)` | Make a `gt` table            |          |           |                                                                                     |                                                                             |        |             |
+|        | `r advdate(wed,3)`  | Plot confidence intervals    |          |           |            [📖](https://www.jstor.org/stable/3118222 "Fearon & Laitin")             |                                                                             |        |             |
+|  4.2   | `r advdate(thur,3)` | Display regression tables    |          |           |                                                                                     |                                                                             |        |             |
+|        | `r advdate(fri,3)`  | Make regression tables       |          |           |                                                                                     |                                                                             |        |             |
+|        | `r advdate(sat,3)`  | Coefficient plots            |          |           |                                                                                     |                                                                             |        |             |
+|  5.1   | `r advdate(mon,4)`  |                              |          |           |                                                                                     |                                                                             |        |             |
+|        | `r advdate(tues,4)` |                              |          |           |                                                                                     |                                                                             |        |             |
+|        | `r advdate(wed,4)`  |                              |          |           |       [📖](https://muse-jhu-edu.proxygw.wrlc.org/article/225602 "Huntington")       |                                                                             |        |             |
+|  5.2   | `r advdate(thur,4)` |                              |          |           |                                                                                     |                                                                             |        |             |
+|        | `r advdate(fri,4)`  |                              |          |           |                                                                                     |                                                                             |        |             |
+|        | `r advdate(sat,4)`  |                              |          |           |                                                                                     |                                                                             |        |             |
+|  6.1   | `r advdate(mon,5)`  |                              |          |           |                                                                                     |                                                                             |        |             |
+|        | `r advdate(tues,5)` |                              |          |           |                                                                                     |                                                                             |        |             |
+|        | `r advdate(wed,5)`  |                              |          |           |                                                                                     |                                                                             |        |             |
+|  6.2   | `r advdate(thur,5)` |                              |          |           |                                                                                     |                                                                             |        |             |
+|        | `r advdate(fri,5)`  |                              |          |           |                                                                                     |                                                                             |        |             |
+|        | `r advdate(sat,5)`  |                              |          |           |                                                                                     |                                                                             |        |             |
