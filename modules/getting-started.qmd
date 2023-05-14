@@ -11,9 +11,7 @@ execute:
 
 {{< video https://www.youtube.com/embed/wo9vZccmqwc title='Installing R and R Studio' >}}
 
-All of our work for this course will be done in the R language. Please download and install the most recent version of R from the Comprehensive R Archive Network [(CRAN)](https://cran.r-project.org/).
-
-RStudio is an integrated development environment (IDE) develop by a company named Posit. We will do all of our code editing for this course in RStudio. Please be sure to download and install the most recent versions of R and R Studio from Posit's [website](https://posit.co/download/rstudio-desktop/).
+All of our work for this course will be done in the R language and we will be working with R in RStudio. RStudio is an integrated development environment (IDE) develop by a company named Posit. Please be sure to download and install the most recent versions of R and R Studio from Posit's [website](https://posit.co/download/rstudio-desktop/).
 
 It is a good idea to periodically update R and RStudio. RStudio will prompt you when it is time to update and you can follow the same process of downloading and installing from the Posit website that we just did here. For R, there are a number of ways to do it, but the easiest is to use packages like [installr](https://www.r-project.org/nosvn/pandoc/installr.html) for Windows and [updateR](https://github.com/AndreaCirilloAC/updateR) for Mac. Here is a good [blog post](https://www.linkedin.com/pulse/3-methods-update-r-rstudio-windows-mac-woratana-ngarmtrakulchol/) that walks you through the steps of how to update R using these packages. I usually update R once a semester.
 
@@ -23,7 +21,7 @@ Another thing that you really want to do is to make sure that you have the nativ
 
 While you are here, you can also go to Appearance to select a different editor theme or to Pane Layout to change how the four panes in R Studio are organized. Next, familiarize yourself with how to expand and minimize the four windows. The most important window that I want to highlight here is the source window. This is where we are going to be working most of the time in this course. And if I tell you to send your source code, I mean to send the file that you are working on in this window. This could be a Quarto document, an R script or an `app.R` file for a Shiny app. 
 
-The next window is the Console and there we also see tabs for Terminal and Background Jobs. The console is where you can run R code one line at a time. The terminal and background jobs are relevant for more advanced users and we probably will not spend that much time talking about them in this course. 
+The next window is the Console and there we also see tabs for Terminal and Background Jobs. The console is where you can run R code one line at a time. The terminal is relevant for more advanced users and we will make some use of it when we talk about publishing Quarto documents. Background Jobs is going to be helpful when we want troubleshoot a Quarto document that is not rendering properly.  
 
 From there, the next pane we want to explore is Environment, History, etc. Environment tells us what files are currently available to us. The other important tab here is Git which will be where we push things to GitHub. You will be using this a lot in the course. 
 
