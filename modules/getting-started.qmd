@@ -9,7 +9,7 @@ execute:
 
 ## R and RStudio {#sec-rstudio-setup}
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title='Installing R and R Studio' >}}
+{{< video https://youtu.be/gssjyyl7vxI title='Getting Started with R and R Studio' >}}
 
 All of our work for this course will be done in the R language and we will be working with R in RStudio. RStudio is an integrated development environment (IDE) develop by a company named Posit. Please be sure to download and install the most recent versions of R and R Studio from Posit's [website](https://posit.co/download/rstudio-desktop/).
 
