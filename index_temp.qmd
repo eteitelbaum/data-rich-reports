@@ -26,17 +26,6 @@ This page displays an outline of the topics, content, and assignments for the te
 
 ::: column-screen-inset-right
 <table>
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 12%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th><p>Module</p></th>

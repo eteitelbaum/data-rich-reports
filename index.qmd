@@ -1,6 +1,6 @@
 ---
 title: "Course Schedule"
-tbl-colwidths: [5,20,30,30,5,5,5,5]
+tbl-colwidths: [5,15,30,20,20,5,5,5,5]
 editor: visual
 ---
 
@@ -26,7 +26,7 @@ advdate <- function(day, week) {
 This page displays an outline of the topics, content, and assignments for the term. Each module starts on a Monday. There are no assignments due on Sundays.
 
 | Module | Date                | Skills                       | Packages | Functions |                                      Readings                                       |                                  Reference                                  | Videos | Assignments |
-|:------:|---------------------|------------------------------|----------|-----------|:-----------------------------------------------------------------------------------:|:---------------------------------------------------------------------------:|--------|:-----------:|
+|:------:|--------|--------|--------|--------|:------:|:------:|--------|:------:|
 |  1.1   | `r advdate(mon,0)`  | Read data into R             |          |           |                                                                                     | [📖](https://r4ds.hadley.nz/data-import.html#introduction "r4ds 8.1 & 8.2") |        |             |
 |        | `r advdate(tues,0)` | Reshape data                 |          |           |                                                                                     |        [📖](https://r4ds.hadley.nz/data-tidy.html "r4ds 6.1 & 6.3")         |        |             |
 |        | `r advdate(wed,0)`  | Clean data                   |          |           |    [📖](https://link.springer.com/article/10.1057/palgrave.ap.5500151 "Norris")     |                                                                             |        |             |
