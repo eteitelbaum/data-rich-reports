@@ -61,7 +61,7 @@ print(flfp_indicators, n=26) # view the indicators
 Try searching for some indicators related to a topic you are interested in and see what you get!
 :::
 
-While we are calling `wb_data` we will go ahead and pipe some additional functions from `dplyr` and `janitor` to clean it up. First, we will use `select()` to eliminate the iso2c variable, which we won't be needing. Then, we will rename `date` to `year`. Then we will use a combination of `mutate` and `round_to_fraction()` to round the data to the nearest hundredth. 
+While we are calling `wb_data()` we will go ahead and pipe some additional functions from `dplyr` and `janitor` to clean it up. First, we will use `select()` to eliminate the iso2c variable, which we won't be needing. Then, we will rename `date` to `year`. Then we will use a combination of `mutate` and `round_to_fraction()` to round the data to the nearest hundredth. 
 
 We will pipe all of these functions together and store the resulting data frame in a new object called `women_emp`.
 
@@ -175,9 +175,9 @@ democracy <- democracy |>
 glimpse(democracy)
 ```
 
-## Merge two datasets 
+## Merge two data frames
 
-{{< video https://youtu.be/wNF3ZPneHWw title='Merge Two Datasets' >}}
+{{< video https://youtu.be/wNF3ZPneHWw title='Merge Two Data Frames' >}}
 
 Now that we have a common country code, we can join the two data sets. There are many different types of joins. First there is a distinction between [mutating joins](https://dplyr.tidyverse.org/reference/mutate-joins.html), which add observations from one dataset to another, and [filtering joins](https://dplyr.tidyverse.org/reference/filter-joins.html), which filter out observations based on their presence or absence in another dataset. Here we are going to be focused on mutating joins. 
 

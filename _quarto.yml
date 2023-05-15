@@ -93,10 +93,6 @@ website:
             text: "Module 6.1"
           - href: modules/module-6.2.qmd
             text: "Module 6.2"
-      - section: "Exercises"
-        contents:
-          - href: exercises/exercise-1.2.qmd
-            text: "Exercise 1.2"
 format:
   html:
     theme:

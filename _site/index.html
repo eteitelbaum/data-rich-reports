@@ -272,21 +272,6 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Exercises</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./exercises/exercise-1.2.html" class="sidebar-item-text sidebar-link">Exercise 1.2</a>
-  </div>
-</li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
@@ -343,113 +328,113 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">1.1</td>
+<td style="text-align: center;"><a href="./modules/module-1.1.html" title="Module 1.1">1.1</a></td>
 <td>May 22</td>
 <td>Read data into R</td>
-<td></td>
-<td></td>
+<td><code>readr</code>, <code>dplyr</code></td>
+<td><code>read_csv()</code>, <code>glimpse()</code></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"><a href="https://r4ds.hadley.nz/data-import.html#introduction" title="r4ds 8.1 &amp; 8.2">📖</a></td>
-<td></td>
+<td><a href="https://youtu.be/YLOaKB8dfF4" title="Downloading World Bank data">🖥️</a><a href="https://youtu.be/XOGXn8IiHK8" title="Reading data from a flat file">🖥️</a></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"></td>
 <td>May 23</td>
 <td>Reshape data</td>
-<td></td>
-<td></td>
+<td><code>tidyr</code></td>
+<td><code>pivot_longer()</code></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"><a href="https://r4ds.hadley.nz/data-tidy.html" title="r4ds 6.1 &amp; 6.3">📖</a></td>
-<td></td>
+<td><a href="https://youtu.be/ud36szsO9a4" title="Reshaping data">🖥️</a></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"></td>
 <td>May 24</td>
 <td>Clean data</td>
-<td></td>
-<td></td>
+<td><code>dplyr</code></td>
+<td><code>mutate()</code>, <code>mutate_at()</code>, <code>substring()</code></td>
 <td style="text-align: center;"><a href="https://link.springer.com/article/10.1057/palgrave.ap.5500151" title="Norris">📖</a></td>
 <td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
+<td><a href="https://youtu.be/syG5cdmtXSo" title="Truncating strings, changing variable types">🖥️</a><a href="https://youtu.be/M-uuPBdBCTw" title="Cleaning variable names">🖥️</a></td>
+<td style="text-align: center;">📘</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">1.2</td>
+<td style="text-align: center;"><a href="./modules/module-1.2.html" title="Module 1.2">1.2</a></td>
 <td>May 25</td>
-<td>Download data from APIs</td>
-<td></td>
-<td></td>
+<td>Download data from an API</td>
+<td><code>wbstats</code>, <code>vdemdata</code>, <code>dplyr</code>, <code>janitor</code></td>
+<td><code>wb_data()</code>, <code>vdem</code>, <code>select_()</code>, <code>filter()</code>, <code>case_match()</code>, <code>round_to_fraction()</code></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td></td>
+<td><a href="https://youtu.be/cBRTP2imt_o" title="Dowload data from the World Bank">🖥️</a><a href="https://youtu.be/7CvYTeMP_PU" title="Filter data and select variables">🖥️</a></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"></td>
 <td>May 26</td>
 <td>Merge data frames</td>
-<td></td>
-<td></td>
+<td><code>countrycode</code>, <code>dplyr</code> , <code>readr</code></td>
+<td><code>countrycode()</code>, <code>left_join()</code>, <code>write_csv()</code></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"><a href="https://r4ds.hadley.nz/joins.html#sec-mutating-joins" title="r4ds, 20.3">📖</a></td>
-<td></td>
+<td><a href="https://youtu.be/ZGD0kO_iwAM" title="Add country codes to data frame">🖥️</a><a href="https://youtu.be/wNF3ZPneHWw" title="Merge two data frames">🖥️</a></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"></td>
 <td>May 27</td>
 <td>Group, summarize and arrange</td>
-<td></td>
-<td></td>
+<td><code>dplyr</code></td>
+<td><code>group_by()</code>, <code>summarize()</code>, <code>arrange()</code></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"><a href="https://r4ds.hadley.nz/data-transform.html#groups" title="r4ds, 4.5">📖</a></td>
-<td></td>
-<td style="text-align: center;"></td>
+<td><a href="https://youtu.be/2nX9p6arQjg" title="Group, summarize and arrange">🖥️</a></td>
+<td style="text-align: center;">📘 🧮</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">2.1</td>
+<td style="text-align: center;"><a href="./modules/module-2.1.html" title="Module 2.1">2.1</a></td>
 <td>May 29</td>
 <td>Bar charts &amp; histograms</td>
-<td></td>
-<td></td>
+<td><code>ggplot2</code></td>
+<td><code>ggplot()</code>, <code>geom_col()</code>, <code>geom_histogram()</code>, <code>aes()</code>, <code>labs()</code></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td></td>
+<td><a href="https://youtu.be/hl02sVTyCRA" title="Bar charts">🖥️</a><a href="https://youtu.be/LuNDAIQXx9w" title="Histograms">🖥️</a></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"></td>
 <td>May 30</td>
 <td>Line charts</td>
-<td></td>
-<td></td>
+<td><code>ggplot2</code></td>
+<td><code>geom_line()</code></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td></td>
+<td><a href="https://youtu.be/cHos9y261SQ" title="Line charts">🖥️</a></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"></td>
 <td>May 31</td>
 <td>Scatter plots</td>
-<td></td>
-<td></td>
+<td><code>ggplot2</code>, <code>scales</code></td>
+<td><code>geom_point()</code>, <code>geom_smooth()</code>, <code>scale_x_log10(),</code> <code>label_number()</code>, <code>geom_text()</code></td>
 <td style="text-align: center;"><a href="https://www-jstor-org.proxygw.wrlc.org/stable/1951731?seq=8" title="Lipset">📖</a></td>
 <td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
+<td><a href="https://youtu.be/Cvme3C268wE" title="Scatter plots">🖥️</a></td>
+<td style="text-align: center;">📘</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">2.2</td>
+<td style="text-align: center;"><a href="./modules/module-2.2.html" title="Module 2.2">2.2</a></td>
 <td>Jun 1</td>
 <td>Color schemes</td>
 <td></td>
 <td></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td></td>
+<td>🖥️</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
@@ -460,7 +445,7 @@ ul.task-list li input[type="checkbox"] {
 <td></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td></td>
+<td>🖥️</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
@@ -471,18 +456,18 @@ ul.task-list li input[type="checkbox"] {
 <td></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
+<td>🖥️</td>
+<td style="text-align: center;">📘 🧮</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">3.1</td>
+<td style="text-align: center;"><a href="./modules/module-3.1.html" title="Module 3.1">3.1</a></td>
 <td>Jun 5</td>
 <td>Choropleth map</td>
 <td></td>
 <td></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td></td>
+<td>🖥️</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
@@ -493,7 +478,7 @@ ul.task-list li input[type="checkbox"] {
 <td></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td></td>
+<td>🖥️</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
@@ -504,18 +489,18 @@ ul.task-list li input[type="checkbox"] {
 <td></td>
 <td style="text-align: center;"><a href="https://www-jstor-org.proxygw.wrlc.org/stable/j.ctt7s3wz.10" title="Ross, Chapter 3">📖</a></td>
 <td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
+<td>🖥️</td>
+<td style="text-align: center;">📘</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">3.2</td>
+<td style="text-align: center;"><a href="./modules/module-3.1.html" title="Module 3.1">3.2</a></td>
 <td>Jun 8</td>
 <td>Upload UCDP data</td>
 <td></td>
 <td></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td></td>
+<td>🖥️</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
@@ -526,7 +511,7 @@ ul.task-list li input[type="checkbox"] {
 <td></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td></td>
+<td>🖥️</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
@@ -537,18 +522,18 @@ ul.task-list li input[type="checkbox"] {
 <td></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
+<td>🖥️</td>
+<td style="text-align: center;">📘 🧮</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">4.1</td>
+<td style="text-align: center;"><a href="./modules/module-4.1.html" title="Module 4.1">4.1</a></td>
 <td>Jun 12</td>
 <td>Exploring tabular data</td>
 <td></td>
 <td></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td></td>
+<td>🖥️</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
@@ -559,7 +544,7 @@ ul.task-list li input[type="checkbox"] {
 <td></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td></td>
+<td>🖥️</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
@@ -570,18 +555,18 @@ ul.task-list li input[type="checkbox"] {
 <td></td>
 <td style="text-align: center;"><a href="https://www.jstor.org/stable/3118222" title="Fearon &amp; Laitin">📖</a></td>
 <td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
+<td>🖥️</td>
+<td style="text-align: center;">📘</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.2</td>
+<td style="text-align: center;"><a href="./modules/module-4.2.html" title="Module 4.2">4.2</a></td>
 <td>Jun 15</td>
 <td>Display regression tables</td>
 <td></td>
 <td></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td></td>
+<td>🖥️</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
@@ -592,8 +577,8 @@ ul.task-list li input[type="checkbox"] {
 <td></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
+<td>🖥️</td>
+<td style="text-align: center;">✍️</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"></td>
@@ -603,84 +588,84 @@ ul.task-list li input[type="checkbox"] {
 <td></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
+<td>🖥️</td>
+<td style="text-align: center;">📘 🧮</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.1</td>
+<td style="text-align: center;"><a href="./modules/module-5.1.html" title="Module 5.1">5.1</a></td>
 <td>Jun 19</td>
-<td></td>
+<td>Scatter plot app setup</td>
 <td></td>
 <td></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td></td>
+<td>🖥️</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"></td>
 <td>Jun 20</td>
-<td></td>
+<td>Building the UI</td>
 <td></td>
 <td></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td></td>
+<td>🖥️</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"></td>
 <td>Jun 21</td>
-<td></td>
+<td>Building the server</td>
 <td></td>
 <td></td>
 <td style="text-align: center;"><a href="https://muse-jhu-edu.proxygw.wrlc.org/article/225602" title="Huntington">📖</a></td>
 <td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
+<td>🖥️</td>
+<td style="text-align: center;">📘</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">5.2</td>
+<td style="text-align: center;"><a href="./modules/module-5.2" title="Module 5.2">5.2</a></td>
 <td>Jun 22</td>
-<td></td>
+<td>Line chart app setup</td>
 <td></td>
 <td></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td></td>
+<td>🖥️</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"></td>
 <td>Jun 23</td>
-<td></td>
+<td>Building the UI</td>
 <td></td>
 <td></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
+<td>🖥️</td>
+<td style="text-align: center;">✍️</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"></td>
 <td>Jun 24</td>
-<td></td>
+<td>Building the server</td>
 <td></td>
 <td></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
+<td>🖥️</td>
+<td style="text-align: center;">📘 🧮</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">6.1</td>
+<td style="text-align: center;"><a href="./modules/module-6.1.html" title="Module 6.1">6.1</a></td>
 <td>Jun 26</td>
 <td></td>
 <td></td>
 <td></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td></td>
+<td>🖥️</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
@@ -706,14 +691,14 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">6.2</td>
+<td style="text-align: center;"><a href="./modules/module-6.2.html" title="Module 6.2">6.2</a></td>
 <td>Jun 29</td>
 <td></td>
 <td></td>
 <td></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td></td>
+<td>🖥️</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
@@ -736,7 +721,7 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">✍️</td>
 </tr>
 </tbody>
 </table>
