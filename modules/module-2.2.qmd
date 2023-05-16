@@ -14,7 +14,6 @@ execute:
 
 - Install `plotly` (`install.packages("plotly")`) and have a look at the [documentation](https://plotly.com/ggplot2/getting-started/#plotly-for-r)
 - Install `colorBlindness` (`install.packages("colorBlindness")`) and read this [vignette](https://cran.r-project.org/web/packages/colorBlindness/vignettes/colorBlindness.html)
-- Install `ggthemes` (`install.packages("ggthemes")`)
 - Generate a quarto document named "module-2.2.qmd" in your "modules" project folder so that you can code along with me
 - In your quarto document, run these code chunks and familiarize yourself the data frames that they generate 
 
@@ -69,7 +68,7 @@ In this module we are going to take our visualizations from Module 2.1 and impro
 
 ## Color schemes
 
-{{< video https://www.youtube.com/watch?v=fBCtSjg_-Ik&t=121s title = 'Accessible Color Schemes'>}}
+{{< video https://youtu.be/fBCtSjg_-Ik title = 'Accessible Color Schemes'>}}
 
 There are a number of different [types](https://www.nei.nih.gov/learn-about-eye-health/eye-conditions-and-diseases/color-blindness/types-color-blindness) of color blindness, but the most common type is red-green color blindness. Making your visualizations colorblind-accessible can be important for convincing [certain audiences](https://towardsdatascience.com/is-your-color-palette-stopping-you-from-reaching-your-goals-bf3b32d2ac49). Most notably, approximately 8% of men are affected by color blindness. 
 
@@ -230,7 +229,7 @@ flfp_line + scale_color_brewer(palette = "YlOrRd")
 
 ## Themes
 
-{{< video https://www.youtube.com/watch?v=Le0OJXdsy3o&t=96s title = 'Themes' >}}
+{{< video https://youtu.be/Le0OJXdsy3o title = 'Themes' >}}
 
 Another thing that we can do to improve the overall look of our plots is to change the theme. Here is a list of [themes](https://ggplot2.tidyverse.org/reference/ggtheme.html) that are available with `ggplot2`. 
 
@@ -251,7 +250,7 @@ flfp_region + scale_fill_brewer(palette = "YlGn") + theme_minimal()
 
 ## Annotations
 
-{{< video https://www.youtube.com/watch?v=uEpBMgWilXc&t=27s title = 'annotations' >}}
+{{< video https://youtu.be/uEpBMgWilXc title = 'annotations' >}}
 
 Sometimes it makes sense to include annotations in our charts. We can achieve this by applying the annotate() function. To add a text annotation, we include "text" for the first argument, then the value of x and y at which we want our annotation to appear, and finally the text of the annotation that we want to display. Let's try adding text to our indicating where high-, middle- and low-income countries are concentraed on the `wealth_flfp` scatter plot that we developed earlier. 
 
@@ -287,7 +286,7 @@ flfp_line + geom_vline(xintercept=2020, linetype = "dashed", size = 1) +
 
 ## Interactivity
 
-{{< video https://www.youtube.com/watch?v=T-7jtbcwaJ0&t=59s title = 'Interactivity' >}}
+{{< video https://youtu.be/T-7jtbcwaJ0 title = 'Interactivity' >}}
 
 One final thing we can do, which is really fun, is to add interactivity to our plots with [plotly](https://plotly.com/r/). We can do this by simply calling 
 [ggplotly()](https://plotly.com/ggplot2/) on our plot object. 
