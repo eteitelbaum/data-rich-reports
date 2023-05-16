@@ -26,7 +26,7 @@ Markers and pop-ups can be used to display information such as an address or the
 
 ## Working with UCDP data
 
-{{< video https://www.youtube.com/watch?v=If2PwFv90iI title = 'Working with UCDP data'>}}
+{{< video https://youtu.be/If2PwFv90iI title = 'Working with UCDP data' >}}
 
 Our running example in this module is going to involve mapping conflict events for Yemen from the Uppsala Conflict Data Program UCDP. So while we will be building on some of our earlier knowledge, this module is going to depart a bit from previous ones in that we are using an entirely new dataset. Specifically, we will be using the UCDP georeferenced event dataset, which you can download from [here](https://ucdp.uu.se/). 
 
@@ -92,7 +92,7 @@ glimpse(ged_yemen)
 
 ## Make a leaflet map
 
-{{< video https://www.youtube.com/watch?v=hHUPqgHRqYU title = 'Plot conlfict'>}}
+{{< video https://youtu.be/hHUPqgHRqYU title = 'Plot conlfict' >}}
 
 Now that we have our data, let's make our first pop-up map. To do this we are going to be using the [leaflet](https://rstudio.github.io/leaflet/) package. Leaflet is a really popular JavaScript library for interactive maps. To get started with leaflet, we'll make a really simple map with one marker that says "First conflict event." 
 
@@ -128,7 +128,7 @@ leaflet(data = ged_yemen) |> # map points in ged_yemen data frame
 
 ## Customize your leaflet map
 
-{{< video https://www.youtube.com/watch?v=qLYeSsoDvgs title = 'Customize your leaflet plot'>}}
+{{< video https://youtu.be/qLYeSsoDvgs title = 'Customize your leaflet plot' >}}
 
 Next, let's do some customization to make our map look amazing. We will talk about changing the icon style, customized the information displayed in the icon and adding base maps.  
 
