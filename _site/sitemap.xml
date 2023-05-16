@@ -174,11 +174,11 @@
   </url>
   <url>
     <loc>https://dataviz-gwu.rocks/index.html</loc>
-    <lastmod>2023-05-16T06:50:58.319Z</lastmod>
+    <lastmod>2023-05-16T06:58:00.390Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz-gwu.rocks/course-links.html</loc>
-    <lastmod>2023-05-16T06:51:48.662Z</lastmod>
+    <lastmod>2023-05-16T06:58:17.285Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz-gwu.rocks/index_temp.html</loc>
@@ -186,11 +186,11 @@
   </url>
   <url>
     <loc>https://dataviz-gwu.rocks/modules/getting-started.html</loc>
-    <lastmod>2023-05-15T01:20:25.913Z</lastmod>
+    <lastmod>2023-05-16T06:59:00.490Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz-gwu.rocks/modules/module-1.1.html</loc>
-    <lastmod>2023-05-14T20:08:08.973Z</lastmod>
+    <lastmod>2023-05-16T06:59:55.194Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz-gwu.rocks/modules/module-3.1.html</loc>
@@ -202,7 +202,7 @@
   </url>
   <url>
     <loc>https://dataviz-gwu.rocks/modules/module-1.2.html</loc>
-    <lastmod>2023-05-15T13:50:56.469Z</lastmod>
+    <lastmod>2023-05-16T07:00:08.905Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz-gwu.rocks/modules/module-2.1.html</loc>
@@ -211,5 +211,49 @@
   <url>
     <loc>https://dataviz-gwu.rocks/modules/module-2.2.html</loc>
     <lastmod>2023-05-16T06:51:08.061Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dataviz-gwu.rocks/course-description.html</loc>
+    <lastmod>2023-05-16T06:57:14.660Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dataviz-gwu.rocks/course-overview.html</loc>
+    <lastmod>2023-05-16T06:57:30.510Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dataviz-gwu.rocks/course-syllabus.html</loc>
+    <lastmod>2023-05-16T06:57:36.267Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dataviz-gwu.rocks/course-support.html</loc>
+    <lastmod>2023-05-16T06:57:42.960Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dataviz-gwu.rocks/instructor.html</loc>
+    <lastmod>2023-05-16T06:57:48.934Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dataviz-gwu.rocks/faq.html</loc>
+    <lastmod>2023-05-16T06:58:22.950Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dataviz-gwu.rocks/project/project-description.html</loc>
+    <lastmod>2023-05-16T06:58:30.620Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dataviz-gwu.rocks/project/project-assignment-1.html</loc>
+    <lastmod>2023-05-16T06:58:36.041Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dataviz-gwu.rocks/project/project-assignment-2.html</loc>
+    <lastmod>2023-05-16T06:58:41.352Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dataviz-gwu.rocks/project/project-assignment-3.html</loc>
+    <lastmod>2023-05-16T06:58:46.714Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dataviz-gwu.rocks/project/project-datasets.html</loc>
+    <lastmod>2023-05-16T06:58:52.041Z</lastmod>
   </url>
 </urlset>
