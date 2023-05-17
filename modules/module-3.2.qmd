@@ -13,7 +13,7 @@ execute:
 ## Prework
 
 - Install [states](https://www.andybeger.com/states/index.html),
-[leaflet](http://rstudio.github.io/leaflet/), [simple features](https://r-spatial.github.io/sf/) and [html tools](https://rstudio.github.io/htmltools/) and have a look at the documentation for each.
+[leaflet](http://rstudio.github.io/leaflet/), [sf](https://r-spatial.github.io/sf/) and [html tools](https://rstudio.github.io/htmltools/) and have a look at the documentation for each.
 
 `install.packages(c("states", "leaflet", "sf", "htmltools))`
 :::

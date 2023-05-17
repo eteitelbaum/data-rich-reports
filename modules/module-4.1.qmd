@@ -246,8 +246,6 @@ gtsave(awesometable, "awesometable.png")
 ```
 
 
-
-
 ## When a plot is better than a table
 
 {{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'When a Plot is Better than a Table'>}}
