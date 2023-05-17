@@ -65,8 +65,10 @@ ul.task-list li input[type="checkbox"] {
 
 
 <meta property="og:title" content="PSC/DATS 2102–Summer Schedule - Project Assignment 2">
+<meta property="og:description" content="For the first project assignment, you thought about some rough content for your app and how the user would produce some sort of visualization with it.">
 <meta property="og:site-name" content="PSC/DATS 2102--Summer Schedule">
 <meta name="twitter:title" content="PSC/DATS 2102–Summer Schedule - Project Assignment 2">
+<meta name="twitter:description" content="For the first project assignment, you thought about some rough content for your app and how the user would produce some sort of visualization with it.">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -118,16 +120,6 @@ ul.task-list li input[type="checkbox"] {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../course-description.html" class="sidebar-item-text sidebar-link">Description</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">Overview</a>
-  </div>
-</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../course-syllabus.html" class="sidebar-item-text sidebar-link">Syllabus</a>
@@ -275,7 +267,19 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#step-1-what-packages-you-will-need-for-your-app" id="toc-step-1-what-packages-you-will-need-for-your-app" class="nav-link" data-scroll-target="#step-1-what-packages-you-will-need-for-your-app">Step 1: What packages you will need for your app?</a></li>
+  <li><a href="#step-2-how-will-you-wrangle-or-load-data" id="toc-step-2-how-will-you-wrangle-or-load-data" class="nav-link" data-scroll-target="#step-2-how-will-you-wrangle-or-load-data">Step 2: How will you wrangle or load data?</a></li>
+  <li><a href="#step-3-what-kinds-of-lists-will-you-need" id="toc-step-3-what-kinds-of-lists-will-you-need" class="nav-link" data-scroll-target="#step-3-what-kinds-of-lists-will-you-need">Step 3: What kinds of lists will you need?</a></li>
+  <li><a href="#step-4-what-is-the-rough-structure-of-your-ui" id="toc-step-4-what-is-the-rough-structure-of-your-ui" class="nav-link" data-scroll-target="#step-4-what-is-the-rough-structure-of-your-ui">Step 4: What is the rough structure of your ui?</a></li>
+  <li><a href="#step-5-what-is-the-rough-structure-for-your-server" id="toc-step-5-what-is-the-rough-structure-for-your-server" class="nav-link" data-scroll-target="#step-5-what-is-the-rough-structure-for-your-server">Step 5: What is the rough structure for your server?</a></li>
+  <li><a href="#step-6-how-will-you-call-your-data-for-your-visualization" id="toc-step-6-how-will-you-call-your-data-for-your-visualization" class="nav-link" data-scroll-target="#step-6-how-will-you-call-your-data-for-your-visualization">Step 6: How will you call your data for your visualization?</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/eteitelbaum/dataviz-summer-2023/edit/main/project/project-assignment-2.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/eteitelbaum/dataviz-summer-2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -297,8 +301,36 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>For the first project assignment, you thought about some rough content for your app and how the user would produce some sort of visualization with it. For this assignment, we will take the next step and think about how we will generate that output on the server side. For this, we need to think concretely about what kind of setup or prework we need to do in the app.R file. Then we need to think about reactivity and how user input will change the output rendered by the app. We also want to think about any helper functions and externally sourced code that we want to include (although this is not imperative in every case).</p>
+</section>
+<section id="step-1-what-packages-you-will-need-for-your-app" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-what-packages-you-will-need-for-your-app">Step 1: What packages you will need for your app?</h2>
+<p><em>Starting with <code>shiny</code> you will need to load packages in the <code>app.R</code>. Likely you will also include <code>ggplot2</code>. What other packages are you going to need? Will you need <code>dplyr</code> to wrangle some data? <code>readr</code> to read in a .csv file? You may find you need other packages as you go along, but list the ones you know about now.</em></p>
+</section>
+<section id="step-2-how-will-you-wrangle-or-load-data" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-how-will-you-wrangle-or-load-data">Step 2: How will you wrangle or load data?</h2>
+<p><em>What indicators, countries, regions, etc. will the user get to select and how will you wrangle the data so that it is available to them? How will you get your data into the app? Will you wrangle it ahead of time and store it in a .csv file? Or will your app include an API call? If you have an API call, how will you keep it from overwhelming the resources of your server (for example, Shiny.io only allows 1GB of RAM for the free version of its hosting service)?</em></p>
+</section>
+<section id="step-3-what-kinds-of-lists-will-you-need" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-what-kinds-of-lists-will-you-need">Step 3: What kinds of lists will you need?</h2>
+<p><em>What kinds of lists will you need for your dropdown menus or other input? How will you <code>filter()</code>, <code>select()</code> and <code>pull()</code> from your data frame to create these lists?</em></p>
+</section>
+<section id="step-4-what-is-the-rough-structure-of-your-ui" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-what-is-the-rough-structure-of-your-ui">Step 4: What is the rough structure of your ui?</h2>
+<p><em>What is the rough structure of your ui? For example, how many columns will be occupied by user input fields versus how many columns will be occupied by your visualization? And, crucially, what input functions will you include?</em></p>
+</section>
+<section id="step-5-what-is-the-rough-structure-for-your-server" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-what-is-the-rough-structure-for-your-server">Step 5: What is the rough structure for your server?</h2>
+<p><em>What are the reactive functions of your server? Will you have just one reactive function for your plot call? Or will you need multiple reactive functions in order to coordinate different inputs, like dropdown menus that select a country case and a slider that selects a range of years?</em></p>
+</section>
+<section id="step-6-how-will-you-call-your-data-for-your-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="step-6-how-will-you-call-your-data-for-your-visualization">Step 6: How will you call your data for your visualization?</h2>
+<p><em>What will be the basic variables that you will call in <code>aes()</code>? How specifically do you anticipate grabbing the data in a reactive context?</em></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

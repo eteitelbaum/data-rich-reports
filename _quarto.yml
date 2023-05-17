@@ -101,6 +101,6 @@ format:
     code-overflow: wrap
     toc: true
     link-external-newwindow: true
-#freeze: auto
+freeze: auto
 editor: source
 

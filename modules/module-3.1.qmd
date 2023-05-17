@@ -38,13 +38,13 @@ Simple features allow us to work with such boundaries easily in a data frame in 
 
 ## Using rnaturalearth
 
-{{< video https://www.youtube.com/watch?v=HB3PMF93hzs&t=131s title = 'Using rnaturalearth'>}}
+{{< video https://youtu.be/HB3PMF93hzs title = 'Using rnaturalearth'>}}
 
 In this module we are going to be with the [rnaturalearth](https://cran.r-project.org/web/packages/rnaturalearth/rnaturalearth.pdf) package, which facilitates working with [Natural Earth](https://www.naturalearthdata.com/) map data in R. Natural Earth is a public domain map dataset based on Tom Patterson's Natural Earth [projection](https://en.wikipedia.org/wiki/Natural_Earth_projection) that provides data suitable for making small-scale world, regional and country maps. Natural Earth contains country boundaries, first-order admin boundaries like provinces and states, urban polygons and [more](https://www.naturalearthdata.com/features/). `rnaturalearth` supports both simple features (`sf`) and spatial objects (`sp`) formats, but we are going to be focused on using simple features for the reasons stated earlier. 
 
 ### Grabbing country shapes with ne_countries()
 
-Let's start by loading country shapes using the `ne_countries()` function from `rnaturalearth`. We will start by loading `rnaturalearth` and `dplyr`. Next we will load the country boundaries into an object called `world_map_df` while filtering out Antarctica. Then, let's `glimpse()` the data and have a closure look at the  `geometry` column.
+Let's start by loading country shapes using the `ne_countries()` function from `rnaturalearth`. We will start by loading `rnaturalearth` and `dplyr`. Next we will load the country boundaries into an object called `world_map_df` while filtering out Antarctica. Then, let's `glimpse()` the data and have a closure look at the `geometry` column.
 
 ```{r}
 #| label: download_shapes
@@ -100,7 +100,7 @@ ggplot(data = world_map_df) +
 
 ## Using rnaturalearth to map other data
 
-{{< video https://www.youtube.com/watch?v=5RnnGov3Iw4&t=7s title = 'Using rnaturalearth to map data'>}}
+{{< video https://youtu.be/5RnnGov3Iw4 title = 'Using rnaturalearth to map data'>}}
 
 Now that we know how to make a map with Natural Earth shapes and `geom_sf()`, we can merge in data and map data from other sources. Let's go ahead and merge some data on oil rents from the World Bank. We will do a `left_join()` based on iso3c country codes. In the World Bank data the iso3c codes are simply called "iso3c." In `rnaturalearth` there are a number of options, but the best is "iso3_a3_eh" because at the time this lesson was written the codes for some of the others [are missing](https://github.com/ropensci/rnaturalearth/issues/77).   
 
@@ -148,7 +148,7 @@ ggplot(data = rents_map_df) +
 
 ## Turn your map into a function
 
-{{< video https://www.youtube.com/watch?v=m42vrbEEHT4&t=25s title = 'Accessible Color Schemes'>}}
+{{< video https://youtu.be/m42vrbEEHT4 title = 'Accessible Color Schemes'>}}
 
 Sometimes you may want to map more than one variable in a paper or display variables with a map in an app. For these situations, it can help to create your own [function](https://r4ds.had.co.nz/functions.html) that allows you to change various components of the map code without having to type out all of the code every time you want to create a map. 
 

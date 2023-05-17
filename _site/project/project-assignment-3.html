@@ -65,8 +65,10 @@ ul.task-list li input[type="checkbox"] {
 
 
 <meta property="og:title" content="PSC/DATS 2102–Summer Schedule - Project Assignment 3">
+<meta property="og:description" content="Now that you have a clear sense of where you are going with your app, it is time to build it.">
 <meta property="og:site-name" content="PSC/DATS 2102--Summer Schedule">
 <meta name="twitter:title" content="PSC/DATS 2102–Summer Schedule - Project Assignment 3">
+<meta name="twitter:description" content="Now that you have a clear sense of where you are going with your app, it is time to build it.">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -118,16 +120,6 @@ ul.task-list li input[type="checkbox"] {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../course-description.html" class="sidebar-item-text sidebar-link">Description</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">Overview</a>
-  </div>
-</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../course-syllabus.html" class="sidebar-item-text sidebar-link">Syllabus</a>
@@ -275,7 +267,19 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#step-1-setup" id="toc-step-1-setup" class="nav-link" data-scroll-target="#step-1-setup">Step 1: Setup</a></li>
+  <li><a href="#step-2-define-the-ui" id="toc-step-2-define-the-ui" class="nav-link" data-scroll-target="#step-2-define-the-ui">Step 2: Define the ui</a></li>
+  <li><a href="#step-3-define-the-server-logic" id="toc-step-3-define-the-server-logic" class="nav-link" data-scroll-target="#step-3-define-the-server-logic">Step 3: Define the server logic</a></li>
+  <li><a href="#step-4-debug-your-app" id="toc-step-4-debug-your-app" class="nav-link" data-scroll-target="#step-4-debug-your-app">Step 4: Debug your app</a></li>
+  <li><a href="#step-5-post-your-app-to-shinyapps.io" id="toc-step-5-post-your-app-to-shinyapps.io" class="nav-link" data-scroll-target="#step-5-post-your-app-to-shinyapps.io">Step 5: Post your app to shinyapps.io</a></li>
+  <li><a href="#step-6-record-a-video-or-writeup-your-results" id="toc-step-6-record-a-video-or-writeup-your-results" class="nav-link" data-scroll-target="#step-6-record-a-video-or-writeup-your-results">Step 6: Record a video or writeup your results</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/eteitelbaum/dataviz-summer-2023/edit/main/project/project-assignment-3.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/eteitelbaum/dataviz-summer-2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -297,8 +301,36 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>Now that you have a clear sense of where you are going with your app, it is time to build it. This is the hard part and you will likely have to invest significant time in wrangling your data and debugging the app. Be patient! It will turn out great and you will have a nice project to show for it.</p>
+</section>
+<section id="step-1-setup" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-setup">Step 1: Setup</h2>
+<p><em>Start a new Shiny app in R Studio. In your app.R file, begin by loading your packages, loading and/or wrangling your data, and creating lists for your inputs.</em></p>
+</section>
+<section id="step-2-define-the-ui" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-define-the-ui">Step 2: Define the ui</h2>
+<p><em>Starting with <code>ui &lt;- fluidPage()</code>, start building your UI. Add a <code>titlePanel()</code>, a <code>fluidRow()</code> and then add the various columnar elements that you want to include such as inputs, text and the plot output. Try running your app just with the ui set up and see how it looks.</em></p>
+</section>
+<section id="step-3-define-the-server-logic" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-define-the-server-logic">Step 3: Define the server logic</h2>
+<p><em>Build your reactive function(s) and specify how the data and output will change based on user input(s). This is a process that is very specific to each project, so it is hard to say anything general here. But when in the process of building your server function, it often helps to look back at examples we have done in class or those that you might find helpful in the Shiny <a href="https://shiny.posit.co/r/gallery/">gallery</a>.</em></p>
+</section>
+<section id="step-4-debug-your-app" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-debug-your-app">Step 4: Debug your app</h2>
+<p><em>Are you having issues with your code? See <a href="https://shiny.posit.co/r/articles/improve/debugging/">this post</a> and reach out for help on Discord.</em></p>
+</section>
+<section id="step-5-post-your-app-to-shinyapps.io" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-post-your-app-to-shinyapps.io">Step 5: Post your app to shinyapps.io</h2>
+<p><em>Sign up for a free account at https://www.shinyapps.io/. When you are ready, hit the little blue icon at the top of your app.R window to publish it.</em></p>
+</section>
+<section id="step-6-record-a-video-or-writeup-your-results" class="level2">
+<h2 class="anchored" data-anchor-id="step-6-record-a-video-or-writeup-your-results">Step 6: Record a video or writeup your results</h2>
+<p><em>You have two options for presenting your app. You can post a five- to ten-minute video using a service like <a href="https://vimeo.com/">Vimeo</a> or you can write two pages about your app.In your presentationk, talk about the main features of the app. What kinds of data can users explore and then also what kinds of patterns emerge from the data and what we learn from the visualization that we might not have thought of before.</em></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

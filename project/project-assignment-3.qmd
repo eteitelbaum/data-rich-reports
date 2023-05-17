@@ -1,4 +1,33 @@
 ---
 title: "Project Assignment 3"
-editor: visual
 ---
+
+## Overview
+
+Now that you have a clear sense of where you are going with your app, it is time to build it. This is the hard part and you will likely have to invest significant time in wrangling your data and debugging the app. Be patient! It will turn out great and you will have a nice project to show for it. 
+
+## Step 1: Setup
+
+*Start a new Shiny app in R Studio. In your app.R file, begin by loading your packages, loading and/or wrangling your data, and creating lists for your inputs.*
+
+
+## Step 2: Define the ui
+
+*Starting with `ui <- fluidPage()`, start building your UI. Add a `titlePanel()`, a `fluidRow()` and then add the various columnar elements that you want to include such as inputs, text and the plot output. Try running your app just with the ui set up and see how it looks.*
+
+## Step 3: Define the server logic
+
+*Build your reactive function(s) and specify how the data and output will change based on user input(s). This is a process that is very specific to each project, so it is hard to say anything general here. But when in the process of building your server function, it often helps to look back at examples we have done in class or those that you might find helpful in the Shiny [gallery](https://shiny.posit.co/r/gallery/).*
+
+## Step 4: Debug your app
+
+*Are you having issues with your code? See [this post](https://shiny.posit.co/r/articles/improve/debugging/) and reach out for help on Discord.*
+
+## Step 5: Post your app to shinyapps.io
+
+*Sign up for a free account at https://www.shinyapps.io/. When you are ready, hit the little blue icon at the top of your app.R window to publish it.*
+
+## Step 6: Record a video or writeup your results
+
+*You have two options for presenting your app. You can post a five- to ten-minute video using a service like [Vimeo](https://vimeo.com/) or you can write two pages about your app.In your presentationk, talk about the main features of the app. What kinds of data can users explore and then also what kinds of patterns emerge from the data and what we learn from the visualization that we might not have thought of before.*
+

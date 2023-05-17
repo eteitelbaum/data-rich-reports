@@ -3,10 +3,10 @@ title: "Course Syllabus"
 editor: visual
 ---
 
-## Course Information 
+## Course Information
 
-| Instructor: Prof. Emmanuel Teitelbaum 
-| Email: [ejt@gwu.edu](mailto:ejt@gwu.edu)
+| Instructor: Prof. Emmanuel Teitelbaum
+| Email: [ejt\@gwu.edu](mailto:ejt@gwu.edu)
 
 The best way to contact me is via email.
 
@@ -21,24 +21,23 @@ This course will focus on working with data and code to engage data
 science questions. Students will develop coding, data visualization, and
 data presentation skills.
 
-## Course Objectives: What You'll Be Able To Do 
+## Course Objectives: What You'll Be Able To Do
 
 Course and module objectives are guides to gauge your skill and
-knowledge development. By the end of this course, you should be able
-to:
+knowledge development. By the end of this course, you should be able to:
 
-- Analyze data sets using modern computational tools.
-- Identify salient data points as they relate to key political
-science concepts.
-- Explore ethical issues around data wrangling and visualization.
-- Apply data wrangling concepts to optimize data for modeling
-purposes.
-- Summarize simple and complex relationships between and among
-variables in a data set.
-- Identify the most appropriate visualization format for a given
-data set.
-- Model and visualize data based on requirements provided by
-stakeholders.
+-   Analyze data sets using modern computational tools.
+-   Identify salient data points as they relate to key political science
+    concepts.
+-   Explore ethical issues around data wrangling and visualization.
+-   Apply data wrangling concepts to optimize data for modeling
+    purposes.
+-   Summarize simple and complex relationships between and among
+    variables in a data set.
+-   Identify the most appropriate visualization format for a given data
+    set.
+-   Model and visualize data based on requirements provided by
+    stakeholders.
 
 ## Aiming For Success
 
@@ -94,25 +93,25 @@ writing boilerplate syntax for this course. It's a starting point. It
 should not be used to attempt to complete other assignments or
 assessments in this course or in other courses.
 
-## Office Hours 
+## Office Hours
 
 Another way we can work toward your success in the course is through
 office/student hours. Please make an appointment to talk with me during
 this time. You can work with me to:
 
-- Clarify any questions about the syllabus or course content
-- Review an assignment you've completed and have questions about
-- Step through practice problems or questions
-- Get study strategies
-- Discuss grades
+-   Clarify any questions about the syllabus or course content
+-   Review an assignment you've completed and have questions about
+-   Step through practice problems or questions
+-   Get study strategies
+-   Discuss grades
 
 To make the meeting more effective, you can:
 
-- Gather materials (assignments, notes, etc.) ready in advance
-- Be ready to take notes during office hours
-- Ask follow up questions if you need clarification
-- Confirm any action plan at the close of the meeting
-- Following through on any action plan
+-   Gather materials (assignments, notes, etc.) ready in advance
+-   Be ready to take notes during office hours
+-   Ask follow up questions if you need clarification
+-   Confirm any action plan at the close of the meeting
+-   Following through on any action plan
 
 ## Prerequisites
 
@@ -131,11 +130,11 @@ Support](https://online.gwu.edu/technical-requirements-and-support) for
 details on recommended configurations and software available to you. You
 will need to use the following tools and platforms:
 
-- RStudio: an IDE for generating data visualizations using the
-programming language, R.
-- GitHub: a web-based code repository.
-- Git: version control protocol.
-- Discord: a real-time chat application.
+-   RStudio: an IDE for generating data visualizations using the
+    programming language, R.
+-   GitHub: a web-based code repository.
+-   Git: version control protocol.
+-   Discord: a real-time chat application.
 
 Please see the Blackboard Ultra course website for more on these tools
 and their policies.
@@ -144,20 +143,21 @@ and their policies.
 
 For our course, you should be able to:
 
-- Access and use [GW's Blackboard system](https://blackboard.gwu.edu).
-- Use your GW email for university-related communications [per
-university policy](https://registrar.gwu.edu/university-policies#email).
-- Use productivity software (e.g., Office 365, Google Suite) to
-collaborate with peers and submit assignments.
-- Use web conferencing tools (e.g., Zoom, Webex) to collaborate
-with peers and me.
-- Use a mobile device and/or computer to upload documents, images,
-and recordings.
-- Seek technology help and tools by contacting [GW Information
-Technology](https://online.gwu.edu/student-support) | (202)-994-4948 |
-[ithelp@gwu.edu](mailto:ithelp@gwu.edu).
+-   Access and use [GW's Blackboard system](https://blackboard.gwu.edu).
+-   Use your GW email for university-related communications [per
+    university
+    policy](https://registrar.gwu.edu/university-policies#email).
+-   Use productivity software (e.g., Office 365, Google Suite) to
+    collaborate with peers and submit assignments.
+-   Use web conferencing tools (e.g., Zoom, Webex) to collaborate with
+    peers and me.
+-   Use a mobile device and/or computer to upload documents, images, and
+    recordings.
+-   Seek technology help and tools by contacting [GW Information
+    Technology](https://online.gwu.edu/student-support) \|
+    (202)-994-4948 \| [ithelp\@gwu.edu](mailto:ithelp@gwu.edu).
 
-If you need assistance with technology tools we\'ll use in this course,
+If you need assistance with technology tools we'll use in this course,
 please visit the **Technology Support** link in the left navigation menu
 in our course on Blackboard.
 
@@ -195,42 +195,43 @@ in your knowledge of this field.
 I've designed the following instructional components to support your
 learning and growth in the course.
 
-- **Lecture Videos:** Each week you will be responsible for
-watching or listening to video mini-lectures and/or podcasts. These
-media support provide you essential information in order to complete
-course activities and assessments. Please note that recorded lectures
-and podcasts are not a substitute for required readings.
+-   **Lecture Videos:** Each week you will be responsible for watching
+    or listening to video mini-lectures and/or podcasts. These media
+    support provide you essential information in order to complete
+    course activities and assessments. Please note that recorded
+    lectures and podcasts are not a substitute for required readings.
 
-- **Tutorial Videos:** Each week you have the opportunity to
-explore a topic further by watching additional videos. These draw on the
-expertise of various organizations or individuals and can be used to
-help you complete activities and assessments.
+-   **Tutorial Videos:** Each week you have the opportunity to explore a
+    topic further by watching additional videos. These draw on the
+    expertise of various organizations or individuals and can be used to
+    help you complete activities and assessments.
 
-- **Readings:** Each week you will be responsible for various
-reading assignments. The readings contain essential content for
-completing the course assignments.
+-   **Readings:** Each week you will be responsible for various reading
+    assignments. The readings contain essential content for completing
+    the course assignments.
 
 ### Assessment
 
 The following assessments help you gauge and demonstrate your progress
 in the course and support you in meeting course learning objectives.
 
-- **Discord:** We will discuss course topics further through the
-Discord. You are expected to post original thoughts/reflections and
-respond substantively to others.[\[1\]](#_msocom_1) 
+-   **Discord:** We will discuss course topics further through the
+    Discord. You are expected to post original thoughts/reflections and
+    respond substantively to others.[\[1\]](#_msocom_1) 
 
-- **Assignments**: You will develop various skills through regular
-assignments. You are expected to one coding assignment per week.
-Thoughtfully completing weekly assignments helps you meet course
-objectives.
+-   **Assignments**: You will develop various skills through regular
+    assignments. You are expected to one coding assignment per week.
+    Thoughtfully completing weekly assignments helps you meet course
+    objectives.
 
-- **Final Project:** You will develop your own interactive data
-visualization application as your final project during Week 6/Module
-6.
+-   **Final Project:** You will develop your own interactive data
+    visualization application as your final project during Week 6/Module
 
-- **Quizzes:** In this course, you will have opportunities to
-assess your own knowledge. You are expected to complete two weekly
-quizzes that provide immediate feedback and support ongoing learning.
+6.  
+
+-   **Quizzes:** In this course, you will have opportunities to assess
+    your own knowledge. You are expected to complete two weekly quizzes
+    that provide immediate feedback and support ongoing learning.
 
 You'll find support for Blackboard and other tools used for course
 activities and assignments under the **Technology Support** link in the
@@ -253,47 +254,49 @@ Academic dishonesty is defined as cheating of any kind, including
 misrepresenting one's own work, taking credit for the work of others
 without crediting them and without appropriate authorization, and the
 fabrication of information. For details and complete code, see the [Code
-of Academic Integrity.
-](http://studentconduct.gwu.edu/code-academic-integrity)Common examples
-of academic dishonesty include cheating, fabrication, plagiarism,
-falsification, forgery of University academic documents, and
+of Academic
+Integrity.](http://studentconduct.gwu.edu/code-academic-integrity)Common
+examples of academic dishonesty include cheating, fabrication,
+plagiarism, falsification, forgery of University academic documents, and
 facilitating academic dishonesty by others. Learn more about avoiding
 these:
 
-- [GW guidance for students on academic
-integrity](https://studentconduct.gwu.edu/guidance-students).
+-   [GW guidance for students on academic
+    integrity](https://studentconduct.gwu.edu/guidance-students).
 
-- [Plagiarism: What is it and how to avoid
-it](https://libguides.gwu.edu/plagiarism) from GW Libraries.
+-   [Plagiarism: What is it and how to avoid
+    it](https://libguides.gwu.edu/plagiarism) from GW Libraries.
 
-- Maintaining academic honesty can be a challenging skill to learn.
-If you have questions about maintaining our course standards, please
-talk with me early on.
+-   Maintaining academic honesty can be a challenging skill to learn. If
+    you have questions about maintaining our course standards, please
+    talk with me early on.
 
 ## Assignments
 
-1.  Quizzes (25%)
-2.  Coding assignments (30%)
-3.  Final project (45% of final grade)
+1.  Quizzes (20%)
+2.  Coding assignments (40%)
+3.  Final project (40% of final grade)
     a.  Assignment 1 (10%)
-    b.  Assignment 2 (15%)
+    b.  Assignment 2 (10%)
     c.  Assignment 3 (20%)
 
 ### Quizzes
 
-Students will complete ten graded quizzes. These exercises will
-be oriented towards strengthening the student's ability to manipulate,
+Students will complete ten graded quizzes. These exercises will be
+oriented towards strengthening the student's ability to manipulate,
 visualize and communicate data with R and Quarto.
 
 ### Coding Assignments
 
-Students will complete five weekly coding assignments. These assignments are designed to provide students with the opportunity to apply their newly-acquired skills to a classic question in political science.
+Students will complete five weekly coding assignments. These assignments
+are designed to provide students with the opportunity to apply their
+newly-acquired skills to a classic question in political science.
 
 ### Final Project
 
 Each student will complete a final project that will be developed
 throughout the semester in three parts. The ultimate objective of this
-project is for the student to design and program an R Shiny App. 
+project is for the student to design and program an R Shiny App.
 politics.
 
 ## Course Grading
@@ -333,8 +336,8 @@ emergency) they are unable to complete the final work of the course.
 Faculty should not assign an Incomplete grade if not asked by the
 student.
 
-[A contract
-](https://advising.columbian.gwu.edu/sites/g/files/zaxdzs1876/f/downloads/Form%20-%20Incomplete%20Contract_1.pdf)must
+[A
+contract](https://advising.columbian.gwu.edu/sites/g/files/zaxdzs1876/f/downloads/Form%20-%20Incomplete%20Contract_1.pdf)must
 be signed by the instructor and the student and filed in the department
 office. A copy should be submitted to the Academic Advising office in
 Phillips 107. A student has up to a calendar year to finish the
@@ -351,7 +354,7 @@ Advising.](https://columbian.gwu.edu/sites/g/files/zaxdzs4901/files/2022-06/ccas
 Incomplete grades may be given to graduate students only if for reasons
 beyond the student's control (such as medical or family emergency) they
 are unable to complete the final work of the course. Faculty should not
-assign an Incomplete grade if not asked by the student. 
+assign an Incomplete grade if not asked by the student.
 
 For further information, please consult with your advisor and complete a
 [CCAS graduate student incomplete grade
@@ -360,7 +363,7 @@ form.](https://columbian.gwu.edu/sites/g/files/zaxdzs1971/f/downloads/DGS/Incomp
 ## Course Communication
 
 Communication in our course is essential; clearing up questions earlier
-than later is a good practice, so please don\'t hesitate to reach out to
+than later is a good practice, so please don't hesitate to reach out to
 me. In any mode of communication used in our course, all of us will
 follow [netiquette](#_heading=h.49x2ik5) found in our syllabus.
 
@@ -380,28 +383,28 @@ You can post general course-related questions to our Blackboard Q&A
 discussion forum. If you have a question that is more personal in nature
 (i.e., grades), please email me directly to set up an appointment.
 
-## Netiquette 
+## Netiquette
 
 Behind every name there is a person.
 
 To ensure safe and meaningful learning experiences for everyone, we all
 agree to:
 
-- Remain professional, respectful, and courteous at all times on
-all platforms.
-- Keep in mind this is a college class. Something that would be
-inappropriate in an in-person classroom is also inappropriate in an
-online classroom.
-- When upset, we'll wait a day or two prior to posting. Messages
-posted or emailed in anger are often regretted later.
-- Ask one another for clarification if we find a communication
-offensive or difficult to understand.
-- Avoid sweeping generalizations. Back up our stated opinions with
-facts and reliable sources.
-- Understand that we may disagree and that exposure to other
-people's opinions is part of the learning experience.
-- Just as we would like our privacy respected, we will respect the
-privacy of other course participants and what they share.
+-   Remain professional, respectful, and courteous at all times on all
+    platforms.
+-   Keep in mind this is a college class. Something that would be
+    inappropriate in an in-person classroom is also inappropriate in an
+    online classroom.
+-   When upset, we'll wait a day or two prior to posting. Messages
+    posted or emailed in anger are often regretted later.
+-   Ask one another for clarification if we find a communication
+    offensive or difficult to understand.
+-   Avoid sweeping generalizations. Back up our stated opinions with
+    facts and reliable sources.
+-   Understand that we may disagree and that exposure to other people's
+    opinions is part of the learning experience.
+-   Just as we would like our privacy respected, we will respect the
+    privacy of other course participants and what they share.
 
 I (the instructor) reserve the right to delete any post or communication
 in our course that is deemed inappropriate without prior notification to
@@ -413,13 +416,13 @@ be removed.
 Using outside communication apps
 
 I am aware that you and your peers might communicate using tools outside
-of GW's Blackboard Ultra, my course website, our course Discord
-channel, or email systems. Rules of netiquette and appropriate
-communication extend to these tools as well as to Blackboard. If you see
-any tool being used inappropriately (i.e., any communication containing
-language that is offensive, rude, profane, racist, or hateful; uses that
-promote cheating of any kind), contact me as soon as possible to speak
-privately about it.
+of GW's Blackboard Ultra, my course website, our course Discord channel,
+or email systems. Rules of netiquette and appropriate communication
+extend to these tools as well as to Blackboard. If you see any tool
+being used inappropriately (i.e., any communication containing language
+that is offensive, rude, profane, racist, or hateful; uses that promote
+cheating of any kind), contact me as soon as possible to speak privately
+about it.
 
 (Adapted from [Lake Superior Connect, Creative Commons Attribution
 3.0](https://creativecommons.org/licenses/by/3.0/))
@@ -454,14 +457,14 @@ Blackboard course menu.
 
 ### Accommodations Beyond Disability
 
-Everyone has different needs for learning. If you don\'t have a
+Everyone has different needs for learning. If you don't have a
 documented disability but feel that you would benefit from learning
-support for other reasons, please don\'t hesitate to talk to me. If you
+support for other reasons, please don't hesitate to talk to me. If you
 have substantial non-academic obligations or other concerns (e.g., [food
 insecurity](https://studentlife.gwu.edu/store), work, childcare,
 athletic commitments, language barriers, financial issues, technology
 access, commuting, etc.) that make learning difficult, please contact
-me. I\'ll keep this information confidential, and together, we can
+me. I'll keep this information confidential, and together, we can
 brainstorm ways to meet your needs.
 
 ### Other Needs
@@ -511,6 +514,6 @@ observance](http://registrar.gwu.edu/university-policies#holidays).
 
 ## Key Dates
 
-Please defer to the due dates listed on the course website. You can also view
-due dates in the gradebook and under each individual course assignment
-item in Blackboard Ultra.
+Please defer to the due dates listed on the course website. You can also
+view due dates in the gradebook and under each individual course
+assignment item in Blackboard Ultra.
