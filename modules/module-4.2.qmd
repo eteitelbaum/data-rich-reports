@@ -30,7 +30,7 @@ We will be taking our example from the peace studies literature. We are going to
 
 We will start off by building a data frame for our analysis with the `peacesciencer` package. `peacesciencer` is designed to make standard analysis for conflict studies more convenient and includes many of the control variables that you would use to estimate the likelihood of conflict onset or duration.  
 
-To start, we call `create_stateyears(s)` to create a time-series data set for all available countries. We will specify `system = 'gw'` to denote the Gleditsch-Ward country coding system. Then we will filter for roughly the same years of Fearon and Laitin's original analysis (1945-99) with the caveat that `peacesciencer` only has conflict data starting in 1946.
+To start, we call `create_stateyears()` to create a time-series data set for all available countries. We will specify `system = 'gw'` to denote the Gleditsch-Ward country coding system. Then we will filter for roughly the same years of Fearon and Laitin's original analysis (1945-99) with the caveat that `peacesciencer` only has conflict data starting in 1946.
 
 Then we add a bunch of data to the data frame using the various `add_X` functions available in the package. Here we add UCDP conflict data which includes our dependent variable for this analysis--conflict onset. Then we add measures of democracy, ethno-religious fractionalization, GDP and terrain. 
 
@@ -123,7 +123,7 @@ reference = "See appendix for data sources."      # store reference notes
 ```
 
 
-Now we can call `modelsummary()`. The first argument is the list of models we want to display. Next we tell `modelsummary` that we want it to show stars for statitiscal significance (`stars = TRUE`). And in `gof_map()`, we say that, of the many goodness of fit statistics available to us, we only want to include the number of observations. Finally we plug our title into `title = ` and a source note into `notes = `. 
+Now we can call `modelsummary()`. The first argument is the list of models we want to display. Next we tell `modelsummary` that we want it to show stars for statitiscal significance (`stars = TRUE`). And in `gof_map, we say that, of the many goodness of fit statistics available to us, we only want to include the number of observations. Finally we plug our title into `title = ` and a source note into `notes = `. 
 
 ```{r}
 #| label: run_the_model
