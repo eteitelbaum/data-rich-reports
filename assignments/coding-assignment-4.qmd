@@ -1,0 +1,45 @@
+---
+title: "Assignment 4"
+---
+
+## Overview
+
+There are two parts to this assignment. In Part I, you will use `tidycensus` and the `gt` package to produce nice tables of census data. In Part II you will use `peacesciencer`, `broom` and `modelsummary` to do an analysis of conflict onset.` 
+
+## Part I: Income Tables
+
+### Step 1: Download data on income quintiles (20 pts)
+
+*Choose your favorite state or one that you think would be interesting to analyze from the standpoint of income distrubitions. Using `tidycensus`, download data on income quintiles at the county level. Be sure to specify "county for `geography = ` and the state that you want to download the data from in `state = `. Also make sure to clean the variable names and use a `mutate(name = str_replace_all())` so that you just have the county names and not "X County, State" in your tables.*  
+
+### Step 2: Make a gt table (20 pts)
+
+*Use the `gt` package to generate a table of the income quintiles for the counties in your selected state. Make sure to add a title and subtitle, relabel the columns, format the numbers as dollar figures and add a source note. Take other steps to beautify your table as you see fit. Finally, interpret the table. Which counties stand out?*
+
+
+## Part II: Regression Tables
+
+*For Part II of this assignment, we are going to be evaluating another classic article in political science: Fearon and Laitin's [Ethnicity, Insurgency and Civil War](https://www.jstor.org/stable/3118222). According to Google, this article has been cited about 11k times!*
+
+*Fearon and Laitin's provocative thesis is that ethnic diversity (per se) is not an important predictor of civil conflict. In this assignment, we are going to try to approximate F&L's analysis using the `peacesciencer` package and produce some regression tables to interpret our results.*
+
+### Step 1: Build your dataset (20 pts)
+
+*Using `create_stateyears()` and the various "add" functions (e.g. `add_ucdp_acd()`, `add_democracy()`, etc.), assemble a data frame for analyzing conflict onset as we did in module 4.2. One benefit we have of doing this analysis today is an additional 20 years of data, so filter your data for 1946 to 2019.* 
+
+
+### Step 2: Run a regression (20 pts)
+
+*Load broom and regress `ucdponset` on `ethfrac`, `relfrac`, `v2x_polyarchy`, `rugged`, `wbgdppc2011est` and `wbpopest`. Use `tidy()` to review the results and use `mutate_if()` to round the variables four or five decimal places. Compare your results to Table 1 in Fearon and Laitin's article. Are there any differences in your results?*
+
+
+### Step 3: Make a table with multiple models (20 pts)
+
+*Now use `modelsummary` to produce a handsome table with multiple models, but change out some of the measures. Try looking at ethnic and relgious polarization (`ethfrac`, `relfrac`) instead of fractionalization. For democracy, use the `polity2` score. And for terrain, try `newlmtnest` (a measure of mountainous terrain) instead of `rugged`. How do yur results change and how are they different from Fearon and Laitin's results?* 
+
+## Bonus section: Use confidence intervals instead of tables (10 pts)
+
+*1. Display median income with a plot of point estimates and confidence intervals for the counties in your selected state. What additional light does such a plot shed on your analysis of the income distrubtion in that state?* (5 pts)
+
+
+*2. Use `modelplot` to display the results of one of your regression models with point estimates and confidence intervals. What are some of the tradeoffs associated with displaying your results in this fashion as opposed to doing it in tabular form?* 

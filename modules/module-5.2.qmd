@@ -28,7 +28,7 @@ execute:
 
 ## Setup
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'View regression results with broom'>}}
+{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'fredr App set up'>}}
 
 ```{r}
 #| label: setup
@@ -69,7 +69,7 @@ source("helper.R") # scroll down, code pasted below
 
 ## ui
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'View regression results with broom'>}}
+{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'fredR App user interface (UI)'>}}
 
 Define UI for application that draws a line chart
 
@@ -114,7 +114,7 @@ ui <- fluidPage(
 
 ## Server
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'View regression results with broom'>}}
+{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'fredR App Server'>}}
 
 Define server logic required to draw a histogram.
 

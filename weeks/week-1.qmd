@@ -5,22 +5,31 @@ subtitle: Working with Data
 
 ## Readings
 
+### Reference
+
 📖 Review the [course syllabus](/course-syllabus.html) and [support
 resources](/course-support.html)
 
-📖 r4ds
-  - [8.1 & 8.2]
-  - [6.1 - 6.3]
-  - [20.3]
-  - [4.5]
+| 📖 r4ds
+- [8.1 & 8.2](https://r4ds.hadley.nz/data-import.html#introduction) on importing data
+- [6.1 - 6.3](https://r4ds.hadley.nz/data-tidy.html) on tidy data
+- [20.3](https://r4ds.hadley.nz/joins.html#sec-mutating-joins) on mutating joins
+- [4.5](https://r4ds.hadley.nz/data-transform.html#groups) on grouping data
   
+### Social science reading 
+
 📖 Norris, [The Impact of Electoral Reform on Women's Representation](https://link-springer-com.proxygw.wrlc.org/article/10.1057/palgrave.ap.5500151)
+
+## Modules
+
+| [Module 1.1](/modules/module-1.1.html)--Working with Flat Files
+| [Module 1.2](/modules/module-1.2.html)--Working with APIs
 
 ## Assignments
 
-📘 Quiz 1
-📘 Quiz 2
-🧮 Coding Assignment 1
+| 📘 Quiz 1
+| 📘 Quiz 2
+| 🧮 [Coding Assignment 1](/assignments/coding-assignment-1.html)
 
 
   

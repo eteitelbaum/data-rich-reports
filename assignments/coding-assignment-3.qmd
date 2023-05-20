@@ -1,0 +1,53 @@
+---
+title: "Assignment 3"
+---
+
+## Overview
+
+For this assignment, we are going to be evaluating Michael Ross's influential book [The Oil Curse](https://www-jstor-org.proxygw.wrlc.org/stable/j.ctt7s3wz.10).  According to Michael Ross, oil undermines democracy in a number of ways. We will map some data in order to evaluate different aspects of his argument.
+
+## Step 1: Create a data frame with country shapes (25 pts)
+
+*Use `rnaturalearth` to extract and store country shapes as simple features in a data frame. Filter out Antarctica and glimpse() the data to make sure everything looks right.* 
+
+## Step 2: Visualize democracy (25 pts)
+
+*a. Download one of the democracy (e.g. electoral democracy, liberal democracy, participatory democracy, deliberative democracy or egalitarian democracy) from V-Dem using the `vdemdata` package. Then use the vdemdata package to download this indicator and add iso3c codes to it with the `countrycode` package. See module 1.2 to refresh your memory on how to do this. (Note: you don't have to add region names for this exercise.) `glimpse()` the data to make sure everything is there.*
+
+*b. Using iso_a3_eh codes from `rnaturalearth` and the iso3c codes you just added to the V-Dem data, join the V-Dem data to the country shapes. `glimpse()` the data to make sure everything look right.*
+
+*c. Use `ggplot()` and `geom_sf()` to map the data. Use `theme_map()` from `ggthemes` and give it a `viridis` color scheme. Give the map appropriate labels.*
+
+
+*d. Briefly, do you see preliminary evidence of a relationship between democracy, as displayed in this map, and the map of oil rents that we built together in module 3.1?*
+
+
+## Step 3: Use a map app to explore the relevance of other indicators (25 pts)
+
+*The central argument in Michael Ross's book is that oil rents undermine democracy because oil provides a non-tax source of revenue to governments. If people don't have to worry about taxes, then they don't have to be concerned about what their leaders are doing. He calls this the "fiscal theory of democracy." Let's use the map app we built in module 3.1 for exploring World Bank data to evaluate this claim.*
+
+*a. In your assignment folder, create a subfolder called 'function' and use it to store your map function helper script like we did in module 3.1.*
+
+*b. Now add the `source()` code chunk that will enable you to call the map function in your Quarto document.*
+
+*c. Use your function to map income taxes as a percent of government revenue (GC.TAX.GSRV.RV.ZS). Do you see evidence of a relationship between this variable and oil rents?*
+
+*d. Use the `wb_search()` function to identify at least one other variable related to taxation that would be relevant for evaluating Ross's theory. Use your function to map that variable. Then describe the relationship with oil wealth (if any) and how the map is relevant to Ross's theory.*
+
+
+## Step 4: Make a leaflet map of conflict to explore the relvance of oil (25 pts)
+
+*In Chapter 5 of the Oil Curse, Michael Ross argues that oil wealth is destabilizing for developing countries due to the fact that rebels and the government fight over oil. Your task for this question is to explore the relationship between conflict and oil in a leaflet map.*
+
+*We will harness OpenAI's [ChatGPT](https://openai.com/blog/chatgpt) in our research for this question. Note that because AI has a tendency to "halucinate", you should always use other sources like Google to verify the information that ChatGPT provides.*
+
+*a. Select a country case to work with. This should be a oil-rich country that has recently experienced high levels of internal conflict. Examples include Iraq, Syria, Yemen and Nigeria. Use your AI to identify a country and a period of time to analyze. Say a few words about your country case and the time period you will be looking at.*   
+
+*b. Now, following the step laid out in module 3.2, filter a few months of conflict data from the UCDP GED dataset for your selected country and convert the coordinates simple features using the `st_as_sf()` function from the `sf` package.*
+
+*c. Next, produce a leaflet map that displays markers representing conflict events. Have the markers display the name of the location where the conflict event occurred when the user hovers over them. Have the popup windows display the number of deaths and the date of the event when the user clicks on them. Use "OpenTopoMap" as your basemap.*
+
+*d. Now let's do some research into the location of oil fields. Ask your AI to give you a list of the ten biggest oil fields and in your country and their geographic coordinates. Now ask your AI how you can export those coordinates to a .csv file. Make sure that your columns are appropriately labeled (e.g. snake case) and save your file as oil_fields.csv in your assignment folder. Then read the data into R using `readr` and store them in an object called `oil_fields`.* 
+
+*e. Now map the oil fields using `leaflet()`, giving each marker a label that displays the name of the oil field. Do you notice that conflict events occur close to oil fields in your chosen country?*
+

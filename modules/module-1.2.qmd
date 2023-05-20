@@ -1,6 +1,6 @@
 ---
 title: "Module 1.2"
-subtitle: "Working With APIs"
+subtitle: "Working with APIs"
 format: html
 highlight-style: atom-one
 execute:

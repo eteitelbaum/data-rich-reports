@@ -97,7 +97,7 @@ vars <- c("Democracy" = "polyarchy",
 
 ## ui 
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'View regression results with broom'>}}
+{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'User interface (UI)'>}}
 
 ```{r}
 #| label: ui
@@ -128,7 +128,7 @@ ui <- fluidPage(
 
 ## Server
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'View regression results with broom'>}}
+{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'Server'>}}
 
 ```{r}
 #| label: server

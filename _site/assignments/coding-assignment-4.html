@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PSC/DATS 2102–Summer Schedule - Week 1</title>
+<title>PSC/DATS 2102–Summer Schedule - Assignment 4</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,8 +29,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../weeks/week-2.html" rel="next">
-<link href="../faq.html" rel="prev">
+<link href="../assignments/coding-assignment-5.html" rel="next">
+<link href="../assignments/coding-assignment-3.html" rel="prev">
 <link href="../images/logo-placeholder.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -64,11 +64,11 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="PSC/DATS 2102–Summer Schedule - Week 1">
-<meta property="og:description" content="Working with Data">
+<meta property="og:title" content="PSC/DATS 2102–Summer Schedule - Assignment 4">
+<meta property="og:description" content="There are two parts to this assignment. In Part I, you will use tidycensus and the gt package to produce nice tables of census data.">
 <meta property="og:site-name" content="PSC/DATS 2102--Summer Schedule">
-<meta name="twitter:title" content="PSC/DATS 2102–Summer Schedule - Week 1">
-<meta name="twitter:description" content="Working with Data">
+<meta name="twitter:title" content="PSC/DATS 2102–Summer Schedule - Assignment 4">
+<meta name="twitter:description" content="There are two parts to this assignment. In Part I, you will use tidycensus and the gt package to produce nice tables of census data.">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -78,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Week 1</h1>
+      <h1 class="quarto-secondary-nav-title">Assignment 4</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -154,15 +154,15 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Weekly Materials</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Weekly Materials</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/week-1.html" class="sidebar-item-text sidebar-link active">Week 1</a>
+  <a href="../weeks/week-1.html" class="sidebar-item-text sidebar-link">Week 1</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -194,12 +194,12 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">Coding Assignments</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Coding Assignments</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../assignments/coding-assignment-1.html" class="sidebar-item-text sidebar-link">Coding Assignment 1</a>
@@ -217,7 +217,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../assignments/coding-assignment-4.html" class="sidebar-item-text sidebar-link">Coding Assignment 4</a>
+  <a href="../assignments/coding-assignment-4.html" class="sidebar-item-text sidebar-link active">Coding Assignment 4</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -346,23 +346,28 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#readings" id="toc-readings" class="nav-link active" data-scroll-target="#readings">Readings</a>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#part-i-income-tables" id="toc-part-i-income-tables" class="nav-link" data-scroll-target="#part-i-income-tables">Part I: Income Tables</a>
   <ul class="collapse">
-  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
-  <li><a href="#social-science-reading" id="toc-social-science-reading" class="nav-link" data-scroll-target="#social-science-reading">Social science reading</a></li>
+  <li><a href="#step-1-download-data-on-income-quintiles-20-pts" id="toc-step-1-download-data-on-income-quintiles-20-pts" class="nav-link" data-scroll-target="#step-1-download-data-on-income-quintiles-20-pts">Step 1: Download data on income quintiles (20 pts)</a></li>
+  <li><a href="#step-2-make-a-gt-table-20-pts" id="toc-step-2-make-a-gt-table-20-pts" class="nav-link" data-scroll-target="#step-2-make-a-gt-table-20-pts">Step 2: Make a gt table (20 pts)</a></li>
   </ul></li>
-  <li><a href="#modules" id="toc-modules" class="nav-link" data-scroll-target="#modules">Modules</a></li>
-  <li><a href="#assignments" id="toc-assignments" class="nav-link" data-scroll-target="#assignments">Assignments</a></li>
+  <li><a href="#part-ii-regression-tables" id="toc-part-ii-regression-tables" class="nav-link" data-scroll-target="#part-ii-regression-tables">Part II: Regression Tables</a>
+  <ul class="collapse">
+  <li><a href="#step-1-build-your-dataset-20-pts" id="toc-step-1-build-your-dataset-20-pts" class="nav-link" data-scroll-target="#step-1-build-your-dataset-20-pts">Step 1: Build your dataset (20 pts)</a></li>
+  <li><a href="#step-2-run-a-regression-20-pts" id="toc-step-2-run-a-regression-20-pts" class="nav-link" data-scroll-target="#step-2-run-a-regression-20-pts">Step 2: Run a regression (20 pts)</a></li>
+  <li><a href="#step-3-make-a-table-with-multiple-models-20-pts" id="toc-step-3-make-a-table-with-multiple-models-20-pts" class="nav-link" data-scroll-target="#step-3-make-a-table-with-multiple-models-20-pts">Step 3: Make a table with multiple models (20 pts)</a></li>
+  </ul></li>
+  <li><a href="#bonus-section-use-confidence-intervals-instead-of-tables-10-pts" id="toc-bonus-section-use-confidence-intervals-instead-of-tables-10-pts" class="nav-link" data-scroll-target="#bonus-section-use-confidence-intervals-instead-of-tables-10-pts">Bonus section: Use confidence intervals instead of tables (10 pts)</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/eteitelbaum/dataviz-summer-2023/edit/main/weeks/week-1.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/eteitelbaum/dataviz-summer-2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/eteitelbaum/dataviz-summer-2023/edit/main/assignments/coding-assignment-4.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/eteitelbaum/dataviz-summer-2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Week 1</h1>
-<p class="subtitle lead">Working with Data</p>
+<h1 class="title d-none d-lg-block">Assignment 4</h1>
 </div>
 
 
@@ -377,34 +382,42 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="readings" class="level2">
-<h2 class="anchored" data-anchor-id="readings">Readings</h2>
-<section id="reference" class="level3">
-<h3 class="anchored" data-anchor-id="reference">Reference</h3>
-<p>📖 Review the <a href="../course-syllabus.html">course syllabus</a> and <a href="../course-support.html">support resources</a></p>
-<p>📖 r4ds</p>
-<ul>
-<li><a href="https://r4ds.hadley.nz/data-import.html#introduction">8.1 &amp; 8.2</a> on importing data</li>
-<li><a href="https://r4ds.hadley.nz/data-tidy.html">6.1 - 6.3</a> on tidy data</li>
-<li><a href="https://r4ds.hadley.nz/joins.html#sec-mutating-joins">20.3</a> on mutating joins</li>
-<li><a href="https://r4ds.hadley.nz/data-transform.html#groups">4.5</a> on grouping data</li>
-</ul>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>There are two parts to this assignment. In Part I, you will use <code>tidycensus</code> and the <code>gt</code> package to produce nice tables of census data. In Part II you will use <code>peacesciencer</code>, <code>broom</code> and <code>modelsummary</code> to do an analysis of conflict onset.`</p>
 </section>
-<section id="social-science-reading" class="level3">
-<h3 class="anchored" data-anchor-id="social-science-reading">Social science reading</h3>
-<p>📖 Norris, <a href="https://link-springer-com.proxygw.wrlc.org/article/10.1057/palgrave.ap.5500151">The Impact of Electoral Reform on Women’s Representation</a></p>
+<section id="part-i-income-tables" class="level2">
+<h2 class="anchored" data-anchor-id="part-i-income-tables">Part I: Income Tables</h2>
+<section id="step-1-download-data-on-income-quintiles-20-pts" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-download-data-on-income-quintiles-20-pts">Step 1: Download data on income quintiles (20 pts)</h3>
+<p><em>Choose your favorite state or one that you think would be interesting to analyze from the standpoint of income distrubitions. Using <code>tidycensus</code>, download data on income quintiles at the county level. Be sure to specify “county for <code>geography =</code> and the state that you want to download the data from in <code>state =</code>. Also make sure to clean the variable names and use a <code>mutate(name = str_replace_all())</code> so that you just have the county names and not”X County, State” in your tables.</em></p>
+</section>
+<section id="step-2-make-a-gt-table-20-pts" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-make-a-gt-table-20-pts">Step 2: Make a gt table (20 pts)</h3>
+<p><em>Use the <code>gt</code> package to generate a table of the income quintiles for the counties in your selected state. Make sure to add a title and subtitle, relabel the columns, format the numbers as dollar figures and add a source note. Take other steps to beautify your table as you see fit. Finally, interpret the table. Which counties stand out?</em></p>
 </section>
 </section>
-<section id="modules" class="level2">
-<h2 class="anchored" data-anchor-id="modules">Modules</h2>
-<p><a href="../modules/module-1.1.html">Module 1.1</a>–Working with Flat Files<br>
-<a href="../modules/module-1.2.html">Module 1.2</a>–Working with APIs</p>
+<section id="part-ii-regression-tables" class="level2">
+<h2 class="anchored" data-anchor-id="part-ii-regression-tables">Part II: Regression Tables</h2>
+<p><em>For Part II of this assignment, we are going to be evaluating another classic article in political science: Fearon and Laitin’s <a href="https://www.jstor.org/stable/3118222">Ethnicity, Insurgency and Civil War</a>. According to Google, this article has been cited about 11k times!</em></p>
+<p><em>Fearon and Laitin’s provocative thesis is that ethnic diversity (per se) is not an important predictor of civil conflict. In this assignment, we are going to try to approximate F&amp;L’s analysis using the <code>peacesciencer</code> package and produce some regression tables to interpret our results.</em></p>
+<section id="step-1-build-your-dataset-20-pts" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-build-your-dataset-20-pts">Step 1: Build your dataset (20 pts)</h3>
+<p><em>Using <code>create_stateyears()</code> and the various “add” functions (e.g.&nbsp;<code>add_ucdp_acd()</code>, <code>add_democracy()</code>, etc.), assemble a data frame for analyzing conflict onset as we did in module 4.2. One benefit we have of doing this analysis today is an additional 20 years of data, so filter your data for 1946 to 2019.</em></p>
 </section>
-<section id="assignments" class="level2">
-<h2 class="anchored" data-anchor-id="assignments">Assignments</h2>
-<p>📘 Quiz 1<br>
-📘 Quiz 2<br>
-🧮 <a href="../assignments/coding-assignment-1.html">Coding Assignment 1</a></p>
+<section id="step-2-run-a-regression-20-pts" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-run-a-regression-20-pts">Step 2: Run a regression (20 pts)</h3>
+<p><em>Load broom and regress <code>ucdponset</code> on <code>ethfrac</code>, <code>relfrac</code>, <code>v2x_polyarchy</code>, <code>rugged</code>, <code>wbgdppc2011est</code> and <code>wbpopest</code>. Use <code>tidy()</code> to review the results and use <code>mutate_if()</code> to round the variables four or five decimal places. Compare your results to Table 1 in Fearon and Laitin’s article. Are there any differences in your results?</em></p>
+</section>
+<section id="step-3-make-a-table-with-multiple-models-20-pts" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-make-a-table-with-multiple-models-20-pts">Step 3: Make a table with multiple models (20 pts)</h3>
+<p><em>Now use <code>modelsummary</code> to produce a handsome table with multiple models, but change out some of the measures. Try looking at ethnic and relgious polarization (<code>ethfrac</code>, <code>relfrac</code>) instead of fractionalization. For democracy, use the <code>polity2</code> score. And for terrain, try <code>newlmtnest</code> (a measure of mountainous terrain) instead of <code>rugged</code>. How do yur results change and how are they different from Fearon and Laitin’s results?</em></p>
+</section>
+</section>
+<section id="bonus-section-use-confidence-intervals-instead-of-tables-10-pts" class="level2">
+<h2 class="anchored" data-anchor-id="bonus-section-use-confidence-intervals-instead-of-tables-10-pts">Bonus section: Use confidence intervals instead of tables (10 pts)</h2>
+<p><em>1. Display median income with a plot of point estimates and confidence intervals for the counties in your selected state. What additional light does such a plot shed on your analysis of the income distrubtion in that state?</em> (5 pts)</p>
+<p><em>2. Use <code>modelplot</code> to display the results of one of your regression models with point estimates and confidence intervals. What are some of the tradeoffs associated with displaying your results in this fashion as opposed to doing it in tabular form?</em></p>
 
 
 </section>
@@ -674,13 +687,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../faq.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">FAQ</span>
+      <a href="../assignments/coding-assignment-3.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Coding Assignment 3</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../weeks/week-2.html" class="pagination-link">
-        <span class="nav-page-text">Week 2</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../assignments/coding-assignment-5.html" class="pagination-link">
+        <span class="nav-page-text">Coding Assignment 5</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

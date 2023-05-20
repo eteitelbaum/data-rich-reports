@@ -1,0 +1,47 @@
+---
+title: "Coding Assignment 1"
+---
+
+## Overview 
+
+For this assignment, you are going to download some variables using the `wbstats` and `vdemdata` packages. Then you are going to wrangle these data and merge the two data sets into one and analyze how they relate to women's representation in national parliaments. Do your work for each step in the code chunks provided. Be sure to label your code chunks. 
+
+## Step 1: Download data from the V-Dem Dataset
+
+*Look at the V-Dem [codebook](https://www.v-dem.net/data/reference-documents/). Identify two measures of democracy that are not the polyarchy score that we used in Module 1.2.* 
+
+*Try to pick variables that will relate to women's representation and read the description of the variable to make sure that it includes data for a sufficient number of years, e.g. that the data will be somewhat recent. Select the most recent 20 years of data for your analysis.* 
+
+*Make sure to load the packages that you need and `glimpse()` the data or `View()` it to make sure that it downloaded properly.* 
+
+```{r}
+
+```
+
+## Step 2: Download data from the World Bank
+
+*Next, download the variable on women's represenation that we used in Module 1.2 ("SG.GEN.PARL.ZS") and at least one additional measure related to women's empowerment. Go to the [WDI](https://databank.worldbank.org/source/world-development-indicators) site the wb_search() function to identify relevant variables. Download the most recent 20 years of data for your analysis.* 
+
+*Make sure that the indicator has enough data to conduct your analysis, i.e. that it has data for most countries and years.*
+
+```{r}
+
+```
+
+## Step 3: Merge the data
+
+*Now add country codes using the `countrycode` package and merge the data using `left_join()`.* 
+
+```{r}
+
+```
+
+## Step 4: Summarize your combined data set
+
+*Use `group_by()`, `summarize()` and `arrange()` to glean insights about your data. For example, how do regions compare on mean values of women's representation and how do these values relate to the values of other variables in your data set? Which countries stand out in terms of women's representation? Etc.* 
+
+
+## Step 5: Interpret your data
+
+*Write a paragraph or so relating your insights to the Norris reading about electoral reform and women's representation. Picking a handful of country cases from your data, how does your analysis relate to her arguments about the relevance of electoral systems, statutory quotas, reserved seats or voluntary quotas?* 
+

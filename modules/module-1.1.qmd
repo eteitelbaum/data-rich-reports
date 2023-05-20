@@ -1,6 +1,6 @@
 ---
 title: "Module 1.1"
-subtitle: "Working With Flat Files"
+subtitle: "Working with Flat Files"
 format: html
 highlight-style: atom-one
 execute: 
