@@ -368,10 +368,11 @@ me. In any mode of communication used in our course, all of us will
 follow [netiquette](#_heading=h.49x2ik5) found in our syllabus.
 
 We will communicate primarily through [GW's Blackboard
-System](https://blackboard.gwu.edu). Announcements and emails sent
-through Blackboard automatically go to your GW email address (i.e.,
-userid\@gwu.edu). Please check your GW email account on a daily basis or
-forward your GW email to another address that you check daily.
+System](https://blackboard.gwu.edu) and the Discord server.
+Announcements and emails sent through Blackboard automatically go to
+your GW email address (i.e., userid\@gwu.edu). Please check your GW
+email account on a daily basis or forward your GW email to another
+address that you check daily.
 
 I will respond to emails/discussion posts within 48 hours (i.e., "24
 hours on weekdays and on the next business day over weekends and
@@ -379,9 +380,11 @@ holidays.") I will provide feedback on assignments/exams within 3 days
 (i.e., "five days on weekdays and on the next business day over weekends
 and holidays.")
 
-You can post general course-related questions to our Blackboard Q&A
-discussion forum. If you have a question that is more personal in nature
-(i.e., grades), please email me directly to set up an appointment.
+You can post general course-related questions to our Discord server.
+Please post your question here first rather than emailing me directly if
+your question regards the course material. However, if you have a
+question that is more personal in nature (i.e., grades), please email me
+directly to set up an appointment.
 
 ## Netiquette
 
@@ -416,13 +419,13 @@ be removed.
 Using outside communication apps
 
 I am aware that you and your peers might communicate using tools outside
-of GW's Blackboard Ultra, my course website, our course Discord channel,
-or email systems. Rules of netiquette and appropriate communication
-extend to these tools as well as to Blackboard. If you see any tool
-being used inappropriately (i.e., any communication containing language
-that is offensive, rude, profane, racist, or hateful; uses that promote
-cheating of any kind), contact me as soon as possible to speak privately
-about it.
+of GW's Blackboard, my course website, our course Discord channel, or
+email systems. Rules of netiquette and appropriate communication extend
+to these tools as well as to Blackboard. If you see any tool being used
+inappropriately (i.e., any communication containing language that is
+offensive, rude, profane, racist, or hateful; uses that promote cheating
+of any kind), contact me as soon as possible to speak privately about
+it.
 
 (Adapted from [Lake Superior Connect, Creative Commons Attribution
 3.0](https://creativecommons.org/licenses/by/3.0/))
