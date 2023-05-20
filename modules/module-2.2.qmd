@@ -16,12 +16,14 @@ execute:
 - Install `colorBlindness` (`install.packages("colorBlindness")`) and read this [vignette](https://cran.r-project.org/web/packages/colorBlindness/vignettes/colorBlindness.html)
 - Generate a quarto document named "module-2.2.qmd" in your "modules" project folder so that you can code along with me
 - In your quarto document, run these code chunks and familiarize yourself the data frames that they generate 
+- Note the use of `drop_na()` from the `tidyr` package in constructing the `flfp_gdp` data frame. `drop_na()` is a convenient function for dropping rows with missing values.
 
 ```{r}
 #| label: setup
 
 library(readr)
 library(dplyr)
+library(tidyr)
 library(ggplot2)
 library(wbstats)
 library(countrycode)
@@ -43,8 +45,9 @@ flfp_gdp_regions
 
 ## Cross-section of data on FLFP and GDP per capita for scatter plot
 
-flfp_gdp <- wb_data(indicators, mrnev = 1) |> # download most recent non-missing value of indicators
-    left_join(select(wb_countries(), c(iso3c, region)), by = "iso3c")  # add regions from countrycode()
+flfp_gdp <- wb_data(indicators, end_date = 2021) |> # download data for 2021
+    left_join(select(wb_countries(), c(iso3c, region)), by = "iso3c") |>  # add regions
+    drop_na() # drop rows with missing values
 
 glimpse(flfp_gdp)
 
