@@ -54,22 +54,22 @@ website:
             text: Schedule
           - href: course-links.qmd
             text: Useful links
-          - href: faq.qmd
-            text: FAQ
+          # - href: faq.qmd
+          #   text: FAQ
       - section: "Weekly Materials"
         contents: 
           - href: weeks/week-1.qmd
             text: "Week 1"
-          - href: weeks/week-2.qmd
-            text: "Week 2"
-          - href: weeks/week-3.qmd
-            text: "Week 3"
-          - href: weeks/week-4.qmd
-            text: "Week 4"
-          - href: weeks/week-5.qmd
-            text: "Week 5"
-          - href: weeks/week-6.qmd
-            text: "Week 6"
+          # - href: weeks/week-2.qmd
+          #   text: "Week 2"
+          # - href: weeks/week-3.qmd
+          #   text: "Week 3"
+          # - href: weeks/week-4.qmd
+          #   text: "Week 4"
+          # - href: weeks/week-5.qmd
+          #   text: "Week 5"
+          # - href: weeks/week-6.qmd
+          #   text: "Week 6"
       - section: "Coding Assignments"
         contents:
           - href: assignments/coding-assignment-1.qmd
@@ -84,8 +84,8 @@ website:
             text: "Coding Assignment 5"
       - section: "Project"
         contents:
-          - href: project/project-description.qmd
-            text: "Description"
+          # - href: project/project-description.qmd
+          #   text: "Description"
           - href: project/project-assignment-1.qmd
             text: "Project Assignment 1"
           - href: project/project-assignment-2.qmd
@@ -118,10 +118,10 @@ website:
             text: "Module 5.1"
           - href: modules/module-5.2.qmd
             text: "Module 5.2"
-          - href: modules/module-6.1.qmd
-            text: "Module 6.1"
-          - href: modules/module-6.2.qmd
-            text: "Module 6.2"
+          # - href: modules/module-6.1.qmd
+          #   text: "Module 6.1"
+          # - href: modules/module-6.2.qmd
+          #   text: "Module 6.2"
 format:
   html:
     theme:
@@ -132,6 +132,6 @@ format:
     code-overflow: wrap
     toc: true
     link-external-newwindow: true
-freeze: false
+freeze: auto
 editor: source
 
