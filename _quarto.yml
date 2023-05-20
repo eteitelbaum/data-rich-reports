@@ -11,7 +11,7 @@ website:
   repo-actions: [edit, issue]
   
   open-graph: true
-  favicon: "images/logo-placeholder.png"
+  favicon: "images/dataviz-logo.png"
   twitter-card: true
   reader-mode: true
   
