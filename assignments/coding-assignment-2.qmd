@@ -12,11 +12,13 @@ Before starting on this assignment, you will want to have a look at the V-Dem [c
 
 Now have a look at "Some Social Requisites of Democracy" and in particular pay attention to the indicators in Table II and the discussion surrounding them. Think of each indicator (e.g. urbanization, education, etc.) as a sub-hypothesis of his theory. Which of these sub-hypotheses about modernization do you think is most compelling? Which would you like to test?
 
-## Step 1: Gather Your Data
+**Submission note**: Accept the invitation on Blackboard to submit this assignment via GitHub.
+
+## Step 1: Gather Your Data (20 pts)
 
 *Use the `vdemdata` package to download data for your analysis. Since we already looked at the polyarchy score and wealth in class, you need to use a different measure of democracy and a different background factor for your analysis. Use a `select()` verb to include country, year, region (`e_regionpol_6C`), at least one of the other four measures of democracy, and one background factor that is not per capita GDP. Store your data in an object called `dem_data`. Pipe in a mutate() verb and use `case_match()` to label the regions. Review [module 1.2](https://dataviz-gwu.rocks/modules/module-1.2.html) if you are confused on how to do this.*
 
-## Step 2: Make a bar chart
+## Step 2: Make a bar chart (20 pts)
 
 *a) Insert a code chunk below this line and label it. Wrangle your data for the bar chart. Filter by year to include data since 2000, group by region and summarize by mean. Save the new data in an object called `bar_chart_data`.* 
 
@@ -25,7 +27,7 @@ Now have a look at "Some Social Requisites of Democracy" and in particular pay a
 
 **Note: From here on out I will expect you to know to add a code chunk and label it.**
 
-## Step 3: Make a colorblind-friendly line chart
+## Step 3: Make a colorblind-friendly line chart (20 pts)
 
 *a) Filter your `dem_data` to include three or four countries of your choosing and create a line chart of your democracy indicator. You can save the data as a new data frame called `dem_data_line` or you can pipe your filtered data directly into `ggplot()`.*
 
@@ -35,7 +37,7 @@ Now have a look at "Some Social Requisites of Democracy" and in particular pay a
 
 *d) Run the plot through `cvdPlot()` and describe what you see. Is your plot colorblind friendly?* 
 
-## Step 4: Make a scatter plot with annotation
+## Step 4: Make a scatter plot with annotation (20 pts)
 
 *a) Using `dem__data`, filter out a ten year period. This could be the most recent ten years of data or a distinct ten year period that you want to look at. If you choose a recent period, make sure that you have enough data to take an average of ten years. Some of the background variables in V-Dem are not entirely up to date. You can check the availability of the data by looking at the V-Dem codebook or using `glimpse()` or `View()` to look at your data.Group by country and summarize by mean. Save your your data in a new object called `dem_data_scatter`.*
 
@@ -43,7 +45,7 @@ Now have a look at "Some Social Requisites of Democracy" and in particular pay a
 
 *c) Add an annotation to your scatter plot using `annotate()` and `geom_vline()` or `geom_hline()`. Your annotation could highlight a particular year or level of democracy that is relevant for your analysis. Explain briefly why you included this annotation*
 
-## Step 5: Make your scatter plot interactive 
+## Step 5: Make your scatter plot interactive (20 pts)
 
 *a) Make your scatter plot interactive using `ggplotly()`. Make sure that your tooltip includes the information that you want to display to the user.*
 

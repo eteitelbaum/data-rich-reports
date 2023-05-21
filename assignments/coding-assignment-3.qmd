@@ -6,6 +6,8 @@ title: "Assignment 3"
 
 For this assignment, we are going to be evaluating Michael Ross's influential book [The Oil Curse](https://www-jstor-org.proxygw.wrlc.org/stable/j.ctt7s3wz.10).  According to Michael Ross, oil undermines democracy in a number of ways. We will map some data in order to evaluate different aspects of his argument.
 
+**Submission note**: Accept the invitation on Blackboard to submit this assignment via GitHub.
+
 ## Step 1: Create a data frame with country shapes (25 pts)
 
 *Use `rnaturalearth` to extract and store country shapes as simple features in a data frame. Filter out Antarctica and glimpse() the data to make sure everything looks right.* 

@@ -132,6 +132,6 @@ format:
     code-overflow: wrap
     toc: true
     link-external-newwindow: true
-freeze: false
+freeze: auto
 editor: source
 

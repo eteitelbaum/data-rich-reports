@@ -6,6 +6,8 @@ title: "Assignment 4"
 
 There are two parts to this assignment. In Part I, you will use `tidycensus` and the `gt` package to produce nice tables of census data. In Part II you will use `peacesciencer`, `broom` and `modelsummary` to do an analysis of conflict onset.` 
 
+**Submission note**: Accept the invitation on Blackboard to submit this assignment via GitHub.
+
 ## Part I: Income Tables
 
 ### Step 1: Download data on income quintiles (20 pts)

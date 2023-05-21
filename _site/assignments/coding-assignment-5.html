@@ -373,11 +373,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#step-1-wrangle-your-data" id="toc-step-1-wrangle-your-data" class="nav-link" data-scroll-target="#step-1-wrangle-your-data">Step 1: Wrangle your data</a></li>
-  <li><a href="#step-2-do-the-setup-work" id="toc-step-2-do-the-setup-work" class="nav-link" data-scroll-target="#step-2-do-the-setup-work">Step 2: Do the setup work</a></li>
-  <li><a href="#step-3-define-the-ui" id="toc-step-3-define-the-ui" class="nav-link" data-scroll-target="#step-3-define-the-ui">Step 3: Define the UI</a></li>
-  <li><a href="#step-4-define-the-server-logic" id="toc-step-4-define-the-server-logic" class="nav-link" data-scroll-target="#step-4-define-the-server-logic">Step 4: Define the server logic</a></li>
-  <li><a href="#step-5-run-the-app-and-interpret-the-results" id="toc-step-5-run-the-app-and-interpret-the-results" class="nav-link" data-scroll-target="#step-5-run-the-app-and-interpret-the-results">Step 5: Run the app and interpret the results</a></li>
+  <li><a href="#step-1-wrangle-your-data-20-pts" id="toc-step-1-wrangle-your-data-20-pts" class="nav-link" data-scroll-target="#step-1-wrangle-your-data-20-pts">Step 1: Wrangle your data (20 pts)</a></li>
+  <li><a href="#step-2-do-the-setup-work-20-pts" id="toc-step-2-do-the-setup-work-20-pts" class="nav-link" data-scroll-target="#step-2-do-the-setup-work-20-pts">Step 2: Do the setup work (20 pts)</a></li>
+  <li><a href="#step-3-define-the-ui-20-pts" id="toc-step-3-define-the-ui-20-pts" class="nav-link" data-scroll-target="#step-3-define-the-ui-20-pts">Step 3: Define the UI (20 pts)</a></li>
+  <li><a href="#step-4-define-the-server-logic-20-pts" id="toc-step-4-define-the-server-logic-20-pts" class="nav-link" data-scroll-target="#step-4-define-the-server-logic-20-pts">Step 4: Define the server logic (20 pts)</a></li>
+  <li><a href="#step-5-run-the-app-and-interpret-the-results-20-pts" id="toc-step-5-run-the-app-and-interpret-the-results-20-pts" class="nav-link" data-scroll-target="#step-5-run-the-app-and-interpret-the-results-20-pts">Step 5: Run the app and interpret the results (20 pts)</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/eteitelbaum/dataviz-summer-2023/edit/main/assignments/coding-assignment-5.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/eteitelbaum/dataviz-summer-2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -404,13 +404,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>For this assignment, you are going to be reproducing a version of <a href="https://emmanuelteitelbaum.shinyapps.io/demwaves/">this Shiny app</a> and using it to evaluate Samuel Huntington’s classic book, <em>The Third Wave</em> which, according to Google, has been cited more than 19,700 times! For convenience, we will be looking a Journal of Democracy <a href="https://muse-jhu-edu.proxygw.wrlc.org/article/225602">article</a> by Huntington that summarizes his main points from the book. You will be doing most of your coding in the separate <code>app.R</code> template provided for you. A big part of your grade for this assignment will be based on getting that file to produce your Shiny App. However, you can use this document as a worksheet to help generate the various elements of code for your App.</p>
+<p><strong>Submission note</strong>: For this assignment you should submit your working Shiny App code via GitHub. You can use this workbook to develop your code.</p>
 </section>
-<section id="step-1-wrangle-your-data" class="level2">
-<h2 class="anchored" data-anchor-id="step-1-wrangle-your-data">Step 1: Wrangle your data</h2>
+<section id="step-1-wrangle-your-data-20-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-wrangle-your-data-20-pts">Step 1: Wrangle your data (20 pts)</h2>
 <p>Load <code>vdemdata</code>, <code>dplyr</code> and <code>readr</code> into a separate R script or code chunk in a Quarto document. Select <code>country_name</code>, <code>year</code>, and three V-Dem democracy indicators: <code>v2x_polyarchy</code>, <code>v2x_libdem</code>, and <code>v2x_paritpdem</code>. Now go to the <a href="https://www.v-dem.net/documents/24/codebook_v13.pdf">V-Dem codebook</a> and select four additional indicators related to democracy that you would like to explore. Make sure that your chosen indicators cover the same time period as those in the app (1789-2021). Have a <code>glimpse()</code> and the data to make sure everythign is there. Then store your data in an object called <code>vdem_trends</code> and then save it as a .csv file by the same name.</p>
 </section>
-<section id="step-2-do-the-setup-work" class="level2">
-<h2 class="anchored" data-anchor-id="step-2-do-the-setup-work">Step 2: Do the setup work</h2>
+<section id="step-2-do-the-setup-work-20-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-do-the-setup-work-20-pts">Step 2: Do the setup work (20 pts)</h2>
 <p>Now, in your <code>app.R</code> file, load your packages, load the data into an object called <code>vdem_trends</code>, and create lists of the variables and countries for the <code>ui</code>.</p>
 <p><strong>Packages</strong>: You will need to load <code>shiny</code>, <code>shinyWidgets</code>, <code>readr</code>, <code>dplyr</code>, <code>ggplot2</code> and <code>lubridate</code>.</p>
 <p><strong>Data</strong>: These will be loaded in from the .csv file you created in Step 1.</p>
@@ -428,8 +429,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sort</span>()          <span class="co"># no arguments for sort</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="step-3-define-the-ui" class="level2">
-<h2 class="anchored" data-anchor-id="step-3-define-the-ui">Step 3: Define the UI</h2>
+<section id="step-3-define-the-ui-20-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-define-the-ui-20-pts">Step 3: Define the UI (20 pts)</h2>
 <p>Define the UI using code similar to what we saw for the FRED line chart app in Module 5.2. You will want a quarter of the columns to be occupied by the <code>wellPanel()</code> with the “Indicator:” and “Country:” dropdown menus and some help text. The remaining 3/4 of the space is going to be occupied by your plot output. For the slider input, use this code:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>           <span class="fu">sliderTextInput</span>(</span>
@@ -442,8 +443,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>           )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="step-4-define-the-server-logic" class="level2">
-<h2 class="anchored" data-anchor-id="step-4-define-the-server-logic">Step 4: Define the server logic</h2>
+<section id="step-4-define-the-server-logic-20-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-define-the-server-logic-20-pts">Step 4: Define the server logic (20 pts)</h2>
 <p>Now the tricky part. This app is going to require two reactive functions. The first is going to be for the country and indicator dropdowns:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>  ctry_indicator <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
@@ -462,8 +463,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Now you need to render the plot. In the <code>ggplot()</code> call your data is going to be the saved in the second reactive function <code>plot_df()</code> (don’t forget the parentheses!). In <code>aes()</code> <code>x</code> will simply be <code>year</code> but y is a little tricky. Here you need to call <code>get(input$indicator))</code> You might have guessed the <code>input$indicator</code> part, but to <a href="http://adv-r.had.co.nz/Computing-on-the-language.html">non-standard evaluation</a> in <code>aes()</code>, you cannot pass your column into ggplot before you remove the parentheses. <code>get()</code> is one of <a href="https://stackoverflow.com/questions/19826352/pass-character-strings-to-ggplot2-within-a-function">many ways</a> to do this.</p>
 <p>For the y-labels, you can use <code>names(vars[which(vars == input$indicator)]))</code> to get the name of the selected indicator.</p>
 </section>
-<section id="step-5-run-the-app-and-interpret-the-results" class="level2">
-<h2 class="anchored" data-anchor-id="step-5-run-the-app-and-interpret-the-results">Step 5: Run the app and interpret the results</h2>
+<section id="step-5-run-the-app-and-interpret-the-results-20-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-run-the-app-and-interpret-the-results-20-pts">Step 5: Run the app and interpret the results (20 pts)</h2>
 <p>Use the <code>shinyApp()</code> funciton to run the app. Does it work? If not, try some of the debugging techniques we talked about in class or reach out on Discord for help.</p>
 <p>Once you get the app running, take some time to explore the data in a few of your favorite countries. How do the trends in your chosen cases speak to Huntington’s idea about a third wave of democratization or, anecdotally, the types barriers that remain to democratization in that country? Type your answer below (not in your <code>app.R</code> file!).</p>
 

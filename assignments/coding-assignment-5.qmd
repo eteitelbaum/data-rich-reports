@@ -8,11 +8,13 @@ execute:
 
 For this assignment, you are going to be reproducing a version of [this Shiny app](https://emmanuelteitelbaum.shinyapps.io/demwaves/) and using it to evaluate Samuel Huntington's classic book, *The Third Wave* which, according to Google, has been cited more than 19,700 times! For convenience, we will be looking a Journal of Democracy [article](https://muse-jhu-edu.proxygw.wrlc.org/article/225602) by Huntington that summarizes his main points from the book. You will be doing most of your coding in the separate `app.R` template provided for you. A big part of your grade for this assignment will be based on getting that file to produce your Shiny App. However, you can use this document as a worksheet to help generate the various elements of code for your App. 
 
-## Step 1: Wrangle your data
+**Submission note**: For this assignment you should submit your working Shiny App code via GitHub. You can use this workbook to develop your code.
+
+## Step 1: Wrangle your data (20 pts)
 
 Load `vdemdata`, `dplyr` and `readr` into a separate R script or code chunk in a Quarto document. Select `country_name`, `year`, and three V-Dem democracy indicators: `v2x_polyarchy`, `v2x_libdem`, and `v2x_paritpdem`. Now go to the [V-Dem codebook](https://www.v-dem.net/documents/24/codebook_v13.pdf) and select four additional indicators related to democracy that you would like to explore. Make sure that your chosen indicators cover the same time period as those in the app (1789-2021). Have a `glimpse()` and the data to make sure everythign is there. Then store your data in an object called `vdem_trends` and then save it as a .csv file by the same name. 
 
-## Step 2: Do the setup work
+## Step 2: Do the setup work (20 pts)
 
 Now, in your `app.R` file, load your packages, load the data into an object called `vdem_trends`, and create lists of the variables and countries for the `ui`. 
 
@@ -37,7 +39,7 @@ countries <- vdem_trends |>
   sort()          # no arguments for sort
 ```
 
-## Step 3: Define the UI
+## Step 3: Define the UI (20 pts)
 
 Define the UI using code similar to what we saw for the FRED line chart app in Module 5.2. You will want a quarter of the columns to be occupied by the `wellPanel()` with the "Indicator:" and "Country:" dropdown menus and some help text. The remaining 3/4 of the space is going to be occupied by your plot output. For the slider input, use this code: 
 
@@ -52,7 +54,7 @@ Define the UI using code similar to what we saw for the FRED line chart app in M
            )
 ```
 
-## Step 4: Define the server logic
+## Step 4: Define the server logic (20 pts)
 
 Now the tricky part. This app is going to require two reactive functions. The first is going to be for the country and indicator dropdowns:
 
@@ -77,7 +79,7 @@ Now you need to render the plot. In the `ggplot()` call your data is going to be
 
 For the y-labels, you can use `names(vars[which(vars == input$indicator)]))` to get the name of the selected indicator. 
 
-## Step 5: Run the app and interpret the results
+## Step 5: Run the app and interpret the results (20 pts)
 
 Use the `shinyApp()` funciton to run the app. Does it work? If not, try some of the debugging techniques we talked about in class or reach out on Discord for help. 
 

@@ -339,11 +339,11 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#step-1-gather-your-data" id="toc-step-1-gather-your-data" class="nav-link" data-scroll-target="#step-1-gather-your-data">Step 1: Gather Your Data</a></li>
-  <li><a href="#step-2-make-a-bar-chart" id="toc-step-2-make-a-bar-chart" class="nav-link" data-scroll-target="#step-2-make-a-bar-chart">Step 2: Make a bar chart</a></li>
-  <li><a href="#step-3-make-a-colorblind-friendly-line-chart" id="toc-step-3-make-a-colorblind-friendly-line-chart" class="nav-link" data-scroll-target="#step-3-make-a-colorblind-friendly-line-chart">Step 3: Make a colorblind-friendly line chart</a></li>
-  <li><a href="#step-4-make-a-scatter-plot-with-annotation" id="toc-step-4-make-a-scatter-plot-with-annotation" class="nav-link" data-scroll-target="#step-4-make-a-scatter-plot-with-annotation">Step 4: Make a scatter plot with annotation</a></li>
-  <li><a href="#step-5-make-your-scatter-plot-interactive" id="toc-step-5-make-your-scatter-plot-interactive" class="nav-link" data-scroll-target="#step-5-make-your-scatter-plot-interactive">Step 5: Make your scatter plot interactive</a></li>
+  <li><a href="#step-1-gather-your-data-20-pts" id="toc-step-1-gather-your-data-20-pts" class="nav-link" data-scroll-target="#step-1-gather-your-data-20-pts">Step 1: Gather Your Data (20 pts)</a></li>
+  <li><a href="#step-2-make-a-bar-chart-20-pts" id="toc-step-2-make-a-bar-chart-20-pts" class="nav-link" data-scroll-target="#step-2-make-a-bar-chart-20-pts">Step 2: Make a bar chart (20 pts)</a></li>
+  <li><a href="#step-3-make-a-colorblind-friendly-line-chart-20-pts" id="toc-step-3-make-a-colorblind-friendly-line-chart-20-pts" class="nav-link" data-scroll-target="#step-3-make-a-colorblind-friendly-line-chart-20-pts">Step 3: Make a colorblind-friendly line chart (20 pts)</a></li>
+  <li><a href="#step-4-make-a-scatter-plot-with-annotation-20-pts" id="toc-step-4-make-a-scatter-plot-with-annotation-20-pts" class="nav-link" data-scroll-target="#step-4-make-a-scatter-plot-with-annotation-20-pts">Step 4: Make a scatter plot with annotation (20 pts)</a></li>
+  <li><a href="#step-5-make-your-scatter-plot-interactive-20-pts" id="toc-step-5-make-your-scatter-plot-interactive-20-pts" class="nav-link" data-scroll-target="#step-5-make-your-scatter-plot-interactive-20-pts">Step 5: Make your scatter plot interactive (20 pts)</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/eteitelbaum/dataviz-summer-2023/edit/main/assignments/coding-assignment-2.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/eteitelbaum/dataviz-summer-2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -373,32 +373,33 @@ ul.task-list li input[type="checkbox"] {
 <p>We are going to use data from V-Dem and modern data viz tools to explore Lipset’s hypothesis that economic modernization is highly correlated with democracy. We have already done this to some extent by looking at the relationship between wealth and the polyarchy score. But we are going to broaden things out by looking at other measures of modernization and democracy contained in the V-Dem dataset.</p>
 <p>Before starting on this assignment, you will want to have a look at the V-Dem <a href="https://www.v-dem.net/static/website/img/refs/codebookv111.pdf">codebook</a>. Look through the sections titled “V-Dem Indicators” and “Background Factors (E).” There are five democracy indicators, one of which is the polyarchy index. There are a number of background factors, many of which pertain to economic modernization. We are going to be looking at the relationship between these two sets of variables.</p>
 <p>Now have a look at “Some Social Requisites of Democracy” and in particular pay attention to the indicators in Table II and the discussion surrounding them. Think of each indicator (e.g.&nbsp;urbanization, education, etc.) as a sub-hypothesis of his theory. Which of these sub-hypotheses about modernization do you think is most compelling? Which would you like to test?</p>
+<p><strong>Submission note</strong>: Accept the invitation on Blackboard to submit this assignment via GitHub.</p>
 </section>
-<section id="step-1-gather-your-data" class="level2">
-<h2 class="anchored" data-anchor-id="step-1-gather-your-data">Step 1: Gather Your Data</h2>
+<section id="step-1-gather-your-data-20-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-gather-your-data-20-pts">Step 1: Gather Your Data (20 pts)</h2>
 <p><em>Use the <code>vdemdata</code> package to download data for your analysis. Since we already looked at the polyarchy score and wealth in class, you need to use a different measure of democracy and a different background factor for your analysis. Use a <code>select()</code> verb to include country, year, region (<code>e_regionpol_6C</code>), at least one of the other four measures of democracy, and one background factor that is not per capita GDP. Store your data in an object called <code>dem_data</code>. Pipe in a mutate() verb and use <code>case_match()</code> to label the regions. Review <a href="https://dataviz-gwu.rocks/modules/module-1.2.html">module 1.2</a> if you are confused on how to do this.</em></p>
 </section>
-<section id="step-2-make-a-bar-chart" class="level2">
-<h2 class="anchored" data-anchor-id="step-2-make-a-bar-chart">Step 2: Make a bar chart</h2>
+<section id="step-2-make-a-bar-chart-20-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-make-a-bar-chart-20-pts">Step 2: Make a bar chart (20 pts)</h2>
 <p><em>a) Insert a code chunk below this line and label it. Wrangle your data for the bar chart. Filter by year to include data since 2000, group by region and summarize by mean. Save the new data in an object called <code>bar_chart_data</code>.</em></p>
 <p><em>b) Insert a code chunk below this line and label it. Use <code>ggplot()</code> and <code>geom_col()</code> to create a bar chart showing levels of democracy across the regions with your wrangled data. Make sure to add appropriate axis labels, a title and a caption. Add a theme to spruce it up a bit.</em></p>
 <p><strong>Note: From here on out I will expect you to know to add a code chunk and label it.</strong></p>
 </section>
-<section id="step-3-make-a-colorblind-friendly-line-chart" class="level2">
-<h2 class="anchored" data-anchor-id="step-3-make-a-colorblind-friendly-line-chart">Step 3: Make a colorblind-friendly line chart</h2>
+<section id="step-3-make-a-colorblind-friendly-line-chart-20-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-make-a-colorblind-friendly-line-chart-20-pts">Step 3: Make a colorblind-friendly line chart (20 pts)</h2>
 <p><em>a) Filter your <code>dem_data</code> to include three or four countries of your choosing and create a line chart of your democracy indicator. You can save the data as a new data frame called <code>dem_data_line</code> or you can pipe your filtered data directly into <code>ggplot()</code>.</em></p>
 <p><em>b) Use <code>cvdPlot()</code> to view your chart from the standpoint of someone with red-green color blindness and describe what you see.</em></p>
 <p><em>c) Add a colorblind-friendly color map using <code>viridis</code> or ColorBrewer.</em></p>
 <p><em>d) Run the plot through <code>cvdPlot()</code> and describe what you see. Is your plot colorblind friendly?</em></p>
 </section>
-<section id="step-4-make-a-scatter-plot-with-annotation" class="level2">
-<h2 class="anchored" data-anchor-id="step-4-make-a-scatter-plot-with-annotation">Step 4: Make a scatter plot with annotation</h2>
+<section id="step-4-make-a-scatter-plot-with-annotation-20-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-make-a-scatter-plot-with-annotation-20-pts">Step 4: Make a scatter plot with annotation (20 pts)</h2>
 <p><em>a) Using <code>dem__data</code>, filter out a ten year period. This could be the most recent ten years of data or a distinct ten year period that you want to look at. If you choose a recent period, make sure that you have enough data to take an average of ten years. Some of the background variables in V-Dem are not entirely up to date. You can check the availability of the data by looking at the V-Dem codebook or using <code>glimpse()</code> or <code>View()</code> to look at your data.Group by country and summarize by mean. Save your your data in a new object called <code>dem_data_scatter</code>.</em></p>
 <p><em>b) Now build a scatter plot with <code>ggplot2</code>. Put your modernization-related variable (background variable) on the x-axis and your measure of democracy on the y-axis and color the points by region. Add a trend line with <code>geom_smooth()</code>. This could be a linear model or a loess curve. Add appropriate labels and a <code>viridis</code> or ColorBrewer color map and change the theme to <code>theme_minimal</code>.</em></p>
 <p><em>c) Add an annotation to your scatter plot using <code>annotate()</code> and <code>geom_vline()</code> or <code>geom_hline()</code>. Your annotation could highlight a particular year or level of democracy that is relevant for your analysis. Explain briefly why you included this annotation</em></p>
 </section>
-<section id="step-5-make-your-scatter-plot-interactive" class="level2">
-<h2 class="anchored" data-anchor-id="step-5-make-your-scatter-plot-interactive">Step 5: Make your scatter plot interactive</h2>
+<section id="step-5-make-your-scatter-plot-interactive-20-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-make-your-scatter-plot-interactive-20-pts">Step 5: Make your scatter plot interactive (20 pts)</h2>
 <p><em>a) Make your scatter plot interactive using <code>ggplotly()</code>. Make sure that your tooltip includes the information that you want to display to the user.</em></p>
 <p><em>b) Interpret your results. Does your plot show a relationship between the two variables? Which countries are outliers in your analysis? Why do you think they are outliers and how does your explanation relate to Lipset’s hypothesis?</em></p>
 

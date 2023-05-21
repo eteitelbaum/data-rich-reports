@@ -339,11 +339,11 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#step-1-download-data-from-the-v-dem-dataset" id="toc-step-1-download-data-from-the-v-dem-dataset" class="nav-link" data-scroll-target="#step-1-download-data-from-the-v-dem-dataset">Step 1: Download data from the V-Dem Dataset</a></li>
-  <li><a href="#step-2-download-data-from-the-world-bank" id="toc-step-2-download-data-from-the-world-bank" class="nav-link" data-scroll-target="#step-2-download-data-from-the-world-bank">Step 2: Download data from the World Bank</a></li>
-  <li><a href="#step-3-merge-the-data" id="toc-step-3-merge-the-data" class="nav-link" data-scroll-target="#step-3-merge-the-data">Step 3: Merge the data</a></li>
-  <li><a href="#step-4-summarize-your-combined-data-set" id="toc-step-4-summarize-your-combined-data-set" class="nav-link" data-scroll-target="#step-4-summarize-your-combined-data-set">Step 4: Summarize your combined data set</a></li>
-  <li><a href="#step-5-interpret-your-data" id="toc-step-5-interpret-your-data" class="nav-link" data-scroll-target="#step-5-interpret-your-data">Step 5: Interpret your data</a></li>
+  <li><a href="#step-1-download-data-from-v-dem-20pts" id="toc-step-1-download-data-from-v-dem-20pts" class="nav-link" data-scroll-target="#step-1-download-data-from-v-dem-20pts">Step 1: Download data from V-Dem (20pts)</a></li>
+  <li><a href="#step-2-download-data-from-the-world-bank-20-pts" id="toc-step-2-download-data-from-the-world-bank-20-pts" class="nav-link" data-scroll-target="#step-2-download-data-from-the-world-bank-20-pts">Step 2: Download data from the World Bank (20 pts)</a></li>
+  <li><a href="#step-3-merge-the-data-20-pts" id="toc-step-3-merge-the-data-20-pts" class="nav-link" data-scroll-target="#step-3-merge-the-data-20-pts">Step 3: Merge the data (20 pts)</a></li>
+  <li><a href="#step-4-summarize-your-combined-data-set-20-pts" id="toc-step-4-summarize-your-combined-data-set-20-pts" class="nav-link" data-scroll-target="#step-4-summarize-your-combined-data-set-20-pts">Step 4: Summarize your combined data set (20 pts)</a></li>
+  <li><a href="#step-5-interpret-your-data-20-pts" id="toc-step-5-interpret-your-data-20-pts" class="nav-link" data-scroll-target="#step-5-interpret-your-data-20-pts">Step 5: Interpret your data (20 pts)</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/eteitelbaum/dataviz-summer-2023/edit/main/assignments/coding-assignment-1.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/eteitelbaum/dataviz-summer-2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -370,28 +370,29 @@ ul.task-list li input[type="checkbox"] {
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>For this assignment, you are going to download some variables using the <code>wbstats</code> and <code>vdemdata</code> packages. Then you are going to wrangle these data and merge the two data sets into one and analyze how they relate to women’s representation in national parliaments. Do your work for each step in the code chunks provided. Be sure to label your code chunks.</p>
+<p><strong>Submission note</strong>: Accept the invitation on Blackboard to submit this assignment via GitHub.</p>
 </section>
-<section id="step-1-download-data-from-the-v-dem-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="step-1-download-data-from-the-v-dem-dataset">Step 1: Download data from the V-Dem Dataset</h2>
+<section id="step-1-download-data-from-v-dem-20pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-download-data-from-v-dem-20pts">Step 1: Download data from V-Dem (20pts)</h2>
 <p><em>Look at the V-Dem <a href="https://www.v-dem.net/data/reference-documents/">codebook</a>. Identify two measures of democracy that are not the polyarchy score that we used in Module 1.2.</em></p>
 <p><em>Try to pick variables that will relate to women’s representation and read the description of the variable to make sure that it includes data for a sufficient number of years, e.g.&nbsp;that the data will be somewhat recent. Select the most recent 20 years of data for your analysis.</em></p>
 <p><em>Make sure to load the packages that you need and <code>glimpse()</code> the data or <code>View()</code> it to make sure that it downloaded properly.</em></p>
 </section>
-<section id="step-2-download-data-from-the-world-bank" class="level2">
-<h2 class="anchored" data-anchor-id="step-2-download-data-from-the-world-bank">Step 2: Download data from the World Bank</h2>
+<section id="step-2-download-data-from-the-world-bank-20-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-download-data-from-the-world-bank-20-pts">Step 2: Download data from the World Bank (20 pts)</h2>
 <p><em>Next, download the variable on women’s represenation that we used in Module 1.2 (“SG.GEN.PARL.ZS”) and at least one additional measure related to women’s empowerment. Go to the <a href="https://databank.worldbank.org/source/world-development-indicators">WDI</a> site the wb_search() function to identify relevant variables. Download the most recent 20 years of data for your analysis.</em></p>
 <p><em>Make sure that the indicator has enough data to conduct your analysis, i.e.&nbsp;that it has data for most countries and years.</em></p>
 </section>
-<section id="step-3-merge-the-data" class="level2">
-<h2 class="anchored" data-anchor-id="step-3-merge-the-data">Step 3: Merge the data</h2>
+<section id="step-3-merge-the-data-20-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-merge-the-data-20-pts">Step 3: Merge the data (20 pts)</h2>
 <p><em>Now add country codes using the <code>countrycode</code> package and merge the data using <code>left_join()</code>.</em></p>
 </section>
-<section id="step-4-summarize-your-combined-data-set" class="level2">
-<h2 class="anchored" data-anchor-id="step-4-summarize-your-combined-data-set">Step 4: Summarize your combined data set</h2>
+<section id="step-4-summarize-your-combined-data-set-20-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-summarize-your-combined-data-set-20-pts">Step 4: Summarize your combined data set (20 pts)</h2>
 <p><em>Use <code>group_by()</code>, <code>summarize()</code> and <code>arrange()</code> to glean insights about your data. For example, how do regions compare on mean values of women’s representation and how do these values relate to the values of other variables in your data set? Which countries stand out in terms of women’s representation? Etc.</em></p>
 </section>
-<section id="step-5-interpret-your-data" class="level2">
-<h2 class="anchored" data-anchor-id="step-5-interpret-your-data">Step 5: Interpret your data</h2>
+<section id="step-5-interpret-your-data-20-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-interpret-your-data-20-pts">Step 5: Interpret your data (20 pts)</h2>
 <p><em>Write a paragraph or so relating your insights to the Norris reading about electoral reform and women’s representation. Picking a handful of country cases from your data, how does your analysis relate to her arguments about the relevance of electoral systems, statutory quotas, reserved seats or voluntary quotas?</em></p>
 
 
