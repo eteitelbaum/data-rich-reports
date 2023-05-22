@@ -1,0 +1,30 @@
+---
+title: Week 2
+subtitle: The Grammar of Graphics
+---
+
+## Readings
+
+### Reference
+
+| 📖 r4ds
+- [Chapter 2](https://r4ds.hadley.nz/data-visualize.html) on data visualization
+- [12.2](https://r4ds.hadley.nz/communication.html#labels) on labels
+- [10.1 - 10.4](https://r4ds.hadley.nz/layers.html) on layers, geoms and facets
+- [12.4](https://r4ds.hadley.nz/communication.html#scales) on scales
+- [12.3 & 12.5](https://r4ds.hadley.nz/communication.html#annotations) on themes and annotations
+
+### Social science reading
+
+📖 Lipset, [Some Social Requisites of Democracry](https://www-jstor-org.proxygw.wrlc.org/stable/1951731?seq=8)
+
+## Modules
+
+| [Module 2.1](/modules/module-2.1.html)--Working with Flat Files
+| [Module 2.2](/modules/module-2.2.html)--Working with APIs
+
+## Assignments
+
+| [📘](https://blackboard.gwu.edu/ultra/courses/_387298_1/outline "Quiz 1") Quiz 1
+| [📘](https://blackboard.gwu.edu/ultra/courses/_387298_1/outline "Quiz 2") Quiz 2
+| 🧮 [Coding Assignment 2](/assignments/coding-assignment-2.html)

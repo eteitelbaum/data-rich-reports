@@ -60,8 +60,8 @@ website:
         contents: 
           - href: weeks/week-1.qmd
             text: "Week 1"
-          # - href: weeks/week-2.qmd
-          #   text: "Week 2"
+          - href: weeks/week-2.qmd
+            text: "Week 2"
           # - href: weeks/week-3.qmd
           #   text: "Week 3"
           # - href: weeks/week-4.qmd
