@@ -15,7 +15,7 @@ execute:
 - Install R, R Studio and the Tidyverse collection of packages if you have not done so already (see [getting started](/modules/getting-started.html))
 - Install the `janitor` package (`install.packages("janitor")`)
 - Have a look at the documentation for [readr](https://readr.tidyverse.org/), [dplyr](https://dplyr.tidyverse.org/), [tidyr](https://tidyr.tidyverse.org/) and [janitor](https://sfirke.github.io/janitor/)
-- Familiarize yourself with the [readr](file:///C:/Users/emman/Downloads/data-import.pdf), [dplyr](file:///C:/Users/emman/Downloads/data-transformation-1.pdf) and [tidyr](file:///C:/Users/emman/Downloads/tidyr.pdf) cheatsheets
+- Familiarize yourself with the [readr](https://posit.co/wp-content/uploads/2022/10/data-import.pdf), [dplyr](https://posit.co/wp-content/uploads/2022/10/data-transformation-1.pdf) and [tidyr](https://posit.co/wp-content/uploads/2022/10/tidyr.pdf) cheatsheets
 - Create a new directory/folder in your project folder called "data" where you can store .csv files
 - Start a new quarto project called "modules" and generate a quarto document named "module-1.1.qmd" inside of it so that you can code along with me
 :::
