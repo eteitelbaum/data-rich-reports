@@ -14,6 +14,7 @@ execute:
 
 - Install [states](https://www.andybeger.com/states/index.html),
 [leaflet](http://rstudio.github.io/leaflet/), [sf](https://r-spatial.github.io/sf/) and [html tools](https://rstudio.github.io/htmltools/) and have a look at the documentation for each.
+- Have a look at the [leaflet](https://posit.co/wp-content/uploads/2022/10/leaflet.pdf) and [sf](https://posit.co/wp-content/uploads/2022/10/sf.pdf) cheatsheets. 
 
 `install.packages(c("states", "leaflet", "sf", "htmltools))`
 :::
