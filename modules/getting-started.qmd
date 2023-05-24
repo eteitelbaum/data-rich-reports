@@ -52,7 +52,7 @@ Finally, take some time to get familiar with the [Guide](https://quarto.org/docs
 
 ## GitHub and GitHub Classroom
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title='Getting Started With GitHub' >}}
+{{< video https://youtu.be/ApvMnAfQe8A title='Getting Started With GitHub' >}}
 
 GitHub is a platform for hosting version control repositories. In this course we will learn to use GitHub to store, manage and collaborate on code.
 
