@@ -213,6 +213,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Week 1</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 2</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -427,9 +433,11 @@ Prework
 <div class="callout-body-container callout-body">
 <ul>
 <li>Get a U.S. Census <a href="https://api.census.gov/data/key_signup.html">api key</a></li>
-<li>Install <a href="https://walker-data.com/tidycensus/articles/basic-usage.html">tidycensus</a>, <a href="https://haozhu233.github.io/kableExtra/">kableExtra</a> and <a href="https://gt.rstudio.com/">gt</a></li>
+<li>Install <a href="https://walker-data.com/tidycensus/articles/basic-usage.html">tidycensus</a> to retrieve the data we will use</li>
+<li>Install <a href="https://haozhu233.github.io/kableExtra/">kableExtra</a> and <a href="https://gt.rstudio.com/">gt</a>, out packages for making tables</li>
+<li>install <code>webshot2</code> for exporting <code>gt</code> tables</li>
 </ul>
-<p><code>install.packages(c("tidycensus", "kableExtra", "gt"))</code></p>
+<p><code>install.packages(c("tidycensus", "kableExtra", "gt", "webshot2"))</code></p>
 <ul>
 <li>We will be using the <a href="https://stringr.tidyverse.org/">stringr</a> package, which is part of the Tidyverse, so you probably already have it installed. But spend some time reading about its usage and features.</li>
 <li>Install <code>webshot2</code> for the purposes of saving a .png of your table (<code>install.packages("webshot2")</code>)</li>
@@ -776,49 +784,49 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <td style="text-align: right;">670768</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Maryland</td>
-<td style="text-align: right;">19946</td>
-<td style="text-align: right;">55165</td>
-<td style="text-align: right;">91725</td>
-<td style="text-align: right;">140353</td>
-<td style="text-align: right;">293979</td>
-<td style="text-align: right;">503597</td>
+<td style="text-align: left;">Virginia</td>
+<td style="text-align: right;">17922</td>
+<td style="text-align: right;">48359</td>
+<td style="text-align: right;">81072</td>
+<td style="text-align: right;">127411</td>
+<td style="text-align: right;">280299</td>
+<td style="text-align: right;">486006</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Tennessee</td>
-<td style="text-align: right;">13267</td>
-<td style="text-align: right;">35388</td>
-<td style="text-align: right;">58910</td>
-<td style="text-align: right;">91968</td>
-<td style="text-align: right;">210529</td>
-<td style="text-align: right;">389257</td>
+<td style="text-align: left;">Illinois</td>
+<td style="text-align: right;">15102</td>
+<td style="text-align: right;">42688</td>
+<td style="text-align: right;">72900</td>
+<td style="text-align: right;">114531</td>
+<td style="text-align: right;">258373</td>
+<td style="text-align: right;">466713</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Montana</td>
-<td style="text-align: right;">14811</td>
-<td style="text-align: right;">36927</td>
-<td style="text-align: right;">60644</td>
-<td style="text-align: right;">93340</td>
-<td style="text-align: right;">205462</td>
-<td style="text-align: right;">370234</td>
+<td style="text-align: left;">Kansas</td>
+<td style="text-align: right;">15817</td>
+<td style="text-align: right;">40065</td>
+<td style="text-align: right;">64780</td>
+<td style="text-align: right;">99380</td>
+<td style="text-align: right;">215122</td>
+<td style="text-align: right;">383038</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Kentucky</td>
-<td style="text-align: right;">11846</td>
-<td style="text-align: right;">32616</td>
-<td style="text-align: right;">55838</td>
-<td style="text-align: right;">88089</td>
-<td style="text-align: right;">194168</td>
-<td style="text-align: right;">350411</td>
+<td style="text-align: left;">Wyoming</td>
+<td style="text-align: right;">15959</td>
+<td style="text-align: right;">41640</td>
+<td style="text-align: right;">68539</td>
+<td style="text-align: right;">102543</td>
+<td style="text-align: right;">210249</td>
+<td style="text-align: right;">372110</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Arkansas</td>
-<td style="text-align: right;">12076</td>
-<td style="text-align: right;">31051</td>
-<td style="text-align: right;">52280</td>
-<td style="text-align: right;">82811</td>
-<td style="text-align: right;">188510</td>
-<td style="text-align: right;">344470</td>
+<td style="text-align: left;">Alabama</td>
+<td style="text-align: right;">11602</td>
+<td style="text-align: right;">31928</td>
+<td style="text-align: right;">55270</td>
+<td style="text-align: right;">88640</td>
+<td style="text-align: right;">193311</td>
+<td style="text-align: right;">336788</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Puerto Rico</td>
@@ -872,14 +880,26 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>goodtable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div id="ivkjmhnray" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+<div id="iqyelkeemh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#iqyelkeemh table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-#ivkjmhnray .gt_table {
+#iqyelkeemh thead, #iqyelkeemh tbody, #iqyelkeemh tfoot, #iqyelkeemh tr, #iqyelkeemh td, #iqyelkeemh th {
+  border-style: none;
+}
+
+#iqyelkeemh p {
+  margin: 0;
+  padding: 0;
+}
+
+#iqyelkeemh .gt_table {
   display: table;
   border-collapse: collapse;
+  line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
@@ -902,24 +922,12 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-left-color: #D3D3D3;
 }
 
-#ivkjmhnray .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#ivkjmhnray .gt_caption {
+#iqyelkeemh .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ivkjmhnray .gt_title {
+#iqyelkeemh .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -931,25 +939,37 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-width: 0;
 }
 
-#ivkjmhnray .gt_subtitle {
+#iqyelkeemh .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 6px;
+  padding-top: 3px;
+  padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#ivkjmhnray .gt_bottom_border {
+#iqyelkeemh .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#iqyelkeemh .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ivkjmhnray .gt_col_headings {
+#iqyelkeemh .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -964,7 +984,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-#ivkjmhnray .gt_col_heading {
+#iqyelkeemh .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -984,7 +1004,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   overflow-x: hidden;
 }
 
-#ivkjmhnray .gt_column_spanner_outer {
+#iqyelkeemh .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -996,15 +1016,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 4px;
 }
 
-#ivkjmhnray .gt_column_spanner_outer:first-child {
+#iqyelkeemh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ivkjmhnray .gt_column_spanner_outer:last-child {
+#iqyelkeemh .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ivkjmhnray .gt_column_spanner {
+#iqyelkeemh .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1016,7 +1036,11 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   width: 100%;
 }
 
-#ivkjmhnray .gt_group_heading {
+#iqyelkeemh .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#iqyelkeemh .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1042,7 +1066,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   text-align: left;
 }
 
-#ivkjmhnray .gt_empty_group_heading {
+#iqyelkeemh .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1057,15 +1081,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   vertical-align: middle;
 }
 
-#ivkjmhnray .gt_from_md > :first-child {
+#iqyelkeemh .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ivkjmhnray .gt_from_md > :last-child {
+#iqyelkeemh .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ivkjmhnray .gt_row {
+#iqyelkeemh .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1084,7 +1108,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   overflow-x: hidden;
 }
 
-#ivkjmhnray .gt_stub {
+#iqyelkeemh .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1097,7 +1121,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#ivkjmhnray .gt_stub_row_group {
+#iqyelkeemh .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1111,11 +1135,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   vertical-align: top;
 }
 
-#ivkjmhnray .gt_row_group_first td {
+#iqyelkeemh .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ivkjmhnray .gt_summary_row {
+#iqyelkeemh .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#iqyelkeemh .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1125,16 +1153,16 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#ivkjmhnray .gt_first_summary_row {
+#iqyelkeemh .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ivkjmhnray .gt_first_summary_row.thick {
+#iqyelkeemh .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ivkjmhnray .gt_last_summary_row {
+#iqyelkeemh .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1144,7 +1172,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-color: #D3D3D3;
 }
 
-#ivkjmhnray .gt_grand_summary_row {
+#iqyelkeemh .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1154,7 +1182,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#ivkjmhnray .gt_first_grand_summary_row {
+#iqyelkeemh .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1164,11 +1192,21 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-top-color: #D3D3D3;
 }
 
-#ivkjmhnray .gt_striped {
+#iqyelkeemh .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#iqyelkeemh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ivkjmhnray .gt_table_body {
+#iqyelkeemh .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1177,7 +1215,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-color: #D3D3D3;
 }
 
-#ivkjmhnray .gt_footnotes {
+#iqyelkeemh .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1191,30 +1229,8 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-#ivkjmhnray .gt_footnote {
+#iqyelkeemh .gt_footnote {
   margin: 0px;
-  font-size: 90%;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#ivkjmhnray .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#ivkjmhnray .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1222,127 +1238,164 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#ivkjmhnray .gt_left {
+#iqyelkeemh .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#iqyelkeemh .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#iqyelkeemh .gt_left {
   text-align: left;
 }
 
-#ivkjmhnray .gt_center {
+#iqyelkeemh .gt_center {
   text-align: center;
 }
 
-#ivkjmhnray .gt_right {
+#iqyelkeemh .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ivkjmhnray .gt_font_normal {
+#iqyelkeemh .gt_font_normal {
   font-weight: normal;
 }
 
-#ivkjmhnray .gt_font_bold {
+#iqyelkeemh .gt_font_bold {
   font-weight: bold;
 }
 
-#ivkjmhnray .gt_font_italic {
+#iqyelkeemh .gt_font_italic {
   font-style: italic;
 }
 
-#ivkjmhnray .gt_super {
+#iqyelkeemh .gt_super {
   font-size: 65%;
 }
 
-#ivkjmhnray .gt_footnote_marks {
-  font-style: italic;
-  font-weight: normal;
+#iqyelkeemh .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
+  position: initial;
 }
 
-#ivkjmhnray .gt_asterisk {
+#iqyelkeemh .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ivkjmhnray .gt_indent_1 {
+#iqyelkeemh .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ivkjmhnray .gt_indent_2 {
+#iqyelkeemh .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ivkjmhnray .gt_indent_3 {
+#iqyelkeemh .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ivkjmhnray .gt_indent_4 {
+#iqyelkeemh .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ivkjmhnray .gt_indent_5 {
+#iqyelkeemh .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
-
-Mean Household Income of Quintiles, 2021
-Seven Representative U.S. States
-lowest
-second
-third
-fourth
-fifth
-top 5%
-District of Columbia
-$12,971
-$51,060
-$94,478
-$157,803
-$375,792
-$670,768
-Maryland
-$19,946
-$55,165
-$91,725
-$140,353
-$293,979
-$503,597
-Tennessee
-$13,267
-$35,388
-$58,910
-$91,968
-$210,529
-$389,257
-Montana
-$14,811
-$36,927
-$60,644
-$93,340
-$205,462
-$370,234
-Kentucky
-$11,846
-$32,616
-$55,838
-$88,089
-$194,168
-$350,411
-Arkansas
-$12,076
-$31,051
-$52,280
-$82,811
-$188,510
-$344,470
-Puerto Rico
-$2,906
-$12,144
-$22,163
-$38,397
-$99,043
-$187,234
-<strong>Source</strong>: US Census Bureau, American Community Survey
-
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="7" class="gt_heading gt_title gt_font_normal" style="">Mean Household Income of Quintiles, 2021</td>
+    </tr>
+    <tr class="gt_heading">
+      <td colspan="7" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">Seven Representative U.S. States</td>
+    </tr>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=""></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="lowest">lowest</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="second">second</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="third">third</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="fourth">fourth</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="fifth">fifth</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="top 5%">top 5%</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="name" class="gt_row gt_left">District of Columbia</td>
+<td headers="q1" class="gt_row gt_right">$12,971</td>
+<td headers="q2" class="gt_row gt_right">$51,060</td>
+<td headers="q3" class="gt_row gt_right">$94,478</td>
+<td headers="q4" class="gt_row gt_right">$157,803</td>
+<td headers="q5" class="gt_row gt_right">$375,792</td>
+<td headers="top5" class="gt_row gt_right">$670,768</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Virginia</td>
+<td headers="q1" class="gt_row gt_right">$17,922</td>
+<td headers="q2" class="gt_row gt_right">$48,359</td>
+<td headers="q3" class="gt_row gt_right">$81,072</td>
+<td headers="q4" class="gt_row gt_right">$127,411</td>
+<td headers="q5" class="gt_row gt_right">$280,299</td>
+<td headers="top5" class="gt_row gt_right">$486,006</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Illinois</td>
+<td headers="q1" class="gt_row gt_right">$15,102</td>
+<td headers="q2" class="gt_row gt_right">$42,688</td>
+<td headers="q3" class="gt_row gt_right">$72,900</td>
+<td headers="q4" class="gt_row gt_right">$114,531</td>
+<td headers="q5" class="gt_row gt_right">$258,373</td>
+<td headers="top5" class="gt_row gt_right">$466,713</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Kansas</td>
+<td headers="q1" class="gt_row gt_right">$15,817</td>
+<td headers="q2" class="gt_row gt_right">$40,065</td>
+<td headers="q3" class="gt_row gt_right">$64,780</td>
+<td headers="q4" class="gt_row gt_right">$99,380</td>
+<td headers="q5" class="gt_row gt_right">$215,122</td>
+<td headers="top5" class="gt_row gt_right">$383,038</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Wyoming</td>
+<td headers="q1" class="gt_row gt_right">$15,959</td>
+<td headers="q2" class="gt_row gt_right">$41,640</td>
+<td headers="q3" class="gt_row gt_right">$68,539</td>
+<td headers="q4" class="gt_row gt_right">$102,543</td>
+<td headers="q5" class="gt_row gt_right">$210,249</td>
+<td headers="top5" class="gt_row gt_right">$372,110</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Alabama</td>
+<td headers="q1" class="gt_row gt_right">$11,602</td>
+<td headers="q2" class="gt_row gt_right">$31,928</td>
+<td headers="q3" class="gt_row gt_right">$55,270</td>
+<td headers="q4" class="gt_row gt_right">$88,640</td>
+<td headers="q5" class="gt_row gt_right">$193,311</td>
+<td headers="top5" class="gt_row gt_right">$336,788</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Puerto Rico</td>
+<td headers="q1" class="gt_row gt_right">$2,906</td>
+<td headers="q2" class="gt_row gt_right">$12,144</td>
+<td headers="q3" class="gt_row gt_right">$22,163</td>
+<td headers="q4" class="gt_row gt_right">$38,397</td>
+<td headers="q5" class="gt_row gt_right">$99,043</td>
+<td headers="top5" class="gt_row gt_right">$187,234</td></tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="7"><strong>Source</strong>: US Census Bureau, American Community Survey</td>
+    </tr>
+  </tfoot>
+  
+</table>
 </div>
 </div>
 </div>
@@ -1357,14 +1410,26 @@ $187,234
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>vgoodtable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div id="mwfkotigcx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+<div id="milkvsuhap" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#milkvsuhap table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-#mwfkotigcx .gt_table {
+#milkvsuhap thead, #milkvsuhap tbody, #milkvsuhap tfoot, #milkvsuhap tr, #milkvsuhap td, #milkvsuhap th {
+  border-style: none;
+}
+
+#milkvsuhap p {
+  margin: 0;
+  padding: 0;
+}
+
+#milkvsuhap .gt_table {
   display: table;
   border-collapse: collapse;
+  line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
@@ -1387,24 +1452,12 @@ $187,234
   border-left-color: #D3D3D3;
 }
 
-#mwfkotigcx .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#mwfkotigcx .gt_caption {
+#milkvsuhap .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mwfkotigcx .gt_title {
+#milkvsuhap .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1416,25 +1469,37 @@ $187,234
   border-bottom-width: 0;
 }
 
-#mwfkotigcx .gt_subtitle {
+#milkvsuhap .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 6px;
+  padding-top: 3px;
+  padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#mwfkotigcx .gt_bottom_border {
+#milkvsuhap .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#milkvsuhap .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mwfkotigcx .gt_col_headings {
+#milkvsuhap .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1449,7 +1514,7 @@ $187,234
   border-right-color: #D3D3D3;
 }
 
-#mwfkotigcx .gt_col_heading {
+#milkvsuhap .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1469,7 +1534,7 @@ $187,234
   overflow-x: hidden;
 }
 
-#mwfkotigcx .gt_column_spanner_outer {
+#milkvsuhap .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1481,15 +1546,15 @@ $187,234
   padding-right: 4px;
 }
 
-#mwfkotigcx .gt_column_spanner_outer:first-child {
+#milkvsuhap .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mwfkotigcx .gt_column_spanner_outer:last-child {
+#milkvsuhap .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mwfkotigcx .gt_column_spanner {
+#milkvsuhap .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1501,7 +1566,11 @@ $187,234
   width: 100%;
 }
 
-#mwfkotigcx .gt_group_heading {
+#milkvsuhap .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#milkvsuhap .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1527,7 +1596,7 @@ $187,234
   text-align: left;
 }
 
-#mwfkotigcx .gt_empty_group_heading {
+#milkvsuhap .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1542,15 +1611,15 @@ $187,234
   vertical-align: middle;
 }
 
-#mwfkotigcx .gt_from_md > :first-child {
+#milkvsuhap .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mwfkotigcx .gt_from_md > :last-child {
+#milkvsuhap .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mwfkotigcx .gt_row {
+#milkvsuhap .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1569,7 +1638,7 @@ $187,234
   overflow-x: hidden;
 }
 
-#mwfkotigcx .gt_stub {
+#milkvsuhap .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1582,7 +1651,7 @@ $187,234
   padding-right: 5px;
 }
 
-#mwfkotigcx .gt_stub_row_group {
+#milkvsuhap .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1596,11 +1665,15 @@ $187,234
   vertical-align: top;
 }
 
-#mwfkotigcx .gt_row_group_first td {
+#milkvsuhap .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mwfkotigcx .gt_summary_row {
+#milkvsuhap .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#milkvsuhap .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1610,16 +1683,16 @@ $187,234
   padding-right: 5px;
 }
 
-#mwfkotigcx .gt_first_summary_row {
+#milkvsuhap .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mwfkotigcx .gt_first_summary_row.thick {
+#milkvsuhap .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mwfkotigcx .gt_last_summary_row {
+#milkvsuhap .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1629,7 +1702,7 @@ $187,234
   border-bottom-color: #D3D3D3;
 }
 
-#mwfkotigcx .gt_grand_summary_row {
+#milkvsuhap .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1639,7 +1712,7 @@ $187,234
   padding-right: 5px;
 }
 
-#mwfkotigcx .gt_first_grand_summary_row {
+#milkvsuhap .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1649,11 +1722,21 @@ $187,234
   border-top-color: #D3D3D3;
 }
 
-#mwfkotigcx .gt_striped {
+#milkvsuhap .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#milkvsuhap .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mwfkotigcx .gt_table_body {
+#milkvsuhap .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1662,7 +1745,7 @@ $187,234
   border-bottom-color: #D3D3D3;
 }
 
-#mwfkotigcx .gt_footnotes {
+#milkvsuhap .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1676,30 +1759,8 @@ $187,234
   border-right-color: #D3D3D3;
 }
 
-#mwfkotigcx .gt_footnote {
+#milkvsuhap .gt_footnote {
   margin: 0px;
-  font-size: 90%;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#mwfkotigcx .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#mwfkotigcx .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1707,127 +1768,173 @@ $187,234
   padding-right: 5px;
 }
 
-#mwfkotigcx .gt_left {
+#milkvsuhap .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#milkvsuhap .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#milkvsuhap .gt_left {
   text-align: left;
 }
 
-#mwfkotigcx .gt_center {
+#milkvsuhap .gt_center {
   text-align: center;
 }
 
-#mwfkotigcx .gt_right {
+#milkvsuhap .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mwfkotigcx .gt_font_normal {
+#milkvsuhap .gt_font_normal {
   font-weight: normal;
 }
 
-#mwfkotigcx .gt_font_bold {
+#milkvsuhap .gt_font_bold {
   font-weight: bold;
 }
 
-#mwfkotigcx .gt_font_italic {
+#milkvsuhap .gt_font_italic {
   font-style: italic;
 }
 
-#mwfkotigcx .gt_super {
+#milkvsuhap .gt_super {
   font-size: 65%;
 }
 
-#mwfkotigcx .gt_footnote_marks {
-  font-style: italic;
-  font-weight: normal;
+#milkvsuhap .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
+  position: initial;
 }
 
-#mwfkotigcx .gt_asterisk {
+#milkvsuhap .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mwfkotigcx .gt_indent_1 {
+#milkvsuhap .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mwfkotigcx .gt_indent_2 {
+#milkvsuhap .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mwfkotigcx .gt_indent_3 {
+#milkvsuhap .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mwfkotigcx .gt_indent_4 {
+#milkvsuhap .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mwfkotigcx .gt_indent_5 {
+#milkvsuhap .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
-
-Mean Household Income of Quintiles, 2021
-Seven Representative U.S. States
-lowest
-second
-third
-fourth
-fifth
-top 5%
-District of Columbia
-$12,971
-$51,060
-$94,478
-$157,803
-$375,792
-$670,768
-Maryland
-$19,946
-$55,165
-$91,725
-$140,353
-$293,979
-$503,597
-Tennessee
-$13,267
-$35,388
-$58,910
-$91,968
-$210,529
-$389,257
-Montana
-$14,811
-$36,927
-$60,644
-$93,340
-$205,462
-$370,234
-Kentucky
-$11,846
-$32,616
-$55,838
-$88,089
-$194,168
-$350,411
-Arkansas
-$12,076
-$31,051
-$52,280
-$82,811
-$188,510
-$344,470
-Puerto Rico
-$2,906
-$12,144
-$22,163
-$38,397
-$99,043
-$187,234
-<strong>Source</strong>: US Census Bureau, American Community Survey
-
+<table class="gt_table" style="table-layout: fixed;" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <colgroup>
+    <col>
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+  </colgroup>
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="7" class="gt_heading gt_title gt_font_normal" style="">Mean Household Income of Quintiles, 2021</td>
+    </tr>
+    <tr class="gt_heading">
+      <td colspan="7" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">Seven Representative U.S. States</td>
+    </tr>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=""></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="lowest">lowest</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="second">second</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="third">third</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="fourth">fourth</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="fifth">fifth</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="top 5%">top 5%</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="name" class="gt_row gt_left">District of Columbia</td>
+<td headers="q1" class="gt_row gt_right">$12,971</td>
+<td headers="q2" class="gt_row gt_right">$51,060</td>
+<td headers="q3" class="gt_row gt_right">$94,478</td>
+<td headers="q4" class="gt_row gt_right">$157,803</td>
+<td headers="q5" class="gt_row gt_right">$375,792</td>
+<td headers="top5" class="gt_row gt_right">$670,768</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Virginia</td>
+<td headers="q1" class="gt_row gt_right">$17,922</td>
+<td headers="q2" class="gt_row gt_right">$48,359</td>
+<td headers="q3" class="gt_row gt_right">$81,072</td>
+<td headers="q4" class="gt_row gt_right">$127,411</td>
+<td headers="q5" class="gt_row gt_right">$280,299</td>
+<td headers="top5" class="gt_row gt_right">$486,006</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Illinois</td>
+<td headers="q1" class="gt_row gt_right">$15,102</td>
+<td headers="q2" class="gt_row gt_right">$42,688</td>
+<td headers="q3" class="gt_row gt_right">$72,900</td>
+<td headers="q4" class="gt_row gt_right">$114,531</td>
+<td headers="q5" class="gt_row gt_right">$258,373</td>
+<td headers="top5" class="gt_row gt_right">$466,713</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Kansas</td>
+<td headers="q1" class="gt_row gt_right">$15,817</td>
+<td headers="q2" class="gt_row gt_right">$40,065</td>
+<td headers="q3" class="gt_row gt_right">$64,780</td>
+<td headers="q4" class="gt_row gt_right">$99,380</td>
+<td headers="q5" class="gt_row gt_right">$215,122</td>
+<td headers="top5" class="gt_row gt_right">$383,038</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Wyoming</td>
+<td headers="q1" class="gt_row gt_right">$15,959</td>
+<td headers="q2" class="gt_row gt_right">$41,640</td>
+<td headers="q3" class="gt_row gt_right">$68,539</td>
+<td headers="q4" class="gt_row gt_right">$102,543</td>
+<td headers="q5" class="gt_row gt_right">$210,249</td>
+<td headers="top5" class="gt_row gt_right">$372,110</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Alabama</td>
+<td headers="q1" class="gt_row gt_right">$11,602</td>
+<td headers="q2" class="gt_row gt_right">$31,928</td>
+<td headers="q3" class="gt_row gt_right">$55,270</td>
+<td headers="q4" class="gt_row gt_right">$88,640</td>
+<td headers="q5" class="gt_row gt_right">$193,311</td>
+<td headers="top5" class="gt_row gt_right">$336,788</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Puerto Rico</td>
+<td headers="q1" class="gt_row gt_right">$2,906</td>
+<td headers="q2" class="gt_row gt_right">$12,144</td>
+<td headers="q3" class="gt_row gt_right">$22,163</td>
+<td headers="q4" class="gt_row gt_right">$38,397</td>
+<td headers="q5" class="gt_row gt_right">$99,043</td>
+<td headers="top5" class="gt_row gt_right">$187,234</td></tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="7"><strong>Source</strong>: US Census Bureau, American Community Survey</td>
+    </tr>
+  </tfoot>
+  
+</table>
 </div>
 </div>
 </div>
@@ -1842,14 +1949,26 @@ $187,234
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>greattable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div id="vndgxzdbvl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>html {
-  font-family: verdana, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+<div id="ypsnkanall" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ypsnkanall table {
+  font-family: verdana, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-#vndgxzdbvl .gt_table {
+#ypsnkanall thead, #ypsnkanall tbody, #ypsnkanall tfoot, #ypsnkanall tr, #ypsnkanall td, #ypsnkanall th {
+  border-style: none;
+}
+
+#ypsnkanall p {
+  margin: 0;
+  padding: 0;
+}
+
+#ypsnkanall .gt_table {
   display: table;
   border-collapse: collapse;
+  line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
@@ -1872,24 +1991,12 @@ $187,234
   border-left-color: #D3D3D3;
 }
 
-#vndgxzdbvl .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#vndgxzdbvl .gt_caption {
+#ypsnkanall .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vndgxzdbvl .gt_title {
+#ypsnkanall .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1901,25 +2008,37 @@ $187,234
   border-bottom-width: 0;
 }
 
-#vndgxzdbvl .gt_subtitle {
+#ypsnkanall .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 6px;
+  padding-top: 3px;
+  padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#vndgxzdbvl .gt_bottom_border {
+#ypsnkanall .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ypsnkanall .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vndgxzdbvl .gt_col_headings {
+#ypsnkanall .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1934,7 +2053,7 @@ $187,234
   border-right-color: #D3D3D3;
 }
 
-#vndgxzdbvl .gt_col_heading {
+#ypsnkanall .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1954,7 +2073,7 @@ $187,234
   overflow-x: hidden;
 }
 
-#vndgxzdbvl .gt_column_spanner_outer {
+#ypsnkanall .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1966,15 +2085,15 @@ $187,234
   padding-right: 4px;
 }
 
-#vndgxzdbvl .gt_column_spanner_outer:first-child {
+#ypsnkanall .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vndgxzdbvl .gt_column_spanner_outer:last-child {
+#ypsnkanall .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vndgxzdbvl .gt_column_spanner {
+#ypsnkanall .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1986,7 +2105,11 @@ $187,234
   width: 100%;
 }
 
-#vndgxzdbvl .gt_group_heading {
+#ypsnkanall .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ypsnkanall .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2012,7 +2135,7 @@ $187,234
   text-align: left;
 }
 
-#vndgxzdbvl .gt_empty_group_heading {
+#ypsnkanall .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2027,15 +2150,15 @@ $187,234
   vertical-align: middle;
 }
 
-#vndgxzdbvl .gt_from_md > :first-child {
+#ypsnkanall .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vndgxzdbvl .gt_from_md > :last-child {
+#ypsnkanall .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vndgxzdbvl .gt_row {
+#ypsnkanall .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2054,7 +2177,7 @@ $187,234
   overflow-x: hidden;
 }
 
-#vndgxzdbvl .gt_stub {
+#ypsnkanall .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2067,7 +2190,7 @@ $187,234
   padding-right: 5px;
 }
 
-#vndgxzdbvl .gt_stub_row_group {
+#ypsnkanall .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2081,11 +2204,15 @@ $187,234
   vertical-align: top;
 }
 
-#vndgxzdbvl .gt_row_group_first td {
+#ypsnkanall .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vndgxzdbvl .gt_summary_row {
+#ypsnkanall .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ypsnkanall .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2095,16 +2222,16 @@ $187,234
   padding-right: 5px;
 }
 
-#vndgxzdbvl .gt_first_summary_row {
+#ypsnkanall .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vndgxzdbvl .gt_first_summary_row.thick {
+#ypsnkanall .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vndgxzdbvl .gt_last_summary_row {
+#ypsnkanall .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2114,7 +2241,7 @@ $187,234
   border-bottom-color: #D3D3D3;
 }
 
-#vndgxzdbvl .gt_grand_summary_row {
+#ypsnkanall .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2124,7 +2251,7 @@ $187,234
   padding-right: 5px;
 }
 
-#vndgxzdbvl .gt_first_grand_summary_row {
+#ypsnkanall .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2134,11 +2261,21 @@ $187,234
   border-top-color: #D3D3D3;
 }
 
-#vndgxzdbvl .gt_striped {
+#ypsnkanall .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ypsnkanall .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vndgxzdbvl .gt_table_body {
+#ypsnkanall .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2147,7 +2284,7 @@ $187,234
   border-bottom-color: #D3D3D3;
 }
 
-#vndgxzdbvl .gt_footnotes {
+#ypsnkanall .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2161,30 +2298,8 @@ $187,234
   border-right-color: #D3D3D3;
 }
 
-#vndgxzdbvl .gt_footnote {
+#ypsnkanall .gt_footnote {
   margin: 0px;
-  font-size: 90%;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#vndgxzdbvl .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#vndgxzdbvl .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2192,127 +2307,173 @@ $187,234
   padding-right: 5px;
 }
 
-#vndgxzdbvl .gt_left {
+#ypsnkanall .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ypsnkanall .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ypsnkanall .gt_left {
   text-align: left;
 }
 
-#vndgxzdbvl .gt_center {
+#ypsnkanall .gt_center {
   text-align: center;
 }
 
-#vndgxzdbvl .gt_right {
+#ypsnkanall .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vndgxzdbvl .gt_font_normal {
+#ypsnkanall .gt_font_normal {
   font-weight: normal;
 }
 
-#vndgxzdbvl .gt_font_bold {
+#ypsnkanall .gt_font_bold {
   font-weight: bold;
 }
 
-#vndgxzdbvl .gt_font_italic {
+#ypsnkanall .gt_font_italic {
   font-style: italic;
 }
 
-#vndgxzdbvl .gt_super {
+#ypsnkanall .gt_super {
   font-size: 65%;
 }
 
-#vndgxzdbvl .gt_footnote_marks {
-  font-style: italic;
-  font-weight: normal;
+#ypsnkanall .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
+  position: initial;
 }
 
-#vndgxzdbvl .gt_asterisk {
+#ypsnkanall .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vndgxzdbvl .gt_indent_1 {
+#ypsnkanall .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vndgxzdbvl .gt_indent_2 {
+#ypsnkanall .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vndgxzdbvl .gt_indent_3 {
+#ypsnkanall .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vndgxzdbvl .gt_indent_4 {
+#ypsnkanall .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vndgxzdbvl .gt_indent_5 {
+#ypsnkanall .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
-
-Mean Household Income of Quintiles, 2021
-Seven Representative U.S. States
-lowest
-second
-third
-fourth
-fifth
-top 5%
-District of Columbia
-$12,971
-$51,060
-$94,478
-$157,803
-$375,792
-$670,768
-Maryland
-$19,946
-$55,165
-$91,725
-$140,353
-$293,979
-$503,597
-Tennessee
-$13,267
-$35,388
-$58,910
-$91,968
-$210,529
-$389,257
-Montana
-$14,811
-$36,927
-$60,644
-$93,340
-$205,462
-$370,234
-Kentucky
-$11,846
-$32,616
-$55,838
-$88,089
-$194,168
-$350,411
-Arkansas
-$12,076
-$31,051
-$52,280
-$82,811
-$188,510
-$344,470
-Puerto Rico
-$2,906
-$12,144
-$22,163
-$38,397
-$99,043
-$187,234
-<strong>Source</strong>: US Census Bureau, American Community Survey
-
+<table class="gt_table" style="table-layout: fixed;" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <colgroup>
+    <col>
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+  </colgroup>
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="7" class="gt_heading gt_title gt_font_normal" style="">Mean Household Income of Quintiles, 2021</td>
+    </tr>
+    <tr class="gt_heading">
+      <td colspan="7" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">Seven Representative U.S. States</td>
+    </tr>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=""></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="lowest">lowest</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="second">second</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="third">third</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="fourth">fourth</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="fifth">fifth</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="top 5%">top 5%</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="name" class="gt_row gt_left">District of Columbia</td>
+<td headers="q1" class="gt_row gt_right">$12,971</td>
+<td headers="q2" class="gt_row gt_right">$51,060</td>
+<td headers="q3" class="gt_row gt_right">$94,478</td>
+<td headers="q4" class="gt_row gt_right">$157,803</td>
+<td headers="q5" class="gt_row gt_right">$375,792</td>
+<td headers="top5" class="gt_row gt_right">$670,768</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Virginia</td>
+<td headers="q1" class="gt_row gt_right">$17,922</td>
+<td headers="q2" class="gt_row gt_right">$48,359</td>
+<td headers="q3" class="gt_row gt_right">$81,072</td>
+<td headers="q4" class="gt_row gt_right">$127,411</td>
+<td headers="q5" class="gt_row gt_right">$280,299</td>
+<td headers="top5" class="gt_row gt_right">$486,006</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Illinois</td>
+<td headers="q1" class="gt_row gt_right">$15,102</td>
+<td headers="q2" class="gt_row gt_right">$42,688</td>
+<td headers="q3" class="gt_row gt_right">$72,900</td>
+<td headers="q4" class="gt_row gt_right">$114,531</td>
+<td headers="q5" class="gt_row gt_right">$258,373</td>
+<td headers="top5" class="gt_row gt_right">$466,713</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Kansas</td>
+<td headers="q1" class="gt_row gt_right">$15,817</td>
+<td headers="q2" class="gt_row gt_right">$40,065</td>
+<td headers="q3" class="gt_row gt_right">$64,780</td>
+<td headers="q4" class="gt_row gt_right">$99,380</td>
+<td headers="q5" class="gt_row gt_right">$215,122</td>
+<td headers="top5" class="gt_row gt_right">$383,038</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Wyoming</td>
+<td headers="q1" class="gt_row gt_right">$15,959</td>
+<td headers="q2" class="gt_row gt_right">$41,640</td>
+<td headers="q3" class="gt_row gt_right">$68,539</td>
+<td headers="q4" class="gt_row gt_right">$102,543</td>
+<td headers="q5" class="gt_row gt_right">$210,249</td>
+<td headers="top5" class="gt_row gt_right">$372,110</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Alabama</td>
+<td headers="q1" class="gt_row gt_right">$11,602</td>
+<td headers="q2" class="gt_row gt_right">$31,928</td>
+<td headers="q3" class="gt_row gt_right">$55,270</td>
+<td headers="q4" class="gt_row gt_right">$88,640</td>
+<td headers="q5" class="gt_row gt_right">$193,311</td>
+<td headers="top5" class="gt_row gt_right">$336,788</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Puerto Rico</td>
+<td headers="q1" class="gt_row gt_right">$2,906</td>
+<td headers="q2" class="gt_row gt_right">$12,144</td>
+<td headers="q3" class="gt_row gt_right">$22,163</td>
+<td headers="q4" class="gt_row gt_right">$38,397</td>
+<td headers="q5" class="gt_row gt_right">$99,043</td>
+<td headers="top5" class="gt_row gt_right">$187,234</td></tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="7"><strong>Source</strong>: US Census Bureau, American Community Survey</td>
+    </tr>
+  </tfoot>
+  
+</table>
 </div>
 </div>
 </div>
@@ -2330,14 +2491,26 @@ $187,234
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>vgreattable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div id="kbqcngcone" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>html {
-  font-family: verdana, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+<div id="fxilkqxdtf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fxilkqxdtf table {
+  font-family: verdana, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-#kbqcngcone .gt_table {
+#fxilkqxdtf thead, #fxilkqxdtf tbody, #fxilkqxdtf tfoot, #fxilkqxdtf tr, #fxilkqxdtf td, #fxilkqxdtf th {
+  border-style: none;
+}
+
+#fxilkqxdtf p {
+  margin: 0;
+  padding: 0;
+}
+
+#fxilkqxdtf .gt_table {
   display: table;
   border-collapse: collapse;
+  line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
@@ -2360,24 +2533,12 @@ $187,234
   border-left-color: #D3D3D3;
 }
 
-#kbqcngcone .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#kbqcngcone .gt_caption {
+#fxilkqxdtf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#kbqcngcone .gt_title {
+#fxilkqxdtf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2389,25 +2550,37 @@ $187,234
   border-bottom-width: 0;
 }
 
-#kbqcngcone .gt_subtitle {
+#fxilkqxdtf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 6px;
+  padding-top: 3px;
+  padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#kbqcngcone .gt_bottom_border {
+#fxilkqxdtf .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fxilkqxdtf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#kbqcngcone .gt_col_headings {
+#fxilkqxdtf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2422,7 +2595,7 @@ $187,234
   border-right-color: #D3D3D3;
 }
 
-#kbqcngcone .gt_col_heading {
+#fxilkqxdtf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2442,7 +2615,7 @@ $187,234
   overflow-x: hidden;
 }
 
-#kbqcngcone .gt_column_spanner_outer {
+#fxilkqxdtf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2454,15 +2627,15 @@ $187,234
   padding-right: 4px;
 }
 
-#kbqcngcone .gt_column_spanner_outer:first-child {
+#fxilkqxdtf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#kbqcngcone .gt_column_spanner_outer:last-child {
+#fxilkqxdtf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#kbqcngcone .gt_column_spanner {
+#fxilkqxdtf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2474,7 +2647,11 @@ $187,234
   width: 100%;
 }
 
-#kbqcngcone .gt_group_heading {
+#fxilkqxdtf .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#fxilkqxdtf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2500,7 +2677,7 @@ $187,234
   text-align: left;
 }
 
-#kbqcngcone .gt_empty_group_heading {
+#fxilkqxdtf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2515,15 +2692,15 @@ $187,234
   vertical-align: middle;
 }
 
-#kbqcngcone .gt_from_md > :first-child {
+#fxilkqxdtf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#kbqcngcone .gt_from_md > :last-child {
+#fxilkqxdtf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#kbqcngcone .gt_row {
+#fxilkqxdtf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2542,7 +2719,7 @@ $187,234
   overflow-x: hidden;
 }
 
-#kbqcngcone .gt_stub {
+#fxilkqxdtf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2555,7 +2732,7 @@ $187,234
   padding-right: 5px;
 }
 
-#kbqcngcone .gt_stub_row_group {
+#fxilkqxdtf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2569,11 +2746,15 @@ $187,234
   vertical-align: top;
 }
 
-#kbqcngcone .gt_row_group_first td {
+#fxilkqxdtf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#kbqcngcone .gt_summary_row {
+#fxilkqxdtf .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#fxilkqxdtf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2583,16 +2764,16 @@ $187,234
   padding-right: 5px;
 }
 
-#kbqcngcone .gt_first_summary_row {
+#fxilkqxdtf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#kbqcngcone .gt_first_summary_row.thick {
+#fxilkqxdtf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#kbqcngcone .gt_last_summary_row {
+#fxilkqxdtf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2602,7 +2783,7 @@ $187,234
   border-bottom-color: #D3D3D3;
 }
 
-#kbqcngcone .gt_grand_summary_row {
+#fxilkqxdtf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2612,7 +2793,7 @@ $187,234
   padding-right: 5px;
 }
 
-#kbqcngcone .gt_first_grand_summary_row {
+#fxilkqxdtf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2622,11 +2803,21 @@ $187,234
   border-top-color: #D3D3D3;
 }
 
-#kbqcngcone .gt_striped {
+#fxilkqxdtf .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fxilkqxdtf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#kbqcngcone .gt_table_body {
+#fxilkqxdtf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2635,7 +2826,7 @@ $187,234
   border-bottom-color: #D3D3D3;
 }
 
-#kbqcngcone .gt_footnotes {
+#fxilkqxdtf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2649,30 +2840,8 @@ $187,234
   border-right-color: #D3D3D3;
 }
 
-#kbqcngcone .gt_footnote {
+#fxilkqxdtf .gt_footnote {
   margin: 0px;
-  font-size: 90%;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#kbqcngcone .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#kbqcngcone .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2680,127 +2849,173 @@ $187,234
   padding-right: 5px;
 }
 
-#kbqcngcone .gt_left {
+#fxilkqxdtf .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fxilkqxdtf .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fxilkqxdtf .gt_left {
   text-align: left;
 }
 
-#kbqcngcone .gt_center {
+#fxilkqxdtf .gt_center {
   text-align: center;
 }
 
-#kbqcngcone .gt_right {
+#fxilkqxdtf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#kbqcngcone .gt_font_normal {
+#fxilkqxdtf .gt_font_normal {
   font-weight: normal;
 }
 
-#kbqcngcone .gt_font_bold {
+#fxilkqxdtf .gt_font_bold {
   font-weight: bold;
 }
 
-#kbqcngcone .gt_font_italic {
+#fxilkqxdtf .gt_font_italic {
   font-style: italic;
 }
 
-#kbqcngcone .gt_super {
+#fxilkqxdtf .gt_super {
   font-size: 65%;
 }
 
-#kbqcngcone .gt_footnote_marks {
-  font-style: italic;
-  font-weight: normal;
+#fxilkqxdtf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
+  position: initial;
 }
 
-#kbqcngcone .gt_asterisk {
+#fxilkqxdtf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#kbqcngcone .gt_indent_1 {
+#fxilkqxdtf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#kbqcngcone .gt_indent_2 {
+#fxilkqxdtf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#kbqcngcone .gt_indent_3 {
+#fxilkqxdtf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#kbqcngcone .gt_indent_4 {
+#fxilkqxdtf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#kbqcngcone .gt_indent_5 {
+#fxilkqxdtf .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
-
-Mean Household Income of Quintiles, 2021
-Seven Representative U.S. States
-lowest
-second
-third
-fourth
-fifth
-top 5%
-District of Columbia
-$12,971
-$51,060
-$94,478
-$157,803
-$375,792
-$670,768
-Maryland
-$19,946
-$55,165
-$91,725
-$140,353
-$293,979
-$503,597
-Tennessee
-$13,267
-$35,388
-$58,910
-$91,968
-$210,529
-$389,257
-Montana
-$14,811
-$36,927
-$60,644
-$93,340
-$205,462
-$370,234
-Kentucky
-$11,846
-$32,616
-$55,838
-$88,089
-$194,168
-$350,411
-Arkansas
-$12,076
-$31,051
-$52,280
-$82,811
-$188,510
-$344,470
-Puerto Rico
-$2,906
-$12,144
-$22,163
-$38,397
-$99,043
-$187,234
-<strong>Source</strong>: US Census Bureau, American Community Survey
-
+<table class="gt_table" style="table-layout: fixed;" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <colgroup>
+    <col>
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+  </colgroup>
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="7" class="gt_heading gt_title gt_font_normal" style="">Mean Household Income of Quintiles, 2021</td>
+    </tr>
+    <tr class="gt_heading">
+      <td colspan="7" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">Seven Representative U.S. States</td>
+    </tr>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=""></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="lowest">lowest</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="second">second</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="third">third</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="fourth">fourth</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="fifth">fifth</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="top 5%">top 5%</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="name" class="gt_row gt_left">District of Columbia</td>
+<td headers="q1" class="gt_row gt_center">$12,971</td>
+<td headers="q2" class="gt_row gt_center">$51,060</td>
+<td headers="q3" class="gt_row gt_center">$94,478</td>
+<td headers="q4" class="gt_row gt_center">$157,803</td>
+<td headers="q5" class="gt_row gt_center">$375,792</td>
+<td headers="top5" class="gt_row gt_center">$670,768</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Virginia</td>
+<td headers="q1" class="gt_row gt_center">$17,922</td>
+<td headers="q2" class="gt_row gt_center">$48,359</td>
+<td headers="q3" class="gt_row gt_center">$81,072</td>
+<td headers="q4" class="gt_row gt_center">$127,411</td>
+<td headers="q5" class="gt_row gt_center">$280,299</td>
+<td headers="top5" class="gt_row gt_center">$486,006</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Illinois</td>
+<td headers="q1" class="gt_row gt_center">$15,102</td>
+<td headers="q2" class="gt_row gt_center">$42,688</td>
+<td headers="q3" class="gt_row gt_center">$72,900</td>
+<td headers="q4" class="gt_row gt_center">$114,531</td>
+<td headers="q5" class="gt_row gt_center">$258,373</td>
+<td headers="top5" class="gt_row gt_center">$466,713</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Kansas</td>
+<td headers="q1" class="gt_row gt_center">$15,817</td>
+<td headers="q2" class="gt_row gt_center">$40,065</td>
+<td headers="q3" class="gt_row gt_center">$64,780</td>
+<td headers="q4" class="gt_row gt_center">$99,380</td>
+<td headers="q5" class="gt_row gt_center">$215,122</td>
+<td headers="top5" class="gt_row gt_center">$383,038</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Wyoming</td>
+<td headers="q1" class="gt_row gt_center">$15,959</td>
+<td headers="q2" class="gt_row gt_center">$41,640</td>
+<td headers="q3" class="gt_row gt_center">$68,539</td>
+<td headers="q4" class="gt_row gt_center">$102,543</td>
+<td headers="q5" class="gt_row gt_center">$210,249</td>
+<td headers="top5" class="gt_row gt_center">$372,110</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Alabama</td>
+<td headers="q1" class="gt_row gt_center">$11,602</td>
+<td headers="q2" class="gt_row gt_center">$31,928</td>
+<td headers="q3" class="gt_row gt_center">$55,270</td>
+<td headers="q4" class="gt_row gt_center">$88,640</td>
+<td headers="q5" class="gt_row gt_center">$193,311</td>
+<td headers="top5" class="gt_row gt_center">$336,788</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Puerto Rico</td>
+<td headers="q1" class="gt_row gt_center">$2,906</td>
+<td headers="q2" class="gt_row gt_center">$12,144</td>
+<td headers="q3" class="gt_row gt_center">$22,163</td>
+<td headers="q4" class="gt_row gt_center">$38,397</td>
+<td headers="q5" class="gt_row gt_center">$99,043</td>
+<td headers="top5" class="gt_row gt_center">$187,234</td></tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="7"><strong>Source</strong>: US Census Bureau, American Community Survey</td>
+    </tr>
+  </tfoot>
+  
+</table>
 </div>
 </div>
 </div>
@@ -2821,14 +3036,26 @@ $187,234
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>awesometable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div id="dfxykwhskc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>html {
-  font-family: verdana, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+<div id="doqtjumqsx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#doqtjumqsx table {
+  font-family: verdana, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-#dfxykwhskc .gt_table {
+#doqtjumqsx thead, #doqtjumqsx tbody, #doqtjumqsx tfoot, #doqtjumqsx tr, #doqtjumqsx td, #doqtjumqsx th {
+  border-style: none;
+}
+
+#doqtjumqsx p {
+  margin: 0;
+  padding: 0;
+}
+
+#doqtjumqsx .gt_table {
   display: table;
   border-collapse: collapse;
+  line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
@@ -2851,24 +3078,12 @@ $187,234
   border-left-color: #D3D3D3;
 }
 
-#dfxykwhskc .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#dfxykwhskc .gt_caption {
+#doqtjumqsx .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dfxykwhskc .gt_title {
+#doqtjumqsx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2880,25 +3095,37 @@ $187,234
   border-bottom-width: 0;
 }
 
-#dfxykwhskc .gt_subtitle {
+#doqtjumqsx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 6px;
+  padding-top: 3px;
+  padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#dfxykwhskc .gt_bottom_border {
+#doqtjumqsx .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#doqtjumqsx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #000000;
 }
 
-#dfxykwhskc .gt_col_headings {
+#doqtjumqsx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2913,7 +3140,7 @@ $187,234
   border-right-color: #D3D3D3;
 }
 
-#dfxykwhskc .gt_col_heading {
+#doqtjumqsx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2933,7 +3160,7 @@ $187,234
   overflow-x: hidden;
 }
 
-#dfxykwhskc .gt_column_spanner_outer {
+#doqtjumqsx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2945,15 +3172,15 @@ $187,234
   padding-right: 4px;
 }
 
-#dfxykwhskc .gt_column_spanner_outer:first-child {
+#doqtjumqsx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dfxykwhskc .gt_column_spanner_outer:last-child {
+#doqtjumqsx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dfxykwhskc .gt_column_spanner {
+#doqtjumqsx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #000000;
@@ -2965,7 +3192,11 @@ $187,234
   width: 100%;
 }
 
-#dfxykwhskc .gt_group_heading {
+#doqtjumqsx .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#doqtjumqsx .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2991,7 +3222,7 @@ $187,234
   text-align: left;
 }
 
-#dfxykwhskc .gt_empty_group_heading {
+#doqtjumqsx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3006,15 +3237,15 @@ $187,234
   vertical-align: middle;
 }
 
-#dfxykwhskc .gt_from_md > :first-child {
+#doqtjumqsx .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dfxykwhskc .gt_from_md > :last-child {
+#doqtjumqsx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dfxykwhskc .gt_row {
+#doqtjumqsx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3033,7 +3264,7 @@ $187,234
   overflow-x: hidden;
 }
 
-#dfxykwhskc .gt_stub {
+#doqtjumqsx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3046,7 +3277,7 @@ $187,234
   padding-right: 5px;
 }
 
-#dfxykwhskc .gt_stub_row_group {
+#doqtjumqsx .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3060,11 +3291,15 @@ $187,234
   vertical-align: top;
 }
 
-#dfxykwhskc .gt_row_group_first td {
+#doqtjumqsx .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dfxykwhskc .gt_summary_row {
+#doqtjumqsx .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#doqtjumqsx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3074,16 +3309,16 @@ $187,234
   padding-right: 5px;
 }
 
-#dfxykwhskc .gt_first_summary_row {
+#doqtjumqsx .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dfxykwhskc .gt_first_summary_row.thick {
+#doqtjumqsx .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dfxykwhskc .gt_last_summary_row {
+#doqtjumqsx .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3093,7 +3328,7 @@ $187,234
   border-bottom-color: #D3D3D3;
 }
 
-#dfxykwhskc .gt_grand_summary_row {
+#doqtjumqsx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3103,7 +3338,7 @@ $187,234
   padding-right: 5px;
 }
 
-#dfxykwhskc .gt_first_grand_summary_row {
+#doqtjumqsx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3113,11 +3348,21 @@ $187,234
   border-top-color: #D3D3D3;
 }
 
-#dfxykwhskc .gt_striped {
+#doqtjumqsx .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#doqtjumqsx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dfxykwhskc .gt_table_body {
+#doqtjumqsx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3126,7 +3371,7 @@ $187,234
   border-bottom-color: #000000;
 }
 
-#dfxykwhskc .gt_footnotes {
+#doqtjumqsx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3140,30 +3385,8 @@ $187,234
   border-right-color: #D3D3D3;
 }
 
-#dfxykwhskc .gt_footnote {
+#doqtjumqsx .gt_footnote {
   margin: 0px;
-  font-size: 90%;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#dfxykwhskc .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#dfxykwhskc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3171,127 +3394,173 @@ $187,234
   padding-right: 5px;
 }
 
-#dfxykwhskc .gt_left {
+#doqtjumqsx .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#doqtjumqsx .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#doqtjumqsx .gt_left {
   text-align: left;
 }
 
-#dfxykwhskc .gt_center {
+#doqtjumqsx .gt_center {
   text-align: center;
 }
 
-#dfxykwhskc .gt_right {
+#doqtjumqsx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dfxykwhskc .gt_font_normal {
+#doqtjumqsx .gt_font_normal {
   font-weight: normal;
 }
 
-#dfxykwhskc .gt_font_bold {
+#doqtjumqsx .gt_font_bold {
   font-weight: bold;
 }
 
-#dfxykwhskc .gt_font_italic {
+#doqtjumqsx .gt_font_italic {
   font-style: italic;
 }
 
-#dfxykwhskc .gt_super {
+#doqtjumqsx .gt_super {
   font-size: 65%;
 }
 
-#dfxykwhskc .gt_footnote_marks {
-  font-style: italic;
-  font-weight: normal;
+#doqtjumqsx .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
+  position: initial;
 }
 
-#dfxykwhskc .gt_asterisk {
+#doqtjumqsx .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dfxykwhskc .gt_indent_1 {
+#doqtjumqsx .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dfxykwhskc .gt_indent_2 {
+#doqtjumqsx .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dfxykwhskc .gt_indent_3 {
+#doqtjumqsx .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dfxykwhskc .gt_indent_4 {
+#doqtjumqsx .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dfxykwhskc .gt_indent_5 {
+#doqtjumqsx .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
-
-Mean Household Income of Quintiles, 2021
-Seven Representative U.S. States
-lowest
-second
-third
-fourth
-fifth
-top 5%
-District of Columbia
-$12,971
-$51,060
-$94,478
-$157,803
-$375,792
-$670,768
-Maryland
-$19,946
-$55,165
-$91,725
-$140,353
-$293,979
-$503,597
-Tennessee
-$13,267
-$35,388
-$58,910
-$91,968
-$210,529
-$389,257
-Montana
-$14,811
-$36,927
-$60,644
-$93,340
-$205,462
-$370,234
-Kentucky
-$11,846
-$32,616
-$55,838
-$88,089
-$194,168
-$350,411
-Arkansas
-$12,076
-$31,051
-$52,280
-$82,811
-$188,510
-$344,470
-Puerto Rico
-$2,906
-$12,144
-$22,163
-$38,397
-$99,043
-$187,234
-<strong>Source</strong>: US Census Bureau, American Community Survey
-
+<table class="gt_table" style="table-layout: fixed;" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <colgroup>
+    <col>
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+    <col style="width:90px;">
+  </colgroup>
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="7" class="gt_heading gt_title gt_font_normal" style="">Mean Household Income of Quintiles, 2021</td>
+    </tr>
+    <tr class="gt_heading">
+      <td colspan="7" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">Seven Representative U.S. States</td>
+    </tr>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=""></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="lowest">lowest</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="second">second</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="third">third</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="fourth">fourth</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="fifth">fifth</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="top 5%">top 5%</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="name" class="gt_row gt_left">District of Columbia</td>
+<td headers="q1" class="gt_row gt_center">$12,971</td>
+<td headers="q2" class="gt_row gt_center">$51,060</td>
+<td headers="q3" class="gt_row gt_center">$94,478</td>
+<td headers="q4" class="gt_row gt_center">$157,803</td>
+<td headers="q5" class="gt_row gt_center">$375,792</td>
+<td headers="top5" class="gt_row gt_center">$670,768</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Virginia</td>
+<td headers="q1" class="gt_row gt_center">$17,922</td>
+<td headers="q2" class="gt_row gt_center">$48,359</td>
+<td headers="q3" class="gt_row gt_center">$81,072</td>
+<td headers="q4" class="gt_row gt_center">$127,411</td>
+<td headers="q5" class="gt_row gt_center">$280,299</td>
+<td headers="top5" class="gt_row gt_center">$486,006</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Illinois</td>
+<td headers="q1" class="gt_row gt_center">$15,102</td>
+<td headers="q2" class="gt_row gt_center">$42,688</td>
+<td headers="q3" class="gt_row gt_center">$72,900</td>
+<td headers="q4" class="gt_row gt_center">$114,531</td>
+<td headers="q5" class="gt_row gt_center">$258,373</td>
+<td headers="top5" class="gt_row gt_center">$466,713</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Kansas</td>
+<td headers="q1" class="gt_row gt_center">$15,817</td>
+<td headers="q2" class="gt_row gt_center">$40,065</td>
+<td headers="q3" class="gt_row gt_center">$64,780</td>
+<td headers="q4" class="gt_row gt_center">$99,380</td>
+<td headers="q5" class="gt_row gt_center">$215,122</td>
+<td headers="top5" class="gt_row gt_center">$383,038</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Wyoming</td>
+<td headers="q1" class="gt_row gt_center">$15,959</td>
+<td headers="q2" class="gt_row gt_center">$41,640</td>
+<td headers="q3" class="gt_row gt_center">$68,539</td>
+<td headers="q4" class="gt_row gt_center">$102,543</td>
+<td headers="q5" class="gt_row gt_center">$210,249</td>
+<td headers="top5" class="gt_row gt_center">$372,110</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Alabama</td>
+<td headers="q1" class="gt_row gt_center">$11,602</td>
+<td headers="q2" class="gt_row gt_center">$31,928</td>
+<td headers="q3" class="gt_row gt_center">$55,270</td>
+<td headers="q4" class="gt_row gt_center">$88,640</td>
+<td headers="q5" class="gt_row gt_center">$193,311</td>
+<td headers="top5" class="gt_row gt_center">$336,788</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Puerto Rico</td>
+<td headers="q1" class="gt_row gt_center">$2,906</td>
+<td headers="q2" class="gt_row gt_center">$12,144</td>
+<td headers="q3" class="gt_row gt_center">$22,163</td>
+<td headers="q4" class="gt_row gt_center">$38,397</td>
+<td headers="q5" class="gt_row gt_center">$99,043</td>
+<td headers="top5" class="gt_row gt_center">$187,234</td></tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="7"><strong>Source</strong>: US Census Bureau, American Community Survey</td>
+    </tr>
+  </tfoot>
+  
+</table>
 </div>
 </div>
 </div>

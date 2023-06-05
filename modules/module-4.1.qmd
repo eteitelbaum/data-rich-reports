@@ -21,9 +21,11 @@ census_api_key(my_api_key)
 ## Prework
 
 - Get a U.S. Census [api key](https://api.census.gov/data/key_signup.html)
-- Install [tidycensus](https://walker-data.com/tidycensus/articles/basic-usage.html), [kableExtra](https://haozhu233.github.io/kableExtra/) and [gt](https://gt.rstudio.com/) 
+- Install [tidycensus](https://walker-data.com/tidycensus/articles/basic-usage.html) to retrieve the data we will use
+- Install [kableExtra](https://haozhu233.github.io/kableExtra/) and [gt](https://gt.rstudio.com/), out packages for making tables
+- install `webshot2` for exporting `gt` tables
 
-`install.packages(c("tidycensus", "kableExtra", "gt"))`
+`install.packages(c("tidycensus", "kableExtra", "gt", "webshot2"))`
 
 - We will be using the [stringr](https://stringr.tidyverse.org/) package, which is part of the Tidyverse, so you probably already have it installed. But spend some time reading about its usage and features.
 - Install `webshot2` for the purposes of saving a .png of your table (`install.packages("webshot2")`)
