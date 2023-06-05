@@ -3,6 +3,7 @@ title: "Module 3.1"
 subtitle: "Choropleth Maps"
 format: html
 highlight-style: atom-one
+code-link: true
 execute:
   echo: true
   message: false
@@ -13,6 +14,7 @@ execute:
 ## Prework
 
 - Install `rnaturalearth` (`install.packages("rnaturalearth")`) and have a look at the [documentation](https://cran.r-project.org/web/packages/rnaturalearth/vignettes/rnaturalearth.html)
+- Install the `rnaturalearth` data package (`install.packages("rnaturalearthdata")`)
 - Install `ggthemes` (`install.packages("ggthemes")`)and have a look at [this post](https://rpubs.com/Mentors_Ubiqum/ggthemes_1)) for a brief explanation of how it works
 - Create a Quarto document called "module-3.1.qmd" in your modules folder for the code-along
 - Install `magick` and underlying file system to [remove whitespace](https://www.pmassicotte.com/posts/2022-08-15-removing-whitespace-around-figures-quarto/) around maps
@@ -102,7 +104,11 @@ ggplot(data = world_map_df) +
 
 {{< video https://youtu.be/5RnnGov3Iw4 title = 'Using rnaturalearth to map data'>}}
 
-Now that we know how to make a map with Natural Earth shapes and `geom_sf()`, we can merge in data and map data from other sources. Let's go ahead and merge some data on oil rents from the World Bank. We will do a `left_join()` based on iso3c country codes. In the World Bank data the iso3c codes are simply called "iso3c." In `rnaturalearth` there are a number of options, but the best is "iso3_a3_eh" because at the time this lesson was written the codes for some of the others [are missing](https://github.com/ropensci/rnaturalearth/issues/77).   
+Now that we know how to make a map with Natural Earth shapes and `geom_sf()`, we can merge in data and map data from other sources. Let's go ahead and merge some data on oil rents from the World Bank. We will do a `left_join()` based on iso3c country codes. In the World Bank data the iso3c codes are simply called "iso3c." In `rnaturalearth` there are a number of options, but the best here for our purposes is "iso_a3" 
+
+::: {.callout-warning}
+At the time I made the video, the codes for "iso_a3" and some of the others [were missing](https://github.com/ropensci/rnaturalearth/issues/77) so I recommended using "iso_a3_eh." But now the issue has been fixed, so please use "iso_a3."
+:::
 
 ```{r}
 #| label: merge_data
@@ -112,7 +118,7 @@ library(wbstats)
 
 oil_rents_df <- wb_data(c(oil_rents_gdp = "NY.GDP.PETR.RT.ZS"), mrnev = 1) 
 
-rents_map_df <- left_join(world_map_df, oil_rents_df, join_by(iso_a3_eh == iso3c))
+rents_map_df <- left_join(world_map_df, oil_rents_df, join_by(iso_a3 == iso3c))
 
 rents_map_df |>
   select(last_col(5):last_col()) |> #select last 5 columns of df
@@ -177,7 +183,7 @@ create_map <- function(var_id, title, legend_title, theme, direction){
 ne_countries(scale = "medium", returnclass = "sf") |> 
   left_join(
     wb_data(var_id, mrnev = 1), # change variable id
-    join_by(iso_a3_eh == iso3c)
+    join_by(iso_a3 == iso3c)
   ) |> 
   filter(name != "Antarctica") |>  
   ggplot() + 

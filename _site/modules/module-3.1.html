@@ -213,6 +213,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Week 1</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 2</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -427,6 +433,7 @@ Prework
 <div class="callout-body-container callout-body">
 <ul>
 <li>Install <code>rnaturalearth</code> (<code>install.packages("rnaturalearth")</code>) and have a look at the <a href="https://cran.r-project.org/web/packages/rnaturalearth/vignettes/rnaturalearth.html">documentation</a></li>
+<li>Install the <code>rnaturalearth</code> data package (<code>install.packages("rnaturalearthdata")</code>)</li>
 <li>Install <code>ggthemes</code> (<code>install.packages("ggthemes")</code>)and have a look at <a href="https://rpubs.com/Mentors_Ubiqum/ggthemes_1">this post</a>) for a brief explanation of how it works</li>
 <li>Create a Quarto document called “module-3.1.qmd” in your modules folder for the code-along</li>
 <li>Install <code>magick</code> and underlying file system to <a href="https://www.pmassicotte.com/posts/2022-08-15-removing-whitespace-around-figures-quarto/">remove whitespace</a> around maps</li>
@@ -468,23 +475,23 @@ Prework
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>world_map_df <span class="sc">|&gt;</span></span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(geometry) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Simple feature collection with 241 features and 0 fields
+<pre><code>Simple feature collection with 240 features and 0 fields
 Geometry type: MULTIPOLYGON
 Dimension:     XY
 Bounding box:  xmin: -180 ymin: -58.49229 xmax: 180 ymax: 83.59961
-Geodetic CRS:  WGS 84
+Geodetic CRS:  +proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0
 First 10 features:
                          geometry
-1  MULTIPOLYGON (((31.28789 -2...
-2  MULTIPOLYGON (((30.39609 -1...
-3  MULTIPOLYGON (((53.08564 16...
-4  MULTIPOLYGON (((104.064 10....
-5  MULTIPOLYGON (((-60.82119 9...
-6  MULTIPOLYGON (((12.43916 41...
-7  MULTIPOLYGON (((166.7458 -1...
-8  MULTIPOLYGON (((70.94678 42...
-9  MULTIPOLYGON (((-53.37061 -...
-10 MULTIPOLYGON (((162.9832 5....</code></pre>
+1  MULTIPOLYGON (((-69.89912 1...
+2  MULTIPOLYGON (((74.89131 37...
+3  MULTIPOLYGON (((14.19082 -5...
+4  MULTIPOLYGON (((-63.00122 1...
+5  MULTIPOLYGON (((20.06396 42...
+6  MULTIPOLYGON (((20.61133 60...
+7  MULTIPOLYGON (((1.706055 42...
+8  MULTIPOLYGON (((53.92783 24...
+9  MULTIPOLYGON (((-64.54917 -...
+10 MULTIPOLYGON (((45.55234 40...</code></pre>
 </div>
 </div>
 </section>
@@ -525,26 +532,39 @@ First 10 features:
 <section id="using-rnaturalearth-to-map-other-data" class="level2">
 <h2 class="anchored" data-anchor-id="using-rnaturalearth-to-map-other-data">Using rnaturalearth to map other data</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/5RnnGov3Iw4" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<p>Now that we know how to make a map with Natural Earth shapes and <code>geom_sf()</code>, we can merge in data and map data from other sources. Let’s go ahead and merge some data on oil rents from the World Bank. We will do a <code>left_join()</code> based on iso3c country codes. In the World Bank data the iso3c codes are simply called “iso3c.” In <code>rnaturalearth</code> there are a number of options, but the best is “iso3_a3_eh” because at the time this lesson was written the codes for some of the others <a href="https://github.com/ropensci/rnaturalearth/issues/77">are missing</a>.</p>
+<p>Now that we know how to make a map with Natural Earth shapes and <code>geom_sf()</code>, we can merge in data and map data from other sources. Let’s go ahead and merge some data on oil rents from the World Bank. We will do a <code>left_join()</code> based on iso3c country codes. In the World Bank data the iso3c codes are simply called “iso3c.” In <code>rnaturalearth</code> there are a number of options, but the best here for our purposes is “iso_a3”</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>At the time I made the video, the codes for “iso_a3” and some of the others <a href="https://github.com/ropensci/rnaturalearth/issues/77">were missing</a> so I recommended using “iso_a3_eh.” But now the issue has been fixed, so please use “iso_a3.”</p>
+</div>
+</div>
 <div class="cell" data-crop="true">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wbstats)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>oil_rents_df <span class="ot">&lt;-</span> <span class="fu">wb_data</span>(<span class="fu">c</span>(<span class="at">oil_rents_gdp =</span> <span class="st">"NY.GDP.PETR.RT.ZS"</span>), <span class="at">mrnev =</span> <span class="dv">1</span>) </span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>rents_map_df <span class="ot">&lt;-</span> <span class="fu">left_join</span>(world_map_df, oil_rents_df, <span class="fu">join_by</span>(iso_a3_eh <span class="sc">==</span> iso3c))</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>rents_map_df <span class="ot">&lt;-</span> <span class="fu">left_join</span>(world_map_df, oil_rents_df, <span class="fu">join_by</span>(iso_a3 <span class="sc">==</span> iso3c))</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>rents_map_df <span class="sc">|&gt;</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">last_col</span>(<span class="dv">5</span>)<span class="sc">:</span><span class="fu">last_col</span>()) <span class="sc">|&gt;</span> <span class="co">#select last 5 columns of df</span></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 241
+<pre><code>Rows: 240
 Columns: 6
-$ date          &lt;dbl&gt; 2021, 2021, 2018, 2021, 2014, NA, 2021, 2021, 2021, NA, …
-$ oil_rents_gdp &lt;dbl&gt; 0.047768809, 0.000000000, 4.823561531, 0.669314215, 11.3…
+$ date          &lt;dbl&gt; 2021, 2021, 2021, NA, 2021, NA, NA, 2021, 2021, 2021, 20…
+$ oil_rents_gdp &lt;dbl&gt; 0.00000000, 0.01786951, 28.27443988, NA, 1.04218369, NA,…
 $ obs_status    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
 $ footnote      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
-$ last_updated  &lt;date&gt; 2023-05-10, 2023-05-10, 2023-05-10, 2023-05-10, 2023-05…
-$ geometry      &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((31.28789 -2..., MULTIPOLYGO…</code></pre>
+$ last_updated  &lt;date&gt; 2023-05-10, 2023-05-10, 2023-05-10, NA, 2023-05-10, NA,…
+$ geometry      &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-69.89912 1..., MULTIPOLYGO…</code></pre>
 </div>
 </div>
 <p>Now we can map these data. Everything here is pretty much the same as before, except we change the fill to <code>oil_rents_gdp</code>. We will also add a subtitle and make a few other cosmetic changes like shifting the position of the legend title, bolding the plot title and changing the <code>viridis</code> color scale from discrete to continuous.</p>
@@ -595,7 +615,7 @@ $ geometry      &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((31.28789 -2..., MULTIP
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ne_countries</span>(<span class="at">scale =</span> <span class="st">"medium"</span>, <span class="at">returnclass =</span> <span class="st">"sf"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(</span>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">wb_data</span>(var_id, <span class="at">mrnev =</span> <span class="dv">1</span>), <span class="co"># change variable id</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">join_by</span>(iso_a3_eh <span class="sc">==</span> iso3c)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">join_by</span>(iso_a3 <span class="sc">==</span> iso3c)</span>
 <span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
 <span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(name <span class="sc">!=</span> <span class="st">"Antarctica"</span>) <span class="sc">|&gt;</span>  </span>
 <span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>

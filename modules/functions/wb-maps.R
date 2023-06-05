@@ -9,7 +9,7 @@ create_map <- function(var_id, title, legend_title, theme, direction){
   ne_countries(scale = "medium", returnclass = "sf") |> 
     left_join(
       wb_data(var_id, mrnev = 1), # change variable id
-      join_by(iso_a3_eh == iso3c)
+      join_by(iso_a3 == iso3c)
     ) |> 
     filter(name != "Antarctica") |>  
     ggplot() + 

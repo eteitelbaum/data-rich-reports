@@ -2,7 +2,7 @@
 title: "Coding Assignment 1"
 ---
 
-## Overview 
+## Overview
 
 For this assignment, you are going to download some variables using the `wbstats` and `vdemdata` packages. Then you are going to wrangle these data and merge the two data sets into one and analyze how they relate to women's representation in national parliaments. Do your work for each step in the code chunks provided. Be sure to label your code chunks. 
 
