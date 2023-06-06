@@ -1,7 +1,9 @@
 ---
 title: "Module 3.2"
 subtitle: "Leaflet Maps"
-format: html
+format: 
+  html:
+    code-link: true
 highlight-style: atom-one
 execute:
   echo: true
@@ -38,6 +40,7 @@ I am working with a truncated version of the UCDP GED data so that I can upload 
 :::
 
 ```{r}
+#| label: read_ged_data
 library(readr)
 library(dplyr)
 
@@ -51,6 +54,7 @@ One thing we have to manage right away is the specific country codes used in the
 For this analysis, we are going to want to filter by country and specifically we want conflict data for Yemen. According to the [UCDP codebook](https://ucdp.uu.se/downloads/ged/ged221.pdf), this dataset uses Gleditsch-Ward (GW) country identifiers. One option could be to simply look up the GW country code for Yemen. But there is also a nice package developed called [states](https://www.andybeger.com/states/index.html). It has a function called `sfind()` that we can use to find the relevant country code. 
 
 ```{r}
+#| label: get_yemen_ccode
 library(states)
 
 sfind("Yemen")[1:6]
@@ -102,6 +106,7 @@ Now that we have our data, let's make our first pop-up map. To do this we are go
 Let's start with a really simple hypothetical example. Let's say we want to plot one conflict event that we have the coordinates for and label it "First conflict event." To do this, we would first call the `leaflet()`function. From there will add default street map tiles with `addTiles()` and then our single pop-up marker with `addMarkers()`.  
 
 ```{r}
+#| label: plot_marker
 library(leaflet)
 
 leaflet() |>
@@ -118,6 +123,7 @@ Note that arguments for the `popup =` argument take the form of a one-sided form
 :::
 
 ```{r}
+#| label: plot_events
 leaflet(data = ged_yemen) |> # map points in ged_yemen data frame
   addTiles() |> # add default tile
   setView(lng = 44.1910, lat = 15.3694, zoom = 6) |> # Sana'a coordinates
@@ -140,6 +146,7 @@ We can dress our leaflet map up a little bit with the `addAwesomeMarkers()` func
 First we will use `awesomeIcons()` to store the icon we want to use. Here we choose "ios-close" from the ionic library. We will say that we want the icon colorto be black and the surrounding marker color to be red. Then we call `addAwesomeMarkers()` and specify `icon = icon` to call the red and black ionic marker.  
 
 ```{r}
+#| label: use_awesome_icon
 # save icon
 icon <- awesomeIcons(
   icon = "ios-close",
@@ -202,6 +209,7 @@ leaflet(data = ged_yemen) |>
 Now let's spot check the labels. 
 
 ```{r}
+#| label: spotcheck_labels
 ged_yemen |>
   filter(place == "Marib Dam")
 ```
@@ -211,7 +219,7 @@ ged_yemen |>
 As a last step, let's change the basemap. We can do this by specifying `addProviderTiles()` instead of `addTiles()` and specifying the basemap that we want to use. Here is a list of [available basemaps](http://leaflet-extras.github.io/leaflet-providers/preview/index.html). For this example, we are going to use "OpenTopoMap." 
 
 ```{r}
-
+#| label: use_basemap
 leaflet(data = ged_yemen) |> # Jan and Feb  
   addProviderTiles("OpenTopoMap") |> # include name of provider here
   setView(lng = 44.1910, lat = 15.3694, zoom = 6) |> # Sana'a coordinates
