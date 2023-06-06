@@ -1,7 +1,9 @@
 ---
 title: "Module 4.2"
 subtitle: "Regression Tables and Coefficient Plots"
-format: html
+format: 
+  html:
+    code-link: true
 highlight-style: atom-one
 execute:
   echo: true

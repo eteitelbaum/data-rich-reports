@@ -1,7 +1,9 @@
 ---
 title: "Module 4.1"
 subtitle: "Making Tables"
-format: html
+format: 
+  html:
+    code-link: true
 highlight-style: atom-one
 execute:
   echo: true
@@ -35,13 +37,13 @@ census_api_key(my_api_key)
 
 This week we are going to be talking about making tables in R. Tables can be a great way to summarize data for your audience. While there are no hard and fast rules about when to use a table versus a plot, typically we use tables when we want to present summary statistics that we want to compare across groups or when we want to show the precise values for individual data points. This can be true when we have a small number of cases that we want to discuss. 
 
-In this module we are going to be working with the `tidycensus` package to download income data from the [American Community Survey (ACS)]((https://www.census.gov/programs-surveys/acs/data/data-tables.html) and the `kableExtra` and `gt` packages to visualize it. Along the way, we discuss "the grammar of tables" and some situations where a table would be less appropriate than other methods of visualizing our data.   
+In this module we are going to be working with the `tidycensus` package to download income data from the [American Community Survey (ACS)](https://www.census.gov/programs-surveys/acs/data/data-tables.html) and the `kableExtra` and `gt` packages to visualize it. Along the way, we discuss "the grammar of tables" and some situations where a table would be less appropriate than other methods of visualizing our data.   
 
 ## Working with tidycensus
 
 {{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'Working with tidycensus'>}}
 
-We are going to start by using `tidycensus` to download some income data. To use `tidycensus` you need a Census API key, which you can get here: http://api.census.gov/data/key_signup.html.   
+We are going to start by using `tidycensus` to download some income data. To use `tidycensus` you need a Census API key, which you can get [here](http://api.census.gov/data/key_signup.html).   
 
 ```{r}
 #| label: fake_setup

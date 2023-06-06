@@ -1,9 +1,10 @@
 ---
 title: "Module 3.1"
 subtitle: "Choropleth Maps"
-format: html
+format: 
+  html:
+    code-link: true
 highlight-style: atom-one
-code-link: true
 execute:
   echo: true
   message: false
