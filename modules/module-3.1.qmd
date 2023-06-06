@@ -22,6 +22,7 @@ execute:
 - Then insert this code chunk somewhere in your module 3.1 Quarto document:
 
 ```{r}
+#| label: create_hook
 # create a hook to crop maps as recommended by pmassicotte
 # must have `magick` and its dependencies installed
 
