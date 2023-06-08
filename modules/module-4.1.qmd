@@ -41,7 +41,7 @@ In this module we are going to be working with the `tidycensus` package to downl
 
 ## Working with tidycensus
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'Working with tidycensus'>}}
+{{< video https://youtu.be/_8lRlCA1kOQ title = 'Working with tidycensus'>}}
 
 We are going to start by using `tidycensus` to download some income data. To use `tidycensus` you need a Census API key, which you can get [here](http://api.census.gov/data/key_signup.html).   
 
@@ -80,7 +80,7 @@ quintiles <- get_acs(geography = "state",
                       year = 2021,
                       output = "wide") |>
                       select(
-                        !ends_with("m"), # eliminate margin of error
+                        !ends_with("M"), # eliminate margin of error
                         -GEOID) |> # eliminate geo id
                       rename(name = NAME) |>
                       rename_with(~str_remove(., 'E'))
@@ -91,7 +91,7 @@ glimpse(quintiles)
 
 ## Explore the data with kableExtra
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'Explore Your Data with kableExtra'>}}
+{{< video https://youtu.be/JZLZHBqCbBk title = 'Explore Your Data with kableExtra'>}}
 
 Now let's use some `dplyr` [slice](https://dplyr.tidyverse.org/reference/slice.html) functions and `kableExtra` to subset and explore the data. First let's see which are the wealthiest states. To do this, we can apply `slice_max()` to identify the states with the highest incomes among the top 5 percent of wage earners. We will save that list as an object called `top_10` and then call `kable()` to view it. 
 
@@ -109,7 +109,6 @@ Now let's do the same thing but searching for the poorest states instead. We wil
 
 ```{r}
 #| label: bottom_10
-library(kableExtra)
 
 bottom_10 <- quintiles |>
   slice_min(q1, n = 10)
@@ -124,18 +123,18 @@ We will store these selections in three objects and then combine them into a sin
 After we have done the append, we can view the new data by calling `kable(states)`. 
 
 ```{r}
-library(dplyr)
+#| label: mixed
 
 # lowest 
-state_min = quintiles |> 
+state_min <- quintiles |> 
   slice_min(q1) 
 
 # highest
-state_max = quintiles |> 
+state_max <- quintiles |> 
   slice_max(top5) 
 
 # randomly select five more
-five_more = quintiles |>
+five_more <- quintiles |>
    slice_sample(n = 5) 
 
 states <- bind_rows(state_min, state_max, five_more) |>
@@ -146,7 +145,7 @@ kable(states)
 
 ## Display the data with a gt table
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'Display Your Data with gt'>}}
+{{< video https://youtu.be/UoJm8_nFWsE title = 'Display Your Data with gt'>}}
 
 Now that we have some good data for a table, let's make a really beautiful table with the `gt` package. "gt" stands for "grammar of tables." So just as we talked about a "grammar of graphics" when we were studying plots, we can talk about the “grammar of tables” and break a table down into its component parts. 
 
@@ -170,11 +169,11 @@ goodtable <- gt(states) |>
     q2 = "second",
     q3 = "third",
     q4 = "fourth",
-    q5 = "fifth",
+    q5 = "highest",
     top5 = "top 5%"
   ) |> 
   fmt_currency(
-    columns = c(q1, q2, q3, q4, q5, top5),
+    columns = c(q1:top5),
     currency = "USD", 
     use_subunits = FALSE
   ) |>

@@ -429,7 +429,7 @@ Prework
 <p>This week we are going to be talking about making tables in R. Tables can be a great way to summarize data for your audience. While there are no hard and fast rules about when to use a table versus a plot, typically we use tables when we want to present summary statistics that we want to compare across groups or when we want to show the precise values for individual data points. This can be true when we have a small number of cases that we want to discuss.</p>
 <p>In this module we are going to be working with the <code>tidycensus</code> package to download income data from the <a href="https://www.census.gov/programs-surveys/acs/data/data-tables.html">American Community Survey (ACS)</a> and the <code>kableExtra</code> and <code>gt</code> packages to visualize it. Along the way, we discuss “the grammar of tables” and some situations where a table would be less appropriate than other methods of visualizing our data.</p>
 </section><section id="working-with-tidycensus" class="level2"><h2 class="anchored" data-anchor-id="working-with-tidycensus">Working with tidycensus</h2>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/_8lRlCA1kOQ" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>We are going to start by using <code>tidycensus</code> to download some income data. To use <code>tidycensus</code> you need a Census API key, which you can get <a href="http://api.census.gov/data/key_signup.html">here</a>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://walker-data.com/tidycensus/">tidycensus</a></span><span class="op">)</span></span>
@@ -457,7 +457,7 @@ Prework
 <span>                      year <span class="op">=</span> <span class="fl">2021</span>,</span>
 <span>                      output <span class="op">=</span> <span class="st">"wide"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>                      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span></span>
-<span>                        <span class="op">!</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="st">"m"</span><span class="op">)</span>, <span class="co"># eliminate margin of error</span></span>
+<span>                        <span class="op">!</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="st">"M"</span><span class="op">)</span>, <span class="co"># eliminate margin of error</span></span>
 <span>                        <span class="op">-</span><span class="va">GEOID</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># eliminate geo id</span></span>
 <span>                      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">NAME</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>                      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename_with</a></span><span class="op">(</span><span class="op">~</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove</a></span><span class="op">(</span><span class="va">.</span>, <span class="st">'E'</span><span class="op">)</span><span class="op">)</span></span>
@@ -477,7 +477,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 </div>
 </div>
 </section><section id="explore-the-data-with-kableextra" class="level2"><h2 class="anchored" data-anchor-id="explore-the-data-with-kableextra">Explore the data with kableExtra</h2>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/JZLZHBqCbBk" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>Now let’s use some <code>dplyr</code> <a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a> functions and <code>kableExtra</code> to subset and explore the data. First let’s see which are the wealthiest states. To do this, we can apply <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_max()</a></code> to identify the states with the highest incomes among the top 5 percent of wage earners. We will save that list as an object called <code>top_10</code> and then call <code><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable()</a></code> to view it.</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span></span>
@@ -594,9 +594,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 </div>
 <p>Now let’s do the same thing but searching for the poorest states instead. We will use the <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_min()</a></code> function to identify the states with the lowest incomes in the first quintile of earners.</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">bottom_10</span> <span class="op">&lt;-</span> <span class="va">quintiles</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">bottom_10</span> <span class="op">&lt;-</span> <span class="va">quintiles</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_min</a></span><span class="op">(</span><span class="va">q1</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">bottom_10</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -710,18 +708,16 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <p>We will store these selections in three objects and then combine them into a single data frame called <code>states</code> using the <code>dplyr</code> function <a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a>. <code><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows()</a></code> appends data frames with different observations for the same set of columns. You can think of its a kind of “verticle merging” of data frames.</p>
 <p>After we have done the append, we can view the new data by calling <code>kable(states)</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># lowest </span></span>
-<span><span class="va">state_min</span> <span class="op">=</span> <span class="va">quintiles</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># lowest </span></span>
+<span><span class="va">state_min</span> <span class="op">&lt;-</span> <span class="va">quintiles</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_min</a></span><span class="op">(</span><span class="va">q1</span><span class="op">)</span> </span>
 <span></span>
 <span><span class="co"># highest</span></span>
-<span><span class="va">state_max</span> <span class="op">=</span> <span class="va">quintiles</span> <span class="op">|&gt;</span> </span>
+<span><span class="va">state_max</span> <span class="op">&lt;-</span> <span class="va">quintiles</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_max</a></span><span class="op">(</span><span class="va">top5</span><span class="op">)</span> </span>
 <span></span>
 <span><span class="co"># randomly select five more</span></span>
-<span><span class="va">five_more</span> <span class="op">=</span> <span class="va">quintiles</span> <span class="op">|&gt;</span></span>
+<span><span class="va">five_more</span> <span class="op">&lt;-</span> <span class="va">quintiles</span> <span class="op">|&gt;</span></span>
 <span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> </span>
 <span></span>
 <span><span class="va">states</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span><span class="va">state_min</span>, <span class="va">state_max</span>, <span class="va">five_more</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -750,42 +746,33 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <td style="text-align: right;">670768</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Pennsylvania</td>
-<td style="text-align: right;">15101</td>
-<td style="text-align: right;">40268</td>
-<td style="text-align: right;">68033</td>
-<td style="text-align: right;">106027</td>
-<td style="text-align: right;">234818</td>
-<td style="text-align: right;">417872</td>
+<td style="text-align: left;">District of Columbia</td>
+<td style="text-align: right;">12971</td>
+<td style="text-align: right;">51060</td>
+<td style="text-align: right;">94478</td>
+<td style="text-align: right;">157803</td>
+<td style="text-align: right;">375792</td>
+<td style="text-align: right;">670768</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Nevada</td>
-<td style="text-align: right;">15024</td>
-<td style="text-align: right;">40468</td>
-<td style="text-align: right;">66247</td>
-<td style="text-align: right;">101591</td>
-<td style="text-align: right;">224480</td>
-<td style="text-align: right;">410161</td>
+<td style="text-align: left;">Rhode Island</td>
+<td style="text-align: right;">15069</td>
+<td style="text-align: right;">42774</td>
+<td style="text-align: right;">74564</td>
+<td style="text-align: right;">115030</td>
+<td style="text-align: right;">242103</td>
+<td style="text-align: right;">424473</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">North Dakota</td>
-<td style="text-align: right;">15507</td>
-<td style="text-align: right;">41406</td>
-<td style="text-align: right;">68558</td>
-<td style="text-align: right;">104602</td>
-<td style="text-align: right;">217143</td>
-<td style="text-align: right;">380261</td>
+<td style="text-align: left;">Missouri</td>
+<td style="text-align: right;">14394</td>
+<td style="text-align: right;">37099</td>
+<td style="text-align: right;">61309</td>
+<td style="text-align: right;">94991</td>
+<td style="text-align: right;">207969</td>
+<td style="text-align: right;">371277</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Wyoming</td>
-<td style="text-align: right;">15959</td>
-<td style="text-align: right;">41640</td>
-<td style="text-align: right;">68539</td>
-<td style="text-align: right;">102543</td>
-<td style="text-align: right;">210249</td>
-<td style="text-align: right;">372110</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;">Wisconsin</td>
 <td style="text-align: right;">16787</td>
 <td style="text-align: right;">41986</td>
@@ -793,6 +780,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <td style="text-align: right;">101424</td>
 <td style="text-align: right;">211049</td>
 <td style="text-align: right;">371015</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Iowa</td>
+<td style="text-align: right;">16044</td>
+<td style="text-align: right;">40632</td>
+<td style="text-align: right;">65701</td>
+<td style="text-align: right;">98967</td>
+<td style="text-align: right;">203398</td>
+<td style="text-align: right;">352704</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Puerto Rico</td>
@@ -827,11 +823,11 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <span>    q2 <span class="op">=</span> <span class="st">"second"</span>,</span>
 <span>    q3 <span class="op">=</span> <span class="st">"third"</span>,</span>
 <span>    q4 <span class="op">=</span> <span class="st">"fourth"</span>,</span>
-<span>    q5 <span class="op">=</span> <span class="st">"fifth"</span>,</span>
+<span>    q5 <span class="op">=</span> <span class="st">"highest"</span>,</span>
 <span>    top5 <span class="op">=</span> <span class="st">"top 5%"</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://gt.rstudio.com/reference/fmt_currency.html">fmt_currency</a></span><span class="op">(</span></span>
-<span>    columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">q1</span>, <span class="va">q2</span>, <span class="va">q3</span>, <span class="va">q4</span>, <span class="va">q5</span>, <span class="va">top5</span><span class="op">)</span>,</span>
+<span>    columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">q1</span><span class="op">:</span><span class="va">top5</span><span class="op">)</span>,</span>
 <span>    currency <span class="op">=</span> <span class="st">"USD"</span>, </span>
 <span>    use_subunits <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -841,23 +837,23 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <span><span class="va">goodtable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div id="lcmebfjxzw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lcmebfjxzw table {
+<div id="peabxjbbsl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#peabxjbbsl table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lcmebfjxzw thead, #lcmebfjxzw tbody, #lcmebfjxzw tfoot, #lcmebfjxzw tr, #lcmebfjxzw td, #lcmebfjxzw th {
+#peabxjbbsl thead, #peabxjbbsl tbody, #peabxjbbsl tfoot, #peabxjbbsl tr, #peabxjbbsl td, #peabxjbbsl th {
   border-style: none;
 }
 
-#lcmebfjxzw p {
+#peabxjbbsl p {
   margin: 0;
   padding: 0;
 }
 
-#lcmebfjxzw .gt_table {
+#peabxjbbsl .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -883,12 +879,12 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-left-color: #D3D3D3;
 }
 
-#lcmebfjxzw .gt_caption {
+#peabxjbbsl .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lcmebfjxzw .gt_title {
+#peabxjbbsl .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -900,7 +896,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-width: 0;
 }
 
-#lcmebfjxzw .gt_subtitle {
+#peabxjbbsl .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -912,7 +908,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-top-width: 0;
 }
 
-#lcmebfjxzw .gt_heading {
+#peabxjbbsl .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -924,13 +920,13 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-#lcmebfjxzw .gt_bottom_border {
+#peabxjbbsl .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lcmebfjxzw .gt_col_headings {
+#peabxjbbsl .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -945,7 +941,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-#lcmebfjxzw .gt_col_heading {
+#peabxjbbsl .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -965,7 +961,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   overflow-x: hidden;
 }
 
-#lcmebfjxzw .gt_column_spanner_outer {
+#peabxjbbsl .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -977,15 +973,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 4px;
 }
 
-#lcmebfjxzw .gt_column_spanner_outer:first-child {
+#peabxjbbsl .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lcmebfjxzw .gt_column_spanner_outer:last-child {
+#peabxjbbsl .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lcmebfjxzw .gt_column_spanner {
+#peabxjbbsl .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -997,11 +993,11 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   width: 100%;
 }
 
-#lcmebfjxzw .gt_spanner_row {
+#peabxjbbsl .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lcmebfjxzw .gt_group_heading {
+#peabxjbbsl .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1027,7 +1023,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   text-align: left;
 }
 
-#lcmebfjxzw .gt_empty_group_heading {
+#peabxjbbsl .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1042,15 +1038,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   vertical-align: middle;
 }
 
-#lcmebfjxzw .gt_from_md > :first-child {
+#peabxjbbsl .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lcmebfjxzw .gt_from_md > :last-child {
+#peabxjbbsl .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lcmebfjxzw .gt_row {
+#peabxjbbsl .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1069,7 +1065,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   overflow-x: hidden;
 }
 
-#lcmebfjxzw .gt_stub {
+#peabxjbbsl .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1082,7 +1078,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#lcmebfjxzw .gt_stub_row_group {
+#peabxjbbsl .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1096,15 +1092,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   vertical-align: top;
 }
 
-#lcmebfjxzw .gt_row_group_first td {
+#peabxjbbsl .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lcmebfjxzw .gt_row_group_first th {
+#peabxjbbsl .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lcmebfjxzw .gt_summary_row {
+#peabxjbbsl .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1114,16 +1110,16 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#lcmebfjxzw .gt_first_summary_row {
+#peabxjbbsl .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lcmebfjxzw .gt_first_summary_row.thick {
+#peabxjbbsl .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lcmebfjxzw .gt_last_summary_row {
+#peabxjbbsl .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1133,7 +1129,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-color: #D3D3D3;
 }
 
-#lcmebfjxzw .gt_grand_summary_row {
+#peabxjbbsl .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1143,7 +1139,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#lcmebfjxzw .gt_first_grand_summary_row {
+#peabxjbbsl .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1153,7 +1149,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-top-color: #D3D3D3;
 }
 
-#lcmebfjxzw .gt_last_grand_summary_row_top {
+#peabxjbbsl .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1163,11 +1159,11 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-color: #D3D3D3;
 }
 
-#lcmebfjxzw .gt_striped {
+#peabxjbbsl .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lcmebfjxzw .gt_table_body {
+#peabxjbbsl .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1176,7 +1172,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-color: #D3D3D3;
 }
 
-#lcmebfjxzw .gt_footnotes {
+#peabxjbbsl .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1190,7 +1186,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-#lcmebfjxzw .gt_footnote {
+#peabxjbbsl .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1199,7 +1195,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#lcmebfjxzw .gt_sourcenotes {
+#peabxjbbsl .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1213,7 +1209,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-#lcmebfjxzw .gt_sourcenote {
+#peabxjbbsl .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1221,63 +1217,63 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#lcmebfjxzw .gt_left {
+#peabxjbbsl .gt_left {
   text-align: left;
 }
 
-#lcmebfjxzw .gt_center {
+#peabxjbbsl .gt_center {
   text-align: center;
 }
 
-#lcmebfjxzw .gt_right {
+#peabxjbbsl .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lcmebfjxzw .gt_font_normal {
+#peabxjbbsl .gt_font_normal {
   font-weight: normal;
 }
 
-#lcmebfjxzw .gt_font_bold {
+#peabxjbbsl .gt_font_bold {
   font-weight: bold;
 }
 
-#lcmebfjxzw .gt_font_italic {
+#peabxjbbsl .gt_font_italic {
   font-style: italic;
 }
 
-#lcmebfjxzw .gt_super {
+#peabxjbbsl .gt_super {
   font-size: 65%;
 }
 
-#lcmebfjxzw .gt_footnote_marks {
+#peabxjbbsl .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lcmebfjxzw .gt_asterisk {
+#peabxjbbsl .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lcmebfjxzw .gt_indent_1 {
+#peabxjbbsl .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lcmebfjxzw .gt_indent_2 {
+#peabxjbbsl .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lcmebfjxzw .gt_indent_3 {
+#peabxjbbsl .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lcmebfjxzw .gt_indent_4 {
+#peabxjbbsl .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lcmebfjxzw .gt_indent_5 {
+#peabxjbbsl .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1295,7 +1291,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="second">second</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="third">third</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="fourth">fourth</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="fifth">fifth</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="highest">highest</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="top 5%">top 5%</th>
     </tr>
 </thead>
@@ -1310,40 +1306,31 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <td headers="top5" class="gt_row gt_right">$670,768</td>
 </tr>
 <tr>
-<td headers="name" class="gt_row gt_left">Pennsylvania</td>
-<td headers="q1" class="gt_row gt_right">$15,101</td>
-<td headers="q2" class="gt_row gt_right">$40,268</td>
-<td headers="q3" class="gt_row gt_right">$68,033</td>
-<td headers="q4" class="gt_row gt_right">$106,027</td>
-<td headers="q5" class="gt_row gt_right">$234,818</td>
-<td headers="top5" class="gt_row gt_right">$417,872</td>
+<td headers="name" class="gt_row gt_left">District of Columbia</td>
+<td headers="q1" class="gt_row gt_right">$12,971</td>
+<td headers="q2" class="gt_row gt_right">$51,060</td>
+<td headers="q3" class="gt_row gt_right">$94,478</td>
+<td headers="q4" class="gt_row gt_right">$157,803</td>
+<td headers="q5" class="gt_row gt_right">$375,792</td>
+<td headers="top5" class="gt_row gt_right">$670,768</td>
 </tr>
 <tr>
-<td headers="name" class="gt_row gt_left">Nevada</td>
-<td headers="q1" class="gt_row gt_right">$15,024</td>
-<td headers="q2" class="gt_row gt_right">$40,468</td>
-<td headers="q3" class="gt_row gt_right">$66,247</td>
-<td headers="q4" class="gt_row gt_right">$101,591</td>
-<td headers="q5" class="gt_row gt_right">$224,480</td>
-<td headers="top5" class="gt_row gt_right">$410,161</td>
+<td headers="name" class="gt_row gt_left">Rhode Island</td>
+<td headers="q1" class="gt_row gt_right">$15,069</td>
+<td headers="q2" class="gt_row gt_right">$42,774</td>
+<td headers="q3" class="gt_row gt_right">$74,564</td>
+<td headers="q4" class="gt_row gt_right">$115,030</td>
+<td headers="q5" class="gt_row gt_right">$242,103</td>
+<td headers="top5" class="gt_row gt_right">$424,473</td>
 </tr>
 <tr>
-<td headers="name" class="gt_row gt_left">North Dakota</td>
-<td headers="q1" class="gt_row gt_right">$15,507</td>
-<td headers="q2" class="gt_row gt_right">$41,406</td>
-<td headers="q3" class="gt_row gt_right">$68,558</td>
-<td headers="q4" class="gt_row gt_right">$104,602</td>
-<td headers="q5" class="gt_row gt_right">$217,143</td>
-<td headers="top5" class="gt_row gt_right">$380,261</td>
-</tr>
-<tr>
-<td headers="name" class="gt_row gt_left">Wyoming</td>
-<td headers="q1" class="gt_row gt_right">$15,959</td>
-<td headers="q2" class="gt_row gt_right">$41,640</td>
-<td headers="q3" class="gt_row gt_right">$68,539</td>
-<td headers="q4" class="gt_row gt_right">$102,543</td>
-<td headers="q5" class="gt_row gt_right">$210,249</td>
-<td headers="top5" class="gt_row gt_right">$372,110</td>
+<td headers="name" class="gt_row gt_left">Missouri</td>
+<td headers="q1" class="gt_row gt_right">$14,394</td>
+<td headers="q2" class="gt_row gt_right">$37,099</td>
+<td headers="q3" class="gt_row gt_right">$61,309</td>
+<td headers="q4" class="gt_row gt_right">$94,991</td>
+<td headers="q5" class="gt_row gt_right">$207,969</td>
+<td headers="top5" class="gt_row gt_right">$371,277</td>
 </tr>
 <tr>
 <td headers="name" class="gt_row gt_left">Wisconsin</td>
@@ -1353,6 +1340,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <td headers="q4" class="gt_row gt_right">$101,424</td>
 <td headers="q5" class="gt_row gt_right">$211,049</td>
 <td headers="top5" class="gt_row gt_right">$371,015</td>
+</tr>
+<tr>
+<td headers="name" class="gt_row gt_left">Iowa</td>
+<td headers="q1" class="gt_row gt_right">$16,044</td>
+<td headers="q2" class="gt_row gt_right">$40,632</td>
+<td headers="q3" class="gt_row gt_right">$65,701</td>
+<td headers="q4" class="gt_row gt_right">$98,967</td>
+<td headers="q5" class="gt_row gt_right">$203,398</td>
+<td headers="top5" class="gt_row gt_right">$352,704</td>
 </tr>
 <tr>
 <td headers="name" class="gt_row gt_left">Puerto Rico</td>
@@ -1381,23 +1377,23 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <span><span class="va">vgoodtable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div id="qowhwoozdq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qowhwoozdq table {
+<div id="cheyszishn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#cheyszishn table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#qowhwoozdq thead, #qowhwoozdq tbody, #qowhwoozdq tfoot, #qowhwoozdq tr, #qowhwoozdq td, #qowhwoozdq th {
+#cheyszishn thead, #cheyszishn tbody, #cheyszishn tfoot, #cheyszishn tr, #cheyszishn td, #cheyszishn th {
   border-style: none;
 }
 
-#qowhwoozdq p {
+#cheyszishn p {
   margin: 0;
   padding: 0;
 }
 
-#qowhwoozdq .gt_table {
+#cheyszishn .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1423,12 +1419,12 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-left-color: #D3D3D3;
 }
 
-#qowhwoozdq .gt_caption {
+#cheyszishn .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#qowhwoozdq .gt_title {
+#cheyszishn .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1440,7 +1436,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-width: 0;
 }
 
-#qowhwoozdq .gt_subtitle {
+#cheyszishn .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1452,7 +1448,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-top-width: 0;
 }
 
-#qowhwoozdq .gt_heading {
+#cheyszishn .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1464,13 +1460,13 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-#qowhwoozdq .gt_bottom_border {
+#cheyszishn .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qowhwoozdq .gt_col_headings {
+#cheyszishn .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1485,7 +1481,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-#qowhwoozdq .gt_col_heading {
+#cheyszishn .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1505,7 +1501,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   overflow-x: hidden;
 }
 
-#qowhwoozdq .gt_column_spanner_outer {
+#cheyszishn .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1517,15 +1513,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 4px;
 }
 
-#qowhwoozdq .gt_column_spanner_outer:first-child {
+#cheyszishn .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qowhwoozdq .gt_column_spanner_outer:last-child {
+#cheyszishn .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qowhwoozdq .gt_column_spanner {
+#cheyszishn .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1537,11 +1533,11 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   width: 100%;
 }
 
-#qowhwoozdq .gt_spanner_row {
+#cheyszishn .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#qowhwoozdq .gt_group_heading {
+#cheyszishn .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1567,7 +1563,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   text-align: left;
 }
 
-#qowhwoozdq .gt_empty_group_heading {
+#cheyszishn .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1582,15 +1578,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   vertical-align: middle;
 }
 
-#qowhwoozdq .gt_from_md > :first-child {
+#cheyszishn .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qowhwoozdq .gt_from_md > :last-child {
+#cheyszishn .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qowhwoozdq .gt_row {
+#cheyszishn .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1609,7 +1605,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   overflow-x: hidden;
 }
 
-#qowhwoozdq .gt_stub {
+#cheyszishn .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1622,7 +1618,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#qowhwoozdq .gt_stub_row_group {
+#cheyszishn .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1636,15 +1632,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   vertical-align: top;
 }
 
-#qowhwoozdq .gt_row_group_first td {
+#cheyszishn .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qowhwoozdq .gt_row_group_first th {
+#cheyszishn .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#qowhwoozdq .gt_summary_row {
+#cheyszishn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1654,16 +1650,16 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#qowhwoozdq .gt_first_summary_row {
+#cheyszishn .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qowhwoozdq .gt_first_summary_row.thick {
+#cheyszishn .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qowhwoozdq .gt_last_summary_row {
+#cheyszishn .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1673,7 +1669,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-color: #D3D3D3;
 }
 
-#qowhwoozdq .gt_grand_summary_row {
+#cheyszishn .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1683,7 +1679,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#qowhwoozdq .gt_first_grand_summary_row {
+#cheyszishn .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1693,7 +1689,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-top-color: #D3D3D3;
 }
 
-#qowhwoozdq .gt_last_grand_summary_row_top {
+#cheyszishn .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1703,11 +1699,11 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-color: #D3D3D3;
 }
 
-#qowhwoozdq .gt_striped {
+#cheyszishn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qowhwoozdq .gt_table_body {
+#cheyszishn .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1716,7 +1712,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-color: #D3D3D3;
 }
 
-#qowhwoozdq .gt_footnotes {
+#cheyszishn .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1730,7 +1726,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-#qowhwoozdq .gt_footnote {
+#cheyszishn .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1739,7 +1735,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#qowhwoozdq .gt_sourcenotes {
+#cheyszishn .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1753,7 +1749,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-#qowhwoozdq .gt_sourcenote {
+#cheyszishn .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1761,63 +1757,63 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#qowhwoozdq .gt_left {
+#cheyszishn .gt_left {
   text-align: left;
 }
 
-#qowhwoozdq .gt_center {
+#cheyszishn .gt_center {
   text-align: center;
 }
 
-#qowhwoozdq .gt_right {
+#cheyszishn .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qowhwoozdq .gt_font_normal {
+#cheyszishn .gt_font_normal {
   font-weight: normal;
 }
 
-#qowhwoozdq .gt_font_bold {
+#cheyszishn .gt_font_bold {
   font-weight: bold;
 }
 
-#qowhwoozdq .gt_font_italic {
+#cheyszishn .gt_font_italic {
   font-style: italic;
 }
 
-#qowhwoozdq .gt_super {
+#cheyszishn .gt_super {
   font-size: 65%;
 }
 
-#qowhwoozdq .gt_footnote_marks {
+#cheyszishn .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#qowhwoozdq .gt_asterisk {
+#cheyszishn .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qowhwoozdq .gt_indent_1 {
+#cheyszishn .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qowhwoozdq .gt_indent_2 {
+#cheyszishn .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qowhwoozdq .gt_indent_3 {
+#cheyszishn .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qowhwoozdq .gt_indent_4 {
+#cheyszishn .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qowhwoozdq .gt_indent_5 {
+#cheyszishn .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1844,7 +1840,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="second">second</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="third">third</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="fourth">fourth</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="fifth">fifth</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="highest">highest</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="top 5%">top 5%</th>
     </tr>
 </thead>
@@ -1859,40 +1855,31 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <td headers="top5" class="gt_row gt_right">$670,768</td>
 </tr>
 <tr>
-<td headers="name" class="gt_row gt_left">Pennsylvania</td>
-<td headers="q1" class="gt_row gt_right">$15,101</td>
-<td headers="q2" class="gt_row gt_right">$40,268</td>
-<td headers="q3" class="gt_row gt_right">$68,033</td>
-<td headers="q4" class="gt_row gt_right">$106,027</td>
-<td headers="q5" class="gt_row gt_right">$234,818</td>
-<td headers="top5" class="gt_row gt_right">$417,872</td>
+<td headers="name" class="gt_row gt_left">District of Columbia</td>
+<td headers="q1" class="gt_row gt_right">$12,971</td>
+<td headers="q2" class="gt_row gt_right">$51,060</td>
+<td headers="q3" class="gt_row gt_right">$94,478</td>
+<td headers="q4" class="gt_row gt_right">$157,803</td>
+<td headers="q5" class="gt_row gt_right">$375,792</td>
+<td headers="top5" class="gt_row gt_right">$670,768</td>
 </tr>
 <tr>
-<td headers="name" class="gt_row gt_left">Nevada</td>
-<td headers="q1" class="gt_row gt_right">$15,024</td>
-<td headers="q2" class="gt_row gt_right">$40,468</td>
-<td headers="q3" class="gt_row gt_right">$66,247</td>
-<td headers="q4" class="gt_row gt_right">$101,591</td>
-<td headers="q5" class="gt_row gt_right">$224,480</td>
-<td headers="top5" class="gt_row gt_right">$410,161</td>
+<td headers="name" class="gt_row gt_left">Rhode Island</td>
+<td headers="q1" class="gt_row gt_right">$15,069</td>
+<td headers="q2" class="gt_row gt_right">$42,774</td>
+<td headers="q3" class="gt_row gt_right">$74,564</td>
+<td headers="q4" class="gt_row gt_right">$115,030</td>
+<td headers="q5" class="gt_row gt_right">$242,103</td>
+<td headers="top5" class="gt_row gt_right">$424,473</td>
 </tr>
 <tr>
-<td headers="name" class="gt_row gt_left">North Dakota</td>
-<td headers="q1" class="gt_row gt_right">$15,507</td>
-<td headers="q2" class="gt_row gt_right">$41,406</td>
-<td headers="q3" class="gt_row gt_right">$68,558</td>
-<td headers="q4" class="gt_row gt_right">$104,602</td>
-<td headers="q5" class="gt_row gt_right">$217,143</td>
-<td headers="top5" class="gt_row gt_right">$380,261</td>
-</tr>
-<tr>
-<td headers="name" class="gt_row gt_left">Wyoming</td>
-<td headers="q1" class="gt_row gt_right">$15,959</td>
-<td headers="q2" class="gt_row gt_right">$41,640</td>
-<td headers="q3" class="gt_row gt_right">$68,539</td>
-<td headers="q4" class="gt_row gt_right">$102,543</td>
-<td headers="q5" class="gt_row gt_right">$210,249</td>
-<td headers="top5" class="gt_row gt_right">$372,110</td>
+<td headers="name" class="gt_row gt_left">Missouri</td>
+<td headers="q1" class="gt_row gt_right">$14,394</td>
+<td headers="q2" class="gt_row gt_right">$37,099</td>
+<td headers="q3" class="gt_row gt_right">$61,309</td>
+<td headers="q4" class="gt_row gt_right">$94,991</td>
+<td headers="q5" class="gt_row gt_right">$207,969</td>
+<td headers="top5" class="gt_row gt_right">$371,277</td>
 </tr>
 <tr>
 <td headers="name" class="gt_row gt_left">Wisconsin</td>
@@ -1902,6 +1889,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <td headers="q4" class="gt_row gt_right">$101,424</td>
 <td headers="q5" class="gt_row gt_right">$211,049</td>
 <td headers="top5" class="gt_row gt_right">$371,015</td>
+</tr>
+<tr>
+<td headers="name" class="gt_row gt_left">Iowa</td>
+<td headers="q1" class="gt_row gt_right">$16,044</td>
+<td headers="q2" class="gt_row gt_right">$40,632</td>
+<td headers="q3" class="gt_row gt_right">$65,701</td>
+<td headers="q4" class="gt_row gt_right">$98,967</td>
+<td headers="q5" class="gt_row gt_right">$203,398</td>
+<td headers="top5" class="gt_row gt_right">$352,704</td>
 </tr>
 <tr>
 <td headers="name" class="gt_row gt_left">Puerto Rico</td>
@@ -1930,23 +1926,23 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <span><span class="va">greattable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div id="iirabgcvrm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#iirabgcvrm table {
+<div id="mcgmxmenyr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mcgmxmenyr table {
   font-family: verdana, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#iirabgcvrm thead, #iirabgcvrm tbody, #iirabgcvrm tfoot, #iirabgcvrm tr, #iirabgcvrm td, #iirabgcvrm th {
+#mcgmxmenyr thead, #mcgmxmenyr tbody, #mcgmxmenyr tfoot, #mcgmxmenyr tr, #mcgmxmenyr td, #mcgmxmenyr th {
   border-style: none;
 }
 
-#iirabgcvrm p {
+#mcgmxmenyr p {
   margin: 0;
   padding: 0;
 }
 
-#iirabgcvrm .gt_table {
+#mcgmxmenyr .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1972,12 +1968,12 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-left-color: #D3D3D3;
 }
 
-#iirabgcvrm .gt_caption {
+#mcgmxmenyr .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#iirabgcvrm .gt_title {
+#mcgmxmenyr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1989,7 +1985,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-width: 0;
 }
 
-#iirabgcvrm .gt_subtitle {
+#mcgmxmenyr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2001,7 +1997,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-top-width: 0;
 }
 
-#iirabgcvrm .gt_heading {
+#mcgmxmenyr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2013,13 +2009,13 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-#iirabgcvrm .gt_bottom_border {
+#mcgmxmenyr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#iirabgcvrm .gt_col_headings {
+#mcgmxmenyr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2034,7 +2030,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-#iirabgcvrm .gt_col_heading {
+#mcgmxmenyr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2054,7 +2050,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   overflow-x: hidden;
 }
 
-#iirabgcvrm .gt_column_spanner_outer {
+#mcgmxmenyr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2066,15 +2062,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 4px;
 }
 
-#iirabgcvrm .gt_column_spanner_outer:first-child {
+#mcgmxmenyr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#iirabgcvrm .gt_column_spanner_outer:last-child {
+#mcgmxmenyr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#iirabgcvrm .gt_column_spanner {
+#mcgmxmenyr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2086,11 +2082,11 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   width: 100%;
 }
 
-#iirabgcvrm .gt_spanner_row {
+#mcgmxmenyr .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#iirabgcvrm .gt_group_heading {
+#mcgmxmenyr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2116,7 +2112,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   text-align: left;
 }
 
-#iirabgcvrm .gt_empty_group_heading {
+#mcgmxmenyr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2131,15 +2127,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   vertical-align: middle;
 }
 
-#iirabgcvrm .gt_from_md > :first-child {
+#mcgmxmenyr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#iirabgcvrm .gt_from_md > :last-child {
+#mcgmxmenyr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#iirabgcvrm .gt_row {
+#mcgmxmenyr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2158,7 +2154,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   overflow-x: hidden;
 }
 
-#iirabgcvrm .gt_stub {
+#mcgmxmenyr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2171,7 +2167,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#iirabgcvrm .gt_stub_row_group {
+#mcgmxmenyr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2185,15 +2181,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   vertical-align: top;
 }
 
-#iirabgcvrm .gt_row_group_first td {
+#mcgmxmenyr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#iirabgcvrm .gt_row_group_first th {
+#mcgmxmenyr .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#iirabgcvrm .gt_summary_row {
+#mcgmxmenyr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2203,16 +2199,16 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#iirabgcvrm .gt_first_summary_row {
+#mcgmxmenyr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#iirabgcvrm .gt_first_summary_row.thick {
+#mcgmxmenyr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#iirabgcvrm .gt_last_summary_row {
+#mcgmxmenyr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2222,7 +2218,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-color: #D3D3D3;
 }
 
-#iirabgcvrm .gt_grand_summary_row {
+#mcgmxmenyr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2232,7 +2228,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#iirabgcvrm .gt_first_grand_summary_row {
+#mcgmxmenyr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2242,7 +2238,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-top-color: #D3D3D3;
 }
 
-#iirabgcvrm .gt_last_grand_summary_row_top {
+#mcgmxmenyr .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2252,11 +2248,11 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-color: #D3D3D3;
 }
 
-#iirabgcvrm .gt_striped {
+#mcgmxmenyr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#iirabgcvrm .gt_table_body {
+#mcgmxmenyr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2265,7 +2261,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-color: #D3D3D3;
 }
 
-#iirabgcvrm .gt_footnotes {
+#mcgmxmenyr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2279,7 +2275,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-#iirabgcvrm .gt_footnote {
+#mcgmxmenyr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2288,7 +2284,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#iirabgcvrm .gt_sourcenotes {
+#mcgmxmenyr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2302,7 +2298,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-#iirabgcvrm .gt_sourcenote {
+#mcgmxmenyr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2310,63 +2306,63 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#iirabgcvrm .gt_left {
+#mcgmxmenyr .gt_left {
   text-align: left;
 }
 
-#iirabgcvrm .gt_center {
+#mcgmxmenyr .gt_center {
   text-align: center;
 }
 
-#iirabgcvrm .gt_right {
+#mcgmxmenyr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#iirabgcvrm .gt_font_normal {
+#mcgmxmenyr .gt_font_normal {
   font-weight: normal;
 }
 
-#iirabgcvrm .gt_font_bold {
+#mcgmxmenyr .gt_font_bold {
   font-weight: bold;
 }
 
-#iirabgcvrm .gt_font_italic {
+#mcgmxmenyr .gt_font_italic {
   font-style: italic;
 }
 
-#iirabgcvrm .gt_super {
+#mcgmxmenyr .gt_super {
   font-size: 65%;
 }
 
-#iirabgcvrm .gt_footnote_marks {
+#mcgmxmenyr .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#iirabgcvrm .gt_asterisk {
+#mcgmxmenyr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#iirabgcvrm .gt_indent_1 {
+#mcgmxmenyr .gt_indent_1 {
   text-indent: 5px;
 }
 
-#iirabgcvrm .gt_indent_2 {
+#mcgmxmenyr .gt_indent_2 {
   text-indent: 10px;
 }
 
-#iirabgcvrm .gt_indent_3 {
+#mcgmxmenyr .gt_indent_3 {
   text-indent: 15px;
 }
 
-#iirabgcvrm .gt_indent_4 {
+#mcgmxmenyr .gt_indent_4 {
   text-indent: 20px;
 }
 
-#iirabgcvrm .gt_indent_5 {
+#mcgmxmenyr .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2393,7 +2389,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="second">second</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="third">third</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="fourth">fourth</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="fifth">fifth</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="highest">highest</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="top 5%">top 5%</th>
     </tr>
 </thead>
@@ -2408,40 +2404,31 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <td headers="top5" class="gt_row gt_right">$670,768</td>
 </tr>
 <tr>
-<td headers="name" class="gt_row gt_left">Pennsylvania</td>
-<td headers="q1" class="gt_row gt_right">$15,101</td>
-<td headers="q2" class="gt_row gt_right">$40,268</td>
-<td headers="q3" class="gt_row gt_right">$68,033</td>
-<td headers="q4" class="gt_row gt_right">$106,027</td>
-<td headers="q5" class="gt_row gt_right">$234,818</td>
-<td headers="top5" class="gt_row gt_right">$417,872</td>
+<td headers="name" class="gt_row gt_left">District of Columbia</td>
+<td headers="q1" class="gt_row gt_right">$12,971</td>
+<td headers="q2" class="gt_row gt_right">$51,060</td>
+<td headers="q3" class="gt_row gt_right">$94,478</td>
+<td headers="q4" class="gt_row gt_right">$157,803</td>
+<td headers="q5" class="gt_row gt_right">$375,792</td>
+<td headers="top5" class="gt_row gt_right">$670,768</td>
 </tr>
 <tr>
-<td headers="name" class="gt_row gt_left">Nevada</td>
-<td headers="q1" class="gt_row gt_right">$15,024</td>
-<td headers="q2" class="gt_row gt_right">$40,468</td>
-<td headers="q3" class="gt_row gt_right">$66,247</td>
-<td headers="q4" class="gt_row gt_right">$101,591</td>
-<td headers="q5" class="gt_row gt_right">$224,480</td>
-<td headers="top5" class="gt_row gt_right">$410,161</td>
+<td headers="name" class="gt_row gt_left">Rhode Island</td>
+<td headers="q1" class="gt_row gt_right">$15,069</td>
+<td headers="q2" class="gt_row gt_right">$42,774</td>
+<td headers="q3" class="gt_row gt_right">$74,564</td>
+<td headers="q4" class="gt_row gt_right">$115,030</td>
+<td headers="q5" class="gt_row gt_right">$242,103</td>
+<td headers="top5" class="gt_row gt_right">$424,473</td>
 </tr>
 <tr>
-<td headers="name" class="gt_row gt_left">North Dakota</td>
-<td headers="q1" class="gt_row gt_right">$15,507</td>
-<td headers="q2" class="gt_row gt_right">$41,406</td>
-<td headers="q3" class="gt_row gt_right">$68,558</td>
-<td headers="q4" class="gt_row gt_right">$104,602</td>
-<td headers="q5" class="gt_row gt_right">$217,143</td>
-<td headers="top5" class="gt_row gt_right">$380,261</td>
-</tr>
-<tr>
-<td headers="name" class="gt_row gt_left">Wyoming</td>
-<td headers="q1" class="gt_row gt_right">$15,959</td>
-<td headers="q2" class="gt_row gt_right">$41,640</td>
-<td headers="q3" class="gt_row gt_right">$68,539</td>
-<td headers="q4" class="gt_row gt_right">$102,543</td>
-<td headers="q5" class="gt_row gt_right">$210,249</td>
-<td headers="top5" class="gt_row gt_right">$372,110</td>
+<td headers="name" class="gt_row gt_left">Missouri</td>
+<td headers="q1" class="gt_row gt_right">$14,394</td>
+<td headers="q2" class="gt_row gt_right">$37,099</td>
+<td headers="q3" class="gt_row gt_right">$61,309</td>
+<td headers="q4" class="gt_row gt_right">$94,991</td>
+<td headers="q5" class="gt_row gt_right">$207,969</td>
+<td headers="top5" class="gt_row gt_right">$371,277</td>
 </tr>
 <tr>
 <td headers="name" class="gt_row gt_left">Wisconsin</td>
@@ -2451,6 +2438,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <td headers="q4" class="gt_row gt_right">$101,424</td>
 <td headers="q5" class="gt_row gt_right">$211,049</td>
 <td headers="top5" class="gt_row gt_right">$371,015</td>
+</tr>
+<tr>
+<td headers="name" class="gt_row gt_left">Iowa</td>
+<td headers="q1" class="gt_row gt_right">$16,044</td>
+<td headers="q2" class="gt_row gt_right">$40,632</td>
+<td headers="q3" class="gt_row gt_right">$65,701</td>
+<td headers="q4" class="gt_row gt_right">$98,967</td>
+<td headers="q5" class="gt_row gt_right">$203,398</td>
+<td headers="top5" class="gt_row gt_right">$352,704</td>
 </tr>
 <tr>
 <td headers="name" class="gt_row gt_left">Puerto Rico</td>
@@ -2482,23 +2478,23 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <span><span class="va">vgreattable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div id="ninmcuxyoc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ninmcuxyoc table {
+<div id="ualwncovuy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ualwncovuy table {
   font-family: verdana, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ninmcuxyoc thead, #ninmcuxyoc tbody, #ninmcuxyoc tfoot, #ninmcuxyoc tr, #ninmcuxyoc td, #ninmcuxyoc th {
+#ualwncovuy thead, #ualwncovuy tbody, #ualwncovuy tfoot, #ualwncovuy tr, #ualwncovuy td, #ualwncovuy th {
   border-style: none;
 }
 
-#ninmcuxyoc p {
+#ualwncovuy p {
   margin: 0;
   padding: 0;
 }
 
-#ninmcuxyoc .gt_table {
+#ualwncovuy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2524,12 +2520,12 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-left-color: #D3D3D3;
 }
 
-#ninmcuxyoc .gt_caption {
+#ualwncovuy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ninmcuxyoc .gt_title {
+#ualwncovuy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2541,7 +2537,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-width: 0;
 }
 
-#ninmcuxyoc .gt_subtitle {
+#ualwncovuy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2553,7 +2549,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-top-width: 0;
 }
 
-#ninmcuxyoc .gt_heading {
+#ualwncovuy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2565,13 +2561,13 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-#ninmcuxyoc .gt_bottom_border {
+#ualwncovuy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ninmcuxyoc .gt_col_headings {
+#ualwncovuy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2586,7 +2582,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-#ninmcuxyoc .gt_col_heading {
+#ualwncovuy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2606,7 +2602,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   overflow-x: hidden;
 }
 
-#ninmcuxyoc .gt_column_spanner_outer {
+#ualwncovuy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2618,15 +2614,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 4px;
 }
 
-#ninmcuxyoc .gt_column_spanner_outer:first-child {
+#ualwncovuy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ninmcuxyoc .gt_column_spanner_outer:last-child {
+#ualwncovuy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ninmcuxyoc .gt_column_spanner {
+#ualwncovuy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2638,11 +2634,11 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   width: 100%;
 }
 
-#ninmcuxyoc .gt_spanner_row {
+#ualwncovuy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ninmcuxyoc .gt_group_heading {
+#ualwncovuy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2668,7 +2664,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   text-align: left;
 }
 
-#ninmcuxyoc .gt_empty_group_heading {
+#ualwncovuy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2683,15 +2679,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   vertical-align: middle;
 }
 
-#ninmcuxyoc .gt_from_md > :first-child {
+#ualwncovuy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ninmcuxyoc .gt_from_md > :last-child {
+#ualwncovuy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ninmcuxyoc .gt_row {
+#ualwncovuy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2710,7 +2706,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   overflow-x: hidden;
 }
 
-#ninmcuxyoc .gt_stub {
+#ualwncovuy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2723,7 +2719,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#ninmcuxyoc .gt_stub_row_group {
+#ualwncovuy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2737,15 +2733,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   vertical-align: top;
 }
 
-#ninmcuxyoc .gt_row_group_first td {
+#ualwncovuy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ninmcuxyoc .gt_row_group_first th {
+#ualwncovuy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ninmcuxyoc .gt_summary_row {
+#ualwncovuy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2755,16 +2751,16 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#ninmcuxyoc .gt_first_summary_row {
+#ualwncovuy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ninmcuxyoc .gt_first_summary_row.thick {
+#ualwncovuy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ninmcuxyoc .gt_last_summary_row {
+#ualwncovuy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2774,7 +2770,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-color: #D3D3D3;
 }
 
-#ninmcuxyoc .gt_grand_summary_row {
+#ualwncovuy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2784,7 +2780,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#ninmcuxyoc .gt_first_grand_summary_row {
+#ualwncovuy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2794,7 +2790,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-top-color: #D3D3D3;
 }
 
-#ninmcuxyoc .gt_last_grand_summary_row_top {
+#ualwncovuy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2804,11 +2800,11 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-color: #D3D3D3;
 }
 
-#ninmcuxyoc .gt_striped {
+#ualwncovuy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ninmcuxyoc .gt_table_body {
+#ualwncovuy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2817,7 +2813,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-color: #D3D3D3;
 }
 
-#ninmcuxyoc .gt_footnotes {
+#ualwncovuy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2831,7 +2827,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-#ninmcuxyoc .gt_footnote {
+#ualwncovuy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2840,7 +2836,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#ninmcuxyoc .gt_sourcenotes {
+#ualwncovuy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2854,7 +2850,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-#ninmcuxyoc .gt_sourcenote {
+#ualwncovuy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2862,63 +2858,63 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#ninmcuxyoc .gt_left {
+#ualwncovuy .gt_left {
   text-align: left;
 }
 
-#ninmcuxyoc .gt_center {
+#ualwncovuy .gt_center {
   text-align: center;
 }
 
-#ninmcuxyoc .gt_right {
+#ualwncovuy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ninmcuxyoc .gt_font_normal {
+#ualwncovuy .gt_font_normal {
   font-weight: normal;
 }
 
-#ninmcuxyoc .gt_font_bold {
+#ualwncovuy .gt_font_bold {
   font-weight: bold;
 }
 
-#ninmcuxyoc .gt_font_italic {
+#ualwncovuy .gt_font_italic {
   font-style: italic;
 }
 
-#ninmcuxyoc .gt_super {
+#ualwncovuy .gt_super {
   font-size: 65%;
 }
 
-#ninmcuxyoc .gt_footnote_marks {
+#ualwncovuy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ninmcuxyoc .gt_asterisk {
+#ualwncovuy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ninmcuxyoc .gt_indent_1 {
+#ualwncovuy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ninmcuxyoc .gt_indent_2 {
+#ualwncovuy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ninmcuxyoc .gt_indent_3 {
+#ualwncovuy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ninmcuxyoc .gt_indent_4 {
+#ualwncovuy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ninmcuxyoc .gt_indent_5 {
+#ualwncovuy .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2945,7 +2941,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="second">second</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="third">third</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="fourth">fourth</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="fifth">fifth</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="highest">highest</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="top 5%">top 5%</th>
     </tr>
 </thead>
@@ -2960,40 +2956,31 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <td headers="top5" class="gt_row gt_center">$670,768</td>
 </tr>
 <tr>
-<td headers="name" class="gt_row gt_left">Pennsylvania</td>
-<td headers="q1" class="gt_row gt_center">$15,101</td>
-<td headers="q2" class="gt_row gt_center">$40,268</td>
-<td headers="q3" class="gt_row gt_center">$68,033</td>
-<td headers="q4" class="gt_row gt_center">$106,027</td>
-<td headers="q5" class="gt_row gt_center">$234,818</td>
-<td headers="top5" class="gt_row gt_center">$417,872</td>
+<td headers="name" class="gt_row gt_left">District of Columbia</td>
+<td headers="q1" class="gt_row gt_center">$12,971</td>
+<td headers="q2" class="gt_row gt_center">$51,060</td>
+<td headers="q3" class="gt_row gt_center">$94,478</td>
+<td headers="q4" class="gt_row gt_center">$157,803</td>
+<td headers="q5" class="gt_row gt_center">$375,792</td>
+<td headers="top5" class="gt_row gt_center">$670,768</td>
 </tr>
 <tr>
-<td headers="name" class="gt_row gt_left">Nevada</td>
-<td headers="q1" class="gt_row gt_center">$15,024</td>
-<td headers="q2" class="gt_row gt_center">$40,468</td>
-<td headers="q3" class="gt_row gt_center">$66,247</td>
-<td headers="q4" class="gt_row gt_center">$101,591</td>
-<td headers="q5" class="gt_row gt_center">$224,480</td>
-<td headers="top5" class="gt_row gt_center">$410,161</td>
+<td headers="name" class="gt_row gt_left">Rhode Island</td>
+<td headers="q1" class="gt_row gt_center">$15,069</td>
+<td headers="q2" class="gt_row gt_center">$42,774</td>
+<td headers="q3" class="gt_row gt_center">$74,564</td>
+<td headers="q4" class="gt_row gt_center">$115,030</td>
+<td headers="q5" class="gt_row gt_center">$242,103</td>
+<td headers="top5" class="gt_row gt_center">$424,473</td>
 </tr>
 <tr>
-<td headers="name" class="gt_row gt_left">North Dakota</td>
-<td headers="q1" class="gt_row gt_center">$15,507</td>
-<td headers="q2" class="gt_row gt_center">$41,406</td>
-<td headers="q3" class="gt_row gt_center">$68,558</td>
-<td headers="q4" class="gt_row gt_center">$104,602</td>
-<td headers="q5" class="gt_row gt_center">$217,143</td>
-<td headers="top5" class="gt_row gt_center">$380,261</td>
-</tr>
-<tr>
-<td headers="name" class="gt_row gt_left">Wyoming</td>
-<td headers="q1" class="gt_row gt_center">$15,959</td>
-<td headers="q2" class="gt_row gt_center">$41,640</td>
-<td headers="q3" class="gt_row gt_center">$68,539</td>
-<td headers="q4" class="gt_row gt_center">$102,543</td>
-<td headers="q5" class="gt_row gt_center">$210,249</td>
-<td headers="top5" class="gt_row gt_center">$372,110</td>
+<td headers="name" class="gt_row gt_left">Missouri</td>
+<td headers="q1" class="gt_row gt_center">$14,394</td>
+<td headers="q2" class="gt_row gt_center">$37,099</td>
+<td headers="q3" class="gt_row gt_center">$61,309</td>
+<td headers="q4" class="gt_row gt_center">$94,991</td>
+<td headers="q5" class="gt_row gt_center">$207,969</td>
+<td headers="top5" class="gt_row gt_center">$371,277</td>
 </tr>
 <tr>
 <td headers="name" class="gt_row gt_left">Wisconsin</td>
@@ -3003,6 +2990,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <td headers="q4" class="gt_row gt_center">$101,424</td>
 <td headers="q5" class="gt_row gt_center">$211,049</td>
 <td headers="top5" class="gt_row gt_center">$371,015</td>
+</tr>
+<tr>
+<td headers="name" class="gt_row gt_left">Iowa</td>
+<td headers="q1" class="gt_row gt_center">$16,044</td>
+<td headers="q2" class="gt_row gt_center">$40,632</td>
+<td headers="q3" class="gt_row gt_center">$65,701</td>
+<td headers="q4" class="gt_row gt_center">$98,967</td>
+<td headers="q5" class="gt_row gt_center">$203,398</td>
+<td headers="top5" class="gt_row gt_center">$352,704</td>
 </tr>
 <tr>
 <td headers="name" class="gt_row gt_left">Puerto Rico</td>
@@ -3037,23 +3033,23 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <span><span class="va">awesometable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div id="vwirjcbvqn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vwirjcbvqn table {
+<div id="nhmtqhuovj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#nhmtqhuovj table {
   font-family: verdana, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vwirjcbvqn thead, #vwirjcbvqn tbody, #vwirjcbvqn tfoot, #vwirjcbvqn tr, #vwirjcbvqn td, #vwirjcbvqn th {
+#nhmtqhuovj thead, #nhmtqhuovj tbody, #nhmtqhuovj tfoot, #nhmtqhuovj tr, #nhmtqhuovj td, #nhmtqhuovj th {
   border-style: none;
 }
 
-#vwirjcbvqn p {
+#nhmtqhuovj p {
   margin: 0;
   padding: 0;
 }
 
-#vwirjcbvqn .gt_table {
+#nhmtqhuovj .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3079,12 +3075,12 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-left-color: #D3D3D3;
 }
 
-#vwirjcbvqn .gt_caption {
+#nhmtqhuovj .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vwirjcbvqn .gt_title {
+#nhmtqhuovj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3096,7 +3092,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-width: 0;
 }
 
-#vwirjcbvqn .gt_subtitle {
+#nhmtqhuovj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3108,7 +3104,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-top-width: 0;
 }
 
-#vwirjcbvqn .gt_heading {
+#nhmtqhuovj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3120,13 +3116,13 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-#vwirjcbvqn .gt_bottom_border {
+#nhmtqhuovj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #000000;
 }
 
-#vwirjcbvqn .gt_col_headings {
+#nhmtqhuovj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3141,7 +3137,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-#vwirjcbvqn .gt_col_heading {
+#nhmtqhuovj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3161,7 +3157,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   overflow-x: hidden;
 }
 
-#vwirjcbvqn .gt_column_spanner_outer {
+#nhmtqhuovj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3173,15 +3169,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 4px;
 }
 
-#vwirjcbvqn .gt_column_spanner_outer:first-child {
+#nhmtqhuovj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vwirjcbvqn .gt_column_spanner_outer:last-child {
+#nhmtqhuovj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vwirjcbvqn .gt_column_spanner {
+#nhmtqhuovj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #000000;
@@ -3193,11 +3189,11 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   width: 100%;
 }
 
-#vwirjcbvqn .gt_spanner_row {
+#nhmtqhuovj .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vwirjcbvqn .gt_group_heading {
+#nhmtqhuovj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3223,7 +3219,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   text-align: left;
 }
 
-#vwirjcbvqn .gt_empty_group_heading {
+#nhmtqhuovj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3238,15 +3234,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   vertical-align: middle;
 }
 
-#vwirjcbvqn .gt_from_md > :first-child {
+#nhmtqhuovj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vwirjcbvqn .gt_from_md > :last-child {
+#nhmtqhuovj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vwirjcbvqn .gt_row {
+#nhmtqhuovj .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3265,7 +3261,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   overflow-x: hidden;
 }
 
-#vwirjcbvqn .gt_stub {
+#nhmtqhuovj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3278,7 +3274,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#vwirjcbvqn .gt_stub_row_group {
+#nhmtqhuovj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3292,15 +3288,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   vertical-align: top;
 }
 
-#vwirjcbvqn .gt_row_group_first td {
+#nhmtqhuovj .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vwirjcbvqn .gt_row_group_first th {
+#nhmtqhuovj .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vwirjcbvqn .gt_summary_row {
+#nhmtqhuovj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3310,16 +3306,16 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#vwirjcbvqn .gt_first_summary_row {
+#nhmtqhuovj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vwirjcbvqn .gt_first_summary_row.thick {
+#nhmtqhuovj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vwirjcbvqn .gt_last_summary_row {
+#nhmtqhuovj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3329,7 +3325,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-color: #D3D3D3;
 }
 
-#vwirjcbvqn .gt_grand_summary_row {
+#nhmtqhuovj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3339,7 +3335,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#vwirjcbvqn .gt_first_grand_summary_row {
+#nhmtqhuovj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3349,7 +3345,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-top-color: #D3D3D3;
 }
 
-#vwirjcbvqn .gt_last_grand_summary_row_top {
+#nhmtqhuovj .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3359,11 +3355,11 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-color: #D3D3D3;
 }
 
-#vwirjcbvqn .gt_striped {
+#nhmtqhuovj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vwirjcbvqn .gt_table_body {
+#nhmtqhuovj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3372,7 +3368,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-bottom-color: #000000;
 }
 
-#vwirjcbvqn .gt_footnotes {
+#nhmtqhuovj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3386,7 +3382,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-#vwirjcbvqn .gt_footnote {
+#nhmtqhuovj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3395,7 +3391,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#vwirjcbvqn .gt_sourcenotes {
+#nhmtqhuovj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3409,7 +3405,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   border-right-color: #D3D3D3;
 }
 
-#vwirjcbvqn .gt_sourcenote {
+#nhmtqhuovj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3417,63 +3413,63 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
   padding-right: 5px;
 }
 
-#vwirjcbvqn .gt_left {
+#nhmtqhuovj .gt_left {
   text-align: left;
 }
 
-#vwirjcbvqn .gt_center {
+#nhmtqhuovj .gt_center {
   text-align: center;
 }
 
-#vwirjcbvqn .gt_right {
+#nhmtqhuovj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vwirjcbvqn .gt_font_normal {
+#nhmtqhuovj .gt_font_normal {
   font-weight: normal;
 }
 
-#vwirjcbvqn .gt_font_bold {
+#nhmtqhuovj .gt_font_bold {
   font-weight: bold;
 }
 
-#vwirjcbvqn .gt_font_italic {
+#nhmtqhuovj .gt_font_italic {
   font-style: italic;
 }
 
-#vwirjcbvqn .gt_super {
+#nhmtqhuovj .gt_super {
   font-size: 65%;
 }
 
-#vwirjcbvqn .gt_footnote_marks {
+#nhmtqhuovj .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vwirjcbvqn .gt_asterisk {
+#nhmtqhuovj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vwirjcbvqn .gt_indent_1 {
+#nhmtqhuovj .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vwirjcbvqn .gt_indent_2 {
+#nhmtqhuovj .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vwirjcbvqn .gt_indent_3 {
+#nhmtqhuovj .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vwirjcbvqn .gt_indent_4 {
+#nhmtqhuovj .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vwirjcbvqn .gt_indent_5 {
+#nhmtqhuovj .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -3500,7 +3496,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="second">second</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="third">third</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="fourth">fourth</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="fifth">fifth</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="highest">highest</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="top 5%">top 5%</th>
     </tr>
 </thead>
@@ -3515,40 +3511,31 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <td headers="top5" class="gt_row gt_center">$670,768</td>
 </tr>
 <tr>
-<td headers="name" class="gt_row gt_left">Pennsylvania</td>
-<td headers="q1" class="gt_row gt_center">$15,101</td>
-<td headers="q2" class="gt_row gt_center">$40,268</td>
-<td headers="q3" class="gt_row gt_center">$68,033</td>
-<td headers="q4" class="gt_row gt_center">$106,027</td>
-<td headers="q5" class="gt_row gt_center">$234,818</td>
-<td headers="top5" class="gt_row gt_center">$417,872</td>
+<td headers="name" class="gt_row gt_left">District of Columbia</td>
+<td headers="q1" class="gt_row gt_center">$12,971</td>
+<td headers="q2" class="gt_row gt_center">$51,060</td>
+<td headers="q3" class="gt_row gt_center">$94,478</td>
+<td headers="q4" class="gt_row gt_center">$157,803</td>
+<td headers="q5" class="gt_row gt_center">$375,792</td>
+<td headers="top5" class="gt_row gt_center">$670,768</td>
 </tr>
 <tr>
-<td headers="name" class="gt_row gt_left">Nevada</td>
-<td headers="q1" class="gt_row gt_center">$15,024</td>
-<td headers="q2" class="gt_row gt_center">$40,468</td>
-<td headers="q3" class="gt_row gt_center">$66,247</td>
-<td headers="q4" class="gt_row gt_center">$101,591</td>
-<td headers="q5" class="gt_row gt_center">$224,480</td>
-<td headers="top5" class="gt_row gt_center">$410,161</td>
+<td headers="name" class="gt_row gt_left">Rhode Island</td>
+<td headers="q1" class="gt_row gt_center">$15,069</td>
+<td headers="q2" class="gt_row gt_center">$42,774</td>
+<td headers="q3" class="gt_row gt_center">$74,564</td>
+<td headers="q4" class="gt_row gt_center">$115,030</td>
+<td headers="q5" class="gt_row gt_center">$242,103</td>
+<td headers="top5" class="gt_row gt_center">$424,473</td>
 </tr>
 <tr>
-<td headers="name" class="gt_row gt_left">North Dakota</td>
-<td headers="q1" class="gt_row gt_center">$15,507</td>
-<td headers="q2" class="gt_row gt_center">$41,406</td>
-<td headers="q3" class="gt_row gt_center">$68,558</td>
-<td headers="q4" class="gt_row gt_center">$104,602</td>
-<td headers="q5" class="gt_row gt_center">$217,143</td>
-<td headers="top5" class="gt_row gt_center">$380,261</td>
-</tr>
-<tr>
-<td headers="name" class="gt_row gt_left">Wyoming</td>
-<td headers="q1" class="gt_row gt_center">$15,959</td>
-<td headers="q2" class="gt_row gt_center">$41,640</td>
-<td headers="q3" class="gt_row gt_center">$68,539</td>
-<td headers="q4" class="gt_row gt_center">$102,543</td>
-<td headers="q5" class="gt_row gt_center">$210,249</td>
-<td headers="top5" class="gt_row gt_center">$372,110</td>
+<td headers="name" class="gt_row gt_left">Missouri</td>
+<td headers="q1" class="gt_row gt_center">$14,394</td>
+<td headers="q2" class="gt_row gt_center">$37,099</td>
+<td headers="q3" class="gt_row gt_center">$61,309</td>
+<td headers="q4" class="gt_row gt_center">$94,991</td>
+<td headers="q5" class="gt_row gt_center">$207,969</td>
+<td headers="top5" class="gt_row gt_center">$371,277</td>
 </tr>
 <tr>
 <td headers="name" class="gt_row gt_left">Wisconsin</td>
@@ -3558,6 +3545,15 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <td headers="q4" class="gt_row gt_center">$101,424</td>
 <td headers="q5" class="gt_row gt_center">$211,049</td>
 <td headers="top5" class="gt_row gt_center">$371,015</td>
+</tr>
+<tr>
+<td headers="name" class="gt_row gt_left">Iowa</td>
+<td headers="q1" class="gt_row gt_center">$16,044</td>
+<td headers="q2" class="gt_row gt_center">$40,632</td>
+<td headers="q3" class="gt_row gt_center">$65,701</td>
+<td headers="q4" class="gt_row gt_center">$98,967</td>
+<td headers="q5" class="gt_row gt_center">$203,398</td>
+<td headers="top5" class="gt_row gt_center">$352,704</td>
 </tr>
 <tr>
 <td headers="name" class="gt_row gt_left">Puerto Rico</td>

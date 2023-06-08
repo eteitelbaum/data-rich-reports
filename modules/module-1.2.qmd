@@ -1,7 +1,9 @@
 ---
 title: "Module 1.2"
 subtitle: "Working with APIs"
-format: html
+format: 
+  html:
+    code-link: true
 highlight-style: atom-one
 execute:
   echo: true
@@ -12,7 +14,7 @@ execute:
 ::: {.callout-tip}
 ## Prework
 
-- Install the `devtools` package. Type `install.packages("devtools")` in your console. You will need this to install the `vdemdata` package becaue it is not on the CRAN Network. 
+- Install the `devtools` package. Type `install.packages("devtools")` in your console. You will need this to install the `vdemdata` package because it is not on the CRAN Network. 
 - Install the `vdemdata` package from GitHub. Type `devtools::install_github("vdeminstitute/vdemdata")` in your console. 
 - Install the `wbstats` and `countrycode` packages:
 

@@ -1,7 +1,9 @@
 ---
 title: "Module 1.1"
 subtitle: "Working with Flat Files"
-format: html
+format: 
+  html:
+    code-link: true
 highlight-style: atom-one
 execute: 
   echo: true

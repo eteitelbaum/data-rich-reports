@@ -1,7 +1,9 @@
 ---
 title: "Module 2.2"
 subtitle: "Accessibility, Clarity and Interactivity"
-format: html
+format: 
+  html:
+    code-link: true
 highlight-style: atom-one
 execute:
   echo: true

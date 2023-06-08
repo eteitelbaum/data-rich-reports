@@ -1,7 +1,9 @@
 ---
 title: "Module 2.1"
 subtitle: "Visualizing Data With ggplot2"
-format: html
+format: 
+  html:
+    code-link: true
 highlight-style: atom-one
 filters:
   - webr
@@ -137,9 +139,9 @@ write_csv(dem_waves_ctrs, "data/dem_waves_ctrs.csv")
 
 Next, we are going to do our `ggplot()` call. The data will be the `dem_waves_ctrs` object that we just created. For the aesthetics mapping, we will put the year on the x-axis and the polyarchy score on the y-axis. We will also specify `color` in the `aes()` call so that we can color the lines by region. 
 
-To get a line chart, we have to specify `geom_line()`. Then within the `geom_line()` function we will set the `linewidth` equal to ` so that the lines are a bit more visible. 
+To get a line chart, we have to specify `geom_line()`. Then within the `geom_line()` function we will set the `linewidth` equal to `1' so that the lines are a bit more visible. 
 
-Finally, we will add a `labs()` call as with the previous visualizations. But in addition to title, axis labels and a caption, we will also add `color = "Country"` to change the label of the legend to "Color" with a capital "C." 
+Finally, we will add a `labs()` call as with the previous visualizations. But in addition to title, axis labels and a caption, we will also add `color = "Country"` to change the label of the legend to "Country" with a capital "C." 
 
 ```{r}
 #| label: linechart
