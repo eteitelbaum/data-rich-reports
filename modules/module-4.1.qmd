@@ -251,7 +251,7 @@ gtsave(awesometable, "awesometable.png")
 
 ## When a plot is better than a table
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'When a Plot is Better than a Table'>}}
+{{< video https://youtu.be/kfGYwSnMTK8 title = 'When a Plot is Better than a Table'>}}
 
 Be judicious with your use of tables. You would not want to use tables where a plot is more appropriate. For example you would not want to use a table to show a trend over time (a line chart would be more appropriate) or to display the relationship between two variables (where a scatter plot would be more appropriate). 
 
@@ -262,7 +262,7 @@ library(janitor)
 
 mass_med_inc <- get_acs(
   geography = "county", 
-  variables = c(mediancome = "B06011_001"), 
+  variables = c(median_income = "B06011_001"), 
   state = "MA", 
   year = 2021
   ) |>
