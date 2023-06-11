@@ -410,7 +410,7 @@ Prework
 <p>A very common use of tables in the social sciences is to present regression results. There are numerous packages available for presenting regression output. In this lesson, we are going to focus on one of them that I think is particularly good for both pdf and html output: <code>modelsummary</code>. <code>modelsummary</code> also includes a function (<code><a href="https://vincentarelbundock.github.io/modelsummary/reference/modelplot.html">modelplot()</a></code>) for plotting point estimates and confidence intervals. So part of the objective of this lesson is going to be to learn when you should use a table to present your regression results versus when you should use a plot.</p>
 <p>We will be taking our example from the peace studies literature. We are going to download data using the <code>peacesciencer</code> package and use it to partially reproduce a famous analysis of conflict onset by <a href="https://www-jstor-org.proxygw.wrlc.org/stable/3118222">Fearon and Laitin</a>.</p>
 </section><section id="run-a-regression-model-and-display-results-with-broom" class="level2"><h2 class="anchored" data-anchor-id="run-a-regression-model-and-display-results-with-broom">Run a regression model and display results with broom</h2>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/upn8dlhvbns" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>We will start off by building a data frame for our analysis with the <code>peacesciencer</code> package. <code>peacesciencer</code> is designed to make standard analysis for conflict studies more convenient and includes many of the control variables that you would use to estimate the likelihood of conflict onset or duration.</p>
 <p>To start, we call <code><a href="https://rdrr.io/pkg/peacesciencer/man/create_stateyears.html">create_stateyears()</a></code> to create a time-series data set for all available countries. We will specify <code>system = 'gw'</code> to denote the Gleditsch-Ward country coding system. Then we will filter for roughly the same years of Fearon and Laitin’s original analysis (1945-99) with the caveat that <code>peacesciencer</code> only has conflict data starting in 1946.</p>
 <p>Then we add a bunch of data to the data frame using the various <code>add_X</code> functions available in the package. Here we add UCDP conflict data which includes our dependent variable for this analysis–conflict onset. Then we add measures of democracy, ethno-religious fractionalization, GDP and terrain.</p>
@@ -453,7 +453,9 @@ $ newlmtnest     &lt;dbl&gt; 3.214868, 3.214868, 3.214868, 3.214868, 3.214868, 3
 </div>
 </div>
 <p>Now let’s go ahead and run the analysis. We will specify a logit model using the <code><a href="https://rdrr.io/r/stats/glm.html">glm()</a></code> function and specifying <code>family = binomial(link = "logit")</code>. We will store our model in an object called <code>conflict_model</code>. And from there we can use the <code><a href="https://generics.r-lib.org/reference/tidy.html">tidy()</a></code> function from the <code>broom</code> package to view the results.</p>
-<p>We notice that by default <code><a href="https://generics.r-lib.org/reference/tidy.html">tidy()</a></code> returns figures with large numbers of digits following the decimal point, making hard to tell whether the variables are significant. To fix this, let’s pipe our <code><a href="https://generics.r-lib.org/reference/tidy.html">tidy()</a></code> output inot a <code><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_if()</a></code> call and specificy that we want numeric output to round to five decimal places.</p>
+<p>Before doing this, though, try calling <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> from base R on the model. This provides us with a basic regression table and it is great insofar as we don’t want to do anything else with these estimates. Next, go ahead and call <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code> on the model object of just click on it to see what it looks like. You will notice that the results are stored in a complicated list format.</p>
+<p>The <code><a href="https://generics.r-lib.org/reference/tidy.html">tidy()</a></code> function enables us to take the results from this list and store them in a “tibble”, which is the Tidyverse equivalent of a data frame. Once the results are stored like this, we can easily access the estimates for anything that we might want to do with them including combining the results of different models or displaying particular estimates in our document using all of the tools that we have learned in this course. We can also set <code>conf.int = TRUE)</code> as an argument in <code><a href="https://generics.r-lib.org/reference/tidy.html">tidy()</a></code> to create and store confidence intervals.</p>
+<p>By default, <code><a href="https://generics.r-lib.org/reference/tidy.html">tidy()</a></code> returns p-values with large numbers of digits following the decimal point, making hard to tell whether the variables are significant. To fix this, we can pipe our <code><a href="https://generics.r-lib.org/reference/tidy.html">tidy()</a></code> output into a <code><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_if()</a></code> call and specificy that we want numeric output to round to five decimal places.</p>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/">broom</a></span><span class="op">)</span></span>
 <span></span>
@@ -462,25 +464,27 @@ $ newlmtnest     &lt;dbl&gt; 3.214868, 3.214868, 3.214868, 3.214868, 3.214868, 3
 <span>                  data<span class="op">=</span> <span class="va">conflict_df</span>,</span>
 <span>                  family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/family.html">binomial</a></span><span class="op">(</span>link<span class="op">=</span><span class="st">"logit"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co">#tidy(conflict_model)</span></span>
+<span><span class="co"># summary(conflict_model)</span></span>
 <span></span>
-<span><span class="va">conflict_model</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_if</a></span><span class="op">(</span><span class="va">is.numeric</span>, <span class="va">round</span>, <span class="fl">5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">tidy_model</span> <span class="op">&lt;-</span> <span class="va">conflict_model</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span>conf.int <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_if</a></span><span class="op">(</span><span class="va">is.numeric</span>, <span class="va">round</span>, <span class="fl">5</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">tidy_model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 7 × 5
-  term           estimate std.error statistic p.value
-  &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
-1 (Intercept)     -5.69      1.41      -4.04  0.00005
-2 ethfrac          0.800     0.381      2.10  0.0356 
-3 relfrac         -0.391     0.417     -0.939 0.348  
-4 v2x_polyarchy   -0.602     0.509     -1.18  0.237  
-5 rugged           0.0641    0.0760     0.843 0.399  
-6 wbgdppc2011est  -0.372     0.121     -3.08  0.00204
-7 wbpopest         0.293     0.0673     4.35  0.00001</code></pre>
+<pre><code># A tibble: 7 × 7
+  term           estimate std.error statistic p.value conf.low conf.high
+  &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept)     -5.69      1.41      -4.04  0.00005  -8.44      -2.92 
+2 ethfrac          0.800     0.381      2.10  0.0356    0.0670     1.56 
+3 relfrac         -0.391     0.417     -0.939 0.348    -1.22       0.420
+4 v2x_polyarchy   -0.602     0.509     -1.18  0.237    -1.61       0.387
+5 rugged           0.0641    0.0760     0.843 0.399    -0.0923     0.207
+6 wbgdppc2011est  -0.372     0.121     -3.08  0.00204  -0.613     -0.140
+7 wbpopest         0.293     0.0673     4.35  0.00001   0.162      0.426</code></pre>
 </div>
 </div>
-<p>How did we do relative to Fearon and Latin’s original analysis. Well, one thing that F&amp;L were pretty certain about is that ethnic and religiou fractionalization <em>do not</em> matter for conflict onset. But here we find a statistically significan relationship between these variables and conflict onset. But one thing we do find in common with their analysis is the importance of wealth and population. Both of these variables are significant in the expected direction. Wealthier countries experience less risk of conflict onset while more populous ones have a higher risk.</p>
+<p>How did we do relative to Fearon and Latin’s original analysis. Well, one thing that F&amp;L were pretty certain about is that ethnic and religious fractionalization <em>do not</em> matter for conflict onset. But here we find a statistically significant relationship between these variables and conflict onset. But one thing we do find in common with their analysis is the importance of wealth and population. Both of these variables are significant in the expected direction. Wealthier countries experience less risk of conflict onset while more populous ones have a higher risk.</p>
 </section><section id="run-many-regressions-and-display-with-modelsummary" class="level2"><h2 class="anchored" data-anchor-id="run-many-regressions-and-display-with-modelsummary">Run many regressions and display with modelsummary</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p><code>broom</code> is really great if we want to just run one regression and see the results in the context of a working document. But what if we want to display our results to other researchers? For this, we need to use a different package. One package that is really good at producing professional-looking tabels is <code>modelsummary</code> and one of its strongest features is the ability to combine multiple models into the same table while still allowing for substantial customization.</p>

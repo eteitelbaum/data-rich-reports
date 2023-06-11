@@ -28,7 +28,7 @@ We will be taking our example from the peace studies literature. We are going to
 
 ## Run a regression model and display results with broom
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'View regression results with broom'>}}
+{{< video https://youtu.be/upn8dlhvbns title = 'Make regression tables with broom'>}}
 
 We will start off by building a data frame for our analysis with the `peacesciencer` package. `peacesciencer` is designed to make standard analysis for conflict studies more convenient and includes many of the control variables that you would use to estimate the likelihood of conflict onset or duration.  
 
@@ -50,9 +50,13 @@ conflict_df <- create_stateyears(system = 'gw') |>
 
 glimpse(conflict_df)
 ```
-Now let's go ahead and run the analysis. We will specify a logit model using the `glm()` function and specifying `family = binomial(link = "logit")`. We will store our model in an object called `conflict_model`. And from there we can use the `tidy()` function from the `broom` package to view the results. 
+Now let's go ahead and run the analysis. We will specify a logit model using the `glm()` function and specifying `family = binomial(link = "logit")`. We will store our model in an object called `conflict_model`. And from there we can use the `tidy()` function from the `broom` package to view the results.  
 
-We notice that by default `tidy()` returns figures with large numbers of digits following the decimal point, making hard to tell whether the variables are significant. To fix this, let's pipe our `tidy()` output inot a `mutate_if()` call and specificy that we want numeric output to round to five decimal places. 
+Before doing this, though, try calling `summary()` from base R on the model. This provides us with a basic regression table and it is great insofar as we don't want to do anything else with these estimates. Next, go ahead and call `View()` on the model object of just click on it to see what it looks like. You will notice that the results are stored in a complicated list format.
+
+The `tidy()` function enables us to take the results from this list and store them in a "tibble", which is the Tidyverse equivalent of a data frame. Once the results are stored like this, we can easily access the estimates for anything that we might want to do with them including combining the results of different models or displaying particular estimates in our document using all of the tools that we have learned in this course. We can also set `conf.int = TRUE)` as an argument in `tidy()` to create and store confidence intervals.  
+
+By default, `tidy()` returns p-values with large numbers of digits following the decimal point, making hard to tell whether the variables are significant. To fix this, we can pipe our `tidy()` output into a `mutate_if()` call and specificy that we want numeric output to round to five decimal places. 
 
 ```{r}
 library(broom)
@@ -62,14 +66,16 @@ conflict_model <- glm(ucdponset ~ ethfrac + relfrac + v2x_polyarchy +
                   data= conflict_df,
                   family = binomial(link="logit"))
 
-#tidy(conflict_model)
+# summary(conflict_model)
 
-conflict_model |>
-  tidy() |>
+tidy_model <- conflict_model |>
+  tidy(conf.int = TRUE) |>
   mutate_if(is.numeric, round, 5)
+
+tidy_model
 ```
 
-How did we do relative to Fearon and Latin's original analysis. Well, one thing that F&L were pretty certain about is that ethnic and religiou fractionalization *do not* matter for conflict onset. But here we find a statistically significan relationship between these variables and conflict onset. But one thing we do find in common with their analysis is the importance of wealth and population. Both of these variables are significant in the expected direction. Wealthier countries experience less risk of conflict onset while more populous ones have a higher risk. 
+How did we do relative to Fearon and Latin's original analysis. Well, one thing that F&L were pretty certain about is that ethnic and religious fractionalization *do not* matter for conflict onset. But here we find a statistically significant relationship between these variables and conflict onset. But one thing we do find in common with their analysis is the importance of wealth and population. Both of these variables are significant in the expected direction. Wealthier countries experience less risk of conflict onset while more populous ones have a higher risk. 
 
 
 ## Run many regressions and display with modelsummary
