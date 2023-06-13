@@ -14,7 +14,7 @@ execute:
 ::: callout-tip
 ## Prework
 
--   Install [peacesciencer](http://svmiller.com/peacesciencer/), [broom](https://cran.r-project.org/web/packages/broom/vignettes/broom.html) and [modelsummary](https://vincentarelbundock.github.io/modelsummary/articles/modelsummary.html). Familiarize yourself with the basic purpose and usage of these packages, `
+-   Install [peacesciencer](http://svmiller.com/peacesciencer/), [broom](https://cran.r-project.org/web/packages/broom/vignettes/broom.html) and [modelsummary](https://vincentarelbundock.github.io/modelsummary/articles/modelsummary.html). Familiarize yourself with the basic purpose and usage of these packages,
 
 `install.packages(c("peacesciencer", "broom", "modelsummary"))`
 :::
@@ -56,7 +56,7 @@ Before doing this, though, try calling `summary()` from base R on the model. Thi
 
 The `tidy()` function enables us to take the results from this list and store them in a "tibble", which is the Tidyverse equivalent of a data frame. Once the results are stored like this, we can easily access the estimates for anything that we might want to do with them including combining the results of different models or displaying particular estimates in our document using all of the tools that we have learned in this course. We can also set `conf.int = TRUE)` as an argument in `tidy()` to create and store confidence intervals.  
 
-By default, `tidy()` returns p-values with large numbers of digits following the decimal point, making hard to tell whether the variables are significant. To fix this, we can pipe our `tidy()` output into a `mutate_if()` call and specificy that we want numeric output to round to five decimal places. 
+By default, `tidy()` returns p-values with large numbers of digits following the decimal point, making hard to tell whether the variables are significant. To fix this, we can pipe our `tidy()` output into a `mutate_if()` call and specify that we want numeric output to round to five decimal places. 
 
 ```{r}
 library(broom)
@@ -80,7 +80,7 @@ How did we do relative to Fearon and Latin's original analysis. Well, one thing 
 
 ## Run many regressions and display with modelsummary
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'Display multiple models with modelsummary'>}}
+{{< video https://youtu.be/My6_X6x5TZw title = 'Display multiple models with modelsummary'>}}
 
 `broom` is really great if we want to just run one regression and see the results in the context of a working document. But what if we want to display our results to other researchers? For this, we need to use a different package. One package that is really good at producing professional-looking tabels is `modelsummary` and one of its strongest features is the ability to combine multiple models into the same table while still allowing for substantial customization. 
 
@@ -92,20 +92,20 @@ Let's go ahead and store four models. In the first three, we will feature sets o
 ```{r}
 #| label: models
 ethnicity <- glm(ucdponset ~ ethfrac + relfrac + wbgdppc2011est + wbpopest, # store each model in an object
-                  data=subset(conflict_df),
+                  data = conflict_df,
                   family = binomial(link="logit"))
 
 democracy <- glm(ucdponset ~ v2x_polyarchy + wbgdppc2011est +  wbpopest,
-                  data=subset(conflict_df),
+                  data = conflict_df,
                   family = binomial(link="logit"))
 
 terrain <- glm(ucdponset ~ rugged + wbgdppc2011est + wbpopest ,
-                  data=subset(conflict_df),
+                  data = conflict_df,
                   family = binomial(link="logit"))
 
 full_model <- glm(ucdponset ~ ethfrac + relfrac + v2x_polyarchy + rugged +
                         wbgdppc2011est + wbpopest,
-                  data=subset(conflict_df),
+                  data = conflict_df,
                   family = binomial(link="logit"))
 ```
 
@@ -131,7 +131,7 @@ reference = "See appendix for data sources."      # store reference notes
 ```
 
 
-Now we can call `modelsummary()`. The first argument is the list of models we want to display. Next we tell `modelsummary` that we want it to show stars for statitiscal significance (`stars = TRUE`). And in `gof_map, we say that, of the many goodness of fit statistics available to us, we only want to include the number of observations. Finally we plug our title into `title = ` and a source note into `notes = `. 
+Now we can call `modelsummary()`. The first argument is the list of models we want to display. Next we tell `modelsummary` that we want it to show stars for statistical significance (`stars = TRUE`). And in `gof_map`, we say that, of the many goodness of fit statistics available to us, we only want to include the number of observations. Finally we plug our title into `title = ` and a source note into `notes = `. 
 
 ```{r}
 #| label: run_the_model
@@ -148,9 +148,9 @@ modelsummary(models,                      # display the table
 
 ## When a coefficient plot is better
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'Display regression results with a plot'>}}
+{{< video https://youtu.be/gif_wkqyub8 title = 'Display regression results with a plot'>}}
 
-A regression table is great when we have many models that we want to display. But what happens when we have just one model? We could present something like our earlier `tidy()` output which has the beta coefficient, the standard error, t-statistic and p-values in separate columns, but this would be unconvetional and would take up a lot of space. Another option is just to present a table with one column like this:  
+A regression table is great when we have many models that we want to display. But what happens when we have just one model? We could present something like our earlier `tidy()` output which has the beta coefficient, the standard error, t-statistic and p-values in separate columns, but this would be unconventional and would take up a lot of space. Another option is just to present a table with one column like this:  
 
 ```{r}
 modelsummary(conflict_model, 
@@ -170,7 +170,7 @@ First, it puts maps the coefficients from the bottom up, so if you to maintain t
 
 Second, we want to omit the intercept with `coef_omit = "Intercept"` because the emphasis in a coefficient plot is less on the exact regression equation and more on the magnitude and significance of the coefficients. 
 
-Third we can customize various things. We can specify the color of the points and confidence intervals and we can load `ggplot2` for furthercustomization. Now we can add geoms and labels just like any other ggplot object. Here we add a red vertical intercept line at zero to make it clearer which variables are significant (e.g. the confidence interval does not overlap with zero). And we add a title and a caption using the `labs()` function. 
+Third we can customize various things. We can specify the color of the points and confidence intervals and we can load `ggplot2` for further customization. Now we can add geoms and labels just like any other ggplot object. Here we add a red vertical intercept line at zero to make it clearer which variables are significant (e.g. the confidence interval does not overlap with zero). And we add a title and a caption using the `labs()` function. 
 
 ```{r}
 library(ggplot2)
@@ -183,6 +183,6 @@ modelplot(conflict_model,
   geom_vline(xintercept = 0, color = "red", linetype = "dashed", linewidth = .75) + # red 0 line
   labs(
     title = "Figure 1: Predictors of Conflict Onset",
-    caption = "Note: Coefficients and 95% confidence intervals."
+    caption = "See appendix for data sources."
   ) 
 ```
