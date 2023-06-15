@@ -11,6 +11,7 @@ execute:
   warning: false
 ---
 
+
 ::: {.callout-tip}
 ## Prework
 
@@ -21,13 +22,17 @@ execute:
 - Install `magick` and underlying file system to [remove whitespace](https://www.pmassicotte.com/posts/2022-08-15-removing-whitespace-around-figures-quarto/) around maps
 - Then insert this code chunk somewhere in your module 3.1 Quarto document:
 
-```{r}
-#| label: create_hook
+
+::: {.cell}
+
+```{.r .cell-code}
 # create a hook to crop maps as recommended by pmassicotte
 # must have `magick` and its dependencies installed
 
 knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 ```
+:::
+
 :::
 
 ## Overview
@@ -50,8 +55,10 @@ In this module we are going to be with the [rnaturalearth](https://cran.r-projec
 
 Let's start by loading country shapes using the `ne_countries()` function from `rnaturalearth`. We will start by loading `rnaturalearth` and `dplyr`. Next we will load the country boundaries into an object called `world_map_df` while filtering out Antarctica. Then, let's `glimpse()` the data and have a closure look at the `geometry` column.
 
-```{r}
-#| label: download_shapes
+
+::: {.cell}
+
+```{.r .cell-code}
 library(rnaturalearth)
 library(dplyr)
 
@@ -64,16 +71,40 @@ world_map_df <- ne_countries(scale = "medium", returnclass = "sf") |>
 # view contents of geometry column
 world_map_df |>
   select(geometry) 
-``` 
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+Simple feature collection with 240 features and 0 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: -180 ymin: -58.49229 xmax: 180 ymax: 83.59961
+Geodetic CRS:  +proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0
+First 10 features:
+                         geometry
+1  MULTIPOLYGON (((-69.89912 1...
+2  MULTIPOLYGON (((74.89131 37...
+3  MULTIPOLYGON (((14.19082 -5...
+4  MULTIPOLYGON (((-63.00122 1...
+5  MULTIPOLYGON (((20.06396 42...
+6  MULTIPOLYGON (((20.61133 60...
+7  MULTIPOLYGON (((1.706055 42...
+8  MULTIPOLYGON (((53.92783 24...
+9  MULTIPOLYGON (((-64.54917 -...
+10 MULTIPOLYGON (((45.55234 40...
+```
+:::
+:::
+
 
 ### Make a map with geom_sf()
 
 Now, let's make our first choropleth map with the data. Let's map World Bank income groups. Here we will use the special features `geom_sf()` from `ggplot2` and for our aesthetics mapping we will specify `fill = income_grp`. 
 
-```{r}
-#| label: first_map
-#| crop: true 
 
+::: {.cell crop='true'}
+
+```{.r .cell-code}
 library(ggplot2)
 
 ggplot(data = world_map_df) +
@@ -81,15 +112,21 @@ ggplot(data = world_map_df) +
   labs(title = "World Bank country income categories")
 ```
 
+::: {.cell-output-display}
+![](module-3.1_files/figure-html/first_map-1.png){width=672}
+:::
+:::
+
+
 
 ### Beautify your map
 
 The default ggplot settings are pretty good for a preview, but we could make it look a lot better. Let's add some labels, a `ggtheme` map theme and the default `viridis` color mapping.
 
-```{r}
-#| label: beautify_map
-#| crop: true
 
+::: {.cell crop='true'}
+
+```{.r .cell-code}
 library(ggthemes)
 
 ggplot(data = world_map_df) +
@@ -102,6 +139,12 @@ ggplot(data = world_map_df) +
     theme_map() 
 ```
 
+::: {.cell-output-display}
+![](module-3.1_files/figure-html/beautify_map-1.png){width=672}
+:::
+:::
+
+
 ## Using rnaturalearth to map other data
 
 {{< video https://youtu.be/5RnnGov3Iw4 title = 'Using rnaturalearth to map data'>}}
@@ -112,10 +155,10 @@ Now that we know how to make a map with Natural Earth shapes and `geom_sf()`, we
 At the time I made the video, the codes for "iso_a3" and some of the others [were missing](https://github.com/ropensci/rnaturalearth/issues/77) so I recommended using "iso_a3_eh." But now the issue has been fixed, so please use "iso_a3."
 :::
 
-```{r}
-#| label: merge_data
-#| crop: true
 
+::: {.cell crop='true'}
+
+```{.r .cell-code}
 library(wbstats)
 
 oil_rents_df <- wb_data(c(oil_rents_gdp = "NY.GDP.PETR.RT.ZS"), mrnev = 1) 
@@ -127,12 +170,27 @@ rents_map_df |>
   glimpse() 
 ```
 
+::: {.cell-output .cell-output-stdout}
+```
+Rows: 240
+Columns: 6
+$ date          <dbl> 2021, 2021, 2021, NA, 2021, NA, NA, 2021, 2021, 2021, 20…
+$ oil_rents_gdp <dbl> 0.00000000, 0.01786951, 28.27443988, NA, 1.04218369, NA,…
+$ obs_status    <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ footnote      <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ last_updated  <date> 2023-05-10, 2023-05-10, 2023-05-10, NA, 2023-05-10, NA,…
+$ geometry      <MULTIPOLYGON [°]> MULTIPOLYGON (((-69.89912 1..., MULTIPOLYGO…
+```
+:::
+:::
+
+
 Now we can map these data. Everything here is pretty much the same as before, except we change the fill to `oil_rents_gdp`. We will also add a subtitle and make a few other cosmetic changes like shifting the position of the legend title, bolding the plot title and changing the `viridis` color scale from discrete to continuous. 
 
-```{r}
-#| label: oil_rents
-#| crop: true 
 
+::: {.cell crop='true'}
+
+```{.r .cell-code}
 ggplot(data = rents_map_df) +
   geom_sf(aes(fill = oil_rents_gdp)) + # shade based on oil rents
   labs(
@@ -154,6 +212,12 @@ ggplot(data = rents_map_df) +
       ) 
 ```
 
+::: {.cell-output-display}
+![](module-3.1_files/figure-html/oil_rents-1.png){width=672}
+:::
+:::
+
+
 ## Turn your map into a function
 
 {{< video https://youtu.be/m42vrbEEHT4 title = 'Accessible Color Schemes'>}}
@@ -170,10 +234,10 @@ In this example, we are going to call our function `create_map()`. It is going t
 
 The code block will first join the country shapes to the selected World Bank data and then map those data by piping them into a `ggplot()` call. Everything is pretty similar to our previous use of `ggplot()` and `geom_sf()`, but one tricky part here is that we have to use `eval(parse(text=var_id))))` to remove the quotes surrounding the variable code entered by the user. 
 
-```{r}
-#| label: create_function
-#| execute: false
 
+::: {.cell execute='false'}
+
+```{.r .cell-code}
 library(rnaturalearth)
 library(dplyr)
 library(ggplot2)
@@ -205,21 +269,28 @@ ne_countries(scale = "medium", returnclass = "sf") |>
     )
 }
 ```
+:::
+
 
 ### Deploy the function in another document
 
 To deploy the function in a Quarto or R Markdown dackument, we need to [source](https://bookdown.org/yihui/rmarkdown-cookbook/source-script.html) it as an external R script. First we will save the previous code as a source document. Let's name our file `wb-maps.R` and save it in a subdirectory called `functions`. From there, we can use the `source()` function so that we can call our `create_map()` function in subsequent code chunks in our document.
 
-```{r}
-#| label: source
+
+::: {.cell}
+
+```{.r .cell-code}
 source("functions/wb-maps.R", local = knitr::knit_global())
 ```
+:::
+
 
 Now let's call our `create_map()` function that we just made using female labor force particpation. 
 
-```{r}
-#| label: use_function
-#| crop: true
+
+::: {.cell crop='true'}
+
+```{.r .cell-code}
 create_map(var_id = "SL.TLF.CACT.FE.ZS", 
            title= "Female Labor Force Participation", 
            legend_title = "FLFP %", 
@@ -227,19 +298,49 @@ create_map(var_id = "SL.TLF.CACT.FE.ZS",
            direction = -1)
 ```
 
+::: {.cell-output-display}
+![](module-3.1_files/figure-html/use_function-1.png){width=672}
+:::
+:::
+
+
 
 Now search for an indicator we want to use. We will look for something related to GDP per capita.
 
-```{r}
+
+::: {.cell}
+
+```{.r .cell-code}
 wb_search("GDP per capita") 
 ```
 
+::: {.cell-output .cell-output-stdout}
+```
+# A tibble: 24 × 3
+   indicator_id       indicator                                   indicator_desc
+   <chr>              <chr>                                       <chr>         
+ 1 5.51.01.10.gdp     Per capita GDP growth                       GDP per capit…
+ 2 6.0.GDPpc_constant GDP per capita, PPP (constant 2011 interna… GDP per capit…
+ 3 NV.AGR.PCAP.KD.ZG  Real agricultural GDP per capita growth ra… The growth ra…
+ 4 NY.GDP.PCAP.CD     GDP per capita (current US$)                GDP per capit…
+ 5 NY.GDP.PCAP.CN     GDP per capita (current LCU)                GDP per capit…
+ 6 NY.GDP.PCAP.KD     GDP per capita (constant 2010 US$)          GDP per capit…
+ 7 NY.GDP.PCAP.KD.ZG  GDP per capita growth (annual %)            Annual percen…
+ 8 NY.GDP.PCAP.KN     GDP per capita (constant LCU)               GDP per capit…
+ 9 NY.GDP.PCAP.PP.CD  GDP per capita, PPP (current international… This indicato…
+10 NY.GDP.PCAP.PP.KD  GDP per capita, PPP (constant 2017 interna… GDP per capit…
+# ℹ 14 more rows
+```
+:::
+:::
+
+
 Now let's take that info. and use it to make a plot of GDP per capita. 
 
-```{r}
-#| label: deploy_function
-#| crop: true 
 
+::: {.cell crop='true'}
+
+```{.r .cell-code}
 create_map(var_id = "NY.GDP.PCAP.PP.KD", 
            title= "GDP per capita (constant 2017 internatioal $)", 
            legend_title = "Geary-Khamis $", 
@@ -247,5 +348,12 @@ create_map(var_id = "NY.GDP.PCAP.PP.KD",
            direction = -1)
 ```
 
+::: {.cell-output-display}
+![](module-3.1_files/figure-html/deploy_function-1.png){width=672}
+:::
+:::
+
+
 There you go! That's how we can build and use a map function to easily map different indicators in our document or web app. 
+
 
