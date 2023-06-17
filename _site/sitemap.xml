@@ -150,7 +150,7 @@
   </url>
   <url>
     <loc>https://dataviz-gwu.rocks/modules/module-5.1.html</loc>
-    <lastmod>2023-06-11T21:27:50.596Z</lastmod>
+    <lastmod>2023-06-17T21:32:37.862Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz-gwu.rocks/modules/module-4.1.html</loc>
@@ -158,7 +158,7 @@
   </url>
   <url>
     <loc>https://dataviz-gwu.rocks/modules/module-5.2.html</loc>
-    <lastmod>2023-05-20T22:56:20.096Z</lastmod>
+    <lastmod>2023-06-17T21:32:46.926Z</lastmod>
   </url>
   <url>
     <loc>https://dataviz-gwu.rocks/modules/module-6.1.html</loc>
@@ -303,5 +303,9 @@
   <url>
     <loc>https://dataviz-gwu.rocks/weeks/week-6.html</loc>
     <lastmod>2023-05-22T17:41:18.587Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dataviz-gwu.rocks/modules/module-3.1.knit.html</loc>
+    <lastmod>2023-06-17T21:24:53.908Z</lastmod>
   </url>
 </urlset>

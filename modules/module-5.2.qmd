@@ -11,7 +11,8 @@ execute:
 
 :::{.callout-tip}
 ## Prework
-- Review the prework for [module 5.1](https://dataviz-gwu.rocks/modules/module-5.1.html) and make sure that you have everything installed
+- Get a [FRED API key](https://fred.stlouisfed.org/docs/api/api_key.html)
+- Install [fredr](https://cran.r-project.org/web/packages/fredr/vignettes/fredr.html) and read about its basic usage
 - Install [ecm](https://cran.r-project.org/web/packages/ecm/ecm.pdf), which we will use to build our recession shading helper script
 - Install [shinyWidgets](https://dreamrs.github.io/shinyWidgets/) and familiarize yourself with its basic functions
 - We will be using [lubridate](https://lubridate.tidyverse.org/), which is part of the Tidyverse. So it should already be installed; but take some time to familiarize yourself with its basic purpose and functions. 
