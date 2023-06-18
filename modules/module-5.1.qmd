@@ -16,6 +16,7 @@ execute:
 - Install Shiny (`install.packages("shiny")`)
 - Familiarize yourself with some of the materials available for developing Shiny Apps on Posit's [Shiny website](https://shiny.posit.co/)
 - Optional: sign up for a free account on [shinyapps.io](https://www.shinyapps.io/)
+- Start a new Shiny project for this lesson. Go to File, select New Directory and then Shiny App. Browse to where you want to save the app, give the directory a name and click Create Project.  
 :::
 
 ## Overview
@@ -46,7 +47,7 @@ For this app, we want users to be able to create scatter plots using selected va
 
 We will also make sure to code a region variable and include region in the `group_by()` call so that it stays in the data frame. Then we will take the country mean of the measures for the post-2000 period so that we have one set of observations for each each country. 
 
-Finally, let's then save these data in a .csv file to include with the app. Alternatively, we could have our app wrangle the data each time the app is loaded. This would ensure that the data are always up to date, but it would require more resources than is available with the free version of the Shiny server. 
+Finally, let's then save these data in a .csv file to include with the app. Alternatively, we could have our app wrangle the data each time the app is loaded. This would ensure that the data are always up to date, but it would require more resources than is available with the free version of the Shiny server due to the size of the V-Dem dataset. 
 
 ```{r}
 #| label: wrangle

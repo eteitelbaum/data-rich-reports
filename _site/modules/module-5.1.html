@@ -396,6 +396,8 @@ Prework
 </li>
 <li>Optional: sign up for a free account on <a href="https://www.shinyapps.io/">shinyapps.io</a>
 </li>
+<li>Start a new Shiny project for this lesson. Go to File, select New Directory and then Shiny App. Browse to where you want to save the app, give the directory a name and click Create Project.<br>
+</li>
 </ul>
 </div>
 </div>
@@ -414,7 +416,7 @@ Prework
 <section id="wrangling-and-storing-the-data" class="level3"><h3 class="anchored" data-anchor-id="wrangling-and-storing-the-data">Wrangling and storing the data</h3>
 <p>For this app, we want users to be able to create scatter plots using selected variables from the V-Dem dataset. Let’s say that we want to have a nice mix of variables related to democracy and development so that users can explore how democracy relates to development and vice versa. So we will filter the data for the post-2000 period and select measures relating to democracy, governance and women’s empowerment and then four measures related to development.</p>
 <p>We will also make sure to code a region variable and include region in the <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> call so that it stays in the data frame. Then we will take the country mean of the measures for the post-2000 period so that we have one set of observations for each each country.</p>
-<p>Finally, let’s then save these data in a .csv file to include with the app. Alternatively, we could have our app wrangle the data each time the app is loaded. This would ensure that the data are always up to date, but it would require more resources than is available with the free version of the Shiny server.</p>
+<p>Finally, let’s then save these data in a .csv file to include with the app. Alternatively, we could have our app wrangle the data each time the app is loaded. This would ensure that the data are always up to date, but it would require more resources than is available with the free version of the Shiny server due to the size of the V-Dem dataset.</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">vdemdata</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
