@@ -160,7 +160,7 @@ ui <- fluidPage(
 
 ## Server
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'Server'>}}
+{{< video https://youtu.be/1q-JFdcAsRs title = 'Server function'>}}
 
 The **server function** is where you are going to put the logic and computations of the application. The server function receives input from the user interface, processes it, and generates the corresponding output. It can perform calculations, query databases, apply statistical models, and produce visualizations.
 
