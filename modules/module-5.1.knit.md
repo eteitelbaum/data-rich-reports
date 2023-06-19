@@ -11,6 +11,7 @@ execute:
   warning: false
 ---
 
+
 :::{.callout-tip}
 ## Prework
 - Install Shiny (`install.packages("shiny")`)
@@ -49,9 +50,10 @@ We will also make sure to code a region variable and include region in the `grou
 
 Finally, let's then save these data in a .csv file to include with the app. Alternatively, we could have our app wrangle the data each time the app is loaded. This would ensure that the data are always up to date, but it would require more resources than is available with the free version of the Shiny server due to the size of the V-Dem dataset. 
 
-```{r}
-#| label: wrangle
-#| eval: false
+
+::: {.cell}
+
+```{.r .cell-code}
 library(vdemdata)
 library(dplyr)
 library(readr)
@@ -85,15 +87,17 @@ dem_data <- vdem |>
 
 write_csv(dem_data, "dem_data.csv")
 ```
+:::
+
 
 ### Setup code chunk
 
 Now let's build a setup code chunk that we can include in the app.R script. Here we will load the packages we need for the app and read in the data we just wrangled from the .csv file. Finally, let's go ahead and create a list of variable names for our dropdown menus in the app and map these to the variables in our data frame. 
 
-```{r}
-#| label: setup
-#| eval: false
 
+::: {.cell}
+
+```{.r .cell-code}
 # load packages
 library(shiny)
 library(readr)
@@ -112,6 +116,8 @@ vars <- c("Democracy" = "polyarchy",
           "Life Expectancy" = "life_exp", 
           "Education" = "education")
 ```
+:::
+
 
 ## UI
 
@@ -130,10 +136,10 @@ We can also include the argument `selected` in our `selectInput()` call to deter
 
 The final piece of our UI is the main panel where we want our scatter plot to appear. Let's go ahead and add `mainPanel()` and then within that call `plotOutput("scatterplot")`. This is going to dynamically retrieve the updated scatter plot as the user changes the variables in the dropdown menu. 
 
-```{r}
-#| label: ui
-#| eval: false
 
+::: {.cell}
+
+```{.r .cell-code}
 # Define UI for application that draws a histogram
 ui <- fluidPage(
 
@@ -154,8 +160,9 @@ ui <- fluidPage(
         )
     )
 )
-
 ```
+:::
+
 
 
 ## Server
@@ -173,10 +180,10 @@ From there, we take `selectedData` and use it to create a scatter plot with `ggp
 
 The other thing we need to do is to add some special code to deal with the x- and y-axis labels because these are going to change every time the user selects a different variable. Here we are going to use the `names()` function to return the names of the the object selected in the `vars` vector of variable names. To make sure we get the right name from the vector, we are going to use the `which()` function. `which()` returns the value that satisfies a given function, in this case the index number of the `vars` vector that matches the user input. So for example, our x label will be defined as `x = names(vars[which(vars == input$xcol)]`. Here the number returned by `[which(vars == input$xcol)]` is going to be used to subset the `vars` list so that x displays the name of the variable selected by the user.
 
-```{r}
-#| label: server
-#| eval: false
 
+::: {.cell}
+
+```{.r .cell-code}
 # Define server logic required to draw a scatter plot
 server <- function(input, output, session) {
   
@@ -198,15 +205,17 @@ server <- function(input, output, session) {
   })
 }
 ```
+:::
+
 
 ## Displaying your app
 
 At this point it should be relatively simple to view your app. Just add the call to the Shiny app, e.g. `shinyApp(ui = ui, server = server)` and click "Run App" in RStudio. 
 
-```{r}
-#| label: call_shiny
-#| eval: false
 
+::: {.cell}
+
+```{.r .cell-code}
 # See above for the definitions of ui and server
 ui <- ...
 
@@ -215,6 +224,9 @@ server <- ...
 # Run the application 
 shinyApp(ui = ui, server = server)
 ```
+:::
+
 
 Optionally, right now, you can try setting up an account on [shinyapps.io](https://www.shinyapps.io/). Read over the shinyapps.io [user guide](https://docs.posit.co/shinyapps.io/index.html) and see if you can get it to work. For your final project, you will need to be able to deploy your app but but right now it is fine if you only want to view it locally.
+
 
