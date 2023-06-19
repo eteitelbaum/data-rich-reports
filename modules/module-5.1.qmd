@@ -23,7 +23,7 @@ execute:
 
 In this module, we are going to be learning how to make a Shiny app. Shiny is a web application framework that is designed for building interactive web applications. It is available as an open-source package in R that is maintained by the team at Posit. 
 
-Shiny enables you to create interactive web-based visualizations and dashboards directly from your R code. It simplifies the process of developing web applications by providing a higher-level abstraction and handling the underlying web technologies. Shiny apps are especially useful for interactive data analysis and visualization. With Shiny, you can allow your users to explore data, change parameters, and see the results of an analysis dynamically. And you can do all of this without extensive web development skills.
+Shiny enables you to create interactive web-based visualizations and dashboards directly from your R code. It simplifies the process of developing web applications by providing a higher-level abstraction and handling the underlying web technologies. With Shiny, you can allow your users to explore data, change parameters, and see the results of an analysis dynamically without needing extensive web development skills.
 
 To display a Shiny app you can just render it locally, but you likely want to share it with a broader audience. For this, you will need to host it on a server. There are lots of different to do this, but the easiest thing to use when you are getting started is [shinyapps.io](https://www.shinyapps.io/). In a later module we will learn to deploy our apps, but for this one it is fine to just view them locally. 
 
@@ -115,7 +115,7 @@ vars <- c("Democracy" = "polyarchy",
 
 ## UI
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'User interface (UI)'>}}
+{{< video https://youtu.be/tEaTpdmg74o title = 'User interface (UI)'>}}
 
 The **user interface (UI)** defines the layout and appearance of the web application. Here you tell Shiny what elements such as buttons, sliders, text inputs, plots, and other interactive components that you want users to be able to interact with. 
 
@@ -134,7 +134,7 @@ The final piece of our UI is the main panel where we want our scatter plot to ap
 #| label: ui
 #| eval: false
 
-# Define UI for application that draws a histogram
+# Define UI for application that draws a scatter plot
 ui <- fluidPage(
 
     # Application title
