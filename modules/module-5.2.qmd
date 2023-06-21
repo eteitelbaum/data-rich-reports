@@ -14,7 +14,7 @@ execute:
 :::{.callout-tip}
 ## Prework
 - Get a [FRED API key](https://fred.stlouisfed.org/docs/api/api_key.html)
-- Install [fredr](https://cran.r-project.org/web/packages/fredr/vignettes/fredr.html) and read about its basic usage
+- Install [fredr](https://cran.r-project.org/web/packages/fredr/vignettes/fredr.html), read about its basic usage and have a look at the [FRED](https://fred.stlouisfed.org/) website
 - Install [ecm](https://cran.r-project.org/web/packages/ecm/ecm.pdf), which we will use to build our recession shading helper script
 - Install [shinyWidgets](https://dreamrs.github.io/shinyWidgets/) and familiarize yourself with its basic functions
 - Start a new Shiny project for this lesson. Go to File, select New Directory and then Shiny App. Browse to where you want to save the app, give the directory a name and click Create Project. 
@@ -30,9 +30,9 @@ All Shiny apps have an element of reactivity. In a basic Shiny app like we say i
 
 ## Setup
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'fredr App set up'>}}
+{{< video https://youtu.be/U79y3DgK2Ts title = 'fredr App set up'>}}
 
-In the setup portion of our we want to start by loading the packages we will need to build the app. For this app, we are going to be using the `fredr` package to download data pertaining to the overall health of the economy from the St. Louis Fed API (FRED). So here we will also set our FRED API key and assign the codes for the indicators that we want to download to objects. 
+In the setup portion of our we want to start by loading the packages we will need to build the app. For this app, we are going to be using the `fredr` package to download data pertaining to the overall health of the economy from the St. Louis Fed's Federal Reserve Economic Data (FRED[https://fred.stlouisfed.org/]) API. So here we will also set our FRED API key and assign the codes for the indicators that we want to download to objects. 
 
 Next, we will use the `as.Date()` function to set the start date of our line series to Januar 1, 1970 and the end date as today's date (system date). We will also create a list of variable names for our UI dropdown (`vars`) and relate them to the objects containing the indicator codes. 
 
@@ -209,8 +209,7 @@ add_rec_shade<-function(st_date,ed_date,shade_color, y_min, y_max) {
   
   # download NBER recession indicators, peak through trough
   recession<- fredr(series_id = "USRECD",
-                    observation_start = st_date,
-                    as.Date(st_date), 
+                    observation_start = as.Date(st_date), 
                     observation_end = as.Date(ed_date))
   
   #code 1 for 1st day of recession, -1 for 1st day after it ends
