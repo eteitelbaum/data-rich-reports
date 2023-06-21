@@ -30,7 +30,7 @@ All Shiny apps have an element of reactivity. In a basic Shiny app like we say i
 
 ## Setup
 
-{{< video https://youtu.be/U79y3DgK2Ts title = 'fredr App set up'>}}
+{{< video https://youtu.be/U79y3DgK2Ts title = 'FRED App set up'>}}
 
 In the setup portion of our we want to start by loading the packages we will need to build the app. For this app, we are going to be using the `fredr` package to download data pertaining to the overall health of the economy from the St. Louis Fed's Federal Reserve Economic Data (FRED[https://fred.stlouisfed.org/]) API. So here we will also set our FRED API key and assign the codes for the indicators that we want to download to objects. 
 
@@ -75,7 +75,7 @@ source("helper.R") # scroll down, code pasted below
 
 ## UI
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'fredR App user interface (UI)'>}}
+{{< video https://youtu.be/wTlL9HeqbjA title = 'FRED App user interface (UI)'>}}
 
 Now we can get started on developing the UI for our app. For this app, we are going to have a title panel and two main display elements. The first is a panel where the user can select the indicator that they want to chart and the second is a plot with a slider where users can select the years they want to view. So let's divide the UI into two sections using the `fluidRow()` and `column()` 
 
@@ -126,7 +126,7 @@ ui <- fluidPage(
 
 ## Server
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'fredR App Server'>}}
+{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'FRED App Server'>}}
 
 For our server function, we are going to define two separate `reactive()` functions. This is how we are going to dynamically update the plot based on two different user inputs. First, we will define an input for the indicator where `input$indicator` takes the user input from the dropdown menu to perform a fresh API call whenever the selected indicator changes. Then, we take that input and filter it based on the input from the slider, e.g. `input$range`. Then we render the plot based on these updated data. 
 
