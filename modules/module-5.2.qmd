@@ -32,7 +32,7 @@ All Shiny apps have an element of reactivity. In a basic Shiny app like we say i
 
 {{< video https://youtu.be/U79y3DgK2Ts title = 'FRED App set up'>}}
 
-In the setup portion of our we want to start by loading the packages we will need to build the app. For this app, we are going to be using the `fredr` package to download data pertaining to the overall health of the economy from the St. Louis Fed's Federal Reserve Economic Data (FRED[https://fred.stlouisfed.org/]) API. So here we will also set our FRED API key and assign the codes for the indicators that we want to download to objects. 
+In the setup portion of our we want to start by loading the packages we will need to build the app. For this app, we are going to be using the `fredr` package to download data pertaining to the overall health of the economy from the St. Louis Fed's Federal Reserve Economic Data (FRED)[https://fred.stlouisfed.org/] API. So here we will also set our FRED API key and assign the codes for the indicators that we want to download to objects. 
 
 Next, we will use the `as.Date()` function to set the start date of our line series to Januar 1, 1970 and the end date as today's date (system date). We will also create a list of variable names for our UI dropdown (`vars`) and relate them to the objects containing the indicator codes. 
 
@@ -126,7 +126,7 @@ ui <- fluidPage(
 
 ## Server
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'FRED App Server'>}}
+{{< video https://youtu.be/oWtlrw8hqUU title = 'FRED App Server'>}}
 
 For our server function, we are going to define two separate `reactive()` functions. This is how we are going to dynamically update the plot based on two different user inputs. First, we will define an input for the indicator where `input$indicator` takes the user input from the dropdown menu to perform a fresh API call whenever the selected indicator changes. Then, we take that input and filter it based on the input from the slider, e.g. `input$range`. Then we render the plot based on these updated data. 
 
