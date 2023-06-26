@@ -1,5 +1,21 @@
 ---
 title: "Module 6.2"
-subtitle: ""
-editor: visual
+subtitle: "Publishing Your App"
+format: 
+  html:
+    code-link: true
+highlight-style: atom-one
+execute:
+  echo: true
+  message: false
+  warning: false
 ---
+
+## Troubleshooting your app
+
+
+## Publishing your app
+
+
+## Sharing your app
+
