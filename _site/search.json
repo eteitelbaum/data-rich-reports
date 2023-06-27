@@ -1508,8 +1508,8 @@
     "objectID": "modules/module-6.1.html#consider-nonstandard-evaluation-when-using-ggplot",
     "href": "modules/module-6.1.html#consider-nonstandard-evaluation-when-using-ggplot",
     "title": "Module 6.1",
-    "section": "7. Consider nonstandard evaluation when using ggplot`",
-    "text": "7. Consider nonstandard evaluation when using ggplot`\nConsider the fact that ggplot2 uses nonstandard evaluation and wrap the inputs in your aes() call in get() where appropriate. Nonstandard evaluation refers to the idea that ggplot2 takes the name of the column directly so that you don’t have to quote it. get() transforms the text input from the user to the actual column name. For example, in our scatter plot app we used get() to transform the user input to column names for our x and y variables: ggplot(dem_data, aes(x = get(input$xcol), y = get(input$ycol)))."
+    "section": "7. Consider nonstandard evaluation when using ggplot\n",
+    "text": "7. Consider nonstandard evaluation when using ggplot\n\nConsider the fact that ggplot2 uses nonstandard evaluation and wrap the inputs in your aes() call in get() where appropriate. Nonstandard evaluation refers to the idea that ggplot2 takes the name of the column directly so that you don’t have to quote it. get() transforms the text input from the user to the actual column name. For example, in our scatter plot app we used get() to transform the user input to column names for our x and y variables: ggplot(dem_data, aes(x = get(input$xcol), y = get(input$ycol)))."
   },
   {
     "objectID": "modules/module-6.1.html#in-the-server-code-use-print-to-debug",
@@ -1531,5 +1531,12 @@
     "title": "Module 6.2",
     "section": "Sharing your app",
     "text": "Sharing your app"
+  },
+  {
+    "objectID": "modules/module-6.1.html#think-about-what-your-code-is-doing",
+    "href": "modules/module-6.1.html#think-about-what-your-code-is-doing",
+    "title": "Module 6.1",
+    "section": "9. Think about what your code is doing",
+    "text": "9. Think about what your code is doing\nOne thing that I have emphasized throughout the course that is super-relevant here is to have a theory about what your code is doing. What is each part of the code supposed to do to the data? What is your objective with that chunk of code? And is it accomplishing what you hoped it would accomplish? Experimenting can help when you are stuck, but experimenting really only works when you have an idea of what your experiment is trying to test. This is especially true in the context of a Shiny app where it is hard to tell what is gong on “behind the scenes.”"
   }
 ]

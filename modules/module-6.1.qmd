@@ -23,7 +23,7 @@ your app. Don't try to write all of the code at once. This is especially
 true if you have a lot of moving parts to your app. Start with small,
 workable parts and build on them.
 
-{{< video https://youtu.be/wo9vZccmqwc title = 'Building your app'>}}
+{{< video https://youtu.be/UjIXRAJkTe4 title = 'Building your app'>}}
 
 ## 1. Wrangle some "working data"
 
@@ -215,7 +215,7 @@ appropriate name for the input. For example, in our scatter plot app, we
 took input from the user for two selected indicators (`input$xcol` and
 `input$ycol`) and used these to make a scatter plot.
 
-## 7. Consider nonstandard evaluation when using ggplot\`
+## 7. Consider nonstandard evaluation when using `ggplot`
 
 Consider the fact that `ggplot2` uses nonstandard evaluation and wrap
 the inputs in your `aes()` call in `get()` where appropriate.
@@ -281,3 +281,7 @@ server <- function(input, output) {
     })
 }
 ```
+
+## 9. Think about what your code is doing
+
+One thing that I have emphasized throughout the course that is super-relevant here is to have a theory about what your code is doing. What is each part of the code supposed to do to the data? What is your objective with that chunk of code? And is it accomplishing what you hoped it would accomplish? Experimenting can help when you are stuck, but experimenting really only works when you have an idea of what your experiment is trying to test. This is especially true in the context of a Shiny app where it is hard to tell what is gong on "behind the scenes." 
