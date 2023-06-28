@@ -120,8 +120,8 @@ website:
             text: "Module 5.2"
           - href: modules/module-6.1.qmd
             text: "Module 6.1"
-          # - href: modules/module-6.2.qmd
-          #   text: "Module 6.2"
+          - href: modules/module-6.2.qmd
+            text: "Module 6.2"
 format:
   html:
     theme:
