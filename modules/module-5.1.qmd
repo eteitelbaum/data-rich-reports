@@ -16,7 +16,7 @@ execute:
 - Install Shiny (`install.packages("shiny")`)
 - Familiarize yourself with some of the materials available for developing Shiny Apps on Posit's [Shiny website](https://shiny.posit.co/)
 - Optional: sign up for a free account on [shinyapps.io](https://www.shinyapps.io/)
-- Start a new Shiny project for this lesson. Go to File, select New Directory and then Shiny App. Browse to where you want to save the app, give the directory a name and click Create Project.  
+- Start a new Shiny project for this lesson. Go to File, select New Directory and then Shiny App. Browse to where you want to save the app, give the directory a name and click Create Project  
 :::
 
 ## Overview

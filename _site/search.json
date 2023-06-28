@@ -515,7 +515,7 @@
     "href": "modules/module-5.1.html",
     "title": "Module 5.1",
     "section": "",
-    "text": "Prework\n\n\n\n\nInstall Shiny (install.packages(\"shiny\"))\nFamiliarize yourself with some of the materials available for developing Shiny Apps on Posit’s Shiny website\n\nOptional: sign up for a free account on shinyapps.io\n\nStart a new Shiny project for this lesson. Go to File, select New Directory and then Shiny App. Browse to where you want to save the app, give the directory a name and click Create Project."
+    "text": "Prework\n\n\n\n\nInstall Shiny (install.packages(\"shiny\"))\nFamiliarize yourself with some of the materials available for developing Shiny Apps on Posit’s Shiny website\n\nOptional: sign up for a free account on shinyapps.io\n\nStart a new Shiny project for this lesson. Go to File, select New Directory and then Shiny App. Browse to where you want to save the app, give the directory a name and click Create Project"
   },
   {
     "objectID": "modules/module-5.1.html#overview",
@@ -1538,5 +1538,40 @@
     "title": "Module 6.1",
     "section": "9. Think about what your code is doing",
     "text": "9. Think about what your code is doing\nOne thing that I have emphasized throughout the course that is super-relevant here is to have a theory about what your code is doing. What is each part of the code supposed to do to the data? What is your objective with that chunk of code? And is it accomplishing what you hoped it would accomplish? Experimenting can help when you are stuck, but experimenting really only works when you have an idea of what your experiment is trying to test. This is especially true in the context of a Shiny app where it is hard to tell what is gong on “behind the scenes.”"
+  },
+  {
+    "objectID": "modules/module-6.2.html",
+    "href": "modules/module-6.2.html",
+    "title": "Module 6.2",
+    "section": "",
+    "text": "Prework\n\n\n\n\nSign up for a free account on ShinyApps.io\n\nInstall rsconnect so that you can publish to shinyapps.io (install.packages(\"rsconnect\"))\nInstall renv and familiarize yourself with its basic purpose and features (install.packages(\"renv\"))\nNow that you have your Shiny app, how can you share it with others? The simplest and most logical thing to do is to publish it as a web page. After all, sharing your app on the web is sort of the point of making a web app and doing so is an essential if you want to share your apps with a broader set of users who do not know how to use R or have R and Shiny running on their machines. There are many different ways to publish your app but the best way when you are getting started is ShinyApps.io.\nYou also may want to share your app with collaborators by sending them your R script and supporting files before you make your app public or available to a broader group of users. There are many ways to share your Shiny app files but the two we are going to cover are sending the files via email or sharing them on GitHub."
+  },
+  {
+    "objectID": "modules/module-6.2.html#publishing-your-app-on-shinnyapps.io",
+    "href": "modules/module-6.2.html#publishing-your-app-on-shinnyapps.io",
+    "title": "Module 6.2",
+    "section": "Publishing your app on ShinnyApps.io",
+    "text": "Publishing your app on ShinnyApps.io\nOnce it is ready to go, publishing your app to ShinyApps.io is super-easy. Make sure that you have the rsconnect package installed. Then, in RStudio, go to Tools &gt; Global Options and select Publishing. Select Connect, ShinyApps.io and follow the instructions for retrieving and entering your token.\nOnce that is set up, open your app.R file. At the top of your Source window, you should see a little blue circle with arrows surrounding it that says “Publish the application or document” when you hover over it. Click that and, if prompted to do so, install any required updates.\nNext you will be prompted for which files you want to upload. Just select the essential files that you need for the app like the app.R file and any supporting files like a .csv file with the data the app needs or helper scripts. No need to upload ancillary files like your prep file or .Rprofile.\nThen hit Publish and that should be it! Here is a good set of step-by-step instructions in case you happen to get stuck."
+  },
+  {
+    "objectID": "modules/module-6.2.html#sharing-your-project-folder-via-email",
+    "href": "modules/module-6.2.html#sharing-your-project-folder-via-email",
+    "title": "Module 6.2",
+    "section": "Sharing your project folder via email",
+    "text": "Sharing your project folder via email\nNow let’s say you want to share your code with people. The most basic way to share your app is to simply zip your project folder and send it to your collaborators via email. The other users can then place your project folder wherever they like and run the app by pressing the “run” icon or by using the runApp() function, e.g. \n\n# install.packages(\"shiny\")\nlibrary(shiny)\nrunApp(\"name-of-app\")"
+  },
+  {
+    "objectID": "modules/module-6.2.html#sharing-your-code-on-github",
+    "href": "modules/module-6.2.html#sharing-your-code-on-github",
+    "title": "Module 6.2",
+    "section": "Sharing your code on GitHub",
+    "text": "Sharing your code on GitHub\nAnother way to share your code is on GitHub. The easiest way to do this is to use version control from the very beginning like you have been doing with GitHub classroom for the assignments in this course.\nBut since you are submitting the code via a private GitHub classroom repo, the best way to share your code for this app would be to simply create a new public GitHub repo and copy your code to a new version control project associated with that repo. Then, if you want to make changes to your app and publish it from the new project folder, simply give it a new title when you upload it to ShinyApps.io.\nTo create a new repo in GitHub, go to your profile, go to Repositories, select New and name your new repository. You can also give it an optional description. Make sure your new repo is set to Public and hit “Create repository.” From there copy the repo’s URL and use it to create a new version control project in RStudio. Then copy your app.R and supporting files to the new version control rep."
+  },
+  {
+    "objectID": "modules/module-6.2.html#using-the-renv-package-to-record-your-r-environment",
+    "href": "modules/module-6.2.html#using-the-renv-package-to-record-your-r-environment",
+    "title": "Module 6.2",
+    "section": "Using the renv package to record your R environment",
+    "text": "Using the renv package to record your R environment\nOne problem you will frequently run into with R Shiny apps is that they can break as a result of package updates and new R installations. One way to prevent this from happening is to use the renv package, which records your R environment at the time you made the app.\nTo do this, make sure renv is installed. Then type renv::init() in your console. Next, type ren::snapshot(). At this point, renv will give you a list of the packages and versions being used by the app. If everything looks good, type ‘y’ and renv will record the environment. When you come back to work on the app later, you can choose whether to update the packages, but if doing so breaks the app you the option of restoring the earlier environment by typing renv::restore()."
   }
 ]
