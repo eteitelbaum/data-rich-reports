@@ -373,7 +373,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#publishing-your-app-on-shinnyapps.io" id="toc-publishing-your-app-on-shinnyapps.io" class="nav-link active" data-scroll-target="#publishing-your-app-on-shinnyapps.io">Publishing your app on ShinnyApps.io</a></li>
+<li><a href="#publishing-your-app-on-shinyapps.io" id="toc-publishing-your-app-on-shinyapps.io" class="nav-link active" data-scroll-target="#publishing-your-app-on-shinyapps.io">Publishing your app on ShinyApps.io</a></li>
   <li><a href="#sharing-your-project-folder-via-email" id="toc-sharing-your-project-folder-via-email" class="nav-link" data-scroll-target="#sharing-your-project-folder-via-email">Sharing your project folder via email</a></li>
   <li><a href="#sharing-your-code-on-github" id="toc-sharing-your-code-on-github" class="nav-link" data-scroll-target="#sharing-your-code-on-github">Sharing your code on GitHub</a></li>
   <li><a href="#using-the-renv-package-to-record-your-r-environment" id="toc-using-the-renv-package-to-record-your-r-environment" class="nav-link" data-scroll-target="#using-the-renv-package-to-record-your-r-environment">Using the <code>renv</code> package to record your R environment</a></li>
@@ -413,13 +413,23 @@ Prework
 </ul>
 </div>
 </div>
-<p>Now that you have your Shiny app, how can you <a href="https://shiny.posit.co/r/getstarted/shiny-basics/lesson7/">share it</a> with others? The simplest and most logical thing to do is to publish it as a web page. After all, sharing your app on the web is sort of the point of making a web app and doing so is an essential if you want to share your apps with a broader set of users who do not know how to use R or have R and Shiny running on their machines. There are many different ways to publish your app but the best way when you are getting started is <a href="https://www.shinyapps.io/">ShinyApps.io</a>.</p>
+<p>Now that you have your Shiny app, how can you <a href="https://shiny.posit.co/r/getstarted/shiny-basics/lesson7/">share it</a> with others? The simplest and most logical thing to do is to publish it as a web page. After all, sharing your app on the web is sort of the point of making a web app and doing so is an essential if you want to share your apps with a broader set of users who do not know how to use R or and/or Shiny. There are many different ways to publish your app but the best way when you are getting started is <a href="https://www.shinyapps.io/">ShinyApps.io</a>.</p>
 <p>You also may want to share your app with collaborators by sending them your R script and supporting files before you make your app public or available to a broader group of users. There are many ways to share your Shiny app files but the two we are going to cover are sending the files via email or sharing them on GitHub.</p>
-<div class="{callout-important}">
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Note that while I am covering methods of sharing your code with others, your are not required to do so for this course. The only requirement is sharing your application as a web app via ShinyApps.io and then either writing a short essay about the app or demoing the app in a short video. Then you will submit your code via a private repo via GitHub classroom as you have been doing for the previous assignments.</p>
 </div>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<section id="publishing-your-app-on-shinnyapps.io" class="level2"><h2 class="anchored" data-anchor-id="publishing-your-app-on-shinnyapps.io">Publishing your app on ShinnyApps.io</h2>
+</div>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/dGUgSFhvaFs" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<section id="publishing-your-app-on-shinyapps.io" class="level2"><h2 class="anchored" data-anchor-id="publishing-your-app-on-shinyapps.io">Publishing your app on ShinyApps.io</h2>
 <p>Once it is ready to go, publishing your app to ShinyApps.io is super-easy. Make sure that you have the <code>rsconnect</code> package installed. Then, in RStudio, go to Tools &gt; Global Options and select Publishing. Select Connect, ShinyApps.io and follow the instructions for retrieving and entering your token.</p>
 <p>Once that is set up, open your app.R file. At the top of your Source window, you should see a little blue circle with arrows surrounding it that says “Publish the application or document” when you hover over it. Click that and, if prompted to do so, install any required updates.</p>
 <p>Next you will be prompted for which files you want to upload. Just select the essential files that you need for the app like the app.R file and any supporting files like a .csv file with the data the app needs or helper scripts. No need to upload ancillary files like your prep file or .Rprofile.</p>
@@ -437,7 +447,7 @@ Prework
 <p>To create a new repo in GitHub, go to your profile, go to Repositories, select New and name your new repository. You can also give it an optional description. Make sure your new repo is set to Public and hit “Create repository.” From there copy the repo’s URL and use it to create a new version control project in RStudio. Then copy your app.R and supporting files to the new version control rep.</p>
 </section><section id="using-the-renv-package-to-record-your-r-environment" class="level2"><h2 class="anchored" data-anchor-id="using-the-renv-package-to-record-your-r-environment">Using the <code>renv</code> package to record your R environment</h2>
 <p>One problem you will frequently run into with R Shiny apps is that they can break as a result of package updates and new R installations. One way to prevent this from happening is to use the <code>renv</code> package, which records your R environment at the time you made the app.</p>
-<p>To do this, make sure <code>renv</code> is installed. Then type <code><a href="https://rstudio.github.io/renv/reference/init.html">renv::init()</a></code> in your console. Next, type <code>ren::snapshot()</code>. At this point, <code>renv</code> will give you a list of the packages and versions being used by the app. If everything looks good, type ‘y’ and <code>renv</code> will record the environment. When you come back to work on the app later, you can choose whether to update the packages, but if doing so breaks the app you the option of restoring the earlier environment by typing <code><a href="https://rstudio.github.io/renv/reference/restore.html">renv::restore()</a></code>.</p>
+<p>To do this, make sure <code>renv</code> is installed. Then type <code><a href="https://rdrr.io/pkg/renv/man/init.html">renv::init()</a></code> in your console. Next, type <code>ren::snapshot()</code>. At this point, <code>renv</code> will give you a list of the packages and versions being used by the app. If everything looks good, type ‘y’ and <code>renv</code> will record the environment. When you come back to work on the app later, you can choose whether to update the packages, but if doing so breaks the app you the option of restoring the earlier environment by typing <code><a href="https://rdrr.io/pkg/renv/man/restore.html">renv::restore()</a></code>.</p>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">

@@ -18,17 +18,17 @@ execute:
 - Install [renv](https://rstudio.github.io/renv/articles/renv.html) and familiarize yourself with its basic purpose and features (`install.packages("renv")`)
 :::
 
-Now that you have your Shiny app, how can you [share it](https://shiny.posit.co/r/getstarted/shiny-basics/lesson7/) with others? The simplest and most logical thing to do is to publish it as a web page. After all, sharing your app on the web is sort of the point of making a web app and doing so is an essential if you want to share your apps with a broader set of users who do not know how to use R or have R and Shiny running on their machines. There are many different ways to publish your app but the best way when you are getting started is [ShinyApps.io](https://www.shinyapps.io/). 
+Now that you have your Shiny app, how can you [share it](https://shiny.posit.co/r/getstarted/shiny-basics/lesson7/) with others? The simplest and most logical thing to do is to publish it as a web page. After all, sharing your app on the web is sort of the point of making a web app and doing so is an essential if you want to share your apps with a broader set of users who do not know how to use R or and/or Shiny. There are many different ways to publish your app but the best way when you are getting started is [ShinyApps.io](https://www.shinyapps.io/). 
 
 You also may want to share your app with collaborators by sending them your R script and supporting files before you make your app public or available to a broader group of users. There are many ways to share your Shiny app files but the two we are going to cover are sending the files via email or sharing them on GitHub. 
 
-:::{callout-important}
+:::{.callout-important}
 Note that while I am covering methods of sharing your code with others, your are not required to do so for this course. The only requirement is sharing your application as a web app via ShinyApps.io and then either writing a short essay about the app or demoing the app in a short video. Then you will submit your code via a private repo via GitHub classroom as you have been doing for the previous assignments.
 :::
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc title = 'Building your app'>}}
+{{< video https://youtu.be/dGUgSFhvaFs title = 'Building your app'>}}
 
-## Publishing your app on ShinnyApps.io
+## Publishing your app on ShinyApps.io
 
 Once it is ready to go, publishing your app to ShinyApps.io is super-easy. Make sure that you have the `rsconnect` package installed. Then, in RStudio, go to Tools > Global Options and select Publishing. Select Connect, ShinyApps.io and follow the instructions for retrieving and entering your token. 
 
