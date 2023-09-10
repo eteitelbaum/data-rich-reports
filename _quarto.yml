@@ -22,7 +22,7 @@ website:
   
   sidebar:
     background: "#1F45FC"
-    logo: "images/dataviz-logo.png"
+    logo: "images/dataviz6502-logo.png"
     pinned: true
     align: center
     tools:
@@ -56,44 +56,30 @@ website:
             text: Useful links
           # - href: faq.qmd
           #   text: FAQ
-      - section: "Weekly Materials"
+      - section: "Materials"
         contents: 
           - href: weeks/week-1.qmd
             text: "Week 1"
           - href: weeks/week-2.qmd
             text: "Week 2"
-          # - href: weeks/week-3.qmd
-          #   text: "Week 3"
-          # - href: weeks/week-4.qmd
-          #   text: "Week 4"
-          # - href: weeks/week-5.qmd
-          #   text: "Week 5"
-          # - href: weeks/week-6.qmd
-          #   text: "Week 6"
+          - href: weeks/workshop-day1.qmd
+            text: "Workshop Day 1"
+          - href: weeks/workshop-day2.qmd
+            text: "Workshop Day 2" 
+          - href: weeks/workshop-day3.qmd
+            text: "Workshop Day 3" 
       - section: "Coding Assignments"
         contents:
           - href: assignments/coding-assignment-1.qmd
             text: "Coding Assignment 1"
           - href: assignments/coding-assignment-2.qmd
             text: "Coding Assignment 2"
-          - href: assignments/coding-assignment-3.qmd
-            text: "Coding Assignment 3"
-          - href: assignments/coding-assignment-4.qmd
-            text: "Coding Assignment 4"
-          - href: assignments/coding-assignment-5.qmd
-            text: "Coding Assignment 5"
       - section: "Project"
         contents:
-          # - href: project/project-description.qmd
-          #   text: "Description"
-          - href: project/project-assignment-1.qmd
-            text: "Project Assignment 1"
-          - href: project/project-assignment-2.qmd
-            text: "Project Assignment 2"
-          - href: project/project-assignment-3.qmd
-            text: "Project Assignment 3"
+          - href: project/project-assignment.qmd
+            text: "Project Assignment"
           - href: project/project-datasets.qmd
-            text: Datasets
+            text: "Datasets"
       - section: "Course Modules"
         contents:
           - href: modules/getting-started.qmd
@@ -106,22 +92,6 @@ website:
             text: "Module 2.1"
           - href: modules/module-2.2.qmd
             text: "Module 2.2"
-          - href: modules/module-3.1.qmd
-            text: "Module 3.1"
-          - href: modules/module-3.2.qmd
-            text: "Module 3.2"
-          - href: modules/module-4.1.qmd
-            text: "Module 4.1"
-          - href: modules/module-4.2.qmd
-            text: "Module 4.2"
-          - href: modules/module-5.1.qmd
-            text: "Module 5.1"
-          - href: modules/module-5.2.qmd
-            text: "Module 5.2"
-          - href: modules/module-6.1.qmd
-            text: "Module 6.1"
-          - href: modules/module-6.2.qmd
-            text: "Module 6.2"
 format:
   html:
     theme:

@@ -1,0 +1,22 @@
+---
+title: "Workshop Day 1"
+subtitle: "Working with Data"
+format: html
+---
+
+## Readings
+
+| 📖 Norris, [The Impact of Electoral Reform on Women's Representation](https://link-springer-com.proxygw.wrlc.org/article/10.1057/palgrave.ap.5500151)
+
+## Assignments
+
+| 🧮 [Coding Assignment 1](/assignments/coding-assignment-1.html)
+
+## Sessions
+
+- 01: Introduction
+- 02: Getting data from APIs
+- 03: Merging data
+- 04: Summarizing data
+
+

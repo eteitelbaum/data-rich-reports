@@ -5,9 +5,7 @@ subtitle: Working with Data
 
 ## Readings
 
-### Reference
-
-📖 Review the [course syllabus](/course-syllabus.html) and [support
+| 📖 Review the [course syllabus](/course-syllabus.html) and [support
 resources](/course-support.html)
 
 | 📖 r4ds
@@ -19,11 +17,6 @@ resources](/course-support.html)
 -   [4.5](https://r4ds.hadley.nz/data-transform.html#groups) on grouping
     data
 
-### Social science reading
-
-📖 Norris, [The Impact of Electoral Reform on Women's
-Representation](https://link-springer-com.proxygw.wrlc.org/article/10.1057/palgrave.ap.5500151)
-
 ## Modules
 
 | [Module 1.1](/modules/module-1.1.html)--Working with Flat Files
@@ -33,4 +26,4 @@ Representation](https://link-springer-com.proxygw.wrlc.org/article/10.1057/palgr
 
 | [📘](https://blackboard.gwu.edu/ultra/courses/_387298_1/outline "Quiz 1") Quiz 1
 | [📘](https://blackboard.gwu.edu/ultra/courses/_387298_1/outline "Quiz 2") Quiz 2
-| 🧮 [Coding Assignment 1](/assignments/coding-assignment-1.html)
+

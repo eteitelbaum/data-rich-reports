@@ -1,0 +1,26 @@
+---
+title: "Workshop Day 2"
+subtitle: "Visualizing Data"
+format: html
+---
+
+## Readings
+
+| 📖 Lipset, [Some Social Requisites of Democracry](https://www-jstor-org.proxygw.wrlc.org/stable/1951731?seq=8)
+
+## Assignments
+
+| 🧮 [Coding Assignment 2](/assignments/coding-assignment-2.html)
+| ✍️ [Final Project](/project/project-assignment.html)
+
+## Sessions
+
+- 01: Introduction
+- 02: Bar charts
+- 03: Line charts
+- 04: Scatter plots
+- 05: Interactivity
+- 06: Final projects
+- 07: Wrapping up
+
+

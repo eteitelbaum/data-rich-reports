@@ -67,7 +67,7 @@
     "href": "index.html",
     "title": "Course Schedule",
     "section": "",
-    "text": "This page displays an outline of the topics, content, and assignments for the term. Each module starts on a Monday. There are no assignments due on Sundays.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nModule\nDate\nSkills\nPackages\nFunctions\nReadings\nReference\nVideos\nAssignments\n\n\n\n\n1.1\nMay 22\nRead data into R\nreadr, dplyr\nread_csv(), glimpse()\n\n📖\n🖥️🖥️\n\n\n\n\nMay 23\nReshape data\ntidyr\npivot_longer()\n\n📖\n🖥️\n\n\n\n\nMay 24\nClean data\ndplyr\nmutate(), mutate_at(), substring()\n📖\n\n🖥️🖥️\n📘\n\n\n1.2\nMay 25\nDownload data from an API\nwbstats, vdemdata, dplyr, janitor\nwb_data(), vdem, select_(), filter(), case_match(), round_to_fraction()\n\n\n🖥️🖥️\n\n\n\n\nMay 26\nMerge data frames\ncountrycode, dplyr , readr\ncountrycode(), left_join(), write_csv()\n\n📖\n🖥️🖥️\n\n\n\n\nMay 27\nGroup, summarize and arrange\ndplyr\ngroup_by(), summarize(), arrange()\n\n📖\n🖥️\n📘🧮\n\n\n2.1\nMay 29\nBar charts & histograms\nggplot2\nggplot(), geom_col(), geom_histogram(), aes(), labs()\n\n📖📖\n🖥️🖥️\n\n\n\n\nMay 30\nLine charts\nggplot2\ngeom_line()\n\n\n🖥️\n\n\n\n\nMay 31\nScatter plots\nggplot2, scales\ngeom_point(), geom_smooth(), scale_x_log10(), label_number(), geom_text()\n📖\n📖\n🖥️\n📘\n\n\n2.2\nJun 1\nColor schemes\ntidyr, colorBlindess, dplyr, viridis, RColorBrewer\ndrop_na(), cvdPlot(), scale_fill_manual(), scale_fill_viridis_d(), scale_fill_brewer(), scale_color_manual(), scale_color_viridis_d(), scale_color_brewer\n\n📖\n🖥️\n\n\n\n\nJun 2\nThemes & annotations\nggplot2\ntheme_dark(), theme_minimal(), annotate(), geom_hline(), geom_vline()\n\n📖\n🖥️🖥️\n\n\n\n\nJun 3\nInteractivity\nplotly\nggplotly(), layout()\n\n\n🖥️\n📘 🧮\n\n\n3.1\nJun 5\nChoropleth maps\nrnaturalearth, ggplot2, ggthemes\nne_countries(), geom_sf(), theme_map()\n\n\n🖥️\n\n\n\n\nJun 6\nMap data\nggplot2, viridis\ntheme(), scale_fill_viridis_c()\n\n\n🖥️\n\n\n\n\nJun 7\nMake a map function\n\neval(), parse(), function(), source()\n📖\n\n🖥️\n📘\n\n\n3.2\nJun 8\nUpload UCDP data\nstates, sf\nsfind(), st_as_sf()\n\n\n🖥️\n\n\n\n\nJun 9\nMake a leaflet map\nleaflet\nleaflet(), addTiles(), addMarkers(), setView()\n\n\n🖥️\n\n\n\n\nJun 10\nCustomize your map\nleaflet, htmltools\nawesomeIcons(), addAwesomeMarkers(), addProviderTiles(), sprintf(), lapply(), HTML\n\n\n🖥️\n📘 🧮\n\n\n4.1\nJun 12\nExploring tabular data\ntidycensus, dplyr, stringr, kableExtra\ncensus_api_key(), load_variables(), get_acs(), rename(), rename_with, str_remove(), kable(), slice_max(), slice_min(), slice_sample(), bind_rows()\n\n\n🖥️🖥️\n\n\n\n\nJun 13\nMake a gt table\ngt\ngt(), tab_header(), cols_label(), fmt_currency(), tab_source_note(), cols_width(), opt_table_font(), cols_align(), tab_options(), gtsave()\n\n\n🖥️\n\n\n\n\nJun 14\nConfidence intervals\nggplot2\ngeom_errorbar()\n📖\n\n🖥️\n📘\n\n\n4.2\nJun 15\nDisplay regression tables\npeacesciencer, broom, dplyr\ncreate_stateyears(), add_ucdp_acd(), add_democracy(), add_creg_fractionalization(), add_sdp_gdp(), add_rugged_terrain(), tidy(), mutate_if(), glm(), binomial()\n\n\n🖥️\n\n\n\n\nJun 16\nMake regression tables\nmodelsummary\nlist(), modelsummary()\n\n\n🖥️\n✍️\n\n\n\nJun 17\nCoefficient plots\nmodelsummary\nmodelplot(), rev()\n\n\n🖥️\n📘 🧮\n\n\n5.1\nJun 19\nScatter plot app setup\ndplyr\nsummarize_all()\n\n\n🖥️\n\n\n\n\nJun 20\nBuilding the UI\nshiny\nfluidPage(), titlePanel(), sidebarLayout(), sidebarPanel(), selectInput(), mainPanel(), plotOutput()\n\n\n🖥️\n\n\n\n\nJun 21\nBuilding the server\nshiny\nrenderPlot(), shinyApp()\n📖\n\n🖥️\n📘\n\n\n5.2\nJun 22\nLine chart app setup\nfredr\nfredr_set_key() , as.Date() , Sys.Date() ,\n\n\n🖥️\n\n\n\n\nJun 23\nBuilding the UI\nshiny\ncolumn(), wellPanel(), helpText(), sliderInput()\n\n\n🖥️\n✍️\n\n\n\nJun 24\nBuilding the server\nshiny, fredr\nreactive(), fredr(), fred_indicator()\n\n\n🖥️\n📘 🧮\n\n\n6.1\nJun 26\nTBD\n\n\n\n\n🖥️\n\n\n\n\nJun 27\nTBD\n\n\n\n\n\n\n\n\n\nJun 28\nTBD\n\n\n\n\n\n\n\n\n6.2\nJun 29\nTBD\n\n\n\n\n🖥️\n\n\n\n\nJun 30\nTBD\n\n\n\n\n\n\n\n\n\nJul 1\nTBD\n\n\n\n\n\n✍️"
+    "text": "This page displays an outline of the topics, content, and assignments for the term. Each module starts on a Monday. There are no assignments due on Sundays.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nModule\nDate\nSkills\nPackages\nFunctions\nReadings\nReference\nVideos\nAssignments\n\n\n\n\n1.1\nOct 14\nRead data into R\nreadr, dplyr\nread_csv(), glimpse()\n\n📖\n🖥️🖥️\n\n\n\n\nOct 15\nReshape data\ntidyr\npivot_longer()\n\n📖\n🖥️\n\n\n\n\nOct 16\nClean data\ndplyr\nmutate(), mutate_at(), substring()\n📖\n\n🖥️🖥️\n📘\n\n\n1.2\nOct 17\nDownload data from an API\nwbstats, vdemdata, dplyr, janitor\nwb_data(), vdem, select_(), filter(), case_match(), round_to_fraction()\n\n\n🖥️🖥️\n\n\n\n\nOct 18\nMerge data frames\ncountrycode, dplyr , readr\ncountrycode(), left_join(), write_csv()\n\n📖\n🖥️🖥️\n\n\n\n\nOct 19\nGroup, summarize and arrange\ndplyr\ngroup_by(), summarize(), arrange()\n\n📖\n🖥️\n📘\n\n\n2.1\nOct 21\nBar charts & histograms\nggplot2\nggplot(), geom_col(), geom_histogram(), aes(), labs()\n\n📖📖\n🖥️🖥️\n\n\n\n\nOct 22\nLine charts\nggplot2\ngeom_line()\n\n\n🖥️\n\n\n\n\nOct 23\nScatter plots\nggplot2, scales\ngeom_point(), geom_smooth(), scale_x_log10(), label_number(), geom_text()\n📖\n📖\n🖥️\n📘\n\n\n2.2\nOct 24\nColor schemes\ntidyr, colorBlindess, dplyr, viridis, RColorBrewer\ndrop_na(), cvdPlot(), scale_fill_manual(), scale_fill_viridis_d(), scale_fill_brewer(), scale_color_manual(), scale_color_viridis_d(), scale_color_brewer\n\n📖\n🖥️\n\n\n\n\nOct 25\nThemes & annotations\nggplot2\ntheme_dark(), theme_minimal(), annotate(), geom_hline(), geom_vline()\n\n📖\n🖥️🖥️\n\n\n\n\nOct 26\nInteractivity\nplotly\nggplotly(), layout()\n\n\n🖥️\n📘\n\n\nWS-1\nOct 27\nSee workshop schedule\n\n\n\n\n\n🧮\n\n\nWS-2\nOct 28\nSee workshop schedule\n\n\n\n\n\n🧮 ✍️\n\n\nWS-3\nOct 29\nSee workshop schedule"
   },
   {
     "objectID": "instructor.html",
@@ -473,21 +473,21 @@
     "href": "weeks/week-1.html",
     "title": "Week 1",
     "section": "",
-    "text": "📖 Review the course syllabus and support resources\n📖 r4ds\n\n8.1 & 8.2 on importing data\n6.1 - 6.3 on tidy data\n20.3 on mutating joins\n4.5 on grouping data\n\n\n\n\n📖 Norris, The Impact of Electoral Reform on Women’s Representation"
+    "text": "📖 Review the course syllabus and [support\nresources](/course-support.html)\n📖 r4ds\n\n8.1 & 8.2 on importing data\n6.1 - 6.3 on tidy data\n20.3 on mutating joins\n4.5 on grouping data"
   },
   {
     "objectID": "weeks/week-1.html#readings",
     "href": "weeks/week-1.html#readings",
     "title": "Week 1",
     "section": "",
-    "text": "📖 Review the course syllabus and support resources\n📖 r4ds\n\n8.1 & 8.2 on importing data\n6.1 - 6.3 on tidy data\n20.3 on mutating joins\n4.5 on grouping data\n\n\n\n\n📖 Norris, The Impact of Electoral Reform on Women’s Representation"
+    "text": "📖 Review the course syllabus and [support\nresources](/course-support.html)\n📖 r4ds\n\n8.1 & 8.2 on importing data\n6.1 - 6.3 on tidy data\n20.3 on mutating joins\n4.5 on grouping data"
   },
   {
     "objectID": "weeks/week-1.html#assignments",
     "href": "weeks/week-1.html#assignments",
     "title": "Week 1",
     "section": "Assignments",
-    "text": "Assignments\n📘 Quiz 1\n📘 Quiz 2\n🧮 Coding Assignment 1"
+    "text": "Assignments\n📘 Quiz 1\n📘 Quiz 2"
   },
   {
     "objectID": "modules/module-4.2.html#overview",
@@ -1390,14 +1390,14 @@
     "href": "weeks/week-2.html",
     "title": "Week 2",
     "section": "",
-    "text": "📖 r4ds\n\nChapter 2 on data visualization\n12.2 on labels\n10.1 - 10.4 on layers, geoms and facets\n12.4 on scales\n12.3 & 12.5 on themes and annotations\n\n\n\n\n📖 Lipset, Some Social Requisites of Democracry"
+    "text": "📖 r4ds\n\nChapter 2 on data visualization\n12.2 on labels\n10.1 - 10.4 on layers, geoms and facets\n12.4 on scales\n12.3 & 12.5 on themes and annotations"
   },
   {
     "objectID": "weeks/week-2.html#readings",
     "href": "weeks/week-2.html#readings",
     "title": "Week 2",
     "section": "",
-    "text": "📖 r4ds\n\nChapter 2 on data visualization\n12.2 on labels\n10.1 - 10.4 on layers, geoms and facets\n12.4 on scales\n12.3 & 12.5 on themes and annotations\n\n\n\n\n📖 Lipset, Some Social Requisites of Democracry"
+    "text": "📖 r4ds\n\nChapter 2 on data visualization\n12.2 on labels\n10.1 - 10.4 on layers, geoms and facets\n12.4 on scales\n12.3 & 12.5 on themes and annotations"
   },
   {
     "objectID": "weeks/week-2.html#modules",
@@ -1580,5 +1580,110 @@
     "title": "Module 6.2",
     "section": "Publishing your app on ShinyApps.io",
     "text": "Publishing your app on ShinyApps.io\nOnce it is ready to go, publishing your app to ShinyApps.io is super-easy. Make sure that you have the rsconnect package installed. Then, in RStudio, go to Tools &gt; Global Options and select Publishing. Select Connect, ShinyApps.io and follow the instructions for retrieving and entering your token.\nOnce that is set up, open your app.R file. At the top of your Source window, you should see a little blue circle with arrows surrounding it that says “Publish the application or document” when you hover over it. Click that and, if prompted to do so, install any required updates.\nNext you will be prompted for which files you want to upload. Just select the essential files that you need for the app like the app.R file and any supporting files like a .csv file with the data the app needs or helper scripts. No need to upload ancillary files like your prep file or .Rprofile.\nThen hit Publish and that should be it! Here is a good set of step-by-step instructions in case you happen to get stuck."
+  },
+  {
+    "objectID": "weeks/workshop-day1.html",
+    "href": "weeks/workshop-day1.html",
+    "title": "Workshop Day 1",
+    "section": "",
+    "text": "📖 Norris, The Impact of Electoral Reform on Women’s Representation"
+  },
+  {
+    "objectID": "weeks/workshop-day1.html#readings",
+    "href": "weeks/workshop-day1.html#readings",
+    "title": "Workshop Day 1",
+    "section": "",
+    "text": "📖 Norris, The Impact of Electoral Reform on Women’s Representation"
+  },
+  {
+    "objectID": "weeks/workshop-day1.html#assignments",
+    "href": "weeks/workshop-day1.html#assignments",
+    "title": "Workshop Day 1",
+    "section": "Assignments",
+    "text": "Assignments\n🧮 Coding Assignment 1"
+  },
+  {
+    "objectID": "weeks/workshop-day1.html#sessions",
+    "href": "weeks/workshop-day1.html#sessions",
+    "title": "Workshop Day 1",
+    "section": "Sessions",
+    "text": "Sessions\n\n01: Introduction\n02: Getting data from APIs\n03: Merging data\n04: Summarizing data"
+  },
+  {
+    "objectID": "weeks/workshop-day3.html",
+    "href": "weeks/workshop-day3.html",
+    "title": "Workshop Day 3",
+    "section": "",
+    "text": "Details TBA\nNote: This session is optional for students enrolled in IAFF 6502."
+  },
+  {
+    "objectID": "project/project-assignment.html",
+    "href": "project/project-assignment.html",
+    "title": "Project Assignment 1",
+    "section": "",
+    "text": "For your final project in this course, you will be producing your very own Shiny App. The purpose of this assignment is to get you to think through the basic content and layout off your app. As you will learn, Shiny Apps are comprised of two basic elements: a user interface and a server function. We are going to be focusing on the user interface side of things for now and later we will talk about how to generate the content for the user. What do you want your user to see and experience with your app? That is the question you will answer here."
+  },
+  {
+    "objectID": "project/project-assignment.html#overview",
+    "href": "project/project-assignment.html#overview",
+    "title": "Project Assignment 1",
+    "section": "",
+    "text": "For your final project in this course, you will be producing your very own Shiny App. The purpose of this assignment is to get you to think through the basic content and layout off your app. As you will learn, Shiny Apps are comprised of two basic elements: a user interface and a server function. We are going to be focusing on the user interface side of things for now and later we will talk about how to generate the content for the user. What do you want your user to see and experience with your app? That is the question you will answer here."
+  },
+  {
+    "objectID": "project/project-assignment.html#step-1-think-about-a-layout-for-your-app-25-pts.",
+    "href": "project/project-assignment.html#step-1-think-about-a-layout-for-your-app-25-pts.",
+    "title": "Project Assignment 1",
+    "section": "Step 1: Think about a layout for your app (25 pts.)",
+    "text": "Step 1: Think about a layout for your app (25 pts.)\nGo to the Shiny gallery and have a look at examples of the Shiny Apps there. You can also go forward in the course a bit and have a look at the apps that we are going to be building together in modules 5.1 and 5.2. Among these apps, which layouts appeal to you most? Link to a few of them and talk about what you like here."
+  },
+  {
+    "objectID": "project/project-assignment.html#step-2-think-about-the-basic-content-25-pts.",
+    "href": "project/project-assignment.html#step-2-think-about-the-basic-content-25-pts.",
+    "title": "Project Assignment 1",
+    "section": "Step 2: Think about the basic content (25 pts.)",
+    "text": "Step 2: Think about the basic content (25 pts.)\nNext, think about the basic content of your app. What subject matter and data do you want to have your user explore? What do you want them to get out of the experience? What datasets would you use for your app? These could be datasets that we have used for the course or other sources but it should be comprehensive and convenient to work with. You will not have time in this course to do original data collection. Discuss in a paragraph below."
+  },
+  {
+    "objectID": "project/project-assignment.html#step-3-think-about-the-visualization-25-pts.",
+    "href": "project/project-assignment.html#step-3-think-about-the-visualization-25-pts.",
+    "title": "Project Assignment 1",
+    "section": "Step 3: Think about the visualization (25 pts.)",
+    "text": "Step 3: Think about the visualization (25 pts.)\nWhat is the type of visualization that you want to display. This could be a line chart, scatter plot, bar chart or map and could include some text elements as well. How would your selected visualization contribute to the knowledge enhancement that you want your user to experience? What would it teach them. Discuss in a paragraph below."
+  },
+  {
+    "objectID": "project/project-assignment.html#step-4-think-about-user-input-25-pts.",
+    "href": "project/project-assignment.html#step-4-think-about-user-input-25-pts.",
+    "title": "Project Assignment 1",
+    "section": "Step 4: Think about user input (25 pts.)",
+    "text": "Step 4: Think about user input (25 pts.)\nWhat would the user manipulate in your app? It could be a dropdown menu, a slider or some other control. See here for a list of control widgets. When your user interacts with the control, what output will it produce, e.g. what will change when the user manipulates the widget? How would your chosen control widget enhance the user’s experience and contribute to the overall purpose of the app?"
+  },
+  {
+    "objectID": "weeks/workshop-day2.html",
+    "href": "weeks/workshop-day2.html",
+    "title": "Workshop Day 2",
+    "section": "",
+    "text": "📖 Lipset, Some Social Requisites of Democracry"
+  },
+  {
+    "objectID": "weeks/workshop-day2.html#readings",
+    "href": "weeks/workshop-day2.html#readings",
+    "title": "Workshop Day 2",
+    "section": "",
+    "text": "📖 Lipset, Some Social Requisites of Democracry"
+  },
+  {
+    "objectID": "weeks/workshop-day2.html#assignments",
+    "href": "weeks/workshop-day2.html#assignments",
+    "title": "Workshop Day 2",
+    "section": "Assignments",
+    "text": "Assignments\n🧮 Coding Assignment 2\n✍️ Final Project"
+  },
+  {
+    "objectID": "weeks/workshop-day2.html#sessions",
+    "href": "weeks/workshop-day2.html#sessions",
+    "title": "Workshop Day 2",
+    "section": "Sessions",
+    "text": "Sessions\n\n01: Introduction\n02: Bar charts\n03: Line charts\n04: Scatter plots\n05: Interactivity\n06: Final projects\n07: Wrapping up"
   }
 ]

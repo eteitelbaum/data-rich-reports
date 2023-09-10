@@ -5,18 +5,12 @@ subtitle: The Grammar of Graphics
 
 ## Readings
 
-### Reference
-
 | 📖 r4ds
 - [Chapter 2](https://r4ds.hadley.nz/data-visualize.html) on data visualization
 - [12.2](https://r4ds.hadley.nz/communication.html#labels) on labels
 - [10.1 - 10.4](https://r4ds.hadley.nz/layers.html) on layers, geoms and facets
 - [12.4](https://r4ds.hadley.nz/communication.html#scales) on scales
 - [12.3 & 12.5](https://r4ds.hadley.nz/communication.html#annotations) on themes and annotations
-
-### Social science reading
-
-📖 Lipset, [Some Social Requisites of Democracry](https://www-jstor-org.proxygw.wrlc.org/stable/1951731?seq=8)
 
 ## Modules
 

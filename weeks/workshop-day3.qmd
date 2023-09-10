@@ -1,0 +1,9 @@
+---
+title: "Workshop Day 3"
+subtitle: "Project Walkthrough"
+format: html
+---
+
+**Details TBA**
+
+*Note:* This session is optional for students enrolled in IAFF 6502.
