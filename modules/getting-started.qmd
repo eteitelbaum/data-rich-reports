@@ -9,7 +9,7 @@ execute:
 
 ## R and RStudio {#sec-rstudio-setup}
 
-{{< video https://youtu.be/gssjyyl7vxI title='Getting Started with R and R Studio' >}}
+{{< video https://youtu.be/8m23XfKSaAU title='Getting Started with R and R Studio' >}}
 
 All of our work for this course will be done in the R language and we will be working with R in RStudio. RStudio is an integrated development environment (IDE) develop by a company named Posit. Please be sure to download and install the most recent versions of R and R Studio from Posit's [website](https://posit.co/download/rstudio-desktop/).
 
@@ -31,7 +31,7 @@ Before you move on to the next section, take some time to familiarize yourself w
 
 ## Quarto
 
-{{< video https://youtu.be/c654j7aQjcg title='Your First Quarto Document' >}}
+{{< video https://youtu.be/OJadelpWBzw title='Your First Quarto Document' >}}
 
 Once you have R, R Studio and Quarto installed, you are ready to start integrating text and code with [Quarto](https://quarto.org/). Quarto is an open source publishing platform that enables you to integrate text with code. If you have used [R Markdown](https://rmarkdown.rstudio.com/) before then Quarto will look familiar to you because Quarto is the next generation of R Markdown.
 
@@ -49,21 +49,3 @@ Now take a few minutes and try changing more of the code in the YAML header. You
 
 You may already have some experience writing in Markdown, which is a lightweight markup language that enables you to format plaintext files. If you have not used Markdown, or if your memory is hazy, don't worry: it is really easy to learn. Have a look at this Markdown [cheat sheet](https://www.markdownguide.org/cheat-sheet/) and try to familiarize yourself with its basic syntax. 
 Finally, take some time to get familiar with the [Guide](https://quarto.org/docs/guide/) and [Reference](https://quarto.org/docs/reference/) sections of the Quarto website. Then take a look at the [gallery](https://quarto.org/docs/gallery/) so that you can get an idea of the kinds of things you can produce with Quarto. 
-
-## GitHub and GitHub Classroom
-
-{{< video https://youtu.be/ApvMnAfQe8A title='Getting Started With GitHub' >}}
-
-GitHub is a platform for hosting version control repositories. In this course we will learn to use GitHub to store, manage and collaborate on code.
-
-One central concept you want to be familiar with is a *repository* or "repo" for short. Repos are essentially folders where code can be stored and then accessed and changed by multiple users. All of the assignments for this course will be managed in repos.
-
-GitHub repos are managed using a version control system named Git. Git allows developers to make and track changes to the code stored in the repo. Git also enables users to create branches to work on the code without affecting the main codebase and then merge those changes back into the main branch when they are ready.
-
-The first thing you are going to want to do is to [register](https://happygitwithr.com/github-acct.html) a GitHub account. From there, you want to [install Git](https://happygitwithr.com/install-git.html) and [initiate Git](https://happygitwithr.com/hello-git.html) using the [usethis](https://usethis.r-lib.org/) package. Be sure to install `usethis` first (`install.packages("usethis")`) if you don't have it installed already. Then load `usethis` (`library(usethis)`) and type `use_git_config(user.name = "Jane Doe", user.email = "jane@example.org")` substituting the name and email associated with your GitHub account.
-
-Next, you need to generate a personal access token [(PAT)](https://happygitwithr.com/https-pat.html) by typing `create_github_token()` and set your credentials with the [gitcreds](https://gitcreds.r-lib.org/) package. This is pretty simple once you have your PAT. After installing and loading `gitcreds` (`install.packages("gitcreds")`; `library(gitcreds)`), you can type `gitcreds_get()` to see whether you already have credentials set up. Then type `gitcreds_set()` to enter your new credentials (your username and your password, which will be the PAT that you just generated).
-
-Now, you can [create a GitHub repo](https://happygitwithr.com/rstudio-git-github.html) and clone it to your computer in RStudio. There a number of ways to clone a repo, but the recommended method for this course involves creating a new project in RStudio and selecting "Version Control" for the method (instead of "New Directory" as we did before). From there, select "Git", copy the URL from the green "Code" tab in the GitHub repo, and paste it into "Repository URL" field. Next, select the directory where you want the repository to be created and click "create project."
-
-For our purposes all of your repos will be private repos in the GitHub Classroom environment. To access them, simply click on the invitation link that you see for the coding assignment in the relevant module on Blackboard. This should take you directly to the repo. Then you can clone it using the steps outlined in the previous paragrah.
