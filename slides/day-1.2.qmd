@@ -1,0 +1,115 @@
+---
+title: Reading Data Into R
+date: today
+date-format: long
+footer: "[DataViz 2102 Website](https://dataviz-gwu.rocks)"
+logo: images/dataviz-logo.png
+format:
+  revealjs:
+    theme: [simple, custom.scss]
+    transition: fade
+    slide-number: true
+    multiplex: true
+execute:
+  echo: false
+  message: false
+  warning: false
+  freeze: auto
+---
+
+## What are Tidy Data?
+
+- Each column represents a single variable
+- Each row represents a single observation
+- Each cell represents a single value
+
+## Tidy Data Example
+
+![](images/tidy_data.jpg)
+
+## What are Clean Data?
+
+- Column names are easy to work with and are not duplicated
+- Missing values have been dealt with
+- There are no repeated observations or columns
+- There are no blank observations or columns
+- The data are in the proper format, for example dates should be formatted as dates
+
+## Messy Data Example
+
+![](images/messy_wb_data.jpg){width=70%}
+
+## Step 1: Download Some Messy Data
+
+- Create a folder called "data" in your course modules project folder
+- Following the instructions in module 1.1, download some messy WB data
+- Make it something other than FLFP
+- Donwload as a CSV file with a unique file name and store in your data folder
+
+## Step 2: Read the Data Into R
+
+```{r}
+#| label: step2
+#| eval: false
+#| echo: true
+
+# Load packages
+library(readr) 
+library(dplyr) 
+
+# Read data from csv file into an object called "wb_data_messy"
+wb_data_messy <- read_csv("data/your_file_name.csv")
+
+# View the data
+glimpse(wb_data_messy)
+```
+
+Also try viewing with `View("wb_data_messy")` or by clicking on object.
+
+## Step 3: Write a New CSV File
+
+Now try writing the same data to a file with a different name
+
+```{r}
+#| label: write_data
+#| eval: false
+#| echo: true
+write_csv(wb_data_messy, "data/your_new_file_name.csv")
+```
+
+## Try With Excel
+
+- Have a look at the readr [cheatsheet](https://github.com/rstudio/cheatsheets/blob/main/data-import.pdf)
+- Download some more data from WB but this time as an excel file
+- Follow same steps as with CSV file
+  - use `read_excel()` to read in the data
+  - install and experiment with [writexl](https://cran.r-project.org/web/packages/writexl/index.html)
+
+## Column Specifications
+
+- Can clean columns on backend
+- But can also specify data types in `read_csv()` or `read_excel()`
+
+```{r}
+#| label: col_types
+#| eval: false
+#| echo: true
+
+spec(wb_data_messy)
+
+wb_data_messy <- read_csv("data/your_file_name.csv", 
+                          col_types = cols(
+                           col_double(`1990 [YR1990]`) 
+                          )
+                          )
+```
+
+## Still Time Left?
+
+- Play with `googlesheets4`
+- Find a flatfile with a URL
+- Import into R
+- Specify column types
+- Try writing a google sheet
+
+

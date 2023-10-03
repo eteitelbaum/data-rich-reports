@@ -1,0 +1,73 @@
+---
+title: Getting Started
+subtitle: RStudio and Basic Quarto
+date: today
+date-format: long
+footer: "[DataViz 2102 Website](https://dataviz-gwu.rocks)"
+logo: images/dataviz-logo.png
+format:
+  revealjs:
+    theme: [simple, custom.scss]
+    transition: fade
+    slide-number: true
+    multiplex: true
+execute:
+  echo: false
+  message: false
+  warning: false
+  freeze: auto
+---
+
+
+## RStudio Setup {.smaller}
+
+- Go to [posit.co](https://posit.co/download/rstudio-desktop/) 
+- Click on links to install R and RStudio
+- Install the Tidyverse group of packages from the console
+- Go to Tools>Global Options
+  - Under Code, enable native pipe operator (|>)
+  - Under Appearance, choose a theme
+  - Configure panes
+- Install `devtools` (`install.packages("devtools")`)
+- Install wordcount Addin 
+  -`devtools::install_github("benmarwick/wordcountaddin",  type = "source", dependencies = TRUE)`  
+- Install `lorem` package/Addin (`install.packages("lorem")`)
+- Restart R Session (Session>Restart R)
+
+## Quarto Setup
+
+- Go to [quarto.org](https://quarto.org/docs/get-started/) 
+- Select "Get Started"
+- Download and install Quarto CLI
+- Restart R session in RStudio
+
+## Project Oriented Workflow {.smaller}
+
+- Always start a document in a project folder
+  - That way you don't have to do `setwd` 
+  - Also can share easily with other people
+- Go to File>New Project
+- Create a Quarto project folder
+- Open a Quarto quarto document
+- Render it
+- Change Quarto doc elements
+  - Add text with `lipsum`
+  - Check word count
+  - Add stuff to YAML
+
+## Publish HTML to Quarto Pub
+
+- Go to [quartopub.com](https://quartopub.com/)
+- Set up Quarto pub account
+- Look at [guide](https://quarto.org/docs/publishing/quarto-pub.html) for pubishing on Quarto pub
+- With your Quarto pub account open: 
+  - Go to terminal in RStudio
+  - Type `quarto publish quarto pub`
+  
+## Making PDFs
+
+- Install tinytex 
+  Type `quarto install tinytex` in terminal
+- Change document type in YAML header to pdf
+- Look at Quarto Reference and play with options
+

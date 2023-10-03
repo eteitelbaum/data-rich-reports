@@ -15,12 +15,13 @@ format: html
 
 ## Sessions
 
-- 01: Introduction
-- 02: Bar charts
-- 03: Line charts
-- 04: Scatter plots
-- 05: Interactivity
-- 06: Final projects
-- 07: Wrapping up
+- 01: [Getting Data from an API](/slides/day-2.1.html)
+- 02: [Merging and Summarizing](/slides/day-2.2.html)
+- 03: [Bar Charts and Histograms](/slides/day-2.3.html)
+- 04: [Line Charts and Scatter Plots](/slides/day-2.4.html)
+- 05: [Accessibility and Color Schemes](/slides/day-2.5.html)
+- 06: [Themes, Annotations and Interactivity](/slides/day-2.6.html)
+- 07: [More Quarto and GitHub](/slides/day-2.7.html)
+- 08: [Coding Assignment 2](/assignments/coding-assignment-2.html)
 
 

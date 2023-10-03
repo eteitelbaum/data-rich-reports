@@ -1,0 +1,703 @@
+country,year,polyarchy
+Japan,1789,0.026
+Japan,1790,0.028
+Japan,1791,0.028
+Japan,1792,0.028
+Japan,1793,0.028
+Japan,1794,0.028
+Japan,1795,0.028
+Japan,1796,0.028
+Japan,1797,0.028
+Japan,1798,0.028
+Japan,1799,0.028
+Japan,1800,0.028
+Japan,1801,0.028
+Japan,1802,0.028
+Japan,1803,0.028
+Japan,1804,0.028
+Japan,1805,0.028
+Japan,1806,0.028
+Japan,1807,0.028
+Japan,1808,0.028
+Japan,1809,0.028
+Japan,1810,0.028
+Japan,1811,0.028
+Japan,1812,0.028
+Japan,1813,0.028
+Japan,1814,0.028
+Japan,1815,0.028
+Japan,1816,0.028
+Japan,1817,0.028
+Japan,1818,0.028
+Japan,1819,0.028
+Japan,1820,0.028
+Japan,1821,0.028
+Japan,1822,0.028
+Japan,1823,0.028
+Japan,1824,0.028
+Japan,1825,0.028
+Japan,1826,0.028
+Japan,1827,0.028
+Japan,1828,0.028
+Japan,1829,0.028
+Japan,1830,0.028
+Japan,1831,0.028
+Japan,1832,0.028
+Japan,1833,0.028
+Japan,1834,0.028
+Japan,1835,0.028
+Japan,1836,0.028
+Japan,1837,0.028
+Japan,1838,0.028
+Japan,1839,0.028
+Japan,1840,0.028
+Japan,1841,0.028
+Japan,1842,0.028
+Japan,1843,0.028
+Japan,1844,0.028
+Japan,1845,0.028
+Japan,1846,0.028
+Japan,1847,0.028
+Japan,1848,0.028
+Japan,1849,0.028
+Japan,1850,0.031
+Japan,1851,0.031
+Japan,1852,0.031
+Japan,1853,0.031
+Japan,1854,0.031
+Japan,1855,0.031
+Japan,1856,0.031
+Japan,1857,0.031
+Japan,1858,0.031
+Japan,1859,0.031
+Japan,1860,0.031
+Japan,1861,0.031
+Japan,1862,0.031
+Japan,1863,0.031
+Japan,1864,0.031
+Japan,1865,0.031
+Japan,1866,0.031
+Japan,1867,0.031
+Japan,1868,0.038
+Japan,1869,0.047
+Japan,1870,0.087
+Japan,1871,0.087
+Japan,1872,0.087
+Japan,1873,0.087
+Japan,1874,0.087
+Japan,1875,0.087
+Japan,1876,0.087
+Japan,1877,0.087
+Japan,1878,0.087
+Japan,1879,0.087
+Japan,1880,0.087
+Japan,1881,0.087
+Japan,1882,0.087
+Japan,1883,0.087
+Japan,1884,0.087
+Japan,1885,0.087
+Japan,1886,0.087
+Japan,1887,0.087
+Japan,1888,0.087
+Japan,1889,0.087
+Japan,1890,0.132
+Japan,1891,0.168
+Japan,1892,0.157
+Japan,1893,0.154
+Japan,1894,0.161
+Japan,1895,0.162
+Japan,1896,0.162
+Japan,1897,0.162
+Japan,1898,0.163
+Japan,1899,0.162
+Japan,1900,0.174
+Japan,1901,0.176
+Japan,1902,0.176
+Japan,1903,0.176
+Japan,1904,0.175
+Japan,1905,0.175
+Japan,1906,0.178
+Japan,1907,0.178
+Japan,1908,0.177
+Japan,1909,0.177
+Japan,1910,0.179
+Japan,1911,0.181
+Japan,1912,0.179
+Japan,1913,0.178
+Japan,1914,0.178
+Japan,1915,0.179
+Japan,1916,0.179
+Japan,1917,0.185
+Japan,1918,0.187
+Japan,1919,0.187
+Japan,1920,0.19
+Japan,1921,0.189
+Japan,1922,0.189
+Japan,1923,0.189
+Japan,1924,0.197
+Japan,1925,0.194
+Japan,1926,0.214
+Japan,1927,0.214
+Japan,1928,0.213
+Japan,1929,0.213
+Japan,1930,0.208
+Japan,1931,0.208
+Japan,1932,0.206
+Japan,1933,0.204
+Japan,1934,0.201
+Japan,1935,0.199
+Japan,1936,0.199
+Japan,1937,0.177
+Japan,1938,0.173
+Japan,1939,0.172
+Japan,1940,0.151
+Japan,1941,0.149
+Japan,1942,0.143
+Japan,1943,0.14
+Japan,1944,0.14
+Japan,1945,0.187
+Japan,1946,0.312
+Japan,1947,0.37
+Japan,1948,0.372
+Japan,1949,0.374
+Japan,1950,0.376
+Japan,1951,0.376
+Japan,1952,0.619
+Japan,1953,0.782
+Japan,1954,0.782
+Japan,1955,0.816
+Japan,1956,0.826
+Japan,1957,0.826
+Japan,1958,0.832
+Japan,1959,0.836
+Japan,1960,0.836
+Japan,1961,0.834
+Japan,1962,0.834
+Japan,1963,0.834
+Japan,1964,0.834
+Japan,1965,0.834
+Japan,1966,0.834
+Japan,1967,0.834
+Japan,1968,0.834
+Japan,1969,0.834
+Japan,1970,0.834
+Japan,1971,0.839
+Japan,1972,0.839
+Japan,1973,0.839
+Japan,1974,0.839
+Japan,1975,0.839
+Japan,1976,0.839
+Japan,1977,0.839
+Japan,1978,0.839
+Japan,1979,0.839
+Japan,1980,0.842
+Japan,1981,0.842
+Japan,1982,0.842
+Japan,1983,0.841
+Japan,1984,0.837
+Japan,1985,0.839
+Japan,1986,0.839
+Japan,1987,0.838
+Japan,1988,0.838
+Japan,1989,0.838
+Japan,1990,0.841
+Japan,1991,0.841
+Japan,1992,0.841
+Japan,1993,0.841
+Japan,1994,0.841
+Japan,1995,0.841
+Japan,1996,0.841
+Japan,1997,0.841
+Japan,1998,0.841
+Japan,1999,0.841
+Japan,2000,0.842
+Japan,2001,0.843
+Japan,2002,0.843
+Japan,2003,0.843
+Japan,2004,0.842
+Japan,2005,0.844
+Japan,2006,0.848
+Japan,2007,0.848
+Japan,2008,0.848
+Japan,2009,0.856
+Japan,2010,0.857
+Japan,2011,0.857
+Japan,2012,0.852
+Japan,2013,0.834
+Japan,2014,0.834
+Japan,2015,0.832
+Japan,2016,0.832
+Japan,2017,0.831
+Japan,2018,0.849
+Japan,2019,0.839
+Japan,2020,0.839
+Japan,2021,0.838
+Japan,2022,0.833
+United States of America,1789,0.352
+United States of America,1790,0.351
+United States of America,1791,0.351
+United States of America,1792,0.357
+United States of America,1793,0.357
+United States of America,1794,0.357
+United States of America,1795,0.356
+United States of America,1796,0.357
+United States of America,1797,0.36
+United States of America,1798,0.355
+United States of America,1799,0.349
+United States of America,1800,0.349
+United States of America,1801,0.366
+United States of America,1802,0.37
+United States of America,1803,0.37
+United States of America,1804,0.363
+United States of America,1805,0.36
+United States of America,1806,0.362
+United States of America,1807,0.362
+United States of America,1808,0.361
+United States of America,1809,0.361
+United States of America,1810,0.36
+United States of America,1811,0.36
+United States of America,1812,0.361
+United States of America,1813,0.363
+United States of America,1814,0.367
+United States of America,1815,0.367
+United States of America,1816,0.366
+United States of America,1817,0.366
+United States of America,1818,0.366
+United States of America,1819,0.367
+United States of America,1820,0.36
+United States of America,1821,0.354
+United States of America,1822,0.354
+United States of America,1823,0.355
+United States of America,1824,0.356
+United States of America,1825,0.357
+United States of America,1826,0.355
+United States of America,1827,0.353
+United States of America,1828,0.358
+United States of America,1829,0.359
+United States of America,1830,0.365
+United States of America,1831,0.371
+United States of America,1832,0.371
+United States of America,1833,0.372
+United States of America,1834,0.374
+United States of America,1835,0.373
+United States of America,1836,0.374
+United States of America,1837,0.376
+United States of America,1838,0.375
+United States of America,1839,0.375
+United States of America,1840,0.362
+United States of America,1841,0.348
+United States of America,1842,0.347
+United States of America,1843,0.346
+United States of America,1844,0.349
+United States of America,1845,0.351
+United States of America,1846,0.344
+United States of America,1847,0.336
+United States of America,1848,0.336
+United States of America,1849,0.337
+United States of America,1850,0.337
+United States of America,1851,0.337
+United States of America,1852,0.338
+United States of America,1853,0.339
+United States of America,1854,0.336
+United States of America,1855,0.332
+United States of America,1856,0.332
+United States of America,1857,0.333
+United States of America,1858,0.331
+United States of America,1859,0.33
+United States of America,1860,0.331
+United States of America,1861,0.338
+United States of America,1862,0.344
+United States of America,1863,0.346
+United States of America,1864,0.345
+United States of America,1865,0.344
+United States of America,1866,0.344
+United States of America,1867,0.344
+United States of America,1868,0.345
+United States of America,1869,0.346
+United States of America,1870,0.35
+United States of America,1871,0.344
+United States of America,1872,0.344
+United States of America,1873,0.341
+United States of America,1874,0.342
+United States of America,1875,0.344
+United States of America,1876,0.342
+United States of America,1877,0.333
+United States of America,1878,0.335
+United States of America,1879,0.343
+United States of America,1880,0.342
+United States of America,1881,0.342
+United States of America,1882,0.342
+United States of America,1883,0.341
+United States of America,1884,0.34
+United States of America,1885,0.331
+United States of America,1886,0.331
+United States of America,1887,0.34
+United States of America,1888,0.339
+United States of America,1889,0.331
+United States of America,1890,0.331
+United States of America,1891,0.337
+United States of America,1892,0.337
+United States of America,1893,0.338
+United States of America,1894,0.342
+United States of America,1895,0.377
+United States of America,1896,0.407
+United States of America,1897,0.418
+United States of America,1898,0.419
+United States of America,1899,0.424
+United States of America,1900,0.421
+United States of America,1901,0.425
+United States of America,1902,0.425
+United States of America,1903,0.428
+United States of America,1904,0.427
+United States of America,1905,0.423
+United States of America,1906,0.423
+United States of America,1907,0.424
+United States of America,1908,0.424
+United States of America,1909,0.426
+United States of America,1910,0.425
+United States of America,1911,0.431
+United States of America,1912,0.431
+United States of America,1913,0.431
+United States of America,1914,0.426
+United States of America,1915,0.422
+United States of America,1916,0.42
+United States of America,1917,0.405
+United States of America,1918,0.407
+United States of America,1919,0.416
+United States of America,1920,0.519
+United States of America,1921,0.519
+United States of America,1922,0.521
+United States of America,1923,0.534
+United States of America,1924,0.534
+United States of America,1925,0.533
+United States of America,1926,0.536
+United States of America,1927,0.535
+United States of America,1928,0.535
+United States of America,1929,0.534
+United States of America,1930,0.535
+United States of America,1931,0.553
+United States of America,1932,0.554
+United States of America,1933,0.552
+United States of America,1934,0.555
+United States of America,1935,0.563
+United States of America,1936,0.564
+United States of America,1937,0.56
+United States of America,1938,0.561
+United States of America,1939,0.559
+United States of America,1940,0.574
+United States of America,1941,0.564
+United States of America,1942,0.553
+United States of America,1943,0.556
+United States of America,1944,0.556
+United States of America,1945,0.566
+United States of America,1946,0.602
+United States of America,1947,0.608
+United States of America,1948,0.605
+United States of America,1949,0.588
+United States of America,1950,0.589
+United States of America,1951,0.612
+United States of America,1952,0.612
+United States of America,1953,0.614
+United States of America,1954,0.611
+United States of America,1955,0.612
+United States of America,1956,0.619
+United States of America,1957,0.615
+United States of America,1958,0.627
+United States of America,1959,0.63
+United States of America,1960,0.65
+United States of America,1961,0.666
+United States of America,1962,0.672
+United States of America,1963,0.683
+United States of America,1964,0.685
+United States of America,1965,0.684
+United States of America,1966,0.705
+United States of America,1967,0.709
+United States of America,1968,0.71
+United States of America,1969,0.695
+United States of America,1970,0.721
+United States of America,1971,0.729
+United States of America,1972,0.741
+United States of America,1973,0.761
+United States of America,1974,0.766
+United States of America,1975,0.784
+United States of America,1976,0.795
+United States of America,1977,0.83
+United States of America,1978,0.835
+United States of America,1979,0.836
+United States of America,1980,0.849
+United States of America,1981,0.861
+United States of America,1982,0.861
+United States of America,1983,0.861
+United States of America,1984,0.862
+United States of America,1985,0.864
+United States of America,1986,0.864
+United States of America,1987,0.866
+United States of America,1988,0.865
+United States of America,1989,0.861
+United States of America,1990,0.866
+United States of America,1991,0.866
+United States of America,1992,0.871
+United States of America,1993,0.872
+United States of America,1994,0.872
+United States of America,1995,0.872
+United States of America,1996,0.872
+United States of America,1997,0.872
+United States of America,1998,0.872
+United States of America,1999,0.871
+United States of America,2000,0.868
+United States of America,2001,0.824
+United States of America,2002,0.827
+United States of America,2003,0.862
+United States of America,2004,0.862
+United States of America,2005,0.857
+United States of America,2006,0.863
+United States of America,2007,0.898
+United States of America,2008,0.9
+United States of America,2009,0.908
+United States of America,2010,0.905
+United States of America,2011,0.898
+United States of America,2012,0.898
+United States of America,2013,0.903
+United States of America,2014,0.9
+United States of America,2015,0.901
+United States of America,2016,0.884
+United States of America,2017,0.82
+United States of America,2018,0.813
+United States of America,2019,0.8
+United States of America,2020,0.805
+United States of America,2021,0.813
+United States of America,2022,0.819
+Portugal,1789,0.016
+Portugal,1790,0.016
+Portugal,1791,0.016
+Portugal,1792,0.016
+Portugal,1793,0.016
+Portugal,1794,0.016
+Portugal,1795,0.016
+Portugal,1796,0.016
+Portugal,1797,0.016
+Portugal,1798,0.016
+Portugal,1799,0.016
+Portugal,1800,0.016
+Portugal,1801,0.016
+Portugal,1802,0.016
+Portugal,1803,0.016
+Portugal,1804,0.016
+Portugal,1805,0.016
+Portugal,1806,0.016
+Portugal,1807,0.016
+Portugal,1808,0.016
+Portugal,1809,0.016
+Portugal,1810,0.016
+Portugal,1811,0.016
+Portugal,1812,0.016
+Portugal,1813,0.016
+Portugal,1814,0.016
+Portugal,1815,0.016
+Portugal,1816,0.016
+Portugal,1817,0.016
+Portugal,1818,0.016
+Portugal,1819,0.016
+Portugal,1820,0.17
+Portugal,1821,0.229
+Portugal,1822,0.229
+Portugal,1823,0.202
+Portugal,1824,0.188
+Portugal,1825,0.188
+Portugal,1826,0.12
+Portugal,1827,0.117
+Portugal,1828,0.04
+Portugal,1829,0.039
+Portugal,1830,0.039
+Portugal,1831,0.039
+Portugal,1832,0.039
+Portugal,1833,0.039
+Portugal,1834,0.051
+Portugal,1835,0.116
+Portugal,1836,0.144
+Portugal,1837,0.146
+Portugal,1838,0.128
+Portugal,1839,0.13
+Portugal,1840,0.13
+Portugal,1841,0.13
+Portugal,1842,0.126
+Portugal,1843,0.131
+Portugal,1844,0.131
+Portugal,1845,0.129
+Portugal,1846,0.127
+Portugal,1847,0.127
+Portugal,1848,0.125
+Portugal,1849,0.125
+Portugal,1850,0.125
+Portugal,1851,0.131
+Portugal,1852,0.133
+Portugal,1853,0.133
+Portugal,1854,0.133
+Portugal,1855,0.133
+Portugal,1856,0.135
+Portugal,1857,0.147
+Portugal,1858,0.149
+Portugal,1859,0.149
+Portugal,1860,0.16
+Portugal,1861,0.161
+Portugal,1862,0.161
+Portugal,1863,0.161
+Portugal,1864,0.161
+Portugal,1865,0.162
+Portugal,1866,0.162
+Portugal,1867,0.162
+Portugal,1868,0.158
+Portugal,1869,0.157
+Portugal,1870,0.154
+Portugal,1871,0.158
+Portugal,1872,0.162
+Portugal,1873,0.162
+Portugal,1874,0.162
+Portugal,1875,0.163
+Portugal,1876,0.163
+Portugal,1877,0.163
+Portugal,1878,0.175
+Portugal,1879,0.175
+Portugal,1880,0.175
+Portugal,1881,0.175
+Portugal,1882,0.176
+Portugal,1883,0.176
+Portugal,1884,0.176
+Portugal,1885,0.175
+Portugal,1886,0.175
+Portugal,1887,0.175
+Portugal,1888,0.175
+Portugal,1889,0.175
+Portugal,1890,0.175
+Portugal,1891,0.175
+Portugal,1892,0.175
+Portugal,1893,0.175
+Portugal,1894,0.173
+Portugal,1895,0.16
+Portugal,1896,0.16
+Portugal,1897,0.158
+Portugal,1898,0.157
+Portugal,1899,0.156
+Portugal,1900,0.155
+Portugal,1901,0.151
+Portugal,1902,0.152
+Portugal,1903,0.152
+Portugal,1904,0.151
+Portugal,1905,0.15
+Portugal,1906,0.15
+Portugal,1907,0.148
+Portugal,1908,0.149
+Portugal,1909,0.149
+Portugal,1910,0.164
+Portugal,1911,0.201
+Portugal,1912,0.26
+Portugal,1913,0.256
+Portugal,1914,0.24
+Portugal,1915,0.238
+Portugal,1916,0.244
+Portugal,1917,0.239
+Portugal,1918,0.174
+Portugal,1919,0.228
+Portugal,1920,0.256
+Portugal,1921,0.253
+Portugal,1922,0.251
+Portugal,1923,0.251
+Portugal,1924,0.253
+Portugal,1925,0.252
+Portugal,1926,0.108
+Portugal,1927,0.048
+Portugal,1928,0.052
+Portugal,1929,0.05
+Portugal,1930,0.108
+Portugal,1931,0.121
+Portugal,1932,0.116
+Portugal,1933,0.117
+Portugal,1934,0.115
+Portugal,1935,0.111
+Portugal,1936,0.111
+Portugal,1937,0.111
+Portugal,1938,0.111
+Portugal,1939,0.112
+Portugal,1940,0.115
+Portugal,1941,0.116
+Portugal,1942,0.116
+Portugal,1943,0.116
+Portugal,1944,0.116
+Portugal,1945,0.118
+Portugal,1946,0.118
+Portugal,1947,0.118
+Portugal,1948,0.118
+Portugal,1949,0.118
+Portugal,1950,0.12
+Portugal,1951,0.121
+Portugal,1952,0.121
+Portugal,1953,0.122
+Portugal,1954,0.12
+Portugal,1955,0.12
+Portugal,1956,0.12
+Portugal,1957,0.121
+Portugal,1958,0.122
+Portugal,1959,0.122
+Portugal,1960,0.128
+Portugal,1961,0.129
+Portugal,1962,0.127
+Portugal,1963,0.127
+Portugal,1964,0.128
+Portugal,1965,0.127
+Portugal,1966,0.118
+Portugal,1967,0.118
+Portugal,1968,0.12
+Portugal,1969,0.128
+Portugal,1970,0.146
+Portugal,1971,0.146
+Portugal,1972,0.146
+Portugal,1973,0.151
+Portugal,1974,0.23
+Portugal,1975,0.31
+Portugal,1976,0.518
+Portugal,1977,0.749
+Portugal,1978,0.752
+Portugal,1979,0.759
+Portugal,1980,0.845
+Portugal,1981,0.848
+Portugal,1982,0.848
+Portugal,1983,0.86
+Portugal,1984,0.866
+Portugal,1985,0.866
+Portugal,1986,0.867
+Portugal,1987,0.87
+Portugal,1988,0.875
+Portugal,1989,0.875
+Portugal,1990,0.876
+Portugal,1991,0.862
+Portugal,1992,0.862
+Portugal,1993,0.862
+Portugal,1994,0.862
+Portugal,1995,0.865
+Portugal,1996,0.873
+Portugal,1997,0.873
+Portugal,1998,0.873
+Portugal,1999,0.873
+Portugal,2000,0.874
+Portugal,2001,0.877
+Portugal,2002,0.883
+Portugal,2003,0.883
+Portugal,2004,0.883
+Portugal,2005,0.893
+Portugal,2006,0.896
+Portugal,2007,0.896
+Portugal,2008,0.895
+Portugal,2009,0.896
+Portugal,2010,0.9
+Portugal,2011,0.892
+Portugal,2012,0.896
+Portugal,2013,0.89
+Portugal,2014,0.89
+Portugal,2015,0.891
+Portugal,2016,0.892
+Portugal,2017,0.904
+Portugal,2018,0.902
+Portugal,2019,0.89
+Portugal,2020,0.891
+Portugal,2021,0.888
+Portugal,2022,0.846

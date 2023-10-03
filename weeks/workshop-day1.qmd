@@ -14,9 +14,7 @@ format: html
 
 ## Sessions
 
-- 01: Introduction
-- 02: Getting data from APIs
-- 03: Merging data
-- 04: Summarizing data
-
-
+- 01: [Getting Started](/slides/day-1.1.html)
+- 02: [Reading Data Into R](/slides/day-1.2.html)
+- 03: [Wrangling Data](/slides/day-1.3.html)
+- 04: [Coding Assignment 1](/assignments/coding-assignment-1.html)

@@ -1,0 +1,146 @@
+---
+title: Downloading Data from an API
+date: today
+date-format: long
+footer: "[DataViz 2102 Website](https://dataviz-gwu.rocks)"
+logo: images/dataviz-logo.png
+format:
+  revealjs:
+    theme: [simple, custom.scss]
+    transition: fade
+    slide-number: true
+    multiplex: true
+    chalkboard: true
+execute:
+  echo: false
+  message: false
+  warning: false
+  freeze: auto
+---
+
+## APIs
+
+- API stands for "Application Programming Interface"
+- Way for two computers to talk to each other
+- In our case, we will use APIs to download social science data
+- APIs are accessed through packages in R
+- Sometimes there can be more than one package for an API
+- Usually easier than reading in data from messy flat file
+
+## This Lesson
+
+- Access two APIs with R packages
+- World Bank data through `wbstats`
+  - There is another package called `WDI`
+- Varieties of Democracy (V-Dem) through `vdemdata`
+  - This is the only package for V-Dem
+  - Just downloads all the data
+  - So we have to use `dplyr` functions like `fliter()` and `select()`
+
+## Searching for WB Indicators
+
+```{r}
+#| label: search_wb
+#| eval: false
+#| echo: true
+
+flfp_indicators <- wb_search("female labor force") # store the list of indicators
+
+print(flfp_indicators, n=26) # view the indicators
+```
+  
+## Try it Yourself
+
+- Start a new Quarto document
+- Start a new code chunk
+- Load the `wbstats` package
+- Use `wb_search()` to find some indicators you are interested in
+
+## `wbstats` Example
+
+```{r}
+#| label: download_wb
+#| eval: false
+#| echo: true
+
+# Load packages
+library(wbstats) # for downloading WB data
+library(dplyr) # for selecting, renaming and mutating
+library(janitor) # for rounding
+
+# Store the list of indicators in an object
+indicators <- c("flfp" = "SL.TLF.CACT.FE.ZS", "women_rep" = "SG.GEN.PARL.ZS") 
+
+# Download the data  
+women_emp <- wb_data(indicators, mrv = 50) |> # download data for last 50 yrs
+  select(!iso2c) |> # drop the iso2c code which we won't be using
+  rename(year = date) |> # rename date to year 
+  mutate(
+    flfp = round_to_fraction(flfp, denominator = 100), # round to nearest 100th
+    women_rep = round_to_fraction(women_rep, denominator = 100) 
+  )
+
+# View the data
+glimpse(women_emp) 
+```
+
+## Try it Yourself
+
+- Using the variables you identified in your search, download the data
+- Think about what elements of the code you need to change
+- Hint: the indicators are going to change!
+
+## Downloading V-Dem Data
+
+- The `vdem` function from `vdemdata` just downloads the data
+- There are no parameters for selecting indicators or date ranges
+- So we have to do more work with `dplyr` functions
+  - `filter()` for years
+  - `select()` for variables
+- We are also going to use `case_match()` to add 
+
+## `vdemdata` Example
+
+```{r}
+#| label: vdemdata
+#| eval: false
+#| echo: true
+
+# Load packages
+library(vdemdata) # to download V-Dem data
+
+# Download the data
+democracy <- vdem |> # download the V-Dem dataset
+  filter(year >= 1990)  |> # filter out years less than 1990
+  select(                  # select (and rename) these variables
+    country = country_name,     # the name before the = sign is the new name  
+    vdem_ctry_id = country_id,  # the name after the = sign is the old name
+    year, 
+    polyarchy = v2x_polyarchy, 
+    gdp_pc = e_gdppc, 
+    region = e_regionpol_6C
+    ) |>
+  mutate(
+    region = case_match(region, # replace the values in region with country names
+                     1 ~ "Eastern Europe", 
+                     2 ~ "Latin America",  
+                     3 ~ "Middle East",   
+                     4 ~ "Africa", 
+                     5 ~ "The West", 
+                     6 ~ "Asia")
+                    # number on the left of the ~ is the V-Dem region code
+                    # we are changing the number to the country name on the right
+                    # of the equals sign
+  )
+
+# View the data
+glimpse(democracy)
+```
+
+## Try it Yourself
+
+- Go to the V-Dem [Codebook](https://www.v-dem.net/documents/24/codebook_v13.pdf) 
+- Select a democracy indicator from Part III and one other indicator
+- Note the indicator code (e.g. "v2x_polyarchy" for the polyarchy score)
+- In your Quarto notes document, create a new code chunk
+- Use the codes for your selected indicators to download the data

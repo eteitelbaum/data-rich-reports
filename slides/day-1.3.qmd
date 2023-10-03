@@ -1,0 +1,181 @@
+---
+title: Wrangling Data
+date: today
+date-format: long
+footer: "[DataViz 2102 Website](https://dataviz-gwu.rocks)"
+logo: images/dataviz-logo.png
+format:
+  revealjs:
+    theme: [simple, custom.scss]
+    transition: fade
+    slide-number: true
+    multiplex: true
+    chalkboard: true
+execute:
+  echo: false
+  message: false
+  warning: false
+  freeze: auto
+---
+
+## Read Data 
+
+(from last class)
+
+```{r}
+#| label: read_data
+#| eval: false
+#| echo: true
+
+# Load packages
+library(readr) 
+library(dplyr) 
+
+# Read data from csv file into an object called "wb_data_messy"
+wb_data_messy <- read_csv("data/your_file_name.csv")
+
+# View the data
+glimpse(wb_data_messy)
+```
+
+
+## Messy Data Example
+
+![](images/messy_wb_data.jpg){width=70%}
+
+## Pivot Longer
+
+`pivot_longer()` takes three arguments:
+
+- **cols** - which columns you want to pivot
+- **names_to** - the name of the column where the old column names are going to (identifier)
+- **values_to** - the name of the column where the values are going to
+
+## Without Looking
+
+- Can you remember how to make `pivot_longer()` work? 
+
+```{r}
+#| label: pivot_trial
+#| eval: false
+#| echo: true
+
+# Load tidyr
+library(tidyr)
+
+# Reshape the data
+      <-    |>
+  pivot_longer(
+    cols = 
+    names_to = 
+    values_to = 
+  )
+
+glimpse()
+```
+
+## Pivot Data 
+
+```{r}
+#| label: pivot
+#| eval: false
+#| echo: true
+
+# Load tidyr
+library(tidyr)
+
+# Reshape the data
+wb_data <- wb_data_messy |> 
+  pivot_longer(             
+    cols = `1973 [YR1973]`: `2022 [YR2022]`, # columns to pivot
+    names_to = "year", # name the identifier column "year"
+    values_to = "flfp" # name the numeric var column "flfp"
+  ) 
+
+# View the data
+glimpse(wb_data)
+```
+
+## Try With Multiple Variables
+
+- Download more than one variable from the WB 
+- Save in a new CSV file
+- Use pivot longer to put in long format
+- And then...
+
+## Multiple Variables
+  
+Use `pivot_wider()`
+  
+```{r}
+#| label: pivot_multiple
+#| eval: false
+#| echo: true
+
+wb_data <- wb_data |>
+  select(-`Series Name`)
+
+# Reshape the data
+tidy_data <- wb_data |> 
+  pivot_wider(             
+    names_from = `Series Code`,
+    values_from = values
+  ) 
+
+# View the data
+glimpse(wb_data)
+```
+
+## Mutating Variables
+
+- Anytime we want to change a variable, we are going to use the `dplyr` verbs `mutate()` or `mutate_at()`
+- `mutate()` is if you want to change on variable
+- `mutate_at()` is for multiple variables
+
+## Let's Fix Our Variables
+
+```{r}
+#| label: mutate
+#| eval: false
+#| echo: true
+
+# Fix year and flfp
+wb_data <- wb_data |> # replace wb_data with a modified version of the dataframe 
+  mutate(year = substring(year, 1, 4)) |> # truncate year (keep first four characters)
+  mutate_at(c("year", "flfp"), as.numeric) # change year and flfp to numeric
+
+# View the data
+glimpse(wb_data)
+```
+
+## Now Try it With Multiple Varaibles
+
+- Go to the data frame with multiple variables that you created earlier
+- How would you modify this code to make sure the variables are in the right format? 
+
+# Clean Variable Names
+
+| Very simple: use the `janitor` package!
+
+```{r}
+#| label: janitor
+#| eval: false
+#| echo: true
+
+# Load janitor
+library(janitor)
+
+# Apply clean_names() to wb_data, store in new data frame called wb_data_clean
+wb_data_clean <- wb_data |>  
+  clean_names() 
+
+# Write wb_data_clean to a csv file
+write_csv(wb_data_clean, "data/wb_data_clean.csv")
+
+# View the data
+glimpse(wb_data_clean)
+```
+
+
+
+

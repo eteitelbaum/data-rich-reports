@@ -1,0 +1,164 @@
+---
+title: More Quarto and GitHub
+date: today
+date-format: long
+footer: "[DataViz 2102 Website](https://dataviz-gwu.rocks)"
+logo: images/dataviz-logo.png
+format:
+  revealjs:
+    theme: [simple, custom.scss]
+    transition: fade
+    slide-number: true
+    multiplex: true
+execute:
+  echo: false
+  message: false
+  warning: false
+  freeze: auto
+---
+
+## Reveal JS Slides
+
+- [Revealjs](https://revealjs.com/) is an open source HTML presentation framework that is built on open web technologies like CSS and JavaScript
+- These slides are made with the `revealjs` format in Quarto
+- Like other Quarto documents, you can set all the formatting in the YAML header
+- But you can also customize individual slides
+
+## YAML header
+
+Here is the code from the YAML header for these slides
+
+```
+---
+title: Getting Started, Part II
+subtitle: More Quarto and GitHub
+date: today
+date-format: long
+footer: "[DataViz 2102 Website](https://dataviz-gwu.rocks)"
+logo: images/dataviz-logo.png
+format:
+  revealjs:
+    theme: [simple, custom.scss]
+    transition: fade
+    slide-number: true
+    multiplex: true
+execute:
+  echo: false
+  message: false
+  warning: false
+  freeze: auto
+---
+
+```
+
+## Embed R code chunk
+
+```{r}
+#| label: embed_code
+#| echo: true
+#| eval: false
+
+# Load packages
+library(vdemdata) 
+library(dplyr)
+
+# Download the data
+democracy <- vdem |> 
+  filter(year >= 1990)  |> 
+  select(                  
+    country = country_name,       
+    vdem_ctry_id = country_id, 
+    year, 
+    polyarchy = v2x_polyarchy, 
+    gdp_pc = e_gdppc, 
+    region = e_regionpol_6C
+    ) |>
+  mutate(
+    region = case_match(region, #
+                     1 ~ "Eastern Europe", 
+                     2 ~ "Latin America",  
+                     3 ~ "Middle East",   
+                     4 ~ "Africa", 
+                     5 ~ "The West", 
+                     6 ~ "Asia")
+  )
+
+# View the data
+glimpse(democracy)
+```
+
+## What the Code Looks Like
+
+
+```{{r}}
+#| label: embed_code
+#| echo: true
+#| eval: false
+
+# Load packages
+library(vdemdata) 
+library(dplyr)
+
+# Download the data
+democracy <- vdem |> 
+  filter(year >= 1990)  |> 
+  select(                  
+    country = country_name,       
+    vdem_ctry_id = country_id, 
+    year, 
+    polyarchy = v2x_polyarchy, 
+    gdp_pc = e_gdppc, 
+    region = e_regionpol_6C
+    ) |>
+  mutate(
+    region = case_match(region, #
+                     1 ~ "Eastern Europe", 
+                     2 ~ "Latin America",  
+                     3 ~ "Middle East",   
+                     4 ~ "Africa", 
+                     5 ~ "The West", 
+                     6 ~ "Asia")
+  )
+
+# View the data
+glimpse(democracy)
+```
+
+## Try it Yourself {.smaller}
+
+- Go to Quarto's [revealjs documentation](https://quarto.org/docs/presentations/revealjs/)
+- Start a new project folder called "presentations"
+- Start a `revealjs` presentation
+- Try making a basic slide with bullet points
+- Add a slide with code (grab from course website)
+- Play with chunk options
+- Explore other options in documentation (presenting, advanced, revel themes)
+- Try publishing to [Quarto Pub](https://quarto.org/docs/publishing/quarto-pub.html)
+  - `quarto publish quarto-pub` in terminal
+  
+## GitHub Classroom
+
+- GitHub is a version control platform
+- Uses a program called Git to execute version control
+- Good for collaboration
+- Good for maintaining a portfolio
+- GitHub classroom is a way of submitting assignments and learning Git
+
+## Exercise
+
+- Set up a GitHub account and install git
+  - See [getting started](https://dataviz-gwu.rocks/modules/getting-started) section of course website if you have not already done this
+- Follow [this link](https://classroom.github.com/a/aRbbc_aT) to accept a test assignment
+- Create a new project using version control
+- Modify the assignment
+- Stage and push modified document to GitHub classroom
+
+## For Fun
+
+- Let's make a Quarto website
+- Create a new repository in your GitHub
+- Create a new quarto website project using version control
+- Preview and render the website locally
+- Push to GitHub
+- Create a Netlify account
+- Train Netlify on GitHub website repo
