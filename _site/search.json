@@ -2651,5 +2651,166 @@
     "title": "Line Charts and Scatter Plots",
     "section": "Huntington’s Three Waves",
     "text": "Huntington’s Three Waves"
+  },
+  {
+    "objectID": "slides/day-2.6.html#column-chart-from-last-class",
+    "href": "slides/day-2.6.html#column-chart-from-last-class",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "Column Chart from Last Class",
+    "text": "Column Chart from Last Class"
+  },
+  {
+    "objectID": "slides/day-2.6.html#add-a-theme",
+    "href": "slides/day-2.6.html#add-a-theme",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "Add a Theme",
+    "text": "Add a Theme\n\nflfp_region + theme_minimal()"
+  },
+  {
+    "objectID": "slides/day-2.6.html#can-also-set-theme",
+    "href": "slides/day-2.6.html#can-also-set-theme",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "Can Also Set Theme",
+    "text": "Can Also Set Theme\n\nIf you like particular theme and want to use it for all of your visualizations, use theme_set() in a code chunk at the top of your document, e.g….\n\n\n```{r}\n#| label: my_setup_chunk\n\ntheme_set(theme_minimal())\n```\n\n\n… and R will apply that theme to all of the visualizations in your document."
+  },
+  {
+    "objectID": "slides/day-2.6.html#your-turn",
+    "href": "slides/day-2.6.html#your-turn",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "Your Turn!",
+    "text": "Your Turn!\nProduce this scatter plot… Then try different themes.\n\n\n\n\n−+\n10:00"
+  },
+  {
+    "objectID": "slides/day-2.6.html#your-turn-1",
+    "href": "slides/day-2.6.html#your-turn-1",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "Your Turn!",
+    "text": "Your Turn!\n\nwealth_flfp &lt;- ggplot(flfp_gdp, aes(x = gdp_pc, y = flfp)) + \n  geom_point(aes(color = region)) + \n  geom_smooth(method = \"loess\", linewidth = 1) +\n  scale_x_log10(labels = scales::label_dollar()) + \n  scale_y_continuous(labels = scales::label_percent(scale = 1)) +\n  labs(\n    x= \"GDP per Capita\",\n    y = \"Female Labor Force Participation\",\n    title = \"Wealth and female labor force participation\",\n    caption = \"Source: World Bank Development Indicators\",\n    color = \"Region\"\n    ) + scale_color_viridis_d(option = \"plasma\", end = .7) \n\nwealth_flfp + theme_dark()"
+  },
+  {
+    "objectID": "slides/day-2.6.html#add-an-annotation",
+    "href": "slides/day-2.6.html#add-an-annotation",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "Add an Annotation",
+    "text": "Add an Annotation"
+  },
+  {
+    "objectID": "slides/day-2.6.html#section",
+    "href": "slides/day-2.6.html#section",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "",
+    "text": "First step, add a horizontal line using geom_hline()…\n\nflfp_line + \n  geom_hline(yintercept = 52, linetype=\"dashed\", color = \"red\", size = 1)"
+  },
+  {
+    "objectID": "slides/day-2.6.html#section-1",
+    "href": "slides/day-2.6.html#section-1",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "",
+    "text": "Second step, the annotation with annotate()…\n\nflfp_line + \n  geom_hline(yintercept = 52, linetype=\"dashed\", color = \"red\", size = 1) +\n  annotate(\"text\", x = 1995, y = 55, label = \"Global average\")"
+  },
+  {
+    "objectID": "slides/day-2.6.html#vertical-reference-line",
+    "href": "slides/day-2.6.html#vertical-reference-line",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "Vertical Reference Line",
+    "text": "Vertical Reference Line"
+  },
+  {
+    "objectID": "slides/day-2.6.html#section-2",
+    "href": "slides/day-2.6.html#section-2",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "",
+    "text": "First step, add a horizontal line using geom_hline()…\n\nflfp_line + \n  geom_vline(xintercept=2020, linetype = \"dashed\", size = 1)"
+  },
+  {
+    "objectID": "slides/day-2.6.html#section-3",
+    "href": "slides/day-2.6.html#section-3",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "",
+    "text": "Second step, add the annotation with annotate()\n\nflfp_line + \n  geom_vline(xintercept=2020, linetype = \"dashed\", size = 1) +\n  annotate(\"text\", x = 2017, y = 35, label = \"Pandemic\")"
+  },
+  {
+    "objectID": "slides/day-2.6.html#your-turn-2",
+    "href": "slides/day-2.6.html#your-turn-2",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "Your Turn!",
+    "text": "Your Turn!\n\nGo to module 2.2\nCopy the code you need to make the line chart\nCreate a horizontal reference line and annotate it\nIn a new code chunk, create a vertical line and annotate it\nPlay with the parameters to move and style your line\nTry different text, etc.\n\n\n\n\n−+\n10:00"
+  },
+  {
+    "objectID": "slides/day-2.6.html#interactivity",
+    "href": "slides/day-2.6.html#interactivity",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "Interactivity",
+    "text": "Interactivity"
+  },
+  {
+    "objectID": "slides/day-2.6.html#the-code",
+    "href": "slides/day-2.6.html#the-code",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "The Code",
+    "text": "The Code\n\nlibrary(plotly)\n\nwealth_flfp_plotly &lt;- wealth_flfp  + \n  scale_color_viridis_d(option = \"plasma\") +\n  theme_minimal() +\n  aes(label = country)  # need so ggplot retains label for plotly\n\nggplotly(wealth_flfp_plotly, tooltip = c(\"country\", \"flfp\", \"gdp_pc\")) |&gt; \n  \n  # add source\n  layout(annotations = list(text = \"Source: World Bank Development Indicators\",  \n                            font = list(size = 10), showarrow = FALSE,\n                            xref = 'paper', x = 1.1, xanchor = 'right', xshift = 0,\n                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) |&gt; \n  # add web address\n  layout(annotations = list(text = \"www.dataviz-gwu.rocks\", \n                            font = list(size = 10, color = 'grey'), showarrow = FALSE,\n                            xref = 'paper', x = .5, xanchor = 'center', xshift = 0,\n                            yref = 'paper', y = 1, yanchor = 'top', yshift = 0))"
+  },
+  {
+    "objectID": "slides/day-2.6.html#the-code-1",
+    "href": "slides/day-2.6.html#the-code-1",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "The Code",
+    "text": "The Code\n\nlibrary(plotly)\n\nwealth_flfp_plotly &lt;- wealth_flfp  + \n  scale_color_viridis_d(option = \"plasma\") +\n  theme_minimal() +\n  aes(label = country)  # need so ggplot retains label for plotly\n\nggplotly(wealth_flfp_plotly, tooltip = c(\"country\", \"flfp\", \"gdp_pc\")) |&gt; \n  \n  # add source\n  layout(annotations = list(text = \"Source: World Bank Development Indicators\",  \n                            font = list(size = 10), showarrow = FALSE,\n                            xref = 'paper', x = 1.1, xanchor = 'right', xshift = 0,\n                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) |&gt; \n  # add web address\n  layout(annotations = list(text = \"www.dataviz-gwu.rocks\", \n                            font = list(size = 10, color = 'grey'), showarrow = FALSE,\n                            xref = 'paper', x = .5, xanchor = 'center', xshift = 0,\n                            yref = 'paper', y = 1, yanchor = 'top', yshift = 0))"
+  },
+  {
+    "objectID": "slides/day-2.6.html#the-code-2",
+    "href": "slides/day-2.6.html#the-code-2",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "The Code",
+    "text": "The Code\n\nlibrary(plotly)\n\nwealth_flfp_plotly &lt;- wealth_flfp  + \n  scale_color_viridis_d(option = \"plasma\") +\n  theme_minimal() +\n  aes(label = country)  # need so ggplot retains label for plotly\n\nggplotly(wealth_flfp_plotly, tooltip = c(\"country\", \"flfp\", \"gdp_pc\")) |&gt; \n  \n  # add source\n  layout(annotations = list(text = \"Source: World Bank Development Indicators\",  \n                            font = list(size = 10), showarrow = FALSE,\n                            xref = 'paper', x = 1.1, xanchor = 'right', xshift = 0,\n                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) |&gt; \n  # add web address\n  layout(annotations = list(text = \"www.dataviz-gwu.rocks\", \n                            font = list(size = 10, color = 'grey'), showarrow = FALSE,\n                            xref = 'paper', x = .5, xanchor = 'center', xshift = 0,\n                            yref = 'paper', y = 1, yanchor = 'top', yshift = 0))"
+  },
+  {
+    "objectID": "slides/day-2.6.html#the-code-3",
+    "href": "slides/day-2.6.html#the-code-3",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "The Code",
+    "text": "The Code\n\nlibrary(plotly)\n\nwealth_flfp_plotly &lt;- wealth_flfp  + \n  scale_color_viridis_d(option = \"plasma\") +\n  theme_minimal() +\n  aes(label = country)  # need so ggplot retains label for plotly\n\nggplotly(wealth_flfp_plotly, tooltip = c(\"country\", \"flfp\", \"gdp_pc\")) |&gt; \n  \n  # add source\n  layout(annotations = list(text = \"Source: World Bank Development Indicators\",  \n                            font = list(size = 10), showarrow = FALSE,\n                            xref = 'paper', x = 1.1, xanchor = 'right', xshift = 0,\n                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) |&gt; \n  # add web address\n  layout(annotations = list(text = \"www.dataviz-gwu.rocks\", \n                            font = list(size = 10, color = 'grey'), showarrow = FALSE,\n                            xref = 'paper', x = .5, xanchor = 'center', xshift = 0,\n                            yref = 'paper', y = 1, yanchor = 'top', yshift = 0))"
+  },
+  {
+    "objectID": "slides/day-2.6.html#the-code-4",
+    "href": "slides/day-2.6.html#the-code-4",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "The Code",
+    "text": "The Code\n\nlibrary(plotly)\n\nwealth_flfp_plotly &lt;- wealth_flfp  + \n  scale_color_viridis_d(option = \"plasma\") +\n  theme_minimal() +\n  aes(label = country)  # need so ggplot retains label for plotly\n\nggplotly(wealth_flfp_plotly, tooltip = c(\"country\", \"flfp\", \"gdp_pc\")) |&gt; \n  \n  # add source\n  layout(annotations = list(text = \"Source: World Bank Development Indicators\",  \n                            font = list(size = 10), showarrow = FALSE,\n                            xref = 'paper', x = 1.1, xanchor = 'right', xshift = 0,\n                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) |&gt; \n  # add web address\n  layout(annotations = list(text = \"www.dataviz-gwu.rocks\", \n                            font = list(size = 10, color = 'grey'), showarrow = FALSE,\n                            xref = 'paper', x = .5, xanchor = 'center', xshift = 0,\n                            yref = 'paper', y = 1, yanchor = 'top', yshift = 0))"
+  },
+  {
+    "objectID": "slides/day-2.6.html#the-code-5",
+    "href": "slides/day-2.6.html#the-code-5",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "The Code",
+    "text": "The Code\n\nlibrary(plotly)\n\nwealth_flfp_plotly &lt;- wealth_flfp  + \n  scale_color_viridis_d(option = \"plasma\") +\n  theme_minimal() +\n  aes(label = country)  # need so ggplot retains label for plotly\n\nggplotly(wealth_flfp_plotly, tooltip = c(\"country\", \"flfp\", \"gdp_pc\")) |&gt; \n  \n  # add source\n  layout(annotations = list(text = \"Source: World Bank Development Indicators\",  \n                            font = list(size = 10), showarrow = FALSE,\n                            xref = 'paper', x = 1.1, xanchor = 'right', xshift = 0,\n                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) |&gt; \n  # add web address\n  layout(annotations = list(text = \"www.dataviz-gwu.rocks\", \n                            font = list(size = 10, color = 'grey'), showarrow = FALSE,\n                            xref = 'paper', x = .5, xanchor = 'center', xshift = 0,\n                            yref = 'paper', y = 1, yanchor = 'top', yshift = 0))"
+  },
+  {
+    "objectID": "slides/day-2.6.html#section-4",
+    "href": "slides/day-2.6.html#section-4",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "",
+    "text": "But to make a plotly chart, all you need is this!\n\nggplotly(wealth_flfp_plotly)"
+  },
+  {
+    "objectID": "slides/day-2.6.html#your-turn-3",
+    "href": "slides/day-2.6.html#your-turn-3",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "Your Turn!",
+    "text": "Your Turn!\n\nGo to module 2.2 and create the basic wealth vs. flfp scatter plot\nNow “plotlify” the plot\nAt first, don’t worry about annotations or tool tip\nThen add in tool tip, play with setting\nThen add in the annotations\nMove annotations, change content\n\n\n\n\n−+\n10:00"
+  },
+  {
+    "objectID": "slides/day-2.6.html#time-permitting",
+    "href": "slides/day-2.6.html#time-permitting",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "Time Permitting",
+    "text": "Time Permitting\nAnnotate (comment) the following code…\n\nwealth_flfp &lt;- ggplot(flfp_gdp, aes(x = gdp_pc, y = flfp)) + \n  geom_point(aes(color = region)) + \n  geom_smooth(method = \"loess\", linewidth = 1) +\n  scale_x_log10(labels = scales::label_dollar()) + \n  scale_y_continuous(labels = scales::label_percent(scale = 1)) +\n  labs(\n    x= \"GDP per Capita\",\n    y = \"Female Labor Force Participation\",\n    title = \"Wealth and female labor force participation\",\n    caption = \"Source: World Bank Development Indicators\",\n    color = \"Region\"\n    ) + scale_color_viridis_d(option = \"plasma\", end = .7) \n\nwealth_flfp + theme_minimal()\n\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "slides/day-2.6.html#time-permitting-1",
+    "href": "slides/day-2.6.html#time-permitting-1",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "Time Permitting",
+    "text": "Time Permitting\nAnnotate (comment) the following code…\n\nflfp_line &lt;- ggplot(flfp_ts, aes(x = year, y = flfp, color = region)) +\n  geom_line(linewidth = 1) + \n  scale_y_continuous(labels = scales::label_percent(scale = 1)) +\n  labs(\n    x = \"Year\", \n    y = \"Female Labor Force Participation\", \n    title = \"Regional trends in female labor force participation\", \n    caption = \"Source: V-Dem Institute\", \n    color = \"Country\"\n  ) + scale_color_viridis_d() +\n  theme_minimal()\n\nflfp_line + geom_hline(yintercept = 52, linetype=\"dashed\", color = \"red\", size = 1) +\n  annotate(\"text\", x = 1995, y = 55, label = \"Global average\")\n\n\n\n\n−+\n05:00\n\n\n\n\n\n\nDataViz 2102 Website"
   }
 ]
