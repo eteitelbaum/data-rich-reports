@@ -2,19 +2,21 @@ project:
   type: website
 
 website:
-  page-navigation: true
   title: "IAFF 6502/6505 Course Schedule"
   description: "Homepage for Visualizing and Modeling International Politics"
-  
   site-url: "https://dataviz-esia.training"
   repo-url: "https://github.com/eteitelbaum/dataviz4ia"
   repo-actions: [edit, issue]
-  
-  open-graph: true
+  page-navigation: true
+  image: "images/dataviz6502-logo.png"
   favicon: "images/dataviz-logo.png"
-  twitter-card: true
+  open-graph:
+    site-name: "Visualizing and Modeling International Politics"
+    image: "images/dataviz6502-logo.png"
+  twitter-card: 
+    image: "images/dataviz6502-logo.png"
+    
   reader-mode: true
-  
   page-footer:
     right: "This page is built with [Quarto](https://quarto.org/). 👷🛠️"
     left: "&copy; Copyright 2023, [Emmanuel Teitelbaum](https://emmanuel.teitelbaum.com)"
