@@ -9,7 +9,10 @@ website:
   repo-actions: [edit, issue]
   page-navigation: true
   image: "images/dataviz6502-preview.png"
-  open-graph: true
+  open-graph:
+    image: "images/dataviz6502-preview.png"
+    image-width: 400
+    image-height: 200
   twitter-card: true
   favicon: "images/dataviz6502-preview.png"
     
