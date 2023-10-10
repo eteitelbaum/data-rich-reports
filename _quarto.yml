@@ -4,7 +4,7 @@ project:
 website:
   page-navigation: true
   title: "IAFF 6502/6505 Course Schedule"
-  description: "Homepage for Visualizing and Modeling International Politics."
+  description: "Homepage for Visualizing and Modeling International Politics"
   
   site-url: "https://dataviz-esia.training"
   repo-url: "https://github.com/eteitelbaum/dataviz4ia"
