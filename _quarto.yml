@@ -3,11 +3,11 @@ project:
 
 website:
   page-navigation: true
-  title: "PSC/DATS 2102--Summer Schedule"
-  description: "Homepage for PSC/DATS 2102, George Washington University."
+  title: "IAFF 6502/6505 Course Schedule"
+  description: "Homepage for Visualizing and Modeling International Politics."
   
-  site-url: "https://dataviz-gwu.rocks"
-  repo-url: "https://github.com/eteitelbaum/dataviz-summer-2023"
+  site-url: "https://dataviz-esia.training"
+  repo-url: "https://github.com/eteitelbaum/dataviz4ia"
   repo-actions: [edit, issue]
   
   open-graph: true
@@ -30,8 +30,8 @@ website:
         text: "Blackboard"
         href: https://blackboard.gwu.edu
       - icon: github
-        href: https://classroom.github.com
-        text: "Github Classroom"
+        href: https://github.com
+        text: "Github"
       - icon: r-project # bootstrap-reboot
         href: https://posit.co/download/rstudio-desktop
         text: "RStudio Desktop"
