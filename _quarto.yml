@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: "IAFF 6502/6505 Course Schedule"
+  title: "IAFF 6502/6505 Visualizing and Modeling International Politics"
   description: "Homepage for Visualizing and Modeling International Politics"
   site-url: "https://dataviz-esia.training"
   repo-url: "https://github.com/eteitelbaum/dataviz4ia"
@@ -12,6 +12,8 @@ website:
   open-graph:
     site-name: "Visualizing and Modeling International Politics"
     image: "images/dataviz6502-logo.png"
+    image-height: 627
+    image-width: 627
   twitter-card: 
     image: "images/dataviz6502-logo.png"
   favicon: "images/dataviz6502-logo.png"
