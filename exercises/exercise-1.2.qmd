@@ -22,14 +22,14 @@ dem_women <- read_csv("https://raw.githubusercontent.com/eteitelbaum/dataviz-sum
 options(digits = 3)
 
 dem_summary <- dem_women |> 
-  group_by(region)  |> 
+  group_by(country)  |> 
   summarize(
-    polyarchy = mean(polyarchy, na.rm = TRUE),
+    polyarchy = median(polyarchy, na.rm = TRUE),
     gdp_pc = mean(gdp_pc, na.rm = TRUE), 
-    flfp = mean(flfp, na.rm = TRUE), 
-    women_rep = mean(women_rep, na.rm = TRUE)
+    flfp = sd(flfp, na.rm = TRUE), 
+    women_rep = median(women_rep, na.rm = TRUE)
   ) |> 
-  arrange(desc(polyarchy)) 
+  arrange(women_rep) 
 
 dem_summary
 ```

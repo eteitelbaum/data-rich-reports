@@ -37,7 +37,7 @@ In this module, we are going to work with a "flat file" (.csv) that we will down
 
 ## Downloading World Bank data into a flat file
 
-{{< video https://youtu.be/iOugfcOnoks title="Downloading Data from the World Bank" >}}
+{{< video https://youtu.be/X9im3Fod5H8 title="Downloading Data from the World Bank" >}}
 
 Go to the World Development Indicators [portal](https://databank.worldbank.org/source/world-development-indicators) at the World Bank's Data Bank.
 
@@ -50,7 +50,7 @@ Now go to Time and select the years from the last 50 years. Click Apply Changes,
 
 ## Reading data from a flat file
 
-{{< video https://youtu.be/i5galFqlj8c title='Reading Data From a Flat File' >}}
+{{< video https://youtu.be/uX89NcpJfQc title='Reading Data From a Flat File' >}}
 
 Now we are going to read this messy World Bank data into R using the `read_csv()` function from the `readr` package. [readr](https://readr.tidyverse.org/) is a collection of functions that parses data from a flat file into a *tibble*, the modern Tidyverse version of a data frame. After we have read the data  into R, we are going to have a look at it with the [glimpse()](https://dplyr.tidyverse.org/reference/glimpse.html) function from the [dplyr](https://dplyr.tidyverse.org/index.html) package.
 
@@ -77,7 +77,7 @@ glimpse(wb_data_messy)
 
 ## Reshaping data
 
-{{< video https://youtu.be/yhFUUblhTNA title='Reshaping Data With `pivot_longer()`' >}}
+{{< video https://youtu.be/sweUA0L8G3Y title='Reshaping Data With `pivot_longer()`' >}}
 
 There are a few things about the data here that make it messy. First, in order for the data to be tidy, we want each column to represent a variable and each row to represent an observation. 
 
@@ -125,7 +125,7 @@ Notice that when we specify the years in our `pivot_longer()` call we encapsulat
 
 ## Truncating strings and changing variable types
 
-{{< video https://youtu.be/-JT8JSR1z5A title='Truncating Strings and Changing Variable Types' >}}
+{{< video https://youtu.be/lj_HeZazwIk title='Truncating Strings and Changing Variable Types' >}}
 
 Now that our data are transposed, we can start to work on some other key issues. Notice that the year is stored in the weird way in which it was imported--as a character (or string) with both the year and the year in brackets, e.g. 1972 [YR1972]. Notice that `flfp` is also stored as a character whereas it should be numeric. 
 
@@ -148,7 +148,7 @@ glimpse(wb_data)
 
 ## Cleaning variable names
 
-{{< video https://youtu.be/7bgoebbzfKQ title='Clean Variable Names with Janitor' >}}
+{{< video https://youtu.be/UA7cwEIECZg title='Clean Variable Names with Janitor' >}}
 
 The last thing we are going to do is to fix the variable names. Specifically, we want to remove the spaces from the remaining variables and conver them from title case to snake case. To do this, we will use the `clean_names()` function from the `janitor` package. 
 
