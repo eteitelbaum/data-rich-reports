@@ -1,25 +1,52 @@
 ---
-title: "Project Assignment 1"
+title: "Project Assignment"
 ---
 
 ## Overview
 
-For your final project in this course, you will be producing your very own Shiny App. The purpose of this assignment is to get you to think through the basic content and layout off your app. As you will learn, Shiny Apps are comprised of two basic elements: a user interface and a server function. We are going to be focusing on the user interface side of things for now and later we will talk about how to generate the content for the user. What do you want your user to see and experience with your app? That is the question you will answer here. 
+For your final project in this course, you will be producing a short "report" with some data visualizations embedded in it. The purpose of this assignment is to give you an opportunity to practice incorporating basic data visualizations into your workflow. You will render your Quarto document as either an HTML or revealjs slides and upload the finished product to [Quarto Pub](https://quartopub.com/). Then you will share the link with the class on Discord. 
 
-## Step 1: Think about a layout for your app (25 pts.)
+You can use this document as a scratch document to create your visualizations and then ultimately convert it to your final document or presentation by changing the header titles and inserting your own text. Or, you can create and render your final document in a separate file.  
 
-*Go to the Shiny [gallery](https://shiny.posit.co/r/gallery/) and have a look at examples of the Shiny Apps there. You can also go forward in the course a bit and have a look at the apps that we are going to be building together in modules [5.1](https://dataviz-gwu.rocks/modules/module-5.1.html) and [5.2](https://dataviz-gwu.rocks/modules/module-5.2.html). Among these apps, which **layouts** appeal to you most? Link to a few of them and talk about what you like here.*
+## Step 1: Give an overview of your topic (10 pts.)
 
-## Step 2: Think about the basic content (25 pts.)
+*Give the reader a brief sense of the topic and why you chose it. Is there a question you are trying to answer with your data? What is that question and why is it important? Could be bullet points for a slide show or a few sentences for a document*
 
-*Next, think about the basic content of your app. What subject matter and data do you want to have your user explore? What do you want them to get out of the experience? What datasets would you use for your app? These could be datasets that we have used for the course or other sources but it should be comprehensive and convenient to work with. You will not have time in this course to do original data collection. Discuss in a paragraph below.*
+## Step 2: Give an overview of your data (10 pts.)
 
-## Step 3: Think about the visualization (25 pts.)
+*Provide a brief overview of your data. You could include some summary statistics or just talk about what the main variables of interest are and how they relate to the topic you are interested.*
 
-*What is the type of visualization that you want to display. This could be a line chart, scatter plot, bar chart or map and could include some text elements as well. How would your selected visualization contribute to the knowledge enhancement that you want your user to experience? What would it teach them. Discuss in a paragraph below.*
+## Step 3: Make a bar chart (10 pts.)
 
-## Step 4: Think about user input (25 pts.)
+*Make a bar chart to include your presentation or document. Give it appropriate labels, an accessible color scheme and a nice theme. If your are making a document, include a few lines to explain what the visualization tells us.*
 
-*What would the user manipulate in your app? It could be a dropdown menu, a slider or some other control. See [here](https://shiny.posit.co/r/getstarted/shiny-basics/lesson3/) for a list of control widgets. When your user interacts with the control, what output will it produce, e.g. what will change when the user manipulates the widget? How would your chosen control widget enhance the user's experience and contribute to the overall purpose of the app?*
+## Step 4: Make a line chart (10 pts.)
+
+*Make a line chart to include your presentation or document. Give it appropriate labels, an accessible color scheme and a nice theme. Make it interactive if you like.*
+
+## Step 5: Make a scatter plot (10 pts.)
+
+*Make a scatter plot to include your presentation or document. Give it appropriate labels, an accessible color scheme and a nice theme. Make it interactive if you like.*
+
+## Step 6: Make another visualization of your choice (10 pts.)
+
+*Make a another visualization of your choice. Give it appropriate labels, an accessible color scheme and a nice theme. Make it interactive if you like.*
+
+## Step 7: Add additional text or slides for context (10 pts.)
+
+*Now go back and add some conext to your slide show or document. If doing a slide show, add some slides with some additional information before and after your visualizations. If a document, write some text explaining the point of the visualization and what we learn from it.*
+
+## Step 8: Enhance your document or presentation (10 pts.)
+
+*Add some styling to your document. This could be a different font or color scheme. For presentations, you could try adding a logo and adjusting how slides transition or some of the other bells and whistles we discussed in class. For documents, you could add aditional sections or some references. Look at the Quarto documentation for ideas. Be creative!*
+
+## Step 9: Render and upload document to Quarto Pub
+
+*Render your document and publish it to Quarto as we did in class by typing `quarto publish quarto-pub` in the terminal. Make sure you have set up a Quarto Pub account first.*
+
+## Step 10: Post your link to Discord and reflect
+
+*Post the link of your Quarto Pub document on the class Discord server and reflect on your document and what you learned from the exercise. Finally, comment on at least one other student's post in the server. Provide positive feedback and say something about what you learned from their document or presentation.*
+
 
 

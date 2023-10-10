@@ -1619,16 +1619,16 @@
   {
     "objectID": "project/project-assignment.html",
     "href": "project/project-assignment.html",
-    "title": "Project Assignment 1",
+    "title": "Project Assignment",
     "section": "",
-    "text": "For your final project in this course, you will be producing your very own Shiny App. The purpose of this assignment is to get you to think through the basic content and layout off your app. As you will learn, Shiny Apps are comprised of two basic elements: a user interface and a server function. We are going to be focusing on the user interface side of things for now and later we will talk about how to generate the content for the user. What do you want your user to see and experience with your app? That is the question you will answer here."
+    "text": "For your final project in this course, you will be producing a short “report” with some data visualizations embedded in it. The purpose of this assignment is to give you an opportunity to practice incorporating basic data visualizations into your workflow. You will render your Quarto document as either an HTML or revealjs slides and upload the finished product to Quarto Pub. Then you will share the link with the class on Discord.\nYou can use this document as a scratch document to create your visualizations and then ultimately convert it to your final document or presentation by changing the header titles and inserting your own text. Or, you can create and render your final document in a separate file."
   },
   {
     "objectID": "project/project-assignment.html#overview",
     "href": "project/project-assignment.html#overview",
-    "title": "Project Assignment 1",
+    "title": "Project Assignment",
     "section": "",
-    "text": "For your final project in this course, you will be producing your very own Shiny App. The purpose of this assignment is to get you to think through the basic content and layout off your app. As you will learn, Shiny Apps are comprised of two basic elements: a user interface and a server function. We are going to be focusing on the user interface side of things for now and later we will talk about how to generate the content for the user. What do you want your user to see and experience with your app? That is the question you will answer here."
+    "text": "For your final project in this course, you will be producing a short “report” with some data visualizations embedded in it. The purpose of this assignment is to give you an opportunity to practice incorporating basic data visualizations into your workflow. You will render your Quarto document as either an HTML or revealjs slides and upload the finished product to Quarto Pub. Then you will share the link with the class on Discord.\nYou can use this document as a scratch document to create your visualizations and then ultimately convert it to your final document or presentation by changing the header titles and inserting your own text. Or, you can create and render your final document in a separate file."
   },
   {
     "objectID": "project/project-assignment.html#step-1-think-about-a-layout-for-your-app-25-pts.",
@@ -2812,5 +2812,110 @@
     "title": "Themes, Annotations and Interactivity",
     "section": "Time Permitting",
     "text": "Time Permitting\nAnnotate (comment) the following code…\n\nflfp_line &lt;- ggplot(flfp_ts, aes(x = year, y = flfp, color = region)) +\n  geom_line(linewidth = 1) + \n  scale_y_continuous(labels = scales::label_percent(scale = 1)) +\n  labs(\n    x = \"Year\", \n    y = \"Female Labor Force Participation\", \n    title = \"Regional trends in female labor force participation\", \n    caption = \"Source: V-Dem Institute\", \n    color = \"Country\"\n  ) + scale_color_viridis_d() +\n  theme_minimal()\n\nflfp_line + geom_hline(yintercept = 52, linetype=\"dashed\", color = \"red\", size = 1) +\n  annotate(\"text\", x = 1995, y = 55, label = \"Global average\")\n\n\n\n\n−+\n05:00\n\n\n\n\n\n\nDataViz 2102 Website"
+  },
+  {
+    "objectID": "project/project-assignment.html#step-1-give-an-overview-of-your-topic-10-pts.",
+    "href": "project/project-assignment.html#step-1-give-an-overview-of-your-topic-10-pts.",
+    "title": "Project Assignment",
+    "section": "Step 1: Give an overview of your topic (10 pts.)",
+    "text": "Step 1: Give an overview of your topic (10 pts.)\nGive the reader a brief sense of the topic and why you chose it. Is there a question you are trying to answer with your data? What is that question and why is it important? Could be bullet points for a slide show or a few sentences for a document"
+  },
+  {
+    "objectID": "project/project-assignment.html#step-2-give-an-overview-of-your-data-10-pts.",
+    "href": "project/project-assignment.html#step-2-give-an-overview-of-your-data-10-pts.",
+    "title": "Project Assignment",
+    "section": "Step 2: Give an overview of your data (10 pts.)",
+    "text": "Step 2: Give an overview of your data (10 pts.)\nProvide a brief overview of your data. You could include some summary statistics or just talk about what the main variables of interest are and how they relate to the topic you are interested."
+  },
+  {
+    "objectID": "project/project-assignment.html#step-3-make-a-bar-chart-10-pts.",
+    "href": "project/project-assignment.html#step-3-make-a-bar-chart-10-pts.",
+    "title": "Project Assignment",
+    "section": "Step 3: Make a bar chart (10 pts.)",
+    "text": "Step 3: Make a bar chart (10 pts.)\nMake a bar chart to include your presentation or document. Give it appropriate labels, an accessible color scheme and a nice theme. If your are making a document, include a few lines to explain what the visualization tells us."
+  },
+  {
+    "objectID": "project/project-assignment.html#step-4-make-a-line-chart-10-pts.",
+    "href": "project/project-assignment.html#step-4-make-a-line-chart-10-pts.",
+    "title": "Project Assignment",
+    "section": "Step 4: Make a line chart (10 pts.)",
+    "text": "Step 4: Make a line chart (10 pts.)\nMake a line chart to include your presentation or document. Give it appropriate labels, an accessible color scheme and a nice theme. Make it interactive if you like."
+  },
+  {
+    "objectID": "project/project-assignment.html#step-5-make-a-scatter-plot-10-pts.",
+    "href": "project/project-assignment.html#step-5-make-a-scatter-plot-10-pts.",
+    "title": "Project Assignment",
+    "section": "Step 5: Make a scatter plot (10 pts.)",
+    "text": "Step 5: Make a scatter plot (10 pts.)\nMake a scatter plot to include your presentation or document. Give it appropriate labels, an accessible color scheme and a nice theme. Make it interactive if you like."
+  },
+  {
+    "objectID": "project/project-assignment.html#step-6-make-another-visualization-of-your-choice-10-pts.",
+    "href": "project/project-assignment.html#step-6-make-another-visualization-of-your-choice-10-pts.",
+    "title": "Project Assignment",
+    "section": "Step 6: Make another visualization of your choice (10 pts.)",
+    "text": "Step 6: Make another visualization of your choice (10 pts.)\nMake a another visualization of your choice. Give it appropriate labels, an accessible color scheme and a nice theme. Make it interactive if you like."
+  },
+  {
+    "objectID": "project/project-assignment.html#step-6-add-additional-text-or-slides-for-context-10-pts.",
+    "href": "project/project-assignment.html#step-6-add-additional-text-or-slides-for-context-10-pts.",
+    "title": "Project Assignment",
+    "section": "Step 6: Add additional text or slides for context (10 pts.)",
+    "text": "Step 6: Add additional text or slides for context (10 pts.)\nNow go back and add some conext to your slide show or document. If doing a slide show, add some slides with some additional information before and after your visualizations. If a document, write some text explaining the point of the visualization and what we learn from it."
+  },
+  {
+    "objectID": "project/project-assignment.html#step-7-enhance-your-document-or-presentation-10-pts.",
+    "href": "project/project-assignment.html#step-7-enhance-your-document-or-presentation-10-pts.",
+    "title": "Project Assignment",
+    "section": "Step 7: Enhance your document or presentation (10 pts.)",
+    "text": "Step 7: Enhance your document or presentation (10 pts.)\nAdd some styling to your document. This could be a different font or color scheme. For presentations, you could try adding a logo and adjusting how slides transition or some of the other bells and whistles we discussed in class. For documents, you could add aditional sections or some references. Look at the Quarto documentation for ideas. Be creative!"
+  },
+  {
+    "objectID": "project/project-assignment.html#step-8-render-and-upload-document-to-quarto-pub",
+    "href": "project/project-assignment.html#step-8-render-and-upload-document-to-quarto-pub",
+    "title": "Project Assignment",
+    "section": "Step 8: Render and upload document to Quarto Pub",
+    "text": "Step 8: Render and upload document to Quarto Pub\nRender your document and publish it to Quarto as we did in class by typing quarto publish quarto-pub in the terminal. Make sure you have set up a Quarto Pub account first."
+  },
+  {
+    "objectID": "project/project-assignment.html#step-9-post-your-link-to-discord-and-reflect",
+    "href": "project/project-assignment.html#step-9-post-your-link-to-discord-and-reflect",
+    "title": "Project Assignment",
+    "section": "Step 9: Post your link to Discord and reflect",
+    "text": "Step 9: Post your link to Discord and reflect\nPost the link of your Quarto Pub document on the class Discord server and reflect on your document and what you learned from the exercise."
+  },
+  {
+    "objectID": "project/project-assignment.html#step-10-comment-on-at-least-one-other-students-post",
+    "href": "project/project-assignment.html#step-10-comment-on-at-least-one-other-students-post",
+    "title": "Project Assignment",
+    "section": "Step 10: Comment on at least one other student’s post",
+    "text": "Step 10: Comment on at least one other student’s post\nFinally, comment on at least one other student’s post in the server. Provide positive feedback and say something about what you learned from their document or presentation."
+  },
+  {
+    "objectID": "project/project-assignment.html#step-7-add-additional-text-or-slides-for-context-10-pts.",
+    "href": "project/project-assignment.html#step-7-add-additional-text-or-slides-for-context-10-pts.",
+    "title": "Project Assignment",
+    "section": "Step 7: Add additional text or slides for context (10 pts.)",
+    "text": "Step 7: Add additional text or slides for context (10 pts.)\nNow go back and add some conext to your slide show or document. If doing a slide show, add some slides with some additional information before and after your visualizations. If a document, write some text explaining the point of the visualization and what we learn from it."
+  },
+  {
+    "objectID": "project/project-assignment.html#step-8-enhance-your-document-or-presentation-10-pts.",
+    "href": "project/project-assignment.html#step-8-enhance-your-document-or-presentation-10-pts.",
+    "title": "Project Assignment",
+    "section": "Step 8: Enhance your document or presentation (10 pts.)",
+    "text": "Step 8: Enhance your document or presentation (10 pts.)\nAdd some styling to your document. This could be a different font or color scheme. For presentations, you could try adding a logo and adjusting how slides transition or some of the other bells and whistles we discussed in class. For documents, you could add aditional sections or some references. Look at the Quarto documentation for ideas. Be creative!"
+  },
+  {
+    "objectID": "project/project-assignment.html#step-9-render-and-upload-document-to-quarto-pub",
+    "href": "project/project-assignment.html#step-9-render-and-upload-document-to-quarto-pub",
+    "title": "Project Assignment",
+    "section": "Step 9: Render and upload document to Quarto Pub",
+    "text": "Step 9: Render and upload document to Quarto Pub\nRender your document and publish it to Quarto as we did in class by typing quarto publish quarto-pub in the terminal. Make sure you have set up a Quarto Pub account first."
+  },
+  {
+    "objectID": "project/project-assignment.html#step-10-post-your-link-to-discord-and-reflect",
+    "href": "project/project-assignment.html#step-10-post-your-link-to-discord-and-reflect",
+    "title": "Project Assignment",
+    "section": "Step 10: Post your link to Discord and reflect",
+    "text": "Step 10: Post your link to Discord and reflect\nPost the link of your Quarto Pub document on the class Discord server and reflect on your document and what you learned from the exercise. Finally, comment on at least one other student’s post in the server. Provide positive feedback and say something about what you learned from their document or presentation."
   }
 ]
