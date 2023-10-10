@@ -8,15 +8,10 @@ website:
   repo-url: "https://github.com/eteitelbaum/dataviz4ia"
   repo-actions: [edit, issue]
   page-navigation: true
-  image: "images/dataviz6502-logo.png"
-  open-graph:
-    site-name: "Visualizing and Modeling International Politics"
-    image: "images/dataviz6502-logo.png"
-    image-height: 627
-    image-width: 627
-  twitter-card: 
-    image: "images/dataviz6502-logo.png"
-  favicon: "images/dataviz6502-logo.png"
+  image: "images/dataviz6502-preview.png"
+  open-graph: true
+  twitter-card: true
+  favicon: "images/dataviz6502-preview.png"
     
   reader-mode: true
   page-footer:
