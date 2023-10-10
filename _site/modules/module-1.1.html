@@ -61,7 +61,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../">
 <link href="../modules/module-1.2.html" rel="next">
 <link href="../modules/getting-started.html" rel="prev">
-<link href="../images/dataviz-logo.png" rel="icon" type="image/png">
+<link href="../images/dataviz6502-logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -385,8 +385,8 @@ Note
 <p>Now go to Time and select the years from the last 50 years. Click Apply Changes, go to Download Options and download as a .csv file. Place the .csv file in the data directory that you created for this module. Save it as “messy_wb_data.csv” or something like that.</p>
 </section><section id="reading-data-from-a-flat-file" class="level2"><h2 class="anchored" data-anchor-id="reading-data-from-a-flat-file">Reading data from a flat file</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/uX89NcpJfQc" title="Reading Data From a Flat File" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<p>Now we are going to read this messy World Bank data into R using the <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> function from the <code>readr</code> package. <a href="https://readr.tidyverse.org/">readr</a> is a collection of functions that parses data from a flat file into a <em>tibble</em>, the modern Tidyverse version of a data frame. After we have read the data into R, we are going to have a look at it with the <a href="https://dplyr.tidyverse.org/reference/glimpse.html">glimpse()</a> function from the <a href="https://dplyr.tidyverse.org/index.html">dplyr</a> package.</p>
-<p><code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> shows us a list of the columns in the along with their type (e.g.&nbsp;character, double, etc.) and a few rows’ worth of data.</p>
+<p>Now we are going to read this messy World Bank data into R using the <code><a href="https://rdrr.io/pkg/readr/man/read_delim.html">read_csv()</a></code> function from the <code>readr</code> package. <a href="https://readr.tidyverse.org/">readr</a> is a collection of functions that parses data from a flat file into a <em>tibble</em>, the modern Tidyverse version of a data frame. After we have read the data into R, we are going to have a look at it with the <a href="https://dplyr.tidyverse.org/reference/glimpse.html">glimpse()</a> function from the <a href="https://dplyr.tidyverse.org/index.html">dplyr</a> package.</p>
+<p><code><a href="https://rdrr.io/pkg/pillar/man/glimpse.html">glimpse()</a></code> shows us a list of the columns in the along with their type (e.g.&nbsp;character, double, etc.) and a few rows’ worth of data.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -397,7 +397,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>While comma delimited files are the most common kind of flat file, <code>readr</code> includes functions for parsing files with a wide range of delimiters including tabs (<code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_tsv()</a></code>), semicolons (<code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv2()</a></code>) and white spaces (<code><a href="https://readr.tidyverse.org/reference/read_table.html">read_table()</a></code>). There is also a Tidyverse package for reading in Excel files called <a href="https://readxl.tidyverse.org/">readxl</a>.</p>
+<p>While comma delimited files are the most common kind of flat file, <code>readr</code> includes functions for parsing files with a wide range of delimiters including tabs (<code><a href="https://rdrr.io/pkg/readr/man/read_delim.html">read_tsv()</a></code>), semicolons (<code><a href="https://rdrr.io/pkg/readr/man/read_delim.html">read_csv2()</a></code>) and white spaces (<code><a href="https://rdrr.io/pkg/readr/man/read_table.html">read_table()</a></code>). There is also a Tidyverse package for reading in Excel files called <a href="https://readxl.tidyverse.org/">readxl</a>.</p>
 </div>
 </div>
 <div class="cell">
@@ -406,10 +406,10 @@ Note
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span> </span>
 <span></span>
 <span><span class="co"># Read data from csv file into an object called "wb_data_messy"</span></span>
-<span><span class="va">wb_data_messy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/messy_wb_data.csv"</span><span class="op">)</span></span>
+<span><span class="va">wb_data_messy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/readr/man/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/messy_wb_data.csv"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># View the data</span></span>
-<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">wb_data_messy</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/pillar/man/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">wb_data_messy</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 222
 Columns: 54
@@ -474,7 +474,7 @@ $ `2021 [YR2021]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", ".
 <p>There are a few things about the data here that make it messy. First, in order for the data to be tidy, we want each column to represent a variable and each row to represent an observation.</p>
 <p>But here we see the reverse: the data are in <em>wide form</em>, meaning that each column represents a year and each row represents a country. This entails that each row represents <em>multiple</em> observations in that we have data for multiple years for each row.</p>
 <p>To rectify this, we need to <em>reshape</em> the data from wide form to <em>long form</em>. For this, we need the <a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a> function from the <a href="https://tidyr.tidyverse.org/index.html">tidyr</a> package.</p>
-<p>The <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> function takes three basic arguments:</p>
+<p>The <code><a href="https://rdrr.io/pkg/tidyr/man/pivot_longer.html">pivot_longer()</a></code> function takes three basic arguments:</p>
 <ul>
 <li>
 <strong>cols</strong> - which columns you want to pivot</li>
@@ -490,14 +490,14 @@ $ `2021 [YR2021]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", ".
 <span></span>
 <span><span class="co"># Reshape the data</span></span>
 <span><span class="va">wb_data</span> <span class="op">&lt;-</span> <span class="va">wb_data_messy</span> <span class="op">|&gt;</span> <span class="co"># take wb_data_messy, and put it in wb_data, but first...</span></span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>             <span class="co"># pivot the data from wide to long form</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/tidyr/man/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>             <span class="co"># pivot the data from wide to long form</span></span>
 <span>    cols <span class="op">=</span> <span class="va">`1972 [YR1972]`</span><span class="op">:</span> <span class="va">`2021 [YR2021]`</span>, <span class="co"># columns to pivot</span></span>
 <span>    names_to <span class="op">=</span> <span class="st">"year"</span>, <span class="co"># name the first column "year"</span></span>
 <span>    values_to <span class="op">=</span> <span class="st">"flfp"</span> <span class="co"># name the second column "flfp"</span></span>
 <span>  <span class="op">)</span> </span>
 <span></span>
 <span><span class="co"># View the data</span></span>
-<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">wb_data</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/pillar/man/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">wb_data</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 11,100
 Columns: 6
@@ -519,7 +519,7 @@ The Pipe Operator
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>For our <code>pivot-longer()</code> call we used R’s native <a href="https://r4ds.hadley.nz/workflow-style.html#sec-pipes">pipe operator</a>, e.g.&nbsp;<code>|&gt;</code>. Pipes tell R to do something to the object that they are attached to. In this case, we are telling R to apply <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> to <code>wb_data</code>. The alternative way of writing this code would be to include the data as the first argument in the function, e.g.&nbsp;<code>pivot_longer(wb_data, cols = ..., names_to = ... , values_to = ...)</code>. As you will see, pipe operators enable us to string together multiple functions in a convenient way to transform our data.</p>
+<p>For our <code>pivot-longer()</code> call we used R’s native <a href="https://r4ds.hadley.nz/workflow-style.html#sec-pipes">pipe operator</a>, e.g.&nbsp;<code>|&gt;</code>. Pipes tell R to do something to the object that they are attached to. In this case, we are telling R to apply <code><a href="https://rdrr.io/pkg/tidyr/man/pivot_longer.html">pivot_longer()</a></code> to <code>wb_data</code>. The alternative way of writing this code would be to include the data as the first argument in the function, e.g.&nbsp;<code>pivot_longer(wb_data, cols = ..., names_to = ... , values_to = ...)</code>. As you will see, pipe operators enable us to string together multiple functions in a convenient way to transform our data.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-caution callout-titled">
@@ -532,22 +532,22 @@ Spaces in Variable Names
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Notice that when we specify the years in our <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> call we encapsulate them in backticks (``). This is because the years, as they were imported from the WDI dataset, have spaces in them. Typically we want to avoid this scenario by writing our variable names in <a href="https://en.wikipedia.org/wiki/Snake_case"><em>snake_case</em></a>.</p>
+<p>Notice that when we specify the years in our <code><a href="https://rdrr.io/pkg/tidyr/man/pivot_longer.html">pivot_longer()</a></code> call we encapsulate them in backticks (``). This is because the years, as they were imported from the WDI dataset, have spaces in them. Typically we want to avoid this scenario by writing our variable names in <a href="https://en.wikipedia.org/wiki/Snake_case"><em>snake_case</em></a>.</p>
 </div>
 </div>
 </section><section id="truncating-strings-and-changing-variable-types" class="level2"><h2 class="anchored" data-anchor-id="truncating-strings-and-changing-variable-types">Truncating strings and changing variable types</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/lj_HeZazwIk" title="Truncating Strings and Changing Variable Types" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>Now that our data are transposed, we can start to work on some other key issues. Notice that the year is stored in the weird way in which it was imported–as a character (or string) with both the year and the year in brackets, e.g.&nbsp;1972 [YR1972]. Notice that <code>flfp</code> is also stored as a character whereas it should be numeric.</p>
-<p>To fix this, we will use the <a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a> and <code><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at()</a></code> functions from <code>dplyr</code>. <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> is used to transform variables and to create new ones while <code><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at()</a></code> allow us to transform multiple columns at once.</p>
-<p>First we call <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> along with <a href="https://www.statology.org/substring-function-in-r/">substring()</a> to truncate the year variable to only include the first four characters of the string. Then we call <code><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at()</a></code> along with <code>as.numeric</code> to transform <code>year</code> and <code>flfp</code> to numeric variables.</p>
+<p>To fix this, we will use the <a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a> and <code><a href="https://rdrr.io/pkg/dplyr/man/mutate_all.html">mutate_at()</a></code> functions from <code>dplyr</code>. <code><a href="https://rdrr.io/pkg/dplyr/man/mutate.html">mutate()</a></code> is used to transform variables and to create new ones while <code><a href="https://rdrr.io/pkg/dplyr/man/mutate_all.html">mutate_at()</a></code> allow us to transform multiple columns at once.</p>
+<p>First we call <code><a href="https://rdrr.io/pkg/dplyr/man/mutate.html">mutate()</a></code> along with <a href="https://www.statology.org/substring-function-in-r/">substring()</a> to truncate the year variable to only include the first four characters of the string. Then we call <code><a href="https://rdrr.io/pkg/dplyr/man/mutate_all.html">mutate_at()</a></code> along with <code>as.numeric</code> to transform <code>year</code> and <code>flfp</code> to numeric variables.</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Fix year and flfp</span></span>
 <span><span class="va">wb_data</span> <span class="op">&lt;-</span> <span class="va">wb_data</span> <span class="op">|&gt;</span> <span class="co"># replace wb_data with a modified version of the dataframe </span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/substr.html">substring</a></span><span class="op">(</span><span class="va">year</span>, <span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># truncate year (keep first four characters)</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"year"</span>, <span class="st">"flfp"</span><span class="op">)</span>, <span class="va">as.numeric</span><span class="op">)</span> <span class="co"># change year and flfp to numeric</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/substr.html">substring</a></span><span class="op">(</span><span class="va">year</span>, <span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># truncate year (keep first four characters)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate_all.html">mutate_at</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"year"</span>, <span class="st">"flfp"</span><span class="op">)</span>, <span class="va">as.numeric</span><span class="op">)</span> <span class="co"># change year and flfp to numeric</span></span>
 <span></span>
 <span><span class="co"># View the data</span></span>
-<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">wb_data</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/pillar/man/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">wb_data</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 11,100
 Columns: 6
@@ -561,7 +561,7 @@ $ flfp           &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,
 </div>
 </section><section id="cleaning-variable-names" class="level2"><h2 class="anchored" data-anchor-id="cleaning-variable-names">Cleaning variable names</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/UA7cwEIECZg" title="Clean Variable Names with Janitor" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<p>The last thing we are going to do is to fix the variable names. Specifically, we want to remove the spaces from the remaining variables and conver them from title case to snake case. To do this, we will use the <code><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names()</a></code> function from the <code>janitor</code> package.</p>
+<p>The last thing we are going to do is to fix the variable names. Specifically, we want to remove the spaces from the remaining variables and conver them from title case to snake case. To do this, we will use the <code><a href="https://rdrr.io/pkg/janitor/man/clean_names.html">clean_names()</a></code> function from the <code>janitor</code> package.</p>
 <p>As a final step, we can export our clean data to a new .csv file with the <code><a href="https://rdrr.io/r/utils/write.table.html">write.csv()</a></code> function from <code>readr</code>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load janitor</span></span>
@@ -569,13 +569,13 @@ $ flfp           &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,
 <span></span>
 <span><span class="co"># Apply clean_names() to wb_data, store in new data frame called wb_data_clean</span></span>
 <span><span class="va">wb_data_clean</span> <span class="op">&lt;-</span> <span class="va">wb_data</span> <span class="op">|&gt;</span>  </span>
-<span>  <span class="fu"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/janitor/man/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span> </span>
 <span></span>
 <span><span class="co"># Write wb_data_clean to a csv file</span></span>
-<span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">wb_data_clean</span>, <span class="st">"data/wb_data_clean.csv"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/readr/man/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">wb_data_clean</span>, <span class="st">"data/wb_data_clean.csv"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># View the data</span></span>
-<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">wb_data_clean</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/pillar/man/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">wb_data_clean</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 11,100
 Columns: 6

@@ -11,7 +11,11 @@
     "href": "course-links.html",
     "title": "Useful links",
     "section": "",
-    "text": "Microsoft 365\n🔗 on GW IT’s Microsoft 365 Page\n\n\nTableau\n🔗 on Tableau Trial\n\n\nLecture Recordings\n🔗 on Blackboard\n\n\nProf T’s Zoom Office\n🔗 on Zoom\n\n\nOffice Hours Appointments\n🔗 on Calendly"
+    "text": "Microsoft 365\n🔗 on GW IT’s Microsoft 365 Page\n\n\nTableau\n🔗 on Tableau Trial\n\n\nLecture Recordings\n🔗 on Blackboard\n\n\nProf T’s Zoom Office\n🔗 on Zoom\n\n\nOffice Hours Appointments\n🔗 on Calendly",
+    "crumbs": [
+      "Course information",
+      "Useful links"
+    ]
   },
   {
     "objectID": "course-support.html",
@@ -67,7 +71,11 @@
     "href": "index.html",
     "title": "Course Schedule",
     "section": "",
-    "text": "This page displays an outline of the topics, content, and assignments for the course along with guidelines for when to start and finish assignments. Please see the assignments themselves for due dates.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDate\nSkills\nPackages\nFunctions\nReadings\nReference\nVideos\nAssignments\n\n\n\n\n1.1\nOct 14\nRead data into R\nreadr, dplyr\nread_csv(), glimpse()\n\n📖\n🖥️🖥️\n\n\n\n\nOct 15\nReshape data\ntidyr\npivot_longer()\n\n📖\n🖥️\n\n\n\n\nOct 16\nClean data\ndplyr\nmutate(), mutate_at(), substring()\n📖\n\n🖥️🖥️\n📘\n\n\n1.2\nOct 17\nDownload data from an API\nwbstats, vdemdata, dplyr, janitor\nwb_data(), vdem, select_(), filter(), case_match(), round_to_fraction()\n\n\n🖥️🖥️\n\n\n\n\nOct 18\nMerge data frames\ncountrycode, dplyr , readr\ncountrycode(), left_join(), write_csv()\n\n📖\n🖥️🖥️\n\n\n\n\nOct 19\nGroup, summarize and arrange\ndplyr\ngroup_by(), summarize(), arrange()\n\n📖\n🖥️\n📘\n\n\n2.1\nOct 21\nBar charts & histograms\nggplot2\nggplot(), geom_col(), geom_histogram(), aes(), labs()\n\n📖📖\n🖥️🖥️\n\n\n\n\nOct 22\nLine charts\nggplot2\ngeom_line()\n\n\n🖥️\n\n\n\n\nOct 23\nScatter plots\nggplot2, scales\ngeom_point(), geom_smooth(), scale_x_log10(), label_number(), geom_text()\n📖\n📖\n🖥️\n📘\n\n\n2.2\nOct 24\nColor schemes\ntidyr, colorBlindess, dplyr, viridis, RColorBrewer\ndrop_na(), cvdPlot(), scale_fill_manual(), scale_fill_viridis_d(), scale_fill_brewer(), scale_color_manual(), scale_color_viridis_d(), scale_color_brewer\n\n📖\n🖥️\n\n\n\n\nOct 25\nThemes & annotations\nggplot2\ntheme_dark(), theme_minimal(), annotate(), geom_hline(), geom_vline()\n\n📖\n🖥️🖥️\n\n\n\n\nOct 26\nInteractivity\nplotly\nggplotly(), layout()\n\n\n🖥️\n📘\n\n\nWS-1\nOct 27\nSee workshop schedule\n\n\n\n\n\n🧮\n\n\nWS-2\nOct 28\nSee workshop schedule\n\n\n\n\n\n🧮 ✍️\n\n\nWS-3\nOct 29\nSee workshop schedule"
+    "text": "This page displays an outline of the topics, content, and assignments for the course along with guidelines for when to start and finish assignments. Please see the assignments themselves for due dates.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDate\nSkills\nPackages\nFunctions\nReadings\nReference\nVideos\nAssignments\n\n\n\n\n1.1\nOct 14\nRead data into R\nreadr, dplyr\nread_csv(), glimpse()\n\n📖\n🖥️🖥️\n\n\n\n\nOct 15\nReshape data\ntidyr\npivot_longer()\n\n📖\n🖥️\n\n\n\n\nOct 16\nClean data\ndplyr\nmutate(), mutate_at(), substring()\n📖\n\n🖥️🖥️\n📘\n\n\n1.2\nOct 17\nDownload data from an API\nwbstats, vdemdata, dplyr, janitor\nwb_data(), vdem, select_(), filter(), case_match(), round_to_fraction()\n\n\n🖥️🖥️\n\n\n\n\nOct 18\nMerge data frames\ncountrycode, dplyr , readr\ncountrycode(), left_join(), write_csv()\n\n📖\n🖥️🖥️\n\n\n\n\nOct 19\nGroup, summarize and arrange\ndplyr\ngroup_by(), summarize(), arrange()\n\n📖\n🖥️\n📘\n\n\n2.1\nOct 21\nBar charts & histograms\nggplot2\nggplot(), geom_col(), geom_histogram(), aes(), labs()\n\n📖📖\n🖥️🖥️\n\n\n\n\nOct 22\nLine charts\nggplot2\ngeom_line()\n\n\n🖥️\n\n\n\n\nOct 23\nScatter plots\nggplot2, scales\ngeom_point(), geom_smooth(), scale_x_log10(), label_number(), geom_text()\n📖\n📖\n🖥️\n📘\n\n\n2.2\nOct 24\nColor schemes\ntidyr, colorBlindess, dplyr, viridis, RColorBrewer\ndrop_na(), cvdPlot(), scale_fill_manual(), scale_fill_viridis_d(), scale_fill_brewer(), scale_color_manual(), scale_color_viridis_d(), scale_color_brewer\n\n📖\n🖥️\n\n\n\n\nOct 25\nThemes & annotations\nggplot2\ntheme_dark(), theme_minimal(), annotate(), geom_hline(), geom_vline()\n\n📖\n🖥️🖥️\n\n\n\n\nOct 26\nInteractivity\nplotly\nggplotly(), layout()\n\n\n🖥️\n📘\n\n\nWS-1\nOct 27\nSee workshop schedule\n\n\n\n\n\n🧮\n\n\nWS-2\nOct 28\nSee workshop schedule\n\n\n\n\n\n🧮 ✍️\n\n\nWS-3\nOct 29\nSee workshop schedule",
+    "crumbs": [
+      "Course information",
+      "Schedule"
+    ]
   },
   {
     "objectID": "instructor.html",

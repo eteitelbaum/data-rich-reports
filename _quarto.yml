@@ -9,12 +9,12 @@ website:
   repo-actions: [edit, issue]
   page-navigation: true
   image: "images/dataviz6502-logo.png"
-  favicon: "images/dataviz-logo.png"
   open-graph:
     site-name: "Visualizing and Modeling International Politics"
     image: "images/dataviz6502-logo.png"
   twitter-card: 
     image: "images/dataviz6502-logo.png"
+  favicon: "images/dataviz6502-logo.png"
     
   reader-mode: true
   page-footer:
