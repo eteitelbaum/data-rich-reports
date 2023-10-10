@@ -2917,5 +2917,12 @@
     "title": "Project Assignment",
     "section": "Step 10: Post your link to Discord and reflect",
     "text": "Step 10: Post your link to Discord and reflect\nPost the link of your Quarto Pub document on the class Discord server and reflect on your document and what you learned from the exercise. Finally, comment on at least one other student’s post in the server. Provide positive feedback and say something about what you learned from their document or presentation."
+  },
+  {
+    "objectID": "exercises/exercise-1.2-webr.html",
+    "href": "exercises/exercise-1.2-webr.html",
+    "title": "Exercise 1.2",
+    "section": "",
+    "text": "library(readr)\nlibrary(dplyr)\n\ndem_women &lt;- read_csv(\"https://raw.githubusercontent.com/eteitelbaum/dataviz-summer-2023/main/modules/data/dem_women.csv\")\n\noptions(digits = 3)\n\ndem_summary &lt;- dem_women |&gt; \n  group_by(region)  |&gt; \n  summarize(\n    polyarchy = mean(polyarchy, na.rm = TRUE),\n    gdp_pc = mean(gdp_pc, na.rm = TRUE), \n    flfp = mean(flfp, na.rm = TRUE), \n    women_rep = mean(women_rep, na.rm = TRUE)\n  ) |&gt; \n  arrange(desc(polyarchy)) \n\ndem_summary"
   }
 ]

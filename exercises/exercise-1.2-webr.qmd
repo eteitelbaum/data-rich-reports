@@ -1,0 +1,35 @@
+---
+title: "Exercise 1.2"
+format: html
+highlight-style: atom-one
+filters:
+  - webr
+execute:
+  echo: true
+  message: false
+  warning: false
+---
+
+
+```{r}
+#| eval: false
+
+library(readr)
+library(dplyr)
+
+dem_women <- read_csv("https://raw.githubusercontent.com/eteitelbaum/dataviz-summer-2023/main/modules/data/dem_women.csv")
+
+options(digits = 3)
+
+dem_summary <- dem_women |> 
+  group_by(region)  |> 
+  summarize(
+    polyarchy = mean(polyarchy, na.rm = TRUE),
+    gdp_pc = mean(gdp_pc, na.rm = TRUE), 
+    flfp = mean(flfp, na.rm = TRUE), 
+    women_rep = mean(women_rep, na.rm = TRUE)
+  ) |> 
+  arrange(desc(polyarchy)) 
+
+dem_summary
+```
