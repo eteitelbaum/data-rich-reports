@@ -1,8 +1,8 @@
 ---
-title: Line Charts and Scatter Plots
+title: "Themes, Annotations and Interactivity"
 date: today
 date-format: long
-footer: "[DataViz 2102 Website](https://dataviz-gwu.rocks)"
+footer: "[DataViz 6502 Website](https://dataviz-esia.training)"
 logo: images/dataviz-logo.png
 format:
   revealjs:
@@ -20,608 +20,552 @@ execute:
 
 ```{r}
 #| label: setup
-#| include: false
 
-library(tidyverse)
-library(vdemdata)
-library(plotly)
-library(WDI)
+library(readr)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(wbstats)
+library(countrycode)
+library(countdown)
+
+indicators = c(flfp = "SL.TLF.CACT.FE.ZS", gdp_pc = "NY.GDP.PCAP.KD") # define indicators
+
+## Regional levels of FLFP for column chart 
+
+flfp_gdp_regions <- 
+  wb_data("SL.TLF.CACT.FE.ZS", country = "regions_only", mrnev = 1) |> 
+  rename(
+    region = country,
+    year = date,
+    flfp = SL.TLF.CACT.FE.ZS
+  ) |> 
+  select(region, iso3c, year, flfp)
+
+## Cross-section of data on FLFP and GDP per capita for scatter plot
+
+flfp_gdp <- wb_data(indicators, end_date = 2021) |> # download data for 2021
+    left_join(select(wb_countries(), c(iso3c, region)), by = "iso3c") |>  # add regions
+    drop_na() # drop rows with missing values
+
+## Time series data on regional trends in FLFP for line chart
+
+flfp_ts <- wb_data("SL.TLF.CACT.FE.ZS", country = "regions_only", start_date = 1990, end_date = 2022) |> 
+  rename(
+    region = country,
+    year = date,
+    flfp = SL.TLF.CACT.FE.ZS
+  ) |> 
+  select(region, iso3c, year, flfp)
+```
+
+## Column Chart from Last Class
+
+```{r}
+#| label: column_chart1
+
+flfp_region <- ggplot(flfp_gdp_regions, aes(x = reorder(iso3c, -flfp), y = flfp, fill = region)) +
+  geom_col() + 
+  scale_y_continuous(labels = scales::label_percent(scale = 1)) +
+  labs(
+    x = "Region", 
+    y = "Avg. Female Labor Force Participation", 
+    title = "Levels of female labor force participation by region", 
+    fill = "Region",
+    caption = "Source: World Bank"
+    ) + 
+  scale_fill_viridis_d()
+
+flfp_region
+```
+
+## Add a Theme
+
+```{r}
+#| label: column_chart2
+#| echo: true
+
+flfp_region + theme_minimal()
+```
+
+## Can Also Set Theme {.smaller}
+
+<br>
+
+If you like particular theme and want to use it for all of your visualizations, use `theme_set()` in a code chunk at the top of your document, e.g....
+
+<br>
+
+```{r}
+#| label: my_setup_chunk
+#| echo: fenced
 
 theme_set(theme_minimal())
 ```
 
-```{r}
-#| label: vdem_setup
-#| include: false
+<br>
 
-polyarchy_annual <- vdem %>%
-  group_by(year) %>%
-  summarize(
-    polyarchy = mean(v2x_polyarchy, na.rm = TRUE),
-    gdp_pc = mean(e_gdppc, na.rm = TRUE)*1000
-  ) %>%
-  mutate(
-    wave = case_when(year <= 1827 ~ "pre 1st wave",
-                       year > 1827 & year <= 1926 ~ "1st wave", 
-                       year > 1926 & year <= 1945 ~ "1st rev. wave",
-                       year > 1945 & year <= 1962 ~ "2nd wave", 
-                       year > 1962 & year <= 1973 ~ "2nd rev. wave", 
-                       year > 1973 & year <= 2010 ~ "3rd wave", 
-                       year > 2010 ~ "3rd rev. wave") %>%
-      factor(levels = c("pre 1st wave", "1st wave", "1st rev. wave",
-                        "2nd wave", "2nd rev. wave", "3rd wave", "3rd rev. wave"))
-  ) %>%
-  drop_na()
+... and R will apply that theme to all of the visualizations in your document. 
+
+## Your Turn! 
+
+Produce this scatter plot... Then try different [themes](https://ggplot2.tidyverse.org/reference/ggtheme.html).
+
+```{r}
+#| label: exercise1
+
+wealth_flfp <- ggplot(flfp_gdp, aes(x = gdp_pc, y = flfp)) + 
+  geom_point(aes(color = region)) + # color points by region
+  geom_smooth(method = "loess", linewidth = 1) +  # make the line a loess curve
+  scale_x_log10(labels = scales::label_dollar()) + # stretch axis, add '$' format
+  scale_y_continuous(labels = scales::label_percent(scale = 1)) + # add % label
+  labs(
+    x= "GDP per Capita", # x-axis title
+    y = "Female Labor Force Participation", # y-axis title
+    title = "Wealth and female labor force participation", # plot title
+    caption = "Source: World Bank Development Indicators", # caption
+    color = "Region" # legend title
+    ) + scale_color_viridis_d(option = "plasma", end = .7) 
+
+wealth_flfp + theme_dark()
 ```
 
-## Huntington's Three Waves
+```{r}
+#| label: setup_timer
+countdown(minutes = 10, 
+          id = "setup", 
+          #bottom = "10%", 
+          right = "-15%",
+          color_border = "#fff",
+          color_text = "#fff",
+          color_running_background = "#42affa",
+          color_running_text = "black",
+          color_finished_background = "#E5D19D",
+          color_finished_text = "#00264A")
+```
+
+## Your Turn!
+
+<br>
 
 ```{r}
-#| label: huntington
-region_plot <- ggplot(polyarchy_annual, aes(x = gdp_pc, y = polyarchy)) + 
-  geom_point(aes(color = wave)) + 
-  geom_smooth(method = "lm", se = FALSE, size = .75) + 
-  scale_x_log10(label = scales::label_dollar()) +
-  aes(label = year) +
-  labs(x= "GDP Per Capita", y = "Polyarchy Score",
-       title = "Democracy, development and Huntington's three waves") +
-  scale_color_discrete(name = "Wave")
+#| label: exercise1_solution
+#| echo: true
+#| output: false
 
-ggplotly(region_plot, tooltip = c("year", "polyarchy")) %>%   
+wealth_flfp <- ggplot(flfp_gdp, aes(x = gdp_pc, y = flfp)) + 
+  geom_point(aes(color = region)) + 
+  geom_smooth(method = "loess", linewidth = 1) +
+  scale_x_log10(labels = scales::label_dollar()) + 
+  scale_y_continuous(labels = scales::label_percent(scale = 1)) +
+  labs(
+    x= "GDP per Capita",
+    y = "Female Labor Force Participation",
+    title = "Wealth and female labor force participation",
+    caption = "Source: World Bank Development Indicators",
+    color = "Region"
+    ) + scale_color_viridis_d(option = "plasma", end = .7) 
+
+wealth_flfp + theme_dark()
+```
+
+## Add an Annotation
+
+```{r}
+#| label: annotation1
+
+flfp_line <- ggplot(flfp_ts, aes(x = year, y = flfp, color = region)) +
+  geom_line(linewidth = 1) + 
+  scale_y_continuous(labels = scales::label_percent(scale = 1)) +
+  labs(
+    x = "Year", 
+    y = "Female Labor Force Participation", 
+    title = "Regional trends in female labor force participation", 
+    caption = "Source: V-Dem Institute", 
+    color = "Country"
+  ) + scale_color_viridis_d() +
+  theme_minimal()
+
+flfp_line + geom_hline(yintercept = 52, linetype="dashed", color = "red", size = 1) +
+  annotate("text", x = 1995, y = 55, label = "Global average")
+```
+
+## 
+
+First step, add a horizontal line using `geom_hline()`... 
+
+```{r}
+#| echo: true
+
+flfp_line + 
+  geom_hline(yintercept = 52, linetype="dashed", color = "red", size = 1) 
+```
+
+## 
+
+Second step, the annotation with `annotate()`...
+
+```{r}
+#| echo: true 
+
+flfp_line + 
+  geom_hline(yintercept = 52, linetype="dashed", color = "red", size = 1) +
+  annotate("text", x = 1995, y = 55, label = "Global average")
+```
+
+## Vertical Reference Line
+
+```{r}
+flfp_line + 
+  geom_vline(xintercept=2020, linetype = "dashed", size = 1) +
+  annotate("text", x = 2017, y = 35, label = "Pandemic")
+```
+
+## 
+
+First step, add a horizontal line using `geom_hline()`... 
+
+```{r}
+#| echo: true
+
+flfp_line + 
+  geom_vline(xintercept=2020, linetype = "dashed", size = 1)
+```
+
+## 
+
+Second step, add the annotation with `annotate()`
+
+```{r}
+#| echo: true
+
+flfp_line + 
+  geom_vline(xintercept=2020, linetype = "dashed", size = 1) +
+  annotate("text", x = 2017, y = 35, label = "Pandemic")
+```
+
+## Your Turn!
+
+- Go to module 2.2
+- Copy the code you need to make the line chart
+- Create a horizontal reference line and annotate it
+- In a new code chunk, create a vertical line and annotate it
+- Play with the parameters to move and style your line
+- Try different text, etc. 
+
+```{r}
+#| label: exercise2_timer
+countdown(minutes = 10, 
+          id = "exercise2", 
+          #bottom = "10%", 
+          #right = "10%"
+          )
+```
+
+## Interactivity
+
+<br>
+
+```{r}
+library(plotly)
+
+wealth_flfp_plotly <- wealth_flfp  + 
+  scale_color_viridis_d(option = "plasma") +
+  theme_minimal() +
+  aes(label = country)  # need so ggplot retains label for plotly
+
+ggplotly(wealth_flfp_plotly, tooltip = c("country", "flfp", "gdp_pc")) |> 
+  
   # add source
-  layout(annotations = list(text = "Source: The V-Dem Institute, Varities of Democracy Dataset",  
+  layout(annotations = list(text = "Source: World Bank Development Indicators",  
                             font = list(size = 10), showarrow = FALSE,
-                            xref = 'paper', x = 1, xanchor = 'right', xshift = 100,
-                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) %>%
+                            xref = 'paper', x = 1.1, xanchor = 'right', xshift = 0,
+                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) |> 
   # add web address
-  layout(annotations = list(text = "www.psc2339.com", 
+  layout(annotations = list(text = "www.dataviz-gwu.rocks", 
                             font = list(size = 10, color = 'grey'), showarrow = FALSE,
                             xref = 'paper', x = .5, xanchor = 'center', xshift = 0,
                             yref = 'paper', y = 1, yanchor = 'top', yshift = 0))
 ```
 
-## Setup
+## The Code
 
 ```{r}
-#| label: dem_waves_setup
 #| echo: true
 #| output: false
 
-library(vdemdata)
-library(tidyverse)
+library(plotly)
 
-dem_waves_ctrs <- vdem |>
-  select(
-    country = country_name,     
-    year, 
-    polyarchy = v2x_polyarchy, 
-  ) |>
-  filter( 
-    country %in% c("United States of America", # select countries in this list
-                   "Japan", 
-                   "Portugal")
-    )
+wealth_flfp_plotly <- wealth_flfp  + 
+  scale_color_viridis_d(option = "plasma") +
+  theme_minimal() +
+  aes(label = country)  # need so ggplot retains label for plotly
 
-write_csv(dem_waves_ctrs, "data/dem_waves_ctrs.csv")
+ggplotly(wealth_flfp_plotly, tooltip = c("country", "flfp", "gdp_pc")) |> 
+  
+  # add source
+  layout(annotations = list(text = "Source: World Bank Development Indicators",  
+                            font = list(size = 10), showarrow = FALSE,
+                            xref = 'paper', x = 1.1, xanchor = 'right', xshift = 0,
+                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) |> 
+  # add web address
+  layout(annotations = list(text = "www.dataviz-gwu.rocks", 
+                            font = list(size = 10, color = 'grey'), showarrow = FALSE,
+                            xref = 'paper', x = .5, xanchor = 'center', xshift = 0,
+                            yref = 'paper', y = 1, yanchor = 'top', yshift = 0))
 ```
 
-```{r}
-#| label: exercise1_timer
-countdown::countdown(minutes = 2, 
-                     id = "setup", 
-                     #bottom = "10%", 
-                     #right = "10%",
-                     color_border = "#fff",
-                     color_text = "#fff",
-                     color_running_background = "#42affa",
-                     color_running_text = "black",
-                     color_finished_background = "#E5D19D",
-                     color_finished_text = "#00264A")
-```
-
-## Line Chart
+## The Code
 
 ```{r}
-#| label: geom_line0
-#| code-fold: true
-
-# in this ggplot() call, we add a third dimension for line color
-ggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +
-  geom_line(linewidth = 1) + # our geom is a line with a width of 1
-  labs(
-    x = "Year", 
-    y = "Polyarchy Score", 
-    title = 'Democracy in countries representing three different "waves"', 
-    caption = "Source: V-Dem Institute", 
-    color = "Country" # make title of legend to upper case
-  )
-```
-
-## Line Chart
-
-Use `geom_line()`... 
-
-```{r}
-#| label: geom_line1
-#| echo: true
-#| output: false
-#| code-line-numbers: "3"
-
-# in this ggplot() call, we add a third dimension for line color
-ggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +
-  geom_line(linewidth = 1) + # our geom is a line with a width of 1
-  labs(
-    x = "Year", 
-    y = "Polyarchy Score", 
-    title = 'Democracy in countries representing three different "waves"', 
-    caption = "Source: V-Dem Institute", 
-    color = "Country" # make title of legend to upper case
-  )
-```
-
-## Line Chart
-
-Add third dimension for line color...
-
-```{r}
-#| label: geom_line2
-#| echo: true
-#| output: false
-#| code-line-numbers: "2"
-
-# in this ggplot() call, we add a third dimension for line color
-ggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +
-  geom_line(linewidth = 1) + # our geom is a line with a width of 1
-  labs(
-    x = "Year", 
-    y = "Polyarchy Score", 
-    title = 'Democracy in countries representing three different "waves"', 
-    caption = "Source: V-Dem Institute", 
-    color = "Country" # make title of legend to upper case
-  )
-```
-
-## Line Chart
-
-Modify the legend title...
-
-```{r}
-#| label: geom_line3
-#| echo: true
-#| output: false
-#| code-line-numbers: "9"
-
-# in this ggplot() call, we add a third dimension for line color
-ggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +
-  geom_line(linewidth = 1) + # our geom is a line with a width of 1
-  labs(
-    x = "Year", 
-    y = "Polyarchy Score", 
-    title = 'Democracy in countries representing three different "waves"', 
-    caption = "Source: V-Dem Institute", 
-    color = "Country" # make title of legend to upper case
-  )
-```
-
-## Your Turn!
-
-<br>
-
-- See table three of [this article](https://kurzman.unc.edu/wp-content/uploads/sites/1410/2011/06/Kurzman_Waves_of_Democratization.pdf)
-- Select three countries to visualize
-- Adjust setup code to filter data on those countries 
-- Visualize with `geom_line()`
-
-```{r}
-#|label: dem_waves_time
-countdown::countdown(minutes = 10, 
-                     id = "dem_waves", 
-                     bottom = "10%", 
-                     right = "10%")
-```
-
-## Scatter Plot Setup
-
-```{r}
-#| label: scatter_plot_setup
-#| echo: true
-#| output: false
-
-dem_summary_ctry <- read_csv("https://raw.githubusercontent.com/eteitelbaum/dataviz-fall-2023/main/modules/data/dem_women.csv") |>
-  group_by(country, region) |> # group by country, keep region
-  summarize(
-    polyarchy = mean(polyarchy, na.rm = TRUE),
-    gdp_pc = mean(gdp_pc, na.rm = TRUE), 
-    flfp = mean(flfp, na.rm = TRUE), 
-    women_rep = mean(women_rep, na.rm = TRUE)
-  )
-```
-
-```{r}
-#|label: scatter_setup_time
-countdown::countdown(minutes = 10, 
-                     id = "scatter_setup") 
-                     #bottom = "10%", 
-                     #right = "10%")
-```
-
-## Scatter Plot
-
-```{r}
-#| label: scatter0
-#| code-fold: true
-
-ggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy, color = region, size = women_rep)) + 
-  geom_point() + # use geom_point() for scatter plots
-  scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) +
-  labs(
-    x= "GDP per Capita", 
-    y = "Polyarchy Score",
-    title = "Wealth and democracy, 1990 - present", 
-    caption = "Source: V-Dem Institute", 
-    color = "Region",
-    size = "Women Reps"
-    )
-```
-
-## Scatter Plot
-
-Use `geom_point()`...
-
-```{r}
-#| label: scatter1
-#| echo: true
-#| output: false
-#| code-line-numbers: "2"
-
-ggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy, color = region, size = women_rep)) + 
-  geom_point() + # use geom_point() for scatter plots
-  scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) +
-  labs(
-    x= "GDP per Capita", 
-    y = "Polyarchy Score",
-    title = "Wealth and democracy, 1990 - present", 
-    caption = "Source: V-Dem Institute", 
-    color = "Region",
-    size = "Women Reps"
-    )
-```
-
-## Scatter Plot
-
-Four dimensions... 
-
-```{r}
-#| label: scatter2
 #| echo: true
 #| output: false
 #| code-line-numbers: "1"
 
-ggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy, color = region, size = women_rep)) + 
-  geom_point() + # use geom_point() for scatter plots
-  scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) +
-  labs(
-    x= "GDP per Capita", 
-    y = "Polyarchy Score",
-    title = "Wealth and democracy, 1990 - present", 
-    caption = "Source: V-Dem Institute", 
-    color = "Region",
-    size = "Women Reps"
-    )
+library(plotly)
+
+wealth_flfp_plotly <- wealth_flfp  + 
+  scale_color_viridis_d(option = "plasma") +
+  theme_minimal() +
+  aes(label = country)  # need so ggplot retains label for plotly
+
+ggplotly(wealth_flfp_plotly, tooltip = c("country", "flfp", "gdp_pc")) |> 
+  
+  # add source
+  layout(annotations = list(text = "Source: World Bank Development Indicators",  
+                            font = list(size = 10), showarrow = FALSE,
+                            xref = 'paper', x = 1.1, xanchor = 'right', xshift = 0,
+                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) |> 
+  # add web address
+  layout(annotations = list(text = "www.dataviz-gwu.rocks", 
+                            font = list(size = 10, color = 'grey'), showarrow = FALSE,
+                            xref = 'paper', x = .5, xanchor = 'center', xshift = 0,
+                            yref = 'paper', y = 1, yanchor = 'top', yshift = 0))
 ```
 
-## Scatter Plot
-
-Stretch axis on log scale and use scales package to adjust labels...
+## The Code
 
 ```{r}
-#| label: scatter3
 #| echo: true
 #| output: false
-#| code-line-numbers: "3"
+#| code-line-numbers: "6"
 
-ggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy, color = region, size = women_rep)) + 
-  geom_point() + # use geom_point() for scatter plots
-  scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) +
-  labs(
-    x= "GDP per Capita", 
-    y = "Polyarchy Score",
-    title = "Wealth and democracy, 1990 - present", 
-    caption = "Source: V-Dem Institute", 
-    color = "Region",
-    size = "Women Reps"
-    )
+library(plotly)
+
+wealth_flfp_plotly <- wealth_flfp  + 
+  scale_color_viridis_d(option = "plasma") +
+  theme_minimal() +
+  aes(label = country)  # need so ggplot retains label for plotly
+
+ggplotly(wealth_flfp_plotly, tooltip = c("country", "flfp", "gdp_pc")) |> 
+  
+  # add source
+  layout(annotations = list(text = "Source: World Bank Development Indicators",  
+                            font = list(size = 10), showarrow = FALSE,
+                            xref = 'paper', x = 1.1, xanchor = 'right', xshift = 0,
+                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) |> 
+  # add web address
+  layout(annotations = list(text = "www.dataviz-gwu.rocks", 
+                            font = list(size = 10, color = 'grey'), showarrow = FALSE,
+                            xref = 'paper', x = .5, xanchor = 'center', xshift = 0,
+                            yref = 'paper', y = 1, yanchor = 'top', yshift = 0))
 ```
 
-
-## Scatter Plot
-
-Change legend titles... 
+## The Code
 
 ```{r}
-#| label: scatter4
 #| echo: true
 #| output: false
-#| code-line-numbers: "9-10"
+#| code-line-numbers: "8"
 
-ggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy, color = region, size = women_rep)) + 
-  geom_point() + # use geom_point() for scatter plots
-  scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) +
-  labs(
-    x= "GDP per Capita", 
-    y = "Polyarchy Score",
-    title = "Wealth and democracy, 1990 - present", 
-    caption = "Source: V-Dem Institute", 
-    color = "Region",
-    size = "Women Reps"
-    )
+library(plotly)
+
+wealth_flfp_plotly <- wealth_flfp  + 
+  scale_color_viridis_d(option = "plasma") +
+  theme_minimal() +
+  aes(label = country)  # need so ggplot retains label for plotly
+
+ggplotly(wealth_flfp_plotly, tooltip = c("country", "flfp", "gdp_pc")) |> 
+  
+  # add source
+  layout(annotations = list(text = "Source: World Bank Development Indicators",  
+                            font = list(size = 10), showarrow = FALSE,
+                            xref = 'paper', x = 1.1, xanchor = 'right', xshift = 0,
+                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) |> 
+  # add web address
+  layout(annotations = list(text = "www.dataviz-gwu.rocks", 
+                            font = list(size = 10, color = 'grey'), showarrow = FALSE,
+                            xref = 'paper', x = .5, xanchor = 'center', xshift = 0,
+                            yref = 'paper', y = 1, yanchor = 'top', yshift = 0))
 ```
 
-## Your Turn! 
-
-- There are four variables in `dem_summary_ctry`
-- Pick one related to women's empowerment
-- Visualize it on the y-axis with `gdp_pc` or `polyarch` on the x-axis 
-- Change labels and legend titles to match your visualization
-- Interpret your plot
+## The Code
 
 ```{r}
-#|label: dem_waves_time
-countdown::countdown(minutes = 10, 
-                     id = "women_emp")
-```
-
-## Add a Trend Line
-
-```{r}
-#| label: trend_line1
-
-ggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy)) + 
-  geom_point(aes(color = region)) + 
-  geom_smooth(method = "lm", linewidth = 1) + 
-  scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) +
-  labs(
-    x= "GDP per Capita", 
-    y = "Polyarchy Score",
-    title = "Wealth and democracy, 1990 - present", 
-    caption = "Source: V-Dem Institute", 
-    color = "Region"
-    )
-```
-
-## Add a Trend Line
-
-```{r}
-#| label: trend_line2
 #| echo: true
 #| output: false
-#| code-line-numbers: "3"
-ggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy)) + 
-  geom_point(aes(color = region)) + 
-  geom_smooth(method = "lm", linewidth = 1) + 
-  scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) +
-  labs(
-    x= "GDP per Capita", 
-    y = "Polyarchy Score",
-    title = "Wealth and democracy, 1990 - present", 
-    caption = "Source: V-Dem Institute", 
-    color = "Region"
-    )
+#| code-line-numbers: "10-14"
+
+library(plotly)
+
+wealth_flfp_plotly <- wealth_flfp  + 
+  scale_color_viridis_d(option = "plasma") +
+  theme_minimal() +
+  aes(label = country)  # need so ggplot retains label for plotly
+
+ggplotly(wealth_flfp_plotly, tooltip = c("country", "flfp", "gdp_pc")) |> 
+  
+  # add source
+  layout(annotations = list(text = "Source: World Bank Development Indicators",  
+                            font = list(size = 10), showarrow = FALSE,
+                            xref = 'paper', x = 1.1, xanchor = 'right', xshift = 0,
+                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) |> 
+  # add web address
+  layout(annotations = list(text = "www.dataviz-gwu.rocks", 
+                            font = list(size = 10, color = 'grey'), showarrow = FALSE,
+                            xref = 'paper', x = .5, xanchor = 'center', xshift = 0,
+                            yref = 'paper', y = 1, yanchor = 'top', yshift = 0))
 ```
 
-## Add a Trend Line
 
-Taking out size and adding color to `geom_point()` call...
+## The Code
 
 ```{r}
-#| label: trend_line3
 #| echo: true
 #| output: false
-#| code-line-numbers: "1-2"
-ggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy)) + 
-  geom_point(aes(color = region)) + 
-  geom_smooth(method = "lm", linewidth = 1) + 
-  scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) +
-  labs(
-    x= "GDP per Capita", 
-    y = "Polyarchy Score",
-    title = "Wealth and democracy, 1990 - present", 
-    caption = "Source: V-Dem Institute", 
-    color = "Region"
-    )
+#| code-line-numbers: "15-19"
+
+library(plotly)
+
+wealth_flfp_plotly <- wealth_flfp  + 
+  scale_color_viridis_d(option = "plasma") +
+  theme_minimal() +
+  aes(label = country)  # need so ggplot retains label for plotly
+
+ggplotly(wealth_flfp_plotly, tooltip = c("country", "flfp", "gdp_pc")) |> 
+  
+  # add source
+  layout(annotations = list(text = "Source: World Bank Development Indicators",  
+                            font = list(size = 10), showarrow = FALSE,
+                            xref = 'paper', x = 1.1, xanchor = 'right', xshift = 0,
+                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) |> 
+  # add web address
+  layout(annotations = list(text = "www.dataviz-gwu.rocks", 
+                            font = list(size = 10, color = 'grey'), showarrow = FALSE,
+                            xref = 'paper', x = .5, xanchor = 'center', xshift = 0,
+                            yref = 'paper', y = 1, yanchor = 'top', yshift = 0))
 ```
 
-## Add a Trend Line
-
-Changing legend titles.
-
-```{r}
-#| label: trend_line4
-#| echo: true
-#| output: false
-#| code-line-numbers: "5-11"
-ggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy)) + 
-  geom_point(aes(color = region)) + 
-  geom_smooth(method = "lm", linewidth = 1) + 
-  scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) +
-  labs(
-    x= "GDP per Capita", 
-    y = "Polyarchy Score",
-    title = "Wealth and democracy, 1990 - present", 
-    caption = "Source: V-Dem Institute", 
-    color = "Region"
-    )
-```
-
-## Your Turn! 
+## 
 
 <br>
 
-- Add a trendline to your plot
-- Change the labels accordingly
-- Try using `method = "loess"` instead of a "lm"
+But to make a plotly chart, all you need is this! 
+
+<br>
 
 ```{r}
-#|label: trend_line_time
-countdown::countdown(minutes = 5, 
-                     id = "trend", 
-                     bottom = "10%", 
-                     right = "10%")
-```
-
-## Facet Wrapping
-
-```{r}
-#| label: facet_wrap0
-
-ggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy)) + 
-  geom_point() + 
-  geom_smooth(method = "lm", linewidth = 1) + 
-  facet_wrap(~ region) +
-  scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) +
-  labs(
-    x= "GDP per Capita", 
-    y = "Polyarchy Score",
-    title = "Wealth and democracy, 1990 - present", 
-    caption = "Source: V-Dem Institute"
-    )
-```
-
-## Facet Wrapping
-
-Use `facet_wrap()` with `~` before variable you want to wrap on...
-
-```{r}
-#| label: facet_wrap1
 #| echo: true
-#| output: false
-#| code-line-numbers: "4"
-ggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy)) + 
-  geom_point() + 
-  geom_smooth(method = "lm", linewidth = 1) + 
-  facet_wrap(~ region) +
-  scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) +
-  labs(
-    x= "GDP per Capita", 
-    y = "Polyarchy Score",
-    title = "Wealth and democracy, 1990 - present", 
-    caption = "Source: V-Dem Institute"
-    )
+
+ggplotly(wealth_flfp_plotly)
 ```
 
-## Facet Wrapping
-
-What else changes? Back down to two dimensions...
-
-```{r}
-#| label: facet_wrap2
-#| echo: true
-#| output: false
-#| code-line-numbers: "1-2"
-ggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy)) + 
-  geom_point() + 
-  geom_smooth(method = "lm", linewidth = 1) + 
-  facet_wrap(~ region) +
-  scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) +
-  labs(
-    x= "GDP per Capita", 
-    y = "Polyarchy Score",
-    title = "Wealth and democracy, 1990 - present", 
-    caption = "Source: V-Dem Institute"
-    )
-```
-
-## Facet Wrapping
-
-Don't forget to take the legend title out of the captions...
-
-```{r}
-#| label: facet_wrap3
-#| echo: true
-#| output: false
-#| code-line-numbers: "6-11"
-ggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy)) + 
-  geom_point() + 
-  geom_smooth(method = "lm", linewidth = 1) + 
-  facet_wrap(~ region) +
-  scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) +
-  labs(
-    x= "GDP per Capita", 
-    y = "Polyarchy Score",
-    title = "Wealth and democracy, 1990 - present", 
-    caption = "Source: V-Dem Institute"
-    )
-```
 
 ## Your Turn!
 
-- Facet wrap your scatter plot
-- Use `scales = "free"` to fix the West
+- Go to module 2.2 and create the basic wealth vs. flfp scatter plot
+- Now "plotlify" the plot
+- At first, don't worry about annotations or tool tip
+- Then add in tool tip, play with setting
+- Then add in the annotations
+- Move annotations, change content
 
 ```{r}
-#|label: facet_wrap_time
-countdown::countdown(minutes = 5, 
-                     id = "facet", 
-                     bottom = "10%", 
-                     right = "10%")
+#| label: exercise3_timer
+countdown(minutes = 10, 
+          id = "exercise3", 
+          #bottom = "10%", 
+          #right = "10%"
+          )
 ```
 
-## Labeling Points
+## Time Permitting
+
+Annotate (comment) the following code...
 
 ```{r}
-#| label: geom_text1
-dem_summary_ctry |> 
-  filter(region == "Asia") |>
-  ggplot(aes(x = gdp_pc, y = polyarchy)) + 
-    geom_point() + 
-    geom_text(aes(label = country), size = 2, vjust = 2) +
-    geom_smooth(method = "lm", linewidth = 1) +
-    scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) +
-      labs(
-        x= "GDP Per Capita", 
-        y = "Polyarchy Score",
-        title = "Wealth and democracy in Asia, 1990 - present", 
-        caption = "Source: V-Dem Institute"
-        )
-```
-
-## Labeling Points
-
-Filter for Asia, add labels with `geom_text()`...
-
-```{r}
-#| label: geom_text2
 #| echo: true
 #| output: false
-#| code-line-numbers: "1-5"
-dem_summary_ctry |> 
-  filter(region == "Asia") |>
-  ggplot(aes(x = gdp_pc, y = polyarchy)) + 
-    geom_point() + 
-    geom_text(aes(label = country), size = 2, vjust = 2) +
-    geom_smooth(method = "lm", linewidth = 1) +
-    scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) +
-      labs(
-        x= "GDP Per Capita", 
-        y = "Polyarchy Score",
-        title = "Wealth and democracy in Asia, 1990 - present", 
-        caption = "Source: V-Dem Institute"
-        )
+
+wealth_flfp <- ggplot(flfp_gdp, aes(x = gdp_pc, y = flfp)) + 
+  geom_point(aes(color = region)) + 
+  geom_smooth(method = "loess", linewidth = 1) +
+  scale_x_log10(labels = scales::label_dollar()) + 
+  scale_y_continuous(labels = scales::label_percent(scale = 1)) +
+  labs(
+    x= "GDP per Capita",
+    y = "Female Labor Force Participation",
+    title = "Wealth and female labor force participation",
+    caption = "Source: World Bank Development Indicators",
+    color = "Region"
+    ) + scale_color_viridis_d(option = "plasma", end = .7) 
+
+wealth_flfp + theme_minimal()
 ```
-
-## Your Turn!
-
-- Filter for Asia or another region
-- Use `geom_text()` to add labels to your points
-- Play with `size` and `vjust` paramters 
 
 ```{r}
-#|label: label_time
-countdown::countdown(minutes = 5, 
-                     id = "labels", 
-                     bottom = "10%", 
-                     right = "10%")
+#| label: exercise4_timer
+countdown(minutes = 5, 
+          id = "exercise4", 
+          #bottom = "10%", 
+          #right = "10%"
+          )
 ```
 
+## Time Permitting
 
+Annotate  (comment) the following code...
+
+```{r}
+#| echo: true
+#| output: false
+
+flfp_line <- ggplot(flfp_ts, aes(x = year, y = flfp, color = region)) +
+  geom_line(linewidth = 1) + 
+  scale_y_continuous(labels = scales::label_percent(scale = 1)) +
+  labs(
+    x = "Year", 
+    y = "Female Labor Force Participation", 
+    title = "Regional trends in female labor force participation", 
+    caption = "Source: V-Dem Institute", 
+    color = "Country"
+  ) + scale_color_viridis_d() +
+  theme_minimal()
+
+flfp_line + geom_hline(yintercept = 52, linetype="dashed", color = "red", size = 1) +
+  annotate("text", x = 1995, y = 55, label = "Global average")
+```
+
+```{r}
+#| label: exercise5_timer
+countdown(minutes = 5, 
+          id = "exercise5", 
+          #bottom = "10%", 
+          #right = "10%"
+          )
+```
+
+## Coding Assignment 2
+
+<br>
+
+[Coding assignment 2](/assignments/coding-assignment-2.html) builds off this lesson
+
+<br>
+
+Take the remainder of the class time to work on it. I will be here in case you have questions. 
+
+<br>
+
+You may work individually or in groups. 
 

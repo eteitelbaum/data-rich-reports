@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<link href="../images/dataviz-logo.png" rel="icon" type="image/png">
+<link href="../images/dataviz6502-preview.png" rel="icon" type="image/png">
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -9,10 +9,10 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.433">
+  <meta name="generator" content="quarto-1.4.415">
 
-  <meta name="dcterms.date" content="2023-10-03">
-  <title>PSC/DATS 2102–Summer Schedule - Downloading Data from an API</title>
+  <meta name="dcterms.date" content="2023-10-27">
+  <title>IAFF 6502/6505 Visualizing and Modeling International Politics - Bar Charts and Histograms</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -32,7 +32,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -224,7 +224,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -387,159 +388,280 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="PSC/DATS 2102–Summer Schedule - Downloading Data from an API">
-<meta property="og:site-name" content="PSC/DATS 2102--Summer Schedule">
-<meta name="twitter:title" content="PSC/DATS 2102–Summer Schedule - Downloading Data from an API">
-<meta name="twitter:card" content="summary">
+  <link href="../site_libs/countdown-0.4.0/countdown.css" rel="stylesheet">
+  <script src="../site_libs/countdown-0.4.0/countdown.js"></script>
+<meta property="og:title" content="IAFF 6502/6505 Visualizing and Modeling International Politics - Bar Charts and Histograms">
+<meta property="og:image" content="https://dataviz-esia.training/slides/images/dataviz6502-preview.png">
+<meta property="og:site_name" content="IAFF 6502/6505 Visualizing and Modeling International Politics">
+<meta name="twitter:title" content="IAFF 6502/6505 Visualizing and Modeling International Politics - Bar Charts and Histograms">
+<meta name="twitter:image" content="https://dataviz-esia.training/slides/images/dataviz6502-preview.png">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 <body class="quarto-dark">
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Downloading Data from an API</h1>
+  <h1 class="title">Bar Charts and Histograms</h1>
 
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">October 3, 2023</p>
+  <p class="date">October 27, 2023</p>
 </section>
-<section id="apis" class="slide level2">
-<h2>APIs</h2>
+<section id="the-grammar-of-graphics" class="slide level2">
+<h2>The Grammar of Graphics</h2>
 <ul>
-<li>API stands for “Application Programming Interface”</li>
-<li>Way for two computers to talk to each other</li>
-<li>In our case, we will use APIs to download social science data</li>
-<li>APIs are accessed through packages in R</li>
-<li>Sometimes there can be more than one package for an API</li>
-<li>Usually easier than reading in data from messy flat file</li>
-</ul>
-</section>
-<section id="this-lesson" class="slide level2">
-<h2>This Lesson</h2>
+<li>Data viz has a language with its own grammar</li>
+<li>Basic components include:
 <ul>
-<li>Access two APIs with R packages</li>
-<li>World Bank data through <code>wbstats</code>
-<ul>
-<li>There is another package called <code>WDI</code></li>
-</ul></li>
-<li>Varieties of Democracy (V-Dem) through <code>vdemdata</code>
-<ul>
-<li>This is the only package for V-Dem</li>
-<li>Just downloads all the data</li>
-<li>So we have to use <code>dplyr</code> functions like <code>fliter()</code> and <code>select()</code></li>
+<li>Data we are trying to visualize</li>
+<li>Aesthetics (dimensions)</li>
+<li>Geom (e.g.&nbsp;bar, line, scatter plot)</li>
+<li>Color scales</li>
+<li>Themes</li>
+<li>Annotations</li>
 </ul></li>
 </ul>
 </section>
-<section id="searching-for-wb-indicators" class="slide level2">
-<h2>Searching for WB Indicators</h2>
+<section id="section" class="slide level2">
+<h2></h2>
+<p>Let’s start with the first two, the data and the aesthetic.</p>
+<p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>flfp_indicators <span class="ot">&lt;-</span> <span class="fu">wb_search</span>(<span class="st">"female labor force"</span>) <span class="co"># store the list of indicators</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">print</span>(flfp_indicators, <span class="at">n=</span><span class="dv">26</span>) <span class="co"># view the indicators</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a>dem_summary <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/dem_summary.csv"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5"></a></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">ggplot</span>(dem_summary, <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">y =</span> polyarchy)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="try-it-yourself" class="slide level2">
-<h2>Try it Yourself</h2>
-<ul>
-<li>Start a new Quarto document</li>
-<li>Start a new code chunk</li>
-<li>Load the <code>wbstats</code> package</li>
-<li>Use <code>wb_search()</code> to find some indicators you are interested in</li>
-</ul>
-</section>
-<section id="wbstats-example" class="slide level2">
-<h2><code>wbstats</code> Example</h2>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<p>Gives us the axes without any visualization.</p>
+<p><br></p>
+
+<img data-src="day-2.1_files/figure-revealjs/barchart1.1-1.png" width="960" class="r-stretch"></section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<p>Now let’s add a geom. In this case we want a bar chart so we <em>add</em> <code>geom_col()</code></p>
+<p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Load packages</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">library</span>(wbstats) <span class="co"># for downloading WB data</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="fu">library</span>(dplyr) <span class="co"># for selecting, renaming and mutating</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="fu">library</span>(janitor) <span class="co"># for rounding</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a></span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="co"># Store the list of indicators in an object</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a>indicators <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"flfp"</span> <span class="ot">=</span> <span class="st">"SL.TLF.CACT.FE.ZS"</span>, <span class="st">"women_rep"</span> <span class="ot">=</span> <span class="st">"SG.GEN.PARL.ZS"</span>) </span>
-<span id="cb2-8"><a href="#cb2-8"></a></span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="co"># Download the data  </span></span>
-<span id="cb2-10"><a href="#cb2-10"></a>women_emp <span class="ot">&lt;-</span> <span class="fu">wb_data</span>(indicators, <span class="at">mrv =</span> <span class="dv">50</span>) <span class="sc">|&gt;</span> <span class="co"># download data for last 50 yrs</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a>  <span class="fu">select</span>(<span class="sc">!</span>iso2c) <span class="sc">|&gt;</span> <span class="co"># drop the iso2c code which we won't be using</span></span>
-<span id="cb2-12"><a href="#cb2-12"></a>  <span class="fu">rename</span>(<span class="at">year =</span> date) <span class="sc">|&gt;</span> <span class="co"># rename date to year </span></span>
-<span id="cb2-13"><a href="#cb2-13"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb2-14"><a href="#cb2-14"></a>    <span class="at">flfp =</span> <span class="fu">round_to_fraction</span>(flfp, <span class="at">denominator =</span> <span class="dv">100</span>), <span class="co"># round to nearest 100th</span></span>
-<span id="cb2-15"><a href="#cb2-15"></a>    <span class="at">women_rep =</span> <span class="fu">round_to_fraction</span>(women_rep, <span class="at">denominator =</span> <span class="dv">100</span>) </span>
-<span id="cb2-16"><a href="#cb2-16"></a>  )</span>
-<span id="cb2-17"><a href="#cb2-17"></a></span>
-<span id="cb2-18"><a href="#cb2-18"></a><span class="co"># View the data</span></span>
-<span id="cb2-19"><a href="#cb2-19"></a><span class="fu">glimpse</span>(women_emp) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">ggplot</span>(dem_summary, <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">y =</span> polyarchy)) <span class="sc">+</span> </span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="try-it-yourself-1" class="slide level2">
-<h2>Try it Yourself</h2>
-<ul>
-<li>Using the variables you identified in your search, download the data</li>
-<li>Think about what elements of the code you need to change</li>
-<li>Hint: the indicators are going to change!</li>
-</ul>
-</section>
-<section id="downloading-v-dem-data" class="slide level2">
-<h2>Downloading V-Dem Data</h2>
-<ul>
-<li>The <code>vdem</code> function from <code>vdemdata</code> just downloads the data</li>
-<li>There are no parameters for selecting indicators or date ranges</li>
-<li>So we have to do more work with <code>dplyr</code> functions
-<ul>
-<li><code>filter()</code> for years</li>
-<li><code>select()</code> for variables</li>
-</ul></li>
-<li>We are also going to use <code>case_match()</code> to add</li>
-</ul>
-</section>
-<section id="vdemdata-example" class="slide level2">
-<h2><code>vdemdata</code> Example</h2>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<p>OK but that gets the idea across but looks a little depressing so…</p>
+
+<img data-src="day-2.1_files/figure-revealjs/barchart2.1-1.png" width="960" class="r-stretch"></section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+<p>…let’s change the color of the bars by specifying <code>fill = "steelblue"</code>.</p>
+<p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Load packages</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(vdemdata) <span class="co"># to download V-Dem data</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co"># Download the data</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>democracy <span class="ot">&lt;-</span> vdem <span class="sc">|&gt;</span> <span class="co"># download the V-Dem dataset</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>  <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">1990</span>)  <span class="sc">|&gt;</span> <span class="co"># filter out years less than 1990</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a>  <span class="fu">select</span>(                  <span class="co"># select (and rename) these variables</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a>    <span class="at">country =</span> country_name,     <span class="co"># the name before the = sign is the new name  </span></span>
-<span id="cb3-9"><a href="#cb3-9"></a>    <span class="at">vdem_ctry_id =</span> country_id,  <span class="co"># the name after the = sign is the old name</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a>    year, </span>
-<span id="cb3-11"><a href="#cb3-11"></a>    <span class="at">polyarchy =</span> v2x_polyarchy, </span>
-<span id="cb3-12"><a href="#cb3-12"></a>    <span class="at">gdp_pc =</span> e_gdppc, </span>
-<span id="cb3-13"><a href="#cb3-13"></a>    <span class="at">region =</span> e_regionpol_6C</span>
-<span id="cb3-14"><a href="#cb3-14"></a>    ) <span class="sc">|&gt;</span></span>
-<span id="cb3-15"><a href="#cb3-15"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb3-16"><a href="#cb3-16"></a>    <span class="at">region =</span> <span class="fu">case_match</span>(region, <span class="co"># replace the values in region with country names</span></span>
-<span id="cb3-17"><a href="#cb3-17"></a>                     <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Eastern Europe"</span>, </span>
-<span id="cb3-18"><a href="#cb3-18"></a>                     <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Latin America"</span>,  </span>
-<span id="cb3-19"><a href="#cb3-19"></a>                     <span class="dv">3</span> <span class="sc">~</span> <span class="st">"Middle East"</span>,   </span>
-<span id="cb3-20"><a href="#cb3-20"></a>                     <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Africa"</span>, </span>
-<span id="cb3-21"><a href="#cb3-21"></a>                     <span class="dv">5</span> <span class="sc">~</span> <span class="st">"The West"</span>, </span>
-<span id="cb3-22"><a href="#cb3-22"></a>                     <span class="dv">6</span> <span class="sc">~</span> <span class="st">"Asia"</span>)</span>
-<span id="cb3-23"><a href="#cb3-23"></a>                    <span class="co"># number on the left of the ~ is the V-Dem region code</span></span>
-<span id="cb3-24"><a href="#cb3-24"></a>                    <span class="co"># we are changing the number to the country name on the right</span></span>
-<span id="cb3-25"><a href="#cb3-25"></a>                    <span class="co"># of the equals sign</span></span>
-<span id="cb3-26"><a href="#cb3-26"></a>  )</span>
-<span id="cb3-27"><a href="#cb3-27"></a></span>
-<span id="cb3-28"><a href="#cb3-28"></a><span class="co"># View the data</span></span>
-<span id="cb3-29"><a href="#cb3-29"></a><span class="fu">glimpse</span>(democracy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">ggplot</span>(dem_summary, <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">y =</span> polyarchy)) <span class="sc">+</span> </span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="try-it-yourself-2" class="slide level2">
-<h2>Try it Yourself</h2>
-<ul>
-<li>Go to the V-Dem <a href="https://www.v-dem.net/documents/24/codebook_v13.pdf">Codebook</a></li>
-<li>Select a democracy indicator from Part III and one other indicator</li>
-<li>Note the indicator code (e.g.&nbsp;“v2x_polyarchy” for the polyarchy score)</li>
-<li>In your Quarto notes document, create a new code chunk</li>
-<li>Use the codes for your selected indicators to download the data</li>
-</ul>
+<section id="section-5" class="slide level2">
+<h2></h2>
+<p>Note how color of original bars is simply overwritten.</p>
+
+<img data-src="day-2.1_files/figure-revealjs/barchart3.1-1.png" width="960" class="r-stretch"></section>
+<section id="section-6" class="slide level2">
+<h2></h2>
+<p>Now let’s <em>add</em> some labels with the <code>labs()</code> function:</p>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="3-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">ggplot</span>(dem_summary, <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">y =</span> polyarchy)) <span class="sc">+</span> </span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-4"><a href="#cb4-4"></a>    <span class="at">x =</span> <span class="st">"Region"</span>, </span>
+<span id="cb4-5"><a href="#cb4-5"></a>    <span class="at">y =</span> <span class="st">"Avg. Polyarchy Score"</span>, </span>
+<span id="cb4-6"><a href="#cb4-6"></a>    <span class="at">title =</span> <span class="st">"Democracy by region, 1990 - present"</span>, </span>
+<span id="cb4-7"><a href="#cb4-7"></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="section-7" class="slide level2">
+<h2></h2>
+<p>And that gives us…</p>
+
+<img data-src="day-2.1_files/figure-revealjs/barchart4.1-1.png" width="960" class="r-stretch"></section>
+<section id="section-8" class="slide level2">
+<h2></h2>
+<p>Next, we reorder the bars with the <code>reorder()</code> function.</p>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">ggplot</span>(dem_summary, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(region, <span class="sc">-</span>polyarchy), <span class="at">y =</span> polyarchy)) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span> </span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">labs</span>(</span>
+<span id="cb5-4"><a href="#cb5-4"></a>    <span class="at">x =</span> <span class="st">"Region"</span>, </span>
+<span id="cb5-5"><a href="#cb5-5"></a>    <span class="at">y =</span> <span class="st">"Avg. Polyarchy Score"</span>, </span>
+<span id="cb5-6"><a href="#cb5-6"></a>    <span class="at">title =</span> <span class="st">"Democracy by region, 1990 - present"</span>, </span>
+<span id="cb5-7"><a href="#cb5-7"></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="section-9" class="slide level2">
+<h2></h2>
+<p>This way, we get a nice, visually appealing ordering of the bars according to levels of democracy…</p>
+
+<img data-src="day-2.1_files/figure-revealjs/barchart5.1-1.png" width="960" class="r-stretch"></section>
+<section id="section-10" class="slide level2">
+<h2></h2>
+<p>Jumping ahead a little, let’s change the theme to <code>theme_minimal()</code>.</p>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">ggplot</span>(dem_summary, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(region, <span class="sc">-</span>polyarchy), <span class="at">y =</span> polyarchy)) <span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span> </span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-4"><a href="#cb6-4"></a>    <span class="at">x =</span> <span class="st">"Region"</span>, </span>
+<span id="cb6-5"><a href="#cb6-5"></a>    <span class="at">y =</span> <span class="st">"Avg. Polyarchy Score"</span>, </span>
+<span id="cb6-6"><a href="#cb6-6"></a>    <span class="at">title =</span> <span class="st">"Democracy by region, 1990 - present"</span>, </span>
+<span id="cb6-7"><a href="#cb6-7"></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>    ) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="section-11" class="slide level2">
+<h2></h2>
+<p>Gives us a clean, elegant look.</p>
+
+<img data-src="day-2.1_files/figure-revealjs/barchart6.1-1.png" width="960" class="r-stretch"></section>
+<section id="section-12" class="slide level2">
+<h2></h2>
+<p>Note that you can also save your plot as an object to modify later.</p>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>dem_bar_chart <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dem_summary, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(region, <span class="sc">-</span>polyarchy), <span class="at">y =</span> polyarchy)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="section-13" class="slide level2">
+<h2></h2>
+<p>Which gives us…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>dem_bar_chart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="day-2.1_files/figure-revealjs/barchart7.1-1.png" width="960" class="r-stretch"></section>
+<section id="section-14" class="slide level2">
+<h2></h2>
+<p>Now let’s add our labels.</p>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>dem_bar_chart <span class="ot">&lt;-</span> dem_bar_chart <span class="sc">+</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">labs</span>(</span>
+<span id="cb9-3"><a href="#cb9-3"></a>    <span class="at">x =</span> <span class="st">"Region"</span>, </span>
+<span id="cb9-4"><a href="#cb9-4"></a>    <span class="at">y =</span> <span class="st">"Avg. Polyarchy Score"</span>, </span>
+<span id="cb9-5"><a href="#cb9-5"></a>    <span class="at">title =</span> <span class="st">"Democracy by region, 1990 - present"</span>, </span>
+<span id="cb9-6"><a href="#cb9-6"></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="section-15" class="slide level2">
+<h2></h2>
+<p>So now we have…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>dem_bar_chart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="day-2.1_files/figure-revealjs/barchart8.1-1.png" width="960" class="r-stretch"></section>
+<section id="section-16" class="slide level2">
+<h2></h2>
+<p>Now let’s add our theme.</p>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>dem_bar_chart <span class="ot">&lt;-</span> dem_bar_chart <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="section-17" class="slide level2">
+<h2></h2>
+<p>Voila!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>dem_bar_chart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="day-2.1_files/figure-revealjs/barchart9.1-1.png" width="960" class="r-stretch"></section>
+<section id="section-18" class="slide level2">
+<h2></h2>
+<p>Change the theme.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>dem_bar_chart <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="day-2.1_files/figure-revealjs/barchart10-1.png" width="960" class="r-stretch"></section>
+<section id="your-turn" class="slide level2 smaller">
+<h2>Your Turn!</h2>
+<p><br></p>
+<p><em>Use your own wrangled data or this code to get started:</em></p>
+<p><br></p>
+<div class="cell" data-evakl="false">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb14-3"><a href="#cb14-3"></a></span>
+<span id="cb14-4"><a href="#cb14-4"></a>dem_summary <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/eteitelbaum/dataviz-fall-2023/main/modules/data/dem_summary.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="section-19" class="slide level2">
+<h2></h2>
+<ol type="1">
+<li><code>glimpse()</code> the data</li>
+<li>Find a new variable to visualize</li>
+<li>Make a bar chart with it</li>
+<li>Change the <a href="http://sape.inf.usi.ch/quick-reference/ggplot2/colour">color</a> of the bars</li>
+<li>Order the bars</li>
+<li>Add labels</li>
+<li>Add a <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme</a></li>
+<li>Try saving your plot as an object</li>
+<li>Then change the labels and/or theme</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="exercise1" data-update-every="1" tabindex="0" style="right:10%;bottom:10%;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</section>
+<section id="now-try-a-histogram" class="slide level2">
+<h2>Now Try a Histogram</h2>
+<p><br></p>
+<p><em>Use this code or your own wrangled data to get started</em></p>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>dem_women <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/eteitelbaum/dataviz-fall-2023/main/modules/data/dem_women.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="section-20" class="slide level2">
+<h2></h2>
+<ol type="1">
+<li>Pick a variable that you want to explore the distribution of</li>
+<li>Make a histogram
+<ol type="a">
+<li>Only specify <code>x =</code> in <code>aes()</code></li>
+<li>Specify geom as <code>geom_histogram</code></li>
+</ol></li>
+<li>Choose color for bars</li>
+<li>Choose appropriate labels</li>
+<li>Add a theme</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="exercise2" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
 
 
 <img src="images/dataviz-logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
-<p><a href="https://dataviz-gwu.rocks">DataViz 2102 Website</a></p>
+<p><a href="https://dataviz-esia.training">DataViz 6502 Website</a></p>
 </div>
 </section>
     </div>
@@ -571,14 +693,13 @@
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'chalkboard': {"buttons":true},
-'multiplex': {"secret":null,"id":"e2bd66ae84332908","url":"https://reveal-multiplex.glitch.me/"},
+'multiplex': {"secret":null,"id":"437b93c4f44accc5","url":"https://reveal-multiplex.glitch.me/"},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -872,10 +993,9 @@
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -885,8 +1005,17 @@
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 

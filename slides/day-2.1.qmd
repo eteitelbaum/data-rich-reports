@@ -1,8 +1,8 @@
 ---
-title: Downloading Data from an API
+title: Bar Charts and Histograms
 date: today
 date-format: long
-footer: "[DataViz 2102 Website](https://dataviz-gwu.rocks)"
+footer: "[DataViz 6502 Website](https://dataviz-esia.training)"
 logo: images/dataviz-logo.png
 format:
   revealjs:
@@ -18,129 +18,389 @@ execute:
   freeze: auto
 ---
 
-## APIs
+## The Grammar of Graphics
 
-- API stands for "Application Programming Interface"
-- Way for two computers to talk to each other
-- In our case, we will use APIs to download social science data
-- APIs are accessed through packages in R
-- Sometimes there can be more than one package for an API
-- Usually easier than reading in data from messy flat file
-
-## This Lesson
-
-- Access two APIs with R packages
-- World Bank data through `wbstats`
-  - There is another package called `WDI`
-- Varieties of Democracy (V-Dem) through `vdemdata`
-  - This is the only package for V-Dem
-  - Just downloads all the data
-  - So we have to use `dplyr` functions like `fliter()` and `select()`
-
-## Searching for WB Indicators
-
-```{r}
-#| label: search_wb
-#| eval: false
-#| echo: true
-
-flfp_indicators <- wb_search("female labor force") # store the list of indicators
-
-print(flfp_indicators, n=26) # view the indicators
-```
+- Data viz has a language with its own grammar
+- Basic components include:
+  - Data we are trying to visualize
+  - Aesthetics (dimensions)
+  - Geom (e.g. bar, line, scatter plot)
+  - Color scales
+  - Themes
+  - Annotations
   
-## Try it Yourself
+## 
 
-- Start a new Quarto document
-- Start a new code chunk
-- Load the `wbstats` package
-- Use `wb_search()` to find some indicators you are interested in
+Let's start with the first two, the data and the aesthetic. 
 
-## `wbstats` Example
+<br>
 
 ```{r}
-#| label: download_wb
-#| eval: false
+#| label: barchart1
 #| echo: true
+#| output: false
+#| code-line-numbers: "6"
 
-# Load packages
-library(wbstats) # for downloading WB data
-library(dplyr) # for selecting, renaming and mutating
-library(janitor) # for rounding
+library(readr)
+library(ggplot2)
 
-# Store the list of indicators in an object
-indicators <- c("flfp" = "SL.TLF.CACT.FE.ZS", "women_rep" = "SG.GEN.PARL.ZS") 
+dem_summary <- read_csv("data/dem_summary.csv")
 
-# Download the data  
-women_emp <- wb_data(indicators, mrv = 50) |> # download data for last 50 yrs
-  select(!iso2c) |> # drop the iso2c code which we won't be using
-  rename(year = date) |> # rename date to year 
-  mutate(
-    flfp = round_to_fraction(flfp, denominator = 100), # round to nearest 100th
-    women_rep = round_to_fraction(women_rep, denominator = 100) 
-  )
-
-# View the data
-glimpse(women_emp) 
+ggplot(dem_summary, aes(x = region, y = polyarchy)) 
 ```
 
-## Try it Yourself
+##
 
-- Using the variables you identified in your search, download the data
-- Think about what elements of the code you need to change
-- Hint: the indicators are going to change!
+Gives us the axes without any visualization. 
 
-## Downloading V-Dem Data
-
-- The `vdem` function from `vdemdata` just downloads the data
-- There are no parameters for selecting indicators or date ranges
-- So we have to do more work with `dplyr` functions
-  - `filter()` for years
-  - `select()` for variables
-- We are also going to use `case_match()` to add 
-
-## `vdemdata` Example
+<br>
 
 ```{r}
-#| label: vdemdata
-#| eval: false
-#| echo: true
+#| label: barchart1.1
 
-# Load packages
-library(vdemdata) # to download V-Dem data
-
-# Download the data
-democracy <- vdem |> # download the V-Dem dataset
-  filter(year >= 1990)  |> # filter out years less than 1990
-  select(                  # select (and rename) these variables
-    country = country_name,     # the name before the = sign is the new name  
-    vdem_ctry_id = country_id,  # the name after the = sign is the old name
-    year, 
-    polyarchy = v2x_polyarchy, 
-    gdp_pc = e_gdppc, 
-    region = e_regionpol_6C
-    ) |>
-  mutate(
-    region = case_match(region, # replace the values in region with country names
-                     1 ~ "Eastern Europe", 
-                     2 ~ "Latin America",  
-                     3 ~ "Middle East",   
-                     4 ~ "Africa", 
-                     5 ~ "The West", 
-                     6 ~ "Asia")
-                    # number on the left of the ~ is the V-Dem region code
-                    # we are changing the number to the country name on the right
-                    # of the equals sign
-  )
-
-# View the data
-glimpse(democracy)
+ggplot(dem_summary, aes(x = region, y = polyarchy)) 
 ```
 
-## Try it Yourself
 
-- Go to the V-Dem [Codebook](https://www.v-dem.net/documents/24/codebook_v13.pdf) 
-- Select a democracy indicator from Part III and one other indicator
-- Note the indicator code (e.g. "v2x_polyarchy" for the polyarchy score)
-- In your Quarto notes document, create a new code chunk
-- Use the codes for your selected indicators to download the data
+##
+
+Now let's add a geom. In this case we want a bar chart so we *add* `geom_col()`
+
+<br>
+
+```{r}
+#| label: barchart2
+#| echo: true
+#| output: false
+
+ggplot(dem_summary, aes(x = region, y = polyarchy)) + 
+  geom_col()
+```
+
+## 
+
+OK but that gets the idea across but looks a little depressing so...
+
+```{r}
+#| label: barchart2.1
+
+ggplot(dem_summary, aes(x = region, y = polyarchy)) + 
+  geom_col()
+```
+
+## 
+
+...let's change the color of the bars by specifying `fill = "steelblue"`. 
+
+<br>
+
+```{r}
+#| label: barchart3
+#| echo: true
+#| output: false
+#| code-line-numbers: "2"
+
+ggplot(dem_summary, aes(x = region, y = polyarchy)) + 
+  geom_col(fill = "steelblue")
+```
+
+## 
+
+Note how color of original bars is simply overwritten.
+
+```{r}
+#| label: barchart3.1
+
+ggplot(dem_summary, aes(x = region, y = polyarchy)) + 
+  geom_col(fill = "steelblue")
+```
+
+## 
+
+Now let's *add* some labels with the `labs()` function:
+
+<br>
+
+```{r}
+#| label: barchart4
+#| echo: true
+#| output: false
+#| code-line-numbers: "3-8"
+
+ggplot(dem_summary, aes(x = region, y = polyarchy)) + 
+  geom_col(fill = "steelblue") +
+  labs(
+    x = "Region", 
+    y = "Avg. Polyarchy Score", 
+    title = "Democracy by region, 1990 - present", 
+    caption = "Source: V-Dem Institute"
+    )
+```
+
+## 
+
+And that gives us... 
+
+```{r}
+#| label: barchart4.1
+
+ggplot(dem_summary, aes(x = region, y = polyarchy)) + 
+  geom_col(fill = "steelblue") +
+  labs(
+    x = "Region", 
+    y = "Avg. Polyarchy Score", 
+    title = "Democracy by region, 1990 - present", 
+    caption = "Source: V-Dem Institute"
+    )
+```
+
+## 
+
+Next, we reorder the bars with the `reorder()` function. 
+
+<br>
+
+```{r}
+#| label: barchart5
+#| echo: true
+#| output: false
+#| code-line-numbers: "1"
+
+ggplot(dem_summary, aes(x = reorder(region, -polyarchy), y = polyarchy)) +
+  geom_col(fill = "steelblue") + 
+  labs(
+    x = "Region", 
+    y = "Avg. Polyarchy Score", 
+    title = "Democracy by region, 1990 - present", 
+    caption = "Source: V-Dem Institute"
+    )
+```
+
+## 
+
+This way, we get a nice, visually appealing ordering of the bars according to levels of democracy...
+
+```{r}
+#| label: barchart5.1
+
+ggplot(dem_summary, aes(x = reorder(region, -polyarchy), y = polyarchy)) +
+  geom_col(fill = "steelblue") + 
+  labs(
+    x = "Region", 
+    y = "Avg. Polyarchy Score", 
+    title = "Democracy by region, 1990 - present", 
+    caption = "Source: V-Dem Institute"
+    )
+```
+
+## 
+
+Jumping ahead a little, let's change the theme to `theme_minimal()`. 
+
+<br>
+
+```{r}
+#| label: barchart6
+#| echo: true
+#| output: false
+#| code-line-numbers: "8"
+
+ggplot(dem_summary, aes(x = reorder(region, -polyarchy), y = polyarchy)) +
+  geom_col(fill = "steelblue") + 
+  labs(
+    x = "Region", 
+    y = "Avg. Polyarchy Score", 
+    title = "Democracy by region, 1990 - present", 
+    caption = "Source: V-Dem Institute"
+    ) + theme_minimal()
+```
+
+
+## 
+
+Gives us a clean, elegant look. 
+
+```{r}
+#| label: barchart6.1
+
+ggplot(dem_summary, aes(x = reorder(region, -polyarchy), y = polyarchy)) +
+  geom_col(fill = "steelblue") + 
+  labs(
+    x = "Region", 
+    y = "Avg. Polyarchy Score", 
+    title = "Democracy by region, 1990 - present", 
+    caption = "Source: V-Dem Institute"
+    ) + theme_minimal()
+```
+
+
+##
+
+Note that you can also save your plot as an object to modify later.
+
+<br>
+
+```{r}
+#| label: barchart7
+#| echo: true
+#| output: false
+
+dem_bar_chart <- ggplot(dem_summary, aes(x = reorder(region, -polyarchy), y = polyarchy)) +
+  geom_col(fill = "steelblue")
+```
+
+##
+
+Which gives us...
+
+```{r}
+#| label: barchart7.1
+#| echo: true
+ 
+dem_bar_chart
+```
+
+## 
+
+Now let's add our labels.
+
+<br>
+
+```{r}
+#| label: barchart8
+#| echo: true
+#| output: false
+
+dem_bar_chart <- dem_bar_chart +
+  labs(
+    x = "Region", 
+    y = "Avg. Polyarchy Score", 
+    title = "Democracy by region, 1990 - present", 
+    caption = "Source: V-Dem Institute"
+    )
+```
+
+##
+
+So now we have... 
+
+```{r}
+#| label: barchart8.1
+#| echo: true
+
+dem_bar_chart
+```
+
+## 
+
+Now let's add our theme.
+
+<br>
+
+```{r}
+#| label: barchart9
+#| echo: true
+#| output: false
+
+dem_bar_chart <- dem_bar_chart + theme_minimal()
+```
+
+##
+
+Voila! 
+
+```{r}
+#| label: barchart9.1
+#| echo: true
+
+dem_bar_chart
+```
+
+##
+
+Change the theme.
+
+```{r}
+#| label: barchart10
+#| echo: true
+
+dem_bar_chart + theme_bw()
+```
+
+
+## Your Turn! {.smaller}
+
+<br>
+
+*Use your own wrangled data or this code to get started:*
+
+<br>
+
+```{r}
+#| label: exercise1
+#| echo: true
+#| evakl: false
+
+library(readr)
+library(ggplot2)
+
+dem_summary <- read_csv("https://raw.githubusercontent.com/eteitelbaum/dataviz-fall-2023/main/modules/data/dem_summary.csv")
+```
+
+## 
+
+1. `glimpse()` the data
+2. Find a new variable to visualize
+3. Make a bar chart with it
+4. Change the [color](http://sape.inf.usi.ch/quick-reference/ggplot2/colour) of the bars
+5. Order the bars
+6. Add labels
+7. Add a [theme](https://ggplot2.tidyverse.org/reference/ggtheme.html)
+8. Try saving your plot as an object
+9. Then change the labels and/or theme
+
+```{r}
+#| label: exercise1_timer
+countdown::countdown(minutes = 10, 
+                     id = "exercise1", 
+                     bottom = "10%", 
+                     right = "10%",
+                     color_border = "#fff",
+                     color_text = "#fff",
+                     color_running_background = "#42affa",
+                     color_running_text = "black",
+                     color_finished_background = "#E5D19D",
+                     color_finished_text = "#00264A")
+```
+
+## Now Try a Histogram
+
+<br>
+
+*Use this code or your own wrangled data to get started*
+
+<br> 
+
+```{r}
+#| label: dem_women_data
+#| echo: true
+#| eval: false
+
+dem_women <- read_csv("https://raw.githubusercontent.com/eteitelbaum/dataviz-fall-2023/main/modules/data/dem_women.csv")
+```
+
+##
+
+1. Pick a variable that you want to explore the distribution of
+2. Make a histogram
+    a. Only specify `x = ` in `aes()`
+    b. Specify geom as `geom_histogram`
+3. Choose color for bars
+4. Choose appropriate labels
+5. Add a theme
+
+```{r}
+#| label: exercise2_time
+countdown::countdown(minutes = 10, id = "exercise2")
+```
+

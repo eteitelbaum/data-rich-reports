@@ -103,21 +103,33 @@
     "href": "modules/getting-started.html",
     "title": "Getting Started",
     "section": "",
-    "text": "All of our work for this course will be done in the R language and we will be working with R in RStudio. RStudio is an integrated development environment (IDE) develop by a company named Posit. Please be sure to download and install the most recent versions of R and R Studio from Posit’s website.\nIt is a good idea to periodically update R and RStudio. RStudio will prompt you when it is time to update and you can follow the same process of downloading and installing from the Posit website that we just did here. For R, there are a number of ways to do it, but the easiest is to use packages like installr for Windows and updateR for Mac. Here is a good blog post that walks you through the steps of how to update R using these packages. I usually update R once a semester.\nWe are going to be using a number of R packages throughout the course. One essential set of packages are those that comprise the Tidyverse, but especially readr, dplyr, ggplot2 and tidyr. You can install the entire Tidyverse collection of packages by typing install.packages(\"tidyverse\") in your console. We will talk about these packages in detail as we go through the course, but have a look at this basic description now to gain some basic familiarity.\nAnother thing that you really want to do is to make sure that you have the native pipe operator (|&gt;) enabled. In RStudio, go to Tools&gt;Global Options, then go to Code and select “Use native pipe operator.”\nWhile you are here, you can also go to Appearance to select a different editor theme or to Pane Layout to change how the four panes in R Studio are organized. Next, familiarize yourself with how to expand and minimize the four windows. The most important window that I want to highlight here is the source window. This is where we are going to be working most of the time in this course. And if I tell you to send your source code, I mean to send the file that you are working on in this window. This could be a Quarto document, an R script or an app.R file for a Shiny app.\nThe next window is the Console and there we also see tabs for Terminal and Background Jobs. The console is where you can run R code one line at a time. The terminal is relevant for more advanced users and we will make some use of it when we talk about publishing Quarto documents. Background Jobs is going to be helpful when we want troubleshoot a Quarto document that is not rendering properly.\nFrom there, the next pane we want to explore is Environment, History, etc. Environment tells us what files are currently available to us. The other important tab here is Git which will be where we push things to GitHub. You will be using this a lot in the course.\nFinally, we see a pane with Files, Plots, Packages etc. Files tells us what files are in our project folder and enables us to copy, and delete files associated with our project. Plots is a window for viewing our visualizations. And Packages shows us what packages are available and loaded into our environment.\nBefore you move on to the next section, take some time to familiarize yourself with the various user-friendly buttons and shortcuts available to you like the drop down menu for the pane layout, a spell checker, a button for inserting a code chunk and other features that you can play around with."
+    "text": "All of our work for this course will be done in the R language and we will be working with R in RStudio. RStudio is an integrated development environment (IDE) develop by a company named Posit. Please be sure to download and install the most recent versions of R and R Studio from Posit’s website.\nIt is a good idea to periodically update R and RStudio. RStudio will prompt you when it is time to update and you can follow the same process of downloading and installing from the Posit website that we just did here. For R, there are a number of ways to do it, but the easiest is to use packages like installr for Windows and updateR for Mac. Here is a good blog post that walks you through the steps of how to update R using these packages. I usually update R once a semester.\nWe are going to be using a number of R packages throughout the course. One essential set of packages are those that comprise the Tidyverse, but especially readr, dplyr, ggplot2 and tidyr. You can install the entire Tidyverse collection of packages by typing install.packages(\"tidyverse\") in your console. We will talk about these packages in detail as we go through the course, but have a look at this basic description now to gain some basic familiarity.\nAnother thing that you really want to do is to make sure that you have the native pipe operator (|&gt;) enabled. In RStudio, go to Tools&gt;Global Options, then go to Code and select “Use native pipe operator.”\nWhile you are here, you can also go to Appearance to select a different editor theme or to Pane Layout to change how the four panes in R Studio are organized. Next, familiarize yourself with how to expand and minimize the four windows. The most important window that I want to highlight here is the source window. This is where we are going to be working most of the time in this course. And if I tell you to send your source code, I mean to send the file that you are working on in this window. This could be a Quarto document, an R script or an app.R file for a Shiny app.\nThe next window is the Console and there we also see tabs for Terminal and Background Jobs. The console is where you can run R code one line at a time. The terminal is relevant for more advanced users and we will make some use of it when we talk about publishing Quarto documents. Background Jobs is going to be helpful when we want troubleshoot a Quarto document that is not rendering properly.\nFrom there, the next pane we want to explore is Environment, History, etc. Environment tells us what files are currently available to us. The other important tab here is Git which will be where we push things to GitHub. You will be using this a lot in the course.\nFinally, we see a pane with Files, Plots, Packages etc. Files tells us what files are in our project folder and enables us to copy, and delete files associated with our project. Plots is a window for viewing our visualizations. And Packages shows us what packages are available and loaded into our environment.\nBefore you move on to the next section, take some time to familiarize yourself with the various user-friendly buttons and shortcuts available to you like the drop down menu for the pane layout, a spell checker, a button for inserting a code chunk and other features that you can play around with.",
+    "crumbs": [
+      "Course Modules",
+      "Getting Started"
+    ]
   },
   {
     "objectID": "modules/getting-started.html#sec-rstudio-setup",
     "href": "modules/getting-started.html#sec-rstudio-setup",
     "title": "Getting Started",
     "section": "",
-    "text": "All of our work for this course will be done in the R language and we will be working with R in RStudio. RStudio is an integrated development environment (IDE) develop by a company named Posit. Please be sure to download and install the most recent versions of R and R Studio from Posit’s website.\nIt is a good idea to periodically update R and RStudio. RStudio will prompt you when it is time to update and you can follow the same process of downloading and installing from the Posit website that we just did here. For R, there are a number of ways to do it, but the easiest is to use packages like installr for Windows and updateR for Mac. Here is a good blog post that walks you through the steps of how to update R using these packages. I usually update R once a semester.\nWe are going to be using a number of R packages throughout the course. One essential set of packages are those that comprise the Tidyverse, but especially readr, dplyr, ggplot2 and tidyr. You can install the entire Tidyverse collection of packages by typing install.packages(\"tidyverse\") in your console. We will talk about these packages in detail as we go through the course, but have a look at this basic description now to gain some basic familiarity.\nAnother thing that you really want to do is to make sure that you have the native pipe operator (|&gt;) enabled. In RStudio, go to Tools&gt;Global Options, then go to Code and select “Use native pipe operator.”\nWhile you are here, you can also go to Appearance to select a different editor theme or to Pane Layout to change how the four panes in R Studio are organized. Next, familiarize yourself with how to expand and minimize the four windows. The most important window that I want to highlight here is the source window. This is where we are going to be working most of the time in this course. And if I tell you to send your source code, I mean to send the file that you are working on in this window. This could be a Quarto document, an R script or an app.R file for a Shiny app.\nThe next window is the Console and there we also see tabs for Terminal and Background Jobs. The console is where you can run R code one line at a time. The terminal is relevant for more advanced users and we will make some use of it when we talk about publishing Quarto documents. Background Jobs is going to be helpful when we want troubleshoot a Quarto document that is not rendering properly.\nFrom there, the next pane we want to explore is Environment, History, etc. Environment tells us what files are currently available to us. The other important tab here is Git which will be where we push things to GitHub. You will be using this a lot in the course.\nFinally, we see a pane with Files, Plots, Packages etc. Files tells us what files are in our project folder and enables us to copy, and delete files associated with our project. Plots is a window for viewing our visualizations. And Packages shows us what packages are available and loaded into our environment.\nBefore you move on to the next section, take some time to familiarize yourself with the various user-friendly buttons and shortcuts available to you like the drop down menu for the pane layout, a spell checker, a button for inserting a code chunk and other features that you can play around with."
+    "text": "All of our work for this course will be done in the R language and we will be working with R in RStudio. RStudio is an integrated development environment (IDE) develop by a company named Posit. Please be sure to download and install the most recent versions of R and R Studio from Posit’s website.\nIt is a good idea to periodically update R and RStudio. RStudio will prompt you when it is time to update and you can follow the same process of downloading and installing from the Posit website that we just did here. For R, there are a number of ways to do it, but the easiest is to use packages like installr for Windows and updateR for Mac. Here is a good blog post that walks you through the steps of how to update R using these packages. I usually update R once a semester.\nWe are going to be using a number of R packages throughout the course. One essential set of packages are those that comprise the Tidyverse, but especially readr, dplyr, ggplot2 and tidyr. You can install the entire Tidyverse collection of packages by typing install.packages(\"tidyverse\") in your console. We will talk about these packages in detail as we go through the course, but have a look at this basic description now to gain some basic familiarity.\nAnother thing that you really want to do is to make sure that you have the native pipe operator (|&gt;) enabled. In RStudio, go to Tools&gt;Global Options, then go to Code and select “Use native pipe operator.”\nWhile you are here, you can also go to Appearance to select a different editor theme or to Pane Layout to change how the four panes in R Studio are organized. Next, familiarize yourself with how to expand and minimize the four windows. The most important window that I want to highlight here is the source window. This is where we are going to be working most of the time in this course. And if I tell you to send your source code, I mean to send the file that you are working on in this window. This could be a Quarto document, an R script or an app.R file for a Shiny app.\nThe next window is the Console and there we also see tabs for Terminal and Background Jobs. The console is where you can run R code one line at a time. The terminal is relevant for more advanced users and we will make some use of it when we talk about publishing Quarto documents. Background Jobs is going to be helpful when we want troubleshoot a Quarto document that is not rendering properly.\nFrom there, the next pane we want to explore is Environment, History, etc. Environment tells us what files are currently available to us. The other important tab here is Git which will be where we push things to GitHub. You will be using this a lot in the course.\nFinally, we see a pane with Files, Plots, Packages etc. Files tells us what files are in our project folder and enables us to copy, and delete files associated with our project. Plots is a window for viewing our visualizations. And Packages shows us what packages are available and loaded into our environment.\nBefore you move on to the next section, take some time to familiarize yourself with the various user-friendly buttons and shortcuts available to you like the drop down menu for the pane layout, a spell checker, a button for inserting a code chunk and other features that you can play around with.",
+    "crumbs": [
+      "Course Modules",
+      "Getting Started"
+    ]
   },
   {
     "objectID": "modules/getting-started.html#quarto",
     "href": "modules/getting-started.html#quarto",
     "title": "Getting Started",
     "section": "Quarto",
-    "text": "Quarto\n\nOnce you have R, R Studio and Quarto installed, you are ready to start integrating text and code with Quarto. Quarto is an open source publishing platform that enables you to integrate text with code. If you have used R Markdown before then Quarto will look familiar to you because Quarto is the next generation of R Markdown.\nRStudio comes with a version of Quarto already installed, but it can be useful to install the most recent version separately and because doing so will allow you to use Quarto with another IDE like VS Code. You can install the most recent version of Quarto by visiting this page and selecting the version for your operating system.\nNow take a little time to create a Quarto project in R Studio and make sure everything is working properly. But before you get started, create a new folder(directory) for this course on your computer somewhere. Once that is done, go to File &gt; New Project. Then select Quarto Project and name the project something like “test-project” in the Directory name field. Next, select Browse and navigate to the folder that you created for this course. Select Create Project.\nYou will notice that in your new project folder there is a file with an .Rproj extension. The .Rproj file is what tells RStudio which files are associated with the project and it obviates the need to set the working directory. It also makes it possible to share the folder with anyone who is running R and RStudio and have them run your code without having to set a working directory. This is what we refer to as a project-based workflow and we will use it for every assignment in this class.\nNow try rendering the document with the Render toggle button. By default, Quarto renders an .html file that it will open in a browser and save to your project folder.\nNext we want to try rendering a .pdf document. To do this, we have to install tinytex, a lightweight version of LaTeX. To do this, go to the Terminal and type quarto install tinytex. Now, change the format from html to pdf by inserting format: pdf in the YAML header. Then render the document again. A .pdf document should open up.\nNow take a few minutes and try changing more of the code in the YAML header. You can try changing the title, adding a subtitle (subtitle:) or changing the execution options. By default, Quarto uses the visual editor but behind the scenes it is using Markdown. Try and edit some text using the toggle buttons available in the visual editor and then switch to Source to view the underlying Markdown code. Play with the R code chunks embedded in the document or try adding new code chunks.\nYou may already have some experience writing in Markdown, which is a lightweight markup language that enables you to format plaintext files. If you have not used Markdown, or if your memory is hazy, don’t worry: it is really easy to learn. Have a look at this Markdown cheat sheet and try to familiarize yourself with its basic syntax. Finally, take some time to get familiar with the Guide and Reference sections of the Quarto website. Then take a look at the gallery so that you can get an idea of the kinds of things you can produce with Quarto."
+    "text": "Quarto\n\nOnce you have R, R Studio and Quarto installed, you are ready to start integrating text and code with Quarto. Quarto is an open source publishing platform that enables you to integrate text with code. If you have used R Markdown before then Quarto will look familiar to you because Quarto is the next generation of R Markdown.\nRStudio comes with a version of Quarto already installed, but it can be useful to install the most recent version separately and because doing so will allow you to use Quarto with another IDE like VS Code. You can install the most recent version of Quarto by visiting this page and selecting the version for your operating system.\nNow take a little time to create a Quarto project in R Studio and make sure everything is working properly. But before you get started, create a new folder(directory) for this course on your computer somewhere. Once that is done, go to File &gt; New Project. Then select Quarto Project and name the project something like “test-project” in the Directory name field. Next, select Browse and navigate to the folder that you created for this course. Select Create Project.\nYou will notice that in your new project folder there is a file with an .Rproj extension. The .Rproj file is what tells RStudio which files are associated with the project and it obviates the need to set the working directory. It also makes it possible to share the folder with anyone who is running R and RStudio and have them run your code without having to set a working directory. This is what we refer to as a project-based workflow and we will use it for every assignment in this class.\nNow try rendering the document with the Render toggle button. By default, Quarto renders an .html file that it will open in a browser and save to your project folder.\nNext we want to try rendering a .pdf document. To do this, we have to install tinytex, a lightweight version of LaTeX. To do this, go to the Terminal and type quarto install tinytex. Now, change the format from html to pdf by inserting format: pdf in the YAML header. Then render the document again. A .pdf document should open up.\nNow take a few minutes and try changing more of the code in the YAML header. You can try changing the title, adding a subtitle (subtitle:) or changing the execution options. By default, Quarto uses the visual editor but behind the scenes it is using Markdown. Try and edit some text using the toggle buttons available in the visual editor and then switch to Source to view the underlying Markdown code. Play with the R code chunks embedded in the document or try adding new code chunks.\nYou may already have some experience writing in Markdown, which is a lightweight markup language that enables you to format plaintext files. If you have not used Markdown, or if your memory is hazy, don’t worry: it is really easy to learn. Have a look at this Markdown cheat sheet and try to familiarize yourself with its basic syntax. Finally, take some time to get familiar with the Guide and Reference sections of the Quarto website. Then take a look at the gallery so that you can get an idea of the kinds of things you can produce with Quarto.",
+    "crumbs": [
+      "Course Modules",
+      "Getting Started"
+    ]
   },
   {
     "objectID": "modules/getting-started.html#github",
@@ -474,7 +486,11 @@
     "href": "project/project-datasets.html",
     "title": "Datasets",
     "section": "",
-    "text": "Here are some datasets that you might consider using for your final project:\n\nILOSTAT is the statistical database of the International Labour Organisation. It has data pertaining to labor, working conditions, industrial relations, poverty and inequality.\nGoogle Public Data Explorer contains information about dozens of databases related to governance and the economy. You cannot download the raw data from Google, but you can use the site to visualize the data and then follow the link to the original source.\nOECD DATA provides data related to the performance of high income countries.\nOur World in Data is a good general resource for political economy data. The site is centered around blog posts but you can also search for a topic, view a visualization related to that topic and then download the data used to create it.\nStatista is a good place to look for data on more niche topics.\nUNCTADstat is the United Nations Conference on Trade and Development statistical database. It provides harmonized data on a range of topics related to economic performance, trade and statistics.\nThe UN Human Development Reports include a number of important indicators related to human development, gender and sustainable development goals (SDGs).\nVarieties of Democracy (V-DEM) provides original measures of the quality of democracy for every country dating back to the 18th century.\nWorld Bank Development Indicators (WDI) is the primary World Bank database for development data from officially-recognized international sources.\nThe World Bank DataBank provides access to dozens of additional World Bank databases on topics such as regional development, governance, education, gender and the environment.\n\nFor information on more specific resources available, see this page on the Gelman Library website."
+    "text": "Here are some datasets that you might consider using for your final project:\n\nGoogle Public Data Explorer contains information about dozens of databases related to governance and the economy. You cannot download the raw data from Google, but you can use the site to visualize the data and then follow the link to the original source.\nILOSTAT is the statistical database of the International Labour Organisation. It has data pertaining to labor, working conditions, industrial relations, poverty and inequality.\nKaggle has data on just about anything you can think of. Very usable, clean data. Just stick to the social science stuff for your project.\nOECD DATA provides data related to the performance of high income countries.\nOur World in Data is a good general resource for political economy data. The site is centered around blog posts but you can also search for a topic, view a visualization related to that topic and then download the data used to create it.\nStatista is a good place to look for data on more niche topics.\nUNCTADstat is the United Nations Conference on Trade and Development statistical database. It provides harmonized data on a range of topics related to economic performance, trade and statistics.\nThe UN Human Development Reports include a number of important indicators related to human development, gender and sustainable development goals (SDGs).\nVarieties of Democracy (V-DEM) provides original measures of the quality of democracy for every country dating back to the 18th century.\nWorld Bank Development Indicators (WDI) is the primary World Bank database for development data from officially-recognized international sources.\nThe World Bank DataBank provides access to dozens of additional World Bank databases on topics such as regional development, governance, education, gender and the environment.\n\nFor information on more specific resources available, see this page on the Gelman Library website.",
+    "crumbs": [
+      "Project",
+      "Datasets"
+    ]
   },
   {
     "objectID": "weeks/week-1.html",
@@ -1062,7 +1078,11 @@
     "href": "assignments/coding-assignment-1.html",
     "title": "Coding Assignment 1",
     "section": "",
-    "text": "For this assignment, you are going to download some variables using the wbstats and vdemdata packages. Then you are going to wrangle these data and merge the two data sets into one and analyze how they relate to women’s representation in national parliaments. Do your work for each step in the code chunks provided. Be sure to label your code chunks.\nSubmission note: Accept the invitation on Blackboard to submit this assignment via GitHub."
+    "text": "For this assignment, you are going to download some variables using the wbstats and vdemdata packages. Then you are going to wrangle these data and merge the two data sets into one and analyze how they relate to women’s representation in national parliaments. Do your work for each step in the code chunks provided. Be sure to label your code chunks.\nSubmission note: Accept the invitation on Blackboard to submit this assignment via GitHub.",
+    "crumbs": [
+      "Coding Assignments",
+      "Coding Assignment 1"
+    ]
   },
   {
     "objectID": "assignments/coding-assignment-1.html#step-1-download-data-from-the-v-dem-dataset",
@@ -1230,7 +1250,11 @@
     "href": "assignments/coding-assignment-1.html#overview",
     "title": "Coding Assignment 1",
     "section": "",
-    "text": "For this assignment, you are going to download some variables using the wbstats and vdemdata packages. Then you are going to wrangle these data and merge the two data sets into one and analyze how they relate to women’s representation in national parliaments. Do your work for each step in the code chunks provided. Be sure to label your code chunks.\nSubmission note: Accept the invitation on Blackboard to submit this assignment via GitHub."
+    "text": "For this assignment, you are going to download some variables using the wbstats and vdemdata packages. Then you are going to wrangle these data and merge the two data sets into one and analyze how they relate to women’s representation in national parliaments. Do your work for each step in the code chunks provided. Be sure to label your code chunks.\nSubmission note: Accept the invitation on Blackboard to submit this assignment via GitHub.",
+    "crumbs": [
+      "Coding Assignments",
+      "Coding Assignment 1"
+    ]
   },
   {
     "objectID": "assignments/coding-assignment-2.html#overview",
@@ -1328,35 +1352,55 @@
     "href": "assignments/coding-assignment-1.html#step-2-download-data-from-the-world-bank-20-pts",
     "title": "Coding Assignment 1",
     "section": "Step 2: Download data from the World Bank (20 pts)",
-    "text": "Step 2: Download data from the World Bank (20 pts)\nNext, download the variable on women’s represenation that we used in Module 1.2 (“SG.GEN.PARL.ZS”) and at least one additional measure related to women’s empowerment. Go to the WDI site the wb_search() function to identify relevant variables. Download the most recent 20 years of data for your analysis.\nMake sure that the indicator has enough data to conduct your analysis, i.e. that it has data for most countries and years."
+    "text": "Step 2: Download data from the World Bank (20 pts)\nNext, download the variable on women’s represenation that we used in Module 1.2 (“SG.GEN.PARL.ZS”) and at least one additional measure related to women’s empowerment. Go to the WDI site the wb_search() function to identify relevant variables. Download the most recent 20 years of data for your analysis.\nMake sure that the indicator has enough data to conduct your analysis, i.e. that it has data for most countries and years.",
+    "crumbs": [
+      "Coding Assignments",
+      "Coding Assignment 1"
+    ]
   },
   {
     "objectID": "assignments/coding-assignment-1.html#step-3-merge-the-data-20-pts",
     "href": "assignments/coding-assignment-1.html#step-3-merge-the-data-20-pts",
     "title": "Coding Assignment 1",
     "section": "Step 3: Merge the data (20 pts)",
-    "text": "Step 3: Merge the data (20 pts)\nNow add country codes using the countrycode package and merge the data using left_join()."
+    "text": "Step 3: Merge the data (20 pts)\nNow add country codes using the countrycode package and merge the data using left_join().",
+    "crumbs": [
+      "Coding Assignments",
+      "Coding Assignment 1"
+    ]
   },
   {
     "objectID": "assignments/coding-assignment-1.html#step-4-summarize-your-combined-data-set-20-pts",
     "href": "assignments/coding-assignment-1.html#step-4-summarize-your-combined-data-set-20-pts",
     "title": "Coding Assignment 1",
     "section": "Step 4: Summarize your combined data set (20 pts)",
-    "text": "Step 4: Summarize your combined data set (20 pts)\nUse group_by(), summarize() and arrange() to glean insights about your data. For example, how do regions compare on mean values of women’s representation and how do these values relate to the values of other variables in your data set? Which countries stand out in terms of women’s representation? Etc."
+    "text": "Step 4: Summarize your combined data set (20 pts)\nUse group_by(), summarize() and arrange() to glean insights about your data. For example, how do regions compare on mean values of women’s representation and how do these values relate to the values of other variables in your data set? Which countries stand out in terms of women’s representation? Etc.",
+    "crumbs": [
+      "Coding Assignments",
+      "Coding Assignment 1"
+    ]
   },
   {
     "objectID": "assignments/coding-assignment-1.html#step-5-interpret-your-data-20-pts",
     "href": "assignments/coding-assignment-1.html#step-5-interpret-your-data-20-pts",
     "title": "Coding Assignment 1",
     "section": "Step 5: Interpret your data (20 pts)",
-    "text": "Step 5: Interpret your data (20 pts)\nWrite a paragraph or so relating your insights to the Norris reading about electoral reform and women’s representation. Picking a handful of country cases from your data, how does your analysis relate to her arguments about the relevance of electoral systems, statutory quotas, reserved seats or voluntary quotas?"
+    "text": "Step 5: Interpret your data (20 pts)\nWrite a paragraph or so relating your insights to the Norris reading about electoral reform and women’s representation. Picking a handful of country cases from your data, how does your analysis relate to her arguments about the relevance of electoral systems, statutory quotas, reserved seats or voluntary quotas?",
+    "crumbs": [
+      "Coding Assignments",
+      "Coding Assignment 1"
+    ]
   },
   {
     "objectID": "assignments/coding-assignment-1.html#step-1-download-data-from-v-dem-20pts",
     "href": "assignments/coding-assignment-1.html#step-1-download-data-from-v-dem-20pts",
     "title": "Coding Assignment 1",
     "section": "Step 1: Download data from V-Dem (20pts)",
-    "text": "Step 1: Download data from V-Dem (20pts)\nLook at the V-Dem codebook. Identify two measures of democracy that are not the polyarchy score that we used in Module 1.2.\nTry to pick variables that will relate to women’s representation and read the description of the variable to make sure that it includes data for a sufficient number of years, e.g. that the data will be somewhat recent. Select the most recent 20 years of data for your analysis.\nMake sure to load the packages that you need and glimpse() the data or View() it to make sure that it downloaded properly."
+    "text": "Step 1: Download data from V-Dem (20pts)\nLook at the V-Dem codebook. Identify two measures of democracy that are not the polyarchy score that we used in Module 1.2.\nTry to pick variables that will relate to women’s representation and read the description of the variable to make sure that it includes data for a sufficient number of years, e.g. that the data will be somewhat recent. Select the most recent 20 years of data for your analysis.\nMake sure to load the packages that you need and glimpse() the data or View() it to make sure that it downloaded properly.",
+    "crumbs": [
+      "Coding Assignments",
+      "Coding Assignment 1"
+    ]
   },
   {
     "objectID": "assignments/coding-assignment-5.html#step-1-wrangle-your-data-20-pts",
@@ -1594,49 +1638,77 @@
     "href": "weeks/workshop-day1.html",
     "title": "Workshop Day 1",
     "section": "",
-    "text": "📖 Norris, The Impact of Electoral Reform on Women’s Representation"
+    "text": "📖 Norris, The Impact of Electoral Reform on Women’s Representation",
+    "crumbs": [
+      "Materials",
+      "Workshop Day 1"
+    ]
   },
   {
     "objectID": "weeks/workshop-day1.html#readings",
     "href": "weeks/workshop-day1.html#readings",
     "title": "Workshop Day 1",
     "section": "",
-    "text": "📖 Norris, The Impact of Electoral Reform on Women’s Representation"
+    "text": "📖 Norris, The Impact of Electoral Reform on Women’s Representation",
+    "crumbs": [
+      "Materials",
+      "Workshop Day 1"
+    ]
   },
   {
     "objectID": "weeks/workshop-day1.html#assignments",
     "href": "weeks/workshop-day1.html#assignments",
     "title": "Workshop Day 1",
     "section": "Assignments",
-    "text": "Assignments\n🧮 Coding Assignment 1"
+    "text": "Assignments\n🧮 Coding Assignment 1",
+    "crumbs": [
+      "Materials",
+      "Workshop Day 1"
+    ]
   },
   {
     "objectID": "weeks/workshop-day1.html#sessions",
     "href": "weeks/workshop-day1.html#sessions",
     "title": "Workshop Day 1",
     "section": "Sessions",
-    "text": "Sessions\n\n01: Getting Started\n02: Reading Data Into R\n03: Wrangling Data\n04: Coding Assignment 1"
+    "text": "Sessions\n\n01: Getting Started\n02: Working With Data\n03: Merging and Summarizing\n04: Coding Assignment 1",
+    "crumbs": [
+      "Materials",
+      "Workshop Day 1"
+    ]
   },
   {
     "objectID": "weeks/workshop-day3.html",
     "href": "weeks/workshop-day3.html",
     "title": "Workshop Day 3",
     "section": "",
-    "text": "Details TBA\nNote: This session is optional for students enrolled in IAFF 6502."
+    "text": "On the final day of the workshop, we will have a special instructional session by members of the United States Agency for International Development (USAID) data visualization team. They will introduced the USAID style guide and teach students how to utilize the open-source package called glitr to create visualizations in the USAID house style. Through a walkthrough exercise, they will demonstrate how to transform a cluttered and illegible column chart into a visually appealing visualization that meets the standards for a USAID report.\nGuest Instructors: Aaron Chafetz (Senior Economist), Timothy Essam (Senior Data Scientist) and Karishma Shrikanth (Data Analyst), United States Agency for International Development.\nNote: This session is optional for students enrolled in IAFF 6502. However, I will give EXTRA CREDIT to ALL students who attend!",
+    "crumbs": [
+      "Materials",
+      "Workshop Day 3"
+    ]
   },
   {
     "objectID": "project/project-assignment.html",
     "href": "project/project-assignment.html",
     "title": "Project Assignment",
     "section": "",
-    "text": "For your final project in this course, you will be producing a short “report” with some data visualizations embedded in it. The purpose of this assignment is to give you an opportunity to practice incorporating basic data visualizations into your workflow. You will render your Quarto document as either an HTML or revealjs slides and upload the finished product to Quarto Pub. Then you will share the link with the class on Discord.\nYou can use this document as a scratch document to create your visualizations and then ultimately convert it to your final document or presentation by changing the header titles and inserting your own text. Or, you can create and render your final document in a separate file."
+    "text": "For your final project in this course, you will be producing a short “report” with some data visualizations embedded in it. The purpose of this assignment is to give you an opportunity to practice incorporating basic data visualizations into your workflow. You will render your Quarto document as either an HTML or revealjs slides and upload the finished product to Quarto Pub. Then you will share the link with the class on Discord.\nYou can use this document as a scratch document to create your visualizations and then ultimately convert it to your final document or presentation by changing the header titles and inserting your own text. Or, you can create and render your final document in a separate file.",
+    "crumbs": [
+      "Project",
+      "Project Assignment"
+    ]
   },
   {
     "objectID": "project/project-assignment.html#overview",
     "href": "project/project-assignment.html#overview",
     "title": "Project Assignment",
     "section": "",
-    "text": "For your final project in this course, you will be producing a short “report” with some data visualizations embedded in it. The purpose of this assignment is to give you an opportunity to practice incorporating basic data visualizations into your workflow. You will render your Quarto document as either an HTML or revealjs slides and upload the finished product to Quarto Pub. Then you will share the link with the class on Discord.\nYou can use this document as a scratch document to create your visualizations and then ultimately convert it to your final document or presentation by changing the header titles and inserting your own text. Or, you can create and render your final document in a separate file."
+    "text": "For your final project in this course, you will be producing a short “report” with some data visualizations embedded in it. The purpose of this assignment is to give you an opportunity to practice incorporating basic data visualizations into your workflow. You will render your Quarto document as either an HTML or revealjs slides and upload the finished product to Quarto Pub. Then you will share the link with the class on Discord.\nYou can use this document as a scratch document to create your visualizations and then ultimately convert it to your final document or presentation by changing the header titles and inserting your own text. Or, you can create and render your final document in a separate file.",
+    "crumbs": [
+      "Project",
+      "Project Assignment"
+    ]
   },
   {
     "objectID": "project/project-assignment.html#step-1-think-about-a-layout-for-your-app-25-pts.",
@@ -1671,28 +1743,44 @@
     "href": "weeks/workshop-day2.html",
     "title": "Workshop Day 2",
     "section": "",
-    "text": "📖 Lipset, Some Social Requisites of Democracry"
+    "text": "📖 Lipset, Some Social Requisites of Democracry",
+    "crumbs": [
+      "Materials",
+      "Workshop Day 2"
+    ]
   },
   {
     "objectID": "weeks/workshop-day2.html#readings",
     "href": "weeks/workshop-day2.html#readings",
     "title": "Workshop Day 2",
     "section": "",
-    "text": "📖 Lipset, Some Social Requisites of Democracry"
+    "text": "📖 Lipset, Some Social Requisites of Democracry",
+    "crumbs": [
+      "Materials",
+      "Workshop Day 2"
+    ]
   },
   {
     "objectID": "weeks/workshop-day2.html#assignments",
     "href": "weeks/workshop-day2.html#assignments",
     "title": "Workshop Day 2",
     "section": "Assignments",
-    "text": "Assignments\n🧮 Coding Assignment 2\n✍️ Final Project"
+    "text": "Assignments\n🧮 Coding Assignment 2\n✍️ Final Project",
+    "crumbs": [
+      "Materials",
+      "Workshop Day 2"
+    ]
   },
   {
     "objectID": "weeks/workshop-day2.html#sessions",
     "href": "weeks/workshop-day2.html#sessions",
     "title": "Workshop Day 2",
     "section": "Sessions",
-    "text": "Sessions\n\n01: Getting Data from an API\n02: Merging and Summarizing\n03: Bar Charts and Histograms\n04: Line Charts and Scatter Plots\n05: Accessibility and Color Schemes\n06: Themes, Annotations and Interactivity\n07: More Quarto and GitHub\n08: Coding Assignment 2"
+    "text": "Sessions\n\n01: Bar Charts and Histograms\n02: Line Charts and Scatter Plots\n03: Accessibility and Color Schemes\n04: Themes, Annotations and Interactivity\n05: Coding Assignment 2",
+    "crumbs": [
+      "Materials",
+      "Workshop Day 2"
+    ]
   },
   {
     "objectID": "slides/week-1.2.html#rstudio-setup",
@@ -1734,7 +1822,7 @@
     "href": "slides/day-1.1.html#rstudio-setup",
     "title": "Getting Started",
     "section": "RStudio Setup",
-    "text": "RStudio Setup\n\nGo to posit.co\nClick on links to install R and RStudio\nInstall the Tidyverse group of packages from the console\nGo to Tools&gt;Global Options\n\nUnder Code, enable native pipe operator (|&gt;)\nUnder Appearance, choose a theme\nConfigure panes\n\nInstall devtools (install.packages(\"devtools\"))\nInstall wordcount Addin -devtools::install_github(\"benmarwick/wordcountaddin\",  type = \"source\", dependencies = TRUE)\n\nInstall lorem package/Addin (install.packages(\"lorem\"))\nRestart R Session (Session&gt;Restart R)"
+    "text": "RStudio Setup\n\nGo to posit.co\nClick on links to install R and RStudio\nInstall the Tidyverse group of packages from the console\nGo to Tools&gt;Global Options\n\nUnder Code, enable native pipe operator (|&gt;)\nUnder Appearance, choose a theme\nConfigure panes\n\nInstall lorem add in (install.packages(\"lorem\"))\nRestart R Session (Session &gt; Restart R)"
   },
   {
     "objectID": "slides/day-1.1.html#quarto-setup",
@@ -1748,47 +1836,47 @@
     "href": "slides/day-1.1.html#project-oriented-workflow",
     "title": "Getting Started",
     "section": "Project Oriented Workflow",
-    "text": "Project Oriented Workflow\n\nAlways start a document in a project folder\n\nThat way you don’t have to do setwd\nAlso can share easily with other people\n\nGo to File&gt;New Project\nCreate a Quarto project folder\nOpen a Quarto quarto document\nRender it\nChange Quarto doc elements\n\nAdd text with lipsum\nCheck word count\nAdd stuff to YAML"
+    "text": "Project Oriented Workflow\n\n\nAlways start a document in a project folder\nThat way you don’t have to do setwd\nAlso can share easily with other people"
   },
   {
     "objectID": "slides/day-1.1.html#publish-html-to-quarto-pub",
     "href": "slides/day-1.1.html#publish-html-to-quarto-pub",
     "title": "Getting Started",
     "section": "Publish HTML to Quarto Pub",
-    "text": "Publish HTML to Quarto Pub\n\nGo to quartopub.com\nSet up Quarto pub account\nLook at guide for pubishing on Quarto pub\nWith your Quarto pub account open:\n\nGo to terminal in RStudio\nType quarto publish quarto pub"
+    "text": "Publish HTML to Quarto Pub\n\nGo to quartopub.com\nSet up Quarto pub account\nLook at guide for publishing on Quarto pub\nWith your Quarto pub account open:\n\nGo to terminal in RStudio\nType quarto publish quarto pub\n\n\n\n\n\n−+\n15:00"
   },
   {
     "objectID": "slides/day-1.1.html#making-pdfs",
     "href": "slides/day-1.1.html#making-pdfs",
     "title": "Getting Started",
     "section": "Making PDFs",
-    "text": "Making PDFs\n\nInstall tinytex Type quarto install tinytex in terminal\nChange document type in YAML header to pdf\nLook at Quarto Reference and play with options\n\n\n\n\nDataViz 2102 Website"
+    "text": "Making PDFs\n\n\nInstall tinytex\nType quarto install tinytex in terminal\nChange document type in YAML header to pdf\nTake animation out of your plot\nLook at Quarto Reference and play with options"
   },
   {
     "objectID": "slides/day-1.2.html#what-are-tidy-data",
     "href": "slides/day-1.2.html#what-are-tidy-data",
-    "title": "Reading Data Into R",
+    "title": "Working With Data",
     "section": "What are Tidy Data?",
-    "text": "What are Tidy Data?\n\nEach column represents a single variable\nEach row represents a single observation\nEach cell represents a single value"
+    "text": "What are Tidy Data?\n\n\nEach column represents a single variable\nEach row represents a single observation\nEach cell represents a single value"
   },
   {
     "objectID": "slides/day-1.2.html#tidy-data-example",
     "href": "slides/day-1.2.html#tidy-data-example",
-    "title": "Reading Data Into R",
+    "title": "Working With Data",
     "section": "Tidy Data Example",
     "text": "Tidy Data Example"
   },
   {
     "objectID": "slides/day-1.2.html#what-are-clean-data",
     "href": "slides/day-1.2.html#what-are-clean-data",
-    "title": "Reading Data Into R",
+    "title": "Working With Data",
     "section": "What are Clean Data?",
     "text": "What are Clean Data?\n\nColumn names are easy to work with and are not duplicated\nMissing values have been dealt with\nThere are no repeated observations or columns\nThere are no blank observations or columns\nThe data are in the proper format, for example dates should be formatted as dates"
   },
   {
     "objectID": "slides/day-1.2.html#messy-data-example",
     "href": "slides/day-1.2.html#messy-data-example",
-    "title": "Reading Data Into R",
+    "title": "Working With Data",
     "section": "Messy Data Example",
     "text": "Messy Data Example"
   },
@@ -1802,9 +1890,9 @@
   {
     "objectID": "slides/day-1.2.html#step-2-read-the-data-into-r",
     "href": "slides/day-1.2.html#step-2-read-the-data-into-r",
-    "title": "Reading Data Into R",
+    "title": "Working With Data",
     "section": "Step 2: Read the Data Into R",
-    "text": "Step 2: Read the Data Into R\n\n# Load packages\nlibrary(readr) \nlibrary(dplyr) \n\n# Read data from csv file into an object called \"wb_data_messy\"\nwb_data_messy &lt;- read_csv(\"data/your_file_name.csv\")\n\n# View the data\nglimpse(wb_data_messy)\n\nAlso try viewing with View(\"wb_data_messy\") or by clicking on object."
+    "text": "Step 2: Read the Data Into R\n\n\n# Load packages\nlibrary(readr) \nlibrary(dplyr) \n\n# Read data from csv file into an object called \"wb_data_messy\"\nwb_data_messy &lt;- read_csv(\"data/your_file_name.csv\")\n\n# View the data\nglimpse(wb_data_messy)\n\nViewed with View(\"wb_data_messy\") or by clicking on object…"
   },
   {
     "objectID": "slides/day-1.2.html#step-3-write-a-new-csv-file",
@@ -2005,9 +2093,9 @@
   {
     "objectID": "slides/day-2.4.html#your-turn",
     "href": "slides/day-2.4.html#your-turn",
-    "title": "Line Charts and Scatter Plots",
+    "title": "Themes, Annotations and Interactivity",
     "section": "Your Turn!",
-    "text": "Your Turn!\n\n\nSee table three of this article\nSelect three countries to visualize\nAdjust setup code to filter data on those countries\nVisualize with geom_line()\n\n\n\n\n−+\n10:00"
+    "text": "Your Turn!\nProduce this scatter plot… Then try different themes.\n\n\n\n\n−+\n10:00"
   },
   {
     "objectID": "slides/day-2.4.html#scatter-plot-setup",
@@ -2054,9 +2142,9 @@
   {
     "objectID": "slides/day-2.4.html#your-turn-1",
     "href": "slides/day-2.4.html#your-turn-1",
-    "title": "Line Charts and Scatter Plots",
+    "title": "Themes, Annotations and Interactivity",
     "section": "Your Turn!",
-    "text": "Your Turn!\n\nThere are four variables in dem_summary_ctry\nPick one related to women’s empowerment\nVisualize it on the y-axis with gdp_pc or polyarch on the x-axis\nChange labels and legend titles to match your visualization\nInterpret your plot\n\n\n\n\n−+\n10:00"
+    "text": "Your Turn!\n\n\nwealth_flfp &lt;- ggplot(flfp_gdp, aes(x = gdp_pc, y = flfp)) + \n  geom_point(aes(color = region)) + \n  geom_smooth(method = \"loess\", linewidth = 1) +\n  scale_x_log10(labels = scales::label_dollar()) + \n  scale_y_continuous(labels = scales::label_percent(scale = 1)) +\n  labs(\n    x= \"GDP per Capita\",\n    y = \"Female Labor Force Participation\",\n    title = \"Wealth and female labor force participation\",\n    caption = \"Source: World Bank Development Indicators\",\n    color = \"Region\"\n    ) + scale_color_viridis_d(option = \"plasma\", end = .7) \n\nwealth_flfp + theme_dark()"
   },
   {
     "objectID": "slides/day-2.4.html#add-a-trend-line",
@@ -2089,9 +2177,9 @@
   {
     "objectID": "slides/day-2.4.html#your-turn-2",
     "href": "slides/day-2.4.html#your-turn-2",
-    "title": "Line Charts and Scatter Plots",
+    "title": "Themes, Annotations and Interactivity",
     "section": "Your Turn!",
-    "text": "Your Turn!\n\n\nAdd a trendline to your plot\nChange the labels accordingly\nTry using method = \"loess\" instead of a “lm”\n\n\n\n\n−+\n05:00"
+    "text": "Your Turn!\n\nGo to module 2.2\nCopy the code you need to make the line chart\nCreate a horizontal reference line and annotate it\nIn a new code chunk, create a vertical line and annotate it\nPlay with the parameters to move and style your line\nTry different text, etc.\n\n\n\n\n−+\n10:00"
   },
   {
     "objectID": "slides/day-2.4.html#facet-wrapping",
@@ -2124,9 +2212,9 @@
   {
     "objectID": "slides/day-2.4.html#your-turn-3",
     "href": "slides/day-2.4.html#your-turn-3",
-    "title": "Line Charts and Scatter Plots",
+    "title": "Themes, Annotations and Interactivity",
     "section": "Your Turn!",
-    "text": "Your Turn!\n\nFacet wrap your scatter plot\nUse scales = \"free\" to fix the West\n\n\n\n\n−+\n05:00"
+    "text": "Your Turn!\n\nGo to module 2.2 and create the basic wealth vs. flfp scatter plot\nNow “plotlify” the plot\nAt first, don’t worry about annotations or tool tip\nThen add in tool tip, play with setting\nThen add in the annotations\nMove annotations, change content\n\n\n\n\n−+\n10:00"
   },
   {
     "objectID": "slides/day-2.4.html#labeling-points",
@@ -2446,9 +2534,9 @@
   {
     "objectID": "slides/day-2.3.html#your-turn",
     "href": "slides/day-2.3.html#your-turn",
-    "title": "Bar Charts and Histograms",
+    "title": "Accessibility and Color Schemes",
     "section": "Your Turn!",
-    "text": "Your Turn!\n\nUse your own wrangled data or this code to get started:\n\n\nlibrary(readr)\nlibrary(ggplot2)\n\ndem_summary &lt;- read_csv(\"https://raw.githubusercontent.com/eteitelbaum/dataviz-fall-2023/main/modules/data/dem_summary.csv\")"
+    "text": "Your Turn!\n\n\nTake your dem_waves_chart object and run cvdPlot() on it\nExpand the window and have a good look\nWhich group would have the toughest time reading this graph?\n\n\n\n\n−+\n02:00"
   },
   {
     "objectID": "slides/day-2.3.html#section-19",
@@ -2826,42 +2914,66 @@
     "href": "project/project-assignment.html#step-1-give-an-overview-of-your-topic-10-pts.",
     "title": "Project Assignment",
     "section": "Step 1: Give an overview of your topic (10 pts.)",
-    "text": "Step 1: Give an overview of your topic (10 pts.)\nGive the reader a brief sense of the topic and why you chose it. Is there a question you are trying to answer with your data? What is that question and why is it important? Could be bullet points for a slide show or a few sentences for a document"
+    "text": "Step 1: Give an overview of your topic (10 pts.)\nGive the reader a brief sense of the topic and why you chose it. Is there a question you are trying to answer with your data? What is that question and why is it important? Could be bullet points for a slide show or a few sentences for a document",
+    "crumbs": [
+      "Project",
+      "Project Assignment"
+    ]
   },
   {
     "objectID": "project/project-assignment.html#step-2-give-an-overview-of-your-data-10-pts.",
     "href": "project/project-assignment.html#step-2-give-an-overview-of-your-data-10-pts.",
     "title": "Project Assignment",
     "section": "Step 2: Give an overview of your data (10 pts.)",
-    "text": "Step 2: Give an overview of your data (10 pts.)\nProvide a brief overview of your data. You could include some summary statistics or just talk about what the main variables of interest are and how they relate to the topic you are interested."
+    "text": "Step 2: Give an overview of your data (10 pts.)\nProvide a brief overview of your data. You could include some summary statistics or just talk about what the main variables of interest are and how they relate to the topic you are interested.",
+    "crumbs": [
+      "Project",
+      "Project Assignment"
+    ]
   },
   {
     "objectID": "project/project-assignment.html#step-3-make-a-bar-chart-10-pts.",
     "href": "project/project-assignment.html#step-3-make-a-bar-chart-10-pts.",
     "title": "Project Assignment",
     "section": "Step 3: Make a bar chart (10 pts.)",
-    "text": "Step 3: Make a bar chart (10 pts.)\nMake a bar chart to include your presentation or document. Give it appropriate labels, an accessible color scheme and a nice theme. If your are making a document, include a few lines to explain what the visualization tells us."
+    "text": "Step 3: Make a bar chart (10 pts.)\nMake a bar chart to include your presentation or document. Give it appropriate labels, an accessible color scheme and a nice theme. If your are making a document, include a few lines to explain what the visualization tells us.",
+    "crumbs": [
+      "Project",
+      "Project Assignment"
+    ]
   },
   {
     "objectID": "project/project-assignment.html#step-4-make-a-line-chart-10-pts.",
     "href": "project/project-assignment.html#step-4-make-a-line-chart-10-pts.",
     "title": "Project Assignment",
     "section": "Step 4: Make a line chart (10 pts.)",
-    "text": "Step 4: Make a line chart (10 pts.)\nMake a line chart to include your presentation or document. Give it appropriate labels, an accessible color scheme and a nice theme. Make it interactive if you like."
+    "text": "Step 4: Make a line chart (10 pts.)\nMake a line chart to include your presentation or document. Give it appropriate labels, an accessible color scheme and a nice theme. Make it interactive if you like.",
+    "crumbs": [
+      "Project",
+      "Project Assignment"
+    ]
   },
   {
     "objectID": "project/project-assignment.html#step-5-make-a-scatter-plot-10-pts.",
     "href": "project/project-assignment.html#step-5-make-a-scatter-plot-10-pts.",
     "title": "Project Assignment",
     "section": "Step 5: Make a scatter plot (10 pts.)",
-    "text": "Step 5: Make a scatter plot (10 pts.)\nMake a scatter plot to include your presentation or document. Give it appropriate labels, an accessible color scheme and a nice theme. Make it interactive if you like."
+    "text": "Step 5: Make a scatter plot (10 pts.)\nMake a scatter plot to include your presentation or document. Give it appropriate labels, an accessible color scheme and a nice theme. Make it interactive if you like.",
+    "crumbs": [
+      "Project",
+      "Project Assignment"
+    ]
   },
   {
     "objectID": "project/project-assignment.html#step-6-make-another-visualization-of-your-choice-10-pts.",
     "href": "project/project-assignment.html#step-6-make-another-visualization-of-your-choice-10-pts.",
     "title": "Project Assignment",
     "section": "Step 6: Make another visualization of your choice (10 pts.)",
-    "text": "Step 6: Make another visualization of your choice (10 pts.)\nMake a another visualization of your choice. Give it appropriate labels, an accessible color scheme and a nice theme. Make it interactive if you like."
+    "text": "Step 6: Make another visualization of your choice (10 pts.)\nMake a another visualization of your choice. Give it appropriate labels, an accessible color scheme and a nice theme. Make it interactive if you like.",
+    "crumbs": [
+      "Project",
+      "Project Assignment"
+    ]
   },
   {
     "objectID": "project/project-assignment.html#step-6-add-additional-text-or-slides-for-context-10-pts.",
@@ -2903,28 +3015,44 @@
     "href": "project/project-assignment.html#step-7-add-additional-text-or-slides-for-context-10-pts.",
     "title": "Project Assignment",
     "section": "Step 7: Add additional text or slides for context (10 pts.)",
-    "text": "Step 7: Add additional text or slides for context (10 pts.)\nNow go back and add some conext to your slide show or document. If doing a slide show, add some slides with some additional information before and after your visualizations. If a document, write some text explaining the point of the visualization and what we learn from it."
+    "text": "Step 7: Add additional text or slides for context (10 pts.)\nNow go back and add some conext to your slide show or document. If doing a slide show, add some slides with some additional information before and after your visualizations. If a document, write some text explaining the point of the visualization and what we learn from it.",
+    "crumbs": [
+      "Project",
+      "Project Assignment"
+    ]
   },
   {
     "objectID": "project/project-assignment.html#step-8-enhance-your-document-or-presentation-10-pts.",
     "href": "project/project-assignment.html#step-8-enhance-your-document-or-presentation-10-pts.",
     "title": "Project Assignment",
     "section": "Step 8: Enhance your document or presentation (10 pts.)",
-    "text": "Step 8: Enhance your document or presentation (10 pts.)\nAdd some styling to your document. This could be a different font or color scheme. For presentations, you could try adding a logo and adjusting how slides transition or some of the other bells and whistles we discussed in class. For documents, you could add aditional sections or some references. Look at the Quarto documentation for ideas. Be creative!"
+    "text": "Step 8: Enhance your document or presentation (10 pts.)\nAdd some styling to your document. This could be a different font or color scheme. For presentations, you could try adding a logo and adjusting how slides transition or some of the other bells and whistles we discussed in class. For documents, you could add aditional sections or some references. Look at the Quarto documentation for ideas. Be creative!",
+    "crumbs": [
+      "Project",
+      "Project Assignment"
+    ]
   },
   {
     "objectID": "project/project-assignment.html#step-9-render-and-upload-document-to-quarto-pub",
     "href": "project/project-assignment.html#step-9-render-and-upload-document-to-quarto-pub",
     "title": "Project Assignment",
     "section": "Step 9: Render and upload document to Quarto Pub",
-    "text": "Step 9: Render and upload document to Quarto Pub\nRender your document and publish it to Quarto as we did in class by typing quarto publish quarto-pub in the terminal. Make sure you have set up a Quarto Pub account first."
+    "text": "Step 9: Render and upload document to Quarto Pub\nRender your document and publish it to Quarto as we did in class by typing quarto publish quarto-pub in the terminal. Make sure you have set up a Quarto Pub account first.",
+    "crumbs": [
+      "Project",
+      "Project Assignment"
+    ]
   },
   {
     "objectID": "project/project-assignment.html#step-10-post-your-link-to-discord-and-reflect",
     "href": "project/project-assignment.html#step-10-post-your-link-to-discord-and-reflect",
     "title": "Project Assignment",
     "section": "Step 10: Post your link to Discord and reflect",
-    "text": "Step 10: Post your link to Discord and reflect\nPost the link of your Quarto Pub document on the class Discord server and reflect on your document and what you learned from the exercise. Finally, comment on at least one other student’s post in the server. Provide positive feedback and say something about what you learned from their document or presentation."
+    "text": "Step 10: Post your link to Discord and reflect\nPost the link of your Quarto Pub document on the class Discord server and reflect on your document and what you learned from the exercise. Finally, comment on at least one other student’s post in the server. Provide positive feedback and say something about what you learned from their document or presentation.",
+    "crumbs": [
+      "Project",
+      "Project Assignment"
+    ]
   },
   {
     "objectID": "exercises/exercise-1.2-webr.html",
@@ -2932,5 +3060,993 @@
     "title": "Exercise 1.2",
     "section": "",
     "text": "library(readr)\nlibrary(dplyr)\n\ndem_women &lt;- read_csv(\"https://raw.githubusercontent.com/eteitelbaum/dataviz-summer-2023/main/modules/data/dem_women.csv\")\n\noptions(digits = 3)\n\ndem_summary &lt;- dem_women |&gt; \n  group_by(region)  |&gt; \n  summarize(\n    polyarchy = mean(polyarchy, na.rm = TRUE),\n    gdp_pc = mean(gdp_pc, na.rm = TRUE), \n    flfp = mean(flfp, na.rm = TRUE), \n    women_rep = mean(women_rep, na.rm = TRUE)\n  ) |&gt; \n  arrange(desc(polyarchy)) \n\ndem_summary"
+  },
+  {
+    "objectID": "slides/day-1.1.html#add-a-visualization",
+    "href": "slides/day-1.1.html#add-a-visualization",
+    "title": "Getting Started",
+    "section": "Add a Visualization",
+    "text": "Add a Visualization"
+  },
+  {
+    "objectID": "slides/day-1.1.html#add-a-visualization-1",
+    "href": "slides/day-1.1.html#add-a-visualization-1",
+    "title": "Getting Started",
+    "section": "Add a Visualization",
+    "text": "Add a Visualization\n\n\nlibrary(gganimate)\nlibrary(gapminder)\n\nggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +\n  geom_point(alpha = 0.7, show.legend = FALSE) +\n  scale_colour_manual(values = country_colors) +\n  scale_size(range = c(2, 12)) +\n  scale_x_log10() +\n  facet_wrap(~continent) +\n  labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy') +\n  transition_time(year) +\n  ease_aes('linear')"
+  },
+  {
+    "objectID": "slides/day-1.1.html#project-oriented-workflow-1",
+    "href": "slides/day-1.1.html#project-oriented-workflow-1",
+    "title": "Getting Started",
+    "section": "Project Oriented Workflow",
+    "text": "Project Oriented Workflow\n\nGo to File &gt; New Project\nCreate a Quarto project folder\nOpen a Quarto quarto document\nRender it\nChange Quarto doc elements\n\nAdd text with lipsum\n\nExplore reference\nAdd stuff to YAML\n\ne.g. subtitle, author, date, theme, etc.\n\n\n\n\n\n−+\n10:00"
+  },
+  {
+    "objectID": "slides/day-1.1.html#add-a-visualization-2",
+    "href": "slides/day-1.1.html#add-a-visualization-2",
+    "title": "Getting Started",
+    "section": "Add a Visualization",
+    "text": "Add a Visualization\n\n\nlibrary(gganimate)\nlibrary(gapminder)\n\nggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +\n  geom_point(alpha = 0.7, show.legend = FALSE) +\n  scale_colour_manual(values = country_colors) +\n  scale_size(range = c(2, 12)) +\n  scale_x_log10() +\n  facet_wrap(~continent) +\n  labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy') +\n  transition_time(year) +\n  ease_aes('linear')"
+  },
+  {
+    "objectID": "slides/day-1.1.html#other-document-types",
+    "href": "slides/day-1.1.html#other-document-types",
+    "title": "Getting Started",
+    "section": "Other Document Types",
+    "text": "Other Document Types\n\n\nWord (docx)\nTypst (typst)\n\nNew scientific typesetting language\nMany advantages over \\(\\LaTeX\\) & Word\n\nRevealjs"
+  },
+  {
+    "objectID": "slides/day-1.1.html#reveal-js-slides",
+    "href": "slides/day-1.1.html#reveal-js-slides",
+    "title": "Getting Started",
+    "section": "Reveal JS Slides",
+    "text": "Reveal JS Slides\n\nRevealjs is an open source HTML presentation framework that is built on open web technologies like CSS and JavaScript\nThese slides are made with the revealjs format in Quarto\nLike other Quarto documents, you can set all the formatting in the YAML header\nBut you can also customize individual slides"
+  },
+  {
+    "objectID": "slides/day-1.1.html#execution-options-yaml",
+    "href": "slides/day-1.1.html#execution-options-yaml",
+    "title": "Getting Started",
+    "section": "Execution Options (YAML)",
+    "text": "Execution Options (YAML)\n\nYAML header with execution options for these slides…\n---\ntitle: Getting Started\nsubtitle: RStudio and Basic Quarto\ndate: today\ndate-format: long\nfooter: \"[DataViz 2102 Website](https://dataviz-gwu.rocks)\"\nlogo: images/dataviz-logo.png\nformat:\n  revealjs:\n    theme: [simple, custom.scss]\n    transition: fade\n    slide-number: true\n    multiplex: true\nexecute:\n  echo: false\n  message: false\n  warning: false\n  freeze: auto\n---"
+  },
+  {
+    "objectID": "slides/day-1.1.html#execution-options-code-chunk",
+    "href": "slides/day-1.1.html#execution-options-code-chunk",
+    "title": "Getting Started",
+    "section": "Execution Options (Code Chunk)",
+    "text": "Execution Options (Code Chunk)\n\nYou can also set execution options for individual code chunks…\n```{r}\n#| label: code-chunk\n#| echo: false\n#| message: false\n#| warning: false\n\n2 + 2\n```"
+  },
+  {
+    "objectID": "slides/day-1.1.html#your-turn",
+    "href": "slides/day-1.1.html#your-turn",
+    "title": "Getting Started",
+    "section": "Your Turn!",
+    "text": "Your Turn!\n\n\nTry rendering your document as a revealjs slide deck\nIf you have added a lot of lorem ipsum, start a new document\nChange the execution options in the YAML header\nThen try changing them in the code chunk for your plot\n\n\n\n\n−+\n10:00"
+  },
+  {
+    "objectID": "slides/day-1.1.html#revealjs-slides",
+    "href": "slides/day-1.1.html#revealjs-slides",
+    "title": "Getting Started",
+    "section": "Revealjs Slides",
+    "text": "Revealjs Slides\n\nRevealjs is an open source HTML presentation framework that is built on open web technologies like CSS and JavaScript\nThese slides are made with the revealjs format in Quarto\nLike other Quarto documents, you can set all the formatting in the YAML header\nBut you can also customize individual slides"
+  },
+  {
+    "objectID": "slides/day-1.2.html#step-1-downloaded-some-messy-data",
+    "href": "slides/day-1.2.html#step-1-downloaded-some-messy-data",
+    "title": "Working With Data",
+    "section": "Step 1: Downloaded Some Messy Data",
+    "text": "Step 1: Downloaded Some Messy Data\n\n\nCreated a folder called “data” in your course modules project folder\nDownloaded some messy WB data"
+  },
+  {
+    "objectID": "slides/day-1.2.html#step-3-wrote-a-new-csv-file",
+    "href": "slides/day-1.2.html#step-3-wrote-a-new-csv-file",
+    "title": "Working With Data",
+    "section": "Step 3: Wrote a New CSV File",
+    "text": "Step 3: Wrote a New CSV File\n\n\nwrite_csv(wb_data_messy, \"data/your_new_file_name.csv\")"
+  },
+  {
+    "objectID": "slides/day-1.2.html#with-excel",
+    "href": "slides/day-1.2.html#with-excel",
+    "title": "Working With Data",
+    "section": "With Excel",
+    "text": "With Excel\n\nCan do the same thing with Excel files\nHave a look at the readr cheatsheet\nFollow same steps as with CSV file\n\nuse read_excel() to read in the data\ninstall and experiment with writexl"
+  },
+  {
+    "objectID": "slides/day-1.2.html#messy-data-example-1",
+    "href": "slides/day-1.2.html#messy-data-example-1",
+    "title": "Working With Data",
+    "section": "Messy Data Example",
+    "text": "Messy Data Example"
+  },
+  {
+    "objectID": "slides/day-1.2.html#pivot-longer",
+    "href": "slides/day-1.2.html#pivot-longer",
+    "title": "Working With Data",
+    "section": "Pivot Longer",
+    "text": "Pivot Longer\n\npivot_longer() takes three arguments:\n\ncols - which columns you want to pivot\nnames_to - the name of the column where the old column names are going to (identifier)\nvalues_to - the name of the column where the values are going to"
+  },
+  {
+    "objectID": "slides/day-1.2.html#section",
+    "href": "slides/day-1.2.html#section",
+    "title": "Working With Data",
+    "section": "",
+    "text": "Can you remember how to make pivot_longer() work?\n\n\n# Load tidyr\nlibrary(tidyr)\n\n# Reshape the data\n      &lt;-    |&gt;\n  pivot_longer(\n    cols = \n    names_to = \n    values_to = \n  )\n\nglimpse()"
+  },
+  {
+    "objectID": "slides/day-1.2.html#pivot-data",
+    "href": "slides/day-1.2.html#pivot-data",
+    "title": "Working With Data",
+    "section": "Pivot Data",
+    "text": "Pivot Data\n\n# Load tidyr\nlibrary(tidyr)\n\n# Reshape the data\nwb_data &lt;- wb_data_messy |&gt; \n  pivot_longer(             \n    cols = `1973 [YR1973]`: `2022 [YR2022]`, # columns to pivot\n    names_to = \"year\", # name the identifier column \"year\"\n    values_to = \"flfp\" # name the numeric var column \"flfp\"\n  ) \n\n# View the data\nglimpse(wb_data)"
+  },
+  {
+    "objectID": "slides/day-1.2.html#mutating-variables",
+    "href": "slides/day-1.2.html#mutating-variables",
+    "title": "Working With Data",
+    "section": "Mutating Variables",
+    "text": "Mutating Variables\n\n\nAnytime we want to change a variable, we are going to use the dplyr verbs mutate() or mutate_at()\nmutate() is if you want to change on variable\nmutate_at() is for multiple variables"
+  },
+  {
+    "objectID": "slides/day-1.2.html#fixing-our-variables",
+    "href": "slides/day-1.2.html#fixing-our-variables",
+    "title": "Working With Data",
+    "section": "Fixing Our Variables",
+    "text": "Fixing Our Variables\n\n\n# Fix year and flfp\nwb_data &lt;- wb_data |&gt; # replace wb_data with a modified version of the dataframe \n  mutate(year = substring(year, 1, 4)) |&gt; # truncate year (keep first four characters)\n  mutate_at(c(\"year\", \"flfp\"), as.numeric) # change year and flfp to numeric\n\n# View the data\nglimpse(wb_data)"
+  },
+  {
+    "objectID": "slides/day-1.2.html#clean-variable-names",
+    "href": "slides/day-1.2.html#clean-variable-names",
+    "title": "Working With Data",
+    "section": "Clean Variable Names",
+    "text": "Clean Variable Names\nVery simple: use the janitor package!\n\n\n# Load janitor\nlibrary(janitor)\n\n# Apply clean_names() to wb_data, store in new data frame called wb_data_clean\nwb_data_clean &lt;- wb_data |&gt;  \n  clean_names() \n\n# Write wb_data_clean to a csv file\nwrite_csv(wb_data_clean, \"data/wb_data_clean.csv\")\n\n# View the data\nglimpse(wb_data_clean)"
+  },
+  {
+    "objectID": "slides/day-1.2.html#apis",
+    "href": "slides/day-1.2.html#apis",
+    "title": "Working With Data",
+    "section": "APIs",
+    "text": "APIs\n\nAPI stands for “Application Programming Interface”\nWay for two computers to talk to each other\nIn our case, we will use APIs to download social science data\nAPIs are accessed through packages in R\nSometimes there can be more than one package for an API\nUsually easier than reading in data from messy flat file"
+  },
+  {
+    "objectID": "slides/day-1.2.html#datasets",
+    "href": "slides/day-1.2.html#datasets",
+    "title": "Working With Data",
+    "section": "Datasets",
+    "text": "Datasets\n\nWorld Bank data through wbstats\n\nThere is another package called WDI\n\nVarieties of Democracy (V-Dem) through vdemdata\n\nThis is the only package for V-Dem\nNo arguments\nJust downloads all the data!"
+  },
+  {
+    "objectID": "slides/day-1.2.html#searching-for-wb-indicators",
+    "href": "slides/day-1.2.html#searching-for-wb-indicators",
+    "title": "Working With Data",
+    "section": "Searching for WB Indicators",
+    "text": "Searching for WB Indicators\n\n\nflfp_indicators &lt;- wb_search(\"female labor force\") # store the list of indicators\n\nprint(flfp_indicators, n=26) # view the indicators"
+  },
+  {
+    "objectID": "slides/day-1.2.html#try-it-yourself",
+    "href": "slides/day-1.2.html#try-it-yourself",
+    "title": "Working With Data",
+    "section": "Try it Yourself",
+    "text": "Try it Yourself\n\nStart a new Quarto document\nStart a new code chunk\nLoad the wbstats package\nUse wb_search() to find some indicators you are interested in\nIf search is not successful, visit WDI site\n\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "slides/day-1.2.html#wbstats-example",
+    "href": "slides/day-1.2.html#wbstats-example",
+    "title": "Working With Data",
+    "section": "wbstats Example",
+    "text": "wbstats Example\n\n# Load packages\nlibrary(wbstats) # for downloading WB data\nlibrary(dplyr) # for selecting, renaming and mutating\nlibrary(janitor) # for rounding\n\n# Store the list of indicators in an object\nindicators &lt;- c(\"flfp\" = \"SL.TLF.CACT.FE.ZS\", \"women_rep\" = \"SG.GEN.PARL.ZS\") \n\n# Download the data  \nwomen_emp &lt;- wb_data(indicators, mrv = 50) |&gt; # download data for last 50 yrs\n  select(!iso2c) |&gt; # drop the iso2c code which we won't be using\n  rename(year = date) |&gt; # rename date to year \n  mutate(\n    flfp = round_to_fraction(flfp, denominator = 100), # round to nearest 100th\n    women_rep = round_to_fraction(women_rep, denominator = 100) \n  )\n\n# View the data\nglimpse(women_emp)"
+  },
+  {
+    "objectID": "slides/day-1.2.html#try-it-yourself-1",
+    "href": "slides/day-1.2.html#try-it-yourself-1",
+    "title": "Working With Data",
+    "section": "Try it Yourself",
+    "text": "Try it Yourself\n\n\nUsing the variables you identified in your search, download the data\nThink about what elements of the code you need to change\nHint: the indicators are going to change!\n\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "slides/day-1.2.html#downloading-v-dem-data",
+    "href": "slides/day-1.2.html#downloading-v-dem-data",
+    "title": "Working With Data",
+    "section": "Downloading V-Dem Data",
+    "text": "Downloading V-Dem Data\n\nThe vdem function from vdemdata just downloads the data\nThere are no parameters for selecting indicators or date ranges\nSo we have to do more work with dplyr functions\n\nfilter() for years\nselect() for variables\n\nWe are also going to use case_match() to add"
+  },
+  {
+    "objectID": "slides/day-1.2.html#vdemdata-example",
+    "href": "slides/day-1.2.html#vdemdata-example",
+    "title": "Working With Data",
+    "section": "vdemdata Example",
+    "text": "vdemdata Example\n\n# Load packages\nlibrary(vdemdata) # to download V-Dem data\n\n# Download the data\ndemocracy &lt;- vdem |&gt; # download the V-Dem dataset\n  filter(year &gt;= 1990)  |&gt; # filter out years less than 1990\n  select(                  # select (and rename) these variables\n    country = country_name,     # the name before the = sign is the new name  \n    vdem_ctry_id = country_id,  # the name after the = sign is the old name\n    year, \n    polyarchy = v2x_polyarchy, \n    gdp_pc = e_gdppc, \n    region = e_regionpol_6C\n    ) |&gt;\n  mutate(\n    region = case_match(region, # replace the values in region with country names\n                     1 ~ \"Eastern Europe\", \n                     2 ~ \"Latin America\",  \n                     3 ~ \"Middle East\",   \n                     4 ~ \"Africa\", \n                     5 ~ \"The West\", \n                     6 ~ \"Asia\")\n                    # number on the left of the ~ is the V-Dem region code\n                    # we are changing the number to the country name on the right\n                    # of the equals sign\n  )\n\n# View the data\nglimpse(democracy)"
+  },
+  {
+    "objectID": "slides/day-1.2.html#try-it-yourself-2",
+    "href": "slides/day-1.2.html#try-it-yourself-2",
+    "title": "Working With Data",
+    "section": "Try it Yourself",
+    "text": "Try it Yourself\n\nGo to the V-Dem Codebook\nSelect a democracy indicator from Part II and one other indicator\nNote the indicator code (e.g. “v2x_polyarchy” for the polyarchy score)\nIn your Quarto notes document, create a new code chunk\nUse the codes for your selected indicators to download the data\n\n\n\n\n−+\n05:00\n\n\n\n\n\n\nDataViz 6502 Website"
+  },
+  {
+    "objectID": "slides/day-1.2.html#section-1",
+    "href": "slides/day-1.2.html#section-1",
+    "title": "Working With Data",
+    "section": "",
+    "text": "# Load tidyr\nlibrary(tidyr)\n\n# Reshape the data\nwb_data &lt;- wb_data_messy |&gt; \n  pivot_longer(             \n    cols = `1973 [YR1973]`: `2022 [YR2022]`, # columns to pivot\n    names_to = \"year\", # name the identifier column \"year\"\n    values_to = \"flfp\" # name the numeric var column \"flfp\"\n  ) \n\n# View the data\nglimpse(wb_data)"
+  },
+  {
+    "objectID": "slides/day-1.3.html#merging-data-frames",
+    "href": "slides/day-1.3.html#merging-data-frames",
+    "title": "Merging and Summarizing Data",
+    "section": "Merging Data Frames",
+    "text": "Merging Data Frames\n\nOften we have data from two different sources\nResults in two data frames\nHow to make them one so we can analyze?\nKey questions\n\nWhat is the unit of analysis?\nWhat is/are the corresponding identifier variables?\nAre the identifier variables in common?\nOr do they have to be added/transformed to match?"
+  },
+  {
+    "objectID": "slides/day-1.3.html#merging-wb-and-v-dem-data",
+    "href": "slides/day-1.3.html#merging-wb-and-v-dem-data",
+    "title": "Merging and Summarizing Data",
+    "section": "Merging WB and V-Dem Data",
+    "text": "Merging WB and V-Dem Data\n\n\nThese are both time-series, country-level data\nNeed to merge by country-year\nYear is easy\nBut there are many different country codes\nCan use countrycode package to assign country codes"
+  },
+  {
+    "objectID": "slides/day-1.3.html#countrycode-example",
+    "href": "slides/day-1.3.html#countrycode-example",
+    "title": "Merging and Summarizing Data",
+    "section": "countrycode example",
+    "text": "countrycode example\n\n\n# Load countrycode\nlibrary(countrycode)\n\n# Create new iso3c variable\ndemocracy &lt;- democracy |&gt;    \n  mutate(iso3c = countrycode(sourcevar = vdem_ctry_id, # what we are converting\n        origin = \"vdem\",         # we are converting from vdem\n        destination = \"wb\"))  |&gt; # and converting to the WB iso3c code \n  relocate(iso3c, .after = vdem_ctry_id) # move iso3c \n\n# View the data\nglimpse(democracy)"
+  },
+  {
+    "objectID": "slides/day-1.3.html#try-it-yourself",
+    "href": "slides/day-1.3.html#try-it-yourself",
+    "title": "Merging and Summarizing Data",
+    "section": "Try it Yourself",
+    "text": "Try it Yourself\n\n\nUsing your democracy data frame from the last lesson\nUse mutate() and countrycode() to add iso3c country codes\nUse relocate to move your iso3c code to the “front” of your data frame (optional)\n\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "slides/day-1.3.html#types-of-joins-in-dplyr",
+    "href": "slides/day-1.3.html#types-of-joins-in-dplyr",
+    "title": "Merging and Summarizing Data",
+    "section": "Types of joins in dplyr",
+    "text": "Types of joins in dplyr\n\nMutating versus filtering joins\nFour types of mutating joins\n\ninner_join()\nfull_join()\nleft_join()\nright_join()\n\nFor the most part we will use left_join()"
+  },
+  {
+    "objectID": "slides/day-1.3.html#left_join-example",
+    "href": "slides/day-1.3.html#left_join-example",
+    "title": "Merging and Summarizing Data",
+    "section": "left_join() example",
+    "text": "left_join() example\n\n\n# Load readr\nlibrary(readr)\n\n# Perform left join using common iso3c variable and year\ndem_women &lt;- left_join(democracy, women_emp, by = c(\"iso3c\", \"year\")) |&gt; \n  rename(country = country.x) |&gt; # rename country.x\n  select(!country.y)             # crop country.y\n\n# Save as .csv for future use\nwrite_csv(dem_women, \"data/dem_women.csv\")\n\n# View the data\nglimpse(dem_women)"
+  },
+  {
+    "objectID": "slides/day-1.3.html#try-it-yourself-1",
+    "href": "slides/day-1.3.html#try-it-yourself-1",
+    "title": "Merging and Summarizing Data",
+    "section": "Try it Yourself",
+    "text": "Try it Yourself\n\n\nTake your V-Dem data frame and your World Bank data frame\nUsing left_join() to merge on country code and year\nAlong the way, use rename() and select() to insure you have just one country name\n\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "slides/day-1.3.html#group-summarize-and-arrange",
+    "href": "slides/day-1.3.html#group-summarize-and-arrange",
+    "title": "Merging and Summarizing Data",
+    "section": "Group, Summarize and Arrange",
+    "text": "Group, Summarize and Arrange\n\n\ngroup_by(), summarize(), arrange()\nA very common sequence in data science:\n\nTake an average or some other statistic for a group\nRank from high to low values of summary value"
+  },
+  {
+    "objectID": "slides/day-1.3.html#example",
+    "href": "slides/day-1.3.html#example",
+    "title": "Merging and Summarizing Data",
+    "section": "Example",
+    "text": "Example\n\n\n# group_by(), summarize() and arrange()\ndem_summary &lt;- dem_women |&gt; # save result as new object\n  group_by(region)  |&gt; # group dem_women data by region\n  summarize(           # summarize following vars (by region)\n    polyarchy = mean(polyarchy, na.rm = TRUE), # calculate mean, remove NAs\n    gdp_pc = mean(gdp_pc, na.rm = TRUE), \n    flfp = mean(flfp, na.rm = TRUE), \n    women_rep = mean(women_rep, na.rm = TRUE)\n  ) |&gt; \n  arrange(desc(polyarchy)) # arrange in descending order by polyarchy score\n\n# Save as .csv for future use\nwrite_csv(dem_summary, \"data/dem_summary.csv\")\n\n# View the data\nglimpse(dem_summary)"
+  },
+  {
+    "objectID": "slides/day-1.3.html#try-it-yourself-2",
+    "href": "slides/day-1.3.html#try-it-yourself-2",
+    "title": "Merging and Summarizing Data",
+    "section": "Try it Yourself",
+    "text": "Try it Yourself\n\nTry running a group_by(), summarize() and arrange() in your Quarto document\nTry changing the parameters to answer these questions:\n\n\nTry summarizing the data with a different function for one or more of the variables.\n\n\nWhat is the median value of polyarchy for The West?\nWhat is the max value of gdp_pc for Eastern Europe?\nWhat is the standard deviation of flfp for Africa?\nWhat is the interquartile range of women_rep for the Middle East?\n\n\nNow try grouping by country instead of region.\n\n\nWhat is the median value of polyarchy for Sweden?\nWhat is the max value of gdp_pc New Zealand?\nWhat is the standard deviation of flfp for Spain?\nWhat is the interquartile range of women_rep for Germany?\n\n\nSort countries in descending order based on the mean value of gdp_pc (instead of the median value of polyarchy). Which country ranks first based on this sorting?\nNow try sorting countries in ascending order based on the median value of women_rep (hint: delete “desc” from the arrange() call). Which country ranks at the “top” of the list?"
+  },
+  {
+    "objectID": "slides/day-1.3.html#coding-assignment-1",
+    "href": "slides/day-1.3.html#coding-assignment-1",
+    "title": "Merging and Summarizing Data",
+    "section": "Coding Assignment 1",
+    "text": "Coding Assignment 1\n\nCoding assignment 1 builds off this lesson\n\nTake the remainder of the class time to work on it. I will be here in case you have questions.\n\nYou may work individually or in groups.\n\n\n\nDataViz 6502 Website"
+  },
+  {
+    "objectID": "slides/day-2.4.html#add-a-theme",
+    "href": "slides/day-2.4.html#add-a-theme",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "Add a Theme",
+    "text": "Add a Theme\n\nflfp_region + theme_minimal()"
+  },
+  {
+    "objectID": "slides/day-2.4.html#can-also-set-theme",
+    "href": "slides/day-2.4.html#can-also-set-theme",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "Can Also Set Theme",
+    "text": "Can Also Set Theme\n\nIf you like particular theme and want to use it for all of your visualizations, use theme_set() in a code chunk at the top of your document, e.g….\n\n\n```{r}\n#| label: my_setup_chunk\n\ntheme_set(theme_minimal())\n```\n\n\n… and R will apply that theme to all of the visualizations in your document."
+  },
+  {
+    "objectID": "slides/day-2.4.html#add-an-annotation",
+    "href": "slides/day-2.4.html#add-an-annotation",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "Add an Annotation",
+    "text": "Add an Annotation"
+  },
+  {
+    "objectID": "slides/day-2.4.html#section",
+    "href": "slides/day-2.4.html#section",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "",
+    "text": "First step, add a horizontal line using geom_hline()…\n\nflfp_line + \n  geom_hline(yintercept = 52, linetype=\"dashed\", color = \"red\", size = 1)"
+  },
+  {
+    "objectID": "slides/day-2.4.html#section-1",
+    "href": "slides/day-2.4.html#section-1",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "",
+    "text": "Second step, the annotation with annotate()…\n\nflfp_line + \n  geom_hline(yintercept = 52, linetype=\"dashed\", color = \"red\", size = 1) +\n  annotate(\"text\", x = 1995, y = 55, label = \"Global average\")"
+  },
+  {
+    "objectID": "slides/day-2.4.html#vertical-reference-line",
+    "href": "slides/day-2.4.html#vertical-reference-line",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "Vertical Reference Line",
+    "text": "Vertical Reference Line"
+  },
+  {
+    "objectID": "slides/day-2.4.html#section-2",
+    "href": "slides/day-2.4.html#section-2",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "",
+    "text": "First step, add a horizontal line using geom_hline()…\n\nflfp_line + \n  geom_vline(xintercept=2020, linetype = \"dashed\", size = 1)"
+  },
+  {
+    "objectID": "slides/day-2.4.html#section-3",
+    "href": "slides/day-2.4.html#section-3",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "",
+    "text": "Second step, add the annotation with annotate()\n\nflfp_line + \n  geom_vline(xintercept=2020, linetype = \"dashed\", size = 1) +\n  annotate(\"text\", x = 2017, y = 35, label = \"Pandemic\")"
+  },
+  {
+    "objectID": "slides/day-2.4.html#interactivity",
+    "href": "slides/day-2.4.html#interactivity",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "Interactivity",
+    "text": "Interactivity"
+  },
+  {
+    "objectID": "slides/day-2.4.html#the-code",
+    "href": "slides/day-2.4.html#the-code",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "The Code",
+    "text": "The Code\n\nlibrary(plotly)\n\nwealth_flfp_plotly &lt;- wealth_flfp  + \n  scale_color_viridis_d(option = \"plasma\") +\n  theme_minimal() +\n  aes(label = country)  # need so ggplot retains label for plotly\n\nggplotly(wealth_flfp_plotly, tooltip = c(\"country\", \"flfp\", \"gdp_pc\")) |&gt; \n  \n  # add source\n  layout(annotations = list(text = \"Source: World Bank Development Indicators\",  \n                            font = list(size = 10), showarrow = FALSE,\n                            xref = 'paper', x = 1.1, xanchor = 'right', xshift = 0,\n                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) |&gt; \n  # add web address\n  layout(annotations = list(text = \"www.dataviz-gwu.rocks\", \n                            font = list(size = 10, color = 'grey'), showarrow = FALSE,\n                            xref = 'paper', x = .5, xanchor = 'center', xshift = 0,\n                            yref = 'paper', y = 1, yanchor = 'top', yshift = 0))"
+  },
+  {
+    "objectID": "slides/day-2.4.html#the-code-1",
+    "href": "slides/day-2.4.html#the-code-1",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "The Code",
+    "text": "The Code\n\nlibrary(plotly)\n\nwealth_flfp_plotly &lt;- wealth_flfp  + \n  scale_color_viridis_d(option = \"plasma\") +\n  theme_minimal() +\n  aes(label = country)  # need so ggplot retains label for plotly\n\nggplotly(wealth_flfp_plotly, tooltip = c(\"country\", \"flfp\", \"gdp_pc\")) |&gt; \n  \n  # add source\n  layout(annotations = list(text = \"Source: World Bank Development Indicators\",  \n                            font = list(size = 10), showarrow = FALSE,\n                            xref = 'paper', x = 1.1, xanchor = 'right', xshift = 0,\n                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) |&gt; \n  # add web address\n  layout(annotations = list(text = \"www.dataviz-gwu.rocks\", \n                            font = list(size = 10, color = 'grey'), showarrow = FALSE,\n                            xref = 'paper', x = .5, xanchor = 'center', xshift = 0,\n                            yref = 'paper', y = 1, yanchor = 'top', yshift = 0))"
+  },
+  {
+    "objectID": "slides/day-2.4.html#the-code-2",
+    "href": "slides/day-2.4.html#the-code-2",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "The Code",
+    "text": "The Code\n\nlibrary(plotly)\n\nwealth_flfp_plotly &lt;- wealth_flfp  + \n  scale_color_viridis_d(option = \"plasma\") +\n  theme_minimal() +\n  aes(label = country)  # need so ggplot retains label for plotly\n\nggplotly(wealth_flfp_plotly, tooltip = c(\"country\", \"flfp\", \"gdp_pc\")) |&gt; \n  \n  # add source\n  layout(annotations = list(text = \"Source: World Bank Development Indicators\",  \n                            font = list(size = 10), showarrow = FALSE,\n                            xref = 'paper', x = 1.1, xanchor = 'right', xshift = 0,\n                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) |&gt; \n  # add web address\n  layout(annotations = list(text = \"www.dataviz-gwu.rocks\", \n                            font = list(size = 10, color = 'grey'), showarrow = FALSE,\n                            xref = 'paper', x = .5, xanchor = 'center', xshift = 0,\n                            yref = 'paper', y = 1, yanchor = 'top', yshift = 0))"
+  },
+  {
+    "objectID": "slides/day-2.4.html#the-code-3",
+    "href": "slides/day-2.4.html#the-code-3",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "The Code",
+    "text": "The Code\n\nlibrary(plotly)\n\nwealth_flfp_plotly &lt;- wealth_flfp  + \n  scale_color_viridis_d(option = \"plasma\") +\n  theme_minimal() +\n  aes(label = country)  # need so ggplot retains label for plotly\n\nggplotly(wealth_flfp_plotly, tooltip = c(\"country\", \"flfp\", \"gdp_pc\")) |&gt; \n  \n  # add source\n  layout(annotations = list(text = \"Source: World Bank Development Indicators\",  \n                            font = list(size = 10), showarrow = FALSE,\n                            xref = 'paper', x = 1.1, xanchor = 'right', xshift = 0,\n                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) |&gt; \n  # add web address\n  layout(annotations = list(text = \"www.dataviz-gwu.rocks\", \n                            font = list(size = 10, color = 'grey'), showarrow = FALSE,\n                            xref = 'paper', x = .5, xanchor = 'center', xshift = 0,\n                            yref = 'paper', y = 1, yanchor = 'top', yshift = 0))"
+  },
+  {
+    "objectID": "slides/day-2.4.html#the-code-4",
+    "href": "slides/day-2.4.html#the-code-4",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "The Code",
+    "text": "The Code\n\nlibrary(plotly)\n\nwealth_flfp_plotly &lt;- wealth_flfp  + \n  scale_color_viridis_d(option = \"plasma\") +\n  theme_minimal() +\n  aes(label = country)  # need so ggplot retains label for plotly\n\nggplotly(wealth_flfp_plotly, tooltip = c(\"country\", \"flfp\", \"gdp_pc\")) |&gt; \n  \n  # add source\n  layout(annotations = list(text = \"Source: World Bank Development Indicators\",  \n                            font = list(size = 10), showarrow = FALSE,\n                            xref = 'paper', x = 1.1, xanchor = 'right', xshift = 0,\n                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) |&gt; \n  # add web address\n  layout(annotations = list(text = \"www.dataviz-gwu.rocks\", \n                            font = list(size = 10, color = 'grey'), showarrow = FALSE,\n                            xref = 'paper', x = .5, xanchor = 'center', xshift = 0,\n                            yref = 'paper', y = 1, yanchor = 'top', yshift = 0))"
+  },
+  {
+    "objectID": "slides/day-2.4.html#the-code-5",
+    "href": "slides/day-2.4.html#the-code-5",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "The Code",
+    "text": "The Code\n\nlibrary(plotly)\n\nwealth_flfp_plotly &lt;- wealth_flfp  + \n  scale_color_viridis_d(option = \"plasma\") +\n  theme_minimal() +\n  aes(label = country)  # need so ggplot retains label for plotly\n\nggplotly(wealth_flfp_plotly, tooltip = c(\"country\", \"flfp\", \"gdp_pc\")) |&gt; \n  \n  # add source\n  layout(annotations = list(text = \"Source: World Bank Development Indicators\",  \n                            font = list(size = 10), showarrow = FALSE,\n                            xref = 'paper', x = 1.1, xanchor = 'right', xshift = 0,\n                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) |&gt; \n  # add web address\n  layout(annotations = list(text = \"www.dataviz-gwu.rocks\", \n                            font = list(size = 10, color = 'grey'), showarrow = FALSE,\n                            xref = 'paper', x = .5, xanchor = 'center', xshift = 0,\n                            yref = 'paper', y = 1, yanchor = 'top', yshift = 0))"
+  },
+  {
+    "objectID": "slides/day-2.4.html#section-4",
+    "href": "slides/day-2.4.html#section-4",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "",
+    "text": "But to make a plotly chart, all you need is this!\n\n\nggplotly(wealth_flfp_plotly)"
+  },
+  {
+    "objectID": "slides/day-2.4.html#time-permitting",
+    "href": "slides/day-2.4.html#time-permitting",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "Time Permitting",
+    "text": "Time Permitting\nAnnotate (comment) the following code…\n\nwealth_flfp &lt;- ggplot(flfp_gdp, aes(x = gdp_pc, y = flfp)) + \n  geom_point(aes(color = region)) + \n  geom_smooth(method = \"loess\", linewidth = 1) +\n  scale_x_log10(labels = scales::label_dollar()) + \n  scale_y_continuous(labels = scales::label_percent(scale = 1)) +\n  labs(\n    x= \"GDP per Capita\",\n    y = \"Female Labor Force Participation\",\n    title = \"Wealth and female labor force participation\",\n    caption = \"Source: World Bank Development Indicators\",\n    color = \"Region\"\n    ) + scale_color_viridis_d(option = \"plasma\", end = .7) \n\nwealth_flfp + theme_minimal()\n\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "slides/day-2.4.html#time-permitting-1",
+    "href": "slides/day-2.4.html#time-permitting-1",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "Time Permitting",
+    "text": "Time Permitting\nAnnotate (comment) the following code…\n\nflfp_line &lt;- ggplot(flfp_ts, aes(x = year, y = flfp, color = region)) +\n  geom_line(linewidth = 1) + \n  scale_y_continuous(labels = scales::label_percent(scale = 1)) +\n  labs(\n    x = \"Year\", \n    y = \"Female Labor Force Participation\", \n    title = \"Regional trends in female labor force participation\", \n    caption = \"Source: V-Dem Institute\", \n    color = \"Country\"\n  ) + scale_color_viridis_d() +\n  theme_minimal()\n\nflfp_line + geom_hline(yintercept = 52, linetype=\"dashed\", color = \"red\", size = 1) +\n  annotate(\"text\", x = 1995, y = 55, label = \"Global average\")\n\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "slides/day-2.1.html#the-grammar-of-graphics",
+    "href": "slides/day-2.1.html#the-grammar-of-graphics",
+    "title": "Bar Charts and Histograms",
+    "section": "The Grammar of Graphics",
+    "text": "The Grammar of Graphics\n\nData viz has a language with its own grammar\nBasic components include:\n\nData we are trying to visualize\nAesthetics (dimensions)\nGeom (e.g. bar, line, scatter plot)\nColor scales\nThemes\nAnnotations"
+  },
+  {
+    "objectID": "slides/day-2.1.html#section",
+    "href": "slides/day-2.1.html#section",
+    "title": "Bar Charts and Histograms",
+    "section": "",
+    "text": "Let’s start with the first two, the data and the aesthetic.\n\n\nlibrary(readr)\nlibrary(ggplot2)\n\ndem_summary &lt;- read_csv(\"data/dem_summary.csv\")\n\nggplot(dem_summary, aes(x = region, y = polyarchy))"
+  },
+  {
+    "objectID": "slides/day-2.1.html#section-1",
+    "href": "slides/day-2.1.html#section-1",
+    "title": "Bar Charts and Histograms",
+    "section": "",
+    "text": "Gives us the axes without any visualization."
+  },
+  {
+    "objectID": "slides/day-2.1.html#section-2",
+    "href": "slides/day-2.1.html#section-2",
+    "title": "Bar Charts and Histograms",
+    "section": "",
+    "text": "Now let’s add a geom. In this case we want a bar chart so we add geom_col()\n\n\nggplot(dem_summary, aes(x = region, y = polyarchy)) + \n  geom_col()"
+  },
+  {
+    "objectID": "slides/day-2.1.html#section-3",
+    "href": "slides/day-2.1.html#section-3",
+    "title": "Bar Charts and Histograms",
+    "section": "",
+    "text": "OK but that gets the idea across but looks a little depressing so…"
+  },
+  {
+    "objectID": "slides/day-2.1.html#section-4",
+    "href": "slides/day-2.1.html#section-4",
+    "title": "Bar Charts and Histograms",
+    "section": "",
+    "text": "…let’s change the color of the bars by specifying fill = \"steelblue\".\n\n\nggplot(dem_summary, aes(x = region, y = polyarchy)) + \n  geom_col(fill = \"steelblue\")"
+  },
+  {
+    "objectID": "slides/day-2.1.html#section-5",
+    "href": "slides/day-2.1.html#section-5",
+    "title": "Bar Charts and Histograms",
+    "section": "",
+    "text": "Note how color of original bars is simply overwritten."
+  },
+  {
+    "objectID": "slides/day-2.1.html#section-6",
+    "href": "slides/day-2.1.html#section-6",
+    "title": "Bar Charts and Histograms",
+    "section": "",
+    "text": "Now let’s add some labels with the labs() function:\n\n\nggplot(dem_summary, aes(x = region, y = polyarchy)) + \n  geom_col(fill = \"steelblue\") +\n  labs(\n    x = \"Region\", \n    y = \"Avg. Polyarchy Score\", \n    title = \"Democracy by region, 1990 - present\", \n    caption = \"Source: V-Dem Institute\"\n    )"
+  },
+  {
+    "objectID": "slides/day-2.1.html#section-7",
+    "href": "slides/day-2.1.html#section-7",
+    "title": "Bar Charts and Histograms",
+    "section": "",
+    "text": "And that gives us…"
+  },
+  {
+    "objectID": "slides/day-2.1.html#section-8",
+    "href": "slides/day-2.1.html#section-8",
+    "title": "Bar Charts and Histograms",
+    "section": "",
+    "text": "Next, we reorder the bars with the reorder() function.\n\n\nggplot(dem_summary, aes(x = reorder(region, -polyarchy), y = polyarchy)) +\n  geom_col(fill = \"steelblue\") + \n  labs(\n    x = \"Region\", \n    y = \"Avg. Polyarchy Score\", \n    title = \"Democracy by region, 1990 - present\", \n    caption = \"Source: V-Dem Institute\"\n    )"
+  },
+  {
+    "objectID": "slides/day-2.1.html#section-9",
+    "href": "slides/day-2.1.html#section-9",
+    "title": "Bar Charts and Histograms",
+    "section": "",
+    "text": "This way, we get a nice, visually appealing ordering of the bars according to levels of democracy…"
+  },
+  {
+    "objectID": "slides/day-2.1.html#section-10",
+    "href": "slides/day-2.1.html#section-10",
+    "title": "Bar Charts and Histograms",
+    "section": "",
+    "text": "Jumping ahead a little, let’s change the theme to theme_minimal().\n\n\nggplot(dem_summary, aes(x = reorder(region, -polyarchy), y = polyarchy)) +\n  geom_col(fill = \"steelblue\") + \n  labs(\n    x = \"Region\", \n    y = \"Avg. Polyarchy Score\", \n    title = \"Democracy by region, 1990 - present\", \n    caption = \"Source: V-Dem Institute\"\n    ) + theme_minimal()"
+  },
+  {
+    "objectID": "slides/day-2.1.html#section-11",
+    "href": "slides/day-2.1.html#section-11",
+    "title": "Bar Charts and Histograms",
+    "section": "",
+    "text": "Gives us a clean, elegant look."
+  },
+  {
+    "objectID": "slides/day-2.1.html#section-12",
+    "href": "slides/day-2.1.html#section-12",
+    "title": "Bar Charts and Histograms",
+    "section": "",
+    "text": "Note that you can also save your plot as an object to modify later.\n\n\ndem_bar_chart &lt;- ggplot(dem_summary, aes(x = reorder(region, -polyarchy), y = polyarchy)) +\n  geom_col(fill = \"steelblue\")"
+  },
+  {
+    "objectID": "slides/day-2.1.html#section-13",
+    "href": "slides/day-2.1.html#section-13",
+    "title": "Bar Charts and Histograms",
+    "section": "",
+    "text": "Which gives us…\n\ndem_bar_chart"
+  },
+  {
+    "objectID": "slides/day-2.1.html#section-14",
+    "href": "slides/day-2.1.html#section-14",
+    "title": "Bar Charts and Histograms",
+    "section": "",
+    "text": "Now let’s add our labels.\n\n\ndem_bar_chart &lt;- dem_bar_chart +\n  labs(\n    x = \"Region\", \n    y = \"Avg. Polyarchy Score\", \n    title = \"Democracy by region, 1990 - present\", \n    caption = \"Source: V-Dem Institute\"\n    )"
+  },
+  {
+    "objectID": "slides/day-2.1.html#section-15",
+    "href": "slides/day-2.1.html#section-15",
+    "title": "Bar Charts and Histograms",
+    "section": "",
+    "text": "So now we have…\n\ndem_bar_chart"
+  },
+  {
+    "objectID": "slides/day-2.1.html#section-16",
+    "href": "slides/day-2.1.html#section-16",
+    "title": "Bar Charts and Histograms",
+    "section": "",
+    "text": "Now let’s add our theme.\n\n\ndem_bar_chart &lt;- dem_bar_chart + theme_minimal()"
+  },
+  {
+    "objectID": "slides/day-2.1.html#section-17",
+    "href": "slides/day-2.1.html#section-17",
+    "title": "Bar Charts and Histograms",
+    "section": "",
+    "text": "Voila!\n\ndem_bar_chart"
+  },
+  {
+    "objectID": "slides/day-2.1.html#section-18",
+    "href": "slides/day-2.1.html#section-18",
+    "title": "Bar Charts and Histograms",
+    "section": "",
+    "text": "Change the theme.\n\ndem_bar_chart + theme_bw()"
+  },
+  {
+    "objectID": "slides/day-2.1.html#your-turn",
+    "href": "slides/day-2.1.html#your-turn",
+    "title": "Bar Charts and Histograms",
+    "section": "Your Turn!",
+    "text": "Your Turn!\n\nUse your own wrangled data or this code to get started:\n\n\nlibrary(readr)\nlibrary(ggplot2)\n\ndem_summary &lt;- read_csv(\"https://raw.githubusercontent.com/eteitelbaum/dataviz-fall-2023/main/modules/data/dem_summary.csv\")"
+  },
+  {
+    "objectID": "slides/day-2.1.html#section-19",
+    "href": "slides/day-2.1.html#section-19",
+    "title": "Bar Charts and Histograms",
+    "section": "",
+    "text": "glimpse() the data\nFind a new variable to visualize\nMake a bar chart with it\nChange the color of the bars\nOrder the bars\nAdd labels\nAdd a theme\nTry saving your plot as an object\nThen change the labels and/or theme\n\n\n\n\n−+\n10:00"
+  },
+  {
+    "objectID": "slides/day-2.1.html#now-try-a-histogram",
+    "href": "slides/day-2.1.html#now-try-a-histogram",
+    "title": "Bar Charts and Histograms",
+    "section": "Now Try a Histogram",
+    "text": "Now Try a Histogram\n\nUse this code or your own wrangled data to get started\n\n\ndem_women &lt;- read_csv(\"https://raw.githubusercontent.com/eteitelbaum/dataviz-fall-2023/main/modules/data/dem_women.csv\")"
+  },
+  {
+    "objectID": "slides/day-2.1.html#section-20",
+    "href": "slides/day-2.1.html#section-20",
+    "title": "Bar Charts and Histograms",
+    "section": "",
+    "text": "Pick a variable that you want to explore the distribution of\nMake a histogram\n\nOnly specify x = in aes()\nSpecify geom as geom_histogram\n\nChoose color for bars\nChoose appropriate labels\nAdd a theme\n\n\n\n\n−+\n10:00\n\n\n\n\n\n\nDataViz 6502 Website"
+  },
+  {
+    "objectID": "slides/day-2.2.html#huntingtons-three-waves",
+    "href": "slides/day-2.2.html#huntingtons-three-waves",
+    "title": "Line Charts and Scatter Plots",
+    "section": "Huntington’s Three Waves",
+    "text": "Huntington’s Three Waves"
+  },
+  {
+    "objectID": "slides/day-2.2.html#setup",
+    "href": "slides/day-2.2.html#setup",
+    "title": "Line Charts and Scatter Plots",
+    "section": "Setup",
+    "text": "Setup\n\nlibrary(vdemdata)\nlibrary(tidyverse)\n\ndem_waves_ctrs &lt;- vdem |&gt;\n  select(\n    country = country_name,     \n    year, \n    polyarchy = v2x_polyarchy, \n  ) |&gt;\n  filter( \n    country %in% c(\"United States of America\", # select countries in this list\n                   \"Japan\", \n                   \"Portugal\")\n    )\n\nwrite_csv(dem_waves_ctrs, \"data/dem_waves_ctrs.csv\")\n\n\n\n\n−+\n02:00"
+  },
+  {
+    "objectID": "slides/day-2.2.html#line-chart",
+    "href": "slides/day-2.2.html#line-chart",
+    "title": "Line Charts and Scatter Plots",
+    "section": "Line Chart",
+    "text": "Line Chart"
+  },
+  {
+    "objectID": "slides/day-2.2.html#line-chart-1",
+    "href": "slides/day-2.2.html#line-chart-1",
+    "title": "Line Charts and Scatter Plots",
+    "section": "Line Chart",
+    "text": "Line Chart\n\nUse geom_line()…\n\n\n# in this ggplot() call, we add a third dimension for line color\nggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +\n  geom_line(linewidth = 1) + # our geom is a line with a width of 1\n  labs(\n    x = \"Year\", \n    y = \"Polyarchy Score\", \n    title = 'Democracy in countries representing three different \"waves\"', \n    caption = \"Source: V-Dem Institute\", \n    color = \"Country\" # make title of legend to upper case\n  )"
+  },
+  {
+    "objectID": "slides/day-2.2.html#line-chart-2",
+    "href": "slides/day-2.2.html#line-chart-2",
+    "title": "Line Charts and Scatter Plots",
+    "section": "Line Chart",
+    "text": "Line Chart\n\nAdd third dimension for line color…\n\n\n# in this ggplot() call, we add a third dimension for line color\nggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +\n  geom_line(linewidth = 1) + # our geom is a line with a width of 1\n  labs(\n    x = \"Year\", \n    y = \"Polyarchy Score\", \n    title = 'Democracy in countries representing three different \"waves\"', \n    caption = \"Source: V-Dem Institute\", \n    color = \"Country\" # make title of legend to upper case\n  )"
+  },
+  {
+    "objectID": "slides/day-2.2.html#line-chart-3",
+    "href": "slides/day-2.2.html#line-chart-3",
+    "title": "Line Charts and Scatter Plots",
+    "section": "Line Chart",
+    "text": "Line Chart\n\nModify the legend title…\n\n\n# in this ggplot() call, we add a third dimension for line color\nggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +\n  geom_line(linewidth = 1) + # our geom is a line with a width of 1\n  labs(\n    x = \"Year\", \n    y = \"Polyarchy Score\", \n    title = 'Democracy in countries representing three different \"waves\"', \n    caption = \"Source: V-Dem Institute\", \n    color = \"Country\" # make title of legend to upper case\n  )"
+  },
+  {
+    "objectID": "slides/day-2.2.html#your-turn",
+    "href": "slides/day-2.2.html#your-turn",
+    "title": "Line Charts and Scatter Plots",
+    "section": "Your Turn!",
+    "text": "Your Turn!\n\n\nSee table three of this article\nSelect three countries to visualize\nAdjust setup code to filter data on those countries\nVisualize with geom_line()\n\n\n\n\n−+\n10:00"
+  },
+  {
+    "objectID": "slides/day-2.2.html#scatter-plot-setup",
+    "href": "slides/day-2.2.html#scatter-plot-setup",
+    "title": "Line Charts and Scatter Plots",
+    "section": "Scatter Plot Setup",
+    "text": "Scatter Plot Setup\n\n\ndem_summary_ctry &lt;- read_csv(\"https://raw.githubusercontent.com/eteitelbaum/dataviz-fall-2023/main/modules/data/dem_women.csv\") |&gt;\n  group_by(country, region) |&gt; # group by country, keep region\n  summarize(\n    polyarchy = mean(polyarchy, na.rm = TRUE),\n    gdp_pc = mean(gdp_pc, na.rm = TRUE), \n    flfp = mean(flfp, na.rm = TRUE), \n    women_rep = mean(women_rep, na.rm = TRUE)\n  )\n\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "slides/day-2.2.html#scatter-plot",
+    "href": "slides/day-2.2.html#scatter-plot",
+    "title": "Line Charts and Scatter Plots",
+    "section": "Scatter Plot",
+    "text": "Scatter Plot"
+  },
+  {
+    "objectID": "slides/day-2.2.html#scatter-plot-1",
+    "href": "slides/day-2.2.html#scatter-plot-1",
+    "title": "Line Charts and Scatter Plots",
+    "section": "Scatter Plot",
+    "text": "Scatter Plot\n\nUse geom_point()…\n\n\nggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy, color = region, size = women_rep)) + \n  geom_point() + # use geom_point() for scatter plots\n  scale_x_log10(labels = scales::label_number(prefix = \"$\", suffix = \"k\")) +\n  labs(\n    x= \"GDP per Capita\", \n    y = \"Polyarchy Score\",\n    title = \"Wealth and democracy, 1990 - present\", \n    caption = \"Source: V-Dem Institute\", \n    color = \"Region\",\n    size = \"Women Reps\"\n    )"
+  },
+  {
+    "objectID": "slides/day-2.2.html#scatter-plot-2",
+    "href": "slides/day-2.2.html#scatter-plot-2",
+    "title": "Line Charts and Scatter Plots",
+    "section": "Scatter Plot",
+    "text": "Scatter Plot\n\nFour dimensions…\n\n\nggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy, color = region, size = women_rep)) + \n  geom_point() + # use geom_point() for scatter plots\n  scale_x_log10(labels = scales::label_number(prefix = \"$\", suffix = \"k\")) +\n  labs(\n    x= \"GDP per Capita\", \n    y = \"Polyarchy Score\",\n    title = \"Wealth and democracy, 1990 - present\", \n    caption = \"Source: V-Dem Institute\", \n    color = \"Region\",\n    size = \"Women Reps\"\n    )"
+  },
+  {
+    "objectID": "slides/day-2.2.html#scatter-plot-3",
+    "href": "slides/day-2.2.html#scatter-plot-3",
+    "title": "Line Charts and Scatter Plots",
+    "section": "Scatter Plot",
+    "text": "Scatter Plot\n\nStretch axis on log scale and use scales package to adjust labels…\n\nggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy, color = region, size = women_rep)) + \n  geom_point() + # use geom_point() for scatter plots\n  scale_x_log10(labels = scales::label_number(prefix = \"$\", suffix = \"k\")) +\n  labs(\n    x= \"GDP per Capita\", \n    y = \"Polyarchy Score\",\n    title = \"Wealth and democracy, 1990 - present\", \n    caption = \"Source: V-Dem Institute\", \n    color = \"Region\",\n    size = \"Women Reps\"\n    )"
+  },
+  {
+    "objectID": "slides/day-2.2.html#scatter-plot-4",
+    "href": "slides/day-2.2.html#scatter-plot-4",
+    "title": "Line Charts and Scatter Plots",
+    "section": "Scatter Plot",
+    "text": "Scatter Plot\n\nChange legend titles…\n\n\nggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy, color = region, size = women_rep)) + \n  geom_point() + # use geom_point() for scatter plots\n  scale_x_log10(labels = scales::label_number(prefix = \"$\", suffix = \"k\")) +\n  labs(\n    x= \"GDP per Capita\", \n    y = \"Polyarchy Score\",\n    title = \"Wealth and democracy, 1990 - present\", \n    caption = \"Source: V-Dem Institute\", \n    color = \"Region\",\n    size = \"Women Reps\"\n    )"
+  },
+  {
+    "objectID": "slides/day-2.2.html#your-turn-1",
+    "href": "slides/day-2.2.html#your-turn-1",
+    "title": "Line Charts and Scatter Plots",
+    "section": "Your Turn!",
+    "text": "Your Turn!\n\nThere are four variables in dem_summary_ctry\nPick one related to women’s empowerment\nVisualize it on the y-axis with gdp_pc or polyarch on the x-axis\nChange labels and legend titles to match your visualization\nInterpret your plot\n\n\n\n\n−+\n10:00"
+  },
+  {
+    "objectID": "slides/day-2.2.html#add-a-trend-line",
+    "href": "slides/day-2.2.html#add-a-trend-line",
+    "title": "Line Charts and Scatter Plots",
+    "section": "Add a Trend Line",
+    "text": "Add a Trend Line"
+  },
+  {
+    "objectID": "slides/day-2.2.html#add-a-trend-line-1",
+    "href": "slides/day-2.2.html#add-a-trend-line-1",
+    "title": "Line Charts and Scatter Plots",
+    "section": "Add a Trend Line",
+    "text": "Add a Trend Line\n\n\nggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy)) + \n  geom_point(aes(color = region)) + \n  geom_smooth(method = \"lm\", linewidth = 1) + \n  scale_x_log10(labels = scales::label_number(prefix = \"$\", suffix = \"k\")) +\n  labs(\n    x= \"GDP per Capita\", \n    y = \"Polyarchy Score\",\n    title = \"Wealth and democracy, 1990 - present\", \n    caption = \"Source: V-Dem Institute\", \n    color = \"Region\"\n    )"
+  },
+  {
+    "objectID": "slides/day-2.2.html#add-a-trend-line-2",
+    "href": "slides/day-2.2.html#add-a-trend-line-2",
+    "title": "Line Charts and Scatter Plots",
+    "section": "Add a Trend Line",
+    "text": "Add a Trend Line\n\nTaking out size and adding color to geom_point() call…\n\n\nggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy)) + \n  geom_point(aes(color = region)) + \n  geom_smooth(method = \"lm\", linewidth = 1) + \n  scale_x_log10(labels = scales::label_number(prefix = \"$\", suffix = \"k\")) +\n  labs(\n    x= \"GDP per Capita\", \n    y = \"Polyarchy Score\",\n    title = \"Wealth and democracy, 1990 - present\", \n    caption = \"Source: V-Dem Institute\", \n    color = \"Region\"\n    )"
+  },
+  {
+    "objectID": "slides/day-2.2.html#add-a-trend-line-3",
+    "href": "slides/day-2.2.html#add-a-trend-line-3",
+    "title": "Line Charts and Scatter Plots",
+    "section": "Add a Trend Line",
+    "text": "Add a Trend Line\n\nChanging legend titles.\n\n\nggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy)) + \n  geom_point(aes(color = region)) + \n  geom_smooth(method = \"lm\", linewidth = 1) + \n  scale_x_log10(labels = scales::label_number(prefix = \"$\", suffix = \"k\")) +\n  labs(\n    x= \"GDP per Capita\", \n    y = \"Polyarchy Score\",\n    title = \"Wealth and democracy, 1990 - present\", \n    caption = \"Source: V-Dem Institute\", \n    color = \"Region\"\n    )"
+  },
+  {
+    "objectID": "slides/day-2.2.html#your-turn-2",
+    "href": "slides/day-2.2.html#your-turn-2",
+    "title": "Line Charts and Scatter Plots",
+    "section": "Your Turn!",
+    "text": "Your Turn!\n\n\nAdd a trendline to your plot\nChange the labels accordingly\nTry using method = \"loess\" instead of a “lm”\n\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "slides/day-2.2.html#facet-wrapping",
+    "href": "slides/day-2.2.html#facet-wrapping",
+    "title": "Line Charts and Scatter Plots",
+    "section": "Facet Wrapping",
+    "text": "Facet Wrapping"
+  },
+  {
+    "objectID": "slides/day-2.2.html#facet-wrapping-1",
+    "href": "slides/day-2.2.html#facet-wrapping-1",
+    "title": "Line Charts and Scatter Plots",
+    "section": "Facet Wrapping",
+    "text": "Facet Wrapping\n\nUse facet_wrap() with ~ before variable you want to wrap on…\n\nggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy)) + \n  geom_point() + \n  geom_smooth(method = \"lm\", linewidth = 1) + \n  facet_wrap(~ region) +\n  scale_x_log10(labels = scales::label_number(prefix = \"$\", suffix = \"k\")) +\n  labs(\n    x= \"GDP per Capita\", \n    y = \"Polyarchy Score\",\n    title = \"Wealth and democracy, 1990 - present\", \n    caption = \"Source: V-Dem Institute\"\n    )"
+  },
+  {
+    "objectID": "slides/day-2.2.html#facet-wrapping-2",
+    "href": "slides/day-2.2.html#facet-wrapping-2",
+    "title": "Line Charts and Scatter Plots",
+    "section": "Facet Wrapping",
+    "text": "Facet Wrapping\n\nWhat else changes? Back down to two dimensions…\n\n\nggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy)) + \n  geom_point() + \n  geom_smooth(method = \"lm\", linewidth = 1) + \n  facet_wrap(~ region) +\n  scale_x_log10(labels = scales::label_number(prefix = \"$\", suffix = \"k\")) +\n  labs(\n    x= \"GDP per Capita\", \n    y = \"Polyarchy Score\",\n    title = \"Wealth and democracy, 1990 - present\", \n    caption = \"Source: V-Dem Institute\"\n    )"
+  },
+  {
+    "objectID": "slides/day-2.2.html#facet-wrapping-3",
+    "href": "slides/day-2.2.html#facet-wrapping-3",
+    "title": "Line Charts and Scatter Plots",
+    "section": "Facet Wrapping",
+    "text": "Facet Wrapping\n\nDon’t forget to take the legend title out of the captions…\n\n\nggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy)) + \n  geom_point() + \n  geom_smooth(method = \"lm\", linewidth = 1) + \n  facet_wrap(~ region) +\n  scale_x_log10(labels = scales::label_number(prefix = \"$\", suffix = \"k\")) +\n  labs(\n    x= \"GDP per Capita\", \n    y = \"Polyarchy Score\",\n    title = \"Wealth and democracy, 1990 - present\", \n    caption = \"Source: V-Dem Institute\"\n    )"
+  },
+  {
+    "objectID": "slides/day-2.2.html#your-turn-3",
+    "href": "slides/day-2.2.html#your-turn-3",
+    "title": "Line Charts and Scatter Plots",
+    "section": "Your Turn!",
+    "text": "Your Turn!\n\n\nFacet wrap your scatter plot\nUse scales = \"free\" to fix the West\n\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "slides/day-2.2.html#labeling-points",
+    "href": "slides/day-2.2.html#labeling-points",
+    "title": "Line Charts and Scatter Plots",
+    "section": "Labeling Points",
+    "text": "Labeling Points"
+  },
+  {
+    "objectID": "slides/day-2.2.html#labeling-points-1",
+    "href": "slides/day-2.2.html#labeling-points-1",
+    "title": "Line Charts and Scatter Plots",
+    "section": "Labeling Points",
+    "text": "Labeling Points\n\nFilter for Asia, add labels with geom_text()…\n\n\ndem_summary_ctry |&gt; \n  filter(region == \"Asia\") |&gt;\n  ggplot(aes(x = gdp_pc, y = polyarchy)) + \n    geom_point() + \n    geom_text(aes(label = country), size = 2, vjust = 2) +\n    geom_smooth(method = \"lm\", linewidth = 1) +\n    scale_x_log10(labels = scales::label_number(prefix = \"$\", suffix = \"k\")) +\n      labs(\n        x= \"GDP Per Capita\", \n        y = \"Polyarchy Score\",\n        title = \"Wealth and democracy in Asia, 1990 - present\", \n        caption = \"Source: V-Dem Institute\"\n        )"
+  },
+  {
+    "objectID": "slides/day-2.2.html#your-turn-4",
+    "href": "slides/day-2.2.html#your-turn-4",
+    "title": "Line Charts and Scatter Plots",
+    "section": "Your Turn!",
+    "text": "Your Turn!\n\n\nFilter for Asia or another region\nUse geom_text() to add labels to your points\nPlay with size and vjust paramters\n\n\n\n\n−+\n05:00\n\n\n\n\n\n\nDataViz 6502 Website"
+  },
+  {
+    "objectID": "slides/day-2.3.html#color-blindness",
+    "href": "slides/day-2.3.html#color-blindness",
+    "title": "Accessibility and Color Schemes",
+    "section": "Color Blindness",
+    "text": "Color Blindness\n\n\nColor Vision Deficiency (CVD) or color blindness affects 8 percent of men and 1 in 200 women\nThere are different types of CVD but most common is red-green color blindness\nTherefore, don’t include red and green in the same chart!\nLook for color blind safe palettes"
+  },
+  {
+    "objectID": "slides/day-2.3.html#last-weeks-line-chart",
+    "href": "slides/day-2.3.html#last-weeks-line-chart",
+    "title": "Accessibility and Color Schemes",
+    "section": "Last Week’s Line Chart",
+    "text": "Last Week’s Line Chart"
+  },
+  {
+    "objectID": "slides/day-2.3.html#last-weeks-line-chart-1",
+    "href": "slides/day-2.3.html#last-weeks-line-chart-1",
+    "title": "Accessibility and Color Schemes",
+    "section": "Last Week’s Line Chart",
+    "text": "Last Week’s Line Chart\n\nCreate last week’s line chart and save as an object…\n&lt;br?\n\ndem_waves_ctrs &lt;- read_csv(\"https://raw.githubusercontent.com/eteitelbaum/dataviz-fall-2023/main/slides/data/dem_waves_ctrs.csv\")\n\ndem_waves_chart &lt;- ggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +\n  geom_line(linewidth = 1) + # our geom is a line with a width of 1\n  labs(\n    x = \"Year\", \n    y = \"Polyarchy Score\", \n    title = 'Democracy in countries representing three different \"waves\"', \n    caption = \"Source: V-Dem Institute\", \n    color = \"Country\" # make title of legend to upper case\n  )\n\n\n\n\n−+\n02:00"
+  },
+  {
+    "objectID": "slides/day-2.3.html#cvd-plot",
+    "href": "slides/day-2.3.html#cvd-plot",
+    "title": "Accessibility and Color Schemes",
+    "section": "CVD Plot",
+    "text": "CVD Plot"
+  },
+  {
+    "objectID": "slides/day-2.3.html#cvd-plot-1",
+    "href": "slides/day-2.3.html#cvd-plot-1",
+    "title": "Accessibility and Color Schemes",
+    "section": "CVD Plot",
+    "text": "CVD Plot\n\nCall `cvdPlot() from the colorBlindness package. CVD stands for “color vision deficiency.” Pass plot object that you saved into cvdPlot().\n\nlibrary(colorBlindness)\n\ncvdPlot(dem_waves_chart)"
+  },
+  {
+    "objectID": "slides/day-2.3.html#cvd-plot-2",
+    "href": "slides/day-2.3.html#cvd-plot-2",
+    "title": "Accessibility and Color Schemes",
+    "section": "CVD Plot",
+    "text": "CVD Plot\n\nClick on little image to expand view…"
+  },
+  {
+    "objectID": "slides/day-2.3.html#create-your-own-color-scheme",
+    "href": "slides/day-2.3.html#create-your-own-color-scheme",
+    "title": "Accessibility and Color Schemes",
+    "section": "Create Your Own Color Scheme",
+    "text": "Create Your Own Color Scheme"
+  },
+  {
+    "objectID": "slides/day-2.3.html#create-your-own-color-scheme-1",
+    "href": "slides/day-2.3.html#create-your-own-color-scheme-1",
+    "title": "Accessibility and Color Schemes",
+    "section": "Create Your Own Color Scheme",
+    "text": "Create Your Own Color Scheme\n\n\ncb_palette &lt;- c(\"#E69F00\", \"#56B4E9\", \"#009E73\", \"#F0E442\", \"#0072B2\", \"#D55E00\", \"#CC79A7\")\n\nflfp_region &lt;- ggplot(flfp_gdp_regions, aes(x = reorder(iso3c, -flfp), y = flfp, fill = region)) +\n  geom_col() + \n  scale_y_continuous(labels = scales::label_percent(scale = 1)) +\n  labs(\n    x = \"Region\", \n    y = \"Avg. Female Labor Force Participation\", \n    title = \"Levels of female labor force participation by region\", \n    fill = \"Region\",\n    caption = \"Source: World Bank\"\n    ) \n\nflfp_region + scale_fill_manual(values = cb_palette)"
+  },
+  {
+    "objectID": "slides/day-2.3.html#create-your-own-color-scheme-2",
+    "href": "slides/day-2.3.html#create-your-own-color-scheme-2",
+    "title": "Accessibility and Color Schemes",
+    "section": "Create Your Own Color Scheme",
+    "text": "Create Your Own Color Scheme\n\n\ncb_palette &lt;- c(\"#E69F00\", \"#56B4E9\", \"#009E73\", \"#F0E442\", \"#0072B2\", \"#D55E00\", \"#CC79A7\")\n\nflfp_region &lt;- ggplot(flfp_gdp_regions, aes(x = reorder(iso3c, -flfp), y = flfp, fill = region)) +\n  geom_col() + \n  scale_y_continuous(labels = scales::label_percent(scale = 1)) +\n  labs(\n    x = \"Region\", \n    y = \"Avg. Female Labor Force Participation\", \n    title = \"Levels of female labor force participation by region\", \n    fill = \"Region\",\n    caption = \"Source: World Bank\"\n    ) \n\nflfp_region + scale_fill_manual(values = cb_palette)"
+  },
+  {
+    "objectID": "slides/day-2.3.html#your-turn-1",
+    "href": "slides/day-2.3.html#your-turn-1",
+    "title": "Accessibility and Color Schemes",
+    "section": "Your Turn!",
+    "text": "Your Turn!\n\nGo to Module 2.2 on the course website\nDo the setup steps\nReproduce the column chart of FLFP with the custom color scheme\nTry changing one of the hex codes\nNow run cvdPlot() on the plot object to make sure it is color-blind friendly\nNow try a Barbie theme or GW colors\n\n\n\n\n−+\n10:00"
+  },
+  {
+    "objectID": "slides/day-2.3.html#using-a-color-palette",
+    "href": "slides/day-2.3.html#using-a-color-palette",
+    "title": "Accessibility and Color Schemes",
+    "section": "Using a Color Palette",
+    "text": "Using a Color Palette\n\n\nThere are many color palettes\nViridis scales look cool and are accessible\nColorBrewer has many scales some of which are color-blind safe\nThe paletteer package aims to be a comprehensive collection of color palettes"
+  },
+  {
+    "objectID": "slides/day-2.3.html#viridis",
+    "href": "slides/day-2.3.html#viridis",
+    "title": "Accessibility and Color Schemes",
+    "section": "Viridis",
+    "text": "Viridis\n\nflfp_region + scale_fill_viridis_d()"
+  },
+  {
+    "objectID": "slides/day-2.3.html#viridis-1",
+    "href": "slides/day-2.3.html#viridis-1",
+    "title": "Accessibility and Color Schemes",
+    "section": "Viridis",
+    "text": "Viridis\n\nflfp_region &lt;-flfp_region + scale_fill_viridis_d()\ncvdPlot(flfp_region)"
+  },
+  {
+    "objectID": "slides/day-2.3.html#colorbrewer",
+    "href": "slides/day-2.3.html#colorbrewer",
+    "title": "Accessibility and Color Schemes",
+    "section": "ColorBrewer",
+    "text": "ColorBrewer\n\nflfp_region + scale_fill_brewer(palette = \"YlGn\")"
+  },
+  {
+    "objectID": "slides/day-2.3.html#colorbrewer-1",
+    "href": "slides/day-2.3.html#colorbrewer-1",
+    "title": "Accessibility and Color Schemes",
+    "section": "ColorBrewer",
+    "text": "ColorBrewer\n\nflfp_region &lt;- flfp_region + scale_fill_brewer(palette = \"YlGn\")\ncvdPlot(flfp_region)"
+  },
+  {
+    "objectID": "slides/day-2.3.html#paletteer",
+    "href": "slides/day-2.3.html#paletteer",
+    "title": "Accessibility and Color Schemes",
+    "section": "Paletteer",
+    "text": "Paletteer\n\nlibrary(paletteer)\n\nflfp_region + scale_fill_paletteer_d(\"rcartocolor::Temps\")"
+  },
+  {
+    "objectID": "slides/day-2.3.html#paletteer-1",
+    "href": "slides/day-2.3.html#paletteer-1",
+    "title": "Accessibility and Color Schemes",
+    "section": "Paletteer",
+    "text": "Paletteer\nNot all palettes are color-blind safe…\n\nflfp_region &lt;- flfp_region + scale_fill_paletteer_d(\"rcartocolor::Temps\")\ncvdPlot(flfp_region)"
+  },
+  {
+    "objectID": "slides/day-2.3.html#paletteer-2",
+    "href": "slides/day-2.3.html#paletteer-2",
+    "title": "Accessibility and Color Schemes",
+    "section": "Paletteer",
+    "text": "Paletteer\nAnd some many not have enough colors for your chart…\n\nlibrary(paletteer)\n\nflfp_region + scale_fill_paletteer_d(\"beyonce::X1\")"
+  },
+  {
+    "objectID": "slides/day-2.3.html#your-turn-2",
+    "href": "slides/day-2.3.html#your-turn-2",
+    "title": "Accessibility and Color Schemes",
+    "section": "Your Turn",
+    "text": "Your Turn\n\n\nTry one of the color palettes packages we just discussed\nGoogle the reference documents for details on schemes\nFor paletteer, check out this paletteer gallery\nFor ColorBrewer, check out this selector tool\nA full list of viridis schemes is here\n\n\n\n\n−+\n10:00"
+  },
+  {
+    "objectID": "slides/day-2.3.html#scaling-for-scatter-plots",
+    "href": "slides/day-2.3.html#scaling-for-scatter-plots",
+    "title": "Accessibility and Color Schemes",
+    "section": "Scaling for Scatter Plots",
+    "text": "Scaling for Scatter Plots"
+  },
+  {
+    "objectID": "slides/day-2.3.html#scaling-for-scatter-plots-1",
+    "href": "slides/day-2.3.html#scaling-for-scatter-plots-1",
+    "title": "Accessibility and Color Schemes",
+    "section": "Scaling for Scatter Plots",
+    "text": "Scaling for Scatter Plots\nUse scale_color_viridis_d instead of scale_fill_viridis_d.\n\nwealth_flfp &lt;- ggplot(flfp_gdp, aes(x = gdp_pc, y = flfp)) + \n  geom_point(aes(color = region)) + # color points by region\n  geom_smooth(method = \"loess\", linewidth = 1) +  # make the line a loess curve\n  scale_x_log10(labels = scales::label_dollar()) + # stretch axis, add '$' format\n  scale_y_continuous(labels = scales::label_percent(scale = 1)) + # add % label\n  labs(\n    x= \"GDP per Capita\", # x-axis title\n    y = \"Female Labor Force Participation\", # y-axis title\n    title = \"Wealth and female labor force participation\", # plot title\n    caption = \"Source: World Bank Development Indicators\", # caption\n    color = \"Region\" # legend title\n    )\n\nwealth_flfp + scale_color_viridis_d(option = \"plasma\")"
+  },
+  {
+    "objectID": "slides/day-2.3.html#scaling-for-scatter-plots-2",
+    "href": "slides/day-2.3.html#scaling-for-scatter-plots-2",
+    "title": "Accessibility and Color Schemes",
+    "section": "Scaling for Scatter Plots",
+    "text": "Scaling for Scatter Plots\nUse the end argument to darken the colors\n\nwealth_flfp + scale_color_viridis_d(option = \"plasma\", end = .7)"
+  },
+  {
+    "objectID": "slides/day-2.3.html#scaling-for-scatter-plots-3",
+    "href": "slides/day-2.3.html#scaling-for-scatter-plots-3",
+    "title": "Accessibility and Color Schemes",
+    "section": "Scaling for Scatter Plots",
+    "text": "Scaling for Scatter Plots\nUse the direction argument to flip the color scale…\n\nwealth_flfp + scale_color_viridis_d(option = \"plasma\", direction = -1)"
+  },
+  {
+    "objectID": "slides/day-2.3.html#your-turn-3",
+    "href": "slides/day-2.3.html#your-turn-3",
+    "title": "Accessibility and Color Schemes",
+    "section": "Your Turn!",
+    "text": "Your Turn!\n\n\nTry using one of the color schemes on a scatter plot\nUse scale_color_ instead of scale_fill_\nPlay around with end and direction arguments in viridis\n\n\n\n\n−+\n10:00\n\n\n\n\n\n\nDataViz 6502 Website"
+  },
+  {
+    "objectID": "slides/day-2.4.html#column-chart-from-last-class",
+    "href": "slides/day-2.4.html#column-chart-from-last-class",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "Column Chart from Last Class",
+    "text": "Column Chart from Last Class"
+  },
+  {
+    "objectID": "slides/day-2.4.html#coding-assignment-2",
+    "href": "slides/day-2.4.html#coding-assignment-2",
+    "title": "Themes, Annotations and Interactivity",
+    "section": "Coding Assignment 2",
+    "text": "Coding Assignment 2\n\nCoding assignment 2 builds off this lesson\n\nTake the remainder of the class time to work on it. I will be here in case you have questions.\n\nYou may work individually or in groups.\n\n\n\nDataViz 6502 Website"
+  },
+  {
+    "objectID": "project/project-assignment.html#step-9-render-and-upload-document-to-quarto-pub-10-pts.",
+    "href": "project/project-assignment.html#step-9-render-and-upload-document-to-quarto-pub-10-pts.",
+    "title": "Project Assignment",
+    "section": "Step 9: Render and upload document to Quarto Pub (10 pts.)",
+    "text": "Step 9: Render and upload document to Quarto Pub (10 pts.)\nRender your document and publish it to Quarto as we did in class by typing quarto publish quarto-pub in the terminal. Make sure you have set up a Quarto Pub account first.",
+    "crumbs": [
+      "Project",
+      "Project Assignment"
+    ]
+  },
+  {
+    "objectID": "project/project-assignment.html#step-10-post-your-link-to-discord-and-reflect-10-pts.",
+    "href": "project/project-assignment.html#step-10-post-your-link-to-discord-and-reflect-10-pts.",
+    "title": "Project Assignment",
+    "section": "Step 10: Post your link to Discord and reflect (10 pts.)",
+    "text": "Step 10: Post your link to Discord and reflect (10 pts.)\nPost the link of your Quarto Pub document on the class Discord server and reflect on your document and what you learned from the exercise. Finally, comment on at least one other student’s post in the server. Provide positive feedback and say something about what you learned from their document or presentation.",
+    "crumbs": [
+      "Project",
+      "Project Assignment"
+    ]
+  },
+  {
+    "objectID": "slides/day-1.1.html#assignments",
+    "href": "slides/day-1.1.html#assignments",
+    "title": "Getting Started",
+    "section": "Assignments",
+    "text": "Assignments\n\nCoding Assignment 1 relates to the material we are covering today (through module 1.2)\n\nCoding Assignment 2 relates to everything from module 2 (on data viz)\n\nFinal Project asks you to make a Quarto document or presentation with some original visualizations. Be creative!\n\n\n\nDataViz 6502 Website"
+  },
+  {
+    "objectID": "slides/day-1.1.html",
+    "href": "slides/day-1.1.html",
+    "title": "Getting Started",
+    "section": "",
+    "text": "Go to posit.co\nClick on links to install R and RStudio\nInstall the Tidyverse group of packages from the console\nGo to Tools&gt;Global Options\n\nUnder Code, enable native pipe operator (|&gt;)\nUnder Appearance, choose a theme\nConfigure panes\n\nInstall lorem add in (install.packages(\"lorem\"))\nRestart R Session (Session &gt; Restart R)"
   }
 ]

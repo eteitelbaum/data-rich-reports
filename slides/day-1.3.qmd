@@ -1,8 +1,8 @@
 ---
-title: Wrangling Data
+title: Merging and Summarizing Data
 date: today
 date-format: long
-footer: "[DataViz 2102 Website](https://dataviz-gwu.rocks)"
+footer: "[DataViz 6502 Website](https://dataviz-esia.training)"
 logo: images/dataviz-logo.png
 format:
   revealjs:
@@ -18,164 +18,191 @@ execute:
   freeze: auto
 ---
 
-## Read Data 
+## Merging Data Frames 
 
-(from last class)
-
-```{r}
-#| label: read_data
-#| eval: false
-#| echo: true
-
-# Load packages
-library(readr) 
-library(dplyr) 
-
-# Read data from csv file into an object called "wb_data_messy"
-wb_data_messy <- read_csv("data/your_file_name.csv")
-
-# View the data
-glimpse(wb_data_messy)
-```
-
-
-## Messy Data Example
-
-![](images/messy_wb_data.jpg){width=70%}
-
-## Pivot Longer
-
-`pivot_longer()` takes three arguments:
-
-- **cols** - which columns you want to pivot
-- **names_to** - the name of the column where the old column names are going to (identifier)
-- **values_to** - the name of the column where the values are going to
-
-## Without Looking
-
-- Can you remember how to make `pivot_longer()` work? 
-
-```{r}
-#| label: pivot_trial
-#| eval: false
-#| echo: true
-
-# Load tidyr
-library(tidyr)
-
-# Reshape the data
-      <-    |>
-  pivot_longer(
-    cols = 
-    names_to = 
-    values_to = 
-  )
-
-glimpse()
-```
-
-## Pivot Data 
-
-```{r}
-#| label: pivot
-#| eval: false
-#| echo: true
-
-# Load tidyr
-library(tidyr)
-
-# Reshape the data
-wb_data <- wb_data_messy |> 
-  pivot_longer(             
-    cols = `1973 [YR1973]`: `2022 [YR2022]`, # columns to pivot
-    names_to = "year", # name the identifier column "year"
-    values_to = "flfp" # name the numeric var column "flfp"
-  ) 
-
-# View the data
-glimpse(wb_data)
-```
-
-## Try With Multiple Variables
-
-- Download more than one variable from the WB 
-- Save in a new CSV file
-- Use pivot longer to put in long format
-- And then...
-
-## Multiple Variables
+- Often we have data from two different sources
+- Results in two data frames
+- How to make them one so we can analyze? 
+- Key questions
+  - What is the unit of analysis? 
+  - What is/are the corresponding identifier variables?
+  - Are the identifier variables in common? 
+  - Or do they have to be added/transformed to match?
   
-Use `pivot_wider()`
+## Merging WB and V-Dem Data
+
+<br>
+
+- These are both time-series, country-level data
+- Need to merge by country-year
+- Year is easy
+- But there are many different country codes
+- Can use `countrycode` package to assign country codes
+
+## `countrycode` example
+
+<br>
+
+```{r}
+#| label: countrycode
+#| eval: false
+#| echo: true
+
+# Load countrycode
+library(countrycode)
+
+# Create new iso3c variable
+democracy <- democracy |>    
+  mutate(iso3c = countrycode(sourcevar = vdem_ctry_id, # what we are converting
+        origin = "vdem",         # we are converting from vdem
+        destination = "wb"))  |> # and converting to the WB iso3c code 
+  relocate(iso3c, .after = vdem_ctry_id) # move iso3c 
+
+# View the data
+glimpse(democracy)
+```
+
+## Try it Yourself
+
+<br>
+
+- Using your democracy data frame from the last lesson
+- Use `mutate()` and `countrycode()` to add iso3c country codes
+- Use `relocate` to move your iso3c code to the "front" of your data frame (optional)
+
+```{r}
+#| label: setup_timer
+library(countdown)
+countdown(minutes = 5, 
+          id = "setup", 
+          bottom = "10%", 
+          right = "10%",
+          color_border = "#fff",
+          color_text = "#fff",
+          color_running_background = "#42affa",
+          color_running_text = "black",
+          color_finished_background = "#E5D19D",
+          color_finished_text = "#00264A")
+```
+
+## Types of joins in `dplyr`
+
+- Mutating versus filtering joins
+- Four types of mutating joins
+  - `inner_join()`
+  - `full_join()`
+  - `left_join()`
+  - `right_join()`
+- For the most part we will use `left_join()`
+
+## `left_join()` example
+
+<br>
+
+```{r}
+#| label: left_join()
+#| eval: false
+#| echo: true
+
+# Load readr
+library(readr)
+
+# Perform left join using common iso3c variable and year
+dem_women <- left_join(democracy, women_emp, by = c("iso3c", "year")) |> 
+  rename(country = country.x) |> # rename country.x
+  select(!country.y)             # crop country.y
+
+# Save as .csv for future use
+write_csv(dem_women, "data/dem_women.csv")
+
+# View the data
+glimpse(dem_women)  
+```
+
+## Try it Yourself
+
+<br>
+
+- Take your V-Dem data frame and your World Bank data frame
+- Using `left_join()` to merge on country code and year
+- Along the way, use `rename()` and `select()` to insure you have just one country name
+
+```{r}
+#| label: timer2
+countdown(minutes = 5, 
+          id = "quarto-pub", 
+          bottom = "10%", 
+          right = "10%")
+```
+
+## Group, Summarize and Arrange
+
+<br>
+
+- `group_by()`, `summarize()`, `arrange()`
+- A very common sequence in data science:
+  - Take an average or some other statistic for a group
+  - Rank from high to low values of summary value
   
+## Example
+
+<br>
+
 ```{r}
-#| label: pivot_multiple
+#| label: summarize
 #| eval: false
 #| echo: true
 
-wb_data <- wb_data |>
-  select(-`Series Name`)
+# group_by(), summarize() and arrange()
+dem_summary <- dem_women |> # save result as new object
+  group_by(region)  |> # group dem_women data by region
+  summarize(           # summarize following vars (by region)
+    polyarchy = mean(polyarchy, na.rm = TRUE), # calculate mean, remove NAs
+    gdp_pc = mean(gdp_pc, na.rm = TRUE), 
+    flfp = mean(flfp, na.rm = TRUE), 
+    women_rep = mean(women_rep, na.rm = TRUE)
+  ) |> 
+  arrange(desc(polyarchy)) # arrange in descending order by polyarchy score
 
-# Reshape the data
-tidy_data <- wb_data |> 
-  pivot_wider(             
-    names_from = `Series Code`,
-    values_from = values
-  ) 
-
-# View the data
-glimpse(wb_data)
-```
-
-## Mutating Variables
-
-- Anytime we want to change a variable, we are going to use the `dplyr` verbs `mutate()` or `mutate_at()`
-- `mutate()` is if you want to change on variable
-- `mutate_at()` is for multiple variables
-
-## Let's Fix Our Variables
-
-```{r}
-#| label: mutate
-#| eval: false
-#| echo: true
-
-# Fix year and flfp
-wb_data <- wb_data |> # replace wb_data with a modified version of the dataframe 
-  mutate(year = substring(year, 1, 4)) |> # truncate year (keep first four characters)
-  mutate_at(c("year", "flfp"), as.numeric) # change year and flfp to numeric
+# Save as .csv for future use
+write_csv(dem_summary, "data/dem_summary.csv")
 
 # View the data
-glimpse(wb_data)
+glimpse(dem_summary)
 ```
 
-## Now Try it With Multiple Varaibles
+## Try it Yourself {.scrollable}
 
-- Go to the data frame with multiple variables that you created earlier
-- How would you modify this code to make sure the variables are in the right format? 
+- Try running a `group_by()`, `summarize()` and `arrange()` in your Quarto document
+- Try changing the parameters to answer these questions: 
 
-# Clean Variable Names
+1. Try summarizing the data with a [different function](https://dplyr.tidyverse.org/reference/summarise.html#useful-functions) for one or more of the variables. 
+  a. What is the median value of `polyarchy` for The West?
+  b. What is the max value of `gdp_pc` for Eastern Europe?
+  c. What is the standard deviation of `flfp` for Africa?
+  d. What is the interquartile range of `women_rep` for the Middle East?
+  
+2. Now try grouping by country instead of region. 
 
-| Very simple: use the `janitor` package!
+  a. What is the median value of `polyarchy` for Sweden?
+  b. What is the max value of `gdp_pc` New Zealand?
+  c. What is the standard deviation of `flfp` for Spain?
+  d. What is the interquartile range of `women_rep` for Germany?
 
-```{r}
-#| label: janitor
-#| eval: false
-#| echo: true
+3. Sort countries in descending order based on the mean value of `gdp_pc` (instead of the median value of `polyarchy`). Which country ranks first based on this sorting?
 
-# Load janitor
-library(janitor)
+4. Now try sorting countries in ascending order based on the median value of `women_rep` (hint: delete "desc" from the `arrange()` call). Which country ranks at the "top" of the list?
 
-# Apply clean_names() to wb_data, store in new data frame called wb_data_clean
-wb_data_clean <- wb_data |>  
-  clean_names() 
+## Coding Assignment 1
 
-# Write wb_data_clean to a csv file
-write_csv(wb_data_clean, "data/wb_data_clean.csv")
+<br>
 
-# View the data
-glimpse(wb_data_clean)
-```
+[Coding assignment 1](https://dataviz-esia.training/assignments/coding-assignment-1) builds off this lesson
 
+<br>
 
+Take the remainder of the class time to work on it. I will be here in case you have questions. 
 
+<br>
 
+You may work individually or in groups. 

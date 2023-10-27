@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<link href="../images/dataviz-logo.png" rel="icon" type="image/png">
+<link href="../images/dataviz6502-preview.png" rel="icon" type="image/png">
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -9,10 +9,10 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.433">
+  <meta name="generator" content="quarto-1.4.415">
 
-  <meta name="dcterms.date" content="2023-10-03">
-  <title>PSC/DATS 2102–Summer Schedule - Getting Started</title>
+  <meta name="dcterms.date" content="2023-10-27">
+  <title>IAFF 6502/6505 Visualizing and Modeling International Politics - Getting Started</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,11 +30,78 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #f8f8f2;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #f8f8f2; } /* Normal */
+    code span.al { color: #f07178; background-color: #2a0f15; font-weight: bold; } /* Alert */
+    code span.an { color: #d4d0ab; } /* Annotation */
+    code span.at { color: #00e0e0; } /* Attribute */
+    code span.bn { color: #d4d0ab; } /* BaseN */
+    code span.bu { color: #abe338; } /* BuiltIn */
+    code span.cf { color: #ffa07a; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #abe338; } /* Char */
+    code span.cn { color: #ffd700; } /* Constant */
+    code span.co { color: #f8f8f2; font-style: italic; } /* Comment */
+    code span.cv { color: #ffd700; } /* CommentVar */
+    code span.do { color: #f8f8f2; } /* Documentation */
+    code span.dt { color: #ffa07a; } /* DataType */
+    code span.dv { color: #d4d0ab; } /* DecVal */
+    code span.er { color: #f07178; text-decoration: underline; } /* Error */
+    code span.ex { color: #00e0e0; font-weight: bold; } /* Extension */
+    code span.fl { color: #d4d0ab; } /* Float */
+    code span.fu { color: #ffa07a; } /* Function */
+    code span.im { color: #abe338; } /* Import */
+    code span.in { color: #d4d0ab; } /* Information */
+    code span.kw { color: #ffa07a; font-weight: bold; } /* Keyword */
+    code span.op { color: #ffa07a; } /* Operator */
+    code span.ot { color: #00e0e0; } /* Other */
+    code span.pp { color: #dcc6e0; } /* Preprocessor */
+    code span.re { color: #00e0e0; background-color: #f8f8f2; } /* RegionMarker */
+    code span.sc { color: #abe338; } /* SpecialChar */
+    code span.ss { color: #abe338; } /* SpecialString */
+    code span.st { color: #abe338; } /* String */
+    code span.va { color: #00e0e0; } /* Variable */
+    code span.vs { color: #abe338; } /* VerbatimString */
+    code span.wa { color: #dcc6e0; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
@@ -157,7 +224,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -320,12 +388,16 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="PSC/DATS 2102–Summer Schedule - Getting Started">
+  <link href="../site_libs/countdown-0.4.0/countdown.css" rel="stylesheet">
+  <script src="../site_libs/countdown-0.4.0/countdown.js"></script>
+<meta property="og:title" content="IAFF 6502/6505 Visualizing and Modeling International Politics - Getting Started">
 <meta property="og:description" content="RStudio and Basic Quarto">
-<meta property="og:site-name" content="PSC/DATS 2102--Summer Schedule">
-<meta name="twitter:title" content="PSC/DATS 2102–Summer Schedule - Getting Started">
+<meta property="og:image" content="https://dataviz-esia.training/slides/images/dataviz6502-preview.png">
+<meta property="og:site_name" content="IAFF 6502/6505 Visualizing and Modeling International Politics">
+<meta name="twitter:title" content="IAFF 6502/6505 Visualizing and Modeling International Politics - Getting Started">
 <meta name="twitter:description" content="RStudio and Basic Quarto">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dataviz-esia.training/slides/images/dataviz6502-preview.png">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 <body class="quarto-dark">
   <div class="reveal">
@@ -338,7 +410,7 @@
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">October 3, 2023</p>
+  <p class="date">October 27, 2023</p>
 </section>
 <section id="rstudio-setup" class="slide level2 smaller">
 <h2>RStudio Setup</h2>
@@ -352,11 +424,8 @@
 <li>Under Appearance, choose a theme</li>
 <li>Configure panes</li>
 </ul></li>
-<li>Install <code>devtools</code> (<code>install.packages("devtools")</code>)</li>
-<li>Install wordcount Addin -<code>devtools::install_github("benmarwick/wordcountaddin",  type = "source", dependencies = TRUE)</code><br>
-</li>
-<li>Install <code>lorem</code> package/Addin (<code>install.packages("lorem")</code>)</li>
-<li>Restart R Session (Session&gt;Restart R)</li>
+<li>Install <code>lorem</code> add in (<code>install.packages("lorem")</code>)</li>
+<li>Restart R Session (<code>Session &gt; Restart R</code>)</li>
 </ul>
 </section>
 <section id="quarto-setup" class="slide level2">
@@ -368,50 +437,203 @@
 <li>Restart R session in RStudio</li>
 </ul>
 </section>
-<section id="project-oriented-workflow" class="slide level2 smaller">
+<section id="project-oriented-workflow" class="slide level2">
 <h2>Project Oriented Workflow</h2>
+<p><br></p>
 <ul>
-<li>Always start a document in a project folder
-<ul>
+<li>Always start a document in a project folder</li>
 <li>That way you don’t have to do <code>setwd</code></li>
 <li>Also can share easily with other people</li>
-</ul></li>
-<li>Go to File&gt;New Project</li>
+</ul>
+</section>
+<section id="project-oriented-workflow-1" class="slide level2 smaller">
+<h2>Project Oriented Workflow</h2>
+<ul>
+<li>Go to <code>File &gt; New Project</code></li>
 <li>Create a Quarto project folder</li>
 <li>Open a Quarto quarto document</li>
 <li>Render it</li>
 <li>Change Quarto doc elements
 <ul>
 <li>Add text with <code>lipsum</code></li>
-<li>Check word count</li>
-<li>Add stuff to YAML</li>
+</ul></li>
+<li>Explore <a href="https://quarto.org/docs/reference/formats/html.html">reference</a></li>
+<li>Add stuff to YAML
+<ul>
+<li>e.g.&nbsp;subtitle, author, date, theme, etc.</li>
 </ul></li>
 </ul>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="setup" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</section>
+<section id="add-a-visualization" class="slide level2">
+<h2>Add a Visualization</h2>
+
+<img data-src="day-1.1_files/figure-revealjs/gganimate_1-1.gif" class="r-stretch"></section>
+<section id="add-a-visualization-1" class="slide level2">
+<h2>Add a Visualization</h2>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(gganimate)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(gdpPercap, lifeExp, <span class="at">size =</span> pop, <span class="at">colour =</span> country)) <span class="sc">+</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> country_colors) <span class="sc">+</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">12</span>)) <span class="sc">+</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>continent) <span class="sc">+</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Year: {frame_time}'</span>, <span class="at">x =</span> <span class="st">'GDP per capita'</span>, <span class="at">y =</span> <span class="st">'life expectancy'</span>) <span class="sc">+</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>  <span class="fu">transition_time</span>(year) <span class="sc">+</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a>  <span class="fu">ease_aes</span>(<span class="st">'linear'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="add-a-visualization-2" class="slide level2">
+<h2>Add a Visualization</h2>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="1,10-12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(gganimate)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(gdpPercap, lifeExp, <span class="at">size =</span> pop, <span class="at">colour =</span> country)) <span class="sc">+</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> country_colors) <span class="sc">+</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">12</span>)) <span class="sc">+</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>continent) <span class="sc">+</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Year: {frame_time}'</span>, <span class="at">x =</span> <span class="st">'GDP per capita'</span>, <span class="at">y =</span> <span class="st">'life expectancy'</span>) <span class="sc">+</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>  <span class="fu">transition_time</span>(year) <span class="sc">+</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a>  <span class="fu">ease_aes</span>(<span class="st">'linear'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="publish-html-to-quarto-pub" class="slide level2">
 <h2>Publish HTML to Quarto Pub</h2>
 <ul>
 <li>Go to <a href="https://quartopub.com/">quartopub.com</a></li>
 <li>Set up Quarto pub account</li>
-<li>Look at <a href="https://quarto.org/docs/publishing/quarto-pub.html">guide</a> for pubishing on Quarto pub</li>
+<li>Look at <a href="https://quarto.org/docs/publishing/quarto-pub.html">guide</a> for publishing on Quarto pub</li>
 <li>With your Quarto pub account open:
 <ul>
 <li>Go to terminal in RStudio</li>
 <li>Type <code>quarto publish quarto pub</code></li>
 </ul></li>
 </ul>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="quarto-pub" data-update-every="1" tabindex="0" style="right:10%;bottom:10%;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
 </section>
 <section id="making-pdfs" class="slide level2">
 <h2>Making PDFs</h2>
+<p><br></p>
 <ul>
-<li>Install tinytex Type <code>quarto install tinytex</code> in terminal</li>
+<li>Install tinytex</li>
+<li>Type <code>quarto install tinytex</code> in terminal</li>
 <li>Change document type in YAML header to pdf</li>
+<li>Take animation out of your plot</li>
 <li>Look at Quarto Reference and play with options</li>
 </ul>
+</section>
+<section id="other-document-types" class="slide level2">
+<h2>Other Document Types</h2>
+<p><br></p>
+<ul>
+<li>Word (<code>docx</code>)</li>
+<li><a href="https://typst.app/">Typst</a> (<code>typst</code>)
+<ul>
+<li>New scientific typesetting language</li>
+<li>Many advantages over <span class="math inline">\(\LaTeX\)</span> &amp; Word</li>
+</ul></li>
+<li>Revealjs</li>
+</ul>
+</section>
+<section id="revealjs-slides" class="slide level2">
+<h2>Revealjs Slides</h2>
+<ul>
+<li><a href="https://revealjs.com/">Revealjs</a> is an open source HTML presentation framework that is built on open web technologies like CSS and JavaScript</li>
+<li>These slides are made with the <code>revealjs</code> format in Quarto</li>
+<li>Like other Quarto documents, you can set all the formatting in the YAML header</li>
+<li>But you can also customize individual slides</li>
+</ul>
+</section>
+<section id="execution-options-yaml" class="slide level2">
+<h2>Execution Options (YAML)</h2>
+<p><br></p>
+<p>YAML header with execution options for these slides…</p>
+<pre><code>---
+title: Getting Started
+subtitle: RStudio and Basic Quarto
+date: today
+date-format: long
+footer: "[DataViz 2102 Website](https://dataviz-gwu.rocks)"
+logo: images/dataviz-logo.png
+format:
+  revealjs:
+    theme: [simple, custom.scss]
+    transition: fade
+    slide-number: true
+    multiplex: true
+execute:
+  echo: false
+  message: false
+  warning: false
+  freeze: auto
+---
+</code></pre>
+</section>
+<section id="execution-options-code-chunk" class="slide level2">
+<h2>Execution Options (Code Chunk)</h2>
+<p><br></p>
+<p>You can also set execution options for individual code chunks…</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="in">#| label: code-chunk</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="in">#| echo: false</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="in">#| message: false</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="in">#| warning: false</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="in">2 + 2</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="your-turn" class="slide level2">
+<h2>Your Turn!</h2>
+<p><br></p>
+<ul>
+<li>Try rendering your document as a <code>revealjs</code> slide deck</li>
+<li>If you have added a lot of lorem ipsum, start a new document</li>
+<li>Change the execution options in the YAML header</li>
+<li>Then try changing them in the code chunk for your plot</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="revealjs" data-update-every="1" tabindex="0" style="right:10%;bottom:10%;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</section>
+<section id="assignments" class="slide level2">
+<h2>Assignments</h2>
+<p><br></p>
+<p><a href="..\assignments/coding-assignment-1.html">Coding Assignment 1</a> relates to the material we are covering today (through module 1.2)</p>
+<p><br></p>
+<p><a href="..\assignments/coding-assignment-2.html">Coding Assignment 2</a> relates to everything from module 2 (on data viz)</p>
+<p><br></p>
+<p><a href="..\project/project-assignment.html">Final Project</a> asks you to make a Quarto document or presentation with some original visualizations. Be creative!</p>
 
 
 <img src="images/dataviz-logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
-<p><a href="https://dataviz-gwu.rocks">DataViz 2102 Website</a></p>
+<p><a href="https://dataviz-esia.training">DataViz 6502 Website</a></p>
 </div>
 </section>
     </div>
@@ -424,6 +646,7 @@
   <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
   <script src="../site_libs/revealjs/plugin/multiplex/socket.io.js"></script>
   <script src="../site_libs/revealjs/plugin/multiplex/multiplex.js"></script>
   <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
@@ -442,12 +665,12 @@
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
 'multiplex': {"secret":null,"id":"8b220fdee8f8a07e","url":"https://reveal-multiplex.glitch.me/"},
 'smaller': false,
  
@@ -619,7 +842,7 @@
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
           RevealMath,
           
@@ -628,6 +851,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
@@ -704,10 +965,9 @@
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -717,8 +977,17 @@
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 

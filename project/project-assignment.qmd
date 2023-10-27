@@ -40,11 +40,11 @@ You can use this document as a scratch document to create your visualizations an
 
 *Add some styling to your document. This could be a different font or color scheme. For presentations, you could try adding a logo and adjusting how slides transition or some of the other bells and whistles we discussed in class. For documents, you could add aditional sections or some references. Look at the Quarto documentation for ideas. Be creative!*
 
-## Step 9: Render and upload document to Quarto Pub
+## Step 9: Render and upload document to Quarto Pub (10 pts.)
 
 *Render your document and publish it to Quarto as we did in class by typing `quarto publish quarto-pub` in the terminal. Make sure you have set up a Quarto Pub account first.*
 
-## Step 10: Post your link to Discord and reflect
+## Step 10: Post your link to Discord and reflect (10 pts.)
 
 *Post the link of your Quarto Pub document on the class Discord server and reflect on your document and what you learned from the exercise. Finally, comment on at least one other student's post in the server. Provide positive feedback and say something about what you learned from their document or presentation.*
 

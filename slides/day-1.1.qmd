@@ -3,13 +3,14 @@ title: Getting Started
 subtitle: RStudio and Basic Quarto
 date: today
 date-format: long
-footer: "[DataViz 2102 Website](https://dataviz-gwu.rocks)"
+footer: "[DataViz 6502 Website](https://dataviz-esia.training)"
 logo: images/dataviz-logo.png
 format:
   revealjs:
     theme: [simple, custom.scss]
     transition: fade
     slide-number: true
+    chalkboard: true
     multiplex: true
 execute:
   echo: false
@@ -28,11 +29,8 @@ execute:
   - Under Code, enable native pipe operator (|>)
   - Under Appearance, choose a theme
   - Configure panes
-- Install `devtools` (`install.packages("devtools")`)
-- Install wordcount Addin 
-  -`devtools::install_github("benmarwick/wordcountaddin",  type = "source", dependencies = TRUE)`  
-- Install `lorem` package/Addin (`install.packages("lorem")`)
-- Restart R Session (Session>Restart R)
+- Install `lorem` add in (`install.packages("lorem")`)
+- Restart R Session (`Session > Restart R`)
 
 ## Quarto Setup
 
@@ -41,33 +39,228 @@ execute:
 - Download and install Quarto CLI
 - Restart R session in RStudio
 
-## Project Oriented Workflow {.smaller}
+## Project Oriented Workflow 
+
+<br>
 
 - Always start a document in a project folder
-  - That way you don't have to do `setwd` 
-  - Also can share easily with other people
-- Go to File>New Project
+- That way you don't have to do `setwd` 
+- Also can share easily with other people
+
+## Project Oriented Workflow {.smaller}
+
+- Go to `File > New Project`
 - Create a Quarto project folder
 - Open a Quarto quarto document
 - Render it
 - Change Quarto doc elements
   - Add text with `lipsum`
-  - Check word count
-  - Add stuff to YAML
+- Explore [reference](https://quarto.org/docs/reference/formats/html.html)
+- Add stuff to YAML
+  - e.g. subtitle, author, date, theme, etc.
+  
+```{r}
+#| label: setup_timer
+library(countdown)
+countdown(minutes = 10, 
+          id = "setup", 
+          #bottom = "10%", 
+          #right = "10%",
+          color_border = "#fff",
+          color_text = "#fff",
+          color_running_background = "#42affa",
+          color_running_text = "black",
+          color_finished_background = "#E5D19D",
+          color_finished_text = "#00264A")
+```
+  
+## Add a Visualization
+
+```{r}
+#| label: gganimate_1
+
+library(gganimate)
+library(gapminder)
+
+ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
+  geom_point(alpha = 0.7, show.legend = FALSE) +
+  scale_colour_manual(values = country_colors) +
+  scale_size(range = c(2, 12)) +
+  scale_x_log10() +
+  facet_wrap(~continent) +
+  labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy') +
+  transition_time(year) +
+  ease_aes('linear')
+```
+
+## Add a Visualization
+
+<br>
+
+```{r}
+#| label: gganimate_2
+#| echo: true
+#| eval: false
+
+library(gganimate)
+library(gapminder)
+
+ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
+  geom_point(alpha = 0.7, show.legend = FALSE) +
+  scale_colour_manual(values = country_colors) +
+  scale_size(range = c(2, 12)) +
+  scale_x_log10() +
+  facet_wrap(~continent) +
+  labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy') +
+  transition_time(year) +
+  ease_aes('linear')
+```
+
+## Add a Visualization
+
+<br>
+
+```{r}
+#| label: gganimate_3
+#| echo: true
+#| eval: false
+#| code-line-numbers: "1,10-12"
+
+library(gganimate)
+library(gapminder)
+
+ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
+  geom_point(alpha = 0.7, show.legend = FALSE) +
+  scale_colour_manual(values = country_colors) +
+  scale_size(range = c(2, 12)) +
+  scale_x_log10() +
+  facet_wrap(~continent) +
+  labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy') +
+  transition_time(year) +
+  ease_aes('linear')
+```
+
 
 ## Publish HTML to Quarto Pub
 
 - Go to [quartopub.com](https://quartopub.com/)
 - Set up Quarto pub account
-- Look at [guide](https://quarto.org/docs/publishing/quarto-pub.html) for pubishing on Quarto pub
+- Look at [guide](https://quarto.org/docs/publishing/quarto-pub.html) for publishing on Quarto pub
 - With your Quarto pub account open: 
   - Go to terminal in RStudio
   - Type `quarto publish quarto pub`
   
+```{r}
+#| label: quarto-put-timer
+countdown(minutes = 15, 
+          id = "quarto-pub", 
+          bottom = "10%", 
+          right = "10%")
+```
+  
 ## Making PDFs
 
+<br>
+
 - Install tinytex 
-  Type `quarto install tinytex` in terminal
+- Type `quarto install tinytex` in terminal
 - Change document type in YAML header to pdf
+- Take animation out of your plot
 - Look at Quarto Reference and play with options
+
+## Other Document Types
+
+<br>
+
+- Word (`docx`)
+- [Typst](https://typst.app/) (`typst`)
+  - New scientific typesetting language
+  - Many advantages over {{< latex >}} & Word
+- Revealjs
+
+## Revealjs Slides
+
+- [Revealjs](https://revealjs.com/) is an open source HTML presentation framework that is built on open web technologies like CSS and JavaScript
+- These slides are made with the `revealjs` format in Quarto
+- Like other Quarto documents, you can set all the formatting in the YAML header
+- But you can also customize individual slides
+
+## Execution Options (YAML)
+
+<br> 
+
+YAML header with execution options for these slides... 
+
+```
+---
+title: Getting Started
+subtitle: RStudio and Basic Quarto
+date: today
+date-format: long
+footer: "[DataViz 2102 Website](https://dataviz-gwu.rocks)"
+logo: images/dataviz-logo.png
+format:
+  revealjs:
+    theme: [simple, custom.scss]
+    transition: fade
+    slide-number: true
+    multiplex: true
+execute:
+  echo: false
+  message: false
+  warning: false
+  freeze: auto
+---
+
+```
+
+## Execution Options (Code Chunk)
+
+<br>
+
+You can also set execution options for individual code chunks... 
+
+```{{r}}
+#| label: code-chunk
+#| echo: false
+#| message: false
+#| warning: false
+
+2 + 2
+```
+
+
+## Your Turn! 
+
+<br>
+
+- Try rendering your document as a `revealjs` slide deck
+- If you have added a lot of lorem ipsum, start a new document
+- Change the execution options in the YAML header
+- Then try changing them in the code chunk for your plot
+
+```{r}
+#| label: revealjs-timer
+countdown(minutes = 10, 
+          id = "revealjs", 
+          bottom = "10%", 
+          right = "10%")
+```
+
+## Assignments
+
+<br>
+
+[Coding Assignment 1](/assignments/coding-assignment-1.html) relates to the material we are covering today (through module 1.2)
+
+<br>
+
+[Coding Assignment 2](/assignments/coding-assignment-2.html) relates to everything from module 2 (on data viz)
+
+<br>
+
+[Final Project](/project/project-assignment.html) asks you to make a Quarto document or presentation with some original visualizations. Be creative! 
+
+
+
 
