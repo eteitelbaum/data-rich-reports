@@ -5,8 +5,6 @@ editor: visual
 
 Here are some datasets that you might consider using for your final project:
 
--   [Google Public Data Explorer](https://www.google.com/publicdata/directory) contains information about dozens of databases related to governance and the economy. You cannot download the raw data from Google, but you can use the site to visualize the data and then follow the link to the original source.
-
 -   [ILOSTAT](https://ilostat.ilo.org/) is the statistical database of the International Labour Organisation. It has data pertaining to labor, working conditions, industrial relations, poverty and inequality.
 
 -   [Kaggle](https://www.kaggle.com/datasets) has data on just about anything you can think of. Very usable, clean data. Just stick to the social science stuff for your project.
@@ -26,5 +24,7 @@ Here are some datasets that you might consider using for your final project:
 -   [World Bank Development Indicators (WDI)](https://databank-worldbank-org.proxygw.wrlc.org/reports.aspx?source=world-development-indicators) is the primary World Bank database for development data from officially-recognized international sources.
 
 -   The [World Bank DataBank](https://databank-worldbank-org.proxygw.wrlc.org/home) provides access to dozens of additional World Bank databases on topics such as regional development, governance, education, gender and the environment.
+
+-   [Google Public Data Explorer](https://www.google.com/publicdata/directory) contains information about dozens of databases related to governance and the economy. You cannot download the raw data from Google, but you can use the site to visualize the data and then follow the link to the original source.
 
 For information on more specific resources available, see [this page](https://libguides.gwu.edu/datasetsdatabases) on the Gelman Library website.

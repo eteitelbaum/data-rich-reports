@@ -1,34 +1,38 @@
 ---
-title: "Course Syllabus"
-editor: visual
+title: "IAFF 6502/05: Creating Data Rich Reports with Quarto"
+subtitle: "Course Syllabus"
+format:
+  html: default
+  pdf: default
 ---
 
 ## Course Information
 
-| Instructor: Prof. Emmanuel Teitelbaum
-| Email: [ejt\@gwu.edu](mailto:ejt@gwu.edu)
-
-The best way to contact me is via email.
-
-Virtual Office/Student Hours: By appointment only. Please email me directly.
-
-Credit Hours: 1
+| **Location**: Monroe Hall, Rm. 428
+| **Instructor**: Prof. Emmanuel Teitelbaum
+| **Email**: [ejt\@gwu.edu](mailto:ejt@gwu.edu)
+|
+| The best way to contact me is via email.
+|
+| Virtual Office/Student Hours: By appointment only. Please email me directly.
+|
+| Credit Hours: 1/1.5
 
 ## What Our Course Is About
 
-This course will focus on working with data and code to engage data science questions. Students will develop coding, data visualization, and data presentation skills.
+This course will use Quarto to create data rich reports. Students will develop coding, data visualization, and data presentation skills. By the end of the course they will know how to use Quarto to integrate text with code and publish their work in multiple formats.
 
 ## Course Objectives: What You'll Be Able To Do
 
 Course and module objectives are guides to gauge your skill and knowledge development. By the end of this course, you should be able to:
 
--   Analyze data sets using modern computational tools.
--   Identify salient data points as they relate to key political science concepts.
--   Explore ethical issues around data wrangling and visualization.
--   Apply data wrangling concepts to optimize data for modeling purposes.
--   Summarize simple and complex relationships between and among variables in a data set.
--   Identify the most appropriate visualization format for a given data set.
--   Model and visualize data based on requirements provided by stakeholders.
+-   Set up a Quarto project
+-   Create a Quarto document and structure its contents it using YAML
+-   Integrate your text with code
+-   Create basic data visualizations in R
+-   Integrate data visualizations into your Quarto document
+-   Render your document in multiple formats including HTML, PDF, and Word
+-   Pubplish your Quarto document to the web with Quarto Pub
 
 ## Aiming For Success
 
@@ -72,7 +76,7 @@ To make the meeting more effective, you can:
 
 ### Academic
 
-There are no academic prerequisites for this course. However, some prior coding experience may be helpful. 
+There are no academic prerequisites for this course. However, some prior coding experience may be helpful.
 
 ### Technological
 
@@ -96,7 +100,7 @@ For our course, you should be able to:
 -   Use productivity software (e.g., Office 365, Google Suite) to collaborate with peers and submit assignments.
 -   Use web conferencing tools (e.g., Zoom, Webex) to collaborate with peers and me.
 -   Use a mobile device and/or computer to upload documents, images, and recordings.
--   Seek technology help and tools by contacting [GW Information Technology](https://online.gwu.edu/student-support) \| (202)-994-4948 \| [ithelp\@gwu.edu](mailto:ithelp@gwu.edu).
+-   Seek technology help and tools by contacting [GW Information Technology](https://online.gwu.edu/student-support) | (202)-994-4948 | [ithelp@gwu.edu](mailto:ithelp@gwu.edu).
 
 If you need assistance with technology tools we'll use in this course, please visit the **Technology Support** link in the left navigation menu in our course on Blackboard.
 
@@ -130,13 +134,11 @@ I've designed the following instructional components to support your learning an
 
 The following assessments help you gauge and demonstrate your progress in the course and support you in meeting course learning objectives.
 
--   **Discord:** We will discuss course topics further through the Discord. You are expected to post original thoughts/reflections and respond substantively to others.[\[1\]](#_msocom_1) 
+-   **Discord:** We will discuss course topics further through the Discord. You are expected to post original thoughts/reflections and respond substantively to others.
 
 -   **Assignments**: You will develop various skills through regular assignments. You are expected to one coding assignment per week. Thoughtfully completing weekly assignments helps you meet course objectives.
 
--   **Final Project:** You will develop your own interactive data visualization application as your final project during Week 6/Module
-
-6.  
+-   **Final Project:** You will develop your own interactive data visualization application as your final project during Week 6/Module 6.  
 
 -   **Quizzes:** In this course, you will have opportunities to assess your own knowledge. You are expected to complete two weekly quizzes that provide immediate feedback and support ongoing learning.
 
@@ -156,13 +158,9 @@ Academic dishonesty is defined as cheating of any kind, including misrepresentin
 
 ## Assignments
 
-1.  Quizzes (20%)
-2.  Coding assignments (40%)
-3.  Final project (40% of final grade)
-
-### Quizzes
-
-Students will complete four graded quizzes. These exercises will be oriented towards strengthening the student's ability to manipulate, visualize and communicate data with R and Quarto.
+1.  Coding assignment 1 (30%)
+2.  Coding assigntment 2 (30%)
+3.  Final project (40%)
 
 ### Coding Assignments
 
@@ -186,10 +184,7 @@ The grading scale below maps your final point or percentage total to your final 
 | 77-79  |      C+      |
 | 74-76  |      C       |
 | 70-73  |      C-      |
-| 67-69  |      D+      |
-| 64-66  |      D       |
-| 60-63  |      D-      |
-|  \<59  |      F       |
+|  \<70  |      F       |
 
 ## Late Work
 
@@ -274,6 +269,43 @@ The Center provides assistance and referral to address students' personal, socia
 ## Religious Observances
 
 As members of the GW community, you have the right to observe religious holidays. University policy requires that students notify their instructors during the first week of the semester if they plan to be absent from class on days of religious observance. For further details, please consult [the university policy on religious holiday observance](http://registrar.gwu.edu/university-policies#holidays).
+
+## Emergency Preparedness and Response Procedures
+
+The University has asked all faculty to inform students of these procedures, prepared by the GW Office of Public Safety and Emergency Management in collaboration with the Office of the Executive Vice President for Academic Affairs.
+
+### To Report an Emergency or Suspicious Activity
+
+Call the University Police Department at 202-994-6111 (Foggy Bottom) or 202-242-6111 (Mount Vernon).
+
+### Shelter in Place – General Guidance
+
+Although it is unlikely that we will ever need to shelter in place, it is helpful to know what to do just in case. No matter where you are, the basic steps of shelter in place will generally remain the same.
+
+- If you are inside, stay where you are unless the building you are in is affected. If it is affected, you should evacuate. If you are outdoors, proceed into the closest building or follow instructions from emergency personnel on the scene.
+- Locate an interior room to shelter inside. If possible, it should be above ground level and have the fewest number of windows. If sheltering in a room with windows, move away from the windows. If there is a large group of people inside a particular building, several rooms may be necessary.
+- Shut and lock all windows (for a tighter seal) and close exterior doors.
+- Turn off air conditioners, heaters, and fans. Close vents to ventilation systems as you are able. (University staff will turn off ventilation systems as quickly as possible).
+- Make a list of the people with you and ask someone to call the list in to UPD so they know where you are sheltering and who is with you. If only students are present, one of the students should call in the list.
+- Await further instructions. If possible, visit [GW Campus Advisories](https://campusadvisories.gwu.edu/) for incident updates or call the GW Information Line 202-994-5050.
+- Make yourself comfortable and look after one other. You will get word as soon as it is safe to come out.
+
+### Evacuation
+
+An evacuation will be considered if the building we are in is affected or we must move to a location of greater safety. We will always evacuate if the fire alarm sounds. In the event of an evacuation, please gather your personal belongings quickly (purse, keys, GWorld card, etc.) and proceed to the nearest exit. Every classroom has a map at the door designating both the shortest egress and an alternate egress. Anyone who is physically unable to walk down the stairs should wait in the stairwell, behind the closed doors. Firemen will check the stairwells upon entering the building. Once you have evacuated the building, proceed to our primary rendezvous location: the court yard area between the GW Hospital and Ross Hall. In the event that this location is unavailable, we will meet on the ground level of the Visitors Parking Garage (I Street entrance, at 22nd Street). From our rendezvous location, we will await instructions to re-enter the School.
+
+### Alert DC
+
+Alert DC provides free notification by e-mail or text message during an emergency. Visit [GW Campus Advisories](https://campusadvisories.gwu.edu/) for a link and instructions on how to sign up for alerts pertaining to GW. If you receive an
+Alert DC notification during class, you are encouraged to share the information immediately.
+
+### GW Alert
+
+GW Alert provides popup notification to desktop and laptop computers during an emergency. In the event that we receive an alert to the computer in our classroom, we will follow the instructions given. You are also encouraged to download this application to your personal computer. Visit [GW Campus Advisories](https://campusadvisories.gwu.edu/) to learn how.
+
+### Additional Information
+
+Additional information about emergency preparedness and response at GW or the University’s operating status can be found on GW Campus Advisories or by calling the GW Information Line at 202-994-5050.
 
 ## Key Dates
 

@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.533">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>IAFF 6502/6505 Course Schedule - Module 1.1</title>
+
+
+<title>IAFF 6502/6505 Creating Data Rich Reports with Quarto - Getting Started</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,41 +20,8 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
+
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
@@ -60,8 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../modules/module-1.2.html" rel="next">
-<link href="../modules/getting-started.html" rel="prev">
-<link href="../images/dataviz6502-logo.png" rel="icon" type="image/png">
+<link href="../project/project-datasets.html" rel="prev">
+<link href="../images/drr6502-img.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -72,13 +42,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -87,43 +64,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
-<meta property="og:title" content="IAFF 6502/6505 Course Schedule - Module 1.1">
-<meta property="og:description" content="Working with Flat Files">
-<meta property="og:image" content="https://dataviz-esia.training/modules/images/dataviz6502-logo.png">
-<meta property="og:site-name" content="Visualizing and Modeling International Politics">
-<meta name="twitter:title" content="IAFF 6502/6505 Course Schedule - Module 1.1">
-<meta name="twitter:description" content="Working with Flat Files">
-<meta name="twitter:image" content="https://dataviz-esia.training/modules/images/dataviz6502-logo.png">
+
+
+<meta property="og:title" content="IAFF 6502/6505 Creating Data Rich Reports with Quarto - Getting Started">
+<meta property="og:description" content="Homepage for Creating Data Rich Reports">
+<meta property="og:image" content="https://quarto.training/modules/images/drr6502-img.png">
+<meta property="og:site_name" content="IAFF 6502/6505 Creating Data Rich Reports with Quarto">
+<meta name="twitter:title" content="IAFF 6502/6505 Creating Data Rich Reports with Quarto - Getting Started">
+<meta name="twitter:description" content="Homepage for Creating Data Rich Reports">
+<meta name="twitter:image" content="https://quarto.training/modules/images/drr6502-img.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
+
 <body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/getting-started.html">Course Modules</a></li><li class="breadcrumb-item"><a href="../modules/module-1.1.html">Module 1.1</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/module-1.1.html">Course Modules</a></li><li class="breadcrumb-item"><a href="../modules/module-1.1.html">Module 1.1</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-center sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../images/dataviz6502-logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
+      <img src="../images/drr6502-logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
       <div class="sidebar-tools-main tools-wide">
-    <a href="https://blackboard.gwu.edu" rel="" title="Blackboard" class="quarto-navigation-tool px-1" aria-label="Blackboard"><i class="bi bi-mortarboard-fill"></i></a>
-    <a href="https://github.com" rel="" title="Github" class="quarto-navigation-tool px-1" aria-label="Github"><i class="bi bi-github"></i></a>
-    <a href="https://posit.co/download/rstudio-desktop" rel="" title="RStudio Desktop" class="quarto-navigation-tool px-1" aria-label="RStudio Desktop"><i class="bi bi-r-project"></i></a>
+    <a href="https://blackboard.gwu.edu" title="Blackboard" class="quarto-navigation-tool px-1" aria-label="Blackboard"><i class="bi bi-mortarboard-fill"></i></a>
+    <a href="https://github.com" title="Github" class="quarto-navigation-tool px-1" aria-label="Github"><i class="bi bi-github"></i></a>
+    <a href="https://posit.co/download/rstudio-desktop" title="RStudio Desktop" class="quarto-navigation-tool px-1" aria-label="RStudio Desktop"><i class="bi bi-r-project"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -139,16 +127,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item sidebar-item-section">
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
- <span class="menu-text">Course information</span></a>
+ <span class="menu-text">Course Information</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../course-syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syllabus</span></a>
@@ -179,81 +167,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
- <span class="menu-text">Materials</span></a>
+ <span class="menu-text">Homework Assignments</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../weeks/week-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1</span></a>
-  </div>
-</li>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../weeks/week-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../weeks/workshop-day1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Workshop Day 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../weeks/workshop-day2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Workshop Day 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../weeks/workshop-day3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Workshop Day 3</span></a>
-  </div>
-</li>
-      </ul>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
- <span class="menu-text">Coding Assignments</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../assignments/coding-assignment-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Coding Assignment 1</span></a>
+ <span class="menu-text">Assignment 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../assignments/coding-assignment-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Coding Assignment 2</span></a>
+ <span class="menu-text">Assignment 2</span></a>
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">Project</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../project/project-assignment.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Project Assignment</span></a>
@@ -266,22 +213,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
  <span class="menu-text">Course Modules</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../modules/getting-started.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Getting Started</span></a>
-  </div>
-</li>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../modules/module-1.1.html" class="sidebar-item-text sidebar-link active">
@@ -296,38 +237,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/module-2.1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Module 2.1</span></a>
+  <a href="../modules/module-1.3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 1.3</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/module-2.2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Module 2.2</span></a>
+  <a href="../modules/module-1.4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 1.4</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module-1.5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 1.5</span></a>
   </div>
 </li>
       </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">Workshop Schedule</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/workshop-day1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop Day 1</span></a>
+  </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/workshop-day2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop Day 2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#downloading-world-bank-data-into-a-flat-file" id="toc-downloading-world-bank-data-into-a-flat-file" class="nav-link" data-scroll-target="#downloading-world-bank-data-into-a-flat-file">Downloading World Bank data into a flat file</a></li>
-  <li><a href="#reading-data-from-a-flat-file" id="toc-reading-data-from-a-flat-file" class="nav-link" data-scroll-target="#reading-data-from-a-flat-file">Reading data from a flat file</a></li>
-  <li><a href="#reshaping-data" id="toc-reshaping-data" class="nav-link" data-scroll-target="#reshaping-data">Reshaping data</a></li>
-  <li><a href="#truncating-strings-and-changing-variable-types" id="toc-truncating-strings-and-changing-variable-types" class="nav-link" data-scroll-target="#truncating-strings-and-changing-variable-types">Truncating strings and changing variable types</a></li>
-  <li><a href="#cleaning-variable-names" id="toc-cleaning-variable-names" class="nav-link" data-scroll-target="#cleaning-variable-names">Cleaning variable names</a></li>
-  </ul><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/eteitelbaum/dataviz4ia/edit/main/modules/module-1.1.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/eteitelbaum/dataviz4ia/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+  <li><a href="#sec-rstudio-setup" id="toc-sec-rstudio-setup" class="nav-link active" data-scroll-target="#sec-rstudio-setup">R and RStudio</a></li>
+  <li><a href="#sec-quarto-setup" id="toc-sec-quarto-setup" class="nav-link" data-scroll-target="#sec-quarto-setup">Quarto</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/eteitelbaum/data-rich-reports/edit/main/modules/module-1.1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/data-rich-reports/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">Module 1.1</h1>
-<p class="subtitle lead">Working with Flat Files</p>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/module-1.1.html">Course Modules</a></li><li class="breadcrumb-item"><a href="../modules/module-1.1.html">Module 1.1</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Getting Started</h1>
 </div>
 
 
@@ -340,256 +311,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-</header><div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Prework
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>Install R, R Studio and the Tidyverse collection of packages if you have not done so already (see <a href="../modules/getting-started.html">getting started</a>)</li>
-<li>Install the <code>janitor</code> package (<code>install.packages("janitor")</code>)</li>
-<li>Have a look at the documentation for <a href="https://readr.tidyverse.org/">readr</a>, <a href="https://dplyr.tidyverse.org/">dplyr</a>, <a href="https://tidyr.tidyverse.org/">tidyr</a> and <a href="https://sfirke.github.io/janitor/">janitor</a>
-</li>
-<li>Familiarize yourself with the <a href="https://posit.co/wp-content/uploads/2022/10/data-import.pdf">readr</a>, <a href="https://posit.co/wp-content/uploads/2022/10/data-transformation-1.pdf">dplyr</a> and <a href="https://posit.co/wp-content/uploads/2022/10/tidyr.pdf">tidyr</a> cheatsheets</li>
-<li>Create a new directory/folder in your project folder called “data” where you can store .csv files</li>
-<li>Start a new quarto project called “modules” and generate a quarto document named “module-1.1.qmd” inside of it so that you can code along with me</li>
-</ul>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>In this module, we will be using the <code>readr</code>, <code>tidyr</code> and <code>dplyr</code> packages from the Tidyverse. While we could just load the entire Tidyverse collection of packages (e.g.&nbsp;<code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code>), it is generally better from a <a href="https://stackoverflow.com/questions/50257990/what-is-the-advantage-of-using-librarytidyverse-instead-of-sub-packages">performance standpoint</a> to load the packages individually. Another reason to laod the packages separately is that it is good to be more intentional about which packages we are loading while we are learning them.</p>
-<p>Also, note that in this module we will load the packages as we go along in various code chunks; but it is also possible to load all of the packages you will be using in a Quarto doc or R script in a single “setup” code chunk at the beginning of the file. You will see both workflows represented in this course.</p>
-</div>
-</div>
-<section id="overview" class="level2"><h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>In this module, we are going to work with a “flat file” (.csv) that we will download from the World Bank’s <a href="https://databank.worldbank.org/">Data Bank</a>. We are going to encounter many problems with these data that we will rectify using various R packages that I will introduce along the way. The idea is to take this file in its current state and transform it into a <a href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html">tidy</a> dataset where each column represents a variable, each row represents an observation, and each cell represents a single value.</p>
-</section><section id="downloading-world-bank-data-into-a-flat-file" class="level2"><h2 class="anchored" data-anchor-id="downloading-world-bank-data-into-a-flat-file">Downloading World Bank data into a flat file</h2>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/X9im3Fod5H8" title="Downloading Data from the World Bank" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<p>Go to the World Development Indicators <a href="https://databank.worldbank.org/source/world-development-indicators">portal</a> at the World Bank’s Data Bank.</p>
-<p>Under Countries, select the Countries tab and then select the little check mark ☑️ to select all of the countries. Be sure to select the Countries tab first, though, or you will also be downloading aggregate data for regions and groups of countries.</p>
-<p>Next, under Series, search for “labor force participation” and find labor force participation rates for women ages 15-64 (ILO modeled estimates). Check that series.</p>
-<p>Now go to Time and select the years from the last 50 years. Click Apply Changes, go to Download Options and download as a .csv file. Place the .csv file in the data directory that you created for this module. Save it as “messy_wb_data.csv” or something like that.</p>
-</section><section id="reading-data-from-a-flat-file" class="level2"><h2 class="anchored" data-anchor-id="reading-data-from-a-flat-file">Reading data from a flat file</h2>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/uX89NcpJfQc" title="Reading Data From a Flat File" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<p>Now we are going to read this messy World Bank data into R using the <code><a href="https://rdrr.io/pkg/readr/man/read_delim.html">read_csv()</a></code> function from the <code>readr</code> package. <a href="https://readr.tidyverse.org/">readr</a> is a collection of functions that parses data from a flat file into a <em>tibble</em>, the modern Tidyverse version of a data frame. After we have read the data into R, we are going to have a look at it with the <a href="https://dplyr.tidyverse.org/reference/glimpse.html">glimpse()</a> function from the <a href="https://dplyr.tidyverse.org/index.html">dplyr</a> package.</p>
-<p><code><a href="https://rdrr.io/pkg/pillar/man/glimpse.html">glimpse()</a></code> shows us a list of the columns in the along with their type (e.g.&nbsp;character, double, etc.) and a few rows’ worth of data.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>While comma delimited files are the most common kind of flat file, <code>readr</code> includes functions for parsing files with a wide range of delimiters including tabs (<code><a href="https://rdrr.io/pkg/readr/man/read_delim.html">read_tsv()</a></code>), semicolons (<code><a href="https://rdrr.io/pkg/readr/man/read_delim.html">read_csv2()</a></code>) and white spaces (<code><a href="https://rdrr.io/pkg/readr/man/read_table.html">read_table()</a></code>). There is also a Tidyverse package for reading in Excel files called <a href="https://readxl.tidyverse.org/">readxl</a>.</p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load packages</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span> </span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span> </span>
-<span></span>
-<span><span class="co"># Read data from csv file into an object called "wb_data_messy"</span></span>
-<span><span class="va">wb_data_messy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/readr/man/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/messy_wb_data.csv"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># View the data</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/pillar/man/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">wb_data_messy</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 222
-Columns: 54
-$ `Country Name`  &lt;chr&gt; "Afghanistan", "Albania", "Algeria", "American Samoa",…
-$ `Country Code`  &lt;chr&gt; "AFG", "ALB", "DZA", "ASM", "AND", "AGO", "ATG", "ARG"…
-$ `Series Name`   &lt;chr&gt; "Labor force participation rate, female (% of female p…
-$ `Series Code`   &lt;chr&gt; "SL.TLF.ACTI.FE.ZS", "SL.TLF.ACTI.FE.ZS", "SL.TLF.ACTI…
-$ `1972 [YR1972]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
-$ `1973 [YR1973]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
-$ `1974 [YR1974]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
-$ `1975 [YR1975]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
-$ `1976 [YR1976]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
-$ `1977 [YR1977]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
-$ `1978 [YR1978]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
-$ `1979 [YR1979]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
-$ `1980 [YR1980]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
-$ `1981 [YR1981]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
-$ `1982 [YR1982]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
-$ `1983 [YR1983]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
-$ `1984 [YR1984]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
-$ `1985 [YR1985]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
-$ `1986 [YR1986]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
-$ `1987 [YR1987]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
-$ `1988 [YR1988]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
-$ `1989 [YR1989]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
-$ `1990 [YR1990]` &lt;chr&gt; "15.83", "60.63", "12.31", "..", "..", "76.73", "..", …
-$ `1991 [YR1991]` &lt;chr&gt; "15.89", "65.54", "12.33", "..", "..", "76.69", "..", …
-$ `1992 [YR1992]` &lt;chr&gt; "15.92", "66.56", "12.37", "..", "..", "76.66", "..", …
-$ `1993 [YR1993]` &lt;chr&gt; "15.91", "65.01", "12.41", "..", "..", "76.68", "..", …
-$ `1994 [YR1994]` &lt;chr&gt; "15.88", "63.64", "12.47", "..", "..", "76.64", "..", …
-$ `1995 [YR1995]` &lt;chr&gt; "15.92", "61.59", "12.56", "..", "..", "76.57", "..", …
-$ `1996 [YR1996]` &lt;chr&gt; "15.75", "60.28", "12.64", "..", "..", "76.55", "..", …
-$ `1997 [YR1997]` &lt;chr&gt; "15.59", "61.91", "12.59", "..", "..", "76.53", "..", …
-$ `1998 [YR1998]` &lt;chr&gt; "15.47", "60.62", "12.59", "..", "..", "76.53", "..", …
-$ `1999 [YR1999]` &lt;chr&gt; "15.4", "58.87", "12.63", "..", "..", "76.51", "..", "…
-$ `2000 [YR2000]` &lt;chr&gt; "15.35", "57.89", "12.71", "..", "..", "76.49", "..", …
-$ `2001 [YR2001]` &lt;chr&gt; "15.5", "56.71", "12.85", "..", "..", "76.48", "..", "…
-$ `2002 [YR2002]` &lt;chr&gt; "15.7", "56.06", "13.02", "..", "..", "76.44", "..", "…
-$ `2003 [YR2003]` &lt;chr&gt; "15.92", "55.3", "13.24", "..", "..", "76.41", "..", "…
-$ `2004 [YR2004]` &lt;chr&gt; "16.13", "54.57", "13.5", "..", "..", "76.38", "..", "…
-$ `2005 [YR2005]` &lt;chr&gt; "16.33", "53.88", "13.79", "..", "..", "76.36", "..", …
-$ `2006 [YR2006]` &lt;chr&gt; "16.12", "53.43", "14.12", "..", "..", "76.39", "..", …
-$ `2007 [YR2007]` &lt;chr&gt; "15.91", "53.07", "14.47", "..", "..", "76.42", "..", …
-$ `2008 [YR2008]` &lt;chr&gt; "15.74", "52.78", "14.87", "..", "..", "76.46", "..", …
-$ `2009 [YR2009]` &lt;chr&gt; "15.65", "51.57", "15.31", "..", "..", "76.53", "..", …
-$ `2010 [YR2010]` &lt;chr&gt; "15.65", "52.75", "15.49", "..", "..", "76.59", "..", …
-$ `2011 [YR2011]` &lt;chr&gt; "16", "60.59", "16.45", "..", "..", "76.67", "..", "55…
-$ `2012 [YR2012]` &lt;chr&gt; "16.44", "55.1", "17.48", "..", "..", "76.73", "..", "…
-$ `2013 [YR2013]` &lt;chr&gt; "17.42", "50.58", "18.29", "..", "..", "76.79", "..", …
-$ `2014 [YR2014]` &lt;chr&gt; "18.46", "50.18", "16.68", "..", "..", "76.83", "..", …
-$ `2015 [YR2015]` &lt;chr&gt; "19.55", "54.05", "17.5", "..", "..", "76.87", "..", "…
-$ `2016 [YR2016]` &lt;chr&gt; "20.7", "56.4", "18.33", "..", "..", "76.9", "..", "56…
-$ `2017 [YR2017]` &lt;chr&gt; "21.91", "55.54", "19.19", "..", "..", "76.91", "..", …
-$ `2018 [YR2018]` &lt;chr&gt; "22.32", "59.12", "18.95", "..", "..", "76.9", "..", "…
-$ `2019 [YR2019]` &lt;chr&gt; "22.74", "61.46", "18.7", "..", "..", "76.88", "..", "…
-$ `2020 [YR2020]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
-$ `2021 [YR2021]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …</code></pre>
-</div>
-</div>
-</section><section id="reshaping-data" class="level2"><h2 class="anchored" data-anchor-id="reshaping-data">Reshaping data</h2>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/sweUA0L8G3Y" title="Reshaping Data With pivot_longer()" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<p>There are a few things about the data here that make it messy. First, in order for the data to be tidy, we want each column to represent a variable and each row to represent an observation.</p>
-<p>But here we see the reverse: the data are in <em>wide form</em>, meaning that each column represents a year and each row represents a country. This entails that each row represents <em>multiple</em> observations in that we have data for multiple years for each row.</p>
-<p>To rectify this, we need to <em>reshape</em> the data from wide form to <em>long form</em>. For this, we need the <a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a> function from the <a href="https://tidyr.tidyverse.org/index.html">tidyr</a> package.</p>
-<p>The <code><a href="https://rdrr.io/pkg/tidyr/man/pivot_longer.html">pivot_longer()</a></code> function takes three basic arguments:</p>
-<ul>
-<li>
-<strong>cols</strong> - which columns you want to pivot</li>
-<li>
-<strong>names_to</strong> - the name of the column where the old column names are going to</li>
-<li>
-<strong>values_to</strong> - the name of the column where the values are going to</li>
-</ul>
-<p>In our case, we want to reshape all of the year columns and have the years represented in the rows. We want the newly created column to be called “year” and the values are going to represent the data on female labor force participation we downloaded (flfp).</p>
-<div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load tidyr</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Reshape the data</span></span>
-<span><span class="va">wb_data</span> <span class="op">&lt;-</span> <span class="va">wb_data_messy</span> <span class="op">|&gt;</span> <span class="co"># take wb_data_messy, and put it in wb_data, but first...</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/tidyr/man/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>             <span class="co"># pivot the data from wide to long form</span></span>
-<span>    cols <span class="op">=</span> <span class="va">`1972 [YR1972]`</span><span class="op">:</span> <span class="va">`2021 [YR2021]`</span>, <span class="co"># columns to pivot</span></span>
-<span>    names_to <span class="op">=</span> <span class="st">"year"</span>, <span class="co"># name the first column "year"</span></span>
-<span>    values_to <span class="op">=</span> <span class="st">"flfp"</span> <span class="co"># name the second column "flfp"</span></span>
-<span>  <span class="op">)</span> </span>
-<span></span>
-<span><span class="co"># View the data</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/pillar/man/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">wb_data</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 11,100
-Columns: 6
-$ `Country Name` &lt;chr&gt; "Afghanistan", "Afghanistan", "Afghanistan", "Afghanist…
-$ `Country Code` &lt;chr&gt; "AFG", "AFG", "AFG", "AFG", "AFG", "AFG", "AFG", "AFG",…
-$ `Series Name`  &lt;chr&gt; "Labor force participation rate, female (% of female po…
-$ `Series Code`  &lt;chr&gt; "SL.TLF.ACTI.FE.ZS", "SL.TLF.ACTI.FE.ZS", "SL.TLF.ACTI.…
-$ year           &lt;chr&gt; "1972 [YR1972]", "1973 [YR1973]", "1974 [YR1974]", "197…
-$ flfp           &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", "…</code></pre>
-</div>
-</div>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-The Pipe Operator
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>For our <code>pivot-longer()</code> call we used R’s native <a href="https://r4ds.hadley.nz/workflow-style.html#sec-pipes">pipe operator</a>, e.g.&nbsp;<code>|&gt;</code>. Pipes tell R to do something to the object that they are attached to. In this case, we are telling R to apply <code><a href="https://rdrr.io/pkg/tidyr/man/pivot_longer.html">pivot_longer()</a></code> to <code>wb_data</code>. The alternative way of writing this code would be to include the data as the first argument in the function, e.g.&nbsp;<code>pivot_longer(wb_data, cols = ..., names_to = ... , values_to = ...)</code>. As you will see, pipe operators enable us to string together multiple functions in a convenient way to transform our data.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Spaces in Variable Names
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Notice that when we specify the years in our <code><a href="https://rdrr.io/pkg/tidyr/man/pivot_longer.html">pivot_longer()</a></code> call we encapsulate them in backticks (``). This is because the years, as they were imported from the WDI dataset, have spaces in them. Typically we want to avoid this scenario by writing our variable names in <a href="https://en.wikipedia.org/wiki/Snake_case"><em>snake_case</em></a>.</p>
-</div>
-</div>
-</section><section id="truncating-strings-and-changing-variable-types" class="level2"><h2 class="anchored" data-anchor-id="truncating-strings-and-changing-variable-types">Truncating strings and changing variable types</h2>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/lj_HeZazwIk" title="Truncating Strings and Changing Variable Types" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<p>Now that our data are transposed, we can start to work on some other key issues. Notice that the year is stored in the weird way in which it was imported–as a character (or string) with both the year and the year in brackets, e.g.&nbsp;1972 [YR1972]. Notice that <code>flfp</code> is also stored as a character whereas it should be numeric.</p>
-<p>To fix this, we will use the <a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a> and <code><a href="https://rdrr.io/pkg/dplyr/man/mutate_all.html">mutate_at()</a></code> functions from <code>dplyr</code>. <code><a href="https://rdrr.io/pkg/dplyr/man/mutate.html">mutate()</a></code> is used to transform variables and to create new ones while <code><a href="https://rdrr.io/pkg/dplyr/man/mutate_all.html">mutate_at()</a></code> allow us to transform multiple columns at once.</p>
-<p>First we call <code><a href="https://rdrr.io/pkg/dplyr/man/mutate.html">mutate()</a></code> along with <a href="https://www.statology.org/substring-function-in-r/">substring()</a> to truncate the year variable to only include the first four characters of the string. Then we call <code><a href="https://rdrr.io/pkg/dplyr/man/mutate_all.html">mutate_at()</a></code> along with <code>as.numeric</code> to transform <code>year</code> and <code>flfp</code> to numeric variables.</p>
-<div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Fix year and flfp</span></span>
-<span><span class="va">wb_data</span> <span class="op">&lt;-</span> <span class="va">wb_data</span> <span class="op">|&gt;</span> <span class="co"># replace wb_data with a modified version of the dataframe </span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/substr.html">substring</a></span><span class="op">(</span><span class="va">year</span>, <span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># truncate year (keep first four characters)</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate_all.html">mutate_at</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"year"</span>, <span class="st">"flfp"</span><span class="op">)</span>, <span class="va">as.numeric</span><span class="op">)</span> <span class="co"># change year and flfp to numeric</span></span>
-<span></span>
-<span><span class="co"># View the data</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/pillar/man/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">wb_data</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 11,100
-Columns: 6
-$ `Country Name` &lt;chr&gt; "Afghanistan", "Afghanistan", "Afghanistan", "Afghanist…
-$ `Country Code` &lt;chr&gt; "AFG", "AFG", "AFG", "AFG", "AFG", "AFG", "AFG", "AFG",…
-$ `Series Name`  &lt;chr&gt; "Labor force participation rate, female (% of female po…
-$ `Series Code`  &lt;chr&gt; "SL.TLF.ACTI.FE.ZS", "SL.TLF.ACTI.FE.ZS", "SL.TLF.ACTI.…
-$ year           &lt;dbl&gt; 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1…
-$ flfp           &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</code></pre>
-</div>
-</div>
-</section><section id="cleaning-variable-names" class="level2"><h2 class="anchored" data-anchor-id="cleaning-variable-names">Cleaning variable names</h2>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/UA7cwEIECZg" title="Clean Variable Names with Janitor" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<p>The last thing we are going to do is to fix the variable names. Specifically, we want to remove the spaces from the remaining variables and conver them from title case to snake case. To do this, we will use the <code><a href="https://rdrr.io/pkg/janitor/man/clean_names.html">clean_names()</a></code> function from the <code>janitor</code> package.</p>
-<p>As a final step, we can export our clean data to a new .csv file with the <code><a href="https://rdrr.io/r/utils/write.table.html">write.csv()</a></code> function from <code>readr</code>.</p>
-<div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load janitor</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sfirke/janitor">janitor</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Apply clean_names() to wb_data, store in new data frame called wb_data_clean</span></span>
-<span><span class="va">wb_data_clean</span> <span class="op">&lt;-</span> <span class="va">wb_data</span> <span class="op">|&gt;</span>  </span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/janitor/man/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span> </span>
-<span></span>
-<span><span class="co"># Write wb_data_clean to a csv file</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/readr/man/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">wb_data_clean</span>, <span class="st">"data/wb_data_clean.csv"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># View the data</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/pillar/man/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">wb_data_clean</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 11,100
-Columns: 6
-$ country_name &lt;chr&gt; "Afghanistan", "Afghanistan", "Afghanistan", "Afghanistan…
-$ country_code &lt;chr&gt; "AFG", "AFG", "AFG", "AFG", "AFG", "AFG", "AFG", "AFG", "…
-$ series_name  &lt;chr&gt; "Labor force participation rate, female (% of female popu…
-$ series_code  &lt;chr&gt; "SL.TLF.ACTI.FE.ZS", "SL.TLF.ACTI.FE.ZS", "SL.TLF.ACTI.FE…
-$ year         &lt;dbl&gt; 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 198…
-$ flfp         &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</code></pre>
-</div>
-</div>
+
+</header>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+<section id="sec-rstudio-setup" class="level2">
+<h2 class="anchored" data-anchor-id="sec-rstudio-setup">R and RStudio</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/eimM6pNkYjE" title="Getting Started with R and R Studio" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>All of our work for this course will be done in the R language and we will be working with R in RStudio. RStudio is an integrated development environment (IDE) develop by a company named Posit. Please be sure to download and install the most recent versions of R and R Studio from Posit’s <a href="https://posit.co/download/rstudio-desktop/">website</a>.</p>
+<p>It is a good idea to periodically update R and RStudio. RStudio will prompt you when it is time to update and you can follow the same process of downloading and installing from the Posit website that we just did here. For R, there are a number of ways to do it, but the easiest is to use packages like <a href="https://www.r-project.org/nosvn/pandoc/installr.html">installr</a> for Windows and <a href="https://github.com/AndreaCirilloAC/updateR">updateR</a> for Mac. Here is a good <a href="https://www.linkedin.com/pulse/3-methods-update-r-rstudio-windows-mac-woratana-ngarmtrakulchol/">blog post</a> that walks you through the steps of how to update R using these packages. I usually update R once a semester.</p>
+<p>We are going to be using a number of R packages throughout the course. One essential set of packages are those that comprise the <a href="https://www.tidyverse.org/">Tidyverse</a>, but especially <code>readr</code>, <code>dplyr</code>, <code>ggplot2</code> and <code>tidyr</code>. You can install the entire Tidyverse collection of packages by typing <code>install.packages("tidyverse")</code> in your console. We will talk about these packages in detail as we go through the course, but have a look at this <a href="https://www.tidyverse.org/packages/#import">basic description</a> now to gain some basic familiarity.</p>
+<p>Another thing that you really want to do is to make sure that you have the native pipe operator (<code>|&gt;</code>) enabled. In RStudio, go to Tools&gt;Global Options, then go to Code and select “Use native pipe operator.”</p>
+<p>While you are here, you can also go to Appearance to select a different editor theme or to Pane Layout to change how the four panes in R Studio are organized. Next, familiarize yourself with how to expand and minimize the four windows. The most important window that I want to highlight here is the source window. This is where we are going to be working most of the time in this course. And if I tell you to send your source code, I mean to send the file that you are working on in this window. This could be a Quarto document, an R script or an <code>app.R</code> file for a Shiny app.</p>
+<p>The next window is the Console and there we also see tabs for Terminal and Background Jobs. The console is where you can run R code one line at a time. The terminal is relevant for more advanced users and we will make some use of it when we talk about publishing Quarto documents. Background Jobs is going to be helpful when we want troubleshoot a Quarto document that is not rendering properly.</p>
+<p>From there, the next pane we want to explore is Environment, History, etc. Environment tells us what files are currently available to us. The other important tab here is Git which will be where we push things to GitHub. You will be using this a lot in the course.</p>
+<p>Finally, we see a pane with Files, Plots, Packages etc. Files tells us what files are in our project folder and enables us to copy, and delete files associated with our project. Plots is a window for viewing our visualizations. And Packages shows us what packages are available and loaded into our environment.</p>
+<p>Before you move on to the next section, take some time to familiarize yourself with the various user-friendly buttons and shortcuts available to you like the drop down menu for the pane layout, a spell checker, a button for inserting a code chunk and other features that you can play around with.</p>
+</section>
+<section id="sec-quarto-setup" class="level2">
+<h2 class="anchored" data-anchor-id="sec-quarto-setup">Quarto</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/6QN9ZYURDFg" title="Your First Quarto Document" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>Once you have R, R Studio and Quarto installed, you are ready to start integrating text and code with <a href="https://quarto.org/">Quarto</a>. Quarto is an open source publishing platform that enables you to integrate text with code. If you have used <a href="https://rmarkdown.rstudio.com/">R Markdown</a> before then Quarto will look familiar to you because Quarto is the next generation of R Markdown.</p>
+<p>RStudio comes with a version of Quarto already installed, but it can be useful to install the most recent version separately and because doing so will allow you to use Quarto with another IDE like VS Code. You can install the most recent version of Quarto by visiting <a href="https://quarto.org/docs/get-started/">this page</a> and selecting the version for your operating system.</p>
+<p>Now take a little time to create a Quarto project in R Studio and make sure everything is working properly. But before you get started, create a new folder(directory) for this course on your computer somewhere. Once that is done, go to File &gt; New Project. Then select Quarto Project and name the project something like “test-project” in the Directory name field. Next, select Browse and navigate to the folder that you created for this course. Select Create Project.</p>
+<p>You will notice that in your new project folder there is a file with an .Rproj extension. The .Rproj file is what tells RStudio which files are associated with the project and it obviates the need to set the working directory. It also makes it possible to share the folder with anyone who is running R and RStudio and have them run your code without having to set a working directory. This is what we refer to as a <a href="https://www.tidyverse.org/blog/2017/12/workflow-vs-script/">project-based workflow</a> and we will use it for every assignment in this class.</p>
+<p>Now try rendering the document with the Render toggle button. By default, Quarto renders an .html file that it will open in a browser and save to your project folder.</p>
+<p>Next we want to try rendering a .pdf document. To do this, we have to install <a href="https://yihui.org/tinytex/">tinytex</a>, a lightweight version of LaTeX. To do this, go to the Terminal and type <code>quarto install tinytex</code>. Now, change the format from <code>html</code> to <code>pdf</code> by inserting <code>format: pdf</code> in the YAML header. Then render the document again. A .pdf document should open up.</p>
+<p>Now take a few minutes and try changing more of the code in the YAML header. You can try changing the title, adding a subtitle (<code>subtitle:</code>) or changing the <a href="https://quarto.org/docs/computations/execution-options.html">execution options</a>. By default, Quarto uses the <a href="https://quarto.org/docs/visual-editor/">visual editor</a> but behind the scenes it is using Markdown. Try and edit some text using the toggle buttons available in the visual editor and then switch to Source to view the underlying Markdown code. Play with the R code chunks embedded in the document or try adding new code chunks.</p>
+<p>You may already have some experience writing in Markdown, which is a lightweight markup language that enables you to format plaintext files. If you have not used Markdown, or if your memory is hazy, don’t worry: it is really easy to learn. Have a look at this Markdown <a href="https://www.markdownguide.org/cheat-sheet/">cheat sheet</a> and try to familiarize yourself with its basic syntax. Finally, take some time to get familiar with the <a href="https://quarto.org/docs/guide/">Guide</a> and <a href="https://quarto.org/docs/reference/">Reference</a> sections of the Quarto website. Then take a look at the <a href="https://quarto.org/docs/gallery/">gallery</a> so that you can get an idea of the kinds of things you can produce with Quarto.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -630,6 +385,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -698,13 +480,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -783,10 +567,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/quarto\.training");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -796,8 +597,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -810,6 +620,120 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -853,6 +777,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -878,6 +803,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -935,41 +886,36 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp("https:\/\/dataviz-esia\.training");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-      }
-    }
 });
-</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="../modules/getting-started.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Getting Started</span>
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../project/project-datasets.html" class="pagination-link  aria-label=" datasets"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Datasets</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../modules/module-1.2.html" class="pagination-link">
+      <a href="../modules/module-1.2.html" class="pagination-link" aria-label="Module 1.2">
         <span class="nav-page-text">Module 1.2</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
-    <div class="nav-footer-left">© Copyright 2023, <a href="https://emmanuel.teitelbaum.com">Emmanuel Teitelbaum</a></div>   
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2024, <a href="https://emmanuel.teitelbaum.com">Emmanuel Teitelbaum</a></p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
-    </div>
-    <div class="nav-footer-right">This page is built with <a href="https://quarto.org/">Quarto</a>. 👷🛠️</div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/eteitelbaum/data-rich-reports/edit/main/modules/module-1.1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/data-rich-reports/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This page is built with <a href="https://quarto.org/">Quarto</a>. 👷🛠️</p>
+</div>
   </div>
 </footer>
+
+
 
 
 </body></html>

@@ -1,175 +1,51 @@
 ---
-title: "Module 1.1"
-subtitle: "Working with Flat Files"
-format: 
-  html:
-    code-link: true
-highlight-style: atom-one
+title: "Getting Started"
+format: html
 execute: 
   echo: true
   message: false
   warning: false
 ---
 
-::: {.callout-tip}
-## Prework
+## R and RStudio {#sec-rstudio-setup}
 
-- Install R, R Studio and the Tidyverse collection of packages if you have not done so already (see [getting started](/modules/getting-started.html))
-- Install the `janitor` package (`install.packages("janitor")`)
-- Have a look at the documentation for [readr](https://readr.tidyverse.org/), [dplyr](https://dplyr.tidyverse.org/), [tidyr](https://tidyr.tidyverse.org/) and [janitor](https://sfirke.github.io/janitor/)
-- Familiarize yourself with the [readr](https://posit.co/wp-content/uploads/2022/10/data-import.pdf), [dplyr](https://posit.co/wp-content/uploads/2022/10/data-transformation-1.pdf) and [tidyr](https://posit.co/wp-content/uploads/2022/10/tidyr.pdf) cheatsheets
-- Create a new directory/folder in your project folder called "data" where you can store .csv files
-- Start a new quarto project called "modules" and generate a quarto document named "module-1.1.qmd" inside of it so that you can code along with me
-:::
+{{< video https://youtu.be/eimM6pNkYjE title='Getting Started with R and R Studio' >}}
 
-::: {.callout-note} 
+All of our work for this course will be done in the R language and we will be working with R in RStudio. RStudio is an integrated development environment (IDE) develop by a company named Posit. Please be sure to download and install the most recent versions of R and R Studio from Posit's [website](https://posit.co/download/rstudio-desktop/).
 
-In this module, we will be using the `readr`, `tidyr` and `dplyr` packages from the Tidyverse. While we could just load the entire Tidyverse collection of packages (e.g. `library(tidyverse)`), it is generally better from a [performance standpoint](https://stackoverflow.com/questions/50257990/what-is-the-advantage-of-using-librarytidyverse-instead-of-sub-packages) to load the packages individually. Another reason to laod the packages separately is that it is good to be more intentional about which packages we are loading while we are learning them. 
+It is a good idea to periodically update R and RStudio. RStudio will prompt you when it is time to update and you can follow the same process of downloading and installing from the Posit website that we just did here. For R, there are a number of ways to do it, but the easiest is to use packages like [installr](https://www.r-project.org/nosvn/pandoc/installr.html) for Windows and [updateR](https://github.com/AndreaCirilloAC/updateR) for Mac. Here is a good [blog post](https://www.linkedin.com/pulse/3-methods-update-r-rstudio-windows-mac-woratana-ngarmtrakulchol/) that walks you through the steps of how to update R using these packages. I usually update R once a semester.
 
-Also, note that in this module we will load the packages as we go along in various code chunks; but it is also possible to load all of the packages you will be using in a Quarto doc or R script in a single "setup" code chunk at the beginning of the file. You will see both workflows represented in this course.
-:::
+We are going to be using a number of R packages throughout the course. One essential set of packages are those that comprise the [Tidyverse](https://www.tidyverse.org/), but especially `readr`, `dplyr`, `ggplot2` and `tidyr`. You can install the entire Tidyverse collection of packages by typing `install.packages("tidyverse")` in your console. We will talk about these packages in detail as we go through the course, but have a look at this [basic description](https://www.tidyverse.org/packages/#import) now to gain some basic familiarity. 
 
+Another thing that you really want to do is to make sure that you have the native pipe operator (`|>`) enabled. In RStudio, go to Tools>Global Options, then go to Code and select "Use native pipe operator." 
 
-## Overview
+While you are here, you can also go to Appearance to select a different editor theme or to Pane Layout to change how the four panes in R Studio are organized. Next, familiarize yourself with how to expand and minimize the four windows. The most important window that I want to highlight here is the source window. This is where we are going to be working most of the time in this course. And if I tell you to send your source code, I mean to send the file that you are working on in this window. This could be a Quarto document, an R script or an `app.R` file for a Shiny app. 
 
-In this module, we are going to work with a "flat file" (.csv) that we will download from the World Bank's [Data Bank](https://databank.worldbank.org/). We are going to encounter many problems with these data that we will rectify using various R packages that I will introduce along the way. The idea is to take this file in its current state and transform it into a [tidy](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html) dataset where each column represents a variable, each row represents an observation, and each cell represents a single value.
+The next window is the Console and there we also see tabs for Terminal and Background Jobs. The console is where you can run R code one line at a time. The terminal is relevant for more advanced users and we will make some use of it when we talk about publishing Quarto documents. Background Jobs is going to be helpful when we want troubleshoot a Quarto document that is not rendering properly.  
 
+From there, the next pane we want to explore is Environment, History, etc. Environment tells us what files are currently available to us. The other important tab here is Git which will be where we push things to GitHub. You will be using this a lot in the course. 
 
-## Downloading World Bank data into a flat file
+Finally, we see a pane with Files, Plots, Packages etc. Files tells us what files are in our project folder and enables us to copy, and delete files associated with our project. Plots is a window for viewing our visualizations. And Packages shows us what packages are available and loaded into our environment.  
 
-{{< video https://youtu.be/X9im3Fod5H8 title="Downloading Data from the World Bank" >}}
+Before you move on to the next section, take some time to familiarize yourself with the various user-friendly buttons and shortcuts available to you like the drop down menu for the pane layout, a spell checker, a button for inserting a code chunk and other features that you can play around with. 
 
-Go to the World Development Indicators [portal](https://databank.worldbank.org/source/world-development-indicators) at the World Bank's Data Bank.
+## Quarto {#sec-quarto-setup}
 
-Under Countries, select the Countries tab and then select the little check mark ☑️ to select all of the countries. Be sure to select the Countries tab first, though, or you will also be downloading aggregate data for regions and groups of countries.
+{{< video https://youtu.be/6QN9ZYURDFg title='Your First Quarto Document' >}}
 
-Next, under Series, search for "labor force participation" and find labor force participation rates for women ages 15-64 (ILO modeled estimates). Check that series. 
+Once you have R, R Studio and Quarto installed, you are ready to start integrating text and code with [Quarto](https://quarto.org/). Quarto is an open source publishing platform that enables you to integrate text with code. If you have used [R Markdown](https://rmarkdown.rstudio.com/) before then Quarto will look familiar to you because Quarto is the next generation of R Markdown.
 
-Now go to Time and select the years from the last 50 years. Click Apply Changes, go to Download Options and download as a .csv file. Place the .csv file in the data directory that you created for this module. Save it as "messy_wb_data.csv" or something like that. 
+RStudio comes with a version of Quarto already installed, but it can be useful to install the most recent version separately and because doing so will allow you to use Quarto with another IDE like VS Code. You can install the most recent version of Quarto by visiting [this page](https://quarto.org/docs/get-started/) and selecting the version for your operating system.
 
+Now take a little time to create a Quarto project in R Studio and make sure everything is working properly. But before you get started, create a new folder(directory) for this course on your computer somewhere. Once that is done, go to File > New Project. Then select Quarto Project and name the project something like "test-project" in the Directory name field. Next, select Browse and navigate to the folder that you created for this course. Select Create Project. 
 
-## Reading data from a flat file
+You will notice that in your new project folder there is a file with an .Rproj extension. The .Rproj file is what tells RStudio which files are associated with the project and it obviates the need to set the working directory. It also makes it possible to share the folder with anyone who is running R and RStudio and have them run your code without having to set a working directory. This is what we refer to as a [project-based workflow](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/) and we will use it for every assignment in this class.
 
-{{< video https://youtu.be/uX89NcpJfQc title='Reading Data From a Flat File' >}}
+Now try rendering the document with the Render toggle button. By default, Quarto renders an .html file that it will open in a browser and save to your project folder. 
 
-Now we are going to read this messy World Bank data into R using the `read_csv()` function from the `readr` package. [readr](https://readr.tidyverse.org/) is a collection of functions that parses data from a flat file into a *tibble*, the modern Tidyverse version of a data frame. After we have read the data  into R, we are going to have a look at it with the [glimpse()](https://dplyr.tidyverse.org/reference/glimpse.html) function from the [dplyr](https://dplyr.tidyverse.org/index.html) package.
+Next we want to try rendering a .pdf document. To do this, we have to install [tinytex](https://yihui.org/tinytex/), a lightweight version of LaTeX.  To do this, go to the Terminal and type `quarto install tinytex`. Now, change the format from `html` to `pdf` by inserting `format: pdf` in the YAML header. Then render the document again. A .pdf document should open up. 
 
-`glimpse()` shows us a list of the columns in the along with their type (e.g. character, double, etc.) and a few rows' worth of data. 
+Now take a few minutes and try changing more of the code in the YAML header. You can try changing the title, adding a subtitle (`subtitle:`) or changing the [execution options](https://quarto.org/docs/computations/execution-options.html). By default, Quarto uses the [visual editor](https://quarto.org/docs/visual-editor/) but behind the scenes it is using Markdown. Try and edit some text using the toggle buttons available in the visual editor and then switch to Source to view the underlying Markdown code. Play with the R code chunks embedded in the document or try adding new code chunks.
 
-::: {.callout-note}
-While comma delimited files are the most common kind of flat file, `readr` includes functions for parsing files with a wide range of delimiters including tabs (`read_tsv()`), semicolons (`read_csv2()`) and white spaces (`read_table()`). There is also a Tidyverse package for reading in Excel files called [readxl](https://readxl.tidyverse.org/).
-:::
-
-```{r}
-#| label: step2
-
-# Load packages
-library(readr) 
-library(dplyr) 
-
-# Read data from csv file into an object called "wb_data_messy"
-wb_data_messy <- read_csv("data/messy_wb_data.csv")
-
-# View the data
-glimpse(wb_data_messy)
-```
-
-
-## Reshaping data
-
-{{< video https://youtu.be/sweUA0L8G3Y title='Reshaping Data With `pivot_longer()`' >}}
-
-There are a few things about the data here that make it messy. First, in order for the data to be tidy, we want each column to represent a variable and each row to represent an observation. 
-
-But here we see the reverse: the data are in *wide form*, meaning that each column represents a year and each row represents a country. This entails that each row represents *multiple* observations in that we have data for multiple years for each row. 
-
-To rectify this, we need to *reshape* the data from wide form to *long form*. For this, we need the [pivot_longer()](https://tidyr.tidyverse.org/reference/pivot_longer.html) function from the [tidyr](https://tidyr.tidyverse.org/index.html) package. 
-
-The `pivot_longer()` function takes three basic arguments: 
-
-- **cols** - which columns you want to pivot
-- **names_to** - the name of the column where the old column names are going to
-- **values_to** - the name of the column where the values are going to 
-
-In our case, we want to reshape all of the year columns and have the years represented in the rows. We want the newly created column to be called "year" and the values are going to represent the data on female labor force participation we downloaded (flfp).
-
-```{r}
-#| label: step3
-
-# Load tidyr
-library(tidyr)
-
-# Reshape the data
-wb_data <- wb_data_messy |> # take wb_data_messy, and put it in wb_data, but first...
-  pivot_longer(             # pivot the data from wide to long form
-    cols = `1972 [YR1972]`: `2021 [YR2021]`, # columns to pivot
-    names_to = "year", # name the first column "year"
-    values_to = "flfp" # name the second column "flfp"
-  ) 
-
-# View the data
-glimpse(wb_data)
-```
-
-::: {.callout-important}
-## The Pipe Operator
-
-For our `pivot-longer()` call we used R's native [pipe operator](https://r4ds.hadley.nz/workflow-style.html#sec-pipes), e.g. `|>`. Pipes tell R to do something to the object that they are attached to. In this case, we are telling R to apply `pivot_longer()` to `wb_data`. The alternative way of writing this code would be to include the data as the first argument in the function, e.g. `pivot_longer(wb_data, cols = ..., names_to = ... , values_to = ...)`. As you will see, pipe operators enable us to string together multiple functions in a convenient way to transform our data. 
-:::
-
-::: {.callout-caution}
-## Spaces in Variable Names
-Notice that when we specify the years in our `pivot_longer()` call we encapsulate them in backticks (``). This is because the years, as they were imported from the WDI dataset, have spaces in them. Typically we want to avoid this scenario by writing our variable names in [*snake_case*](https://en.wikipedia.org/wiki/Snake_case). 
-:::
-
-
-## Truncating strings and changing variable types
-
-{{< video https://youtu.be/lj_HeZazwIk title='Truncating Strings and Changing Variable Types' >}}
-
-Now that our data are transposed, we can start to work on some other key issues. Notice that the year is stored in the weird way in which it was imported--as a character (or string) with both the year and the year in brackets, e.g. 1972 [YR1972]. Notice that `flfp` is also stored as a character whereas it should be numeric. 
-
-To fix this, we will use the [mutate()](https://dplyr.tidyverse.org/reference/mutate.html) and `mutate_at()` functions from `dplyr`. `mutate()` is used to transform variables and to create new ones while `mutate_at()` allow us to transform multiple columns at once. 
-
-First we call `mutate()` along with [substring()](https://www.statology.org/substring-function-in-r/) to truncate the year variable to only include the first four characters of the string. Then we call `mutate_at()` along with `as.numeric` to transform `year` and `flfp` to numeric variables.
-
-```{r}
-#| label: step4
-
-# Fix year and flfp
-wb_data <- wb_data |> # replace wb_data with a modified version of the dataframe 
-  mutate(year = substring(year, 1, 4)) |> # truncate year (keep first four characters)
-  mutate_at(c("year", "flfp"), as.numeric) # change year and flfp to numeric
-
-# View the data
-glimpse(wb_data)
-```
-
-
-## Cleaning variable names
-
-{{< video https://youtu.be/UA7cwEIECZg title='Clean Variable Names with Janitor' >}}
-
-The last thing we are going to do is to fix the variable names. Specifically, we want to remove the spaces from the remaining variables and conver them from title case to snake case. To do this, we will use the `clean_names()` function from the `janitor` package. 
-
-As a final step, we can export our clean data to a new .csv file with the `write.csv()` function from `readr`. 
-
-```{r}
-#| label: step5
-
-# Load janitor
-library(janitor)
-
-# Apply clean_names() to wb_data, store in new data frame called wb_data_clean
-wb_data_clean <- wb_data |>  
-  clean_names() 
-
-# Write wb_data_clean to a csv file
-write_csv(wb_data_clean, "data/wb_data_clean.csv")
-
-# View the data
-glimpse(wb_data_clean)
-```
-
-
-
+You may already have some experience writing in Markdown, which is a lightweight markup language that enables you to format plaintext files. If you have not used Markdown, or if your memory is hazy, don't worry: it is really easy to learn. Have a look at this Markdown [cheat sheet](https://www.markdownguide.org/cheat-sheet/) and try to familiarize yourself with its basic syntax. 
+Finally, take some time to get familiar with the [Guide](https://quarto.org/docs/guide/) and [Reference](https://quarto.org/docs/reference/) sections of the Quarto website. Then take a look at the [gallery](https://quarto.org/docs/gallery/) so that you can get an idea of the kinds of things you can produce with Quarto. 

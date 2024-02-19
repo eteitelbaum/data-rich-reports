@@ -1,1 +1,1 @@
-Sitemap: https://dataviz-esia.training/sitemap.xml
+Sitemap: https://quarto.training/sitemap.xml

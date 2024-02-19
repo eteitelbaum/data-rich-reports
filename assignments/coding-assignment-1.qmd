@@ -4,46 +4,35 @@ title: "Coding Assignment 1"
 
 ## Overview
 
-For this assignment, you are going to download some variables using the `wbstats` and `vdemdata` packages. Then you are going to wrangle these data and merge the two data sets into one and analyze how they relate to women's representation in national parliaments. Do your work for each step in the code chunks provided. Be sure to label your code chunks. 
+For this assignment you are going to create a short essay on trends in democracy and human rights. You can use the data that we worked with in class this week or some data of your choice. You will use R to create a data visualization and then you will write a short essay that interprets the data visualization. You will also incorporate additional elements into your document, such as a figure, a hyperlink, a table, a callout box, a block quote, a footnote or some other element that you learned about in class, in the readings, or in the Quarto documentation. Then you will upload the document to Quarto Pub and shsare the link with the class on the Discord server.
 
-**Submission note**: Accept the invitation on Blackboard to submit this assignment via GitHub.
+Be sure to reference the course material, the [Quarto Guide](https://quarto.org/docs/guide/) and the [Quarto Reference](https://quarto.org/docs/reference/) as you work through this assignment.
 
-## Step 1: Download data from V-Dem (20pts)
+**Submission note**: After you share your link with the class, please also submit your document to me via [this link](https://www.dropbox.com/request/GYaQJOkF9YzQyUGKsVdv).
 
-*Look at the V-Dem [codebook](https://www.v-dem.net/data/reference-documents/). Identify two measures of democracy that are not the polyarchy score that we used in Module 1.2.* 
+## Step 1: Create a quarto project (20pts)
 
-*Try to pick variables that will relate to women's representation and read the description of the variable to make sure that it includes data for a sufficient number of years, e.g. that the data will be somewhat recent. Select the most recent 20 years of data for your analysis.* 
+Create a new project folder and call it `assignment-1`. Once you have your project open, initialize a Quarto document. In the YAML header, include the following information: title, subtitle, author, format, and execute. 
 
-*Make sure to load the packages that you need and `glimpse()` the data or `View()` it to make sure that it downloaded properly.* 
+The title and subtitle should reflect the basic contents of the document and the author is you. Set the execute should be set to echo: false, message: false, and warning: false. Save your Quarto document as `assignment-1.qmd`.
 
-```{r}
 
-```
+## Step 2: Create a data visualization (20 pts)
 
-## Step 2: Download data from the World Bank (20 pts)
+Create a code chunk and within it write the code that you need to produce a data visualization. This will involve loading the packages you need, importing the data and creating the visualization with `ggplot2`. 
 
-*Next, download the variable on women's represenation that we used in Module 1.2 ("SG.GEN.PARL.ZS") and at least one additional measure related to women's empowerment. Go to the [WDI](https://databank.worldbank.org/source/world-development-indicators) site the wb_search() function to identify relevant variables. Download the most recent 20 years of data for your analysis.* 
+If you do not have prior coding experience, you can use the code for one of the visualizations. If you have prior coding experience, you can create a visualization of your choice. Feel free to be as creative as you like! 
 
-*Make sure that the indicator has enough data to conduct your analysis, i.e. that it has data for most countries and years.*
+## Step 3: Incorporate additional elements (20 pts)
 
-```{r}
-
-```
-
-## Step 3: Merge the data (20 pts)
-
-*Now add country codes using the `countrycode` package and merge the data using `left_join()`.* 
-
-```{r}
-
-```
+Incorporate at least three additional elements to your document. This could be a figure (image), a hyperlink, a table, a callout box, a block quote, a footnote or some other element that you learned about in class, in the readings, or in the Quarto documentation. These could be anything you like but should relate to the basic content and narrative of your document.
 
 ## Step 4: Summarize your combined data set (20 pts)
 
-*Use `group_by()`, `summarize()` and `arrange()` to glean insights about your data. For example, how do regions compare on mean values of women's representation and how do these values relate to the values of other variables in your data set? Which countries stand out in terms of women's representation? Etc.* 
+Write text in Markdown that summarizes and interprets the data visualizations and the additional elements you have incorporated. Use level 2 headers to divide your content into separate sections. Use bullet points to create lists. Use asterisks to create emphasis by italicizing and/or bolding your text. You can use any other Markdown formatting that you like to make your document look nice and to communicate your ideas effectively.
 
+## Step 5: Uplaod your document to Quarto pub (20 pts)
 
-## Step 5: Interpret your data (20 pts)
+Following the procedure you leanred in class, upload your HTML document to Quarto pub. Remember that you will need to have a Quarto account to do this and that you need to type the relevant command in the **terminal** (not the console) to upload your document. Once you have your document link, share it with the class on the Discord server.
 
-*Write a paragraph or so relating your insights to the Norris reading about electoral reform and women's representation. Picking a handful of country cases from your data, how does your analysis relate to her arguments about the relevance of electoral systems, statutory quotas, reserved seats or voluntary quotas?* 
 

@@ -1,0 +1,46 @@
+---
+title: "Coding in R"
+subtitle: "A Gentle Introduction"
+format: html
+execute: 
+  echo: true
+  message: false
+  warning: false
+---
+
+## Objects and Functions {#sec-basics-r}
+
+In this section, we will cover the basics of R. We will start by discussing objects and functions. Have a look at the following video and see how much of it makes intuitive sense to you. Then read on for a more detailed explanation.
+
+{{< video https://www.youtube.com/watch?v=hvFBDmT4bdY title='Objects and Functions' >}}
+
+*Objects* are the basic building blocks in R. You can store anything as an object. For example, you can store a number, a character or a data frame, a list, or a function as an object. You can even store the output of a function, like a data visualization, as an object. 
+
+To store an object as a function you use the assignment operator `<-`. For example, to store the number 5 as an object called `x`, you would write `x <- 5`. If you were to store another number as an object, you would use the same assignment operator. For example, `y <- 10`. Then you could take these two objects and do something with them, like add them together. To add `x` and `y` together, you would write `x + y`.
+
+What is a function? A *function* is a set of instructions that you give to R. You can think of a function as a recipe. For example, if you wanted to make a cake, you would follow a recipe. The recipe would tell you what ingredients to use and what steps to take to make the cake. In R, you can use a function to do something, like add two numbers together, or create a data visualization.
+
+To use a function, you write the name of the function, followed by parentheses. Inside the parentheses, you put the input that you want to give to the function. For example, if you wanted to add two numbers together, you would use the `sum` function. You would write `sum(5, 10)`.
+
+## Data Frames {#sec-data-frames}
+
+One item that we will commonly store as an object and perform functions on is a data frame. A *data frame* is a table of data. It is a collection of vectors of the same length. Each vector is a column in the data frame. You can think of a data frame as a spreadsheet. Each column is a variable, and each row is an observation. 
+
+Have a look at the following video to see how data frames work in R: 
+
+{{< video https://www.youtube.com/watch?v=9f2g7RN5N0I title='Data Frames' >}}
+
+Does the concept of a data frame make sense to you? If not, don't worry. We will be working with data frames throughout this course, so you will have plenty of opportunities to practice working with them.
+
+## How to Install Packages {#sec-install-packages}
+
+In R, a *package* is a collection of functions, data sets, and documentation. You can think of a package as a toolbox. Each package contains a set of tools that you can use to do something. For example, the `ggplot2` package contains a set of tools that you can use to create data visualizations.
+
+On crucial skill to learn in R is how to install packages. Have a look at the following video to see how to install packages in R:
+
+{{< video https://www.youtube.com/watch?v=-wTcDqJWSzA title='How to Install Packages' >}}
+
+No practice installing some packages. You can install the `tidyverse` package by running the following code in your console: `install.packages("tidyverse")`. The Tidyverse is actually a collection of packages that are designed to work together. It includes packages like `dplyr`, `ggplot2`, and `tidyr`. We will be using these packages throughout this course, so it is a good idea to install them now.
+
+
+

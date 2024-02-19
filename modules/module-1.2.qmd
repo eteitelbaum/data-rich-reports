@@ -1,242 +1,30 @@
 ---
-title: "Module 1.2"
-subtitle: "Working with APIs"
-format: 
-  html:
-    code-link: true
-highlight-style: atom-one
-execute:
+title: "Writing in Markdown"
+format: html
+execute: 
   echo: true
   message: false
   warning: false
 ---
 
-::: {.callout-tip}
-## Prework
+## Markdown and Quarto {#sec-mardown-quarto}
 
-- Install the `devtools` package. Type `install.packages("devtools")` in your console. You will need this to install the `vdemdata` package because it is not on the CRAN Network. 
-- Install the `vdemdata` package from GitHub. Type `devtools::install_github("vdeminstitute/vdemdata")` in your console. 
-- Install the `wbstats` and `countrycode` packages:
+In Quarto, you can write in Markdown, a lightweight markup language with plain text formatting syntax. It is designed so that it can be converted to HTML and many other formats. Markdown is often used to format readme files, for writing messages in online discussion forums, and to create rich text using a plain text editor. 
 
-```{r}
-#| label: packages
-#| eval: false
-pkg_list <- c("wbstats", "countrycode") # create a list of packages
-install.packages(pkg_list) # install the packages
-```
-- Have a look at the vignettes for [wbstats](https://cran.r-project.org/web/packages/wbstats/vignettes/wbstats.html) and the [countrycode](https://vincentarelbundock.github.io/countrycode/) documentation
-- Generate a quarto document named "module-1.2.qmd" in your modules project folder so that you can code along with me
-:::
+In Quarto, Markdown is converted to multiple formats, including HTML, PDF, and Word using Pandoc. [Pandoc](https://pandoc.org/) is a free and open-source document converter, widely used as a writing tool and as a basis for publishing workflows. For this course, you don't need to know Pandoc, but it's good to have some basic familiarity with it so that you know what is happening behind the scenes.
 
+Why write in Markdown? Writing in Markdown is an easy way to standardize your writing process and to ensure that your documents are easily readable across different platforms. When you write in Markdown, and let Quarto handle the formatting, you never have to worry about fiddling around with dropdowns or any of the stuff you would have to do with a standard processing tool. It is also a great way to write and share code, as it allows you to include code chunks directly in your text.
 
-## Overview 
+## Markdown Basics {#sec-markdown-basics}
 
-In this module working, we are going to be working with data from [APIs](https://en.wikipedia.org/wiki/API) instead of flat files. As we saw in the last lesson, importing and wrangling data from flat files can be a messy process. So when clean data are available for download, we want to be able to take advantage of that. Luckily there are some pretty good R packages that allow us to extract data from open source APIs. We are going to be working with two of those in this module (`wbstats` and `vdemdata`) and some others later in the course. 
+Have a look at the following video to learn the basics of Markdown. Note that in this video the presenter is not using Quarto (but rather VS Code). You can use Markdown in multiple different contexts and IDEs, but the syntax is always going to be the same.
 
-Along the way, we are going to continue to extend our data wrangling skills. We will learn some new functions in `dplyr` and `janitor` that will help us get our data into a usable form for analysis. We are also going to cover in depth some common data science workflows, including filtering observations, selecting variables, merging two data sets, summarizing data for different groups, and sorting data based on column values. 
+{{< video https://www.youtube.com/watch?v=bTVIMt3XllM title='Learn Markdown in 30 minutes' >}}
 
-The end goal is to have a nice dataset with a combination of World Bank and [V-Dem Institute](https://www.v-dem.net/) data that we can use to illustrate the relationship between the economy, democracy and women's empowerment.   
+Here are some key points about writing in Markdown you should know:
 
+For basic text, you can simply start typing. To insert a line break, use two spaces followed by the return (enter) key. Headings are created using hashmarks: `#` for the largest heading (level 1), `##` for the next largest (level 2), and `###` for the subsequent size (level 3).
 
-## Downloading data from an API
+Emphasis in Markdown is achieved using asterisks: for italics, enclose the word with a single asterisk (`*`), and for bold, use double asterisks (`**`). Lists can be either bullet points, created using a dash (`-`), or numbered lists, initiated with `1.`, `2.`, etc.
 
-{{< video https://youtu.be/aY284Dwn9go title='Downloading Data from the World Bank' >}}
-
-You will no doubt remember the messy data that we downloaded from the World Bank's website in [module 1.1](/modules/module-1.1.htmll#step-1-download-data-from-the-world-bank). Usually it is much easier to download data from an API as opposed to wrangling it from a .csv file. In this example, I want to illustrate that for you by having you download the same data that we worked with in the last module using the [wbstats](https://cran.r-project.org/web/packages/wbstats/vignettes/wbstats.html) package.
-
-First we are going to load `wbstats` along with `dplyr` and `janitor`. The `wb_data()` function is the one we need to download the data from the World Bank's API. `wb_data()` requires to main sets of arguments: a list of indicators that we want to use and the period for which we want to download data. The period can can be entered as two separate arguments (e.g. `start_date` and `end_date`). But for this exercise we will specify the number of years we want to download using `mrv` which stands for "most recent value." 
-
-In addition to female labor force participation, let's also grab the percentage of seats in parliament held by women. We will store that list of objects in a vector called `women_emp` to signify that these indicators are related to women's empowerment. We will try to download 50 years of data for these two variables.  
-
-::: {.callout-note}
-If you want to search World Bank data for additional indicators, you can use the `wb_search()` function. For example, if we wanted to find all of the indicators associated with female labor force participation, we could run: 
-
-```{r}
-#| label: wb_search
-#| eval: false
-
-flfp_indicators <- wb_search("female labor force") # store the list of indicators
-
-print(flfp_indicators, n=26) # view the indicators
-```
-
-Try searching for some indicators related to a topic you are interested in and see what you get!
-:::
-
-While we are calling `wb_data()` we will go ahead and pipe some additional functions from `dplyr` and `janitor` to clean it up. First, we will use `select()` to eliminate the iso2c variable, which we won't be needing. Then, we will rename `date` to `year`. Then we will use a combination of `mutate` and `round_to_fraction()` to round the data to the nearest hundredth. 
-
-We will pipe all of these functions together and store the resulting data frame in a new object called `women_emp`.
-
-```{r}
-#| label: wb_data
-
-# Load packages
-library(wbstats) # for downloading WB data
-library(dplyr) # for selecting, renaming and mutating
-library(janitor) # for rounding
-
-# Store the list of indicators in an object
-indicators <- c("flfp" = "SL.TLF.CACT.FE.ZS", "women_rep" = "SG.GEN.PARL.ZS") 
-
-# Download the data  
-women_emp <- wb_data(indicators, mrv = 50) |> # download data for last 50 yrs
-  select(!iso2c) |> # drop the iso2c code which we won't be using
-  rename(year = date) |> # rename date to year 
-  mutate(
-    flfp = round_to_fraction(flfp, denominator = 100), # round to nearest 100th
-    women_rep = round_to_fraction(women_rep, denominator = 100) 
-  )
-
-# View the data
-glimpse(women_emp) 
-```
-
-Now we have some pretty tidy World Bank data related to women's empowerment without having to do too much work. I am sure you would agree that this is a much more straightforward process than downloading the data and then importing the data as a flat file! 
-
-One thing that becomes very clear here is that `wb_data()` did not download any data before 1990. It automatically filtered out the years for which all countries had no data. The fact there were no data before 1990 for any of the countries is easily missed when we were simply importing it from a .csv file. 
-
-## Filter observations, select and create new variables 
-
-{{< video https://youtu.be/tFmE3HlTyKQ title='Downloading Data Using wbstats' >}}
-
-The next thing we want to talk about is how to filter observations and to select new variables. We also delve more into the topic of how to create new variables. To illustrate these concepts, we are going to be working with the [V-Dem Dataset](https://www.v-dem.net/data/the-v-dem-dataset/). The V-Dem offers an R package for downloading its data called [vdemdata](https://github.com/vdeminstitute/vdemdata). 
-
-`vdemdata` is perfect for illustrating the `filter()` and `select()` verbs because its main function for downloading the data (`vdem`) does not take any arguments (it simply downloads the whole dataset). So you have to use R functions to narrow down the variables and years you want to work with. 
-
-While V-Dem has wealth of indicators related to democracy, we are going to focus on the most famous one called the "polyarchy" score. We are also going to download data on per capita GDP and create some indicator variables for region that we will use later on when we summarize the data. Along with those variables, we also want to retain `country_name`, `year` and `country_id` for the purposes of merging these data with our World Bank data. 
-
-::: {.callout-note}
-While V-Dem has a variable look-up tool (`find_var`), it does not provide very much information on the variables that the search function returns. Therefore, if you want to use this package for your own research, I highly recommend just going to the [V-Dem codebook](https://www.v-dem.net/documents/24/codebook_v13.pdf) and manually grabbing the codes for the indicators that you want to use in your analysis. 
-:::
-
-In addition to filtering out years and selecting variables, let's also create a `region` coding to facilitate our analysis later on. We will do this by piping in a `mutate()` call where we use the [case_match()](https://dplyr.tidyverse.org/reference/case_match.html) function to change the `region` from a numeric variable to a string. This will come in handy when we go to visualize the data in future lessons.  
-
-We will store our new data as an object called `democracy`.  
-
-```{r}
-#| label: democracy
-
-# Load packages
-library(vdemdata) # to download V-Dem data
-
-# Download the data
-democracy <- vdem |> # download the V-Dem dataset
-  filter(year >= 1990)  |> # filter out years less than 1990
-  select(                  # select (and rename) these variables
-    country = country_name,     # the name before the = sign is the new name  
-    vdem_ctry_id = country_id,  # the name after the = sign is the old name
-    year, 
-    polyarchy = v2x_polyarchy, 
-    gdp_pc = e_gdppc, 
-    region = e_regionpol_6C
-    ) |>
-  mutate(
-    region = case_match(region, # replace the values in region with country names
-                     1 ~ "Eastern Europe", 
-                     2 ~ "Latin America",  
-                     3 ~ "Middle East",   
-                     4 ~ "Africa", 
-                     5 ~ "The West", 
-                     6 ~ "Asia")
-                    # number on the left of the ~ is the V-Dem region code
-                    # we are changing the number to the country name on the right
-                    # of the equals sign
-  )
-
-# View the data
-glimpse(democracy)
-```
-
-## Add country codes to a data frame
-
-{{< video https://youtu.be/fPdnNFZ4Jn0 title='Add Country Codes to a Data Frame' >}}
-
-One common problem scholars face when they want to analyze country-level data is the fact that datasets use different country codes. This can make it challenging to combine datasets, thus limiting the potential scope of our analysis. Lucikly, there is a wonderful package called [countrycode](https://vincentarelbundock.github.io/countrycode/) that can help to solve this problem.
-
-The `countrycode()` function creates a new country code variable in our dataset that matches the country code variable of the second dataset that we are trying to merge it to. `countrycode()` takes three arguments: `sourcevar`; `origin`; and `destination`. `sourcevar` identifies  the name of the column that you want to transform, `origin` is the coding system that you want to translate from, and `destination` is the coding system that you want to translate to.  
-
-In this next step of our analysis, we are going to join the World Bank and V-Dem data that we wrangled into a single dataset. To do that we need a common country code. The way we are going to do this is to create a new country code variable in the democracy dataset that matches the one in the women's empowerment dataset.
-
-Let's create a new version of our democracy dataset where we add a variable called `iso3c`. We will call `mutate()` to create the variable and wrap the `countrycode()` call inside of that. The `sourcevar` that we want to transform is the `vdem_ctry_id`, the origin code is "vdem", and the destination code is "wb". 
-
-We are also going to pipe in a [relocate()](https://dplyr.tidyverse.org/reference/relocate.html) call which simply moves the new `iso3c` column from the end of the data frame (where R automically drops it) so that it sits right next to `vdem_ctry_cd`. This is not essential but it is always good to keep our data frames looking nice and neat!. 
-
-```{r}
-#| label: countrycode
-# Load countrycode
-library(countrycode)
-
-# Create new iso3c variable
-democracy <- democracy |>    
-  mutate(iso3c = countrycode(sourcevar = vdem_ctry_id, # what we are converting
-        origin = "vdem",         # we are converting from vdem
-        destination = "wb"))  |> # and converting to the WB iso3c code 
-  relocate(iso3c, .after = vdem_ctry_id) # move iso3c 
-
-# View the data
-glimpse(democracy)
-```
-
-## Merge two data frames
-
-{{< video https://youtu.be/-3LiSgUfSwY title='Merge Two Data Frames' >}}
-
-Now that we have a common country code, we can join the two data sets. There are many different types of joins. First there is a distinction between [mutating joins](https://dplyr.tidyverse.org/reference/mutate-joins.html), which add observations from one dataset to another, and [filtering joins](https://dplyr.tidyverse.org/reference/filter-joins.html), which filter out observations based on their presence or absence in another dataset. Here we are going to be focused on mutating joins. 
-
-There are four kinds of mutating joins we can do in `dplyr`. An `inner_join()` keeps only the observations that are common in both datasets that you want to merge. A `full_join()` does the opposite. It keeps all of the observations present in both datasets regardless of whether or not they have a match. A `left_join()` keeps all of the observations in dataset $x$ and only the matching observations in dataset $y$. A `right_join()` does the same thing, but instead keeps all of the observations from dataset $y$ and only matching observations from dataset $x$. 
-
-We are going to use `left_join()` to merge our two datasets. `left_join()` takes three essential arguments: $x$; $y$; and $by$ which identifies the column that we want to join on. For this exercise, the $x$ dataset is going to be the democracy dataset, the $y$ dataset is the women empowerment dataset, and we want to join on both the "iso3c" and "year" columns. 
-
-When `dplyr` does a join, it renames any duplicate columns with suffixes like `.x` or `.y`. In our data, country is a duplicate column across the democracy and women's empowerment datasets. So `dplyr` renames these `country.x` and `country.y`. It doesn't really matter which one we keep, so let's just rename `country.x` to `country` and filter out `country.y` using `select()`.
-
-We can can pipe all of these functions together and store the resulting data frame in a new object called `dem_women`. Let's also save these data as a .csv file for future use with `write_csv()`. The first argument for `write_csv()` is the name of the data frame or tibble that we want to save. The second argument is the path and name of the file that we want to save it to. 
-
-```{r}
-#| label: leftjoin
-# Load readr
-library(readr)
-
-# Perform left join using common iso3c variable and year
-dem_women <- left_join(democracy, women_emp, by = c("iso3c", "year")) |> 
-  rename(country = country.x) |> # rename country.x
-  select(!country.y)             # crop country.y
-
-# Save as .csv for future use
-write_csv(dem_women, "data/dem_women.csv")
-
-# View the data
-glimpse(dem_women)  
-```
-
-
-## Group, summarize and arrange 
-
-{{< video https://youtu.be/OmmSRcLhORg title='Group, Summarize and Arrange' >}}
-
-Now that we have completed all of the wrangling, let's do something with it. A common sequence in data science is [group by()](https://dplyr.tidyverse.org/reference/group_by.html), [summarize()](https://dplyr.tidyverse.org/reference/summarise.html) and [arrange()](https://dplyr.tidyverse.org/reference/arrange.html). First, we group the data by certain value or category. Then we summarize it by applying a function like `min()`, `max()`, `mean()`, `median()` or `sd()`. Finally, we order the data according to column values. 
-
-Let's go ahead and apply our three new verbs to the `dem_women` data frame and store the resulting new data frame in an object called `dem_summary`. We will group the data by region, take the mean of each variable, and sort the data in descending order based on the regions' polyarchy scores. Then we will print the object to view its contents. Along the way, we let's also export the data to a .csv file for future use. 
-
-::: {.callout-note}
-To print an object in R, we can either use the `print()` function or just execute the name of the object. Oftentimes it is simpler to just execute the name of the object. 
-:::
-
-```{r}
-#| label: verbs
-# group_by(), summarize() and arrange()
-dem_summary <- dem_women |> # save result as new object
-  group_by(region)  |> # group dem_women data by region
-  summarize(           # summarize following vars (by region)
-    polyarchy = mean(polyarchy, na.rm = TRUE), # calculate mean, remove NAs
-    gdp_pc = mean(gdp_pc, na.rm = TRUE), 
-    flfp = mean(flfp, na.rm = TRUE), 
-    women_rep = mean(women_rep, na.rm = TRUE)
-  ) |> 
-  arrange(desc(polyarchy)) # arrange in descending order by polyarchy score
-
-# Save as .csv for future use
-write_csv(dem_summary, "data/dem_summary.csv")
-
-# View the data
-glimpse(dem_summary)
-```
+To insert links, the syntax is `[text](url)`, and for images, you use `![](file path or url)`. Code chunks allow you to include blocks of code directly in your text. R code chunks are wrapped with ````{r}...````, and Python code chunks with ````{python}...````. This syntax allows for easy inclusion of various types of content directly in your Markdown document, facilitating a rich text formatting experience across different platforms and IDEs.

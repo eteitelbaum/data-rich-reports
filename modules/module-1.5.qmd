@@ -1,0 +1,35 @@
+---
+title: "Making and Publishing HTML Documents"
+format: html
+execute: 
+  echo: true
+  message: false
+  warning: false
+---
+
+::: {.callout-tip}
+## Prework
+
+- Read about [Quarto Pub](https://quarto.org/docs/publishing/quarto-pub.html)
+- Go to <https://quartopub.com/> and sign up for an account
+:::
+
+## Quarto Pub
+
+Quarto Pub is a service that allows you to publish your Quarto documents to the web. It is a great way to share your work with others. It is also a convenient way of sharing your own work with yourself. Instead of having to open up your local files, you can just go to the web and access your paper or presentation. 
+
+## Publishing to Quarto Pub
+
+Let's publish the document we have been working on to Quarto Pub:
+
+1. Make sure that you are signed into your Quarto Pub account at <https://quartopub.com/>. (Create an account if you have not already done so.)
+2. Open the project in RStudio that you created in the last module. 
+3. Open the Quarto document where you have the two data visualizations (`dataviz.qmd`). 
+4. Render the document by clicking on the "Render" button in the RStudio toolbar. (This will produce the necessary HTML files that you need to publish to Quarto Pub.)
+5. Go to the *Terminal* tab in RStudio. 
+6. Type `quarto publish quarto-pub` and press enter.
+
+Here is a short video that walks you through the process:
+
+{{<video https://youtu.be/l-AQ4yAQXy0?si=eCZTSYX6kJOB_BmD title = 'Publish to Quarto Pub'>}}
+

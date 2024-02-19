@@ -4,21 +4,26 @@ subtitle: "Visualizing Data"
 format: html
 ---
 
-## Readings
+::: {.callout-important}
+- Homework Assignment 2 is due Sunday, March 3 at 11:59pm.
+- Final Project is due Sunday, March 10 at 11:59pm.
+:::
 
-| 📖 Lipset, [Some Social Requisites of Democracry](https://www-jstor-org.proxygw.wrlc.org/stable/1951731?seq=8)
+## Guest Speaker
 
-## Assignments
-
-| 🧮 [Coding Assignment 2](/assignments/coding-assignment-2.html)
-| ✍️ [Final Project](/project/project-assignment.html)
+- David Keyes, founder of [R for the Rest of Us](https://rfortherestofus.com/)
 
 ## Sessions
 
-- 01: [Bar Charts and Histograms](/slides/day-2.1.html)
-- 02: [Line Charts and Scatter Plots](/slides/day-2.2.html)
-- 03: [Accessibility and Color Schemes](/slides/day-2.3.html)
-- 04: [Themes, Annotations and Interactivity](/slides/day-2.4.html)
-- 05: [Coding Assignment 2](/assignments/coding-assignment-2.html)
+- 9:00 - 10:30: [Advanced HTML]()
+- 10:30 - 11:00: Break
+- 11:00 - 12:30: [Working with PDFs]()
+- 12:30 - 1:30: Lunch
+- 1:30 - 3:00: [Transforming Data]()
+- 3:00 - 3:30: Break
+- 3:30 - 5:00 [Parameterized Reporting]() with David Keyes
 
+## Assignments
 
+| 🧮 [Coding Assignment 2]()
+| ✍️ [Final Project]()
