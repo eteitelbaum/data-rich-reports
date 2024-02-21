@@ -110,7 +110,8 @@ You will need to download RStudio, Git and the Discord desktop application. You 
 
 ## Course Credit Hour Policy
 
-Summer courses are more than twice as intensive as those held during the academic year. Over 6 weeks, students will spend approximately 18.75 hours per week doing independent learning, including, but not limited to, readings, quizzes, assignments and a final project. This amounts to 36 hours of direct-instruction and 76.5 hours independent coursework.
+- For the 1 credit graduate skills version of this course, students are expected to work for a total of 37.5 hours. This includes 16 hours of time spent in class plus 21.5 hours of independent work.
+- For the 1.5 credit executive education version of this course, students are expected to work for a total of at least 56.25 hours. This includes 18 hours of time spent in class and at the keynote lecture, plus 28.25 hours of independent work.
 
 ### How this applies to you
 
