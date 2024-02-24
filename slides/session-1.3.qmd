@@ -18,6 +18,12 @@ execute:
 
 # Getting Started with Data
 
+## Retreive Code
+
+- Go [here](https://www.dropbox.com/scl/fo/1jrywj52bb36goipjckv2/h?rlkey=9qp7ma7sa6g3qz37hfnr38mq3&dl=0) to download the code
+- Download the **whole folder**
+- Be sure to unzip if you are a Windows user
+
 ## Some Lingo {.smaller}
 
 <br>

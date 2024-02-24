@@ -18,6 +18,12 @@ execute:
 
 # Bar Charts
 
+## Retreive Code
+
+- Go [here](https://www.dropbox.com/scl/fo/29errlooo0966dsclnzr4/h?rlkey=od5v1lf2hh9hqxhphkgiw4ua8&dl=0) to download the code
+- Download the **whole folder**
+- Be sure to unzip if you are a Windows user
+
 ## The Grammar of Graphics
 
 ::: {.incremental}
