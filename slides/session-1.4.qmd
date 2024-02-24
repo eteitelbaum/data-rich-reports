@@ -1,0 +1,920 @@
+---
+title: "Data Rich Reports"
+subtitle: "Session 4--Visualizing Data"
+footer: "[DRR Website](https://quarto.training)"
+logo: images/drr6502-logo.png
+format:
+  revealjs:
+    theme: [simple, custom.scss]
+    transition: fade
+    slide-number: true
+    chalkboard: true
+execute:
+  echo: false
+  message: false
+  warning: false
+  freeze: auto
+---
+
+# Bar Charts
+
+## The Grammar of Graphics
+
+::: {.incremental}
+- Data viz has a language with its own grammar
+- Basic components include:
+  - Data we are trying to visualize
+  - Aesthetics (dimensions)
+  - Geom (e.g. bar, line, scatter plot)
+  - Color scales
+  - Themes
+  - Annotations
+::: 
+
+## 
+
+<br>
+
+Let's load our packages and import our data...
+
+<br>
+
+```{r}
+#| label: barchart0
+#| echo: true
+#| output: false
+#| code-line-numbers: "1-4"
+
+library(readr)
+library(ggplot2)
+
+dem_summary <- read_csv("dem_summary.csv")
+
+ggplot(dem_summary, aes(x = region, y = polyarchy)) 
+```
+  
+## 
+
+<br>
+
+And then let's start with the first two elements, the data and the aesthetic...
+
+<br>
+
+```{r}
+#| label: barchart1
+#| echo: true
+#| output: false
+#| code-line-numbers: "6"
+
+library(readr)
+library(ggplot2)
+
+dem_summary <- read_csv("dem_summary.csv")
+
+ggplot(dem_summary, aes(x = region, y = polyarchy)) 
+```
+
+##
+
+This gives us the axes without any visualization:
+
+```{r}
+#| label: barchart2
+
+ggplot(dem_summary, aes(x = region, y = polyarchy)) 
+```
+
+
+##
+
+<br>
+
+Now let's add a geom. In this case we want a bar chart so we *add* `geom_col()`.
+
+<br>
+
+```{r}
+#| label: barchart3
+#| echo: true
+#| output: false
+
+ggplot(dem_summary, aes(x = region, y = polyarchy)) + 
+  geom_col()
+```
+
+## 
+
+That gets the idea across but looks a little depressing, so...
+
+```{r}
+#| label: barchart4
+
+ggplot(dem_summary, aes(x = region, y = polyarchy)) + 
+  geom_col()
+```
+
+## 
+
+<br>
+
+...let's change the color of the bars by specifying `fill = "steelblue"`.
+
+<br>
+
+```{r}
+#| label: barchart5
+#| echo: true
+#| output: false
+#| code-line-numbers: "2"
+
+ggplot(dem_summary, aes(x = region, y = polyarchy)) + 
+  geom_col(fill = "steelblue")
+```
+
+## 
+
+Note how color of original bars is simply overwritten:
+
+```{r}
+#| label: barchart6
+
+ggplot(dem_summary, aes(x = region, y = polyarchy)) + 
+  geom_col(fill = "steelblue")
+```
+
+## 
+
+<br>
+
+Now let's *add* some labels with the `labs()` function:
+
+<br>
+
+```{r}
+#| label: barchart7
+#| echo: true
+#| output: false
+#| code-line-numbers: "3-8"
+
+ggplot(dem_summary, aes(x = region, y = polyarchy)) + 
+  geom_col(fill = "steelblue") +
+  labs(
+    x = "Region", 
+    y = "Avg. Polyarchy Score", 
+    title = "Democracy by region, 1990 - present", 
+    caption = "Source: V-Dem Institute"
+    )
+```
+
+## 
+
+And that gives us... 
+
+```{r}
+#| label: barchart8
+
+ggplot(dem_summary, aes(x = region, y = polyarchy)) + 
+  geom_col(fill = "steelblue") +
+  labs(
+    x = "Region", 
+    y = "Avg. Polyarchy Score", 
+    title = "Democracy by region, 1990 - present", 
+    caption = "Source: V-Dem Institute"
+    )
+```
+
+## 
+
+Next, we reorder the bars with `fct_reorder()` from the `forcats` package. 
+
+<br>
+
+```{r}
+#| label: barchart9
+#| echo: true
+#| output: false
+#| code-line-numbers: "1"
+
+library(forcats)
+
+ggplot(dem_summary, aes(x = fct_reorder(region, -polyarchy), y = polyarchy)) +
+  geom_col(fill = "steelblue") + 
+  labs(
+    x = "Region", 
+    y = "Avg. Polyarchy Score", 
+    title = "Democracy by region, 1990 - present", 
+    caption = "Source: V-Dem Institute"
+    )
+```
+
+<br> 
+
+Note that we could also use the base R `reorder()` function here.
+
+## 
+
+This way, we get a nice, visually appealing ordering of the bars according to levels of democracy...
+
+```{r}
+#| label: barchart10
+
+ggplot(dem_summary, aes(x = fct_reorder(region, -polyarchy), y = polyarchy)) +
+  geom_col(fill = "steelblue") + 
+  labs(
+    x = "Region", 
+    y = "Avg. Polyarchy Score", 
+    title = "Democracy by region, 1990 - present", 
+    caption = "Source: V-Dem Institute"
+    )
+```
+
+## 
+
+<br>
+
+Now let's change the theme to `theme_minimal()`. 
+
+<br>
+
+```{r}
+#| label: barchart11
+#| echo: true
+#| output: false
+#| code-line-numbers: "8"
+
+ggplot(dem_summary, aes(x = reorder(region, -polyarchy), y = polyarchy)) +
+  geom_col(fill = "steelblue") + 
+  labs(
+    x = "Region", 
+    y = "Avg. Polyarchy Score", 
+    title = "Democracy by region, 1990 - present", 
+    caption = "Source: V-Dem Institute"
+    ) + theme_minimal()
+```
+
+## 
+
+Gives us a clean, elegant look. 
+
+```{r}
+#| label: barchart12
+
+ggplot(dem_summary, aes(x = reorder(region, -polyarchy), y = polyarchy)) +
+  geom_col(fill = "steelblue") + 
+  labs(
+    x = "Region", 
+    y = "Avg. Polyarchy Score", 
+    title = "Democracy by region, 1990 - present", 
+    caption = "Source: V-Dem Institute"
+    ) + theme_minimal()
+```
+
+
+##
+
+<br>
+
+Note that you can also save your plot as an object to modify later.
+
+<br>
+
+```{r}
+#| label: barchart13
+#| echo: true
+#| output: false
+
+dem_bar_chart <- ggplot(dem_summary, aes(x = reorder(region, -polyarchy), y = polyarchy)) +
+  geom_col(fill = "steelblue")
+```
+
+##
+
+Which gives us...
+
+```{r}
+#| label: barchart14
+#| echo: true
+ 
+dem_bar_chart
+```
+
+## 
+
+<br> 
+
+Now let's add back our labels... 
+
+<br>
+
+```{r}
+#| label: barchart15
+#| echo: true
+#| output: false
+
+dem_bar_chart <- dem_bar_chart +
+  labs(
+    x = "Region", 
+    y = "Avg. Polyarchy Score", 
+    title = "Democracy by region, 1990 - present", 
+    caption = "Source: V-Dem Institute"
+    )
+```
+
+##
+
+So now we have... 
+
+```{r}
+#| label: barchart16
+#| echo: true
+
+dem_bar_chart
+```
+
+## 
+
+<br> 
+
+And now we'll add back our theme...
+
+<br>
+
+```{r}
+#| label: barchart17
+#| echo: true
+#| output: false
+
+dem_bar_chart <- dem_bar_chart + theme_minimal()
+```
+
+##
+
+Voila! 
+
+```{r}
+#| label: barchart18
+#| echo: true
+
+dem_bar_chart
+```
+
+##
+
+Change the theme. There are many [themes](https://ggplot2.tidyverse.org/reference/ggtheme.html) to choose from.
+
+```{r}
+#| label: barchart19
+#| echo: true
+
+dem_bar_chart + theme_bw()
+```
+
+## Your Turn!
+
+1. `glimpse()` the data
+2. Find a new variable to visualize
+3. Make a bar chart with it
+4. Change the [color](http://sape.inf.usi.ch/quick-reference/ggplot2/colour) of the bars
+5. Order the bars
+6. Add labels
+7. Add a [theme](https://ggplot2.tidyverse.org/reference/ggtheme.html)
+8. Try saving your plot as an object
+9. Then change the labels and/or theme
+
+```{r}
+#| label: timer1
+library(countdown)
+countdown(minutes = 10, 
+          id = "timer1", 
+          bottom = "5%", 
+          right = "10%",
+          color_border = "#fff",
+          color_text = "#fff",
+          color_running_background = "#42affa",
+          color_running_text = "black",
+          color_finished_background = "#E5D19D",
+          color_finished_text = "#00264A")
+```
+
+# Line Charts
+
+## Line Chart Setup
+
+```{r}
+#| label: dem_waves_setup
+#| echo: true
+#| output: false
+
+library(vdemdata)
+library(tidyverse)
+
+dem_waves_ctrs <- vdem |>
+  select(
+    country = country_name,     
+    year, 
+    polyarchy = v2x_polyarchy, 
+  ) |>
+  filter( 
+    country %in% c("United States of America", # select countries in this list
+                   "Japan", 
+                   "Portugal")
+    )
+```
+
+```{r}
+#| label: timer2
+countdown::countdown(minutes = 2, 
+                     id = "timer2", 
+                     bottom = "10%", 
+                     right = "10%")
+```
+
+## Line Chart
+
+```{r}
+#| label: geom_line1
+
+# in this ggplot() call, we add a third dimension for line color
+dem_waves_chart <- ggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +
+  geom_line(linewidth = 1) + # our geom is a line with a width of 1
+  labs(
+    x = "Year", 
+    y = "Polyarchy Score", 
+    title = 'Democracy in countries representing three different "waves"', 
+    caption = "Source: V-Dem Institute", 
+    color = "Country" # make title of legend to upper case
+  )
+
+dem_waves_chart
+```
+
+##
+
+<br>
+
+Here is the code... 
+
+<br>
+
+```{r}
+#| label: geom_line2
+#| eval: false
+#| echo: true
+
+# in this ggplot() call, we add a third dimension for line color
+ggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +
+  geom_line(linewidth = 1) + # our geom is a line with a width of 1
+  labs(
+    x = "Year", 
+    y = "Polyarchy Score", 
+    title = 'Democracy in countries representing three different "waves"', 
+    caption = "Source: V-Dem Institute", 
+    color = "Country" # make title of legend to upper case
+  )
+```
+
+## 
+
+<br>
+
+Use `geom_line()` to specify a line chart... 
+
+<br>
+
+```{r}
+#| label: geom_line3
+#| echo: true
+#| eval: false
+#| code-line-numbers: "3"
+
+# in this ggplot() call, we add a third dimension for line color
+ggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +
+  geom_line(linewidth = 1) + # our geom is a line with a width of 1
+  labs(
+    x = "Year", 
+    y = "Polyarchy Score", 
+    title = 'Democracy in countries representing three different "waves"', 
+    caption = "Source: V-Dem Institute", 
+    color = "Country" # make title of legend to upper case
+  )
+```
+
+## 
+
+<br>
+
+Add third dimension to the `aes()` call for line color...
+
+<br>
+
+```{r}
+#| label: geom_line4
+#| echo: true
+#| eval: false
+#| code-line-numbers: "2"
+
+# in this ggplot() call, we add a third dimension for line color
+ggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +
+  geom_line(linewidth = 1) + # our geom is a line with a width of 1
+  labs(
+    x = "Year", 
+    y = "Polyarchy Score", 
+    title = 'Democracy in countries representing three different "waves"', 
+    caption = "Source: V-Dem Institute", 
+    color = "Country" # make title of legend to upper case
+  )
+```
+
+## 
+
+<br>
+
+Modify the legend title...
+
+<br>
+
+```{r}
+#| label: geom_line5
+#| echo: true
+#| eval: false
+#| code-line-numbers: "9"
+
+# in this ggplot() call, we add a third dimension for line color
+ggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +
+  geom_line(linewidth = 1) + # our geom is a line with a width of 1
+  labs(
+    x = "Year", 
+    y = "Polyarchy Score", 
+    title = 'Democracy in countries representing three different "waves"', 
+    caption = "Source: V-Dem Institute", 
+    color = "Country" # make title of legend to upper case
+  )
+```
+
+## Problem
+
+```{r}
+#| label: cvd_plot
+
+library(colorBlindness)
+
+cvdPlot(dem_waves_chart)
+```
+
+## Color Blindness
+
+<br>
+
+- Color Vision Deficiency (CVD) or color blindness affects 8 percent of men and 1 in 200 women
+- There are different types of CVD but most common is red-green color blindness
+- Therefore, don't include red and green in the same chart! 
+- Look for color blind safe palettes
+
+## 
+
+**Solution:** Use a colorblind safe color scheme like `viridis`...
+
+```{r}
+#| label: geom_line6
+
+# in this ggplot() call, we add a third dimension for line color
+dem_waves_viridis <- ggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +
+  geom_line(linewidth = 1) + # our geom is a line with a width of 1
+  labs(
+    x = "Year", 
+    y = "Polyarchy Score", 
+    title = 'Democracy in countries representing three different "waves"', 
+    caption = "Source: V-Dem Institute", 
+    color = "Country" # make title of legend to upper case
+  ) +
+  scale_color_viridis_d(option = "mako", end = .8) # use viridis color palette
+
+dem_waves_viridis
+```
+
+##
+
+<br>
+
+Use `scale_color_viridis_d()` in this case to specify the viridis color scheme...
+
+```{r}
+#| label: geom_line7
+#| echo: true
+#| eval: false
+#| code-line-numbers: "11"
+
+# in this ggplot() call, we add a third dimension for line color
+ggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +
+  geom_line(linewidth = 1) + # our geom is a line with a width of 1
+  labs(
+    x = "Year", 
+    y = "Polyarchy Score", 
+    title = 'Democracy in countries representing three different "waves"', 
+    caption = "Source: V-Dem Institute", 
+    color = "Country" # make title of legend to upper case
+  ) +
+  scale_color_viridis_d(option = "mako", end = .8) # use viridis color palette
+```
+
+## Better!
+
+```{r}
+#| label: cvdplot2
+
+cvdPlot(dem_waves_viridis)
+```
+
+## Palettes
+
+<br>
+
+- There are a number of viridis palettes
+- See [this reference](https://search.r-project.org/CRAN/refmans/viridisLite/html/viridis.html) to view different palettes and options
+- You can also use `scale_color_viridis_c()` to specify a continuous color scale 
+- Also check out the [paletteer package](https://emilhvitfeldt.github.io/paletteer/) for easy access to many more palettes
+
+## Your Turn!
+
+<br>
+
+- See table three of [this article](https://kurzman.unc.edu/wp-content/uploads/sites/1410/2011/06/Kurzman_Waves_of_Democratization.pdf)
+- Select three countries to visualize
+- Adjust setup code to filter data on those countries 
+- Visualize with `geom_line()`
+- Use `scale_color_viridis_d()` to specify a viridis color scheme
+
+```{r}
+#| label: timer3
+countdown::countdown(minutes = 10, 
+                     id = "timer3", 
+                     bottom = "10%", 
+                     right = "10%")
+```
+
+# Bonus Material 
+
+## Superfun Data Visualization
+
+```{r}
+#| label: gganimate_1
+
+library(gganimate)
+library(gapminder)
+
+ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
+  geom_point(alpha = 0.7, show.legend = FALSE) +
+  scale_colour_manual(values = country_colors) +
+  scale_size(range = c(2, 12)) +
+  scale_x_log10() +
+  facet_wrap(~continent) +
+  labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy') +
+  transition_time(year) +
+  ease_aes('linear')
+```
+
+## Superfun Data Visualization
+
+<br>
+
+```{r}
+#| label: gganimate_2
+#| echo: true
+#| eval: false
+
+library(gganimate)
+library(gapminder)
+
+ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
+  geom_point(alpha = 0.7, show.legend = FALSE) +
+  scale_colour_manual(values = country_colors) +
+  scale_size(range = c(2, 12)) +
+  scale_x_log10() +
+  facet_wrap(~continent) +
+  labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy') +
+  transition_time(year) +
+  ease_aes('linear')
+```
+
+## Superfun Data Visualization
+
+<br>
+
+```{r}
+#| label: gganimate_3
+#| echo: true
+#| eval: false
+#| code-line-numbers: "1,10-12"
+
+library(gganimate)
+library(gapminder)
+
+ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
+  geom_point(alpha = 0.7, show.legend = FALSE) +
+  scale_colour_manual(values = country_colors) +
+  scale_size(range = c(2, 12)) +
+  scale_x_log10() +
+  facet_wrap(~continent) +
+  labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy') +
+  transition_time(year) +
+  ease_aes('linear')
+```
+
+## Extended `vdemdata` Example {.smaller}
+
+```{r}
+#| label: vdemdata5
+#| output: false
+#| echo: true
+
+# Load packages
+library(vdemdata) # to download V-Dem data
+library(dplyr)
+
+# Download the data
+democracy <- vdem |> # download the V-Dem dataset
+  filter(year == 2015)  |> # filter year, keep 2015
+  select(                  # select (and rename) these variables
+    country = country_name,     # the name before the = sign is the new name  
+    vdem_ctry_id = country_id,  # the name after the = sign is the old name
+    year, 
+    polyarchy = v2x_polyarchy, 
+    gdp_pc = e_gdppc, 
+    region = e_regionpol_6C
+    ) |>
+  mutate(
+    region = case_match(region, # replace the values in region with country names
+                     1 ~ "Eastern Europe", 
+                     2 ~ "Latin America",  
+                     3 ~ "Middle East",   
+                     4 ~ "Africa", 
+                     5 ~ "The West", 
+                     6 ~ "Asia")
+  )
+
+# View the data
+glimpse(democracy)
+```
+
+## 
+
+Use `filter()` to select years...
+
+```{r}
+#| label: vdemdata6
+#| eval: false
+#| echo: true
+#| code-line-numbers: "2-3"
+
+# Download the data
+democracy <- vdem |> 
+  filter(year == 2015)  |> # keep 2015
+  select(                 
+    country = country_name,       
+    vdem_ctry_id = country_id,  
+    year, 
+    polyarchy = v2x_polyarchy, 
+    gdp_pc = e_gdppc, 
+    region = e_regionpol_6C
+    ) |>
+  mutate(
+    region = case_match(region,
+                     1 ~ "Eastern Europe", 
+                     2 ~ "Latin America",  
+                     3 ~ "Middle East",   
+                     4 ~ "Africa", 
+                     5 ~ "The West", 
+                     6 ~ "Asia")
+  )
+```
+
+## 
+
+Use `select()` to choose variables...
+
+```{r}
+#| label: vdemdata7
+#| eval: false
+#| echo: true
+#| code-line-numbers: "4-11"
+
+# Download the data
+democracy <- vdem |> 
+  filter(year == 2015)  |> 
+  select(                  # select (and rename) these variables
+    country = country_name,     # the name before the = sign is the new name  
+    vdem_ctry_id = country_id,  # the name after the = sign is the old name
+    year, 
+    polyarchy = v2x_polyarchy, 
+    gdp_pc = e_gdppc, 
+    region = e_regionpol_6C
+    ) |>
+  mutate(
+    region = case_match(region, 
+                     1 ~ "Eastern Europe", 
+                     2 ~ "Latin America",  
+                     3 ~ "Middle East",   
+                     4 ~ "Africa", 
+                     5 ~ "The West", 
+                     6 ~ "Asia")
+  )
+```
+
+## 
+
+Use `mutate` with `case_match()` to Recode Region....
+
+```{r}
+#| label: vdemdata8
+#| eval: false
+#| echo: true
+#| code-line-numbers: "12-23"
+
+# Download the data
+democracy <- vdem |>
+  filter(year == 2015)  |> 
+  select(                  
+    country = country_name,     
+    vdem_ctry_id = country_id,  
+    year, 
+    polyarchy = v2x_polyarchy, 
+    gdp_pc = e_gdppc, 
+    region = e_regionpol_6C
+    ) |>
+  mutate(
+    region = case_match(region, # replace the values in region with country names
+                     1 ~ "Eastern Europe", 
+                     2 ~ "Latin America",  
+                     3 ~ "Middle East",   
+                     4 ~ "Africa", 
+                     5 ~ "The West", 
+                     6 ~ "Asia")
+                    # number on the left of the ~ is the V-Dem region code
+                    # we are changing the number to the country name on the right
+                    # of the equals sign
+  )
+```
+
+## Visualize It! 
+
+```{r}
+#| label: scatterplot2
+
+library(ggplot2)
+
+ggplot(democracy, aes(x = gdp_pc, y = polyarchy)) + 
+  geom_point(aes(color = region)) + 
+  geom_smooth(method = "lm", linewidth = 1) + 
+  scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) +
+  labs(
+    x= "GDP per Capita", 
+    y = "Polyarchy Score",
+    title = "Wealth and democracy in 2020", 
+    caption = "Source: V-Dem Institute", 
+    color = "Region"
+    ) +
+  scale_color_viridis_d(option = "inferno", end = .8) +
+  theme_minimal()
+```
+
+## Visualize It! 
+
+```{r}
+#| label: scatterplot1
+#| eval: false
+#| echo: true
+
+library(ggplot2)
+
+ggplot(democracy, aes(x = gdp_pc, y = polyarchy)) + 
+  geom_point(aes(color = region)) + 
+  geom_smooth(method = "lm", linewidth = 1) + 
+  scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) +
+  labs(
+    x= "GDP per Capita", 
+    y = "Polyarchy Score",
+    title = "Wealth and democracy in 2015", 
+    caption = "Source: V-Dem Institute", 
+    color = "Region"
+    ) +
+  scale_color_viridis_d(option = "inferno", end = .8)
+```
+
+## Try it Yourself
+
+- Go to the V-Dem [Codebook](https://www.v-dem.net/documents/24/codebook_v13.pdf) 
+- Select a democracy indicator from Part 2.1 (high level indicators) to visualize
+- Note the indicator code (e.g. "v2x_polyarchy" for the polyarchy score)
+- Change the code and download the data so you can visualize it
+- Now make a scatter plot of your indicator versus GDP
+
+# Coding Assignment 1
+
+## Coding Assignment 1
+
+<br>
+
+- Let's get started on the first assignment
+- Instructions for Coding Assignment 1 are [here](https://quarto.training/assignments/coding-assignment-1)
+- Due by 11:59pm on Sunday, February 25

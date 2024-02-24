@@ -1,0 +1,414 @@
+---
+title: "Data Rich Reports"
+subtitle: "Session 3--Working with Data"
+footer: "[DRR Website](https://quarto.training)"
+logo: images/drr6502-logo.png
+format:
+  revealjs:
+    theme: [simple, custom.scss]
+    transition: fade
+    slide-number: true
+    chalkboard: true
+execute:
+  echo: false
+  message: false
+  warning: false
+  freeze: auto
+---
+
+# Getting Started with Data
+
+## Some Lingo {.smaller}
+
+<br>
+
+::: {.incremental}
+- *Tabular data* is data that is organized into rows and columns
+  - a.k.a. *rectangular data*
+- A *data frame* is a special kind of tabular data used in data science
+- A *variable* is something you can measure 
+- An *observation* is a single unit or case in your data set
+- The *unit of analysis* is the level at which you are measuring
+  - In a cross-section: country, state, county, city, individual, etc.
+  - In a time-series: year, month, day, etc.
+:::
+
+## Example
+
+![](images/tidy_data.jpg){fig-align="center"}
+
+## The Concept of "Tidy Data"
+
+<br>
+
+::: incremental
+- Each column represents a single variable
+- Each row represents a single observation
+- Each cell represents a single value
+:::
+
+## Example
+
+![](images/tidy_data.jpg){fig-align="center"}
+
+## The Concept of "Clean Data"
+
+<br>
+
+::: incremental
+- Column names are easy to work with and are not duplicated
+- Missing values have been dealt with
+- There are no repeated observations or columns
+- There are no blank observations or columns
+- The data are in the proper format
+  - For example dates should be formatted as dates
+:::
+
+## Example
+
+![](images/tidy_data.jpg){fig-align="center"}
+
+## Messy Data Example
+
+![](images/messy_wb_data.jpg){fig-align="center" width=70%}
+
+## What Are Ways We Might Encounter Data? {.smaller}
+
+<br> 
+
+::: incremental
+- Your boss or a client sends you a file
+- Survey data collected by you or someone else 
+- You can download it from a website 
+- You can scrape it from a website
+- A package (e.g. `gapminder`)
+- You can access it through an API
+- Which of these would be tidy/clean?
+:::
+
+## How Do We Get Tidy/Clean Data? 
+
+<br>
+
+::: incremental
+- Wrangle it ourselves
+- Download via an API 
+- Use a package
+:::
+
+## Some Basic R Code (Review) {.smaller}
+
+<br>
+
+::: {.incremental}
+- `<-` is the assignment operator
+  - Use it to assign values to objects
+- `#` is the comment operator
+  - Use it to comment out code or add comments
+  - Different function than in markdown text
+- To call a library, use `library()` and name of library
+  - name of library does not have to be in quotes, e.g. `library(readr)`
+  - only when you install it, e.g. `install.packages("readr")`
+:::
+
+## Read Data into R
+
+<br>
+
+```{r}
+#| label: read_data1
+#| echo: true
+#| eval: false
+#| code-line-numbers: "|1|2-3|5"
+
+# load libraries
+library(readr)
+library(dplyr)
+
+dem_summary <- read_csv("dem_summary.csv")
+
+glimpse(dem_summary)
+```
+
+## Viewing the Data in R
+
+<br>
+
+Use `glimpse()` to see the columns and data types:
+
+```{r}
+#| label: read_data2
+#| echo: true
+#| code-line-numbers: "7"
+
+# load libraries
+library(readr)
+library(dplyr)
+
+dem_summary <- read_csv("dem_summary.csv")
+
+glimpse(dem_summary)
+```
+
+# 
+
+Or use `View()` or click on the name of the object in your Environment tab to see the data in a spreadsheet:
+
+![](images/view_df.gif){fig-align="center"}
+
+## Try It Yourself!
+
+- Open the CSV file to see what it looks like
+- Then use this code to read it into R and view it
+
+```{r}
+#| label: read_data3
+#| echo: true
+#| eval: false
+
+# load libraries
+library(readr)
+library(dplyr)
+
+dem_summary <- read_csv("data/dem_summary.csv")
+
+glimpse(dem_summary)
+```
+
+```{r}
+#| label: timer1
+library(countdown)
+countdown(minutes = 5, 
+          id = "timer1", 
+          bottom = "10%", 
+          right = "10%",
+          color_border = "#fff",
+          color_text = "#fff",
+          color_running_background = "#42affa",
+          color_running_text = "black",
+          color_finished_background = "#E5D19D",
+          color_finished_text = "#00264A")
+```
+
+## APIs
+
+<br>
+
+- API stands for "Application Programming Interface"
+- Way for two computers to talk to each other
+
+```{mermaid}
+%%| fig-align: center
+%%| fig-width: 7
+%% Note: fig-width option not working as of Quarto 1.4, try again in 1.5 
+
+flowchart LR
+    Client-->|Request|id1[(API)]
+    id1[(API)]-->|Response|Client
+    id1[(API)]-->Server
+    Server-->id1[(API)]
+```
+
+## APIs in R {.smaller}
+
+<br>
+
+::: {.incremental}
+- APIs are accessed through packages in R
+- Sometimes there can be more than one package for an API
+- Much easier than reading in data from messy flat file!
+- We will use just one API in this class:
+  - Varieties of Democracy (V-Dem) through `vdemdata`
+- But there are many APIs out there (please explore!)
+:::
+
+## The `vdemdata` Package
+
+- Run this code and see what happens. 
+- What is `vdem` and what does it do? 
+
+```{r}
+#| label: vdemdata1
+#| echo: true
+
+# Load packages
+library(vdemdata) # to download V-Dem data
+library(dplyr)
+
+# Download the data
+democracy <- vdem 
+
+# View the data
+glimpse(democracy)
+```
+
+```{r}
+#| label: timer2
+
+library(countdown)
+countdown(minutes = 5, 
+          id = "timer2", 
+          top = "0%",
+          right = "5%")
+```
+
+
+## The `vdemddata` Package
+
+<br>
+
+- The `vdemdata` package is a package that allows you to download data from the Varieties of Democracy (V-Dem) API
+- It just has one function, `vdem`, which downloads the data
+- From there you have to use different `dplyr` functions to manipulate the data
+
+## The `gapminder` Package
+
+<br>
+
+- The `gapminder` package is a package that contains the `gapminder` dataset
+- Contains information about countries and regions from 1952 to 2007
+
+## 
+
+Install the gapminder dataset and view the data with the `glimpse()` function. 
+
+```{r}
+#| label: gapminder1
+#| echo: true
+
+# install.packages("gapminder")
+library(gapminder)
+
+glimpse(gapminder)
+```
+
+```{r}
+#| label: timer3
+
+countdown(minutes = 5, 
+          id = "timer3", 
+          bottom = "0%",
+          right = "5%")
+```
+
+# Transforming Data
+
+## `filter()`, `select()`, `mutate()`
+
+<br>
+
+- `filter()` is used to select observations based on their values
+- `select()` is used to select variables
+- `mutate()` is used to create new variables or modifying existing ones
+
+## `filter()`
+
+- Run this code. What do you see?
+- Try changing the year 
+- For one year, use `==` instead of `>=`
+- Or try `<=` and see what happens 
+
+```{r}
+#| label: vdemdata2
+#| echo: true
+
+democracy <- vdem |> # download the V-Dem dataset
+  filter(year >= 1990) # filter out years less than 1990
+  
+glimpse(democracy)  
+```
+
+```{r}
+#| label: timer4
+
+library(countdown)
+countdown(minutes = 5, 
+          id = "timer4", 
+          top = "0%",
+          right = "5%")
+```
+
+## `=` versus `==`
+
+<br>
+
+- `=` is used to assign values to variables, just like `<-`
+- `==` is used to test if two values are equal to each other
+- So `filter(year == 1990)` will give you just the observations for 1990
+
+## `>=` and `<=`
+
+- `>=` is used to test if a value is greater than or equal to another value
+- `<=` is used to test if a value is less than or equal to another value
+- So `filter(year >= 1990)` will give you the observations for 1990 and later
+- And `filter(year <= 1990)` will give you the observations for 1990 and earlier
+
+## `select()`
+
+- Run this code. What do you see?
+- Now try `v2x_libdem` instead of `v2x_polyarchy`
+- Choose more from the [codebook](https://v-dem.net/documents/24/codebook_v13.pdf) 
+
+```{r}
+#| label: vdemdata3
+#| echo: true
+
+democracy <- vdem |> # download the V-Dem dataset
+  select(                  # select (and rename) these variables
+    country = country_name,     # before the = sign is new name  
+    vdem_ctry_id = country_id,  # after the = sign is the old name
+    year, 
+    polyarchy = v2x_polyarchy
+  )
+  
+glimpse(democracy)  
+```
+
+```{r}
+#| label: timer5
+countdown(minutes = 5, 
+          id = "timer5",
+          top = "0%",
+          right = "5%")
+```
+
+## `mutate()`
+
+- Modify the code to create new variable that is three times the value of `polyarchy` 
+- How about `polyarchy` squared? 
+
+```{r}
+#| label: vdemdata4
+#| echo: true
+
+democracy <- vdem |> # download the V-Dem dataset
+  filter(year == 2015) |> # keep only observations from 2015
+  select(                  # select (and rename) these variables
+    country = country_name,     # name before the = sign is new name  
+    vdem_ctry_id = country_id,  # name after the = sign is old name
+    year, 
+    polyarchy = v2x_polyarchy 
+    ) |>
+  mutate(
+    polyarchy_dbl = polyarchy * 2 # create variable 2X polyarchy
+  )
+  
+glimpse(democracy)  
+```
+
+```{r}
+#| label: timer6
+countdown(minutes = 5, 
+          id = "timer6",
+          top = "0%",
+          right = "5%")
+```
+
+## Exercise
+
+- Use the `gapminder` dataset
+- Filter the data to keep only observations from 2007
+- Select the `country`, `continent`, `year`, `lifeExp`, and `gdpPercap` variables
+- Create a new variable called `gdpPercap_mil` that is `gdpPercap` divided by 1,000,000
+- Use the `glimpse()` function to view the data
+
