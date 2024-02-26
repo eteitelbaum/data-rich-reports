@@ -1,6 +1,9 @@
 ---
 title: "Visualizing Data with ggplot2"
-format: html
+format: 
+  html:
+    code-link: true
+highlight-style: atom-one
 execute: 
   echo: true
   message: false

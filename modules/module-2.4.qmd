@@ -1,0 +1,68 @@
+---
+title: "PDF Documents"
+format: 
+  html:
+    code-link: true
+highlight-style: atom-one
+execute: 
+  echo: true
+  message: false
+  warning: false
+---
+
+## Overview
+
+Quarto can be used to create PDF documents. This is a powerful feature because it allows you to create a document that can be easily shared and printed. PDF documents are also enduring and universal. Once something is converted to a PDF it can be opened on any machine with a PDF reader at any time. This makes PDFs a popular format for official documents, reports, and other important documents including academic publications. While HTML is more dynamic and interactive, PDF is still the standard for many types of documents. 
+
+## LaTeX 
+
+The default Quarto pdf document is made with [LaTeX](https://www.latex-project.org/). LaTeX is a typesetting system that is widely used for producing scientific and mathematical documents due to its ability to handle complex equations and formatting. LaTeX is also used for creating professional looking documents, including books, reports, and articles. LaTeX is a powerful tool, but it can be complex and difficult to learn. 
+
+To get a better understanding of what LaTeX is and why it is useful, watch the video below.
+
+{{< video https://youtu.be/9eLjt5Lrocw?si=fyzpoC-AgmF-5nsq title = 'Why LaTeX?'>}}
+
+For a more detailed introduction to LaTeX, check out [this website](https://www.learnlatex.org/en/). 
+
+Quarto makes it easy to use LaTeX without having to learn all of the ins and outs of LaTeX. As you continue your Quarto journey, you will probably need to learn a bit of LaTeX to make minor adjustments to the formatting.  
+
+Most people who write seriously in LaTeX use a LaTeX editor. There are many options, but some popular ones include [TeXShop](http://pages.uoregon.edu/koch/texshop/), [TeXworks](https://www.tug.org/texworks/), and [Overleaf](https://www.overleaf.com/). Overleaf is a cloud-based LaTeX editor that is popular because it is easy to use and it allows for real-time collaboration. 
+
+::: callout-note
+We won't be using a LaTeX editor in this course. I am just mentioning it here as background information.
+:::
+
+## Creating a PDF
+
+To set up a PDF document in Quarto, specify `pdf` as the output format in the YAML header of your document. The YAML header allows customization of the PDF, including styling aspects like font size, family, and margin adjustments. Additionally, you can control page orientation, paper size, and incorporate LaTeX packages for advanced formatting needs. This flexible configuration makes it possible to tailor the document's appearance to specific requirements, enhancing the readability and presentation of your content. 
+
+We will go over some of the options for customizing PDFs in class. For some preliminary guidance, check out the [PDF Basics](https://quarto.org/docs/output-formats/pdf-basics.html) section of the Quarto website. For more detailed info regarding all of the things that you can customize in a Quarto PDF document, check out the [PDF Options](https://quarto.org/docs/reference/formats/pdf.html) section of the Quarto Reference.
+
+## Quarto Extensions
+
+Quarto has a number of extensions that can be used to enhance the functionality of your PDF. These are essentially LaTeX templates that other users have created and shared. You can use these extensions to create a PDF with a specific style. For example, there are a number of extensions for styling your article according to the standards of specific [academic journals](https://quarto.org/docs/extensions/listing-journals.html). But there are other [custom formats](https://quarto.org/docs/extensions/listing-formats.html) that can be used for working papers and other documents. 
+
+::: callout-note
+Extenxions are available for other formats including HTML and revealjs slides. Personally, I tend to use extensions most when I am trying to style a pdf document, which is why I mention them here.
+:::
+
+To use an extension for a new document you are going to type `quarto use template quarto-journals/name_of_extension` in the terminal while in the directory of your project folder. For existing documents, type `quarto add quarto-journals/name_of_extension`. To render the document using the extension, you can use the terminal command `quarto render name_of_document.qmd --to name_of_extension-pdf` or you can specify the extension in the YAML header of your document like this: 
+
+```yaml
+format:
+  pdf: default
+  name_of_extension-pdf:
+    keep-tex: true
+```
+
+::: callout-important
+Don't forget to change `name_of_extension` to the name of the extension that you want to use and `name_of_document` to the name of your document.
+:::
+
+## Typst
+
+In this class we are also going to talk a bit about [Typst](https://typst.app/). Typst is a modern, markup-based typesetting system designed to offer a user-friendly alternative to LaTeX, targeting both high-end typesetting needs and everyday document creation. Typst promises higher-quality typographical output with features like improved justification within a learning curve that is significantly shorter compared to traditional LaTeX. Typst is relatively new but seems to have a a lot of promise as well as many boosters in the R/Quarto community. 
+
+For an intro to Typst and how it can be used in Quarto, see this presentation by Carlos Scheidegger from `posit::conf(2023)`:
+
+{{< video https://youtu.be/t30sqFch2v0?si=88Fo6VyM5aFvzZv0 title = "Never again in outer par mode" >}}

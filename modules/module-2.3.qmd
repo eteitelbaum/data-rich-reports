@@ -1,0 +1,32 @@
+---
+title: "Websites and Blogs"
+format: 
+  html:
+    code-link: true
+highlight-style: atom-one
+execute: 
+  echo: true
+  message: false
+  warning: false
+---
+
+## Overview 
+
+Quarto is a powerful tool for creating websites blogs. Quarto can work with static site generators like Hugo and can be hosted on a variety of platforms including GitHub Pages, Netlify, and others. In this class, we are going to focus on producing a personal blog and how to publish it on [Quarto Pub](https://quarto.org/docs/publishing/quarto-pub.html). 
+
+## Setting Up a Blog
+
+To set up a Quarto blog, you would follow the normal workflow of setting up a Quarto project, except that instead of selecting a "New Project" you select "Quarto Blog." This will create a new project with a pre-configured directory structure and a sample blog post. 
+
+Before you do anything else, go ahead and render the blog by going to the `Build` tab and pressing the "Render Website" button. This will create a new directory called `public` in your project directory. This will create a preview of the blog in your favorite browser and also create a `_site` directory that you will publish to the web.
+
+For a quick overview on how to set up a blog post, check out this video by Tom Mock of the Posit Team: 
+
+{{< video https://youtu.be/t8qtcDyCRFA?si=FPI1WTHwVX2r9W6r title = "Create and Publish a Quarto Blog in 100 Seconds">}}
+
+## Creating a New Blog Post
+
+To create a new blog post, you would create a new subfolder in the `_posts` directory. Within that you create a new `index.qmd` file and place any files such as data or image files that you want to access. The `index.qmd` file will contain the content of your blog post. 
+
+You can then incorporate content into the `index.qmd` file just like any QMD file. You can write in Markdown, include code blocks, execute code, include multimedia content such as images, videos, and iframes, etc.
+

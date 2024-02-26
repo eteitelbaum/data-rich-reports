@@ -1,7 +1,10 @@
 ---
 title: "Coding in R"
 subtitle: "A Gentle Introduction"
-format: html
+format: 
+  html:
+    code-link: true
+highlight-style: atom-one
 execute: 
   echo: true
   message: false

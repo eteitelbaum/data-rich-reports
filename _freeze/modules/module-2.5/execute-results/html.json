@@ -1,0 +1,17 @@
+{
+  "hash": "ab045e791a263a40b8d0c31fddcac179",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Parameterized Reporting\"\nformat: \n  html:\n    code-link: true\nhighlight-style: atom-one\nexecute: \n  echo: true\n  message: false\n  warning: false\nparams:\n  country: \"Afghanistan\"\n---\n\n\n## Overview\n\nFor the last topic of the workshop, we are going to discuss parameterized reporting. This is a powerful feature of Quarto that allows you to create a single document that can be used to generate multiple reports. This is useful when you have a report that needs to be generated for different groups of people, different countries or for different time periods.\n\n## Parameters\n\nIn Quarto, [parameters](https://quarto.org/docs/computations/parameters.html) are defined in the YAML header of the document. You can define as many parameters as you need. Parameters can be used to control the content of the document, the formatting of the document, and the output format of the document. To define a parameter, you use the `params` key in the YAML header. Here is an example of a parameter definition:\n\n```yaml\nparams:\n  country: \"Afghanistan\"\n```\n\nHere our we have defined `country` as a parameter. Right now, the `country` parameter is set to \"Afghanistan\" but we could change it to any country that might appear in our dataset or that we might want to talk about in our report. You can set your parameters to any value that you want and then call the parameters later on in your report with `params$parameter` where `parameter` is the name of the parameter.\n\nFor example, you could use the `country` parameter to filter a dataset to only include data for a specific country. You could also use the `country` to create a title for a plot that includes the country name.. For example, we could produce a line chart of the country we specified in the YAML header:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(gapminder)\n\n# Filter the gapminder dataset to only include data for the specified country and year\ngapminder_filtered <- gapminder |>\n  filter(country == params$country)\n\n# Create a plot\nggplot(gapminder_filtered, aes(x = year, y = lifeExp)) +\n  geom_line() +\n  labs(title = paste(\"Life Expectancy in\", params$country)) +\n  theme_minimal()\n```\n\n::: {.cell-output-display}\n![](module-2.5_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n\n\n## Parameterized Reports\n\nSo now that you can define parameters and use them in your report, ou are ready to learn about how you can use parameters to automate a your report-writing process. For a cool illustration, check out this video by Jadey Ryan at `posit::conf(2023)`:\n\n\n{{< video https://youtu.be/lbE5uOqfT70?si=3WpJ-RUFUsysPKXq title = \"Parameterized Quarto Reports Improve Understanding of Soil Health\" >}}\n\n",
+    "supporting": [
+      "module-2.5_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

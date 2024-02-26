@@ -1,0 +1,80 @@
+---
+title: "An Introduction to Data Transformation"
+format: 
+  html:
+    code-link: true
+highlight-style: atom-one
+execute: 
+  echo: true
+  message: false
+  warning: false
+---
+
+::: {.callout-tip}
+## Prework
+
+- Install the `devtools` package. Type `install.packages("devtools")` in your console. You will need this to install the `vdemdata` package because it is not on the CRAN Network. 
+- Install the `vdemdata` package from GitHub. Type `devtools::install_github("vdeminstitute/vdemdata")` in your console. 
+- Generate a quarto document in a new project folder so that you can code along with me.
+:::
+
+## Overview
+
+In this module, we are going to learn some new data transformation skills. We will learn some new functions in `dplyr` that will help us get our data into a usable form for analysis. We are also going to cover in depth some common data science workflows, including filtering observations, selecting variables, summarizing data for different groups, and sorting data based on column values. 
+
+We are going to do this while working with data from an [API](https://en.wikipedia.org/wiki/API). Specifically, we are going to be working with the `vdemdata` in this lesson and some others later in the course. 
+
+## Downloading data from the V-Dem API
+
+{{< video https://youtu.be/ScQD47eJeAE title='Transforming data with dplyr verbs' >}}
+
+The first thing we want to talk about is how to filter observations and to select variables for analysis. We will also delve into the topic of how to create new variables. To illustrate these concepts, we are going to be working with the [V-Dem Dataset](https://www.v-dem.net/data/the-v-dem-dataset/). The V-Dem offers an R package for downloading its data called [vdemdata](https://github.com/vdeminstitute/vdemdata). 
+
+`vdemdata` is perfect for illustrating the `filter()` and `select()` verbs because its main function for downloading the data (`vdem`) does not take any arguments (it simply downloads the whole dataset). So you have to use R functions to narrow down the variables and years you want to work with. 
+
+While V-Dem has wealth of indicators related to democracy, we are going to focus on the most famous one called the "polyarchy" score. We are also going to download data on per capita GDP and create some indicator variables for region that we will use later on when we summarize the data. Along with those variables, we also want to retain `country_name`, `year` and `country_id` for the purposes of merging these data with our World Bank data. 
+
+::: {.callout-note}
+While V-Dem has a variable look-up tool (`find_var`), it does not provide very much information on the variables that the search function returns. Therefore, if you want to use this package for your own research, I highly recommend just going to the [V-Dem codebook](https://www.v-dem.net/documents/24/codebook_v13.pdf) and manually grabbing the codes for the indicators that you want to use in your analysis. 
+:::
+
+In addition to filtering out years and selecting variables, let's also create a `region` coding to facilitate our analysis later on. We will do this by piping in a `mutate()` call where we use the [case_match()](https://dplyr.tidyverse.org/reference/case_match.html) function to change the `region` from a numeric variable to a string. This will come in handy when we go to visualize the data in future lessons.  
+
+We will store our new data as an object called `democracy`.  
+
+```{r}
+#| label: democracy
+
+# Load packages
+library(dplyr)
+library(vdemdata) # to download V-Dem data
+
+# Download the data
+democracy <- vdem |> # download the V-Dem dataset
+  filter(year >= 1990)  |> # filter out years less than 1990
+  select(                  # select (and rename) these variables
+    country = country_name,     # the name before the = sign is the new name  
+    vdem_ctry_id = country_id,  # the name after the = sign is the old name
+    year, 
+    polyarchy = v2x_polyarchy, 
+    gdp_pc = e_gdppc, 
+    region = e_regionpol_6C
+    ) |>
+  mutate(
+    region = case_match(region, # replace the values in region with names
+                     1 ~ "Eastern Europe", 
+                     2 ~ "Latin America",  
+                     3 ~ "Middle East",   
+                     4 ~ "Africa", 
+                     5 ~ "The West", 
+                     6 ~ "Asia")
+                    # number on the left of the ~ is the V-Dem region code
+                    # we are changing the number to the country name on the right
+                    # of the equals sign
+  )
+
+# View the data
+glimpse(democracy)
+```
+
+

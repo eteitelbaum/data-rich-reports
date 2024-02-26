@@ -1,6 +1,9 @@
 ---
 title: "Writing in Markdown"
-format: html
+format: 
+  html:
+    code-link: true
+highlight-style: atom-one
 execute: 
   echo: true
   message: false

@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.533">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
 <title>IAFF 6502/6505 Creating Data Rich Reports with Quarto - Visualizing Data with ggplot2</title>
 <style>
 code{white-space: pre-wrap;}
@@ -56,7 +53,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -76,8 +72,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -104,8 +99,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-
-
 <meta property="og:title" content="IAFF 6502/6505 Creating Data Rich Reports with Quarto - Visualizing Data with ggplot2">
 <meta property="og:description" content="Homepage for Creating Data Rich Reports">
 <meta property="og:image" content="https://quarto.training/modules/images/drr6502-img.png">
@@ -115,13 +108,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="twitter:image" content="https://quarto.training/modules/images/drr6502-img.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
-
 <body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -132,16 +122,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../images/drr6502-logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      </a>
+      <img src="../images/drr6502-logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://blackboard.gwu.edu" title="Blackboard" class="quarto-navigation-tool px-1" aria-label="Blackboard"><i class="bi bi-mortarboard-fill"></i></a>
     <a href="https://github.com" title="Github" class="quarto-navigation-tool px-1" aria-label="Github"><i class="bi bi-github"></i></a>
@@ -161,7 +146,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item sidebar-item-section">
+<li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
  <span class="menu-text">Course Information</span></a>
@@ -169,8 +154,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../course-syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syllabus</span></a>
@@ -201,7 +186,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
@@ -210,8 +195,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../assignments/coding-assignment-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Assignment 1</span></a>
@@ -224,7 +209,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
@@ -233,8 +218,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../project/project-assignment.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Project Assignment</span></a>
@@ -247,7 +232,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
@@ -256,8 +241,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../modules/module-1.1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Module 1.1</span></a>
@@ -287,8 +272,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Module 1.5</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module-2.1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 2.1</span></a>
+  </div>
+</li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
@@ -297,8 +288,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../weeks/workshop-day1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workshop Day 1</span></a>
@@ -311,28 +302,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-  </li>
+</li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+<li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
   <li><a href="#bar-charts" id="toc-bar-charts" class="nav-link" data-scroll-target="#bar-charts">Bar charts</a></li>
   <li><a href="#line-charts" id="toc-line-charts" class="nav-link" data-scroll-target="#line-charts">Line charts</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/eteitelbaum/data-rich-reports/edit/main/modules/module-1.4.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/data-rich-reports/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/eteitelbaum/data-rich-reports/edit/main/modules/module-1.4.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/data-rich-reports/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/module-1.1.html">Course Modules</a></li><li class="breadcrumb-item"><a href="../modules/module-1.4.html">Module 1.4</a></li></ol></nav>
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/module-1.1.html">Course Modules</a></li><li class="breadcrumb-item"><a href="../modules/module-1.4.html">Module 1.4</a></li></ol></nav><div class="quarto-title">
 <h1 class="title">Visualizing Data with ggplot2</h1>
 </div>
 
@@ -347,10 +332,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header>
-
-
-<div class="callout callout-style-default callout-tip callout-titled">
+</header><div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -363,78 +345,72 @@ Prework
 <ul>
 <li>Install the Tidyverse collection of packages if you have not done so already (see <a href="../modules/module-1.3.html">the previous module</a>)</li>
 <li>Have a look at the documentation for <a href="https://ggplot2.tidyverse.org/">ggplot2</a>,</li>
-<li>Familiarize yourself with the <code>ggplot2</code> <a href="https://posit.co/wp-content/uploads/2022/10/data-visualization-1.pdf">cheatseet</a></li>
+<li>Familiarize yourself with the <code>ggplot2</code> <a href="https://posit.co/wp-content/uploads/2022/10/data-visualization-1.pdf">cheatseet</a>
+</li>
 <li>Start a new quarto project called “modules” and generate a quarto document named “dataviz.qmd” inside of it so that you can code along with me</li>
 <li>Download the data for the bar chart <a href="https://github.com/eteitelbaum/data-rich-reports/blob/c55367f1377c2741fcdc3d9a13eb37f7691ce8ae/modules/data/dem_summary.csv">here</a>. Click the little downnload icon that says “Download raw file” when you hover over it and then save it as <code>dem_summary.csv</code> in your project folder</li>
 <li>Download the data for the line chart <a href="https://github.com/eteitelbaum/data-rich-reports/blob/c55367f1377c2741fcdc3d9a13eb37f7691ce8ae/modules/data/dem_waves_ctrs.csv">here</a> and save as <code>dem_waves_ctrs.csv</code> in your project folder</li>
 </ul>
 <p>If you have installed the Tidyverse, then you should already have the packages for this model, including <code>ggplot2</code>. You can go ahead and load <code>ggplot2</code> along with <code>readr</code> and <code>dplyr</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note that you could also load these three packages by running <code>library(tidyverse)</code>. However, it is good to be intentional about which packages we are loading as we are learning them.</p>
+<p>Note that you could also load these three packages by running <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code>. However, it is good to be intentional about which packages we are loading as we are learning them.</p>
 </div>
 </div>
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<section id="overview" class="level2"><h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>Last week we learned how to gather and wrangle data. This week we are going to start visualizing it with the <code>ggplot2</code>. We will learn how to make bar charts, histograms, line charts and scatter plots.</p>
 <p>Along the way we are going to be talking about the “grammar of graphics” that <code>ggplot2</code> is based on. The “gg” in ggplot stands for “grammar of graphics.” The grammar of graphics is a layered approach to constructing graphs based on a <a href="https://link-springer-com.proxygw.wrlc.org/book/10.1007/0-387-28695-0">book</a> by Leland Wilkinson.</p>
 <p>The idea is that each visualization you make is going to contain cerain elements. You will start with some data. Then you will incorporate some “aesthetics” which you can think of as the dimensions of the visualization (x-axis, y-axis and color, size or shapes for additional dimensions). Next you identify a geometric obejct that you want to use such as a bar, a line or a point. From there you can customize various elements of the plot like the title and axis scales and labels.</p>
-</section>
-<section id="bar-charts" class="level2">
-<h2 class="anchored" data-anchor-id="bar-charts">Bar charts</h2>
+</section><section id="bar-charts" class="level2"><h2 class="anchored" data-anchor-id="bar-charts">Bar charts</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/QG1oDJPoIio" title="Making Bar Charts" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>Let’s get started with our first visualization–a basic bar chart. Bar charts are good for comparing data across cases. Our aim here is going to be to summarize levels of democracy across different regions like we did in the last lesson, but this time we will illustrate the differences with a chart.</p>
-<p>We will start by loading the data <code>dem_summary.csv</code> file that you downloaded in the prework section. Next we will do our first <code>ggplot()</code> call. The <code>ggplot()</code> function takes two arguments: <code>data</code> and <code>mapping</code>. <code>data</code> refers to the data frame that includes the variables we want to visualize and <code>mapping</code> refers to the aesthetics mappings for the visualization. The aesthetics mappings are themselves presented in a quoting function <code>aes()</code> that defines the x and y values of the plot along with other aesthetic values like <code>fill</code>, <code>color</code> and <code>linetype</code>. We will focus on x and y values here and return to these additional aesthetic values later.</p>
-<p>After our <code>ggplot()</code> call, we can add a series of additional functions to define our visualization following a <code>+</code> sign. The most important group are the geoms which will define the basic type of plot we want to make. In this case, we are calling <code>geom_col()</code> for our histogram and specifying that the fill color should be “steelblue.”</p>
-<p>From there we will further customize our visualization with the <code>labs()</code> function to provide a title, axis labels and a caption.</p>
+<p>We will start by loading the data <code>dem_summary.csv</code> file that you downloaded in the prework section. Next we will do our first <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> call. The <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> function takes two arguments: <code>data</code> and <code>mapping</code>. <code>data</code> refers to the data frame that includes the variables we want to visualize and <code>mapping</code> refers to the aesthetics mappings for the visualization. The aesthetics mappings are themselves presented in a quoting function <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> that defines the x and y values of the plot along with other aesthetic values like <code>fill</code>, <code>color</code> and <code>linetype</code>. We will focus on x and y values here and return to these additional aesthetic values later.</p>
+<p>After our <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> call, we can add a series of additional functions to define our visualization following a <code>+</code> sign. The most important group are the geoms which will define the basic type of plot we want to make. In this case, we are calling <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col()</a></code> for our histogram and specifying that the fill color should be “steelblue.”</p>
+<p>From there we will further customize our visualization with the <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs()</a></code> function to provide a title, axis labels and a caption.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dem_summary <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/dem_summary.csv"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dem_summary, <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">y =</span> polyarchy)) <span class="sc">+</span> <span class="co"># ggplot call</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span> <span class="co"># we use geom_col() for a a bar chart</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Region"</span>, </span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Avg. Polyarchy Score"</span>, </span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Democracy by region, 1990 - present"</span>, </span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dem_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/dem_summary.csv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dem_summary</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">region</span>, y <span class="op">=</span> <span class="va">polyarchy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="co"># ggplot call</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"steelblue"</span><span class="op">)</span> <span class="op">+</span> <span class="co"># we use geom_col() for a a bar chart</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"Region"</span>, </span>
+<span>    y <span class="op">=</span> <span class="st">"Avg. Polyarchy Score"</span>, </span>
+<span>    title <span class="op">=</span> <span class="st">"Democracy by region, 1990 - present"</span>, </span>
+<span>    caption <span class="op">=</span> <span class="st">"Source: V-Dem Institute"</span></span>
+<span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="module-1.4_files/figure-html/barchart-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="module-1.4_files/figure-html/barchart-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>This looks pretty good but frequently we would want the bars of our bar chart to be sorted in order of the values being displayed. Let’s go ahead and add the <a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/reorder.factor.html">reorder()</a> function to our <code>aes()</code> call so that we are reordering the bars based on descending values of the average polyarchy score.</p>
+<p>This looks pretty good but frequently we would want the bars of our bar chart to be sorted in order of the values being displayed. Let’s go ahead and add the <a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/reorder.factor.html">reorder()</a> function to our <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> call so that we are reordering the bars based on descending values of the average polyarchy score.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dem_summary, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(region, <span class="sc">-</span>polyarchy), <span class="at">y =</span> polyarchy)) <span class="sc">+</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span> </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Region"</span>, </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Avg. Polyarchy Score"</span>, </span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Democracy by region, 1990 - present"</span>, </span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dem_summary</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span><span class="op">(</span><span class="va">region</span>, <span class="op">-</span><span class="va">polyarchy</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">polyarchy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"steelblue"</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"Region"</span>, </span>
+<span>    y <span class="op">=</span> <span class="st">"Avg. Polyarchy Score"</span>, </span>
+<span>    title <span class="op">=</span> <span class="st">"Democracy by region, 1990 - present"</span>, </span>
+<span>    caption <span class="op">=</span> <span class="st">"Source: V-Dem Institute"</span></span>
+<span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="module-1.4_files/figure-html/reorder-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="module-1.4_files/figure-html/reorder-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-</section>
-<section id="line-charts" class="level2">
-<h2 class="anchored" data-anchor-id="line-charts">Line charts</h2>
+</section><section id="line-charts" class="level2"><h2 class="anchored" data-anchor-id="line-charts">Line charts</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/PnmQ2MFQpIc" title="Making Line Charts" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>Now let’s create a line chart. Line charts are usually the best option when we want to illustrate trends in our data. For this visualization, we will try to illustrate Samuel Huntington’s waves of democracy by showing how countries representing each of the three waves. The U.S. represents the first wave, Japan the second wave starting with the allied victory in WWII, and Portugal represents the first country to transition in the third wave.</p>
 <p>Next, let’s import the <code>dem_waves_ctrs</code> CSV file from our project folder and save it in an object of the same name.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dem_waves_ctrs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/dem_waves_ctrs.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dem_waves_ctrs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/dem_waves_ctrs.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -449,35 +425,31 @@ Note
 <p>This importing the data from a CSV file represents a slightly different workflow than was used in the line chart video where I downloaded and wrangled the data from the V-Dem API. We will come back to wrangling data later on in the course.</p>
 </div>
 </div>
-<p>Next, we are going to do our <code>ggplot()</code> call. For the aesthetics mapping, we will put the year on the x-axis and the polyarchy score on the y-axis. We will also specify <code>color</code> in the <code>aes()</code> call so that we can color the lines by region.</p>
-<p>To get a line chart, we have to specify <code>geom_line()</code>. Then within the <code>geom_line()</code> function we will set the <code>linewidth</code> equal to `1’ so that the lines are a bit more visible.</p>
-<p>Finally, we will add a <code>labs()</code> call as with the previous visualizations. But in addition to title, axis labels and a caption, we will also add <code>color = "Country"</code> to change the label of the legend to “Country” with a capital “C.”</p>
+<p>Next, we are going to do our <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> call. For the aesthetics mapping, we will put the year on the x-axis and the polyarchy score on the y-axis. We will also specify <code>color</code> in the <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> call so that we can color the lines by region.</p>
+<p>To get a line chart, we have to specify <code><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line()</a></code>. Then within the <code><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line()</a></code> function we will set the <code>linewidth</code> equal to `1’ so that the lines are a bit more visible.</p>
+<p>Finally, we will add a <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs()</a></code> call as with the previous visualizations. But in addition to title, axis labels and a caption, we will also add <code>color = "Country"</code> to change the label of the legend to “Country” with a capital “C.”</p>
 <p>Let’s run that, save it as an object and then call the object to view the visualization.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># in this ggplot() call, we add a third dimension for line color</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dem_waves_ctrs, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> polyarchy, <span class="at">color =</span> country)) <span class="sc">+</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="co"># our geom is a line with a width of 1</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Year"</span>, </span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Polyarchy Score"</span>, </span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">'Democracy in countries representing three different "waves"'</span>, </span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span>, </span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Country"</span> <span class="co"># make title of legend to upper case</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># in this ggplot() call, we add a third dimension for line color</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dem_waves_ctrs</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">polyarchy</span>, color <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span> <span class="co"># our geom is a line with a width of 1</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"Year"</span>, </span>
+<span>    y <span class="op">=</span> <span class="st">"Polyarchy Score"</span>, </span>
+<span>    title <span class="op">=</span> <span class="st">'Democracy in countries representing three different "waves"'</span>, </span>
+<span>    caption <span class="op">=</span> <span class="st">"Source: V-Dem Institute"</span>, </span>
+<span>    color <span class="op">=</span> <span class="st">"Country"</span> <span class="co"># make title of legend to upper case</span></span>
+<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="module-1.4_files/figure-html/linechart-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="module-1.4_files/figure-html/linechart-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1020,10 +992,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../modules/module-1.3.html" class="pagination-link  aria-label=" module="" 1.3"="">
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="../modules/module-1.3.html" class="pagination-link  aria-label=" module="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Module 1.3</span>
       </a>          
   </div>
@@ -1034,8 +1004,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p>© Copyright 2024, <a href="https://emmanuel.teitelbaum.com">Emmanuel Teitelbaum</a></p>
 </div>   
@@ -1047,8 +1016,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-
-
 
 
 </body></html>

@@ -1,0 +1,51 @@
+---
+title: "Revealjs Slides"
+format: 
+  html:
+    code-link: true
+highlight-style: atom-one
+execute: 
+  echo: true
+  message: false
+  warning: false
+---
+
+## Overall
+
+[reveal.js](https://revealjs.com/) is an open-source HTML presentation framework. It enables users to create fully-featured and beautiful presentations using HTML, CSS, and JavaScript. Reveal presentations work in any modern browser and can include a variety of dynamic features such as interactive elements, transitions, and embedded multimedia. You can use it as an alternative to traditional presentation tools like PowerPoint or Keynote.
+
+## Quarto reveal.js 
+
+Quarto's integration with reveal.js allows for the creation of interactive presentations directly from Quarto documents using Markdown or QMD (Quarto Markdown). To get Reveal output you should specify `revealjs` as the output format in your YAML header, e.g.
+
+```
+format: revealjs 
+```
+
+Quarto's reveal.js supports many of the standard features you see in other presentation formats such as incremental lists, multiple columns, speaker notes, and a variety of themes for customization. Users can include code blocks with line highlighting and execute code within slides, adapting content to different screen sizes with options for scrollable content and smaller fonts. Additionally, it allows for the integration of multimedia backgrounds, including images, videos, and iframes, enhancing the visual appeal and interactivity of presentations. 
+
+Take a moment to check out the Quarto reveal.js [guide](https://quarto.org/docs/presentations/revealjs/) for an overview of its capabilities and think about which ones you might want to use in your own presentation.
+
+## Custom Reveal Themes
+
+If you are familiar with [Sass](https://sass-lang.com/), you can create custom themes for your Reveal presentations. You do this by creating a `.scss` file and then specifying it in the YAML header of your Quarto document. For example, you can create a file called `mytheme.scss` and then include it in your YAML header like this:
+
+```
+format: 
+  revealjs:
+    theme: mytheme.scss
+```
+
+Or if you wanted to combine some custom themeing with the default reveal.js theme, you could do something like this:
+
+```
+format: 
+  revealjs:
+    theme: [simple, mytheme.scss]
+```
+
+This would apply the `simple` Reveal theme and then add your custom theme on top of it.
+
+Check out this presentation by Emil Hvitfeldt on how to customize reveal.js themes with Sass for more information on how to create your own custom themes:
+
+{{< video https://youtu.be/SAi8-P49F2Y?si=wh0KWXhtBap_JZsC title = 'Slidecraft: The Art of Creating Pretty Presentations'>}}
