@@ -1,0 +1,17 @@
+{
+  "hash": "6f6eec3c9735bb6078463ea4c0c57c42",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Life Expectancy\"\nformat: html\nexecute: \n  echo: false\n  warning: false\n  message: false\nparams:\n  country: \"Afghanistan\"\n---\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n::: {.cell-output-display}\n![](parameterized-report_files/figure-html/unnamed-chunk-2-1.png){width=672}\n:::\n:::\n\n```\n",
+    "supporting": [
+      "parameterized-report_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
