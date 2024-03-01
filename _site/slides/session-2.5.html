@@ -387,6 +387,8 @@
       margin-right: 0; 
     }
   </style>
+  <link href="../site_libs/countdown-0.4.0/countdown.css" rel="stylesheet">
+  <script src="../site_libs/countdown-0.4.0/countdown.js"></script>
 <meta property="og:title" content="IAFF 6502/6505 Creating Data Rich Reports with Quarto - Data Rich Reports">
 <meta property="og:description" content="Session 2.5–Parameterized Reporting">
 <meta property="og:image" content="https://quarto.training/slides/images/drr6502-img.png">
@@ -410,6 +412,10 @@
 </section>
 <section id="what-is-parameterized-reporting" class="slide level2">
 <h2>What is Parameterized Reporting?</h2>
+<ul>
+<li class="fragment">Make one template report in Quarto</li>
+<li class="fragment">Create R script file that allows you to make multiple reports from this template</li>
+</ul>
 </section>
 <section id="why-parameterized-reporting" class="slide level2">
 <h2>Why Parameterized Reporting?</h2>
@@ -424,12 +430,60 @@
 </section>
 <section class="slide level2">
 
-
-<img data-src="../images/ivac-country-reports.png" class="r-stretch"></section>
+<p><a href="https://www.jhsph.edu/ivac/resources/pdpr/"><img data-src="../images/ivac-country-reports.png"></a></p>
+</section>
 <section class="slide level2">
 
-
-<img data-src="../images/psc.png" class="r-stretch"></section>
+<p><a href="https://housingprofiles.pschousing.org/"><img data-src="../images/psc.png"></a></p>
+</section>
+<section id="how-does-parameterized-reporting-work" class="slide level2">
+<h2>How Does Parameterized Reporting Work?</h2>
+<div class="fragment">
+<div class="bg-light">
+<div class="r-stack">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://raw.githubusercontent.com/jadeynryan/2023_posit-parameterized-quarto/main/images/template1.png" class="fragment quarto-figure quarto-figure-center" alt="File with the word '.qmd' inside and the word 'Function' above." width="1300"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://raw.githubusercontent.com/jadeynryan/2023_posit-parameterized-quarto/main/images/template2.png" class="fragment quarto-figure quarto-figure-center" alt="An arrow points from 'Input' with 'params$year' to the previous image with 'Function' and '.qmd' file." width="1300"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://raw.githubusercontent.com/jadeynryan/2023_posit-parameterized-quarto/main/images/template3.png" class="fragment quarto-figure quarto-figure-center" alt="In addition to the previous two images, arrows point to five reports with years 2019 through 2023 on them in a flow chart." width="1300"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Source: <a href="https://jadeynryan.github.io/2023_posit-parameterized-quarto/#/title-slide">Jadey Ryan</a></p>
+</div>
+</section>
+<section id="manually-create-multiple-reports" class="slide level2">
+<h2>Manually Create Multiple Reports</h2>
+<ul>
+<li class="fragment">You can manually make multiple reports by, for example, adjusting the country you filter on in your Quarto document</li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>gapminder_filtered <span class="ot">&lt;-</span></span>
+<span id="cb1-2"><a></a>  gapminder <span class="sc">|&gt;</span> </span>
+<span id="cb1-3"><a></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"Afghanistan"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> gapminder_filtered,</span>
+<span id="cb2-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> year,</span>
+<span id="cb2-3"><a></a>           <span class="at">y =</span> lifeExp,</span>
+<span id="cb2-4"><a></a>           <span class="at">group =</span> country)) <span class="sc">+</span></span>
+<span id="cb2-5"><a></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb2-6"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
 <section id="parameters" class="slide level2">
 <h2>Parameters</h2>
 <pre><code>---
@@ -475,15 +529,44 @@ params:
 <div class="fragment">
 <p><strong>Code</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>gapminder_filtered <span class="ot">&lt;-</span></span>
-<span id="cb3-2"><a></a>  gapminder <span class="sc">|&gt;</span> </span>
-<span id="cb3-3"><a></a>  <span class="fu">filter</span>(country <span class="sc">==</span> params<span class="sc">$</span>country)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>gapminder_filtered <span class="ot">&lt;-</span></span>
+<span id="cb5-2"><a></a>  gapminder <span class="sc">|&gt;</span> </span>
+<span id="cb5-3"><a></a>  <span class="fu">filter</span>(country <span class="sc">==</span> params<span class="sc">$</span>country)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> gapminder_filtered,</span>
+<span id="cb6-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> year,</span>
+<span id="cb6-3"><a></a>           <span class="at">y =</span> lifeExp,</span>
+<span id="cb6-4"><a></a>           <span class="at">group =</span> country)) <span class="sc">+</span></span>
+<span id="cb6-5"><a></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb6-6"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="your-turn" class="slide level2">
+<h2>Your Turn</h2>
+<ul>
+<li class="fragment">Install the <code>usethis</code> package with <code>install.packages("usethis")</code></li>
+<li class="fragment">Run `usethis::use_course(“https://github.com/rfortherestofus/gw-parameterized-report-example/archive/refs/heads/main.zip”)’ and answer yes to the questions it gives you</li>
+<li class="fragment">Open the project (it should happen automatically)</li>
+<li class="fragment">Open the <code>report.qmd</code> file and save it as <code>report2.qmd</code></li>
+<li class="fragment">Change the <code>country</code> parameter in the YAML to be called <code>continent</code> and set the default value to be “Asia”</li>
+<li class="fragment">Adjust the code that creates the <code>gapminder_filtered</code> data frame so that it filters to use the <code>continent</code> parameter</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_5f17141b" data-update-every="1" tabindex="0" style="right:0%;bottom:0%;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
 </div>
 </div>
 </section>
 <section id="use-parameters-for-inline-code" class="slide level2">
 <h2>Use Parameters for Inline Code</h2>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="do">## Life Expectancy in `r params$country`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="do">## Life Expectancy in `r params$country`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
 <ul>
 <li>Show header</li>
@@ -501,6 +584,22 @@ params:
           display:block!important;
       }</style></aside>
 </section>
+<section id="your-turn-1" class="slide level2">
+<h2>Your Turn</h2>
+<ul>
+<li class="fragment">Working in your <code>report2.qmd</code> file, use inline code to create a line that says “This report is on population in [CONTINENT] from 1952 to 2007.”</li>
+<li class="fragment">Use inline code to make the [CONTINENT] portion use your parameter</li>
+<li class="fragment">If you finish early, write code to make the 1952 and 2007 values show up using inline R code</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_13e9595d" data-update-every="1" tabindex="0" style="right:0%;bottom:0%;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</section>
 <section id="render-with-r-script" class="slide level2">
 <h2>Render with R Script</h2>
 <ul>
@@ -509,11 +608,11 @@ params:
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">library</span>(quarto)</span>
-<span id="cb5-2"><a></a></span>
-<span id="cb5-3"><a></a><span class="fu">quarto_render</span>(</span>
-<span id="cb5-4"><a></a>  <span class="at">input =</span> <span class="st">"report.qmd"</span></span>
-<span id="cb5-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">library</span>(quarto)</span>
+<span id="cb8-2"><a></a></span>
+<span id="cb8-3"><a></a><span class="fu">quarto_render</span>(</span>
+<span id="cb8-4"><a></a>  <span class="at">input =</span> <span class="st">"report.qmd"</span></span>
+<span id="cb8-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
 <ul>
@@ -533,6 +632,22 @@ params:
       }</style></aside>
 </div>
 </section>
+<section id="your-turn-2" class="slide level2">
+<h2>Your Turn</h2>
+<ul>
+<li class="fragment">Install the <code>quarto</code> package using <code>install.packages("quarto")</code></li>
+<li class="fragment">Open the file called <code>render.R</code> file and save it as <code>render2.R</code></li>
+<li class="fragment">Adjust the code to render your <code>report2.qmd</code> document using the <code>quarto_render()</code> function</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_311cbb7e" data-update-every="1" tabindex="0" style="right:0%;bottom:0%;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</section>
 <section id="add-arguments-to-quarto_render" class="slide level2">
 <h2>Add Arguments to <code>quarto_render()</code></h2>
 <ul>
@@ -540,13 +655,13 @@ params:
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">library</span>(quarto)</span>
-<span id="cb6-2"><a></a></span>
-<span id="cb6-3"><a></a><span class="fu">quarto_render</span>(</span>
-<span id="cb6-4"><a></a>  <span class="at">input =</span> <span class="st">"report.qmd"</span>,</span>
-<span id="cb6-5"><a></a>  <span class="at">output =</span> <span class="st">"Afghanistan.html"</span>,</span>
-<span id="cb6-6"><a></a>  <span class="at">execute_params =</span> <span class="fu">list</span>(<span class="at">country =</span> <span class="st">"Afghanistan"</span>)</span>
-<span id="cb6-7"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">library</span>(quarto)</span>
+<span id="cb9-2"><a></a></span>
+<span id="cb9-3"><a></a><span class="fu">quarto_render</span>(</span>
+<span id="cb9-4"><a></a>  <span class="at">input =</span> <span class="st">"report.qmd"</span>,</span>
+<span id="cb9-5"><a></a>  <span class="at">output_file =</span> <span class="st">"Afghanistan.html"</span>,</span>
+<span id="cb9-6"><a></a>  <span class="at">execute_params =</span> <span class="fu">list</span>(<span class="at">country =</span> <span class="st">"Afghanistan"</span>)</span>
+<span id="cb9-7"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
 <ul>
@@ -565,6 +680,21 @@ params:
       }</style></aside>
 </div>
 </section>
+<section id="your-turn-3" class="slide level2">
+<h2>Your Turn</h2>
+<ul>
+<li class="fragment">Working in the <code>render2.R</code> file, add an <code>execute_params</code> argument to the <code>quarto_render()</code> function to render the report for Africa</li>
+<li class="fragment">Also change the name of the rendered HTML file to <code>Africa.html</code> using the <code>output_file</code> argument</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_6efa61b3" data-update-every="1" tabindex="0" style="right:0%;bottom:0%;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</section>
 <section id="render-multiple-reports-with-quarto_render" class="slide level2">
 <h2>Render Multiple Reports with <code>quarto_render()</code></h2>
 <ul>
@@ -572,18 +702,18 @@ params:
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>countries <span class="ot">&lt;-</span></span>
-<span id="cb7-2"><a></a>  gapminder <span class="sc">|&gt;</span></span>
-<span id="cb7-3"><a></a>  <span class="fu">distinct</span>(country) <span class="sc">|&gt;</span></span>
-<span id="cb7-4"><a></a>  <span class="fu">pull</span>(country) <span class="sc">|&gt;</span></span>
-<span id="cb7-5"><a></a>  <span class="fu">as.character</span>()</span>
-<span id="cb7-6"><a></a></span>
-<span id="cb7-7"><a></a>reports <span class="ot">&lt;-</span></span>
-<span id="cb7-8"><a></a>  <span class="fu">tibble</span>(</span>
-<span id="cb7-9"><a></a>    <span class="at">input =</span> <span class="st">"report.qmd"</span>,</span>
-<span id="cb7-10"><a></a>    <span class="at">output_file =</span> <span class="fu">str_glue</span>(<span class="st">"reports/{countries}.html"</span>),</span>
-<span id="cb7-11"><a></a>    <span class="at">execute_params =</span> <span class="fu">map</span>(countries, <span class="sc">~</span> <span class="fu">list</span>(<span class="at">country =</span> .))</span>
-<span id="cb7-12"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>countries <span class="ot">&lt;-</span></span>
+<span id="cb10-2"><a></a>  gapminder <span class="sc">|&gt;</span></span>
+<span id="cb10-3"><a></a>  <span class="fu">distinct</span>(country) <span class="sc">|&gt;</span></span>
+<span id="cb10-4"><a></a>  <span class="fu">pull</span>(country) <span class="sc">|&gt;</span></span>
+<span id="cb10-5"><a></a>  <span class="fu">as.character</span>()</span>
+<span id="cb10-6"><a></a></span>
+<span id="cb10-7"><a></a>reports <span class="ot">&lt;-</span></span>
+<span id="cb10-8"><a></a>  <span class="fu">tibble</span>(</span>
+<span id="cb10-9"><a></a>    <span class="at">input =</span> <span class="st">"report.qmd"</span>,</span>
+<span id="cb10-10"><a></a>    <span class="at">output_file =</span> <span class="fu">str_glue</span>(<span class="st">"reports/{countries}.html"</span>),</span>
+<span id="cb10-11"><a></a>    <span class="at">execute_params =</span> <span class="fu">map</span>(countries, <span class="sc">~</span><span class="fu">list</span>(<span class="at">country =</span> .))</span>
+<span id="cb10-12"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -594,14 +724,78 @@ params:
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">pwalk</span>(reports, quarto_render)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">pwalk</span>(reports, quarto_render)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</div>
+</section>
+<section id="your-turn-4" class="slide level2">
+<h2>Your Turn</h2>
+<ul>
+<li class="fragment">Working in the <code>render2.R</code> file, create a vector called <code>continents</code> that has all continents for which we want to make reports. Use the code below as a model.</li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>countries <span class="ot">&lt;-</span></span>
+<span id="cb12-2"><a></a>  gapminder <span class="sc">|&gt;</span></span>
+<span id="cb12-3"><a></a>  <span class="fu">distinct</span>(country) <span class="sc">|&gt;</span></span>
+<span id="cb12-4"><a></a>  <span class="fu">pull</span>(country) <span class="sc">|&gt;</span></span>
+<span id="cb12-5"><a></a>  <span class="fu">as.character</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_31c5c376" data-update-every="1" tabindex="0" style="right:0%;bottom:0%;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="your-turn-5" class="slide level2">
+<h2>Your Turn</h2>
+<ul>
+<li class="fragment">Working in the <code>render2.R</code> file, create a tibble called <code>reports</code> that has all of the data needed to render all reports. Use the code below as a model.</li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>reports <span class="ot">&lt;-</span></span>
+<span id="cb13-2"><a></a>  <span class="fu">tibble</span>(</span>
+<span id="cb13-3"><a></a>    <span class="at">input =</span> <span class="st">"report.qmd"</span>,</span>
+<span id="cb13-4"><a></a>    <span class="at">output_file =</span> <span class="fu">str_glue</span>(<span class="st">"reports/{countries}.html"</span>),</span>
+<span id="cb13-5"><a></a>    <span class="at">execute_params =</span> <span class="fu">map</span>(countries, <span class="sc">~</span><span class="fu">list</span>(<span class="at">country =</span> .))</span>
+<span id="cb13-6"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_33336b6b" data-update-every="1" tabindex="0" style="right:0%;bottom:0%;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="your-turn-6" class="slide level2">
+<h2>Your Turn</h2>
+<ul>
+<li class="fragment">Working in the <code>render2.R</code> file, use the <code>pwalk()</code> function from the <code>purrr</code> package to render all reports. Use the code below as a model.</li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">pwalk</span>(VECTOR, FUNCTION)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="additional-exercise" class="slide level2">
+<h2>Additional Exercise</h2>
+<ul>
+<li class="fragment">Create a set of parameterized reports for each year that have a bar chart that shows the population in each country</li>
+</ul>
 
 <div class="quarto-auto-generated-content">
 <p><img src="images/drr6502-logo.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p><a href="https://quarto.training">DRR Website</a></p>
-</div>
 </div>
 </div>
 </section>

@@ -20,7 +20,27 @@ filters:
   - line-highlight
 ---
 
+```{r}
+#| eval: true
+library(countdown)
+
+your_turn_countdown <- function(length = 3) {
+  countdown(minutes = length, 
+          bottom = "0%",
+          right = "0%",
+          color_border = "#fff",
+          color_text = "#fff",
+          color_running_background = "#42affa",
+          color_running_text = "black",
+          color_finished_background = "#E5D19D",
+          color_finished_text = "#00264A")
+}
+```
+
 ## What is Parameterized Reporting?
+
+- Make one template report in Quarto
+- Create R script file that allows you to make multiple reports from this template
 
 ## Why Parameterized Reporting?
 
@@ -32,11 +52,52 @@ filters:
 
 ---
 
-![](../images/ivac-country-reports.png)
+[![](../images/ivac-country-reports.png)](https://www.jhsph.edu/ivac/resources/pdpr/)
 
 ---
 
-![](../images/psc.png)
+[![](../images/psc.png)](https://housingprofiles.pschousing.org/)
+
+## How Does Parameterized Reporting Work?
+
+. . .
+
+::: bg-light
+::: r-stack
+![](https://raw.githubusercontent.com/jadeynryan/2023_posit-parameterized-quarto/main/images/template1.png){.fragment fig-alt="File with the word '.qmd' inside and the word 'Function' above." fig-align="center" width="1300"}
+
+![](https://raw.githubusercontent.com/jadeynryan/2023_posit-parameterized-quarto/main/images/template2.png){.fragment fig-alt="An arrow points from 'Input' with 'params$year' to the previous image with 'Function' and '.qmd' file." fig-align="center" width="1300"}
+
+![](https://raw.githubusercontent.com/jadeynryan/2023_posit-parameterized-quarto/main/images/template3.png){.fragment fig-alt="In addition to the previous two images, arrows point to five reports with years 2019 through 2023 on them in a flow chart." fig-align="center" width="1300"}
+:::
+:::
+
+Source: [Jadey Ryan](https://jadeynryan.github.io/2023_posit-parameterized-quarto/#/title-slide)
+
+## Manually Create Multiple Reports
+
+- You can manually make multiple reports by, for example, adjusting the country you filter on in your Quarto document
+
+. . .
+
+```{r}
+#| echo: true
+gapminder_filtered <-
+  gapminder |> 
+  filter(country == "Afghanistan")
+```
+
+. . .
+
+```{r}
+#| echo: true
+ggplot(data = gapminder_filtered,
+       aes(x = year,
+           y = lifeExp,
+           group = country)) +
+  geom_line() +
+  theme_minimal()
+```
 
 
 ## Parameters
@@ -87,6 +148,33 @@ gapminder_filtered <-
   filter(country == params$country)
 ```
 
+. . .
+
+```{r}
+#| echo: true
+ggplot(data = gapminder_filtered,
+       aes(x = year,
+           y = lifeExp,
+           group = country)) +
+  geom_line() +
+  theme_minimal()
+```
+
+
+## Your Turn
+
+- Install the `usethis` package with `install.packages("usethis")`
+- Run `usethis::use_course("https://github.com/rfortherestofus/gw-parameterized-report-example/archive/refs/heads/main.zip")' and answer yes to the questions it gives you
+- Open the project (it should happen automatically)
+- Open the `report.qmd` file and save it as `report2.qmd`
+- Change the `country` parameter in the YAML to be called `continent` and set the default value to be "Asia"
+- Adjust the code that creates the `gapminder_filtered` data frame so that it filters to use the `continent` parameter
+
+```{r}
+#| eval: true
+your_turn_countdown(length = 5)
+```
+
 
 ## Use Parameters for Inline Code
 
@@ -100,6 +188,17 @@ gapminder_filtered <-
 - Show header
 - Also add text that shows min and max years
 :::
+
+## Your Turn
+
+- Working in your `report2.qmd` file, use inline code to create a line that says "This report is on population in [CONTINENT] from 1952 to 2007."
+- Use inline code to make the [CONTINENT] portion use your parameter
+- If you finish early, write code to make the 1952 and 2007 values show up using inline R code
+
+```{r}
+#| eval: true
+your_turn_countdown(length = 5)
+```
 
 ## Render with R Script
 
@@ -122,6 +221,17 @@ quarto_render(
 - But this isn't really much more efficient than rendering in .qmd file
 :::
 
+## Your Turn
+
+- Install the `quarto` package using `install.packages("quarto")`
+- Open the file called `render.R` file and save it as `render2.R`
+- Adjust the code to render your `report2.qmd` document using the `quarto_render()` function
+
+```{r}
+#| eval: true
+your_turn_countdown(length = 5)
+```
+
 ## Add Arguments to `quarto_render()`
 
 - Add additional arguments to `quarto_render()`:
@@ -134,7 +244,7 @@ library(quarto)
 
 quarto_render(
   input = "report.qmd",
-  output = "Afghanistan.html",
+  output_file = "Afghanistan.html",
   execute_params = list(country = "Afghanistan")
 )
 ```
@@ -142,6 +252,16 @@ quarto_render(
 ::: {.notes}
 - Just render one report with these arguments
 :::
+
+## Your Turn
+
+- Working in the `render2.R` file, add an `execute_params` argument to the `quarto_render()` function to render the report for Africa
+- Also change the name of the rendered HTML file to `Africa.html` using the `output_file` argument
+
+```{r}
+#| eval: true
+your_turn_countdown(length = 5)
+```
 
 ## Render Multiple Reports with `quarto_render()`
 
@@ -161,7 +281,7 @@ reports <-
   tibble(
     input = "report.qmd",
     output_file = str_glue("reports/{countries}.html"),
-    execute_params = map(countries, ~ list(country = .))
+    execute_params = map(countries, ~list(country = .))
   )
 ```
 
@@ -177,3 +297,60 @@ reports <-
 
 pwalk(reports, quarto_render)
 ```
+
+## Your Turn
+
+- Working in the `render2.R` file, create a vector called `continents` that has all continents for which we want to make reports. Use the code below as a model.
+
+. . .
+
+```{r}
+#| echo: true
+countries <-
+  gapminder |>
+  distinct(country) |>
+  pull(country) |>
+  as.character()
+```
+
+```{r}
+#| eval: true
+your_turn_countdown(length = 2)
+```
+
+## Your Turn
+
+- Working in the `render2.R` file, create a tibble called `reports` that has all of the data needed to render all reports. Use the code below as a model.
+
+. . .
+
+```{r}
+#| echo: true
+reports <-
+  tibble(
+    input = "report.qmd",
+    output_file = str_glue("reports/{countries}.html"),
+    execute_params = map(countries, ~list(country = .))
+  )
+```
+
+```{r}
+#| eval: true
+your_turn_countdown(length = 2)
+```
+
+## Your Turn
+
+- Working in the `render2.R` file, use the `pwalk()` function from the `purrr` package to render all reports. Use the code below as a model.
+
+. . .
+
+```{r}
+#| echo: true
+
+pwalk(VECTOR, FUNCTION)
+```
+
+## Additional Exercise
+
+- Create a set of parameterized reports for each year that have a bar chart that shows the population in each country
