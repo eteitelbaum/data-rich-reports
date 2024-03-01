@@ -1,0 +1,606 @@
+---
+title: "Data Rich Reports"
+subtitle: "Session 5--Revealjs Slides"
+footer: "[DRR Website](https://quarto.training)"
+logo: images/drr6502-logo.png
+format:
+  revealjs:
+    theme: [simple, custom.scss]
+    transition: fade
+    slide-number: true
+    chalkboard: true
+execute:
+  echo: false
+  message: false
+  warning: false
+  freeze: auto
+---
+
+# Overview
+
+## What is Reveal.js?
+
+::: {.incremental}
+- Web-based presentation framework that enables the creation of interactive presentations using HTML
+- Supports dynamic transitions, embedded media, and interactive elements
+- Works across devices and platforms, ensuring your presentation looks great everywhere
+- Offers a wide range of plugins and extensions to enhance your presentations, from analytics to themes
+- Share your presentations as a URL, making it accessible to anyone, anywhere
+:::
+
+## Why Revealjs?
+
+::: {.incremental}
+- You can also make PowerPoint and Beamer (pdf) slides with Quarto
+- Revealjs is more fun and has some key advantages
+  - It's web-based and interactive
+  - It's more accessible
+  - It's easy to share
+- But sometimes other formats can be useful
+  - Can you think of some scenarios where you might want to use PowerPoint or Beamer?
+:::
+
+# Basic Authoring
+
+## Setup {.smaller}
+
+<br>
+
+Setting up a reveal.js presentation in Quarto is easy. You just specify the `revealjs` format. From there you can use the usual YAML arguments like `title:`, `subtitle:`, etc. that you would use in any Quarto document. Here's a simple example:
+
+<br>
+
+```yaml
+---
+title: "Revealjs Presentation"
+subtitle: "For Demonstration Purposes"
+author: "Your Name"
+date: today
+format: revealjs
+---
+```
+
+## Creating Slides
+
+<br>
+
+Slides are created using the standard markdown syntax. `#` gives you a new section, while  `##` gives you a new slide. Then you can write text and use `-` for bullet points. 
+
+```markdown
+# Section Header
+
+## Slide 1
+
+This is the first slide.
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+```
+
+## Spacing
+
+- Sometimes you want to have more spacing than the default spacing between lines on each slide. 
+- The easiest way to handle this is to insert `<br>` tags where you want the extra space. 
+
+```markdown
+## Slide 2
+
+<br>
+
+This is the content for my second slide. It is going to have this line and then a line break and then some code. 
+
+<br>
+
+```{r}
+# Some R code
+
+2+2
+```
+```
+
+## 
+
+<br>
+
+If perchance you don't want a title slide, just eliminate `title`, `subtitle`, etc. from the YAML header. 
+
+<br>
+
+```yaml
+---
+format: revealjs
+---
+
+```
+
+## Incremental Lists
+
+<br>
+
+There are two ways to get incremental lists. The first is to specify `incremental: true` in the YAML header. 
+
+<br>
+
+```yaml
+---
+format: 
+  revealjs:
+    incremental: true
+---
+```
+
+## Incremental Lists
+
+<br>
+
+The other is to surround the relevant bullet points in a div with the class `incremental`. 
+
+<br>
+
+```markdown
+::: {.incremental}
+- Bullet 1
+- Bullet 2
+- Bullet 3
+:::
+```
+
+## Incremental Lists
+
+<br>
+
+Or, let's say you have `incremental: true` in the YAML header, but you want to turn it off for a particular slide. In this case, you can use `nonincremental`. 
+
+```markdown
+::: {.nonincremental}
+- Bullet 1
+- Bullet 2
+- Bullet 3
+:::
+```
+
+## Your Turn! 
+
+- Start a new Quarto project
+- Create a new Quarto document in your project folder
+- Add the YAML header and specify the `revealjs` format
+- Add slides and sections
+- Use the `incremental` class to create incremental lists
+- Now try setting `incremental: true` in the YAML header 
+- Use `nonincremental` to turn off incremental lists for a particular slide
+
+```{r}
+#| label: timer1
+library(countdown)
+countdown(minutes = 10, 
+          id = "timer1", 
+          top = "0%", 
+          right = "10%",
+          color_border = "#fff",
+          color_text = "#fff",
+          color_running_background = "#42affa",
+          color_running_text = "black",
+          color_finished_background = "#E5D19D",
+          color_finished_text = "#00264A")
+```
+
+# Advanced Authoring
+
+## Content Overflow 
+
+<br>
+
+Sometimes you have too much material to fit on a slide. In this case, you can use the `.smaller` or `.scrollable` class. You can use curly braces to add these to a particular slide...
+
+<br>
+
+```markdown
+## Slide Title {.smaller}
+
+## Slide Title {.scrollable}
+```
+
+## Content Overflow
+
+<br>
+
+Or you can add them to the YAML header to apply them to the entire presentation... 
+
+<br>
+
+```yaml
+---
+format:
+  revealjs:
+    smaller: true
+    scrollable: true
+---
+```
+
+## Adding Images
+
+<br>
+
+To add an image, you can use the standard markdown syntax. 
+
+<br>
+
+```markdown
+![](images/your-image.png)
+```
+
+## Adding Images
+
+<br>
+
+To control the width of the image, you can use the `width` attribute. 
+
+<br>
+
+```markdown
+![](images/your-image.png){width=50%}
+```
+
+## Columns
+
+<br>
+
+To put content in columns, you can create a div with the `columns` class. 
+
+```markdown
+:::: {.columns}
+
+::: {.column width="40%"}
+Left column
+:::
+
+::: {.column width="60%"}
+Right column
+:::
+
+::::
+```
+
+## Your Turn! 
+
+- Try making a long slide with the `.smaller` class
+- Now use the `.scrollable` class instead
+- Add an image to a slide
+  - Go to Wikimedia Commons and download an image
+  - Add the image to your project folder
+- Make a slide with two columns
+  - On the left, write a few bullet points
+  - On the right, add an image
+  - Use the `width` attribute to control the size of the image
+
+```{r}
+#| label: timer2
+library(countdown)
+countdown(minutes = 10, 
+          id = "timer2", 
+          top = "0%", 
+          right = "10%")
+```
+
+# Code and Output
+
+## Code Blocks
+
+<br>
+
+- To add a code block, use the standard markdown syntax
+- You can specify the language for syntax highlighting
+- Just like a normal HTML document, you can add chunk options
+
+## Code Blocks
+
+<br>
+
+```{r}
+#| label: leaflet_map1
+#| eval: false
+#| echo: fenced
+
+library(leaflet)
+leaflet() %>% 
+  addTiles() %>%   # Add default OpenStreetMap map tiles
+  addMarkers(lat = 38.90243843683386, lng =  -77.0443814477152, 
+             label = "Elliott School of International Affairs")
+```
+
+## 
+
+If your `echo:` is set to `false`, then you will just see the output. 
+
+::: aside
+Note how the output of the leaflet is interactive!
+:::
+
+```{r}
+#| label: leaflet_map2
+
+library(leaflet)
+leaflet() %>% 
+  addTiles() %>%   # Add default OpenStreetMap map tiles
+  addMarkers(lat = 38.90243843683386, lng =  -77.0443814477152, 
+             label = "Elliott School of International Affairs")
+```
+
+## 
+
+<br> But if `echo:` is set to `true`, then you will see the code and the output...
+
+```{r}
+#| label: leaflet_map3
+#| echo: true
+
+library(leaflet)
+leaflet() %>% 
+  addTiles() %>%   # Add default OpenStreetMap map tiles
+  addMarkers(lat = 38.90243843683386, lng =  -77.0443814477152, 
+             label = "Elliott School of International Affairs")
+```
+
+
+## 
+
+<br>
+
+And just like in a normal HTML document, you can also set these options in the YAML header.
+
+<br>
+
+```yaml
+execute:
+  echo: false
+  message: false
+  warning: false
+```
+
+## 
+
+<br>
+
+For presentation purposes, you may oly want to show specific lines of code.
+
+<br>
+
+```{r}
+#| label: leaflet_map4
+#| eval: false
+#| echo: true
+#| code-line-numbers: 3-4
+
+library(leaflet)
+leaflet() %>% 
+  addTiles() %>%   # Add default OpenStreetMap map tiles
+  addMarkers(lat = 38.90243843683386, lng =  -77.0443814477152, 
+             label = "Elliott School of International Affairs")
+```
+
+## 
+
+<br>
+
+To do this, you would use the `code-line-numbers` option in the YAML header.
+
+<br>
+
+```{r}
+#| label: leaflet_map5
+#| echo: true
+#| eval: false
+#| code-line-numbers: 3-4
+
+library(leaflet)
+leaflet() %>% 
+  addTiles() %>%   # Add default OpenStreetMap map tiles
+  addMarkers(lat = 38.90243843683386, lng =  -77.0443814477152, 
+             label = "Elliott School of International Affairs")
+```
+
+
+## Your Turn! {.smaller}
+
+- Start a new slide
+- Add an R code chunk to it
+- Add a leaflet map to it
+- Render the slide
+- Try different chunk options 
+  - Display only the output
+  - Display code and output
+  - Display just the code
+  - Display only particular lines
+- Try adjusting `evaluate` options in the YAML header
+
+```{r}
+#| label: timer3
+library(countdown)
+countdown(minutes = 10, 
+          id = "timer3", 
+          top = "0%", 
+          right = "10%")
+```
+
+# Customization
+
+## Themes
+
+<br> 
+
+You can customize the look of your slides by using a different theme, e.g. 
+
+<br>
+
+```yaml
+theme: dark
+```
+
+::: aside
+See the Reveal documentation for the [full list](https://quarto.org/docs/presentations/revealjs/#themes) of availalbe themes. 
+:::
+
+## Themes
+
+<br>
+
+You can also add a custom SCSS file to tweak an existing them or create your own: 
+
+```scss
+/*-- scss:defaults --*/
+
+$body-bg: #191919;
+$body-color: #fff;
+$link-color: #42affa;
+
+/*-- scss:rules --*/
+
+.reveal .slide blockquote {
+  border-left: 3px solid $text-muted;
+  padding-left: 0.5em;
+}
+```
+
+## Syntax Highlighting
+
+<br> 
+
+Quarto offers 20 different syntax highlighting themes. Click [here](https://quarto.org/docs/output-formats/html-code.html#highlighting) to see the available themes. 
+
+<br>
+
+You can select your preferred theme by adding `highlight-style` to the YAML header, e.g. 
+
+<br>
+
+```yaml
+highlight-style: github
+````
+
+## Background Styling
+
+<br>
+
+You can change the color of your background by adding the `background-color` attribute to a slide.
+
+<br>
+
+```markdown
+## Slide Title {background-color="aquamarine"}
+```
+
+## Background Styling {background-color="aquamarine"}
+
+<br>
+
+You can change the color of your background by adding the `background-color` attribute to a slide.
+
+<br>
+
+```markdown
+## Slide Title {background-color="aquamarine"}
+```
+
+## Background Styling
+
+<br>
+
+Similarly, you can add a background image to your slide by adding the `background-image` attribute.
+
+<br>
+
+```markdown
+## Slide Title {background-image="/images/drr6502-img.png" data-background-size="contain" data-background-opacity="0.5"}
+```
+
+## Background Styling {background-image="/images/drr6502-img.png" data-background-size="contain" data-background-opacity="0.5"}
+
+<br>
+
+Similarly, you can add a background image to your slide by adding the `background-image` attribute.
+
+<br>
+
+```markdown
+## Slide Title {background-image="/images/drr6502-img.png" data-background-size="contain" data-background-opacity="0.5"}
+```
+
+## Background Styling
+
+<br>
+
+And you can add a background image to the title slide by adding the `title-slide-attributes` attribute to the YAML header.
+
+<br>
+
+
+::: aside
+See [here](https://eteitelbaum.quarto.pub/dapp/) for an example.
+:::
+
+```yaml
+---
+title: My Slide Show
+title-slide-attributes:
+    data-background-image: /path/to/title_image.png
+    data-background-size: contain
+    data-background-opacity: "0.5"
+---
+```
+
+## A Few More Tricks and Tips {.smaller}
+
+::: incremental
+- Fade your slide transitions with `transition: fade`
+- Add slide numbers with `slide-number: true`
+- Use `footer:`to add a footer your slides
+- Use `logo:` to add a logo to your slides
+- You can add a chalkboard to your slides by adding `chalkboard: true` to the YAML header
+- You can add speaker notes by creating a div and adding the `notes` attribute to it.
+  - Then you can view them by running the presentation in speaker mode
+- You can use `multiplex: true` to advance slides for your audience
+- And much much more! Check out the [guide](https://quarto.org/docs/presentations/revealjs/) for details
+:::
+
+::: notes
+These are my speaker notes!
+:::
+
+## My YAML for This Presentation
+
+```yaml
+ ---
+title: "Revealjs Slides"
+subtitle: "Session 4--Visualizing Data"
+footer: "[DRR Website](https://quarto.training)"
+logo: images/drr6502-logo.png
+format:
+  revealjs:
+    theme: [simple, custom.scss]
+    transition: fade
+    slide-number: true
+    chalkboard: true
+execute:
+  echo: false
+  message: false
+  warning: false
+  freeze: auto
+---
+```
+
+## Your Turn! {.smaller}
+
+<br>
+
+- Add a theme to your presentation
+- Try a different type of syntax highlighting
+- Change the background color of a slide
+- Add a background image to a slide
+- Add a background image to the title slide
+- Try using SCSS to modify the theme style 
+- Try a cool trick like `chalkboard` or `multiplex`
+- Upload your presentation to Quarto Pub
+  - `quarto publish quarto-pub mydocument.qmd`
+  
+

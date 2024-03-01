@@ -9,7 +9,7 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.361">
+  <meta name="generator" content="quarto-1.4.533">
 
   <title>IAFF 6502/6505 Creating Data Rich Reports with Quarto - Data Rich Reports</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -223,7 +223,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -398,12 +399,17 @@
   <link href="../site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
   <script src="../site_libs/leaflet-binding-2.2.1/leaflet.js"></script>
 <meta property="og:title" content="IAFF 6502/6505 Creating Data Rich Reports with Quarto - Data Rich Reports">
-<meta property="og:description" content="Session 2–Coding in R">
+<meta property="og:description" content="Session 5–Revealjs Slides">
 <meta property="og:image" content="https://quarto.training/slides/images/drr6502-img.png">
-<meta property="og:site-name" content="IAFF 6502/6505 Creating Data Rich Reports with Quarto">
+<meta property="og:site_name" content="IAFF 6502/6505 Creating Data Rich Reports with Quarto">
+<meta property="og:image:height" content="614">
+<meta property="og:image:width" content="1168">
 <meta name="twitter:title" content="IAFF 6502/6505 Creating Data Rich Reports with Quarto - Data Rich Reports">
-<meta name="twitter:description" content="Session 2–Coding in R">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="Session 5–Revealjs Slides">
+<meta name="twitter:image" content="https://quarto.training/slides/images/drr6502-img.png">
+<meta name="twitter:image-height" content="614">
+<meta name="twitter:image-width" content="1168">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 <body class="quarto-dark">
   <div class="reveal">
@@ -411,327 +417,523 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Data Rich Reports</h1>
-  <p class="subtitle">Session 2–Coding in R</p>
+  <p class="subtitle">Session 5–Revealjs Slides</p>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
 <section>
-<section id="a-bit-about-r" class="title-slide slide level1 center">
-<h1>A Bit About R</h1>
+<section id="overview" class="title-slide slide level1 center">
+<h1>Overview</h1>
 
 </section>
-<section id="what-is-an-object" class="slide level2">
-<h2>What is an Object?</h2>
+<section id="what-is-reveal.js" class="slide level2">
+<h2>What is Reveal.js?</h2>
 <div>
 <ul>
-<li class="fragment">An object in R is a data structure used to store data</li>
-<li class="fragment">It can vary from simple scalar types to more complex data structures like vectors, lists, or data frames</li>
-<li class="fragment">Objects hold not only data but also information about the type of data and the operations that can be performed on them</li>
-<li class="fragment">Every entity in R is considered an object, making R a language based around the manipulation of objects</li>
+<li class="fragment">Web-based presentation framework that enables the creation of interactive presentations using HTML</li>
+<li class="fragment">Supports dynamic transitions, embedded media, and interactive elements</li>
+<li class="fragment">Works across devices and platforms, ensuring your presentation looks great everywhere</li>
+<li class="fragment">Offers a wide range of plugins and extensions to enhance your presentations, from analytics to themes</li>
+<li class="fragment">Share your presentations as a URL, making it accessible to anyone, anywhere</li>
 </ul>
 </div>
 </section>
-<section id="how-to-store-data" class="slide level2">
-<h2>How to Store Data</h2>
-<ul>
-<li>In R, you can store data in objects using the assignment operator <code>&lt;-</code></li>
-<li>The object name is on the left of <code>&lt;-</code>, and the data or value you wish to assign to the object is on the right</li>
-<li>Then you can print the object to the console using the object name</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Store the value 42 in the object my_number</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>my_number <span class="ot">&lt;-</span> <span class="dv">42</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># Print the value of my_number</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>my_number </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 42</code></pre>
-</div>
-</div>
-</section>
-<section id="what-can-r-do" class="slide level2">
-<h2>What Can R Do?</h2>
-<p><br></p>
+<section id="why-revealjs" class="slide level2">
+<h2>Why Revealjs?</h2>
 <div>
 <ul>
-<li class="fragment">R is a powerful language for data analysis and visualization</li>
-<li class="fragment">It is also a general-purpose programming language</li>
-<li class="fragment">It can be used for web development, machine learning, and more</li>
-<li class="fragment">It is open-source and has a large community of users and developers</li>
+<li class="fragment">You can also make PowerPoint and Beamer (pdf) slides with Quarto</li>
+<li class="fragment">Revealjs is more fun and has some key advantages
+<ul>
+<li class="fragment">It’s web-based and interactive</li>
+<li class="fragment">It’s more accessible</li>
+<li class="fragment">It’s easy to share</li>
+</ul></li>
+<li class="fragment">But sometimes other formats can be useful
+<ul>
+<li class="fragment">Can you think of some scenarios where you might want to use PowerPoint or Beamer?</li>
+</ul></li>
 </ul>
 </div>
+</section></section>
+<section>
+<section id="basic-authoring" class="title-slide slide level1 center">
+<h1>Basic Authoring</h1>
+
 </section>
-<section id="r-as-a-calculator" class="slide level2">
-<h2>R as a Calculator</h2>
+<section id="setup" class="slide level2 smaller">
+<h2>Setup</h2>
 <p><br></p>
-<ul>
-<li>R can be used as a simple calculator</li>
-<li>You can perform arithmetic operations on numbers</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Addi a number and store it to a value</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>sum_of_2plus2 <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a></span>
-<span id="cb3-4"><a href="#cb3-4"></a></span>
-<span id="cb3-5"><a href="#cb3-5"></a>sum_of_2plus2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
-</div>
-</div>
-</section>
-<section id="when-to-store-data-in-objects" class="slide level2">
-<h2>When to Store Data in Objects</h2>
+<p>Setting up a reveal.js presentation in Quarto is easy. You just specify the <code>revealjs</code> format. From there you can use the usual YAML arguments like <code>title:</code>, <code>subtitle:</code>, etc. that you would use in any Quarto document. Here’s a simple example:</p>
 <p><br></p>
-<ul>
-<li>Note that you don’t always have to store data in objects</li>
-<li>You should mostly store data in objects when you want to use the data later</li>
-<li>If you only need to use the data once, you can just use the data directly</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Add two numbers without storing them in an object</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a></a><span class="pp">---</span></span>
+<span id="cb1-2"><a></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Revealjs Presentation"</span></span>
+<span id="cb1-3"><a></a><span class="fu">subtitle</span><span class="kw">:</span><span class="at"> </span><span class="st">"For Demonstration Purposes"</span></span>
+<span id="cb1-4"><a></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Your Name"</span></span>
+<span id="cb1-5"><a></a><span class="fu">date</span><span class="kw">:</span><span class="at"> today</span></span>
+<span id="cb1-6"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> revealjs</span></span>
+<span id="cb1-7"><a></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="some-common-arithmetic-operators" class="slide level2">
-<h2>Some Common Arithmetic Operators</h2>
+<section id="creating-slides" class="slide level2">
+<h2>Creating Slides</h2>
 <p><br></p>
-<ul>
-<li><code>+</code> addition</li>
-<li><code>-</code> subtraction</li>
-<li><code>*</code> multiplication</li>
-<li><code>/</code> division</li>
-<li><code>^</code> exponentiation (also <code>**</code>)</li>
-</ul>
+<p>Slides are created using the standard markdown syntax. <code>#</code> gives you a new section, while <code>##</code> gives you a new slide. Then you can write text and use <code>-</code> for bullet points.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a></a><span class="fu"># Section Header</span></span>
+<span id="cb2-2"><a></a></span>
+<span id="cb2-3"><a></a><span class="fu">## Slide 1</span></span>
+<span id="cb2-4"><a></a></span>
+<span id="cb2-5"><a></a>This is the first slide.</span>
+<span id="cb2-6"><a></a></span>
+<span id="cb2-7"><a></a><span class="ss">- </span>Bullet 1</span>
+<span id="cb2-8"><a></a><span class="ss">- </span>Bullet 2</span>
+<span id="cb2-9"><a></a><span class="ss">- </span>Bullet 3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="functions" class="slide level2">
-<h2>Functions</h2>
+<section id="spacing" class="slide level2">
+<h2>Spacing</h2>
 <ul>
-<li>A function is a set of instructions that produces some output</li>
-<li>In R, you can use built-in functions to perform specific tasks</li>
-<li>For example, you can use the <code>mean()</code> function to calculate the average of a set of numbers</li>
-<li>To do this you have to use the combine function <code>c()</code> to create a vector of numbers</li>
+<li>Sometimes you want to have more spacing than the default spacing between lines on each slide.</li>
+<li>The easiest way to handle this is to insert <code>&lt;br&gt;</code> tags where you want the extra space.</li>
 </ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a></a><span class="fu">## Slide 2</span></span>
+<span id="cb3-2"><a></a></span>
+<span id="cb3-3"><a></a>&lt;br&gt;</span>
+<span id="cb3-4"><a></a></span>
+<span id="cb3-5"><a></a>This is the content for my second slide. It is going to have this line and then a line break and then some code. </span>
+<span id="cb3-6"><a></a></span>
+<span id="cb3-7"><a></a>&lt;br&gt;</span>
+<span id="cb3-8"><a></a></span>
+<span id="cb3-9"><a></a>::: {.cell}</span>
+<span id="cb3-10"><a></a>::: {.cell-output .cell-output-stdout}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] 4</p>
+<pre><code>
+
+:::
+:::</code></pre>
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
 <p><br></p>
-<p>Create a vector of numbers and take the mean…</p>
+<p>If perchance you don’t want a title slide, just eliminate <code>title</code>, <code>subtitle</code>, etc. from the YAML header.</p>
 <p><br></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Create a vector of numbers</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
-<span id="cb7-3"><a href="#cb7-3"></a></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="co"># Calculate the mean of the numbers</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="fu">mean</span>(numbers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a></a><span class="pp">---</span></span>
+<span id="cb5-2"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> revealjs</span></span>
+<span id="cb5-3"><a></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="some-common-base-r-functions" class="slide level2 smaller">
-<h2>Some Common Base R Functions</h2>
-<ul>
-<li><code>mean()</code> calculates the mean of a set of numbers</li>
-<li><code>median()</code> calculates the median of a set of numbers</li>
-<li><code>sd()</code> calculates the standard deviation of a set of numbers</li>
-<li><code>sum()</code> calculates the sum of a set of numbers</li>
-<li><code>length()</code> calculates the length of a vector</li>
-<li><code>max()</code> and <code>min()</code> calculate the maximum and minimum values of a vector</li>
-<li><code>round()</code> rounds a number to a specified number of decimal places</li>
-<li><code>sqrt()</code> calculates the square root of a number</li>
-<li><code>log()</code> calculates the natural logarithm of a number</li>
-<li><code>exp()</code> calculates the exponential of a number</li>
-<li><code>abs()</code> calculates the absolute value of a number</li>
-</ul>
+<section id="incremental-lists" class="slide level2">
+<h2>Incremental Lists</h2>
+<p><br></p>
+<p>There are two ways to get incremental lists. The first is to specify <code>incremental: true</code> in the YAML header.</p>
+<p><br></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a></a><span class="pp">---</span></span>
+<span id="cb6-2"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb6-3"><a></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
+<span id="cb6-4"><a></a><span class="at">    </span><span class="fu">incremental</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb6-5"><a></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="incremental-lists-1" class="slide level2">
+<h2>Incremental Lists</h2>
+<p><br></p>
+<p>The other is to surround the relevant bullet points in a div with the class <code>incremental</code>.</p>
+<p><br></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a></a>::: {.incremental}</span>
+<span id="cb7-2"><a></a><span class="ss">- </span>Bullet 1</span>
+<span id="cb7-3"><a></a><span class="ss">- </span>Bullet 2</span>
+<span id="cb7-4"><a></a><span class="ss">- </span>Bullet 3</span>
+<span id="cb7-5"><a></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="incremental-lists-2" class="slide level2">
+<h2>Incremental Lists</h2>
+<p><br></p>
+<p>Or, let’s say you have <code>incremental: true</code> in the YAML header, but you want to turn it off for a particular slide. In this case, you can use <code>nonincremental</code>.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a></a>::: {.nonincremental}</span>
+<span id="cb8-2"><a></a><span class="ss">- </span>Bullet 1</span>
+<span id="cb8-3"><a></a><span class="ss">- </span>Bullet 2</span>
+<span id="cb8-4"><a></a><span class="ss">- </span>Bullet 3</span>
+<span id="cb8-5"><a></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="your-turn" class="slide level2">
 <h2>Your Turn!</h2>
-<p><br></p>
 <ul>
-<li>Start a new code chunk your Quarto document</li>
-<li>Try storing some numbers as a function and printing the result</li>
-<li>Try using some arithmetic operators</li>
-<li>Try using some of the common base R functions</li>
+<li>Start a new Quarto project</li>
+<li>Create a new Quarto document in your project folder</li>
+<li>Add the YAML header and specify the <code>revealjs</code> format</li>
+<li>Add slides and sections</li>
+<li>Use the <code>incremental</code> class to create incremental lists</li>
+<li>Now try setting <code>incremental: true</code> in the YAML header</li>
+<li>Use <code>nonincremental</code> to turn off incremental lists for a particular slide</li>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer0" data-update-every="1" tabindex="0" style="right:10%;bottom:10%;">
+<div class="countdown" id="timer1" data-update-every="1" tabindex="0" style="top:0%;right:10%;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
-</div>
-</section>
-<section id="r-packages-and-functions" class="slide level2 smaller">
-<h2>R Packages and Functions</h2>
-<p><br></p>
-<div>
-<ul>
-<li class="fragment">A <em>function</em> is a set of instructions
-<ul>
-<li class="fragment"><code>read_csv()</code> is a function</li>
-<li class="fragment"><code>ggplot()</code> is a function</li>
-</ul></li>
-<li class="fragment">A <em>package</em> is a collection of functions
-<ul>
-<li class="fragment"><code>readr</code> is a package that contains the <code>read_csv()</code> function</li>
-<li class="fragment"><code>ggplot2</code> is a package that contains the <code>ggplot()</code> function</li>
-</ul></li>
-<li class="fragment">Use <code>install.packages()</code> to install packages</li>
-<li class="fragment">Use <code>library()</code> to load packages</li>
-<li class="fragment">You can install packages from CRAN</li>
-</ul>
-</div>
-</section>
-<section id="install-key-packages" class="slide level2 smaller">
-<h2>Install key packages</h2>
-<ul>
-<li>Install the Tidyverse group of packages from the console
-<ul>
-<li><code>install.packages("tidyverse")</code></li>
-</ul></li>
-<li>Install <code>devtools</code>
-<ul>
-<li><code>install.packages("devtools")</code></li>
-</ul></li>
-<li>Install <code>vdemdata</code>
-<ul>
-<li><code>devtools::install_github("vdeminstitute/vdemdata")</code></li>
-</ul></li>
-<li>Install <code>leaflet</code>
-<ul>
-<li><code>install.packages("leaflet")</code></li>
-</ul></li>
-<li>Install tinytex (for PDF rendering)
-<ul>
-<li>Go to your terminal and type <code>quarto install tinytex</code></li>
-</ul></li>
-</ul>
-</section>
-<section id="illustration" class="slide level2">
-<h2>Illustration</h2>
-
-<img data-src="images/install-packages.gif" class="r-stretch quarto-figure-center"><div class="cell">
-<div class="cell-output-display">
-<div class="countdown" id="timer1" data-update-every="1" tabindex="0" style="top:0%;right:5%;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-</div>
-</div>
-</section>
-<section id="the-tidyverse" class="slide level2 smaller">
-<h2>The Tidyverse</h2>
-<div>
-<ul>
-<li class="fragment">The Tidyverse is a collection of data science packages</li>
-<li class="fragment">It is also considered a dialect of R</li>
-<li class="fragment">In this class, we will be using many Tidyverse packages
-<ul>
-<li class="fragment"><code>ggplot2</code> for data visualization</li>
-<li class="fragment"><code>readr</code> for reading data</li>
-<li class="fragment"><code>dplyr</code> for data manipulation</li>
-<li class="fragment"><code>tidyr</code> for data tidying</li>
-<li class="fragment">Etc.</li>
-</ul></li>
-<li class="fragment">At first we will load the packages independently, e.g.&nbsp;<code>library(ggplot2)</code></li>
-<li class="fragment">Later we will load them all at once with <code>library(tidyverse)</code></li>
-</ul>
-</div>
-</section>
-<section id="your-first-data-visualization" class="slide level2">
-<h2>Your first data visualization…</h2>
-<ul>
-<li>Create a code chunk</li>
-<li>Copy this code chunk into your document</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb9-2"><a href="#cb9-2"></a></span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy, <span class="at">colour =</span> class)) <span class="sc">+</span> </span>
-<span id="cb9-4"><a href="#cb9-4"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li>Try changing echo to <code>false</code></li>
-<li>Then render it again</li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-<div class="countdown" id="timer2" data-update-every="1" tabindex="0" style="right:10%;bottom:10%;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-</div>
-</div>
-</section>
-<section id="did-it-work" class="slide level2">
-<h2>Did it Work?</h2>
-
-<img data-src="session-1.2_files/figure-revealjs/first_data_viz2-1.png" width="960" class="r-stretch"></section>
-<section id="make-a-map" class="slide level2">
-<h2>Make a map…</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-c12350f63adc9855678c" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-c12350f63adc9855678c">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[38.90243843683386,-77.0443814477152,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,"Elliott School of International Affairs",{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[38.90243843683386,38.90243843683386],"lng":[-77.0443814477152,-77.0443814477152]}},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-</section>
-<section id="make-a-map-1" class="slide level2">
-<h2>Make a map…</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="co">#| label: leaflet_map</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a></span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="fu">library</span>(leaflet)</span>
-<span id="cb10-5"><a href="#cb10-5"></a><span class="fu">leaflet</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb10-6"><a href="#cb10-6"></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span>   <span class="co"># Add default OpenStreetMap map tiles</span></span>
-<span id="cb10-7"><a href="#cb10-7"></a>  <span class="fu">addMarkers</span>(<span class="at">lat =</span> <span class="fl">38.90243843683386</span>, <span class="at">lng =</span>  <span class="sc">-</span><span class="fl">77.0443814477152</span>, </span>
-<span id="cb10-8"><a href="#cb10-8"></a>             <span class="at">label =</span> <span class="st">"Elliott School of International Affairs"</span>)</span>
-<span id="cb10-9"><a href="#cb10-9"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-2c7a70a82197f880984a" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-2c7a70a82197f880984a">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[38.90243843683386,-77.0443814477152,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,"Elliott School of International Affairs",{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[38.90243843683386,38.90243843683386],"lng":[-77.0443814477152,-77.0443814477152]}},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-</section>
-<section id="try-it-yourself" class="slide level2">
-<h2>Try it yourself!</h2>
-<ul>
-<li>Create a code chunk</li>
-<li>Copy this code into the chunk</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">library</span>(leaflet)</span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">leaflet</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span>   <span class="co"># Add default OpenStreetMap map tiles</span></span>
-<span id="cb11-4"><a href="#cb11-4"></a>  <span class="fu">addMarkers</span>(<span class="at">lat =</span> <span class="fl">38.90243843683386</span>, <span class="at">lng =</span>  <span class="sc">-</span><span class="fl">77.0443814477152</span>, </span>
-<span id="cb11-5"><a href="#cb11-5"></a>             <span class="at">label =</span> <span class="st">"Elliott School of International Affairs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li>Run the chunk</li>
-<li>Change the coordinates and run again</li>
-<li>Try rendering the document</li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-<div class="countdown" id="timer3" data-update-every="1" tabindex="0" style="right:10%;bottom:10%;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-</div>
-</div>
-
-
-<img src="images/drr6502-logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
-<p><a href="https://quarto.training">DRR Website</a></p>
 </div>
 </section></section>
+<section>
+<section id="advanced-authoring" class="title-slide slide level1 center">
+<h1>Advanced Authoring</h1>
+
+</section>
+<section id="content-overflow" class="slide level2">
+<h2>Content Overflow</h2>
+<p><br></p>
+<p>Sometimes you have too much material to fit on a slide. In this case, you can use the <code>.smaller</code> or <code>.scrollable</code> class. You can use curly braces to add these to a particular slide…</p>
+<p><br></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a></a><span class="fu">## Slide Title {.smaller}</span></span>
+<span id="cb9-2"><a></a></span>
+<span id="cb9-3"><a></a><span class="fu">## Slide Title {.scrollable}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="content-overflow-1" class="slide level2">
+<h2>Content Overflow</h2>
+<p><br></p>
+<p>Or you can add them to the YAML header to apply them to the entire presentation…</p>
+<p><br></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb10-1"><a></a><span class="pp">---</span></span>
+<span id="cb10-2"><a></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb10-3"><a></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
+<span id="cb10-4"><a></a><span class="at">    </span><span class="fu">smaller</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb10-5"><a></a><span class="at">    </span><span class="fu">scrollable</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb10-6"><a></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="adding-images" class="slide level2">
+<h2>Adding Images</h2>
+<p><br></p>
+<p>To add an image, you can use the standard markdown syntax.</p>
+<p><br></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a></a><span class="al">![](images/your-image.png)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="adding-images-1" class="slide level2">
+<h2>Adding Images</h2>
+<p><br></p>
+<p>To control the width of the image, you can use the <code>width</code> attribute.</p>
+<p><br></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a></a><span class="al">![](images/your-image.png)</span>{width=50%}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="columns" class="slide level2">
+<h2>Columns</h2>
+<p><br></p>
+<p>To put content in columns, you can create a div with the <code>columns</code> class.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a></a>:::: {.columns}</span>
+<span id="cb13-2"><a></a></span>
+<span id="cb13-3"><a></a>::: {.column width="40%"}</span>
+<span id="cb13-4"><a></a>Left column</span>
+<span id="cb13-5"><a></a>:::</span>
+<span id="cb13-6"><a></a></span>
+<span id="cb13-7"><a></a>::: {.column width="60%"}</span>
+<span id="cb13-8"><a></a>Right column</span>
+<span id="cb13-9"><a></a>:::</span>
+<span id="cb13-10"><a></a></span>
+<span id="cb13-11"><a></a>::::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="your-turn-1" class="slide level2">
+<h2>Your Turn!</h2>
+<ul>
+<li>Try making a long slide with the <code>.smaller</code> class</li>
+<li>Now use the <code>.scrollable</code> class instead</li>
+<li>Add an image to a slide
+<ul>
+<li>Go to Wikimedia Commons and download an image</li>
+<li>Add the image to your project folder</li>
+</ul></li>
+<li>Make a slide with two columns
+<ul>
+<li>On the left, write a few bullet points</li>
+<li>On the right, add an image</li>
+<li>Use the <code>width</code> attribute to control the size of the image</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer2" data-update-every="1" tabindex="0" style="top:0%;right:10%;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="code-and-output" class="title-slide slide level1 center">
+<h1>Code and Output</h1>
+
+</section>
+<section id="code-blocks" class="slide level2">
+<h2>Code Blocks</h2>
+<p><br></p>
+<ul>
+<li>To add a code block, use the standard markdown syntax</li>
+<li>You can specify the language for syntax highlighting</li>
+<li>Just like a normal HTML document, you can add chunk options</li>
+</ul>
+</section>
+<section id="code-blocks-1" class="slide level2">
+<h2>Code Blocks</h2>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a></a><span class="in">```{r}</span></span>
+<span id="cb14-2"><a></a><span class="in">#| label: leaflet_map1</span></span>
+<span id="cb14-3"><a></a><span class="in">#| eval: false</span></span>
+<span id="cb14-4"><a></a></span>
+<span id="cb14-5"><a></a><span class="in">library(leaflet)</span></span>
+<span id="cb14-6"><a></a><span class="in">leaflet() %&gt;% </span></span>
+<span id="cb14-7"><a></a><span class="in">  addTiles() %&gt;%   # Add default OpenStreetMap map tiles</span></span>
+<span id="cb14-8"><a></a><span class="in">  addMarkers(lat = 38.90243843683386, lng =  -77.0443814477152, </span></span>
+<span id="cb14-9"><a></a><span class="in">             label = "Elliott School of International Affairs")</span></span>
+<span id="cb14-10"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<p>If your <code>echo:</code> is set to <code>false</code>, then you will just see the output.</p>
+
+<div class="cell">
+<div class="cell-output-display">
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-8a6a19981108e74a38fc" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-8a6a19981108e74a38fc">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[38.90243843683386,-77.0443814477152,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,"Elliott School of International Affairs",{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[38.90243843683386,38.90243843683386],"lng":[-77.0443814477152,-77.0443814477152]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<aside><div>
+<p>Note how the output of the leaflet is interactive!</p>
+</div></aside></section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<p><br> But if <code>echo:</code> is set to <code>true</code>, then you will see the code and the output…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb15-2"><a></a><span class="fu">leaflet</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span>   <span class="co"># Add default OpenStreetMap map tiles</span></span>
+<span id="cb15-4"><a></a>  <span class="fu">addMarkers</span>(<span class="at">lat =</span> <span class="fl">38.90243843683386</span>, <span class="at">lng =</span>  <span class="sc">-</span><span class="fl">77.0443814477152</span>, </span>
+<span id="cb15-5"><a></a>             <span class="at">label =</span> <span class="st">"Elliott School of International Affairs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-6daf6030fa801f06aaa2" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-6daf6030fa801f06aaa2">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[38.90243843683386,-77.0443814477152,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,"Elliott School of International Affairs",{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[38.90243843683386,38.90243843683386],"lng":[-77.0443814477152,-77.0443814477152]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<p><br></p>
+<p>And just like in a normal HTML document, you can also set these options in the YAML header.</p>
+<p><br></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb16-1"><a></a><span class="fu">execute</span><span class="kw">:</span></span>
+<span id="cb16-2"><a></a><span class="at">  </span><span class="fu">echo</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb16-3"><a></a><span class="at">  </span><span class="fu">message</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb16-4"><a></a><span class="at">  </span><span class="fu">warning</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+<p><br></p>
+<p>For presentation purposes, you may oly want to show specific lines of code.</p>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17" data-code-line-numbers="3-4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb17-2"><a></a><span class="fu">leaflet</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb17-3"><a></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span>   <span class="co"># Add default OpenStreetMap map tiles</span></span>
+<span id="cb17-4"><a></a>  <span class="fu">addMarkers</span>(<span class="at">lat =</span> <span class="fl">38.90243843683386</span>, <span class="at">lng =</span>  <span class="sc">-</span><span class="fl">77.0443814477152</span>, </span>
+<span id="cb17-5"><a></a>             <span class="at">label =</span> <span class="st">"Elliott School of International Affairs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="section-5" class="slide level2">
+<h2></h2>
+<p><br></p>
+<p>To do this, you would use the <code>code-line-numbers</code> option in the YAML header.</p>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18" data-code-line-numbers="3-4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb18-2"><a></a><span class="fu">leaflet</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb18-3"><a></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span>   <span class="co"># Add default OpenStreetMap map tiles</span></span>
+<span id="cb18-4"><a></a>  <span class="fu">addMarkers</span>(<span class="at">lat =</span> <span class="fl">38.90243843683386</span>, <span class="at">lng =</span>  <span class="sc">-</span><span class="fl">77.0443814477152</span>, </span>
+<span id="cb18-5"><a></a>             <span class="at">label =</span> <span class="st">"Elliott School of International Affairs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="your-turn-2" class="slide level2 smaller">
+<h2>Your Turn!</h2>
+<ul>
+<li>Start a new slide</li>
+<li>Add an R code chunk to it</li>
+<li>Add a leaflet map to it</li>
+<li>Render the slide</li>
+<li>Try different chunk options
+<ul>
+<li>Display only the output</li>
+<li>Display code and output</li>
+<li>Display just the code</li>
+<li>Display only particular lines</li>
+</ul></li>
+<li>Try adjusting <code>evaluate</code> options in the YAML header</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer3" data-update-every="1" tabindex="0" style="top:0%;right:10%;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="customization" class="title-slide slide level1 center">
+<h1>Customization</h1>
+
+</section>
+<section id="themes" class="slide level2">
+<h2>Themes</h2>
+<p><br></p>
+<p>You can customize the look of your slides by using a different theme, e.g.&nbsp;</p>
+<p><br></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb19-1"><a></a><span class="fu">theme</span><span class="kw">:</span><span class="at"> dark</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<aside><div>
+<p>See the Reveal documentation for the <a href="https://quarto.org/docs/presentations/revealjs/#themes">full list</a> of availalbe themes.</p>
+</div></aside></section>
+<section id="themes-1" class="slide level2">
+<h2>Themes</h2>
+<p><br></p>
+<p>You can also add a custom SCSS file to tweak an existing them or create your own:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource scss number-lines code-with-copy"><code class="sourceCode scss"><span id="cb20-1"><a></a><span class="co">/*-- scss:defaults --*/</span></span>
+<span id="cb20-2"><a></a></span>
+<span id="cb20-3"><a></a><span class="va">$body-bg</span>: <span class="cn">#191919</span><span class="op">;</span></span>
+<span id="cb20-4"><a></a><span class="va">$body-color</span>: <span class="cn">#fff</span><span class="op">;</span></span>
+<span id="cb20-5"><a></a><span class="va">$link-color</span>: <span class="cn">#42affa</span><span class="op">;</span></span>
+<span id="cb20-6"><a></a></span>
+<span id="cb20-7"><a></a><span class="co">/*-- scss:rules --*/</span></span>
+<span id="cb20-8"><a></a></span>
+<span id="cb20-9"><a></a><span class="fu">.reveal</span> <span class="fu">.slide</span> blockquote {</span>
+<span id="cb20-10"><a></a>  <span class="kw">border-left</span>: <span class="dv">3</span><span class="dt">px</span> <span class="dv">solid</span> <span class="va">$text-muted</span><span class="op">;</span></span>
+<span id="cb20-11"><a></a>  <span class="kw">padding-left</span>: <span class="dv">0.5</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb20-12"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="syntax-highlighting" class="slide level2">
+<h2>Syntax Highlighting</h2>
+<p><br></p>
+<p>Quarto offers 20 different syntax highlighting themes. Click <a href="https://quarto.org/docs/output-formats/html-code.html#highlighting">here</a> to see the available themes.</p>
+<p><br></p>
+<p>You can select your preferred theme by adding <code>highlight-style</code> to the YAML header, e.g.&nbsp;</p>
+<p><br></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb21-1"><a></a><span class="fu">highlight-style</span><span class="kw">:</span><span class="at"> github</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="background-styling" class="slide level2">
+<h2>Background Styling</h2>
+<p><br></p>
+<p>You can change the color of your background by adding the <code>background-color</code> attribute to a slide.</p>
+<p><br></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb22-1"><a></a><span class="fu">## Slide Title {background-color="aquamarine"}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="background-styling-1" class="slide level2" data-background-color="aquamarine">
+<h2>Background Styling</h2>
+<p><br></p>
+<p>You can change the color of your background by adding the <code>background-color</code> attribute to a slide.</p>
+<p><br></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb23-1"><a></a><span class="fu">## Slide Title {background-color="aquamarine"}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="background-styling-2" class="slide level2">
+<h2>Background Styling</h2>
+<p><br></p>
+<p>Similarly, you can add a background image to your slide by adding the <code>background-image</code> attribute.</p>
+<p><br></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb24-1"><a></a><span class="fu">## Slide Title {background-image="/images/drr6502-img.png" data-background-size="contain" data-background-opacity="0.5"}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="background-styling-3" class="slide level2" data-background-image="../images/drr6502-img.png" data-background-size="contain" data-background-opacity="0.5">
+<h2>Background Styling</h2>
+<p><br></p>
+<p>Similarly, you can add a background image to your slide by adding the <code>background-image</code> attribute.</p>
+<p><br></p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb25-1"><a></a><span class="fu">## Slide Title {background-image="/images/drr6502-img.png" data-background-size="contain" data-background-opacity="0.5"}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="background-styling-4" class="slide level2">
+<h2>Background Styling</h2>
+<p><br></p>
+<p>And you can add a background image to the title slide by adding the <code>title-slide-attributes</code> attribute to the YAML header.</p>
+<p><br></p>
+
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb26-1"><a></a><span class="pp">---</span></span>
+<span id="cb26-2"><a></a><span class="fu">title</span><span class="kw">:</span><span class="at"> My Slide Show</span></span>
+<span id="cb26-3"><a></a><span class="fu">title-slide-attributes</span><span class="kw">:</span></span>
+<span id="cb26-4"><a></a><span class="at">    </span><span class="fu">data-background-image</span><span class="kw">:</span><span class="at"> /path/to/title_image.png</span></span>
+<span id="cb26-5"><a></a><span class="at">    </span><span class="fu">data-background-size</span><span class="kw">:</span><span class="at"> contain</span></span>
+<span id="cb26-6"><a></a><span class="at">    </span><span class="fu">data-background-opacity</span><span class="kw">:</span><span class="at"> </span><span class="st">"0.5"</span></span>
+<span id="cb26-7"><a></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside><div>
+<p>See <a href="https://eteitelbaum.quarto.pub/dapp/">here</a> for an example.</p>
+</div></aside></section>
+<section id="a-few-more-tricks-and-tips" class="slide level2 smaller">
+<h2>A Few More Tricks and Tips</h2>
+<div>
+<ul>
+<li class="fragment">Fade your slide transitions with <code>transition: fade</code></li>
+<li class="fragment">Add slide numbers with <code>slide-number: true</code></li>
+<li class="fragment">Use <code>footer:</code>to add a footer your slides</li>
+<li class="fragment">Use <code>logo:</code> to add a logo to your slides</li>
+<li class="fragment">You can add a chalkboard to your slides by adding <code>chalkboard: true</code> to the YAML header</li>
+<li class="fragment">You can add speaker notes by creating a div and adding the <code>notes</code> attribute to it.
+<ul>
+<li class="fragment">Then you can view them by running the presentation in speaker mode</li>
+</ul></li>
+<li class="fragment">You can use <code>multiplex: true</code> to advance slides for your audience</li>
+<li class="fragment">And much much more! Check out the <a href="https://quarto.org/docs/presentations/revealjs/">guide</a> for details</li>
+</ul>
+</div>
+<aside class="notes">
+<p>These are my speaker notes!</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="my-yaml-for-this-presentation" class="slide level2">
+<h2>My YAML for This Presentation</h2>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb27-1"><a></a><span class="at"> ---</span></span>
+<span id="cb27-2"><a></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Revealjs Slides"</span></span>
+<span id="cb27-3"><a></a><span class="fu">subtitle</span><span class="kw">:</span><span class="at"> </span><span class="st">"Session 4--Visualizing Data"</span></span>
+<span id="cb27-4"><a></a><span class="fu">footer</span><span class="kw">:</span><span class="at"> </span><span class="st">"[DRR Website](https://quarto.training)"</span></span>
+<span id="cb27-5"><a></a><span class="fu">logo</span><span class="kw">:</span><span class="at"> images/drr6502-logo.png</span></span>
+<span id="cb27-6"><a></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb27-7"><a></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
+<span id="cb27-8"><a></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">simple</span><span class="kw">,</span><span class="at"> custom.scss</span><span class="kw">]</span></span>
+<span id="cb27-9"><a></a><span class="at">    </span><span class="fu">transition</span><span class="kw">:</span><span class="at"> fade</span></span>
+<span id="cb27-10"><a></a><span class="at">    </span><span class="fu">slide-number</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb27-11"><a></a><span class="at">    </span><span class="fu">chalkboard</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb27-12"><a></a><span class="fu">execute</span><span class="kw">:</span></span>
+<span id="cb27-13"><a></a><span class="at">  </span><span class="fu">echo</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb27-14"><a></a><span class="at">  </span><span class="fu">message</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb27-15"><a></a><span class="at">  </span><span class="fu">warning</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb27-16"><a></a><span class="at">  </span><span class="fu">freeze</span><span class="kw">:</span><span class="at"> auto</span></span>
+<span id="cb27-17"><a></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="your-turn-3" class="slide level2 smaller">
+<h2>Your Turn!</h2>
+<p><br></p>
+<ul>
+<li>Add a theme to your presentation</li>
+<li>Try a different type of syntax highlighting</li>
+<li>Change the background color of a slide</li>
+<li>Add a background image to a slide</li>
+<li>Add a background image to the title slide</li>
+<li>Try using SCSS to modify the theme style</li>
+<li>Try a cool trick like <code>chalkboard</code> or <code>multiplex</code></li>
+<li>Upload your presentation to Quarto Pub
+<ul>
+<li><code>quarto publish quarto-pub mydocument.qmd</code></li>
+</ul></li>
+</ul>
+
+
+</section><div class="quarto-auto-generated-content">
+<p><img src="images/drr6502-logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p><a href="https://quarto.training">DRR Website</a></p>
+</div>
+</div></section>
     </div>
   </div>
 
@@ -759,7 +961,6 @@
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1059,10 +1260,9 @@
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1072,8 +1272,17 @@
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
