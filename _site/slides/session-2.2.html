@@ -9,7 +9,7 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.541">
+  <meta name="generator" content="quarto-1.4.533">
 
   <title>IAFF 6502/6505 Creating Data Rich Reports with Quarto - Data Rich Reports</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -29,71 +29,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-      }
-    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-    div.sourceCode
-      { color: #f8f8f2;  }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #f8f8f2; } /* Normal */
-    code span.al { color: #f07178; background-color: #2a0f15; font-weight: bold; } /* Alert */
-    code span.an { color: #d4d0ab; } /* Annotation */
-    code span.at { color: #00e0e0; } /* Attribute */
-    code span.bn { color: #d4d0ab; } /* BaseN */
-    code span.bu { color: #abe338; } /* BuiltIn */
-    code span.cf { color: #ffa07a; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #abe338; } /* Char */
-    code span.cn { color: #ffd700; } /* Constant */
-    code span.co { color: #f8f8f2; font-style: italic; } /* Comment */
-    code span.cv { color: #ffd700; } /* CommentVar */
-    code span.do { color: #f8f8f2; } /* Documentation */
-    code span.dt { color: #ffa07a; } /* DataType */
-    code span.dv { color: #d4d0ab; } /* DecVal */
-    code span.er { color: #f07178; text-decoration: underline; } /* Error */
-    code span.ex { color: #00e0e0; font-weight: bold; } /* Extension */
-    code span.fl { color: #d4d0ab; } /* Float */
-    code span.fu { color: #ffa07a; } /* Function */
-    code span.im { color: #abe338; } /* Import */
-    code span.in { color: #d4d0ab; } /* Information */
-    code span.kw { color: #ffa07a; font-weight: bold; } /* Keyword */
-    code span.op { color: #ffa07a; } /* Operator */
-    code span.ot { color: #00e0e0; } /* Other */
-    code span.pp { color: #dcc6e0; } /* Preprocessor */
-    code span.re { color: #00e0e0; background-color: #f8f8f2; } /* RegionMarker */
-    code span.sc { color: #abe338; } /* SpecialChar */
-    code span.ss { color: #abe338; } /* SpecialString */
-    code span.st { color: #abe338; } /* String */
-    code span.va { color: #00e0e0; } /* Variable */
-    code span.vs { color: #abe338; } /* VerbatimString */
-    code span.wa { color: #dcc6e0; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -390,12 +325,16 @@
   <link href="../site_libs/countdown-0.4.0/countdown.css" rel="stylesheet">
   <script src="../site_libs/countdown-0.4.0/countdown.js"></script>
 <meta property="og:title" content="IAFF 6502/6505 Creating Data Rich Reports with Quarto - Data Rich Reports">
-<meta property="og:description" content="Session 2.5–Parameterized Reporting">
+<meta property="og:description" content="Session 6–Websites and Blogs">
 <meta property="og:image" content="https://quarto.training/slides/images/drr6502-img.png">
 <meta property="og:site_name" content="IAFF 6502/6505 Creating Data Rich Reports with Quarto">
+<meta property="og:image:height" content="614">
+<meta property="og:image:width" content="1168">
 <meta name="twitter:title" content="IAFF 6502/6505 Creating Data Rich Reports with Quarto - Data Rich Reports">
-<meta name="twitter:description" content="Session 2.5–Parameterized Reporting">
+<meta name="twitter:description" content="Session 6–Websites and Blogs">
 <meta name="twitter:image" content="https://quarto.training/slides/images/drr6502-img.png">
+<meta name="twitter:image-height" content="614">
+<meta name="twitter:image-width" content="1168">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 <body class="quarto-dark">
@@ -404,402 +343,217 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Data Rich Reports</h1>
-  <p class="subtitle">Session 2.5–Parameterized Reporting</p>
+  <p class="subtitle">Session 6–Websites and Blogs</p>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="what-is-parameterized-reporting" class="slide level2">
-<h2>What is Parameterized Reporting?</h2>
+<section id="quarto-for-websites-and-blogs" class="slide level2 smaller">
+<h2>Quarto for Websites and Blogs</h2>
+<p><br></p>
 <ul>
-<li class="fragment">Make one template report in Quarto</li>
-<li class="fragment">Create R script file that allows you to make multiple reports from this template</li>
+<li>Generate static websites, blogs but also allows for embedding of interactive applications</li>
+<li>Works smoothly within RStudio but also other IDEs including VS Code</li>
+<li>Designed to work well with Git and other version control systems, making it easy to track changes, collaborate with others, and deploy updates to your site or blog</li>
+<li>Leverage a wide range of themes and plugins, or create your own to tailor the look and feel of your site</li>
+<li>Quarto also integrates with static site generators like Jekyll and Hugo for even more powerful site-building capabilities.</li>
 </ul>
 </section>
-<section id="why-parameterized-reporting" class="slide level2">
-<h2>Why Parameterized Reporting?</h2>
+<section id="create-a-blog" class="slide level2">
+<h2>Create a Blog</h2>
+<p><br></p>
+<div>
 <ul>
-<li class="fragment">Allows you to make multiple reports at once</li>
-<li class="fragment">Avoids copy paste issues if you were to make multiple reports by hand</li>
-<li class="fragment">It feels like magic!</li>
+<li class="fragment">Start a new project
+<ul>
+<li class="fragment">Select New Directory</li>
+<li class="fragment">Select Quarto Blog</li>
+</ul></li>
+<li class="fragment">Save the blog as ‘myblog’</li>
+<li class="fragment">Render the Blog</li>
 </ul>
+</div>
 </section>
-<section id="parameterized-reports-we-have-made" class="slide level2">
-<h2>Parameterized Reports We Have Made</h2>
-</section>
-<section class="slide level2">
+<section id="what-are-all-of-these-files" class="slide level2">
+<h2>What are All of These Files?</h2>
 
-<p><a href="https://www.jhsph.edu/ivac/resources/pdpr/"><img data-src="../images/ivac-country-reports.png"></a></p>
-</section>
-<section class="slide level2">
-
-<p><a href="https://housingprofiles.pschousing.org/"><img data-src="../images/psc.png"></a></p>
-</section>
-<section id="how-does-parameterized-reporting-work" class="slide level2">
-<h2>How Does Parameterized Reporting Work?</h2>
-<div class="fragment">
-<div class="bg-light">
-<div class="r-stack">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="https://raw.githubusercontent.com/jadeynryan/2023_posit-parameterized-quarto/main/images/template1.png" class="fragment quarto-figure quarto-figure-center" alt="File with the word '.qmd' inside and the word 'Function' above." width="1300"></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="https://raw.githubusercontent.com/jadeynryan/2023_posit-parameterized-quarto/main/images/template2.png" class="fragment quarto-figure quarto-figure-center" alt="An arrow points from 'Input' with 'params$year' to the previous image with 'Function' and '.qmd' file." width="1300"></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="https://raw.githubusercontent.com/jadeynryan/2023_posit-parameterized-quarto/main/images/template3.png" class="fragment quarto-figure quarto-figure-center" alt="In addition to the previous two images, arrows point to five reports with years 2019 through 2023 on them in a flow chart." width="1300"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Source: <a href="https://jadeynryan.github.io/2023_posit-parameterized-quarto/#/title-slide">Jadey Ryan</a></p>
-</div>
-</section>
-<section id="manually-create-multiple-reports" class="slide level2">
-<h2>Manually Create Multiple Reports</h2>
+<img data-src="images/blog-files.png" class="r-stretch"></section>
+<section id="quarto.yml" class="slide level2">
+<h2>_quarto.yml</h2>
+<p><br></p>
+<div>
 <ul>
-<li class="fragment">You can manually make multiple reports by, for example, adjusting the country you filter on in your Quarto document</li>
+<li class="fragment">The configuration file for the blog</li>
+<li class="fragment">Controls the navbar, HTML styling and other settings</li>
+<li class="fragment">Helps with navigation and organization</li>
+<li class="fragment">Take a moment and play with the settings</li>
 </ul>
-<div class="fragment">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>gapminder_filtered <span class="ot">&lt;-</span></span>
-<span id="cb1-2"><a></a>  gapminder <span class="sc">|&gt;</span> </span>
-<span id="cb1-3"><a></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"Afghanistan"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<div class="fragment">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> gapminder_filtered,</span>
-<span id="cb2-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> year,</span>
-<span id="cb2-3"><a></a>           <span class="at">y =</span> lifeExp,</span>
-<span id="cb2-4"><a></a>           <span class="at">group =</span> country)) <span class="sc">+</span></span>
-<span id="cb2-5"><a></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb2-6"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </div>
 </section>
-<section id="parameters" class="slide level2">
-<h2>Parameters</h2>
-<pre><code>---
-title: "Report on Life Expectancy"
-format: html
-execute: 
-  echo: false
-  warning: false
-  message: false
----</code></pre>
-<aside class="notes">
+<section id="try-this" class="slide level2 smaller">
+<h2>Try This</h2>
 <ul>
-<li>Show report without parameters</li>
-<li>Add parameters</li>
-<li>Render one report</li>
-<li>Render another report by changing parameter</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="parameters-1" class="slide level2">
-<h2>Parameters</h2>
-<p><strong>YAML</strong></p>
-<pre><code>---
-title: "Report on Life Expectancy"
-format: html
-execute: 
-  echo: false
-  warning: false
-  message: false
-params: 
-  country: Afghanistan 
----</code></pre>
-<div class="fragment">
-<p><strong>Code</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>gapminder_filtered <span class="ot">&lt;-</span></span>
-<span id="cb5-2"><a></a>  gapminder <span class="sc">|&gt;</span> </span>
-<span id="cb5-3"><a></a>  <span class="fu">filter</span>(country <span class="sc">==</span> params<span class="sc">$</span>country)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<div class="fragment">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> gapminder_filtered,</span>
-<span id="cb6-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> year,</span>
-<span id="cb6-3"><a></a>           <span class="at">y =</span> lifeExp,</span>
-<span id="cb6-4"><a></a>           <span class="at">group =</span> country)) <span class="sc">+</span></span>
-<span id="cb6-5"><a></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb6-6"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</section>
-<section id="your-turn" class="slide level2">
-<h2>Your Turn</h2>
+<li>Change position and content of navbar</li>
+<li>Add links to your social media</li>
+<li>Change the title of the blog</li>
+<li>Change the <a href="https://quarto.org/docs/websites/website-blog.html#themes">theme</a></li>
+<li>Rerender the blog</li>
+<li>Challenge: add a new page to the blog
 <ul>
-<li class="fragment">Install the <code>usethis</code> package with <code>install.packages("usethis")</code></li>
-<li class="fragment">Run `usethis::use_course(“https://github.com/rfortherestofus/gw-parameterized-report-example/archive/refs/heads/main.zip”)’ and answer yes to the questions it gives you</li>
-<li class="fragment">Open the project (it should happen automatically)</li>
-<li class="fragment">Open the <code>report.qmd</code> file and save it as <code>report2.qmd</code></li>
-<li class="fragment">Change the <code>country</code> parameter in the YAML to be called <code>continent</code> and set the default value to be “Asia”</li>
-<li class="fragment">Adjust the code that creates the <code>gapminder_filtered</code> data frame so that it filters to use the <code>continent</code> parameter</li>
+<li>Start a new Quarto document</li>
+<li>Save it in your root directory as ‘contact.qmd’</li>
+<li>Ask ChatGPT to give you a template for a contact page</li>
+<li>Render the contact page</li>
+<li>Add it to your navbar</li>
+<li>Rerender the blog</li>
+</ul></li>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_5f17141b" data-update-every="1" tabindex="0" style="right:0%;bottom:0%;">
+<div class="countdown" id="timer1" data-update-every="1" tabindex="0" style="top:0%;right:10%;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
 </section>
-<section id="use-parameters-for-inline-code" class="slide level2">
-<h2>Use Parameters for Inline Code</h2>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="do">## Life Expectancy in `r params$country`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<aside class="notes">
+<section id="about.qmd" class="slide level2">
+<h2>about.qmd</h2>
+<p><br></p>
+<div>
 <ul>
-<li>Show header</li>
-<li>Also add text that shows min and max years</li>
+<li class="fragment">This is the about page for your blog</li>
+<li class="fragment">Here you can add your profile picture, social media links, and a bio</li>
+<li class="fragment">There are a handful of <a href="https://quarto.org/docs/reference/projects/websites.html#about">templates</a> to choose from</li>
 </ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+</div>
 </section>
-<section id="your-turn-1" class="slide level2">
-<h2>Your Turn</h2>
+<section id="try-this-1" class="slide level2 smaller">
+<h2>Try This</h2>
+<p><br></p>
 <ul>
-<li class="fragment">Working in your <code>report2.qmd</code> file, use inline code to create a line that says “This report is on population in [CONTINENT] from 1952 to 2007.”</li>
-<li class="fragment">Use inline code to make the [CONTINENT] portion use your parameter</li>
-<li class="fragment">If you finish early, write code to make the 1952 and 2007 values show up using inline R code</li>
+<li>Open the <code>about.qmd</code> file</li>
+<li>Start filling out your bio (use your Markdown skills)</li>
+<li>Add links to your social media</li>
+<li>Replace the profile picture with your own</li>
+<li>Try a different template</li>
+<li>Rerender your blog</li>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_13e9595d" data-update-every="1" tabindex="0" style="right:0%;bottom:0%;">
+<div class="countdown" id="timer2" data-update-every="1" tabindex="0" style="right:10%;bottom:5%;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
 </section>
-<section id="render-with-r-script" class="slide level2">
-<h2>Render with R Script</h2>
+<section id="posts-folder" class="slide level2 smaller">
+<h2>Posts Folder</h2>
+<p><br></p>
+<div>
 <ul>
-<li class="fragment">Create a new file (<code>render.R</code> is what I typically call it)</li>
-<li class="fragment">Use the <code>quarto_render()</code> function from the <code>quarto</code> package:</li>
-</ul>
-<div class="fragment">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">library</span>(quarto)</span>
-<span id="cb8-2"><a></a></span>
-<span id="cb8-3"><a></a><span class="fu">quarto_render</span>(</span>
-<span id="cb8-4"><a></a>  <span class="at">input =</span> <span class="st">"report.qmd"</span></span>
-<span id="cb8-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<aside class="notes">
+<li class="fragment">This is where your blog posts go</li>
+<li class="fragment">Each post has a separate folder</li>
+<li class="fragment">In each folder you’ll see an image and a QMD file</li>
+<li class="fragment">To edit a post, change the image or edit the QMD</li>
+<li class="fragment">To add a new post, create a new folder and add an image and a QMD
 <ul>
-<li>Render report with <code>quarto_render()</code></li>
-<li>But this isn’t really much more efficient than rendering in .qmd file</li>
+<li class="fragment">Include <code>title</code>, <code>author</code>, <code>date</code>, and <code>categories</code> in the YAML</li>
+<li class="fragment">Do not use dynamic dates (type them out, e.g.&nbsp;“2024-03-01”)</li>
+<li class="fragment">To add images, you can include them in the document or in the YAML with the <code>image:</code> key</li>
+</ul></li>
 </ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </div>
 </section>
-<section id="your-turn-2" class="slide level2">
-<h2>Your Turn</h2>
+<section id="try-this-2" class="slide level2 smaller">
+<h2>Try This</h2>
+<p><br></p>
 <ul>
-<li class="fragment">Install the <code>quarto</code> package using <code>install.packages("quarto")</code></li>
-<li class="fragment">Open the file called <code>render.R</code> file and save it as <code>render2.R</code></li>
-<li class="fragment">Adjust the code to render your <code>report2.qmd</code> document using the <code>quarto_render()</code> function</li>
+<li>Open the <code>posts</code> folder</li>
+<li>Open the <code>welcome</code> post folder</li>
+<li>Now open the <code>post-with-code</code> folder</li>
+<li>What differences do you notice between the two?</li>
+<li>Try adding a code chunk to the <code>welcome</code> post and rerender</li>
+<li>Try adding a new image to the <code>post-with-code</code> post and rerender</li>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_311cbb7e" data-update-every="1" tabindex="0" style="right:0%;bottom:0%;">
+<div class="countdown" id="timer3" data-update-every="1" tabindex="0" style="right:10%;bottom:5%;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
 </section>
-<section id="add-arguments-to-quarto_render" class="slide level2">
-<h2>Add Arguments to <code>quarto_render()</code></h2>
+<section id="try-this-3" class="slide level2 smaller">
+<h2>Try This</h2>
+<p><br></p>
 <ul>
-<li class="fragment">Add additional arguments to <code>quarto_render()</code>:</li>
-</ul>
-<div class="fragment">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">library</span>(quarto)</span>
-<span id="cb9-2"><a></a></span>
-<span id="cb9-3"><a></a><span class="fu">quarto_render</span>(</span>
-<span id="cb9-4"><a></a>  <span class="at">input =</span> <span class="st">"report.qmd"</span>,</span>
-<span id="cb9-5"><a></a>  <span class="at">output_file =</span> <span class="st">"Afghanistan.html"</span>,</span>
-<span id="cb9-6"><a></a>  <span class="at">execute_params =</span> <span class="fu">list</span>(<span class="at">country =</span> <span class="st">"Afghanistan"</span>)</span>
-<span id="cb9-7"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<aside class="notes">
-<ul>
-<li>Just render one report with these arguments</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</div>
-</section>
-<section id="your-turn-3" class="slide level2">
-<h2>Your Turn</h2>
-<ul>
-<li class="fragment">Working in the <code>render2.R</code> file, add an <code>execute_params</code> argument to the <code>quarto_render()</code> function to render the report for Africa</li>
-<li class="fragment">Also change the name of the rendered HTML file to <code>Africa.html</code> using the <code>output_file</code> argument</li>
+<li>Add a new post</li>
+<li>Create a new folder in the <code>posts</code> directory</li>
+<li>Add an image and a QMD file</li>
+<li>Include <code>title</code>, <code>author</code>, <code>date</code>, and <code>categories</code> in the YAML</li>
+<li>Add an image with your preferred workflow</li>
+<li>Add some text and markdown</li>
+<li>Render the post</li>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_6efa61b3" data-update-every="1" tabindex="0" style="right:0%;bottom:0%;">
+<div class="countdown" id="timer4" data-update-every="1" tabindex="0" style="right:10%;bottom:5%;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
 </section>
-<section id="render-multiple-reports-with-quarto_render" class="slide level2">
-<h2>Render Multiple Reports with <code>quarto_render()</code></h2>
+<section id="try-this-4" class="slide level2 smaller">
+<h2>Try This</h2>
+<p><br></p>
 <ul>
-<li class="fragment">Create a tibble (i.e.&nbsp;data frame) with the data for all of the reports you want to create:</li>
-</ul>
-<div class="fragment">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>countries <span class="ot">&lt;-</span></span>
-<span id="cb10-2"><a></a>  gapminder <span class="sc">|&gt;</span></span>
-<span id="cb10-3"><a></a>  <span class="fu">distinct</span>(country) <span class="sc">|&gt;</span></span>
-<span id="cb10-4"><a></a>  <span class="fu">pull</span>(country) <span class="sc">|&gt;</span></span>
-<span id="cb10-5"><a></a>  <span class="fu">as.character</span>()</span>
-<span id="cb10-6"><a></a></span>
-<span id="cb10-7"><a></a>reports <span class="ot">&lt;-</span></span>
-<span id="cb10-8"><a></a>  <span class="fu">tibble</span>(</span>
-<span id="cb10-9"><a></a>    <span class="at">input =</span> <span class="st">"report.qmd"</span>,</span>
-<span id="cb10-10"><a></a>    <span class="at">output_file =</span> <span class="fu">str_glue</span>(<span class="st">"reports/{countries}.html"</span>),</span>
-<span id="cb10-11"><a></a>    <span class="at">execute_params =</span> <span class="fu">map</span>(countries, <span class="sc">~</span><span class="fu">list</span>(<span class="at">country =</span> .))</span>
-<span id="cb10-12"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</section>
-<section id="render-multiple-reports-with-quarto_render-1" class="slide level2">
-<h2>Render Multiple Reports with <code>quarto_render()</code></h2>
+<li>Add a data visualization to your post</li>
+<li>You can use one of three strategies
 <ul>
-<li class="fragment">Use the <code>pwalk()</code> function from the <code>purrr</code> package to render all reports:</li>
+<li>Store some data locally in a CSV file</li>
+<li>Use an API like V-Dem</li>
+<li>Use a package like <code>gapminder</code></li>
+</ul></li>
+<li>Intersperse your text with your visualizations</li>
+<li>If you finish one visualization, try another</li>
 </ul>
-<div class="fragment">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">pwalk</span>(reports, quarto_render)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</section>
-<section id="your-turn-4" class="slide level2">
-<h2>Your Turn</h2>
-<ul>
-<li class="fragment">Working in the <code>render2.R</code> file, create a vector called <code>continents</code> that has all continents for which we want to make reports. Use the code below as a model.</li>
-</ul>
-<div class="fragment">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>countries <span class="ot">&lt;-</span></span>
-<span id="cb12-2"><a></a>  gapminder <span class="sc">|&gt;</span></span>
-<span id="cb12-3"><a></a>  <span class="fu">distinct</span>(country) <span class="sc">|&gt;</span></span>
-<span id="cb12-4"><a></a>  <span class="fu">pull</span>(country) <span class="sc">|&gt;</span></span>
-<span id="cb12-5"><a></a>  <span class="fu">as.character</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_31c5c376" data-update-every="1" tabindex="0" style="right:0%;bottom:0%;">
+<div class="countdown" id="timer5" data-update-every="1" tabindex="0" style="right:10%;bottom:5%;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="your-turn-5" class="slide level2">
-<h2>Your Turn</h2>
-<ul>
-<li class="fragment">Working in the <code>render2.R</code> file, create a tibble called <code>reports</code> that has all of the data needed to render all reports. Use the code below as a model.</li>
-</ul>
-<div class="fragment">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>reports <span class="ot">&lt;-</span></span>
-<span id="cb13-2"><a></a>  <span class="fu">tibble</span>(</span>
-<span id="cb13-3"><a></a>    <span class="at">input =</span> <span class="st">"report.qmd"</span>,</span>
-<span id="cb13-4"><a></a>    <span class="at">output_file =</span> <span class="fu">str_glue</span>(<span class="st">"reports/{countries}.html"</span>),</span>
-<span id="cb13-5"><a></a>    <span class="at">execute_params =</span> <span class="fu">map</span>(countries, <span class="sc">~</span><span class="fu">list</span>(<span class="at">country =</span> .))</span>
-<span id="cb13-6"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div class="countdown" id="timer_33336b6b" data-update-every="1" tabindex="0" style="right:0%;bottom:0%;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
 </section>
-<section id="your-turn-6" class="slide level2">
-<h2>Your Turn</h2>
+<section id="publish-your-blog" class="slide level2">
+<h2>Publish Your Blog!</h2>
 <ul>
-<li class="fragment">Working in the <code>render2.R</code> file, use the <code>pwalk()</code> function from the <code>purrr</code> package to render all reports. Use the code below as a model.</li>
-</ul>
-<div class="fragment">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">pwalk</span>(VECTOR, FUNCTION)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</section>
-<section id="additional-exercise" class="slide level2">
-<h2>Additional Exercise</h2>
+<li>Once you’re happy with your blog, you can publish it</li>
+<li>Try publishing it to Quarto Pub
 <ul>
-<li class="fragment">Create a set of parameterized reports for each year that have a bar chart that shows the population in each country</li>
+<li>quarto publish quarto-pub</li>
+<li>in the terminal</li>
+</ul></li>
+<li>You can also publish it to GitHub Pages or Netlify
+<ul>
+<li>Happy to show you how to do this later</li>
+</ul></li>
 </ul>
 
-<div class="quarto-auto-generated-content">
+
+</section>
+    <div class="quarto-auto-generated-content">
 <p><img src="images/drr6502-logo.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p><a href="https://quarto.training">DRR Website</a></p>
 </div>
-</div>
-</section>
-    </div>
+</div></div>
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>

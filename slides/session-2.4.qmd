@@ -1,6 +1,6 @@
 ---
 title: "Data Rich Reports"
-subtitle: "Session 2.5--Parameterized Reporting"
+subtitle: "Session 8--Parameterized Reporting"
 footer: "[DRR Website](https://quarto.training)"
 logo: images/drr6502-logo.png
 format:
@@ -100,7 +100,7 @@ ggplot(data = gapminder_filtered,
 ```
 
 
-## Parameters
+## Parameters {.smaller}
 
 ```
 ---
@@ -120,7 +120,7 @@ execute:
 - Render another report by changing parameter
 :::
 
-## Parameters
+## Parameters {.smaller}
 
 **YAML**
 
@@ -161,14 +161,22 @@ ggplot(data = gapminder_filtered,
 ```
 
 
-## Your Turn
+## Your Turn {.smaller}
 
+::: {.nonincremental}
 - Install the `usethis` package with `install.packages("usethis")`
-- Run `usethis::use_course("https://github.com/rfortherestofus/gw-parameterized-report-example/archive/refs/heads/main.zip")' and answer yes to the questions it gives you
+- Run this code: 
+```{r}
+#| eval: false
+#| echo: true
+usethis::use_course("https://github.com/rfortherestofus/gw-parameterized-report-example/archive/refs/heads/main.zip")
+```
+- And answer yes to the questions it gives you...
 - Open the project (it should happen automatically)
 - Open the `report.qmd` file and save it as `report2.qmd`
 - Change the `country` parameter in the YAML to be called `continent` and set the default value to be "Asia"
 - Adjust the code that creates the `gapminder_filtered` data frame so that it filters to use the `continent` parameter
+:::
 
 ```{r}
 #| eval: true

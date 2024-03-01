@@ -1,0 +1,196 @@
+---
+title: "Data Rich Reports"
+subtitle: "Session 6--Websites and Blogs"
+footer: "[DRR Website](https://quarto.training)"
+logo: images/drr6502-logo.png
+format:
+  revealjs:
+    theme: [simple, custom.scss]
+    transition: fade
+    slide-number: true
+    chalkboard: true
+execute:
+  echo: false
+  message: false
+  warning: false
+  freeze: auto
+---
+
+## Quarto for Websites and Blogs {.smaller}
+
+<br>
+
+-  Generate static websites, blogs but also allows for embedding of interactive applications
+-  Works smoothly within RStudio but also other IDEs including VS Code
+- Designed to work well with Git and other version control systems, making it easy to track changes, collaborate with others, and deploy updates to your site or blog
+- Leverage a wide range of themes and plugins, or create your own to tailor the look and feel of your site
+- Quarto also integrates with static site generators like Jekyll and Hugo for even more powerful site-building capabilities.
+
+## Create a Blog
+
+<br>
+
+::: incremental
+- Start a new project 
+  - Select New Directory
+  - Select Quarto Blog
+- Save the blog as 'myblog'
+- Render the Blog
+:::
+
+## What are All of These Files?
+
+![](images/blog-files.png)
+
+## _quarto.yml 
+
+<br>
+
+::: incremental
+- The configuration file for the blog
+- Controls the navbar, HTML styling and other settings
+- Helps with navigation and organization
+- Take a moment and play with the settings
+:::
+
+## Try This {.smaller}
+
+- Change position and content of navbar
+- Add links to your social media
+- Change the title of the blog
+- Change the [theme](https://quarto.org/docs/websites/website-blog.html#themes)
+- Rerender the blog
+- Challenge: add a new page to the blog
+  - Start a new Quarto document
+  - Save it in your root directory as 'contact.qmd'
+  - Ask ChatGPT to give you a template for a contact page
+  - Render the contact page
+  - Add it to your navbar
+  - Rerender the blog
+
+```{r}
+#| label: timer1
+library(countdown)
+countdown(minutes = 10, 
+          id = "timer1", 
+          top = "0%", 
+          right = "10%",
+          color_border = "#fff",
+          color_text = "#fff",
+          color_running_background = "#42affa",
+          color_running_text = "black",
+          color_finished_background = "#E5D19D",
+          color_finished_text = "#00264A")
+```
+
+## about.qmd
+
+<br>
+
+::: incremental
+- This is the about page for your blog
+- Here you can add your profile picture, social media links, and a bio
+- There are a handful of [templates](https://quarto.org/docs/reference/projects/websites.html#about) to choose from
+:::
+
+## Try This {.smaller}
+
+<br>
+
+- Open the `about.qmd` file
+- Start filling out your bio (use your Markdown skills)
+- Add links to your social media
+- Replace the profile picture with your own
+- Try a different template
+- Rerender your blog
+
+```{r}
+#| label: timer2
+countdown(minutes = 10, 
+          id = "timer2", 
+          bottom = "5%", 
+          right = "10%")
+```
+
+## Posts Folder {.smaller}
+
+<br>
+
+::: incremental
+- This is where your blog posts go
+- Each post has a separate folder
+- In each folder you'll see an image and a QMD file
+- To edit a post, change the image or edit the QMD
+- To add a new post, create a new folder and add an image and a QMD
+  - Include `title`, `author`, `date`, and `categories` in the YAML
+  - Do not use dynamic dates (type them out, e.g. "2024-03-01")
+  - To add images, you can include them in the document or in the YAML with the `image:` key
+:::
+
+## Try This {.smaller}
+
+<br>
+
+- Open the `posts` folder
+- Open the `welcome` post folder
+- Now open the `post-with-code` folder
+- What differences do you notice between the two? 
+- Try adding a code chunk to the `welcome` post and rerender
+- Try adding a new image to the `post-with-code` post and rerender
+
+```{r}
+#| label: timer3
+countdown(minutes = 10, 
+          id = "timer3", 
+          bottom = "5%", 
+          right = "10%")
+```
+
+## Try This {.smaller}
+
+<br>
+
+- Add a new post
+- Create a new folder in the `posts` directory
+- Add an image and a QMD file
+- Include `title`, `author`, `date`, and `categories` in the YAML
+- Add an image with your preferred workflow
+- Add some text and markdown
+- Render the post
+
+```{r}
+#| label: timer4
+countdown(minutes = 10, 
+          id = "timer4", 
+          bottom = "5%", 
+          right = "10%")
+```
+
+## Try This {.smaller}
+
+<br>
+
+- Add a data visualization to your post
+- You can use one of three strategies
+  - Store some data locally in a CSV file
+  - Use an API like V-Dem
+  - Use a package like `gapminder`
+- Intersperse your text with your visualizations
+- If you finish one visualization, try another
+  
+```{r}
+#| label: timer5
+countdown(minutes = 10, 
+          id = "timer5", 
+          bottom = "5%", 
+          right = "10%")
+```
+
+## Publish Your Blog! 
+
+- Once you're happy with your blog, you can publish it
+- Try publishing it to Quarto Pub
+  - quarto publish quarto-pub
+  - in the terminal
+- You can also publish it to GitHub Pages or Netlify
+  - Happy to show you how to do this later
