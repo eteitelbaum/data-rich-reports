@@ -9,7 +9,7 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.533">
+  <meta name="generator" content="quarto-1.3.361">
 
   <title>IAFF 6502/6505 Creating Data Rich Reports with Quarto - Data Rich Reports</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -223,8 +223,7 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    padding-bottom: 0.5rem;
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -392,11 +391,10 @@
 <meta property="og:title" content="IAFF 6502/6505 Creating Data Rich Reports with Quarto - Data Rich Reports">
 <meta property="og:description" content="Session 4–Visualizing Data">
 <meta property="og:image" content="https://quarto.training/slides/images/drr6502-img.png">
-<meta property="og:site_name" content="IAFF 6502/6505 Creating Data Rich Reports with Quarto">
+<meta property="og:site-name" content="IAFF 6502/6505 Creating Data Rich Reports with Quarto">
 <meta name="twitter:title" content="IAFF 6502/6505 Creating Data Rich Reports with Quarto - Data Rich Reports">
 <meta name="twitter:description" content="Session 4–Visualizing Data">
-<meta name="twitter:image" content="https://quarto.training/slides/images/drr6502-img.png">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 </head>
 <body class="quarto-dark">
   <div class="reveal">
@@ -446,12 +444,12 @@
 <p>Let’s load our packages and import our data…</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" data-code-line-numbers="1-4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(readr)</span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-3"><a></a></span>
-<span id="cb1-4"><a></a>dem_summary <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"dem_summary.csv"</span>)</span>
-<span id="cb1-5"><a></a></span>
-<span id="cb1-6"><a></a><span class="fu">ggplot</span>(dem_summary, <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">y =</span> polyarchy)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1" data-code-line-numbers="1-4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a>dem_summary <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"dem_summary.csv"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5"></a></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">ggplot</span>(dem_summary, <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">y =</span> polyarchy)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="section-1" class="slide level2">
@@ -460,12 +458,12 @@
 <p>And then let’s start with the first two elements, the data and the aesthetic…</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(readr)</span>
-<span id="cb2-2"><a></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb2-3"><a></a></span>
-<span id="cb2-4"><a></a>dem_summary <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"dem_summary.csv"</span>)</span>
-<span id="cb2-5"><a></a></span>
-<span id="cb2-6"><a></a><span class="fu">ggplot</span>(dem_summary, <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">y =</span> polyarchy)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a>dem_summary <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"dem_summary.csv"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5"></a></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="fu">ggplot</span>(dem_summary, <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">y =</span> polyarchy)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="section-2" class="slide level2">
@@ -479,8 +477,8 @@
 <p>Now let’s add a geom. In this case we want a bar chart so we <em>add</em> <code>geom_col()</code>.</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">ggplot</span>(dem_summary, <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">y =</span> polyarchy)) <span class="sc">+</span> </span>
-<span id="cb3-2"><a></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">ggplot</span>(dem_summary, <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">y =</span> polyarchy)) <span class="sc">+</span> </span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="section-4" class="slide level2">
@@ -494,8 +492,8 @@
 <p>…let’s change the color of the bars by specifying <code>fill = "steelblue"</code>.</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">ggplot</span>(dem_summary, <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">y =</span> polyarchy)) <span class="sc">+</span> </span>
-<span id="cb4-2"><a></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">ggplot</span>(dem_summary, <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">y =</span> polyarchy)) <span class="sc">+</span> </span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="section-6" class="slide level2">
@@ -509,14 +507,14 @@
 <p>Now let’s <em>add</em> some labels with the <code>labs()</code> function:</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="3-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">ggplot</span>(dem_summary, <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">y =</span> polyarchy)) <span class="sc">+</span> </span>
-<span id="cb5-2"><a></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
-<span id="cb5-3"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb5-4"><a></a>    <span class="at">x =</span> <span class="st">"Region"</span>, </span>
-<span id="cb5-5"><a></a>    <span class="at">y =</span> <span class="st">"Avg. Polyarchy Score"</span>, </span>
-<span id="cb5-6"><a></a>    <span class="at">title =</span> <span class="st">"Democracy by region, 1990 - present"</span>, </span>
-<span id="cb5-7"><a></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span></span>
-<span id="cb5-8"><a></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="3-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">ggplot</span>(dem_summary, <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">y =</span> polyarchy)) <span class="sc">+</span> </span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">labs</span>(</span>
+<span id="cb5-4"><a href="#cb5-4"></a>    <span class="at">x =</span> <span class="st">"Region"</span>, </span>
+<span id="cb5-5"><a href="#cb5-5"></a>    <span class="at">y =</span> <span class="st">"Avg. Polyarchy Score"</span>, </span>
+<span id="cb5-6"><a href="#cb5-6"></a>    <span class="at">title =</span> <span class="st">"Democracy by region, 1990 - present"</span>, </span>
+<span id="cb5-7"><a href="#cb5-7"></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="section-8" class="slide level2">
@@ -529,16 +527,16 @@
 <p>Next, we reorder the bars with <code>fct_reorder()</code> from the <code>forcats</code> package.</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">library</span>(forcats)</span>
-<span id="cb6-2"><a></a></span>
-<span id="cb6-3"><a></a><span class="fu">ggplot</span>(dem_summary, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(region, <span class="sc">-</span>polyarchy), <span class="at">y =</span> polyarchy)) <span class="sc">+</span></span>
-<span id="cb6-4"><a></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span> </span>
-<span id="cb6-5"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb6-6"><a></a>    <span class="at">x =</span> <span class="st">"Region"</span>, </span>
-<span id="cb6-7"><a></a>    <span class="at">y =</span> <span class="st">"Avg. Polyarchy Score"</span>, </span>
-<span id="cb6-8"><a></a>    <span class="at">title =</span> <span class="st">"Democracy by region, 1990 - present"</span>, </span>
-<span id="cb6-9"><a></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span></span>
-<span id="cb6-10"><a></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">library</span>(forcats)</span>
+<span id="cb6-2"><a href="#cb6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="fu">ggplot</span>(dem_summary, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(region, <span class="sc">-</span>polyarchy), <span class="at">y =</span> polyarchy)) <span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span> </span>
+<span id="cb6-5"><a href="#cb6-5"></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-6"><a href="#cb6-6"></a>    <span class="at">x =</span> <span class="st">"Region"</span>, </span>
+<span id="cb6-7"><a href="#cb6-7"></a>    <span class="at">y =</span> <span class="st">"Avg. Polyarchy Score"</span>, </span>
+<span id="cb6-8"><a href="#cb6-8"></a>    <span class="at">title =</span> <span class="st">"Democracy by region, 1990 - present"</span>, </span>
+<span id="cb6-9"><a href="#cb6-9"></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
 <p>Note that we could also use the base R <code>reorder()</code> function here.</p>
@@ -554,14 +552,14 @@
 <p>Now let’s change the theme to <code>theme_minimal()</code>.</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">ggplot</span>(dem_summary, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(region, <span class="sc">-</span>polyarchy), <span class="at">y =</span> polyarchy)) <span class="sc">+</span></span>
-<span id="cb7-2"><a></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span> </span>
-<span id="cb7-3"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb7-4"><a></a>    <span class="at">x =</span> <span class="st">"Region"</span>, </span>
-<span id="cb7-5"><a></a>    <span class="at">y =</span> <span class="st">"Avg. Polyarchy Score"</span>, </span>
-<span id="cb7-6"><a></a>    <span class="at">title =</span> <span class="st">"Democracy by region, 1990 - present"</span>, </span>
-<span id="cb7-7"><a></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span></span>
-<span id="cb7-8"><a></a>    ) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">ggplot</span>(dem_summary, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(region, <span class="sc">-</span>polyarchy), <span class="at">y =</span> polyarchy)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span> </span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">labs</span>(</span>
+<span id="cb7-4"><a href="#cb7-4"></a>    <span class="at">x =</span> <span class="st">"Region"</span>, </span>
+<span id="cb7-5"><a href="#cb7-5"></a>    <span class="at">y =</span> <span class="st">"Avg. Polyarchy Score"</span>, </span>
+<span id="cb7-6"><a href="#cb7-6"></a>    <span class="at">title =</span> <span class="st">"Democracy by region, 1990 - present"</span>, </span>
+<span id="cb7-7"><a href="#cb7-7"></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a>    ) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="section-12" class="slide level2">
@@ -575,15 +573,15 @@
 <p>Note that you can also save your plot as an object to modify later.</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>dem_bar_chart <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dem_summary, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(region, <span class="sc">-</span>polyarchy), <span class="at">y =</span> polyarchy)) <span class="sc">+</span></span>
-<span id="cb8-2"><a></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>dem_bar_chart <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dem_summary, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(region, <span class="sc">-</span>polyarchy), <span class="at">y =</span> polyarchy)) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="section-14" class="slide level2">
 <h2></h2>
 <p>Which gives us…</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>dem_bar_chart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>dem_bar_chart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="session-1.4_files/figure-revealjs/barchart14-1.png" width="960" class="r-stretch"></section>
@@ -593,20 +591,20 @@
 <p>Now let’s add back our labels…</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>dem_bar_chart <span class="ot">&lt;-</span> dem_bar_chart <span class="sc">+</span></span>
-<span id="cb10-2"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb10-3"><a></a>    <span class="at">x =</span> <span class="st">"Region"</span>, </span>
-<span id="cb10-4"><a></a>    <span class="at">y =</span> <span class="st">"Avg. Polyarchy Score"</span>, </span>
-<span id="cb10-5"><a></a>    <span class="at">title =</span> <span class="st">"Democracy by region, 1990 - present"</span>, </span>
-<span id="cb10-6"><a></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span></span>
-<span id="cb10-7"><a></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>dem_bar_chart <span class="ot">&lt;-</span> dem_bar_chart <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">labs</span>(</span>
+<span id="cb10-3"><a href="#cb10-3"></a>    <span class="at">x =</span> <span class="st">"Region"</span>, </span>
+<span id="cb10-4"><a href="#cb10-4"></a>    <span class="at">y =</span> <span class="st">"Avg. Polyarchy Score"</span>, </span>
+<span id="cb10-5"><a href="#cb10-5"></a>    <span class="at">title =</span> <span class="st">"Democracy by region, 1990 - present"</span>, </span>
+<span id="cb10-6"><a href="#cb10-6"></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="section-16" class="slide level2">
 <h2></h2>
 <p>So now we have…</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>dem_bar_chart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>dem_bar_chart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="session-1.4_files/figure-revealjs/barchart16-1.png" width="960" class="r-stretch"></section>
@@ -616,14 +614,14 @@
 <p>And now we’ll add back our theme…</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>dem_bar_chart <span class="ot">&lt;-</span> dem_bar_chart <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>dem_bar_chart <span class="ot">&lt;-</span> dem_bar_chart <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="section-18" class="slide level2">
 <h2></h2>
 <p>Voila!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>dem_bar_chart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>dem_bar_chart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="session-1.4_files/figure-revealjs/barchart18-1.png" width="960" class="r-stretch"></section>
@@ -631,7 +629,7 @@
 <h2></h2>
 <p>Change the theme. There are many <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">themes</a> to choose from.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>dem_bar_chart <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>dem_bar_chart <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="session-1.4_files/figure-revealjs/barchart19-1.png" width="960" class="r-stretch"></section>
@@ -665,20 +663,20 @@
 <section id="line-chart-setup" class="slide level2">
 <h2>Line Chart Setup</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">library</span>(vdemdata)</span>
-<span id="cb15-2"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb15-3"><a></a></span>
-<span id="cb15-4"><a></a>dem_waves_ctrs <span class="ot">&lt;-</span> vdem <span class="sc">|&gt;</span></span>
-<span id="cb15-5"><a></a>  <span class="fu">select</span>(</span>
-<span id="cb15-6"><a></a>    <span class="at">country =</span> country_name,     </span>
-<span id="cb15-7"><a></a>    year, </span>
-<span id="cb15-8"><a></a>    <span class="at">polyarchy =</span> v2x_polyarchy, </span>
-<span id="cb15-9"><a></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb15-10"><a></a>  <span class="fu">filter</span>( </span>
-<span id="cb15-11"><a></a>    country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"United States of America"</span>, <span class="co"># select countries in this list</span></span>
-<span id="cb15-12"><a></a>                   <span class="st">"Japan"</span>, </span>
-<span id="cb15-13"><a></a>                   <span class="st">"Portugal"</span>)</span>
-<span id="cb15-14"><a></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">library</span>(vdemdata)</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb15-3"><a href="#cb15-3"></a></span>
+<span id="cb15-4"><a href="#cb15-4"></a>dem_waves_ctrs <span class="ot">&lt;-</span> vdem <span class="sc">|&gt;</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a>  <span class="fu">select</span>(</span>
+<span id="cb15-6"><a href="#cb15-6"></a>    <span class="at">country =</span> country_name,     </span>
+<span id="cb15-7"><a href="#cb15-7"></a>    year, </span>
+<span id="cb15-8"><a href="#cb15-8"></a>    <span class="at">polyarchy =</span> v2x_polyarchy, </span>
+<span id="cb15-9"><a href="#cb15-9"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb15-10"><a href="#cb15-10"></a>  <span class="fu">filter</span>( </span>
+<span id="cb15-11"><a href="#cb15-11"></a>    country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"United States of America"</span>, <span class="co"># select countries in this list</span></span>
+<span id="cb15-12"><a href="#cb15-12"></a>                   <span class="st">"Japan"</span>, </span>
+<span id="cb15-13"><a href="#cb15-13"></a>                   <span class="st">"Portugal"</span>)</span>
+<span id="cb15-14"><a href="#cb15-14"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -699,16 +697,16 @@
 <p>Here is the code…</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="co"># in this ggplot() call, we add a third dimension for line color</span></span>
-<span id="cb16-2"><a></a><span class="fu">ggplot</span>(dem_waves_ctrs, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> polyarchy, <span class="at">color =</span> country)) <span class="sc">+</span></span>
-<span id="cb16-3"><a></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="co"># our geom is a line with a width of 1</span></span>
-<span id="cb16-4"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb16-5"><a></a>    <span class="at">x =</span> <span class="st">"Year"</span>, </span>
-<span id="cb16-6"><a></a>    <span class="at">y =</span> <span class="st">"Polyarchy Score"</span>, </span>
-<span id="cb16-7"><a></a>    <span class="at">title =</span> <span class="st">'Democracy in countries representing three different "waves"'</span>, </span>
-<span id="cb16-8"><a></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span>, </span>
-<span id="cb16-9"><a></a>    <span class="at">color =</span> <span class="st">"Country"</span> <span class="co"># make title of legend to upper case</span></span>
-<span id="cb16-10"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># in this ggplot() call, we add a third dimension for line color</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="fu">ggplot</span>(dem_waves_ctrs, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> polyarchy, <span class="at">color =</span> country)) <span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="co"># our geom is a line with a width of 1</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a>  <span class="fu">labs</span>(</span>
+<span id="cb16-5"><a href="#cb16-5"></a>    <span class="at">x =</span> <span class="st">"Year"</span>, </span>
+<span id="cb16-6"><a href="#cb16-6"></a>    <span class="at">y =</span> <span class="st">"Polyarchy Score"</span>, </span>
+<span id="cb16-7"><a href="#cb16-7"></a>    <span class="at">title =</span> <span class="st">'Democracy in countries representing three different "waves"'</span>, </span>
+<span id="cb16-8"><a href="#cb16-8"></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span>, </span>
+<span id="cb16-9"><a href="#cb16-9"></a>    <span class="at">color =</span> <span class="st">"Country"</span> <span class="co"># make title of legend to upper case</span></span>
+<span id="cb16-10"><a href="#cb16-10"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="section-21" class="slide level2">
@@ -717,16 +715,16 @@
 <p>Use <code>geom_line()</code> to specify a line chart…</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="co"># in this ggplot() call, we add a third dimension for line color</span></span>
-<span id="cb17-2"><a></a><span class="fu">ggplot</span>(dem_waves_ctrs, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> polyarchy, <span class="at">color =</span> country)) <span class="sc">+</span></span>
-<span id="cb17-3"><a></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="co"># our geom is a line with a width of 1</span></span>
-<span id="cb17-4"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb17-5"><a></a>    <span class="at">x =</span> <span class="st">"Year"</span>, </span>
-<span id="cb17-6"><a></a>    <span class="at">y =</span> <span class="st">"Polyarchy Score"</span>, </span>
-<span id="cb17-7"><a></a>    <span class="at">title =</span> <span class="st">'Democracy in countries representing three different "waves"'</span>, </span>
-<span id="cb17-8"><a></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span>, </span>
-<span id="cb17-9"><a></a>    <span class="at">color =</span> <span class="st">"Country"</span> <span class="co"># make title of legend to upper case</span></span>
-<span id="cb17-10"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># in this ggplot() call, we add a third dimension for line color</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="fu">ggplot</span>(dem_waves_ctrs, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> polyarchy, <span class="at">color =</span> country)) <span class="sc">+</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="co"># our geom is a line with a width of 1</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a>  <span class="fu">labs</span>(</span>
+<span id="cb17-5"><a href="#cb17-5"></a>    <span class="at">x =</span> <span class="st">"Year"</span>, </span>
+<span id="cb17-6"><a href="#cb17-6"></a>    <span class="at">y =</span> <span class="st">"Polyarchy Score"</span>, </span>
+<span id="cb17-7"><a href="#cb17-7"></a>    <span class="at">title =</span> <span class="st">'Democracy in countries representing three different "waves"'</span>, </span>
+<span id="cb17-8"><a href="#cb17-8"></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span>, </span>
+<span id="cb17-9"><a href="#cb17-9"></a>    <span class="at">color =</span> <span class="st">"Country"</span> <span class="co"># make title of legend to upper case</span></span>
+<span id="cb17-10"><a href="#cb17-10"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="section-22" class="slide level2">
@@ -735,16 +733,16 @@
 <p>Add third dimension to the <code>aes()</code> call for line color…</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="co"># in this ggplot() call, we add a third dimension for line color</span></span>
-<span id="cb18-2"><a></a><span class="fu">ggplot</span>(dem_waves_ctrs, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> polyarchy, <span class="at">color =</span> country)) <span class="sc">+</span></span>
-<span id="cb18-3"><a></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="co"># our geom is a line with a width of 1</span></span>
-<span id="cb18-4"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb18-5"><a></a>    <span class="at">x =</span> <span class="st">"Year"</span>, </span>
-<span id="cb18-6"><a></a>    <span class="at">y =</span> <span class="st">"Polyarchy Score"</span>, </span>
-<span id="cb18-7"><a></a>    <span class="at">title =</span> <span class="st">'Democracy in countries representing three different "waves"'</span>, </span>
-<span id="cb18-8"><a></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span>, </span>
-<span id="cb18-9"><a></a>    <span class="at">color =</span> <span class="st">"Country"</span> <span class="co"># make title of legend to upper case</span></span>
-<span id="cb18-10"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># in this ggplot() call, we add a third dimension for line color</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="fu">ggplot</span>(dem_waves_ctrs, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> polyarchy, <span class="at">color =</span> country)) <span class="sc">+</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="co"># our geom is a line with a width of 1</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a>  <span class="fu">labs</span>(</span>
+<span id="cb18-5"><a href="#cb18-5"></a>    <span class="at">x =</span> <span class="st">"Year"</span>, </span>
+<span id="cb18-6"><a href="#cb18-6"></a>    <span class="at">y =</span> <span class="st">"Polyarchy Score"</span>, </span>
+<span id="cb18-7"><a href="#cb18-7"></a>    <span class="at">title =</span> <span class="st">'Democracy in countries representing three different "waves"'</span>, </span>
+<span id="cb18-8"><a href="#cb18-8"></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span>, </span>
+<span id="cb18-9"><a href="#cb18-9"></a>    <span class="at">color =</span> <span class="st">"Country"</span> <span class="co"># make title of legend to upper case</span></span>
+<span id="cb18-10"><a href="#cb18-10"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="section-23" class="slide level2">
@@ -753,16 +751,16 @@
 <p>Modify the legend title…</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="co"># in this ggplot() call, we add a third dimension for line color</span></span>
-<span id="cb19-2"><a></a><span class="fu">ggplot</span>(dem_waves_ctrs, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> polyarchy, <span class="at">color =</span> country)) <span class="sc">+</span></span>
-<span id="cb19-3"><a></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="co"># our geom is a line with a width of 1</span></span>
-<span id="cb19-4"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb19-5"><a></a>    <span class="at">x =</span> <span class="st">"Year"</span>, </span>
-<span id="cb19-6"><a></a>    <span class="at">y =</span> <span class="st">"Polyarchy Score"</span>, </span>
-<span id="cb19-7"><a></a>    <span class="at">title =</span> <span class="st">'Democracy in countries representing three different "waves"'</span>, </span>
-<span id="cb19-8"><a></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span>, </span>
-<span id="cb19-9"><a></a>    <span class="at">color =</span> <span class="st">"Country"</span> <span class="co"># make title of legend to upper case</span></span>
-<span id="cb19-10"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># in this ggplot() call, we add a third dimension for line color</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="fu">ggplot</span>(dem_waves_ctrs, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> polyarchy, <span class="at">color =</span> country)) <span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="co"># our geom is a line with a width of 1</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a>  <span class="fu">labs</span>(</span>
+<span id="cb19-5"><a href="#cb19-5"></a>    <span class="at">x =</span> <span class="st">"Year"</span>, </span>
+<span id="cb19-6"><a href="#cb19-6"></a>    <span class="at">y =</span> <span class="st">"Polyarchy Score"</span>, </span>
+<span id="cb19-7"><a href="#cb19-7"></a>    <span class="at">title =</span> <span class="st">'Democracy in countries representing three different "waves"'</span>, </span>
+<span id="cb19-8"><a href="#cb19-8"></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span>, </span>
+<span id="cb19-9"><a href="#cb19-9"></a>    <span class="at">color =</span> <span class="st">"Country"</span> <span class="co"># make title of legend to upper case</span></span>
+<span id="cb19-10"><a href="#cb19-10"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="problem" class="slide level2">
@@ -789,17 +787,17 @@
 <p><br></p>
 <p>Use <code>scale_color_viridis_d()</code> in this case to specify the viridis color scheme…</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20" data-code-line-numbers="11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="co"># in this ggplot() call, we add a third dimension for line color</span></span>
-<span id="cb20-2"><a></a><span class="fu">ggplot</span>(dem_waves_ctrs, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> polyarchy, <span class="at">color =</span> country)) <span class="sc">+</span></span>
-<span id="cb20-3"><a></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="co"># our geom is a line with a width of 1</span></span>
-<span id="cb20-4"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb20-5"><a></a>    <span class="at">x =</span> <span class="st">"Year"</span>, </span>
-<span id="cb20-6"><a></a>    <span class="at">y =</span> <span class="st">"Polyarchy Score"</span>, </span>
-<span id="cb20-7"><a></a>    <span class="at">title =</span> <span class="st">'Democracy in countries representing three different "waves"'</span>, </span>
-<span id="cb20-8"><a></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span>, </span>
-<span id="cb20-9"><a></a>    <span class="at">color =</span> <span class="st">"Country"</span> <span class="co"># make title of legend to upper case</span></span>
-<span id="cb20-10"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb20-11"><a></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">option =</span> <span class="st">"mako"</span>, <span class="at">end =</span> .<span class="dv">8</span>) <span class="co"># use viridis color palette</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20" data-code-line-numbers="11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># in this ggplot() call, we add a third dimension for line color</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="fu">ggplot</span>(dem_waves_ctrs, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> polyarchy, <span class="at">color =</span> country)) <span class="sc">+</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="co"># our geom is a line with a width of 1</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a>  <span class="fu">labs</span>(</span>
+<span id="cb20-5"><a href="#cb20-5"></a>    <span class="at">x =</span> <span class="st">"Year"</span>, </span>
+<span id="cb20-6"><a href="#cb20-6"></a>    <span class="at">y =</span> <span class="st">"Polyarchy Score"</span>, </span>
+<span id="cb20-7"><a href="#cb20-7"></a>    <span class="at">title =</span> <span class="st">'Democracy in countries representing three different "waves"'</span>, </span>
+<span id="cb20-8"><a href="#cb20-8"></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span>, </span>
+<span id="cb20-9"><a href="#cb20-9"></a>    <span class="at">color =</span> <span class="st">"Country"</span> <span class="co"># make title of legend to upper case</span></span>
+<span id="cb20-10"><a href="#cb20-10"></a>  ) <span class="sc">+</span></span>
+<span id="cb20-11"><a href="#cb20-11"></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">option =</span> <span class="st">"mako"</span>, <span class="at">end =</span> .<span class="dv">8</span>) <span class="co"># use viridis color palette</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="better" class="slide level2">
@@ -848,149 +846,149 @@
 <h2>Superfun Data Visualization</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">library</span>(gganimate)</span>
-<span id="cb21-2"><a></a><span class="fu">library</span>(gapminder)</span>
-<span id="cb21-3"><a></a></span>
-<span id="cb21-4"><a></a><span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(gdpPercap, lifeExp, <span class="at">size =</span> pop, <span class="at">colour =</span> country)) <span class="sc">+</span></span>
-<span id="cb21-5"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb21-6"><a></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> country_colors) <span class="sc">+</span></span>
-<span id="cb21-7"><a></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">12</span>)) <span class="sc">+</span></span>
-<span id="cb21-8"><a></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
-<span id="cb21-9"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>continent) <span class="sc">+</span></span>
-<span id="cb21-10"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Year: {frame_time}'</span>, <span class="at">x =</span> <span class="st">'GDP per capita'</span>, <span class="at">y =</span> <span class="st">'life expectancy'</span>) <span class="sc">+</span></span>
-<span id="cb21-11"><a></a>  <span class="fu">transition_time</span>(year) <span class="sc">+</span></span>
-<span id="cb21-12"><a></a>  <span class="fu">ease_aes</span>(<span class="st">'linear'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">library</span>(gganimate)</span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb21-3"><a href="#cb21-3"></a></span>
+<span id="cb21-4"><a href="#cb21-4"></a><span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(gdpPercap, lifeExp, <span class="at">size =</span> pop, <span class="at">colour =</span> country)) <span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb21-6"><a href="#cb21-6"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> country_colors) <span class="sc">+</span></span>
+<span id="cb21-7"><a href="#cb21-7"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">12</span>)) <span class="sc">+</span></span>
+<span id="cb21-8"><a href="#cb21-8"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb21-9"><a href="#cb21-9"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>continent) <span class="sc">+</span></span>
+<span id="cb21-10"><a href="#cb21-10"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Year: {frame_time}'</span>, <span class="at">x =</span> <span class="st">'GDP per capita'</span>, <span class="at">y =</span> <span class="st">'life expectancy'</span>) <span class="sc">+</span></span>
+<span id="cb21-11"><a href="#cb21-11"></a>  <span class="fu">transition_time</span>(year) <span class="sc">+</span></span>
+<span id="cb21-12"><a href="#cb21-12"></a>  <span class="fu">ease_aes</span>(<span class="st">'linear'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="superfun-data-visualization-2" class="slide level2">
 <h2>Superfun Data Visualization</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22" data-code-line-numbers="1,10-12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">library</span>(gganimate)</span>
-<span id="cb22-2"><a></a><span class="fu">library</span>(gapminder)</span>
-<span id="cb22-3"><a></a></span>
-<span id="cb22-4"><a></a><span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(gdpPercap, lifeExp, <span class="at">size =</span> pop, <span class="at">colour =</span> country)) <span class="sc">+</span></span>
-<span id="cb22-5"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb22-6"><a></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> country_colors) <span class="sc">+</span></span>
-<span id="cb22-7"><a></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">12</span>)) <span class="sc">+</span></span>
-<span id="cb22-8"><a></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
-<span id="cb22-9"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>continent) <span class="sc">+</span></span>
-<span id="cb22-10"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Year: {frame_time}'</span>, <span class="at">x =</span> <span class="st">'GDP per capita'</span>, <span class="at">y =</span> <span class="st">'life expectancy'</span>) <span class="sc">+</span></span>
-<span id="cb22-11"><a></a>  <span class="fu">transition_time</span>(year) <span class="sc">+</span></span>
-<span id="cb22-12"><a></a>  <span class="fu">ease_aes</span>(<span class="st">'linear'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22" data-code-line-numbers="1,10-12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">library</span>(gganimate)</span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb22-3"><a href="#cb22-3"></a></span>
+<span id="cb22-4"><a href="#cb22-4"></a><span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(gdpPercap, lifeExp, <span class="at">size =</span> pop, <span class="at">colour =</span> country)) <span class="sc">+</span></span>
+<span id="cb22-5"><a href="#cb22-5"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb22-6"><a href="#cb22-6"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> country_colors) <span class="sc">+</span></span>
+<span id="cb22-7"><a href="#cb22-7"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">12</span>)) <span class="sc">+</span></span>
+<span id="cb22-8"><a href="#cb22-8"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb22-9"><a href="#cb22-9"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>continent) <span class="sc">+</span></span>
+<span id="cb22-10"><a href="#cb22-10"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Year: {frame_time}'</span>, <span class="at">x =</span> <span class="st">'GDP per capita'</span>, <span class="at">y =</span> <span class="st">'life expectancy'</span>) <span class="sc">+</span></span>
+<span id="cb22-11"><a href="#cb22-11"></a>  <span class="fu">transition_time</span>(year) <span class="sc">+</span></span>
+<span id="cb22-12"><a href="#cb22-12"></a>  <span class="fu">ease_aes</span>(<span class="st">'linear'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="extended-vdemdata-example" class="slide level2 smaller">
 <h2>Extended <code>vdemdata</code> Example</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="co"># Load packages</span></span>
-<span id="cb23-2"><a></a><span class="fu">library</span>(vdemdata) <span class="co"># to download V-Dem data</span></span>
-<span id="cb23-3"><a></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb23-4"><a></a></span>
-<span id="cb23-5"><a></a><span class="co"># Download the data</span></span>
-<span id="cb23-6"><a></a>democracy <span class="ot">&lt;-</span> vdem <span class="sc">|&gt;</span> <span class="co"># download the V-Dem dataset</span></span>
-<span id="cb23-7"><a></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2015</span>)  <span class="sc">|&gt;</span> <span class="co"># filter year, keep 2015</span></span>
-<span id="cb23-8"><a></a>  <span class="fu">select</span>(                  <span class="co"># select (and rename) these variables</span></span>
-<span id="cb23-9"><a></a>    <span class="at">country =</span> country_name,     <span class="co"># the name before the = sign is the new name  </span></span>
-<span id="cb23-10"><a></a>    <span class="at">vdem_ctry_id =</span> country_id,  <span class="co"># the name after the = sign is the old name</span></span>
-<span id="cb23-11"><a></a>    year, </span>
-<span id="cb23-12"><a></a>    <span class="at">polyarchy =</span> v2x_polyarchy, </span>
-<span id="cb23-13"><a></a>    <span class="at">gdp_pc =</span> e_gdppc, </span>
-<span id="cb23-14"><a></a>    <span class="at">region =</span> e_regionpol_6C</span>
-<span id="cb23-15"><a></a>    ) <span class="sc">|&gt;</span></span>
-<span id="cb23-16"><a></a>  <span class="fu">mutate</span>(</span>
-<span id="cb23-17"><a></a>    <span class="at">region =</span> <span class="fu">case_match</span>(region, <span class="co"># replace the values in region with country names</span></span>
-<span id="cb23-18"><a></a>                     <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Eastern Europe"</span>, </span>
-<span id="cb23-19"><a></a>                     <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Latin America"</span>,  </span>
-<span id="cb23-20"><a></a>                     <span class="dv">3</span> <span class="sc">~</span> <span class="st">"Middle East"</span>,   </span>
-<span id="cb23-21"><a></a>                     <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Africa"</span>, </span>
-<span id="cb23-22"><a></a>                     <span class="dv">5</span> <span class="sc">~</span> <span class="st">"The West"</span>, </span>
-<span id="cb23-23"><a></a>                     <span class="dv">6</span> <span class="sc">~</span> <span class="st">"Asia"</span>)</span>
-<span id="cb23-24"><a></a>  )</span>
-<span id="cb23-25"><a></a></span>
-<span id="cb23-26"><a></a><span class="co"># View the data</span></span>
-<span id="cb23-27"><a></a><span class="fu">glimpse</span>(democracy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># Load packages</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="fu">library</span>(vdemdata) <span class="co"># to download V-Dem data</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb23-4"><a href="#cb23-4"></a></span>
+<span id="cb23-5"><a href="#cb23-5"></a><span class="co"># Download the data</span></span>
+<span id="cb23-6"><a href="#cb23-6"></a>democracy <span class="ot">&lt;-</span> vdem <span class="sc">|&gt;</span> <span class="co"># download the V-Dem dataset</span></span>
+<span id="cb23-7"><a href="#cb23-7"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2015</span>)  <span class="sc">|&gt;</span> <span class="co"># filter year, keep 2015</span></span>
+<span id="cb23-8"><a href="#cb23-8"></a>  <span class="fu">select</span>(                  <span class="co"># select (and rename) these variables</span></span>
+<span id="cb23-9"><a href="#cb23-9"></a>    <span class="at">country =</span> country_name,     <span class="co"># the name before the = sign is the new name  </span></span>
+<span id="cb23-10"><a href="#cb23-10"></a>    <span class="at">vdem_ctry_id =</span> country_id,  <span class="co"># the name after the = sign is the old name</span></span>
+<span id="cb23-11"><a href="#cb23-11"></a>    year, </span>
+<span id="cb23-12"><a href="#cb23-12"></a>    <span class="at">polyarchy =</span> v2x_polyarchy, </span>
+<span id="cb23-13"><a href="#cb23-13"></a>    <span class="at">gdp_pc =</span> e_gdppc, </span>
+<span id="cb23-14"><a href="#cb23-14"></a>    <span class="at">region =</span> e_regionpol_6C</span>
+<span id="cb23-15"><a href="#cb23-15"></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb23-16"><a href="#cb23-16"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb23-17"><a href="#cb23-17"></a>    <span class="at">region =</span> <span class="fu">case_match</span>(region, <span class="co"># replace the values in region with country names</span></span>
+<span id="cb23-18"><a href="#cb23-18"></a>                     <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Eastern Europe"</span>, </span>
+<span id="cb23-19"><a href="#cb23-19"></a>                     <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Latin America"</span>,  </span>
+<span id="cb23-20"><a href="#cb23-20"></a>                     <span class="dv">3</span> <span class="sc">~</span> <span class="st">"Middle East"</span>,   </span>
+<span id="cb23-21"><a href="#cb23-21"></a>                     <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Africa"</span>, </span>
+<span id="cb23-22"><a href="#cb23-22"></a>                     <span class="dv">5</span> <span class="sc">~</span> <span class="st">"The West"</span>, </span>
+<span id="cb23-23"><a href="#cb23-23"></a>                     <span class="dv">6</span> <span class="sc">~</span> <span class="st">"Asia"</span>)</span>
+<span id="cb23-24"><a href="#cb23-24"></a>  )</span>
+<span id="cb23-25"><a href="#cb23-25"></a></span>
+<span id="cb23-26"><a href="#cb23-26"></a><span class="co"># View the data</span></span>
+<span id="cb23-27"><a href="#cb23-27"></a><span class="fu">glimpse</span>(democracy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="section-26" class="slide level2">
 <h2></h2>
 <p>Use <code>filter()</code> to select years…</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24" data-code-line-numbers="2-3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="co"># Download the data</span></span>
-<span id="cb24-2"><a></a>democracy <span class="ot">&lt;-</span> vdem <span class="sc">|&gt;</span> </span>
-<span id="cb24-3"><a></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2015</span>)  <span class="sc">|&gt;</span> <span class="co"># keep 2015</span></span>
-<span id="cb24-4"><a></a>  <span class="fu">select</span>(                 </span>
-<span id="cb24-5"><a></a>    <span class="at">country =</span> country_name,       </span>
-<span id="cb24-6"><a></a>    <span class="at">vdem_ctry_id =</span> country_id,  </span>
-<span id="cb24-7"><a></a>    year, </span>
-<span id="cb24-8"><a></a>    <span class="at">polyarchy =</span> v2x_polyarchy, </span>
-<span id="cb24-9"><a></a>    <span class="at">gdp_pc =</span> e_gdppc, </span>
-<span id="cb24-10"><a></a>    <span class="at">region =</span> e_regionpol_6C</span>
-<span id="cb24-11"><a></a>    ) <span class="sc">|&gt;</span></span>
-<span id="cb24-12"><a></a>  <span class="fu">mutate</span>(</span>
-<span id="cb24-13"><a></a>    <span class="at">region =</span> <span class="fu">case_match</span>(region,</span>
-<span id="cb24-14"><a></a>                     <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Eastern Europe"</span>, </span>
-<span id="cb24-15"><a></a>                     <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Latin America"</span>,  </span>
-<span id="cb24-16"><a></a>                     <span class="dv">3</span> <span class="sc">~</span> <span class="st">"Middle East"</span>,   </span>
-<span id="cb24-17"><a></a>                     <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Africa"</span>, </span>
-<span id="cb24-18"><a></a>                     <span class="dv">5</span> <span class="sc">~</span> <span class="st">"The West"</span>, </span>
-<span id="cb24-19"><a></a>                     <span class="dv">6</span> <span class="sc">~</span> <span class="st">"Asia"</span>)</span>
-<span id="cb24-20"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24" data-code-line-numbers="2-3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Download the data</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>democracy <span class="ot">&lt;-</span> vdem <span class="sc">|&gt;</span> </span>
+<span id="cb24-3"><a href="#cb24-3"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2015</span>)  <span class="sc">|&gt;</span> <span class="co"># keep 2015</span></span>
+<span id="cb24-4"><a href="#cb24-4"></a>  <span class="fu">select</span>(                 </span>
+<span id="cb24-5"><a href="#cb24-5"></a>    <span class="at">country =</span> country_name,       </span>
+<span id="cb24-6"><a href="#cb24-6"></a>    <span class="at">vdem_ctry_id =</span> country_id,  </span>
+<span id="cb24-7"><a href="#cb24-7"></a>    year, </span>
+<span id="cb24-8"><a href="#cb24-8"></a>    <span class="at">polyarchy =</span> v2x_polyarchy, </span>
+<span id="cb24-9"><a href="#cb24-9"></a>    <span class="at">gdp_pc =</span> e_gdppc, </span>
+<span id="cb24-10"><a href="#cb24-10"></a>    <span class="at">region =</span> e_regionpol_6C</span>
+<span id="cb24-11"><a href="#cb24-11"></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb24-12"><a href="#cb24-12"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb24-13"><a href="#cb24-13"></a>    <span class="at">region =</span> <span class="fu">case_match</span>(region,</span>
+<span id="cb24-14"><a href="#cb24-14"></a>                     <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Eastern Europe"</span>, </span>
+<span id="cb24-15"><a href="#cb24-15"></a>                     <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Latin America"</span>,  </span>
+<span id="cb24-16"><a href="#cb24-16"></a>                     <span class="dv">3</span> <span class="sc">~</span> <span class="st">"Middle East"</span>,   </span>
+<span id="cb24-17"><a href="#cb24-17"></a>                     <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Africa"</span>, </span>
+<span id="cb24-18"><a href="#cb24-18"></a>                     <span class="dv">5</span> <span class="sc">~</span> <span class="st">"The West"</span>, </span>
+<span id="cb24-19"><a href="#cb24-19"></a>                     <span class="dv">6</span> <span class="sc">~</span> <span class="st">"Asia"</span>)</span>
+<span id="cb24-20"><a href="#cb24-20"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="section-27" class="slide level2">
 <h2></h2>
 <p>Use <code>select()</code> to choose variables…</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25" data-code-line-numbers="4-11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="co"># Download the data</span></span>
-<span id="cb25-2"><a></a>democracy <span class="ot">&lt;-</span> vdem <span class="sc">|&gt;</span> </span>
-<span id="cb25-3"><a></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2015</span>)  <span class="sc">|&gt;</span> </span>
-<span id="cb25-4"><a></a>  <span class="fu">select</span>(                  <span class="co"># select (and rename) these variables</span></span>
-<span id="cb25-5"><a></a>    <span class="at">country =</span> country_name,     <span class="co"># the name before the = sign is the new name  </span></span>
-<span id="cb25-6"><a></a>    <span class="at">vdem_ctry_id =</span> country_id,  <span class="co"># the name after the = sign is the old name</span></span>
-<span id="cb25-7"><a></a>    year, </span>
-<span id="cb25-8"><a></a>    <span class="at">polyarchy =</span> v2x_polyarchy, </span>
-<span id="cb25-9"><a></a>    <span class="at">gdp_pc =</span> e_gdppc, </span>
-<span id="cb25-10"><a></a>    <span class="at">region =</span> e_regionpol_6C</span>
-<span id="cb25-11"><a></a>    ) <span class="sc">|&gt;</span></span>
-<span id="cb25-12"><a></a>  <span class="fu">mutate</span>(</span>
-<span id="cb25-13"><a></a>    <span class="at">region =</span> <span class="fu">case_match</span>(region, </span>
-<span id="cb25-14"><a></a>                     <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Eastern Europe"</span>, </span>
-<span id="cb25-15"><a></a>                     <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Latin America"</span>,  </span>
-<span id="cb25-16"><a></a>                     <span class="dv">3</span> <span class="sc">~</span> <span class="st">"Middle East"</span>,   </span>
-<span id="cb25-17"><a></a>                     <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Africa"</span>, </span>
-<span id="cb25-18"><a></a>                     <span class="dv">5</span> <span class="sc">~</span> <span class="st">"The West"</span>, </span>
-<span id="cb25-19"><a></a>                     <span class="dv">6</span> <span class="sc">~</span> <span class="st">"Asia"</span>)</span>
-<span id="cb25-20"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25" data-code-line-numbers="4-11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># Download the data</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a>democracy <span class="ot">&lt;-</span> vdem <span class="sc">|&gt;</span> </span>
+<span id="cb25-3"><a href="#cb25-3"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2015</span>)  <span class="sc">|&gt;</span> </span>
+<span id="cb25-4"><a href="#cb25-4"></a>  <span class="fu">select</span>(                  <span class="co"># select (and rename) these variables</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a>    <span class="at">country =</span> country_name,     <span class="co"># the name before the = sign is the new name  </span></span>
+<span id="cb25-6"><a href="#cb25-6"></a>    <span class="at">vdem_ctry_id =</span> country_id,  <span class="co"># the name after the = sign is the old name</span></span>
+<span id="cb25-7"><a href="#cb25-7"></a>    year, </span>
+<span id="cb25-8"><a href="#cb25-8"></a>    <span class="at">polyarchy =</span> v2x_polyarchy, </span>
+<span id="cb25-9"><a href="#cb25-9"></a>    <span class="at">gdp_pc =</span> e_gdppc, </span>
+<span id="cb25-10"><a href="#cb25-10"></a>    <span class="at">region =</span> e_regionpol_6C</span>
+<span id="cb25-11"><a href="#cb25-11"></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb25-12"><a href="#cb25-12"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb25-13"><a href="#cb25-13"></a>    <span class="at">region =</span> <span class="fu">case_match</span>(region, </span>
+<span id="cb25-14"><a href="#cb25-14"></a>                     <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Eastern Europe"</span>, </span>
+<span id="cb25-15"><a href="#cb25-15"></a>                     <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Latin America"</span>,  </span>
+<span id="cb25-16"><a href="#cb25-16"></a>                     <span class="dv">3</span> <span class="sc">~</span> <span class="st">"Middle East"</span>,   </span>
+<span id="cb25-17"><a href="#cb25-17"></a>                     <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Africa"</span>, </span>
+<span id="cb25-18"><a href="#cb25-18"></a>                     <span class="dv">5</span> <span class="sc">~</span> <span class="st">"The West"</span>, </span>
+<span id="cb25-19"><a href="#cb25-19"></a>                     <span class="dv">6</span> <span class="sc">~</span> <span class="st">"Asia"</span>)</span>
+<span id="cb25-20"><a href="#cb25-20"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="section-28" class="slide level2">
 <h2></h2>
 <p>Use <code>mutate</code> with <code>case_match()</code> to Recode Region….</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26" data-code-line-numbers="12-23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="co"># Download the data</span></span>
-<span id="cb26-2"><a></a>democracy <span class="ot">&lt;-</span> vdem <span class="sc">|&gt;</span></span>
-<span id="cb26-3"><a></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2015</span>)  <span class="sc">|&gt;</span> </span>
-<span id="cb26-4"><a></a>  <span class="fu">select</span>(                  </span>
-<span id="cb26-5"><a></a>    <span class="at">country =</span> country_name,     </span>
-<span id="cb26-6"><a></a>    <span class="at">vdem_ctry_id =</span> country_id,  </span>
-<span id="cb26-7"><a></a>    year, </span>
-<span id="cb26-8"><a></a>    <span class="at">polyarchy =</span> v2x_polyarchy, </span>
-<span id="cb26-9"><a></a>    <span class="at">gdp_pc =</span> e_gdppc, </span>
-<span id="cb26-10"><a></a>    <span class="at">region =</span> e_regionpol_6C</span>
-<span id="cb26-11"><a></a>    ) <span class="sc">|&gt;</span></span>
-<span id="cb26-12"><a></a>  <span class="fu">mutate</span>(</span>
-<span id="cb26-13"><a></a>    <span class="at">region =</span> <span class="fu">case_match</span>(region, <span class="co"># replace the values in region with country names</span></span>
-<span id="cb26-14"><a></a>                     <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Eastern Europe"</span>, </span>
-<span id="cb26-15"><a></a>                     <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Latin America"</span>,  </span>
-<span id="cb26-16"><a></a>                     <span class="dv">3</span> <span class="sc">~</span> <span class="st">"Middle East"</span>,   </span>
-<span id="cb26-17"><a></a>                     <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Africa"</span>, </span>
-<span id="cb26-18"><a></a>                     <span class="dv">5</span> <span class="sc">~</span> <span class="st">"The West"</span>, </span>
-<span id="cb26-19"><a></a>                     <span class="dv">6</span> <span class="sc">~</span> <span class="st">"Asia"</span>)</span>
-<span id="cb26-20"><a></a>                    <span class="co"># number on the left of the ~ is the V-Dem region code</span></span>
-<span id="cb26-21"><a></a>                    <span class="co"># we are changing the number to the country name on the right</span></span>
-<span id="cb26-22"><a></a>                    <span class="co"># of the equals sign</span></span>
-<span id="cb26-23"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26" data-code-line-numbers="12-23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># Download the data</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a>democracy <span class="ot">&lt;-</span> vdem <span class="sc">|&gt;</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2015</span>)  <span class="sc">|&gt;</span> </span>
+<span id="cb26-4"><a href="#cb26-4"></a>  <span class="fu">select</span>(                  </span>
+<span id="cb26-5"><a href="#cb26-5"></a>    <span class="at">country =</span> country_name,     </span>
+<span id="cb26-6"><a href="#cb26-6"></a>    <span class="at">vdem_ctry_id =</span> country_id,  </span>
+<span id="cb26-7"><a href="#cb26-7"></a>    year, </span>
+<span id="cb26-8"><a href="#cb26-8"></a>    <span class="at">polyarchy =</span> v2x_polyarchy, </span>
+<span id="cb26-9"><a href="#cb26-9"></a>    <span class="at">gdp_pc =</span> e_gdppc, </span>
+<span id="cb26-10"><a href="#cb26-10"></a>    <span class="at">region =</span> e_regionpol_6C</span>
+<span id="cb26-11"><a href="#cb26-11"></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb26-12"><a href="#cb26-12"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb26-13"><a href="#cb26-13"></a>    <span class="at">region =</span> <span class="fu">case_match</span>(region, <span class="co"># replace the values in region with country names</span></span>
+<span id="cb26-14"><a href="#cb26-14"></a>                     <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Eastern Europe"</span>, </span>
+<span id="cb26-15"><a href="#cb26-15"></a>                     <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Latin America"</span>,  </span>
+<span id="cb26-16"><a href="#cb26-16"></a>                     <span class="dv">3</span> <span class="sc">~</span> <span class="st">"Middle East"</span>,   </span>
+<span id="cb26-17"><a href="#cb26-17"></a>                     <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Africa"</span>, </span>
+<span id="cb26-18"><a href="#cb26-18"></a>                     <span class="dv">5</span> <span class="sc">~</span> <span class="st">"The West"</span>, </span>
+<span id="cb26-19"><a href="#cb26-19"></a>                     <span class="dv">6</span> <span class="sc">~</span> <span class="st">"Asia"</span>)</span>
+<span id="cb26-20"><a href="#cb26-20"></a>                    <span class="co"># number on the left of the ~ is the V-Dem region code</span></span>
+<span id="cb26-21"><a href="#cb26-21"></a>                    <span class="co"># we are changing the number to the country name on the right</span></span>
+<span id="cb26-22"><a href="#cb26-22"></a>                    <span class="co"># of the equals sign</span></span>
+<span id="cb26-23"><a href="#cb26-23"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="visualize-it" class="slide level2">
@@ -1000,20 +998,20 @@
 <section id="visualize-it-1" class="slide level2">
 <h2>Visualize It!</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb27-2"><a></a></span>
-<span id="cb27-3"><a></a><span class="fu">ggplot</span>(democracy, <span class="fu">aes</span>(<span class="at">x =</span> gdp_pc, <span class="at">y =</span> polyarchy)) <span class="sc">+</span> </span>
-<span id="cb27-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> region)) <span class="sc">+</span> </span>
-<span id="cb27-5"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb27-6"><a></a>  <span class="fu">scale_x_log10</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_number</span>(<span class="at">prefix =</span> <span class="st">"$"</span>, <span class="at">suffix =</span> <span class="st">"k"</span>)) <span class="sc">+</span></span>
-<span id="cb27-7"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb27-8"><a></a>    <span class="at">x=</span> <span class="st">"GDP per Capita"</span>, </span>
-<span id="cb27-9"><a></a>    <span class="at">y =</span> <span class="st">"Polyarchy Score"</span>,</span>
-<span id="cb27-10"><a></a>    <span class="at">title =</span> <span class="st">"Wealth and democracy in 2015"</span>, </span>
-<span id="cb27-11"><a></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span>, </span>
-<span id="cb27-12"><a></a>    <span class="at">color =</span> <span class="st">"Region"</span></span>
-<span id="cb27-13"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb27-14"><a></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">option =</span> <span class="st">"inferno"</span>, <span class="at">end =</span> .<span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb27-2"><a href="#cb27-2"></a></span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="fu">ggplot</span>(democracy, <span class="fu">aes</span>(<span class="at">x =</span> gdp_pc, <span class="at">y =</span> polyarchy)) <span class="sc">+</span> </span>
+<span id="cb27-4"><a href="#cb27-4"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> region)) <span class="sc">+</span> </span>
+<span id="cb27-5"><a href="#cb27-5"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb27-6"><a href="#cb27-6"></a>  <span class="fu">scale_x_log10</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_number</span>(<span class="at">prefix =</span> <span class="st">"$"</span>, <span class="at">suffix =</span> <span class="st">"k"</span>)) <span class="sc">+</span></span>
+<span id="cb27-7"><a href="#cb27-7"></a>  <span class="fu">labs</span>(</span>
+<span id="cb27-8"><a href="#cb27-8"></a>    <span class="at">x=</span> <span class="st">"GDP per Capita"</span>, </span>
+<span id="cb27-9"><a href="#cb27-9"></a>    <span class="at">y =</span> <span class="st">"Polyarchy Score"</span>,</span>
+<span id="cb27-10"><a href="#cb27-10"></a>    <span class="at">title =</span> <span class="st">"Wealth and democracy in 2015"</span>, </span>
+<span id="cb27-11"><a href="#cb27-11"></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span>, </span>
+<span id="cb27-12"><a href="#cb27-12"></a>    <span class="at">color =</span> <span class="st">"Region"</span></span>
+<span id="cb27-13"><a href="#cb27-13"></a>    ) <span class="sc">+</span></span>
+<span id="cb27-14"><a href="#cb27-14"></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">option =</span> <span class="st">"inferno"</span>, <span class="at">end =</span> .<span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="try-it-yourself" class="slide level2">
@@ -1041,12 +1039,10 @@
 </ul>
 
 
-</section><div class="quarto-auto-generated-content">
-<p><img src="images/drr6502-logo.png" class="slide-logo"></p>
-<div class="footer footer-default">
+<img src="images/drr6502-logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p><a href="https://quarto.training">DRR Website</a></p>
 </div>
-</div></section>
+</section></section>
     </div>
   </div>
 
@@ -1074,6 +1070,7 @@
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
+'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1373,9 +1370,10 @@
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      function tippyHover(el, contentFn) {
         const config = {
           allowHTML: true,
+          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1385,17 +1383,8 @@
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start',
+          placement: 'bottom-start'
         };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 

@@ -86,14 +86,14 @@ website:
             text: "Module 1.5"
           - href: modules/module-2.1.qmd
             text: "Module 2.1"
-          # - href: modules/module-2.2.qmd
-          #   text: "Module 2.2"
-          # - href: modules/module-2.3.qmd
-          #   text: "Module 2.3"
-          # - href: modules/module-2.4.qmd
-          #   text: "Module 2.4"
-          # - href: modules/module-2.5.qmd
-          #   text: "Module 2.5"
+          - href: modules/module-2.2.qmd
+            text: "Module 2.2"
+          - href: modules/module-2.3.qmd
+            text: "Module 2.3"
+          - href: modules/module-2.4.qmd
+            text: "Module 2.4"
+          - href: modules/module-2.5.qmd
+            text: "Module 2.5"
       - section: "Workshop Schedule"
         contents: 
           - href: weeks/workshop-day1.qmd
