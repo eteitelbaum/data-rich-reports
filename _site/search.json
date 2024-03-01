@@ -1418,28 +1418,44 @@
     "href": "weeks/workshop-day2.html",
     "title": "Workshop Day 2",
     "section": "",
-    "text": "Important\n\n\n\n\nHomework Assignment 2 is due Sunday, March 3 at 11:59pm.\nFinal Project is due Sunday, March 10 at 11:59pm."
+    "text": "Important\n\n\n\n\nHomework Assignment 2 is due Sunday, March 3 at 11:59pm.\nFinal Project is due Sunday, March 10 at 11:59pm.",
+    "crumbs": [
+      "Workshop Schedule",
+      "Workshop Day 2"
+    ]
   },
   {
     "objectID": "weeks/workshop-day2.html#guest-speaker",
     "href": "weeks/workshop-day2.html#guest-speaker",
     "title": "Workshop Day 2",
     "section": "Guest Speaker",
-    "text": "Guest Speaker\n\nDavid Keyes, founder of R for the Rest of Us"
+    "text": "Guest Speaker\n\nDavid Keyes, founder of R for the Rest of Us",
+    "crumbs": [
+      "Workshop Schedule",
+      "Workshop Day 2"
+    ]
   },
   {
     "objectID": "weeks/workshop-day2.html#sessions",
     "href": "weeks/workshop-day2.html#sessions",
     "title": "Workshop Day 2",
     "section": "Sessions",
-    "text": "Sessions\n\n9:00 - 10:30: Advanced HTML\n10:30 - 11:00: Break\n11:00 - 12:30: Working with PDFs\n12:30 - 1:30: Lunch\n1:30 - 3:00: Transforming Data\n3:00 - 3:30: Break\n3:30 - 5:00 Parameterized Reporting with David Keyes"
+    "text": "Sessions\n\n9:00 - 10:30: Revealjs Slides\n10:30 - 11:00: Break\n11:00 - 12:30: Blogs and Websites\n12:30 - 1:30: Lunch\n1:30 - 3:00: Working with PDFs\n3:00 - 3:30: Break\n3:30 - 5:00 Parameterized Reporting with David Keyes",
+    "crumbs": [
+      "Workshop Schedule",
+      "Workshop Day 2"
+    ]
   },
   {
     "objectID": "weeks/workshop-day2.html#assignments",
     "href": "weeks/workshop-day2.html#assignments",
     "title": "Workshop Day 2",
     "section": "Assignments",
-    "text": "Assignments\n🧮 Coding Assignment 2\n✍️ Final Project"
+    "text": "Assignments\n🧮 Coding Assignment 2\n✍️ Final Project",
+    "crumbs": [
+      "Workshop Schedule",
+      "Workshop Day 2"
+    ]
   },
   {
     "objectID": "slides/reveal_exercise.html#slide-1",
