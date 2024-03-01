@@ -788,7 +788,7 @@
     "href": "slides/session-1.4.html#coding-assignment-1-1",
     "title": "Data Rich Reports",
     "section": "Coding Assignment 1",
-    "text": "Coding Assignment 1\n\n\nLet’s get started on the first assignment\nInstructions for Coding Assignment 1 are here\nDue by 11:59pm on Sunday, February 25"
+    "text": "Coding Assignment 1\n\n\nLet’s get started on the first assignment\nInstructions for Coding Assignment 1 are here\nDue by 11:59pm on Sunday, February 25\n\n\n\n\n\nDRR Website"
   },
   {
     "objectID": "slides/session-1.2.html#what-is-an-object",
@@ -921,7 +921,7 @@
     "href": "slides/session-1.2.html#try-it-yourself",
     "title": "Data Rich Reports",
     "section": "Try it yourself!",
-    "text": "Try it yourself!\n\nCreate a code chunk\nCopy this code into the chunk\n\n\nlibrary(leaflet)\nleaflet() %&gt;% \n  addTiles() %&gt;%   # Add default OpenStreetMap map tiles\n  addMarkers(lat = 38.90243843683386, lng =  -77.0443814477152, \n             label = \"Elliott School of International Affairs\")\n\n\nRun the chunk\nChange the coordinates and run again\nTry rendering the document\n\n\n\n\n−+\n02:00"
+    "text": "Try it yourself!\n\nCreate a code chunk\nCopy this code into the chunk\n\n\nlibrary(leaflet)\nleaflet() %&gt;% \n  addTiles() %&gt;%   # Add default OpenStreetMap map tiles\n  addMarkers(lat = 38.90243843683386, lng =  -77.0443814477152, \n             label = \"Elliott School of International Affairs\")\n\n\nRun the chunk\nChange the coordinates and run again\nTry rendering the document\n\n\n\n\n−+\n02:00\n\n\n\n\n\n\n\nDRR Website"
   },
   {
     "objectID": "instructor.html",
@@ -1309,7 +1309,7 @@
     "href": "slides/session-1.1.html#your-turn",
     "title": "Data Rich Reports",
     "section": "Your Turn!",
-    "text": "Your Turn!\n\n\nTry running a code chunk in your document\nChange the chunk options\nRun the code again"
+    "text": "Your Turn!\n\n\nTry running a code chunk in your document\nChange the chunk options\nRun the code again\n\n\n\n\n\nDRR Website"
   },
   {
     "objectID": "slides/session-1.3.html#retreive-code",
@@ -1498,7 +1498,7 @@
     "href": "slides/session-1.3.html#exercise",
     "title": "Data Rich Reports",
     "section": "Exercise",
-    "text": "Exercise\n\nUse the gapminder dataset\nFilter the data to keep only observations from 2007\nSelect the country, continent, year, lifeExp, and gdpPercap variables\nCreate a new variable called gdpPercap_mil that is gdpPercap divided by 1,000,000\nUse the glimpse() function to view the data"
+    "text": "Exercise\n\nUse the gapminder dataset\nFilter the data to keep only observations from 2007\nSelect the country, continent, year, lifeExp, and gdpPercap variables\nCreate a new variable called gdpPercap_mil that is gdpPercap divided by 1,000,000\nUse the glimpse() function to view the data\n\n\n\n\n\nDRR Website"
   },
   {
     "objectID": "about.html",
@@ -1712,5 +1712,110 @@
       "Course Modules",
       "Module 1.5"
     ]
+  },
+  {
+    "objectID": "slides/session-2.5.html#section",
+    "href": "slides/session-2.5.html#section",
+    "title": "Data Rich Reports",
+    "section": "",
+    "text": "DRR Website"
+  },
+  {
+    "objectID": "slides/session-2.5.html#parameters",
+    "href": "slides/session-2.5.html#parameters",
+    "title": "Data Rich Reports",
+    "section": "Parameters",
+    "text": "Parameters\n---\ntitle: \"Report on Life Expectancy\"\nformat: html\nexecute: \n  echo: false\n  warning: false\n  message: false\n---\n\n\nShow report without parameters\nAdd parameters\nRender one report\nRender another report by changing parameter"
+  },
+  {
+    "objectID": "slides/session-2.5.html#render-with-parameters",
+    "href": "slides/session-2.5.html#render-with-parameters",
+    "title": "Data Rich Reports",
+    "section": "Render with Parameters",
+    "text": "Render with Parameters\n---\ntitle: \"Report on Life Expectancy\"\nformat: html\nexecute: \n  echo: false\n  warning: false\n  message: false\n---\n\n---\ntitle: \"Report on Life Expectancy\"\nformat: html\nexecute: \n  echo: false\n  warning: false\n  message: false\nparams: \n  country: Afghanistan \n---\n\n\nShow report without parameters\nAdd parameters\nRender one report\nRender another report by changing parameter"
+  },
+  {
+    "objectID": "slides/session-2.5.html#why-parameterized-reporting",
+    "href": "slides/session-2.5.html#why-parameterized-reporting",
+    "title": "Data Rich Reports",
+    "section": "Why Parameterized Reporting?",
+    "text": "Why Parameterized Reporting?\n\nAllows you to make multiple reports at once\nAvoids copy paste issues if you were to make multiple reports by hand\nIt feels like magic!"
+  },
+  {
+    "objectID": "slides/session-2.5.html#render-with-r-script",
+    "href": "slides/session-2.5.html#render-with-r-script",
+    "title": "Data Rich Reports",
+    "section": "Render with R Script",
+    "text": "Render with R Script\n\nCreate a new file (render.R is what I typically call it)\nUse the quarto_render() function from the quarto package:\n\n\n\nlibrary(quarto)\n\nquarto_render(\n  input = \"report.qmd\"\n)\n\n\n\nRender report with quarto_render()\nBut this isn’t really much more efficient than rendering in .qmd file"
+  },
+  {
+    "objectID": "slides/session-2.5.html#parameterized-reports-we-have-made",
+    "href": "slides/session-2.5.html#parameterized-reports-we-have-made",
+    "title": "Data Rich Reports",
+    "section": "Parameterized Reports We Have Made",
+    "text": "Parameterized Reports We Have Made"
+  },
+  {
+    "objectID": "slides/session-2.5.html#add-arguments-to-quarto_render",
+    "href": "slides/session-2.5.html#add-arguments-to-quarto_render",
+    "title": "Data Rich Reports",
+    "section": "Add Arguments to quarto_render()",
+    "text": "Add Arguments to quarto_render()\n\nAdd additional arguments to quarto_render():\n\n\n\nlibrary(quarto)\n\nquarto_render(\n  input = \"report.qmd\",\n  output = \"Afghanistan.html\",\n  execute_params = list(country = \"Afghanistan\")\n)\n\n\n\nJust render one report with these arguments"
+  },
+  {
+    "objectID": "slides/session-2.5.html#render-multiple-reports-with-quarto_render",
+    "href": "slides/session-2.5.html#render-multiple-reports-with-quarto_render",
+    "title": "Data Rich Reports",
+    "section": "Render Multiple Reports with quarto_render()",
+    "text": "Render Multiple Reports with quarto_render()\n\nCreate a tibble (i.e. data frame) with the data for all of the reports you want to create:\n\n\n\ncountries &lt;-\n  gapminder |&gt;\n  distinct(country) |&gt;\n  pull(country) |&gt;\n  as.character()\n\nreports &lt;-\n  tibble(\n    input = \"report.qmd\",\n    output_file = str_glue(\"reports/{countries}.html\"),\n    execute_params = map(countries, ~ list(country = .))\n  )"
+  },
+  {
+    "objectID": "exercises/parameterized-report.html",
+    "href": "exercises/parameterized-report.html",
+    "title": "Life Expectancy",
+    "section": "",
+    "text": "```"
+  },
+  {
+    "objectID": "slides/session-2.5.html#use-parameters-for-inline-code",
+    "href": "slides/session-2.5.html#use-parameters-for-inline-code",
+    "title": "Data Rich Reports",
+    "section": "Use Parameters for Inline Code",
+    "text": "Use Parameters for Inline Code\n## Life Expectancy in `r params$country`\n\n\nShow header\nAlso add text that shows min and max years"
+  },
+  {
+    "objectID": "slides/session-2.5.html#life-expectancy-in-r-paramscountry",
+    "href": "slides/session-2.5.html#life-expectancy-in-r-paramscountry",
+    "title": "Data Rich Reports",
+    "section": "Life Expectancy in r params$country",
+    "text": "Life Expectancy in r params$country"
+  },
+  {
+    "objectID": "slides/session-2.5.html#paramters",
+    "href": "slides/session-2.5.html#paramters",
+    "title": "Data Rich Reports",
+    "section": "Paramters",
+    "text": "Paramters\n\n\n\n\nDRR Website"
+  },
+  {
+    "objectID": "slides/session-2.5.html#parameters-1",
+    "href": "slides/session-2.5.html#parameters-1",
+    "title": "Data Rich Reports",
+    "section": "Parameters",
+    "text": "Parameters\nYAML\n---\ntitle: \"Report on Life Expectancy\"\nformat: html\nexecute: \n  echo: false\n  warning: false\n  message: false\nparams: \n  country: Afghanistan \n---\n\nCode\n\ngapminder_filtered &lt;-\n  gapminder |&gt; \n  filter(country == params$country)"
+  },
+  {
+    "objectID": "slides/session-2.5.html#render-multiple-reports-with-quarto_render-1",
+    "href": "slides/session-2.5.html#render-multiple-reports-with-quarto_render-1",
+    "title": "Data Rich Reports",
+    "section": "Render Multiple Reports with quarto_render()",
+    "text": "Render Multiple Reports with quarto_render()\n\nUse the pwalk() function from the purrr package to render all reports:\n\n\n\npwalk(reports, quarto_render)\n\n\n\n\n\nDRR Website"
+  },
+  {
+    "objectID": "slides/session-2.5.html#what-is-parameterized-reporting",
+    "href": "slides/session-2.5.html#what-is-parameterized-reporting",
+    "title": "Data Rich Reports",
+    "section": "What is Parameterized Reporting?",
+    "text": "What is Parameterized Reporting?"
   }
 ]

@@ -1,0 +1,179 @@
+---
+title: "Data Rich Reports"
+subtitle: "Session 2.5--Parameterized Reporting"
+footer: "[DRR Website](https://quarto.training)"
+logo: images/drr6502-logo.png
+format:
+  revealjs:
+    theme: [simple, custom.scss]
+    transition: fade
+    slide-number: true
+    chalkboard: true
+execute:
+  echo: false
+  message: false
+  warning: false
+  freeze: auto
+  eval: false
+incremental: true
+filters:
+  - line-highlight
+---
+
+## What is Parameterized Reporting?
+
+## Why Parameterized Reporting?
+
+- Allows you to make multiple reports at once
+- Avoids copy paste issues if you were to make multiple reports by hand
+- It feels like magic!
+
+## Parameterized Reports We Have Made
+
+---
+
+![](../images/ivac-country-reports.png)
+
+---
+
+![](../images/psc.png)
+
+
+## Parameters
+
+```
+---
+title: "Report on Life Expectancy"
+format: html
+execute: 
+  echo: false
+  warning: false
+  message: false
+---
+```
+
+::: {.notes}
+- Show report without parameters
+- Add parameters
+- Render one report
+- Render another report by changing parameter
+:::
+
+## Parameters
+
+**YAML**
+
+```
+---
+title: "Report on Life Expectancy"
+format: html
+execute: 
+  echo: false
+  warning: false
+  message: false
+params: 
+  country: Afghanistan 
+---
+```
+
+. . .
+
+**Code**
+
+```{r}
+#| echo: true
+gapminder_filtered <-
+  gapminder |> 
+  filter(country == params$country)
+```
+
+
+## Use Parameters for Inline Code
+
+```{r}
+#| results: asis
+#| echo: true
+## Life Expectancy in `r params$country`
+```
+
+::: {.notes}
+- Show header
+- Also add text that shows min and max years
+:::
+
+## Render with R Script
+
+- Create a new file (`render.R` is what I typically call it)
+- Use the `quarto_render()` function from the `quarto` package:
+
+. . .
+
+```{r}
+#| echo: true
+library(quarto)
+
+quarto_render(
+  input = "report.qmd"
+)
+```
+
+::: {.notes}
+- Render report with `quarto_render()`
+- But this isn't really much more efficient than rendering in .qmd file
+:::
+
+## Add Arguments to `quarto_render()`
+
+- Add additional arguments to `quarto_render()`:
+
+. . .
+
+```{r}
+#| echo: true
+library(quarto)
+
+quarto_render(
+  input = "report.qmd",
+  output = "Afghanistan.html",
+  execute_params = list(country = "Afghanistan")
+)
+```
+
+::: {.notes}
+- Just render one report with these arguments
+:::
+
+## Render Multiple Reports with `quarto_render()`
+
+- Create a tibble (i.e. data frame) with the data for all of the reports you want to create:
+
+. . .
+
+```{r}
+#| echo: true
+countries <-
+  gapminder |>
+  distinct(country) |>
+  pull(country) |>
+  as.character()
+
+reports <-
+  tibble(
+    input = "report.qmd",
+    output_file = str_glue("reports/{countries}.html"),
+    execute_params = map(countries, ~ list(country = .))
+  )
+```
+
+
+## Render Multiple Reports with `quarto_render()`
+
+- Use the `pwalk()` function from the `purrr` package to render all reports:
+
+. . .
+
+```{r}
+#| echo: true
+
+pwalk(reports, quarto_render)
+```
