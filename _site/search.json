@@ -1440,5 +1440,292 @@
     "title": "Workshop Day 2",
     "section": "Assignments",
     "text": "Assignments\n🧮 Coding Assignment 2\n✍️ Final Project"
+  },
+  {
+    "objectID": "slides/reveal_exercise.html#slide-1",
+    "href": "slides/reveal_exercise.html#slide-1",
+    "title": "Revealjs Presentation",
+    "section": "Slide 1",
+    "text": "Slide 1\nThis is the first slide.\n\n\nBullet 1\nBullet 2\nBullet 3"
+  },
+  {
+    "objectID": "slides/session-2.1.html#basic-elements",
+    "href": "slides/session-2.1.html#basic-elements",
+    "title": "Revealjs Slides",
+    "section": "Basic Elements",
+    "text": "Basic Elements\n\nSetting up a reveal.js presentation in Quarto is easy. You just specify the revealjs format. From there you can use the usual YAML arguments like title:, subtitle:, etc. that you would use in any Quarto document. Here’s a simple example:\n---\ntitle: \"Revealjs Presentation\"\nsubtitle: \"For Demonstration Purposes\"\nauthor: \"Your Name\"\ndate: today\nformat: revealjs\n---"
+  },
+  {
+    "objectID": "slides/session-2.1.html#basic-setup",
+    "href": "slides/session-2.1.html#basic-setup",
+    "title": "Revealjs Slides",
+    "section": "Basic Setup",
+    "text": "Basic Setup\n\nSetting up a reveal.js presentation in Quarto is easy. You just specify the revealjs format. From there you can use the usual YAML arguments like title:, subtitle:, etc. that you would use in any Quarto document. Here’s a simple example:\n---\ntitle: \"Revealjs Presentation\"\nsubtitle: \"For Demonstration Purposes\"\nauthor: \"Your Name\"\ndate: today\nformat: revealjs\n---"
+  },
+  {
+    "objectID": "slides/session-2.1.html#creating-slides",
+    "href": "slides/session-2.1.html#creating-slides",
+    "title": "Revealjs Slides",
+    "section": "Creating Slides",
+    "text": "Creating Slides\n\nSlides are created using the standard markdown syntax. # gives you a new section, while ## gives you a new slide. Then you can write text and use - for bullet points.\n# Section Header\n\n## Slide 1\n\nThis is the first slide.\n\n- Bullet 1\n- Bullet 2\n- Bullet 3"
+  },
+  {
+    "objectID": "slides/session-2.1.html#section",
+    "href": "slides/session-2.1.html#section",
+    "title": "Revealjs Slides",
+    "section": "",
+    "text": "If perchance you don’t want a title slide, just eliminate title, subtitle, etc. from the YAML header.\n\n---\nformat: revealjs\n---"
+  },
+  {
+    "objectID": "slides/session-2.1.html#incremental-lists",
+    "href": "slides/session-2.1.html#incremental-lists",
+    "title": "Revealjs Slides",
+    "section": "Incremental Lists",
+    "text": "Incremental Lists\n\nThere are two ways to get incremental lists. The first is to specify incremental: true in the YAML header.\n\n---\nformat: \n  revealjs:\n    incremental: true\n---"
+  },
+  {
+    "objectID": "slides/session-2.1.html#incremental-lists-1",
+    "href": "slides/session-2.1.html#incremental-lists-1",
+    "title": "Revealjs Slides",
+    "section": "Incremental Lists",
+    "text": "Incremental Lists\n\nThe other is to surround the relevant bullet points in a div with the class incremental.\n\n::: {.incremental}\n- Bullet 1\n- Bullet 2\n- Bullet 3\n:::"
+  },
+  {
+    "objectID": "slides/session-2.1.html#incremental",
+    "href": "slides/session-2.1.html#incremental",
+    "title": "Revealjs Slides",
+    "section": "Incremental",
+    "text": "Incremental\n\nOr, let’s say you have incremental: true in the YAML header, but you want to turn it off for a particular slide. In this case, you can use nonincremental.\n::: {.nonincremental}\n- Bullet 1\n- Bullet 2\n- Bullet 3\n:::"
+  },
+  {
+    "objectID": "slides/session-2.1.html#what-is-revealjs",
+    "href": "slides/session-2.1.html#what-is-revealjs",
+    "title": "Revealjs Slides",
+    "section": "What is Revealjs?",
+    "text": "What is Revealjs?"
+  },
+  {
+    "objectID": "slides/session-2.1.html#why-revealjs",
+    "href": "slides/session-2.1.html#why-revealjs",
+    "title": "Revealjs Slides",
+    "section": "Why Revealjs?",
+    "text": "Why Revealjs?\n\n\nYou can also make PowerPoint and Beamer (pdf) slides with Quarto\nRevealjs is more fun and has some key advantages\n\nIt’s web-based and interactive\nIt’s more accessible\nIt’s easy to share\n\nBut sometimes other formats can be useful\n\nCan you think of some scenarios where you might want to use PowerPoint or Beamer?"
+  },
+  {
+    "objectID": "slides/session-2.1.html#setup",
+    "href": "slides/session-2.1.html#setup",
+    "title": "Revealjs Slides",
+    "section": "Setup",
+    "text": "Setup\n\nSetting up a reveal.js presentation in Quarto is easy. You just specify the revealjs format. From there you can use the usual YAML arguments like title:, subtitle:, etc. that you would use in any Quarto document. Here’s a simple example:\n\n---\ntitle: \"Revealjs Presentation\"\nsubtitle: \"For Demonstration Purposes\"\nauthor: \"Your Name\"\ndate: today\nformat: revealjs\n---"
+  },
+  {
+    "objectID": "slides/session-2.1.html#incremental-lists-2",
+    "href": "slides/session-2.1.html#incremental-lists-2",
+    "title": "Revealjs Slides",
+    "section": "Incremental Lists",
+    "text": "Incremental Lists\n\nOr, let’s say you have incremental: true in the YAML header, but you want to turn it off for a particular slide. In this case, you can use nonincremental.\n::: {.nonincremental}\n- Bullet 1\n- Bullet 2\n- Bullet 3\n:::"
+  },
+  {
+    "objectID": "slides/session-2.1.html#your-turn",
+    "href": "slides/session-2.1.html#your-turn",
+    "title": "Revealjs Slides",
+    "section": "Your Turn!",
+    "text": "Your Turn!\n\nStart a new Quarto project\nCreate a new Quarto document in your project folder\nAdd the YAML header and specify the revealjs format\nAdd slides and sections\nUse the incremental class to create incremental lists\nNow try setting incremental: true in the YAML header\nUse nonincremental to turn off incremental lists for a particular slide\n\n\n\n\n−+\n10:00"
+  },
+  {
+    "objectID": "slides/session-2.1.html#columns",
+    "href": "slides/session-2.1.html#columns",
+    "title": "Revealjs Slides",
+    "section": "Columns",
+    "text": "Columns\n\nTo put content in columns, you can create a div with the columns class.\n:::: {.columns}\n\n::: {.column width=\"40%\"}\nLeft column\n:::\n\n::: {.column width=\"60%\"}\nRight column\n:::\n\n::::"
+  },
+  {
+    "objectID": "slides/session-2.1.html#content-overflow",
+    "href": "slides/session-2.1.html#content-overflow",
+    "title": "Revealjs Slides",
+    "section": "Content Overflow",
+    "text": "Content Overflow\n\nSometimes you have too much material to fit on a slide. In this case, you can use the .smaller or .scrollable class. You can use curly braces to add these to a particular slide…\n\n## Slide Title {.smaller}\n\n## Slide Title {.scrollable}"
+  },
+  {
+    "objectID": "slides/session-2.1.html#content-overflow-1",
+    "href": "slides/session-2.1.html#content-overflow-1",
+    "title": "Revealjs Slides",
+    "section": "Content Overflow",
+    "text": "Content Overflow\n\nOr you can add them to the YAML header to apply them to the entire presentation…\n\n---\nformat:\n  revealjs:\n    smaller: true\n    scrollable: true\n---"
+  },
+  {
+    "objectID": "slides/session-2.1.html#adding-images",
+    "href": "slides/session-2.1.html#adding-images",
+    "title": "Revealjs Slides",
+    "section": "Adding Images",
+    "text": "Adding Images\n\nTo add an image, you can use the standard markdown syntax.\n\n![](images/your-image.png)"
+  },
+  {
+    "objectID": "slides/session-2.1.html#adding-images-1",
+    "href": "slides/session-2.1.html#adding-images-1",
+    "title": "Revealjs Slides",
+    "section": "Adding Images",
+    "text": "Adding Images\n\nTo control the width of the image, you can use the width attribute.\n\n![](images/your-image.png){width=50%}"
+  },
+  {
+    "objectID": "slides/session-2.1.html#your-turn-1",
+    "href": "slides/session-2.1.html#your-turn-1",
+    "title": "Revealjs Slides",
+    "section": "Your Turn!",
+    "text": "Your Turn!\n\nTry making a long slide with the .smaller class\nNow use the .scrollable class instead\nAdd an image to a slide\n\nGo to Wikimedia Commons and download an image\nAdd the image to your project folder\n\nMake a slide with two columns\n\nOn the left, write a few bullet points\nOn the right, add an image\nUse the width attribute to control the size of the image\n\n\n\n\n\n−+\n10:00"
+  },
+  {
+    "objectID": "slides/session-2.1.html#code-blocks",
+    "href": "slides/session-2.1.html#code-blocks",
+    "title": "Revealjs Slides",
+    "section": "Code Blocks",
+    "text": "Code Blocks\n\n\nTo add a code block, use the standard markdown syntax\nYou can specify the language for syntax highlighting\nJust like a normal HTML document, you can add chunk options"
+  },
+  {
+    "objectID": "slides/session-2.1.html#code-blocks-1",
+    "href": "slides/session-2.1.html#code-blocks-1",
+    "title": "Revealjs Slides",
+    "section": "Code Blocks",
+    "text": "Code Blocks\n\n\n```{r}\n#| label: leaflet_map1\n#| eval: false\n\nlibrary(leaflet)\nleaflet() %&gt;% \n  addTiles() %&gt;%   # Add default OpenStreetMap map tiles\n  addMarkers(lat = 38.90243843683386, lng =  -77.0443814477152, \n             label = \"Elliott School of International Affairs\")\n```"
+  },
+  {
+    "objectID": "slides/session-2.1.html#section-1",
+    "href": "slides/session-2.1.html#section-1",
+    "title": "Revealjs Slides",
+    "section": "",
+    "text": "If your echo: is set to false, then you will just see the output.\n\n\n\n\n\n\n\n\nNote how the output of the leaflet is interactive!"
+  },
+  {
+    "objectID": "slides/session-2.1.html#themes",
+    "href": "slides/session-2.1.html#themes",
+    "title": "Revealjs Slides",
+    "section": "Themes",
+    "text": "Themes\n\nYou can customize the look of your slides by using a different theme, e.g. \n\ntheme: dark\n\n\nSee the Reveal documentation for the full list of availalbe themes."
+  },
+  {
+    "objectID": "slides/session-2.1.html#section-2",
+    "href": "slides/session-2.1.html#section-2",
+    "title": "Revealjs Slides",
+    "section": "",
+    "text": "But if echo: is set to true, then you will see the code and the output…\n\nlibrary(leaflet)\nleaflet() %&gt;% \n  addTiles() %&gt;%   # Add default OpenStreetMap map tiles\n  addMarkers(lat = 38.90243843683386, lng =  -77.0443814477152, \n             label = \"Elliott School of International Affairs\")"
+  },
+  {
+    "objectID": "slides/session-2.1.html#section-3",
+    "href": "slides/session-2.1.html#section-3",
+    "title": "Revealjs Slides",
+    "section": "",
+    "text": "And just like in a normal HTML document, you can also set these options in the YAML header.\n\nexecute:\n  echo: false\n  message: false\n  warning: false"
+  },
+  {
+    "objectID": "slides/session-2.1.html#section-4",
+    "href": "slides/session-2.1.html#section-4",
+    "title": "Revealjs Slides",
+    "section": "",
+    "text": "For presentation purposes, you may oly want to show specific lines of code.\n\n\nlibrary(leaflet)\nleaflet() %&gt;% \n  addTiles() %&gt;%   # Add default OpenStreetMap map tiles\n  addMarkers(lat = 38.90243843683386, lng =  -77.0443814477152, \n             label = \"Elliott School of International Affairs\")"
+  },
+  {
+    "objectID": "slides/session-2.1.html#section-5",
+    "href": "slides/session-2.1.html#section-5",
+    "title": "Revealjs Slides",
+    "section": "",
+    "text": "To do this, you would use the code-line-numbers option in the YAML header.\n\n\nlibrary(leaflet)\nleaflet() %&gt;% \n  addTiles() %&gt;%   # Add default OpenStreetMap map tiles\n  addMarkers(lat = 38.90243843683386, lng =  -77.0443814477152, \n             label = \"Elliott School of International Affairs\")"
+  },
+  {
+    "objectID": "slides/session-2.1.html#your-turn-2",
+    "href": "slides/session-2.1.html#your-turn-2",
+    "title": "Revealjs Slides",
+    "section": "Your Turn!",
+    "text": "Your Turn!\n\nStart a new slide\nAdd an R code chunk to it\nAdd a leaflet map to it\nRender the slide\nTry different chunk options\n\nDisplay only the output\nDisplay code and output\nDisplay just the code\nDisplay only particular lines\n\nTry adjusting evaluate options in the YAML header\n\n\n\n\n−+\n10:00"
+  },
+  {
+    "objectID": "slides/session-2.1.html#themes-1",
+    "href": "slides/session-2.1.html#themes-1",
+    "title": "Revealjs Slides",
+    "section": "Themes",
+    "text": "Themes\n\nYou can also add a custom SCSS file to tweak an existing them or create your own:\n/*-- scss:defaults --*/\n\n$body-bg: #191919;\n$body-color: #fff;\n$link-color: #42affa;\n\n/*-- scss:rules --*/\n\n.reveal .slide blockquote {\n  border-left: 3px solid $text-muted;\n  padding-left: 0.5em;\n}"
+  },
+  {
+    "objectID": "slides/session-2.1.html#syntax-highlighting",
+    "href": "slides/session-2.1.html#syntax-highlighting",
+    "title": "Revealjs Slides",
+    "section": "Syntax Highlighting",
+    "text": "Syntax Highlighting\n\nQuarto offers 20 different syntax highlighting themes. Click here to see the available themes.\n\nYou can select your preferred theme by adding highlight-style to the YAML header, e.g. \n\nhighlight-style: github"
+  },
+  {
+    "objectID": "slides/session-2.1.html#background-styling",
+    "href": "slides/session-2.1.html#background-styling",
+    "title": "Revealjs Slides",
+    "section": "Background Styling",
+    "text": "Background Styling\n\nYou can change the color of your background by adding the background-color attribute to a slide.\n\n## Slide Title {background-color=\"aquamarine\"}"
+  },
+  {
+    "objectID": "slides/session-2.1.html#background-styling-1",
+    "href": "slides/session-2.1.html#background-styling-1",
+    "title": "Revealjs Slides",
+    "section": "Background Styling",
+    "text": "Background Styling\n\nYou can change the color of your background by adding the background-color attribute to a slide.\n\n## Slide Title {background-color=\"aquamarine\"}"
+  },
+  {
+    "objectID": "slides/session-2.1.html#background-styling-2",
+    "href": "slides/session-2.1.html#background-styling-2",
+    "title": "Revealjs Slides",
+    "section": "Background Styling",
+    "text": "Background Styling\n\nSimilarly, you can add a background image to your slide by adding the background-image attribute.\n\n## Slide Title {background-image=\"/images/drr6502-img.png\" data-background-size=\"contain\" data-background-opacity=\"0.5\"}"
+  },
+  {
+    "objectID": "slides/session-2.1.html#background-styling-3",
+    "href": "slides/session-2.1.html#background-styling-3",
+    "title": "Revealjs Slides",
+    "section": "Background Styling",
+    "text": "Background Styling\n\nSimilarly, you can add a background image to your slide by adding the background-image attribute.\n\n## Slide Title {background-image=\"/images/drr6502-img.png\" data-background-size=\"contain\" data-background-opacity=\"0.5\"}"
+  },
+  {
+    "objectID": "slides/session-2.1.html#background-styling-4",
+    "href": "slides/session-2.1.html#background-styling-4",
+    "title": "Revealjs Slides",
+    "section": "Background Styling",
+    "text": "Background Styling\n\nAnd you can add a background image to the title slide by adding the title-slide-attributes attribute to the YAML header.\n\n\n---\ntitle: My Slide Show\ntitle-slide-attributes:\n    data-background-image: /path/to/title_image.png\n    data-background-size: contain\n    data-background-opacity: \"0.5\"\n---\n\nSee here for an example."
+  },
+  {
+    "objectID": "slides/session-2.1.html#a-few-other-cool-tricks",
+    "href": "slides/session-2.1.html#a-few-other-cool-tricks",
+    "title": "Revealjs Slides",
+    "section": "A Few Other Cool Tricks",
+    "text": "A Few Other Cool Tricks\n\n\nYou can add a chalkboard to your slides by adding chalkboard: true to the YAML header\nYou can add speaker notes by creating a div and adding the notes attribute to it.\n\nThen you can view them by running the presentation in speaker mode\n\nYou can use multiplex: true to advance slides for your audience\nAnd much much more! Check out the guide for details\n\n\n\nThese are my speaker notes!"
+  },
+  {
+    "objectID": "slides/session-2.1.html#your-turn-3",
+    "href": "slides/session-2.1.html#your-turn-3",
+    "title": "Revealjs Slides",
+    "section": "Your Turn!",
+    "text": "Your Turn!\n\n\nAdd a theme to your presentation\nTry a different type of syntax highlighting\nChange the background color of a slide\nAdd a background image to a slide\nAdd a background image to the title slide\nTry using SCSS to modify the theme style\nTry a cool trick like chalkboard or multiplex\nUpload your presentation to Quarto Pub\n\nquarto publish quarto-pub mydocument.qmd"
+  },
+  {
+    "objectID": "slides/session-2.1.html#what-is-reveal.js",
+    "href": "slides/session-2.1.html#what-is-reveal.js",
+    "title": "Revealjs Slides",
+    "section": "What is Reveal.js?",
+    "text": "What is Reveal.js?\n\n\nWeb-based presentation framework that enables the creation of interactive presentations using HTML\nSupports dynamic transitions, embedded media, and interactive elements\nWorks across devices and platforms, ensuring your presentation looks great everywhere\nOffers a wide range of plugins and extensions to enhance your presentations, from analytics to themes\nShare your presentations as a URL, making it accessible to anyone, anywhere"
+  },
+  {
+    "objectID": "slides/session-2.1.html#spacing",
+    "href": "slides/session-2.1.html#spacing",
+    "title": "Revealjs Slides",
+    "section": "Spacing",
+    "text": "Spacing\n\nSometimes you want to have more spacing than the default spacing between lines on each slide.\nThe easiest way to handle this is to insert &lt;br&gt; tags where you want the extra space.\n\n## Slide 2\n\n&lt;br&gt;\n\nThis is the content for my second slide. It is going to have this line and then a line break and then some code. \n\n&lt;br&gt;\n\n::: {.cell}\n::: {.cell-output .cell-output-stdout}\n[1] 4\n\n\n:::\n:::"
+  },
+  {
+    "objectID": "slides/session-2.1.html#a-few-more-tricks-and-tips",
+    "href": "slides/session-2.1.html#a-few-more-tricks-and-tips",
+    "title": "Revealjs Slides",
+    "section": "A Few More Tricks and Tips",
+    "text": "A Few More Tricks and Tips\n\n\nFade your slide transitions with transition: fade\nAdd slide numbers with slide-number: true\nUse footer:to add a footer your slides\nUse logo: to add a logo to your slides\nYou can add a chalkboard to your slides by adding chalkboard: true to the YAML header\nYou can add speaker notes by creating a div and adding the notes attribute to it.\n\nThen you can view them by running the presentation in speaker mode\n\nYou can use multiplex: true to advance slides for your audience\nAnd much much more! Check out the guide for details\n\n\n\nThese are my speaker notes!"
+  },
+  {
+    "objectID": "slides/session-2.1.html#my-yaml-for-this-presentation",
+    "href": "slides/session-2.1.html#my-yaml-for-this-presentation",
+    "title": "Revealjs Slides",
+    "section": "My YAML for This Presentation",
+    "text": "My YAML for This Presentation\n ---\ntitle: \"Revealjs Slides\"\nsubtitle: \"Session 4--Visualizing Data\"\nfooter: \"[DRR Website](https://quarto.training)\"\nlogo: images/drr6502-logo.png\nformat:\n  revealjs:\n    theme: [simple, custom.scss]\n    transition: fade\n    slide-number: true\n    chalkboard: true\nexecute:\n  echo: false\n  message: false\n  warning: false\n  freeze: auto\n---"
   }
 ]
