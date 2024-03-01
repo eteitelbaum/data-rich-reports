@@ -1,6 +1,6 @@
 ---
-title: "Revealjs Slides"
-subtitle: "Session 4--Visualizing Data"
+title: "Data Rich Reports"
+subtitle: "Session 5--Revealjs Slides"
 footer: "[DRR Website](https://quarto.training)"
 logo: images/drr6502-logo.png
 format:
