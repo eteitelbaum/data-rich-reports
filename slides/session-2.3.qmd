@@ -18,6 +18,10 @@ execute:
 
 # Overview 
 
+## Code for Today
+
+Download the Quarto files for this session and the previous one [here](https://www.dropbox.com/scl/fo/jagfmlgp67raqm23ta0pd/h?rlkey=cnl2f4ktcjz8mj8lfegktdv2z&dl=0)
+
 ## Quarto for PDF Documents 
 
 - Make sure you have the `tinytex` package installed

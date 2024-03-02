@@ -2,7 +2,6 @@
 title: "Coding Assignment 2"
 ---
 
-
 ## Overview
 
 For this assignment you are going to do two things. The first is to produce a basic data visualization that takes advantage of parameterization. The second is to embed that visualization in either a reveal JS presentation or a blog post. Then you will produce a duplicate version of that presentation or blog post with a different parameter value (most likely a country).
