@@ -23,7 +23,7 @@ For your visualization, you could go with the `gapminder` dataset like we did in
 
 ## Step 3: Incorporate additional elements (20 pts)
 
-Incorporate at least three additional elements to your blog post or Reveal presentation. This could be a figure (image), a hyperlink, a table, a callout box, a block quote, a footnote or some other element that you learned about in class, in the readings, or in the Quarto documentation. These could be anything you like but should relate to the basic content and narrative of your document.
+Incorporate at some additional elements to your blog post or Reveal presentation. This could be a figure (image), a hyperlink, a table, a callout box, a block quote, a footnote or some other element that relates to the basic content and narrative of your document. Now change the theme and try to make your blog or presentation look a little different/better than the default
 
 ## Step 4: Create a duplicate post or presentation (20 pts)
 
