@@ -2,4 +2,35 @@
 title: "Coding Assignment 2"
 ---
 
-**Details coming soon!**
+
+## Overview
+
+For this assignment you are going to do two things. The first is to produce a basic data visualization that takes advantage of parameterization. The second is to embed that visualization in either a reveal JS presentation or a blog post. Then you will produce a duplicate version of that presentation or blog post with a different parameter value (most likely a country).
+
+Be sure to reference the course material, the [Quarto Guide](https://quarto.org/docs/guide/) and the [Quarto Reference](https://quarto.org/docs/reference/) as you work through this assignment.
+
+**Submission note**: After you share your link with the class, please also submit your document to me via [this link]().
+
+## Step 1: Create a quarto presentation or blog(20pts)
+
+Create a new Revealjs presentation or Quarto blog. You can copy code from class to get yourself started. In your YAML header, be sure to include a `params:` argument that will specify what country you want to visualize data for.
+
+## Step 2: Create a data visualization (20 pts)
+
+Create a code chunk and within it write the code that you need to produce a data visualization. This will involve loading the packages you need, importing the data and creating the visualization with `ggplot2`. 
+
+For your visualization, you could go with the `gapminder` dataset like we did in class or you could go back to the `vdem` dataset that we used in the first workshop. You could also use a different dataset if you like. The important thing is that you are able to parameterize your visualization so that you can easily change the country that is being visualized.
+
+## Step 3: Incorporate additional elements (20 pts)
+
+Incorporate at least three additional elements to your blog post or Reveal presentation. This could be a figure (image), a hyperlink, a table, a callout box, a block quote, a footnote or some other element that you learned about in class, in the readings, or in the Quarto documentation. These could be anything you like but should relate to the basic content and narrative of your document.
+
+## Step 4: Create a duplicate post or presentation (20 pts)
+
+Now create a duplicate presentation or blog post. This time, change the parameter value so that the visualization is for a different country. You can do this by changing the `params:` argument in the YAML header. You should also change the title of the document so that it is clear that this is a different version of the original document.
+
+## Step 5: Uplaod your document to Quarto pub (20 pts)
+
+Following the procedure you leanred in class, upload your blog or Reveal presentations to Quarto PUb. Remember that you will need to have a Quarto account to do this and that you need to type the relevant command in the **terminal** (not the console) to upload your document. Once you have your document link, share it with the class on the Discord server.
+
+

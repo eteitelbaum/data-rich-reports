@@ -314,7 +314,18 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#step-1-create-a-quarto-presentation-or-blog20pts" id="toc-step-1-create-a-quarto-presentation-or-blog20pts" class="nav-link" data-scroll-target="#step-1-create-a-quarto-presentation-or-blog20pts">Step 1: Create a quarto presentation or blog(20pts)</a></li>
+  <li><a href="#step-2-create-a-data-visualization-20-pts" id="toc-step-2-create-a-data-visualization-20-pts" class="nav-link" data-scroll-target="#step-2-create-a-data-visualization-20-pts">Step 2: Create a data visualization (20 pts)</a></li>
+  <li><a href="#step-3-incorporate-additional-elements-20-pts" id="toc-step-3-incorporate-additional-elements-20-pts" class="nav-link" data-scroll-target="#step-3-incorporate-additional-elements-20-pts">Step 3: Incorporate additional elements (20 pts)</a></li>
+  <li><a href="#step-4-create-a-duplicate-post-or-presentation-20-pts" id="toc-step-4-create-a-duplicate-post-or-presentation-20-pts" class="nav-link" data-scroll-target="#step-4-create-a-duplicate-post-or-presentation-20-pts">Step 4: Create a duplicate post or presentation (20 pts)</a></li>
+  <li><a href="#step-5-uplaod-your-document-to-quarto-pub-20-pts" id="toc-step-5-uplaod-your-document-to-quarto-pub-20-pts" class="nav-link" data-scroll-target="#step-5-uplaod-your-document-to-quarto-pub-20-pts">Step 5: Uplaod your document to Quarto pub (20 pts)</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/eteitelbaum/data-rich-reports/edit/main/assignments/coding-assignment-2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/data-rich-reports/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -338,9 +349,35 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><strong>Details coming soon!</strong></p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>For this assignment you are going to do two things. The first is to produce a basic data visualization that takes advantage of parameterization. The second is to embed that visualization in either a reveal JS presentation or a blog post. Then you will produce a duplicate version of that presentation or blog post with a different parameter value (most likely a country).</p>
+<p>Be sure to reference the course material, the <a href="https://quarto.org/docs/guide/">Quarto Guide</a> and the <a href="https://quarto.org/docs/reference/">Quarto Reference</a> as you work through this assignment.</p>
+<p><strong>Submission note</strong>: After you share your link with the class, please also submit your document to me via <a href="">this link</a>.</p>
+</section>
+<section id="step-1-create-a-quarto-presentation-or-blog20pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-create-a-quarto-presentation-or-blog20pts">Step 1: Create a quarto presentation or blog(20pts)</h2>
+<p>Create a new Revealjs presentation or Quarto blog. You can copy code from class to get yourself started. In your YAML header, be sure to include a <code>params:</code> argument that will specify what country you want to visualize data for.</p>
+</section>
+<section id="step-2-create-a-data-visualization-20-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-create-a-data-visualization-20-pts">Step 2: Create a data visualization (20 pts)</h2>
+<p>Create a code chunk and within it write the code that you need to produce a data visualization. This will involve loading the packages you need, importing the data and creating the visualization with <code>ggplot2</code>.</p>
+<p>For your visualization, you could go with the <code>gapminder</code> dataset like we did in class or you could go back to the <code>vdem</code> dataset that we used in the first workshop. You could also use a different dataset if you like. The important thing is that you are able to parameterize your visualization so that you can easily change the country that is being visualized.</p>
+</section>
+<section id="step-3-incorporate-additional-elements-20-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-incorporate-additional-elements-20-pts">Step 3: Incorporate additional elements (20 pts)</h2>
+<p>Incorporate at least three additional elements to your blog post or Reveal presentation. This could be a figure (image), a hyperlink, a table, a callout box, a block quote, a footnote or some other element that you learned about in class, in the readings, or in the Quarto documentation. These could be anything you like but should relate to the basic content and narrative of your document.</p>
+</section>
+<section id="step-4-create-a-duplicate-post-or-presentation-20-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-create-a-duplicate-post-or-presentation-20-pts">Step 4: Create a duplicate post or presentation (20 pts)</h2>
+<p>Now create a duplicate presentation or blog post. This time, change the parameter value so that the visualization is for a different country. You can do this by changing the <code>params:</code> argument in the YAML header. You should also change the title of the document so that it is clear that this is a different version of the original document.</p>
+</section>
+<section id="step-5-uplaod-your-document-to-quarto-pub-20-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-uplaod-your-document-to-quarto-pub-20-pts">Step 5: Uplaod your document to Quarto pub (20 pts)</h2>
+<p>Following the procedure you leanred in class, upload your blog or Reveal presentations to Quarto PUb. Remember that you will need to have a Quarto account to do this and that you need to type the relevant command in the <strong>terminal</strong> (not the console) to upload your document. Once you have your document link, share it with the class on the Discord server.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -907,7 +944,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/eteitelbaum/data-rich-reports/edit/main/assignments/coding-assignment-2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/data-rich-reports/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/eteitelbaum/data-rich-reports/edit/main/assignments/coding-assignment-2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/data-rich-reports/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with <a href="https://quarto.org/">Quarto</a>. 👷🛠️</p>
 </div>

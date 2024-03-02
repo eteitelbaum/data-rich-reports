@@ -1307,7 +1307,7 @@
     "href": "assignments/coding-assignment-2.html",
     "title": "Coding Assignment 2",
     "section": "",
-    "text": "Details coming soon!",
+    "text": "For this assignment you are going to do two things. The first is to produce a basic data visualization that takes advantage of parameterization. The second is to embed that visualization in either a reveal JS presentation or a blog post. Then you will produce a duplicate version of that presentation or blog post with a different parameter value (most likely a country).\nBe sure to reference the course material, the Quarto Guide and the Quarto Reference as you work through this assignment.\nSubmission note: After you share your link with the class, please also submit your document to me via this link.",
     "crumbs": [
       "Homework Assignments",
       "Assignment 2"
@@ -2259,6 +2259,212 @@
     "crumbs": [
       "Course Modules",
       "Module 1.5"
+    ]
+  },
+  {
+    "objectID": "slides/session-2.3.html#quarto-for-pdf-documents",
+    "href": "slides/session-2.3.html#quarto-for-pdf-documents",
+    "title": "Data Rich Reports",
+    "section": "Quarto for PDF Documents",
+    "text": "Quarto for PDF Documents\n\nMake sure you have the tinytex package installed\n\nquarto install tinytex\n\nOpen the session-2.3.qmd file\nTry renderingthe document"
+  },
+  {
+    "objectID": "slides/session-2.3.html#what-is-all-of-this-code",
+    "href": "slides/session-2.3.html#what-is-all-of-this-code",
+    "title": "Data Rich Reports",
+    "section": "What is All of This Code?",
+    "text": "What is All of This Code?\n---\ntitle: \"My Paper\"\nsubtitle: \"An Example of a Quarto Paper\"\nauthor:\n  - name: Bullwinkle J. Moose\n  - name: Rocky the Flying Squirrel \nformat: \n  pdf:\n    documentclass: article\ndate: today\ndate-format: long\nabstract: |\n  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. More Latin.\nlink-citations: true\n#link-bibliography: false\ncolorlinks: true\nlinkcolor: Blue4\nfig-width: 6.5\nfig-height: 4.5\nfig-cap-location: top\nblock-headings: false   # so that titlesec package works\ngeometry: margin = 1in\nfontsize: 12pt\nmainfont: Times New Roman\nmathfont: STIX Two Math\nlinestretch: 2\nindent: true\nbibliography: references.bib\n#cite-method: biblatex\n#biblio-style: apa\n#csl: american-political-science-association.csl\nreference-section-title: References\nexecute:\n  echo: false\n  message: false\n  warning: false\ninclude-in-header: header.tex\n---"
+  },
+  {
+    "objectID": "slides/session-2.3.html#latex-and-quarto",
+    "href": "slides/session-2.3.html#latex-and-quarto",
+    "title": "Data Rich Reports",
+    "section": "LaTex and Quarto",
+    "text": "LaTex and Quarto\n::: - Quarto uses LaTex to render standard PDFs - LaTex is a typesetting system that is widely used for technical and scientific documents - Quarto uses LaTex to create PDFs from your markdown files - Uses knitr to do the conversion - There is also something called typst that we will explore later :::"
+  },
+  {
+    "objectID": "slides/session-2.3.html#lets-start-with-what-we-know",
+    "href": "slides/session-2.3.html#lets-start-with-what-we-know",
+    "title": "Data Rich Reports",
+    "section": "Let’s Start with What we Know",
+    "text": "Let’s Start with What we Know\n\ntitle: \"My Paper\"\nsubtitle: \"An Example of a Quarto Paper\"\nauthor:\n  - name: Bullwinkle J. Moose\n  - name: Rocky the Flying Squirrel \nformat: \n  pdf:\n    documentclass: article\ndate: today\ndate-format: long"
+  },
+  {
+    "objectID": "slides/session-2.3.html#lets-start-with-what-we-know-1",
+    "href": "slides/session-2.3.html#lets-start-with-what-we-know-1",
+    "title": "Data Rich Reports",
+    "section": "Let’s Start with What we Know",
+    "text": "Let’s Start with What we Know\n\nexecute:\n  echo: false\n  message: false\n  warning: false"
+  },
+  {
+    "objectID": "slides/session-2.3.html#abstract",
+    "href": "slides/session-2.3.html#abstract",
+    "title": "Data Rich Reports",
+    "section": "Abstract",
+    "text": "Abstract\n\nabstract: |\n  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. More Latin."
+  },
+  {
+    "objectID": "slides/session-2.3.html#links-and-link-colors",
+    "href": "slides/session-2.3.html#links-and-link-colors",
+    "title": "Data Rich Reports",
+    "section": "Links and Link Colors",
+    "text": "Links and Link Colors\n\nlink-citations: true\n#link-bibliography: false\ncolorlinks: true\nlinkcolor: Blue4"
+  },
+  {
+    "objectID": "slides/session-2.3.html#figure-specifications",
+    "href": "slides/session-2.3.html#figure-specifications",
+    "title": "Data Rich Reports",
+    "section": "Figure Specifications",
+    "text": "Figure Specifications\n\nfig-width: 6.5\nfig-height: 4.5\nfig-cap-location: top\nblock-headings: false   # so that titlesec package works"
+  },
+  {
+    "objectID": "slides/session-2.3.html#font-and-spacing",
+    "href": "slides/session-2.3.html#font-and-spacing",
+    "title": "Data Rich Reports",
+    "section": "Font and Spacing",
+    "text": "Font and Spacing\n\nNote that fonts are defined by system fonts. System fonts are defined by the operating system and differ across Macs and PCs.\ngeometry: margin = 1in\nfontsize: 12pt\nmainfont: Times New Roman\nmathfont: STIX Two Math\nlinestretch: 2\nindent: true"
+  },
+  {
+    "objectID": "slides/session-2.3.html#references",
+    "href": "slides/session-2.3.html#references",
+    "title": "Data Rich Reports",
+    "section": "References",
+    "text": "References\n\nbibliography: references.bib\n#cite-method: biblatex\n#biblio-style: apa\n#csl: american-political-science-association.csl\nreference-section-title: References"
+  },
+  {
+    "objectID": "slides/session-2.3.html#header",
+    "href": "slides/session-2.3.html#header",
+    "title": "Data Rich Reports",
+    "section": "Header",
+    "text": "Header\n\ninclude-in-header: header.tex"
+  },
+  {
+    "objectID": "slides/session-2.3.html#header-1",
+    "href": "slides/session-2.3.html#header-1",
+    "title": "Data Rich Reports",
+    "section": "Header",
+    "text": "Header\n\nWhat is in the header.tex file?\n%%% Setup for frontmatter and spacing %%%\n\n\\usepackage{indentfirst} % indent first para\n\\setlength{\\parindent}{0.5in} % set indent length\n\\setlength{\\parskip}{0em} % no extra space between paras\n\\usepackage{titlesec} % to set spacing of section titles\n\\titlespacing\\section{0pt}{0pt plus 2pt minus 2pt}{0pt plus 2pt minus 2pt}\n\\titlespacing\\subsection{0pt}{0pt plus 2pt minus 2pt}{0pt plus 2pt minus 2pt}\n\\titlespacing\\subsubsection{0pt}{0pt plus 2pt minus 2pt}{0pt plus 2pt minus 2pt}"
+  },
+  {
+    "objectID": "slides/session-2.3.html#header-2",
+    "href": "slides/session-2.3.html#header-2",
+    "title": "Data Rich Reports",
+    "section": "Header",
+    "text": "Header\n\nWhat is in the header.tex file?\n%%% Captions %%%\n          \n\\usepackage{caption}\n\\captionsetup{\n  %captionskip = 0pt,   % eliminate space bw capiton and figure\n  %labelformat = empty, % eliminate caption label\n  %font = bf,\n  justification = raggedright, % left justify the caption \n  singlelinecheck = true,      % but only if it is more than one line\n  font = footnotesize,         % make font smaller\n  labelfont = bf               % make the caption label bold\n}"
+  },
+  {
+    "objectID": "slides/session-2.3.html#try-this",
+    "href": "slides/session-2.3.html#try-this",
+    "title": "Data Rich Reports",
+    "section": "Try This",
+    "text": "Try This\n\n\nStarting with what you don’t know…\n\nComment out different lines in the YAML header\nRerender the document\nWhat is the result?\n\nTry to find a different font for the document\n\nOn a Mac, look in the Font Book app\nOn a PC, look in the settings under “Personalization”\n\n\n\n\n\n−+\n10:00"
+  },
+  {
+    "objectID": "slides/session-2.3.html#bib-files",
+    "href": "slides/session-2.3.html#bib-files",
+    "title": "Data Rich Reports",
+    "section": ".bib files",
+    "text": ".bib files\n\n\n\n.bib files are a way to store references\nThey are a plain text file used by LaTex\nQuarto needs them to compile the list of references at the end\nThey are a bit tricky to write by hand\nWhich is why we use a reference manager like Zotero or Mendeley"
+  },
+  {
+    "objectID": "slides/session-2.3.html#zotero-demo",
+    "href": "slides/session-2.3.html#zotero-demo",
+    "title": "Data Rich Reports",
+    "section": "Zotero Demo",
+    "text": "Zotero Demo\n\n\n\nLet’s install Zotero\nThen we need the Zotero plugin to grab references from the web\nThen we also need the Better BibTex plugin to export the .bib file\n\nProduces a .bib file that is easier to read and edit\nAlong with that produces a citation key that is easy to use\n\nNext we need to export our .bib file to our project folder\nThen we can insert the citaion with [@authorXXXX]\nNote that we can also do this in HTML documents, but we highlight it here because research manuscripts tend to still be produced mainly as PDFs"
+  },
+  {
+    "objectID": "slides/session-2.3.html#your-turn",
+    "href": "slides/session-2.3.html#your-turn",
+    "title": "Data Rich Reports",
+    "section": "Your Turn!",
+    "text": "Your Turn!\n\n\nDo everything I just did\nI’ll come around to make sure you are caught up\n\n\n\n\n−+\n10:00"
+  },
+  {
+    "objectID": "slides/session-2.3.html#extensions",
+    "href": "slides/session-2.3.html#extensions",
+    "title": "Data Rich Reports",
+    "section": "Extensions",
+    "text": "Extensions\n\n\nQuarto extensions are an easy way to style your documents\nA list of extensions is here\nFor PDFs the journal and custom format extensions are most relevant\nUse an extension for a new document: quarto use template repo-name/extension-name\nTo add it to an existing document: quarto add repo-name/extension-name"
+  },
+  {
+    "objectID": "slides/session-2.3.html#typst",
+    "href": "slides/session-2.3.html#typst",
+    "title": "Data Rich Reports",
+    "section": "Typst",
+    "text": "Typst\n\n\n\nTypst is a modern typesetting system\nCheck out their webiste\nTypst is pretty new but it shows a lot of promise\nA lot of elements are very similar to Quarto PDFs\nLet’s have a look at the documentation\nAnd see if we can produce a Typst document!"
+  },
+  {
+    "objectID": "slides/session-2.3.html#changing-reference-style",
+    "href": "slides/session-2.3.html#changing-reference-style",
+    "title": "Data Rich Reports",
+    "section": "Changing Reference Style",
+    "text": "Changing Reference Style\n\n\n\nThere are two ways to change the reference style\n\nThe csl file in the YAML header\nThe biblio-style in the YAML header\n\nThe csl file is a style file that can be found here\nThe biblio-style is a style that can be found here\n\nMostly we are going to use apa, mla or chicago-authordate in the social science\nBut default for Quarto is already Chicago author-date"
+  },
+  {
+    "objectID": "assignments/coding-assignment-2.html#overview",
+    "href": "assignments/coding-assignment-2.html#overview",
+    "title": "Coding Assignment 2",
+    "section": "",
+    "text": "For this assignment you are going to do two things. The first is to produce a basic data visualization that takes advantage of parameterization. The second is to embed that visualization in either a reveal JS presentation or a blog post. Then you will produce a duplicate version of that presentation or blog post with a different parameter value (most likely a country).\nBe sure to reference the course material, the Quarto Guide and the Quarto Reference as you work through this assignment.\nSubmission note: After you share your link with the class, please also submit your document to me via this link.",
+    "crumbs": [
+      "Homework Assignments",
+      "Assignment 2"
+    ]
+  },
+  {
+    "objectID": "assignments/coding-assignment-2.html#step-1-create-a-quarto-presentation-or-blog20pts",
+    "href": "assignments/coding-assignment-2.html#step-1-create-a-quarto-presentation-or-blog20pts",
+    "title": "Coding Assignment 2",
+    "section": "Step 1: Create a quarto presentation or blog(20pts)",
+    "text": "Step 1: Create a quarto presentation or blog(20pts)\nCreate a new Revealjs presentation or Quarto blog. You can copy code from class to get yourself started. In your YAML header, be sure to include a params: argument that will specify what country you want to visualize data for.",
+    "crumbs": [
+      "Homework Assignments",
+      "Assignment 2"
+    ]
+  },
+  {
+    "objectID": "assignments/coding-assignment-2.html#step-2-create-a-data-visualization-20-pts",
+    "href": "assignments/coding-assignment-2.html#step-2-create-a-data-visualization-20-pts",
+    "title": "Coding Assignment 2",
+    "section": "Step 2: Create a data visualization (20 pts)",
+    "text": "Step 2: Create a data visualization (20 pts)\nCreate a code chunk and within it write the code that you need to produce a data visualization. This will involve loading the packages you need, importing the data and creating the visualization with ggplot2.\nFor your visualization, you could go with the gapminder dataset like we did in class or you could go back to the vdem dataset that we used in the first workshop. You could also use a different dataset if you like. The important thing is that you are able to parameterize your visualization so that you can easily change the country that is being visualized.",
+    "crumbs": [
+      "Homework Assignments",
+      "Assignment 2"
+    ]
+  },
+  {
+    "objectID": "assignments/coding-assignment-2.html#step-3-incorporate-additional-elements-20-pts",
+    "href": "assignments/coding-assignment-2.html#step-3-incorporate-additional-elements-20-pts",
+    "title": "Coding Assignment 2",
+    "section": "Step 3: Incorporate additional elements (20 pts)",
+    "text": "Step 3: Incorporate additional elements (20 pts)\nIncorporate at least three additional elements to your blog post or Reveal presentation. This could be a figure (image), a hyperlink, a table, a callout box, a block quote, a footnote or some other element that you learned about in class, in the readings, or in the Quarto documentation. These could be anything you like but should relate to the basic content and narrative of your document.",
+    "crumbs": [
+      "Homework Assignments",
+      "Assignment 2"
+    ]
+  },
+  {
+    "objectID": "assignments/coding-assignment-2.html#step-4-create-a-duplicate-post-or-presentation-20-pts",
+    "href": "assignments/coding-assignment-2.html#step-4-create-a-duplicate-post-or-presentation-20-pts",
+    "title": "Coding Assignment 2",
+    "section": "Step 4: Create a duplicate post or presentation (20 pts)",
+    "text": "Step 4: Create a duplicate post or presentation (20 pts)\nNow create a duplicate presentation or blog post. This time, change the parameter value so that the visualization is for a different country. You can do this by changing the params: argument in the YAML header. You should also change the title of the document so that it is clear that this is a different version of the original document.",
+    "crumbs": [
+      "Homework Assignments",
+      "Assignment 2"
+    ]
+  },
+  {
+    "objectID": "assignments/coding-assignment-2.html#step-5-uplaod-your-document-to-quarto-pub-20-pts",
+    "href": "assignments/coding-assignment-2.html#step-5-uplaod-your-document-to-quarto-pub-20-pts",
+    "title": "Coding Assignment 2",
+    "section": "Step 5: Uplaod your document to Quarto pub (20 pts)",
+    "text": "Step 5: Uplaod your document to Quarto pub (20 pts)\nFollowing the procedure you leanred in class, upload your blog or Reveal presentations to Quarto PUb. Remember that you will need to have a Quarto account to do this and that you need to type the relevant command in the terminal (not the console) to upload your document. Once you have your document link, share it with the class on the Discord server.",
+    "crumbs": [
+      "Homework Assignments",
+      "Assignment 2"
     ]
   }
 ]

@@ -1,0 +1,330 @@
+---
+title: "Data Rich Reports"
+subtitle: "Session 7--PDF Documents"
+footer: "[DRR Website](https://quarto.training)"
+logo: images/drr6502-logo.png
+format:
+  revealjs:
+    theme: [simple, custom.scss]
+    transition: fade
+    slide-number: true
+    chalkboard: true
+execute:
+  echo: false
+  message: false
+  warning: false
+  freeze: auto
+---
+
+# Overview 
+
+## Quarto for PDF Documents 
+
+- Make sure you have the `tinytex` package installed
+  - `quarto install tinytex`
+- Open the `session-2.3.qmd` file
+- Try renderingthe document
+
+## LaTex and Quarto
+
+:::
+- Quarto uses LaTex to render standard PDFs
+- LaTex is a typesetting system that is widely used for technical and scientific documents
+- Quarto uses LaTex to create PDFs from your markdown files
+- Uses `knitr` to do the conversion
+- There is also something called `typst` that we will explore later
+:::
+
+# PDF YAML Code
+
+## What is All of This Code? {.scrollable}
+
+```yaml
+---
+title: "My Paper"
+subtitle: "An Example of a Quarto Paper"
+author:
+  - name: Bullwinkle J. Moose
+  - name: Rocky the Flying Squirrel 
+format: 
+  pdf:
+    documentclass: article
+date: today
+date-format: long
+abstract: |
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. More Latin.
+link-citations: true
+#link-bibliography: false
+colorlinks: true
+linkcolor: Blue4
+fig-width: 6.5
+fig-height: 4.5
+fig-cap-location: top
+block-headings: false   # so that titlesec package works
+geometry: margin = 1in
+fontsize: 12pt
+mainfont: Times New Roman
+mathfont: STIX Two Math
+linestretch: 2
+indent: true
+bibliography: references.bib
+#cite-method: biblatex
+#biblio-style: apa
+#csl: american-political-science-association.csl
+reference-section-title: References
+execute:
+  echo: false
+  message: false
+  warning: false
+include-in-header: header.tex
+---
+```
+
+## Let's Start with What we Know
+
+<br>
+
+```yaml
+title: "My Paper"
+subtitle: "An Example of a Quarto Paper"
+author:
+  - name: Bullwinkle J. Moose
+  - name: Rocky the Flying Squirrel 
+format: 
+  pdf:
+    documentclass: article
+date: today
+date-format: long
+```
+
+## Let's Start with What we Know
+
+<br>
+
+```yaml
+execute:
+  echo: false
+  message: false
+  warning: false
+```
+
+## Abstract
+
+<br>
+
+```yaml
+abstract: |
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. More Latin.
+```
+
+## Links and Link Colors
+
+<br>
+
+```yaml
+link-citations: true
+#link-bibliography: false
+colorlinks: true
+linkcolor: Blue4
+```
+
+## Figure Specifications
+
+<br>
+
+```yaml
+fig-width: 6.5
+fig-height: 4.5
+fig-cap-location: top
+block-headings: false   # so that titlesec package works
+```
+
+## Font and Spacing
+
+<br>
+
+Note that fonts are defined by *system fonts*. System fonts are defined by the operating system and differ across Macs and PCs.
+
+```yaml
+geometry: margin = 1in
+fontsize: 12pt
+mainfont: Times New Roman
+mathfont: STIX Two Math
+linestretch: 2
+indent: true
+```
+
+## References
+
+<br>
+
+```yaml
+bibliography: references.bib
+#cite-method: biblatex
+#biblio-style: apa
+#csl: american-political-science-association.csl
+reference-section-title: References
+```
+
+## Header
+
+<br>
+
+```yaml
+include-in-header: header.tex
+```
+
+## Header
+
+<br>
+
+What is in the `header.tex` file?
+
+```latex
+%%% Setup for frontmatter and spacing %%%
+
+\usepackage{indentfirst} % indent first para
+\setlength{\parindent}{0.5in} % set indent length
+\setlength{\parskip}{0em} % no extra space between paras
+\usepackage{titlesec} % to set spacing of section titles
+\titlespacing\section{0pt}{0pt plus 2pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsection{0pt}{0pt plus 2pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsubsection{0pt}{0pt plus 2pt minus 2pt}{0pt plus 2pt minus 2pt}
+```
+
+## Header
+
+<br>
+
+What is in the `header.tex` file?
+
+```latex
+%%% Captions %%%
+          
+\usepackage{caption}
+\captionsetup{
+  %captionskip = 0pt,   % eliminate space bw capiton and figure
+  %labelformat = empty, % eliminate caption label
+  %font = bf,
+  justification = raggedright, % left justify the caption 
+  singlelinecheck = true,      % but only if it is more than one line
+  font = footnotesize,         % make font smaller
+  labelfont = bf               % make the caption label bold
+}
+```
+
+## Try This {.smaller}
+
+<br>
+
+- Starting with what you don't know...
+  - Comment out different lines in the YAML header
+  - Rerender the document
+  - What is the result? 
+- Try to find a different font for the document
+  - On a Mac, look in the Font Book app
+  - On a PC, look in the settings under "Personalization"
+
+
+```{r}
+#| label: timer1
+library(countdown)
+countdown(minutes = 10, 
+          id = "timer1", 
+          top = "0%", 
+          right = "10%",
+          color_border = "#fff",
+          color_text = "#fff",
+          color_running_background = "#42affa",
+          color_running_text = "black",
+          color_finished_background = "#E5D19D",
+          color_finished_text = "#00264A")
+```
+
+# References
+
+## `.bib` files
+
+<br>
+
+::: incremental
+- `.bib` files are a way to store references
+- They are a plain text file used by LaTex
+- Quarto needs them to compile the list of references at the end
+- They are a bit tricky to write by hand
+- Which is why we use a reference manager like Zotero or Mendeley
+:::
+
+## Zotero Demo {.smaller}
+
+<br>
+
+::: incremental
+- Let's install Zotero
+- Then we need the Zotero plugin to grab references from the web
+- Then we also need the Better BibTex plugin to export the `.bib` file
+  - Produces a `.bib` file that is easier to read and edit
+  - Along with that produces a citation key that is easy to use 
+- Next we need to export our `.bib` file to our project folder
+- Then we can insert the citaion with `[@authorXXXX]`
+- Note that we can also do this in HTML documents, but we highlight it here because research manuscripts tend to still be produced mainly as PDFs
+:::
+
+## Changing Reference Style {.smaller}
+
+<br>
+
+::: incremental
+- There are two ways to change the reference style
+  - The `csl` file in the YAML header
+  - The `biblio-style` in the YAML header
+- The `csl` file is a style file that can be found [here](https://www.zotero.org/styles)
+- The `biblio-style` is a style that can be found [here](https://www.overleaf.com/learn/latex/Biblatex_citation_styles)
+  - Mostly we are going to use `apa`, `mla` or `chicago-authordate` in the social science
+  - But default for Quarto is already Chicago author-date
+:::
+
+## Your Turn! 
+
+<br>
+
+- Do everything I just did
+- I'll come around to make sure you are caught up
+
+```{r}
+#| label: timer2
+countdown(minutes = 10, 
+          id = "timer2", 
+          bottom= "5%", 
+          right = "10%")
+```
+
+# Advanced PDFs
+
+## Extensions
+
+::: incremental
+- Quarto extensions are an easy way to style your documents
+- A list of extensions is [here](https://quarto.org/docs/extensions/) 
+- For PDFs the journal and custom format extensions are most relevant
+- Use an extension for a new document:
+  `quarto use template repo-name/extension-name`
+- To add it to an existing document:
+  `quarto add repo-name/extension-name`
+:::
+
+## Typst
+
+<br>
+
+::: incremental
+- Typst is a modern typesetting system
+- Check out [their webiste](https://typst.app/)
+- Typst is pretty new but it shows a lot of promise
+- A lot of elements are very similar to Quarto PDFs
+- Let's have a look at the [documentation](https://quarto.org/docs/output-formats/typst.html)
+- And see if we can produce a Typst document!
+:::
+
+  
+
