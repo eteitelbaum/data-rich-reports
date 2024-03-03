@@ -495,7 +495,7 @@
     "href": "project/project-assignment.html",
     "title": "Project Assignment",
     "section": "",
-    "text": "Details coming soon!",
+    "text": "This is your opportunity to apply the insights and skills you have developed in this course to a real-world problem. You can produce an HTML report, Revealjs slides, a blog or a pdf document. It can be on anything you like and can incorporate any kind of data that you like. But it should incoprorate both text and code as we have done throughout the course and it should be substantial enough that you would be proud to show it to a potential employer.",
     "crumbs": [
       "Project",
       "Project Assignment"
@@ -2461,7 +2461,7 @@
     "href": "assignments/coding-assignment-2.html#step-5-uplaod-your-document-to-quarto-pub-20-pts",
     "title": "Coding Assignment 2",
     "section": "Step 5: Uplaod your document to Quarto pub (20 pts)",
-    "text": "Step 5: Uplaod your document to Quarto pub (20 pts)\nFollowing the procedure you leanred in class, upload your blog or Reveal presentations to Quarto PUb. Remember that you will need to have a Quarto account to do this and that you need to type the relevant command in the terminal (not the console) to upload your document. Once you have your document link, share it with the class on the Discord server.",
+    "text": "Step 5: Uplaod your document to Quarto pub (20 pts)\nFollowing the procedure you leanred in class, upload your blog or Reveal presentations to Quarto PUb. Remember that you will need to have a Quarto account to do this and that you need to type the relevant command in the terminal (not the console) to upload your document. Once you have your document link, share it with the class on the Discord server. Please also upload your project folder to this link.",
     "crumbs": [
       "Homework Assignments",
       "Assignment 2"
@@ -2473,5 +2473,49 @@
     "title": "Data Rich Reports",
     "section": "Code for Today",
     "text": "Code for Today\nDownload the Quarto files for this session and the previous one here"
+  },
+  {
+    "objectID": "project/project-assignment.html#overview",
+    "href": "project/project-assignment.html#overview",
+    "title": "Project Assignment",
+    "section": "",
+    "text": "This is your opportunity to apply the insights and skills you have developed in this course to a real-world problem. You can produce an HTML report, Revealjs slides, a blog or a pdf document. It can be on anything you like and can incorporate any kind of data that you like. But it should incoprorate both text and code as we have done throughout the course and it should be substantial enough that you would be proud to show it to a potential employer.",
+    "crumbs": [
+      "Project",
+      "Project Assignment"
+    ]
+  },
+  {
+    "objectID": "project/project-assignment.html#setup",
+    "href": "project/project-assignment.html#setup",
+    "title": "Project Assignment",
+    "section": "Setup",
+    "text": "Setup\nCreate a new project folder and call it final-project. Once you have your project open, initialize whatever type of Quarto document you have chosen to use. In the YAML header, include the following information: title, subtitle, author, format, execute and any other settings that you want to apply to the document. Set echo: false, message: false, and warning: false.\n(12.5 pts)",
+    "crumbs": [
+      "Project",
+      "Project Assignment"
+    ]
+  },
+  {
+    "objectID": "project/project-assignment.html#elements",
+    "href": "project/project-assignment.html#elements",
+    "title": "Project Assignment",
+    "section": "Elements",
+    "text": "Elements\nYour project should include the following elements:\n\nIntroduction: What is the problem or question that you are addressing? Why is it interesting? Why is it important? (12.5 pts)\nData: Discuss the data. What data are you using? Where did it come from–a package, an API or wild-caught? How did you process it? (12.5 pts)\nVisualization: Include at least one visualization. It can be a plot, a map, a diagram, or any other kind of visual representation that you think is appropriate. (12.5 pts)\nAnalysis: What did you learn from the data and your visualization? What insights did you gain? What did you find surprising? (12.5 pts)\nOther Elements: Incorporate at some additional elements like a figure (image), a hyperlink, a table, a callout box, a block quote, a footnote that relate to the basic content and narrative of your document. (12.5 pts)\nStyling: Now change the theme and try to make your blog or presentation look a little different/better than the default. (12.5 pts)\nConclusion: What are the implications of your findings? What are the next steps? What other data would you like to have to further explore this question? (12.5 pts)",
+    "crumbs": [
+      "Project",
+      "Project Assignment"
+    ]
+  },
+  {
+    "objectID": "project/project-assignment.html#submission",
+    "href": "project/project-assignment.html#submission",
+    "title": "Project Assignment",
+    "section": "Submission",
+    "text": "Submission\nUpload your document to Quarto Pub. and submit a link to your project in the Discord server. Then, submit your project folder to this link.",
+    "crumbs": [
+      "Project",
+      "Project Assignment"
+    ]
   }
 ]

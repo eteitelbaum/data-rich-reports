@@ -30,6 +30,6 @@ Now create a duplicate presentation or blog post. This time, change the paramete
 
 ## Step 5: Uplaod your document to Quarto pub (20 pts)
 
-Following the procedure you leanred in class, upload your blog or Reveal presentations to Quarto PUb. Remember that you will need to have a Quarto account to do this and that you need to type the relevant command in the **terminal** (not the console) to upload your document. Once you have your document link, share it with the class on the Discord server.
+Following the procedure you leanred in class, upload your blog or Reveal presentations to Quarto PUb. Remember that you will need to have a Quarto account to do this and that you need to type the relevant command in the **terminal** (not the console) to upload your document. Once you have your document link, share it with the class on the Discord server. Please also upload your project folder to [this link](https://www.dropbox.com/request/VFGXSMBIKK3MoxrAHtBW).
 
 

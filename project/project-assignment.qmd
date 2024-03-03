@@ -2,4 +2,35 @@
 title: "Project Assignment"
 ---
 
-**Details coming soon!**
+## Overview
+
+This is your opportunity to apply the insights and skills you have developed in this course to a real-world problem. You can produce an HTML report, Revealjs slides, a blog or a pdf document. It can be on anything you like and can incorporate any kind of data that you like. But it should incoprorate both text and code as we have done throughout the course and it should be substantial enough that you would be proud to show it to a potential employer.
+
+## Setup
+
+Create a new project folder and call it `final-project`. Once you have your project open, initialize whatever type of Quarto document you have chosen to use. In the YAML header, include the following information: title, subtitle, author, format, execute and any other settings that you want to apply to the document. Set `echo: false`, `message: false`, and `warning: false`. 
+
+(12.5 pts)
+
+## Elements
+
+Your project should include the following elements:
+
+1. **Introduction**: What is the problem or question that you are addressing? Why is it interesting? Why is it important? (12.5 pts)
+
+2. **Data**: Discuss the data. What data are you using? Where did it come from--a package, an API or wild-caught? How did you process it?  (12.5 pts)
+
+3. **Visualization**: Include at least one visualization. It can be a plot, a map, a diagram, or any other kind of visual representation that you think is appropriate. (12.5 pts)
+
+4. **Analysis**: What did you learn from the data and your visualization? What insights did you gain? What did you find surprising? (12.5 pts)
+
+5. **Other Elements**: Incorporate at some additional elements like a figure (image), a hyperlink, a table, a callout box, a block quote, a footnote that relate to the basic content and narrative of your document. (12.5 pts)
+
+6. **Styling**: Now change the theme and try to make your blog or presentation look a little different/better than the default. (12.5 pts)
+
+7. **Conclusion**: What are the implications of your findings? What are the next steps? What other data would you like to have to further explore this question? (12.5 pts)
+
+## Submission
+
+Upload your document to Quarto Pub. and submit a link to your project in the Discord server. Then, submit your project folder to [this link](https://www.dropbox.com/request/8mhFB0M306CBqxL1hvjv).
+
