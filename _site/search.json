@@ -1307,7 +1307,7 @@
     "href": "assignments/coding-assignment-2.html",
     "title": "Coding Assignment 2",
     "section": "",
-    "text": "For this assignment you are going to do two things. The first is to produce a basic data visualization that takes advantage of parameterization. The second is to embed that visualization in either a reveal JS presentation or a blog post. Then you will produce a duplicate version of that presentation or blog post with a different parameter value (most likely a country).\nBe sure to reference the course material, the Quarto Guide and the Quarto Reference as you work through this assignment.\nSubmission note: After you share your link with the class, please also submit your document to me via this linkhttps://www.dropbox.com/request/VFGXSMBIKK3MoxrAHtBW).",
+    "text": "For this assignment you are going to do two things. The first is to produce a basic data visualization that takes advantage of parameterization. The second is to embed that visualization in either a reveal JS presentation or a blog post. Then you will produce a duplicate version of that presentation or blog post with a different parameter value (most likely a country).\nBe sure to reference the course material, the Quarto Guide and the Quarto Reference as you work through this assignment.\nSubmission note: After you share your link with the class, please also submit your document to me via this link.",
     "crumbs": [
       "Homework Assignments",
       "Assignment 2"
@@ -2406,7 +2406,7 @@
     "href": "assignments/coding-assignment-2.html#overview",
     "title": "Coding Assignment 2",
     "section": "",
-    "text": "For this assignment you are going to do two things. The first is to produce a basic data visualization that takes advantage of parameterization. The second is to embed that visualization in either a reveal JS presentation or a blog post. Then you will produce a duplicate version of that presentation or blog post with a different parameter value (most likely a country).\nBe sure to reference the course material, the Quarto Guide and the Quarto Reference as you work through this assignment.\nSubmission note: After you share your link with the class, please also submit your document to me via this linkhttps://www.dropbox.com/request/VFGXSMBIKK3MoxrAHtBW).",
+    "text": "For this assignment you are going to do two things. The first is to produce a basic data visualization that takes advantage of parameterization. The second is to embed that visualization in either a reveal JS presentation or a blog post. Then you will produce a duplicate version of that presentation or blog post with a different parameter value (most likely a country).\nBe sure to reference the course material, the Quarto Guide and the Quarto Reference as you work through this assignment.\nSubmission note: After you share your link with the class, please also submit your document to me via this link.",
     "crumbs": [
       "Homework Assignments",
       "Assignment 2"
