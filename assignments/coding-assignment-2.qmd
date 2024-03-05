@@ -8,7 +8,7 @@ For this assignment you are going to do two things. The first is to produce a ba
 
 Be sure to reference the course material, the [Quarto Guide](https://quarto.org/docs/guide/) and the [Quarto Reference](https://quarto.org/docs/reference/) as you work through this assignment.
 
-**Submission note**: After you share your link with the class, please also submit your document to me via [this link]().
+**Submission note**: After you share your link with the class, please also submit your document to me via [this link]()https://www.dropbox.com/request/VFGXSMBIKK3MoxrAHtBW).
 
 ## Step 1: Create a quarto presentation or blog(20pts)
 
