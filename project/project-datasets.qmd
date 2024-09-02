@@ -1,6 +1,5 @@
 ---
 title: "Datasets"
-editor: visual
 ---
 
 Here are some datasets that you might consider using for your final project:
